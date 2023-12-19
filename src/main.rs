@@ -6,6 +6,7 @@ use colored::Colorize;
 use commands::*;
 use poise::serenity_prelude as serenity;
 use serde::{Serialize, Deserialize};
+use std::time::Duration;
 
 // Types used by all command functions
 type Error = Box<dyn std::error::Error + Send + Sync>;
@@ -106,6 +107,8 @@ async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
 
 #[tokio::main]
 async fn main() {
+    
+    println!("メイン！");
 
     // Running initial checks
     println!();
@@ -127,14 +130,14 @@ async fn main() {
             register::register(),
             update::update(),        
         ],
-        // prefix_options: poise::PrefixFrameworkOptions {
-        //     //prefix: Some("!".into()),
-        //     edit_tracker: Some(poise::EditTracker::for_timespan(Duration::from_secs(3600))),
-        //     //additional_prefixes: vec![
-        //     //    poise::Prefix::Literal("b."),
-        //     //],
-        //     ..Default::default()
-        // },
+        prefix_options: poise::PrefixFrameworkOptions {
+             prefix: Some("!".into()),
+             edit_tracker: Some(poise::EditTracker::for_timespan(Duration::from_secs(3600))),
+             additional_prefixes: vec![
+                 poise::Prefix::Literal("b."),
+             ],
+             ..Default::default()
+         },
         
         // The global error handler for all error cases that may occur
         on_error: |error| Box::pin(on_error(error)),

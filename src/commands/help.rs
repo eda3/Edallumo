@@ -59,7 +59,7 @@ pub async fn help(ctx: Context<'_>,
 
 async fn help_general(ctx: Context<'_>) {
     let help_msg = r#"
-__**List of commands**__
+__**コマンドリスト**__
 ```frames``````
 hitboxes``````
 fmeter``````
@@ -68,11 +68,9 @@ nicknames``````
 feedback``````
 help```
 
-__**Patch notes:**__
-__<https://github.com/yakiimoninja/baiken/releases>__
+__**参考にさせてもらったソースコード:**__
+__<https://github.com/yakiimoninja/baiken>__
 
-__**Support the project:**__
-__<https://github.com/sponsors/yakiimoninja>__
 "#;
 
     let _ = ctx.say(help_msg).await;
@@ -95,10 +93,10 @@ async fn help_fmeter(ctx: Context<'_>) {
 __**Command**__: `/fmeter`.
 __**Example**__: `/fmeter cz super`.
 
-__**character_arg**__: Character name or nickname. Cannot be empty.
-__**character_move_arg**__: Character move name, input or alias. Cannot be empty.
+__**character_arg**__: キャラクター名は空欄に出来ないよ！
+__**character_move_arg**__: キャラクターのコマンド名や技名は空欄に出来ないよ！
 
-Displays visually the startup, active and recovery frames of a character's move."#;
+キャラクターの技の始動フレーム、持続フレーム、後隙フレームを視覚的に表示するよ！"#;
     
     let _ = ctx.say(help_msg).await;
     let _ = ctx.channel_id().say(ctx, "https://raw.githubusercontent.com/yakiimoninja/baiken/main/data/images/fmeter.png").await;

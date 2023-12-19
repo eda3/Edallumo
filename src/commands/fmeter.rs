@@ -2,6 +2,8 @@ use std::{fs, string::String};
 use colored::Colorize;
 use crate::{Context, Error, ImageLinks , MoveInfo };
 use crate::{IMAGE_DEFAULT, find, check};
+use crate::serenity::futures::{Stream, StreamExt, self};
+
 
 const GREEN_CIRCLE: &str = "🟢";
 const RED_SQUARE: &str = "🟥";
@@ -99,7 +101,7 @@ pub async fn fmeter(
         }
     }
     
-    let mut frame_meter_msg = r#"__Startup__: "#.to_owned() + &mframes.startup + " → `";
+    let mut frame_meter_msg = r#"__始動__: "#.to_owned() + &mframes.startup + " → `";
 
     // Processing for startup frames
 
@@ -184,7 +186,7 @@ pub async fn fmeter(
         }
     }
 
-    frame_meter_msg = frame_meter_msg + "`\n__Active__: " + &mframes.active + " → `";
+    frame_meter_msg = frame_meter_msg + "`\n__持続__: " + &mframes.active + " → `";
     
     // Processing for active frames
     let active_vec = sep_frame_vec(&mframes.active).await;
@@ -230,7 +232,7 @@ pub async fn fmeter(
         }
     }
 
-    frame_meter_msg = frame_meter_msg + "`\n__Recovery__: " + &mframes.recovery + " → `";
+    frame_meter_msg = frame_meter_msg + "`\n__後隙__: " + &mframes.recovery + " → `";
 
     // Processing for recovery frames
     //println!("Original recovery: {:?}", mframes.recovery);
@@ -283,7 +285,7 @@ pub async fn fmeter(
     frame_meter_msg += "`";
     ctx.channel_id().say(ctx, frame_meter_msg).await?;
 
-    // println!("Startup: {:?}", startup_vec);
+    // println!("始動: {:?}", startup_vec);
     // println!("Active: {:?}", active_vec);
     // println!("Recovery: {:?}", recovery_vec);
 

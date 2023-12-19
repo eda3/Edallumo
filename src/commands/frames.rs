@@ -122,18 +122,18 @@ pub async fn frames(
             //e.description("This is a description");
             e.image(&image_embed);
             e.fields(vec![
-                ("Damage", &mframes.damage.to_string(), true),
-                ("Guard", &mframes.guard.to_string(), true),
-                ("Invinciblity", &mframes.invincibility.to_string(), true),
-                ("Startup", &mframes.startup.to_string(), true),
-                ("Active", &mframes.active.to_string(), true),
-                ("Recovery", &mframes.recovery.to_string(), true),
-                ("On Hit", &mframes.hit.to_string(), true),
-                ("On Block", &mframes.block.to_string(), true),
-                ("Level", &mframes.level.to_string(), true),
-                ("Risc Gain", &mframes.riscgain.to_string(), true),
-                ("Scaling", &mframes.scaling.to_string(), true),
-                ("Counter", &mframes.counter.to_string(), true)]);
+                ("ダメージ", &mframes.damage.to_string(), true),
+                ("ガード", &mframes.guard.to_string(), true),
+                ("無敵", &mframes.invincibility.to_string(), true),
+                ("始動", &mframes.startup.to_string(), true),
+                ("持続", &mframes.active.to_string(), true),
+                ("後隙", &mframes.recovery.to_string(), true),
+                ("Hit時", &mframes.hit.to_string(), true),
+                ("ガード時", &mframes.block.to_string(), true),
+                ("攻撃レベル", &mframes.level.to_string(), true),
+                ("リスクゲージ", &mframes.riscgain.to_string(), true),
+                ("補正", &mframes.scaling.to_string(), true),
+                ("カウンター", &mframes.counter.to_string(), true)]);
             //e.field("This is the third field", "This is not an inline field", false);
             e
         });
