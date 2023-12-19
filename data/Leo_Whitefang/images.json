@@ -100,8 +100,8 @@
   ]
 },
 	{
-  "input": "f.S",
-  "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Leo_Whitefang_f.S.png",
+  "input": "遠S",
+  "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Leo_Whitefang_遠S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/cb/GGST_Leo_fS_Hitbox.png"
   ]

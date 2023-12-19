@@ -100,11 +100,11 @@
   ]
 },
 	{
-  "input": "f.S",
-  "move_img": "https://www.dustloop.com/wiki/images/6/61/GGST_Potemkin_f.S.png",
+  "input": "遠S",
+  "move_img": "https://www.dustloop.com/wiki/images/6/61/GGST_Potemkin_遠S.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/2/22/GGST_Potemkin_f.S_1_Hitbox.png",
-    "https://www.dustloop.com/wiki/images/1/1a/GGST_Potemkin_f.S_2_Hitbox.png"
+    "https://www.dustloop.com/wiki/images/2/22/GGST_Potemkin_遠S_1_Hitbox.png",
+    "https://www.dustloop.com/wiki/images/1/1a/GGST_Potemkin_遠S_2_Hitbox.png"
   ]
 },
 	{

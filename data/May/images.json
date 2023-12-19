@@ -8,7 +8,7 @@
   ]
 },
 	{
-  "input": "2H",
+  "input": "2HS",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_May_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/00/GGST_May_2H-Hitbox.png",
@@ -52,7 +52,7 @@
   ]
 },
 	{
-  "input": "5H",
+  "input": "5HS",
   "move_img": "https://www.dustloop.com/wiki/images/3/32/GGST_May_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/57/GGST_May_5H-Hitbox.png"
@@ -80,7 +80,7 @@
   ]
 },
 	{
-  "input": "6H",
+  "input": "6HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/75/GGST_May_6H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/15/GGST_May_6H-Hitbox.png",
@@ -102,35 +102,35 @@
   ]
 },
 	{
-  "input": "c.S",
-  "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_May_c.S.png",
+  "input": "近S",
+  "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_May_近S.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/0/02/GGST_May_c.S-Hitbox.png"
+    "https://www.dustloop.com/wiki/images/0/02/GGST_May_近S-Hitbox.png"
   ]
 },
 	{
-  "input": "f.S",
-  "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_May_f.S.png",
+  "input": "遠S",
+  "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_May_遠S.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/0/03/GGST_May_f.S-Hitbox.png"
+    "https://www.dustloop.com/wiki/images/0/03/GGST_May_遠S-Hitbox.png"
   ]
 },
 	{
-  "input": "j.2H",
+  "input": "j2H",
   "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_May_j.2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/98/GGST_May_j.2H-Hitbox.png"
   ]
 },
 	{
-  "input": "j.D",
+  "input": "jD",
   "move_img": "https://www.dustloop.com/wiki/images/5/50/GGST_May_j.D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/58/GGST_May_j.D-Hitbox.png"
   ]
 },
 	{
-  "input": "j.H",
+  "input": "jH",
   "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_May_j.H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/94/GGST_May_j.H-Hitbox.png",
@@ -138,21 +138,21 @@
   ]
 },
 	{
-  "input": "j.K",
+  "input": "jK",
   "move_img": "https://www.dustloop.com/wiki/images/c/c9/GGST_May_j.K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/15/GGST_May_j.K-Hitbox.png"
   ]
 },
 	{
-  "input": "j.P",
+  "input": "jP",
   "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_May_j.P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f4/GGST_May_j.P-Hitbox.png"
   ]
 },
 	{
-  "input": "j.S",
+  "input": "jS",
   "move_img": "https://www.dustloop.com/wiki/images/1/1e/GGST_May_j.S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/db/GGST_May_j.S-Hitbox.png"
@@ -180,7 +180,7 @@
   ]
 },
 	{
-  "input": "j.6D or j.4D",
+  "input": "j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_May_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/dc/GGST_May_Air_Throw_Hitbox.png"
@@ -226,7 +226,7 @@
   ]
 },
 	{
-  "input": "[4]6H",
+  "input": "[4]6HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/29/GGST_May_Mr._Dolphin_Horizontal.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/de/GGST_May_Mr._Dolphin_Horizontal-Hitbox.png"
@@ -261,7 +261,7 @@
   ]
 },
 	{
-  "input": "632146H",
+  "input": "632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/7e/GGST_May_The_Wonderful_and_Dynamic_Goshogawara.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/66/GGST_May_632146H_1_Hitbox.png",
@@ -270,7 +270,7 @@
   ]
 },
 	{
-  "input": "j.632146H",
+  "input": "j632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/7e/GGST_May_The_Wonderful_and_Dynamic_Goshogawara.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/66/GGST_May_632146H_1_Hitbox.png",

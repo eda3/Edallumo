@@ -13,7 +13,7 @@
 	{"input":"6H","name":"6H","damage":"60","guard":"High","startup":"25","active":"9","recovery":"44","hit":"Stagger -19","block":"-34","level":"4","counter":"Large","scaling":"80%","riscgain":"1875","invincibility":"-"},
 	{"input":"6P","name":"6P","damage":"35","guard":"All","startup":"9","active":"3","recovery":"32","hit":"KD +21","block":"-21","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"1-4 Upper Body, 5-11 Above Knees"},
 	{"input":"c.S","name":"c.S","damage":"40","guard":"All","startup":"8","active":"6","recovery":"12","hit":"+2","block":"-1","level":"3","counter":"Mid","scaling":"100%","riscgain":"2000","invincibility":"-"},
-	{"input":"f.S","name":"f.S","damage":"34","guard":"All","startup":"12","active":"2","recovery":"20","hit":"-5","block":"-8","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
+	{"input":"遠S","name":"遠S","damage":"34","guard":"All","startup":"12","active":"2","recovery":"20","hit":"-5","block":"-8","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
 	{"input":"j.2K","name":"j.2K","damage":"39","guard":"All","startup":"10","active":"Until Landing","recovery":"9 after Landing","hit":"-","block":"-","level":"2","counter":"Mid","scaling":"80%","riscgain":"1500","invincibility":"-"},
 	{"input":"j.D","name":"j.D","damage":"45","guard":"High","startup":"13","active":"6","recovery":"23","hit":"+8 (IAD)","block":"+5 (IAD)","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"-"},
 	{"input":"j.H","name":"j.H","damage":"42","guard":"High","startup":"9","active":"5","recovery":"15","hit":"+11 (IAD)","block":"+8 (IAD)","level":"3","counter":"Mid","scaling":"80%","riscgain":"1500","invincibility":"-"},

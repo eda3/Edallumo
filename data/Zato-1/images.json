@@ -106,11 +106,11 @@
   ]
 },
 	{
-  "input": "f.S",
-  "move_img": "https://www.dustloop.com/wiki/images/7/7d/GGST_Zato-1_f.S.png",
+  "input": "遠S",
+  "move_img": "https://www.dustloop.com/wiki/images/7/7d/GGST_Zato-1_遠S.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/1/11/GGST_Zato-1_f.S_Hitbox1.png",
-    "https://www.dustloop.com/wiki/images/f/f4/GGST_Zato-1_f.S_Hitbox2.png"
+    "https://www.dustloop.com/wiki/images/1/11/GGST_Zato-1_遠S_Hitbox1.png",
+    "https://www.dustloop.com/wiki/images/f/f4/GGST_Zato-1_遠S_Hitbox2.png"
   ]
 },
 	{
