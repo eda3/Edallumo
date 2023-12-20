@@ -273,21 +273,21 @@
   ]
 },
 	{
-  "input":"214K",
+  "input":"K久延毘古(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6a/GGST_Faust_214X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Faust_214PK_Hitbox.png"
   ]
 },
 	{
-  "input":"214P",
+  "input":"P久延毘古(214P)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6a/GGST_Faust_214X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Faust_214PK_Hitbox.png"
   ]
 },
 	{
-  "input":"214S",
+  "input":"S久延毘古(214S)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6a/GGST_Faust_214X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/3d/GGST_Faust_214S_Hitbox.png"
@@ -301,35 +301,35 @@
   ]
 },
 	{
-  "input":"236HS",
+  "input":"メッタ刈り(236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/0/00/GGST_Faust_236H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/69/GGST_Faust_236H_Hitbox.png"
   ]
 },
 	{
-  "input":"236P",
+  "input":"何が出るかな？(236P)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Faust_236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/58/GGST_Faust_236P_Hitbox.png"
   ]
 },
 	{
-  "input":"236S",
+  "input":"涅和混練(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Faust_236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2c/GGST_Faust_236S_Hitbox.png"
   ]
 },
 	{
-  "input":"236[P]",
+  "input":"何が出るかな？(236[P])",
   "move_img": "https://www.dustloop.com/wiki/images/1/19/GGST_Faust_236(P).png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/83/GGST_Faust_236(P)_Hitbox.png"
   ]
 },
 	{
-  "input":"41236K",
+  "input":"突きます。(41236K)",
   "move_img": "https://www.dustloop.com/wiki/images/b/bf/GGST_Faust_41236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/eb/GGST_Faust_41236K_1_Hitbox.png",
@@ -337,14 +337,14 @@
   ]
 },
 	{
-  "input":"41236K 4",
+  "input":"引き戻し(41236K 4)",
   "move_img": "https://www.dustloop.com/wiki/images/5/58/GGST_Faust_41236K_4.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"41236K 4 H",
+  "input":"ナイスショット(41236K 4 H)",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Faust_41236K_4_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0d/GGST_Faust_41236K_4_H_Hitbox_1.png",
@@ -362,7 +362,7 @@
   ]
 },
 	{
-  "input":"j236P",
+  "input":"愛(j236P)",
   "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Faust_j236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c6/GGST_Faust_Love_hitbox.png",
@@ -370,7 +370,7 @@
   ]
 },
 	{
-  "input":"j236P (With Afro)",
+  "input":"愛アフロ(j236P (With Afro))",
   "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Faust_j236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/92/GGST_Faust_Afro_Love_hitbox_.png",
@@ -378,28 +378,28 @@
   ]
 },
 	{
-  "input":"j236S",
+  "input":"空中Mix Mix Mix(j236S)",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Faust_236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2c/GGST_Faust_236S_Hitbox.png"
   ]
 },
 	{
-  "input":"236236236P",
+  "input":"な・な・な・な・な・な・な・な・な・なにがでるかな？(236236236P)",
   "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Faust_236236P.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236236P",
+  "input":"な・な・な・なにがでるかな？(236236P)",
   "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Faust_236236P.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"632146HS",
+  "input":"エキサイティング骨折(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b4/GGST_Faust_632146H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c9/GGST_Faust_632146H_Hitbox.png",
