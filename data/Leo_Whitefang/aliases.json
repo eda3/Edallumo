@@ -6,7 +6,7 @@
 	{"input":"[4]6S","aliases":["Graviert Wurde","Fireball","FB","46S"]},
 	{"input":"[4]6HS","aliases":["H Graviert Wurde","H Fireball","HFB","46HS"]},
 	{"input":"[2]8S","aliases":["Eisen Sturm","DP","28S"]},
-	{"input":"[2]8H","aliases":["H Eisen Sturm","HDP","28H"]},
+	{"input":"[2]8HS","aliases":["H Eisen Sturm","HDP","28HS"]},
 	{"input":"236S","aliases":["Kaltes Gestöber Erst","KGE","Run"]},
 	{"input":"236HS","aliases":["Kaltes Gestöber Zweit","Run Through","KGZ","RT"]},
 	{"input":"214S","aliases":["Turbulenz","Firewall"]},
