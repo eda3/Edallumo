@@ -7,7 +7,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_Bedman_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e4/GGST_Bedman_2H_Hitbox_1.png",
@@ -43,7 +43,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/5/51/GGST_Bedman_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0d/GGST_Bedman_5H_Hitbox_1.png",
@@ -72,7 +72,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/7a/GGST_Bedman_6H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9d/GGST_Bedman_6H_1_Hitbox.png",
@@ -103,35 +103,35 @@
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/9/9f/GGST_Bedman_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9e/GGST_Bedman_jD_Hitbox.png"
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/a/ae/GGST_Bedman_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/27/GGST_Bedman_jH_Hitbox.png"
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/4/46/GGST_Bedman_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d6/GGST_Bedman_jK_Hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/9/93/GGST_Bedman_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f6/GGST_Bedman_jP_Hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/c/c3/GGST_Bedman_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/22/GGST_Bedman_jS_Hitbox.png"
@@ -159,7 +159,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/e/e4/GGST_Bedman_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1d/GGST_Bedman_Air_Throw_Hitbox.png"
@@ -283,7 +283,7 @@
   ]
 },
 	{
-  "input":"236H",
+  "input":"236HS",
   "move_img": "https://www.dustloop.com/wiki/images/8/88/GGST_Bedman_236H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f8/GGST_Bedman_236H_Hitbox.png"
@@ -320,21 +320,21 @@
   ]
 },
 	{
-  "input":"j.214K",
+  "input":"j214K",
   "move_img": "",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c6/GGST_Bedman_j.214K_Hitbox.png"
   ]
 },
 	{
-  "input":"j.214P",
+  "input":"j214P",
   "move_img": "",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/de/GGST_Bedman_j.214P_Hitbox.png"
   ]
 },
 	{
-  "input":"j.236P",
+  "input":"j236P",
   "move_img": "https://www.dustloop.com/wiki/images/9/95/GGST_Bedman_j.236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/64/GGST_Bedman_j.236P_Hitbox_1.png",
@@ -343,7 +343,7 @@
   ]
 },
 	{
-  "input":"j.236S",
+  "input":"j236S",
   "move_img": "https://www.dustloop.com/wiki/images/d/d8/GGST_Bedman_j.236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d7/GGST_Bedman_j.236S_Hitbox_1.png",
@@ -351,7 +351,7 @@
   ]
 },
 	{
-  "input":"632146H",
+  "input":"632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/b/b8/GGST_Bedman_632146H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/aa/GGST_Bedman_632146H_Hitbox.png"

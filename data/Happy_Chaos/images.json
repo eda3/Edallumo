@@ -96,35 +96,35 @@
   ]
 },
 	{
-  "input":"j.2K",
+  "input":"j2K",
   "move_img": "https://www.dustloop.com/wiki/images/a/a3/GGST_Happy_Chaos_j2K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/35/GGST_Happy_Chaos_j2K_Hitbox.png"
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Happy_Chaos_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f8/GGST_Happy_Chaos_jD_Hitbox.png"
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/6/64/GGST_Happy_Chaos_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/cb/GGST_Happy_Chaos_jK_Hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/3/3c/GGST_Happy_Chaos_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/17/GGST_Happy_Chaos_jP_Hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/7/77/GGST_Happy_Chaos_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Happy_Chaos_jS_Hitbox.png"
@@ -152,7 +152,7 @@
   ]
 },
 	{
-  "input":"j.4D or j.6D",
+  "input":"j4D or j.6D",
   "move_img": "https://www.dustloop.com/wiki/images/9/9b/GGST_Happy_Chaos_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a1/GGST_Happy_Chaos_Air_Throw_Hitbox.png"

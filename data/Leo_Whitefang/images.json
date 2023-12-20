@@ -7,7 +7,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Leo_Whitefang_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/62/GGST_Leo_2H1_Hitbox.png",
@@ -43,7 +43,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Leo_Whitefang_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2b/GGST_Leo_5H1_Hitbox.png",
@@ -72,7 +72,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/d/d9/GGST_Leo_Whitefang_6H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/47/GGST_Leo_6H_Hitbox.png"
@@ -107,35 +107,35 @@
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/a/a9/GGST_Leo_Whitefang_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/bf/GGST_Leo_jD_Hitbox.png"
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/3/39/GGST_Leo_Whitefang_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2f/GGST_Leo_jH_Hitbox.png"
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/b/b9/GGST_Leo_Whitefang_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8f/GGST_Leo_jK_Hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_Leo_Whitefang_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/95/GGST_Leo_jP_Hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/e/ea/GGST_Leo_Whitefang_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b5/GGST_Leo_jS1_Hitbox.png",
@@ -213,7 +213,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/7/77/GGST_Leo_Whitefang_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8a/GGST_Leo_Whitefang_Air_Throw_Hitbox.png"
@@ -228,7 +228,7 @@
   ]
 },
 	{
-  "input":"236H",
+  "input":"236HS",
   "move_img": "https://www.dustloop.com/wiki/images/e/ee/GGST_Leo_Whitefang_Kaltes_Gestober_Zweit.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/43/GGST_Leo_236H1_Hitbox.png",
@@ -276,7 +276,7 @@
   ]
 },
 	{
-  "input":"[4]6H",
+  "input":"[4]6HS",
   "move_img": "https://www.dustloop.com/wiki/images/d/d5/GGST_Leo_Whitefang_Graviert_Wurde.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2d/GGST_Leo_46H_Hitbox.png"
@@ -290,7 +290,7 @@
   ]
 },
 	{
-  "input":"632146H",
+  "input":"632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/b/b3/GGST_Leo_Whitefang_Liedenschaft_des_Dirigenten.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b2/GGST_Leo_632146H1_Hitbox.png",

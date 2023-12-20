@@ -8,7 +8,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Johnny_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b4/GGST_Johnny_2H_Hitbox_1.png",
@@ -44,7 +44,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_Johnny_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/45/GGST_Johnny_5H_Hitbox.png"
@@ -72,7 +72,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/b/b0/GGST_Johnny_6H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/62/GGST_Johnny_6H_Hitbox.png"
@@ -108,35 +108,35 @@
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/c/c1/GGST_Johnny_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5f/GGST_Johnny_jD_Hitbox.png"
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/5/5d/GGST_Johnny_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2a/GGST_Johnny_jH_Hitbox.png"
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/3/3b/GGST_Johnny_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/3a/GGST_Johnny_jK_Hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/1/16/GGST_Johnny_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/44/GGST_Johnny_jP_Hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/a/a7/GGST_Johnny_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/78/GGST_Johnny_jS_Hitbox.png"
@@ -164,7 +164,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Johnny_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/be/GGST_Johnny_Air_Throw_Hitbox.png"
@@ -206,7 +206,7 @@
   ]
 },
 	{
-  "input":"236H",
+  "input":"236HS",
   "move_img": "https://www.dustloop.com/wiki/images/8/81/GGST_Johnny_236H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/4d/GGST_Johnny_236H_Hitbox_1.png",
@@ -244,35 +244,35 @@
   ]
 },
 	{
-  "input":"j.214[P/K/S]",
+  "input":"j214[P/K/S]",
   "move_img": "https://www.dustloop.com/wiki/images/8/85/GGST_Johnny_j.214(X).png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d5/GGST_Johnny_j.214(X)_Hitbox.png"
   ]
 },
 	{
-  "input":"j.214]K[",
+  "input":"j214]K[",
   "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Johnny_j.214K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9e/GGST_Johnny_j.214K_Hitbox.png"
   ]
 },
 	{
-  "input":"j.214]P[",
+  "input":"j214]P[",
   "move_img": "https://www.dustloop.com/wiki/images/9/9c/GGST_Johnny_j.214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e0/GGST_Johnny_j.214P_Hitbox.png"
   ]
 },
 	{
-  "input":"j.214]S[",
+  "input":"j214]S[",
   "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_Johnny_j.214S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f4/GGST_Johnny_j.214S_Hitbox.png"
   ]
 },
 	{
-  "input":"j.236H",
+  "input":"j236HS",
   "move_img": "https://www.dustloop.com/wiki/images/f/f6/GGST_Johnny_j.236H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/44/GGST_Johnny_j.236H_Hitbox_1.png",
@@ -304,7 +304,7 @@
   ]
 },
 	{
-  "input":"632146H",
+  "input":"632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Johnny_632146H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Johnny_632146H_Hitbox.png"

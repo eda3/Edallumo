@@ -1,12 +1,12 @@
 [
     {"input":"c.S","aliases":["5S"]},
-	{"input":"2D","aliases":["Sweep"]},
-	{"input":"5[D]","aliases":["5D!"]},
+	{"input":"2D","aliases":["足払い"]},
+	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
     {"input":"214X","aliases":["Bookmark","Draw"]},
     {"input":"22H~X","aliases":["Change Test Case","Change Deck","CTC","CD"]},
     {"input":"22P/K/S","aliases":["Recover Mana","RM"]},
     {"input":"236X","aliases":["Chant","Cast"]},
-    {"input":"j.214X","aliases":["Bookmark (Air)","Air Draw","AD"]},
+    {"input":"j214X","aliases":["Bookmark (Air)","空中Draw","AD"]},
     {"input":"Accipiter Metron","aliases":["Accipiter Metron"]},
     {"input":"Aquila Metron","aliases":["Aquila Metron"]},
     {"input":"Bit Shift Metron","aliases":["Bit Shift Metron"]},
@@ -35,8 +35,8 @@
     {"input":"Terra Metron","aliases":["Terra Metron"]},
     {"input":"632146P/K","aliases":["Submicron Particle Sphere","High Compression Submicron Particle Sphere","SPS","HCSPS","Super"]},
     {"input":"632146S","aliases":["Bookmark (Full Order)","Shuffle","Draw Super","BFO","DS"]},
-    {"input":"6D or 4D","aliases":["Throw","6D","4D"]},
-	{"input":"j.6D or j.4D","aliases":["Air Throw","J6D","J4D"]},
-    {"input":"236D","aliases":["Wild Assault","WA"]},
-    {"input":"236[D]","aliases":["Wild Assault Hold","WAH","WA!","236D!"]}
+    {"input":"6D or 4D","aliases":["投げ","6D","4D"]},
+	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
+    {"input":"236D","aliases":["ワイルドアサルト","WA"]},
+    {"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
 ]

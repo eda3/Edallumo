@@ -7,7 +7,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Millia_Rage_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a5/GGST_Millia_Rage_2H_1_Hitbox.png",
@@ -43,7 +43,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/a/a8/GGST_Millia_Rage_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1c/GGST_Millia_Rage_5H_Initial_Hitbox.png",
@@ -72,7 +72,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/3/3a/GGST_Millia_Rage_6H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7d/GGST_Millia_Rage_6H_1_Hitbox.png",
@@ -111,7 +111,7 @@
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_Millia_Rage_j.D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a0/GGST_Millia_Rage_j.D_1_Hitbox.png",
@@ -119,7 +119,7 @@
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/d/d0/GGST_Millia_Rage_j.H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0d/GGST_Millia_Rage_j.H_1_Hitbox.png",
@@ -127,7 +127,7 @@
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/c/cd/GGST_Millia_Rage_j.K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/41/GGST_Millia_Rage_j.K_1_Hitbox.png",
@@ -135,14 +135,14 @@
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Millia_Rage_j.P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5c/GGST_Millia_Rage_j.P_Hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/6/6b/GGST_Millia_Rage_j.S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a2/GGST_Millia_Rage_j.S_1_Hitbox.png",
@@ -171,7 +171,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/b/b1/GGST_Millia_Rage_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/87/GGST_Millia_Rage_Air_Throw_Hitbox.png"
@@ -225,7 +225,7 @@
   ]
 },
 	{
-  "input":"236H",
+  "input":"236HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Millia_Rage_Tandem_Top_Full.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a5/GGST_Millia_Rage_Tandem_Top_H_Hitbox.png"
@@ -239,7 +239,7 @@
   ]
 },
 	{
-  "input":"j.236H",
+  "input":"j236HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/70/GGST_Millia_Rage_Kapel.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/83/GGST_Millia_Rage_Kapel_1_Hitbox.png",
@@ -247,7 +247,7 @@
   ]
 },
 	{
-  "input":"j.236K",
+  "input":"j236K",
   "move_img": "https://www.dustloop.com/wiki/images/a/a8/GGST_Millia_Rage_Turbo_Fall.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/3d/GGST_Millia_Rage_Turbo_Fall_1_Hitbox.png",
@@ -255,7 +255,7 @@
   ]
 },
 	{
-  "input":"j.236P",
+  "input":"j236P",
   "move_img": "https://www.dustloop.com/wiki/images/b/b4/GGST_Millia_Rage_Bad_Moon.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/86/GGST_Millia_Rage_Bad_Moon_Hitbox.png"
@@ -269,7 +269,7 @@
   ]
 },
 	{
-  "input":"632146H",
+  "input":"632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/9/96/GGST_Millia_Rage_632146H_Full.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/17/GGST_Millia_Rage_632146H_1_Hitbox.png",

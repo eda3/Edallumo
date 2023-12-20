@@ -127,7 +127,7 @@
   ]
 },
 	{
-  "input":"jH",
+  "input":"jHS",
   "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Bridget_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a0/GGST_Bridget_jH_Hitbox.png"
@@ -186,7 +186,7 @@
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":""j6D or j4D"",
   "move_img": "https://www.dustloop.com/wiki/images/4/47/GGST_Bridget_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/41/GGST_Bridget_Air_Throw_Hitbox.png"

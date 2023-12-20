@@ -1,7 +1,7 @@
 [	
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
+	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
 	{"input":"突きます。(41236K)","aliases":["突きます。","41236K","Stab","Scalpel"]},
 	{"input":"引き戻し(41236K 4)","aliases":["引き戻し","41236K 4","Pull","41236K4"]},
 	{"input":"ナイスショット(41236K 4 H)","aliases":["ナイスショット","41236K 4 H","Bat","Swing","Bat Swing","41236K4H"]},
@@ -29,7 +29,7 @@
 	{"input":"ラッパ","aliases":["ラッパ","Trumpet"]},
 	{"input":"メテオ","aliases":["メテオ","Meteor"]},
 	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
-	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
+	{"input":""j6D or j4D"","aliases":["空投げ","J6D","J4D"]},
 	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
 	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
 ]

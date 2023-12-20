@@ -9,7 +9,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/4/42/GGST_Asuka_R_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/79/GGST_Asuka_R_2H_Hitbox.png"
@@ -44,7 +44,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_Asuka_R_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/03/GGST_Asuka_R_5H_Hitbox.png"
@@ -72,7 +72,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Asuka_R_6H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/39/GGST_Asuka_R_6H_Hitbox_1.png",
@@ -109,35 +109,35 @@
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/f/f5/GGST_Asuka_R_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/dd/GGST_Asuka_R_jD_Hitbox.png"
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Asuka_R_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e1/GGST_Asuka_R_jH_Hitbox.png"
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_Asuka_R_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8d/GGST_Asuka_R_jK_Hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/1/11/GGST_Asuka_R_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d2/GGST_Asuka_R_jP_Hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/6/67/GGST_Asuka_R_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/93/GGST_Asuka_R_jS_Hitbox.png"
@@ -165,7 +165,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Asuka_R_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/dd/GGST_Asuka_R_Air_Throw_Hitbox.png"

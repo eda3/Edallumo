@@ -1,7 +1,7 @@
 [	
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
+	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
 	{"input":"ハンマーフォール([4]6HS)","aliases":["ハンマーフォール","[4]6HS","HammerFall","HF","46HS"]},
 	{"input":"ハンマーフォールブレーキ([4]6HS P)","aliases":["ハンマーフォールブレーキ","[4]6HS P","Hammerfall Break","HFB","46HP"]},
 	{"input":"ポチョムキンバスター(632146P)","aliases":["ポチョムキンバスター","632146P","Pot Buster","Buster","Command Grab","Hug","CG","PB"]},
@@ -17,7 +17,7 @@
 	{"input":"ガイガンダー改(632146HS)","aliases":["ガイガンダー改","632146HS","Super","GK"]},
 	{"input":"ガイガンダー改バリア(Mirror)","aliases":["ガイガンダー改バリア","Mirror","ガイガンダー改バリア(Mirror)","GKB"]},
 	{"input":"投げ(6D or 4D)","aliases":["投げ","6D or 4D","6D","4D"]},
-	{"input":"空投げ(j6D or j4D)","aliases":["空投げ","j6D or j4D","J6D","J4D"]},
+	{"input":"空投げ("j6D or j4D")","aliases":["空投げ",""j6D or j4D"","J6D","J4D"]},
 	{"input":"ワイルドアサルト(236D)","aliases":["ワイルドアサルト","236D","WA"]},
 	{"input":"溜めワイルドアサルト(236[D])","aliases":["溜めワイルドアサルト","236[D]","WAH","WA!","236D!"]}
 ]

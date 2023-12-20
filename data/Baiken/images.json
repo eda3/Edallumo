@@ -8,7 +8,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/a/a7/GGST_Baiken_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/fa/GGST_Baiken_2H_Hitbox.png"
@@ -43,7 +43,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Baiken_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/42/GGST_Baiken_5H_Hitbox.png"
@@ -72,7 +72,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/0/05/GGST_Baiken_6H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/17/GGST_Baiken_6H_1_hitbox.png",
@@ -109,14 +109,14 @@
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/4/4b/GGST_Baiken_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/77/GGST_Baiken_jD_hitbox.png"
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/1/1a/GGST_Baiken_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Baiken_jH_1_hitbox.png",
@@ -124,21 +124,21 @@
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/7/7a/GGST_Baiken_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/65/GGST_Baiken_jK_hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/d/df/GGST_Baiken_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/84/GGST_Baiken_jP_hitbox.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Baiken_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a3/GGST_Baiken_jS_1_hitbox.png",
@@ -174,7 +174,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/5/55/GGST_Baiken_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/53/GGST_Baiken_Air_Throw_Hitbox.png"
@@ -199,7 +199,7 @@
   ]
 },
 	{
-  "input":"41236H",
+  "input":"41236HS",
   "move_img": "https://www.dustloop.com/wiki/images/7/7c/GGST_Baiken_41236H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/38/GGST_Baiken_41236H_1_hitbox.png",
@@ -222,7 +222,7 @@
   ]
 },
 	{
-  "input":"j.236K",
+  "input":"j236K",
   "move_img": "https://www.dustloop.com/wiki/images/2/29/GGST_Baiken_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/38/GGST_Baiken_236K_Air_1_hitbox.png",
@@ -231,7 +231,7 @@
   ]
 },
 	{
-  "input":"j.236S",
+  "input":"j236S",
   "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Baiken_j236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/ba/GGST_Baiken_j236S_1_hitbox.png",
@@ -262,7 +262,7 @@
   ]
 },
 	{
-  "input":"j.214214P",
+  "input":"j214214P",
   "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Baiken_j214214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/de/GGST_Baiken_j214214P_Hitbox.png",

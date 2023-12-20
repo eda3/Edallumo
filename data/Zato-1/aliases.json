@@ -1,7 +1,7 @@
 [	
 	{"input":"c.S","aliases":["5S"]},
-	{"input":"2D","aliases":["Sweep"]},
-	{"input":"5[D]","aliases":["5D!"]},
+	{"input":"2D","aliases":["足払い"]},
+	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
 	{"input":"22H","aliases":["Invite Hell","Spike","Drill"]},
 	{"input":"]P[","aliases":["Negative Edge Pierce","Negative Edge Slap","NE Pierce","NE Slap","NEP","NESL"]},
 	{"input":"236P","aliases":["Pierce","Slap"]},
@@ -10,7 +10,7 @@
 	{"input":"]S[","aliases":["Negative Edge Leap","Negative Edge Frog","NE Leap","NE Frog","NEL","NEF","NES"]},
 	{"input":"236S","aliases":["Leap","Frog"]},
 	{"input":"]H[","aliases":["Negative Edge Oppose","Negative Edge Tickle Monster","Negative Edge Shield","NE Oppose","NE Tickle Monster","NE Shield","NEO","NETM","NESH","NEH"]},
-	{"input":"236H","aliases":["Oppose","Tickle Monster","Shield","TM"]},
+	{"input":"236HS","aliases":["Oppose","Tickle Monster","Shield","TM"]},
 	{"input":"623S","aliases":["Damned Fang","Command Grab","DF","CG"]},
 	{"input":"214K","aliases":["Break The Law","Pool","BTL"]},
 	{"input":"22 During 214K(HOLD)","aliases":["Eddie Swap","ES"]},	
@@ -18,11 +18,11 @@
 	{"input":"214S (Dash)","aliases":["Eddie Dash","ED"]},
 	{"input":"214H","aliases":["Summon Eddie","Summon","SE"]},
 	{"input":"214H","aliases":["Unsummon Eddie","Unsummon","UE"]},
-	{"input":"632146H","aliases":["Amorphous","Bite","Bite Super","BS"]},
+	{"input":"632146HS","aliases":["Amorphous","Bite","Bite Super","BS"]},
 	{"input":"632146S","aliases":["Sun Void","Sword","Sword Super","SS"]},
-	{"input":"j.632146S","aliases":["Sun Void","Air Sword","Air Sword Super","JSS"]},
-	{"input":"6D or 4D","aliases":["Throw","6D","4D"]},
-	{"input":"j.6D or j.4D","aliases":["Air Throw","J6D","J4D"]},
-	{"input":"236D","aliases":["Wild Assault","WA"]},
-    {"input":"236[D]","aliases":["Wild Assault Hold","WAH","WA!","236D!"]}
+	{"input":"j632146S","aliases":["Sun Void","空中Sword","空中Sword Super","JSS"]},
+	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
+	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
+	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
+    {"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
 ]

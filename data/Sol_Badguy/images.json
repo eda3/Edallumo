@@ -67,7 +67,7 @@
   ]
 },
 	{
-  "input":"5D!",
+  "input":"5D!","ためダスト","溜めダスト",
   "move_img": "https://www.dustloop.com/wiki/images/b/be/GGST_Sol_Badguy_5D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/21/GGST_Sol_5D_Hitbox.png"
@@ -167,7 +167,7 @@
   ]
 },
 	{
-  "input":"空投げ(j6D or j.4D)",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/5/5f/GGST_Sol_Badguy_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1d/GGST_Sol_Badguy_Air_Throw_Hitbox.png"

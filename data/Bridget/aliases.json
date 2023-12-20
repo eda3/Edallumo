@@ -3,7 +3,7 @@
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"SS","aliases":["5SS"]},
 	{"input":"HH","aliases":["5HH","HSHS","5HSHS"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
+	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
 	{"input":"ストップアンドダッシュ(23S-HS)","aliases":["ストップアンドダッシュ","Yoyo Throw","SD","YYT"]},
 	{"input":"ストップアンドダッシュリターン(214S-HS)","aliases":["ストップアンドダッシュリターン","Return Fireball","Yoyo Return","SDR","YYR"]},
 	{"input":"ローリング移動(214K)","aliases":["ローリング移動","214K"]},
@@ -11,12 +11,12 @@
 	{"input":"キックスタートマイハート(236K)","aliases":["キックスタートマイハート","236K","KSMH"]},
 	{"input":"停止(236KP)","aliases":["停止","236KP"]},
 	{"input":"発射(236KK)","aliases":["発射","236KK"]},
-	{"input":"ロジャーダイブ(j236K)","aliases":["ロジャーダイブ","j236K","j.236K"]},
+	{"input":"ロジャーダイブ(j236K)","aliases":["ロジャーダイブ","j236K","j236K"]},
 	{"input":"ロックザベイビー(63214P)","aliases":["ロックザベイビー","63214P"]},
 	{"input":"ループザループ(632146S)","aliases":["ループザループ","632146S"]},
 	{"input":"帰ってきたキルマシーン(632146HS)","aliases":["帰ってきたキルマシーン","632146HS"]},
 	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
-	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
+	{"input":""j6D or j4D"","aliases":["空投げ","J6D","J4D"]},
 	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
 	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
 

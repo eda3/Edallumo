@@ -130,7 +130,7 @@
   ]
 },
 	{
-  "input":"jH",
+  "input":"jHS",
   "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_May_j.H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/94/GGST_May_j.H-Hitbox.png",
@@ -180,7 +180,7 @@
   ]
 },
 	{
-  "input":"空投げ(j6D or j4D)",
+  "input":"空投げ("j6D or j4D")",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_May_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/dc/GGST_May_Air_Throw_Hitbox.png"

@@ -122,7 +122,7 @@
   ]
 },
 	{
-  "input":"jH",
+  "input":"jHS",
   "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Axl_Low_j.H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8d/GGST_Axl_jH_Hitbox.png"
@@ -172,7 +172,7 @@
   ]
 },
 	{
-  "input":"空投げ(j6D or j4D)",
+  "input":"空投げ("j6D or j4D")",
   "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Axl_Low_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a6/GGST_Axl_Low_Air_Throw_Hitbox.png"

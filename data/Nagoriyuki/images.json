@@ -267,98 +267,98 @@
   ]
 },
 	{
-  "input":"j.D Level 1",
+  "input":"jD Level 1",
   "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_Nagoriyuki_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d0/GGST_Nagoriyuki_jD-Hitbox.png"
   ]
 },
 	{
-  "input":"j.D Level 2",
+  "input":"jD Level 2",
   "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_Nagoriyuki_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d0/GGST_Nagoriyuki_jD-Hitbox.png"
   ]
 },
 	{
-  "input":"j.D Level 3",
+  "input":"jD Level 3",
   "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_Nagoriyuki_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d0/GGST_Nagoriyuki_jD-Hitbox.png"
   ]
 },
 	{
-  "input":"j.D Level BR",
+  "input":"jD Level BR",
   "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Nagoriyuki_jD2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a8/GGST_Nagoriyuki_jDBR-Hitbox.png"
   ]
 },
 	{
-  "input":"j.H Level 1",
+  "input":"jH Level 1",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Nagoriyuki_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/4b/GGST_Nagoriyuki_jH1-Hitbox.png"
   ]
 },
 	{
-  "input":"j.H Level 2",
+  "input":"jH Level 2",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Nagoriyuki_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/37/GGST_Nagoriyuki_jH2-Hitbox.png"
   ]
 },
 	{
-  "input":"j.H Level 3",
+  "input":"jH Level 3",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Nagoriyuki_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c9/GGST_Nagoriyuki_jH3-Hitbox.png"
   ]
 },
 	{
-  "input":"j.H Level BR",
+  "input":"jH Level BR",
   "move_img": "https://www.dustloop.com/wiki/images/6/66/GGST_Nagoriyuki_jH2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Nagoriyuki_jHBR-Hitbox.png"
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/e/e9/GGST_Nagoriyuki_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2c/GGST_Nagoriyuki_jK-Hitbox.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Nagoriyuki_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/6a/GGST_Nagoriyuki_jP-Hitbox.png"
   ]
 },
 	{
-  "input":"j.S Level 1",
+  "input":"jS Level 1",
   "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Nagoriyuki_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Nagoriyuki_jS-Hitbox.png"
   ]
 },
 	{
-  "input":"j.S Level 2",
+  "input":"jS Level 2",
   "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Nagoriyuki_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Nagoriyuki_jS-Hitbox.png"
   ]
 },
 	{
-  "input":"j.S Level 3",
+  "input":"jS Level 3",
   "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Nagoriyuki_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Nagoriyuki_jS-Hitbox.png"
   ]
 },
 	{
-  "input":"j.S Level BR",
+  "input":"jS Level BR",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Nagoriyuki_jS2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e6/GGST_Nagoriyuki_jSBR-Hitbox.png"
@@ -400,7 +400,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/f/fc/GGST_Nagoriyuki_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d5/GGST_Nagoriyuki_Air_Throw_Hitbox.png"
@@ -437,7 +437,7 @@
   ]
 },
 	{
-  "input":"623H",
+  "input":"623HS",
   "move_img": "https://www.dustloop.com/wiki/images/8/81/GGST_Nagoriyuki_Shizuriyuki1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Nagoriyuki_Shizuriyuki1-Hitbox.png"
@@ -458,7 +458,7 @@
   ]
 },
 	{
-  "input":"632146H",
+  "input":"632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/1/11/GGST_Nagoriyuki_Zansetsu2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d1/GGST_Nagoriyuki_Zansetsu-Hitbox.png"

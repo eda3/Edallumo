@@ -128,7 +128,7 @@
   ]
 },
 	{
-  "input":"jH",
+  "input":"jHS",
   "move_img": "https://www.dustloop.com/wiki/images/3/3f/GGST_Faust_j.H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7b/GGST_Faust_j.H_1_Hitbox.png",
@@ -259,7 +259,7 @@
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":""j6D or j4D"",
   "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_Faust_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/00/GGST_Faust_Air_Throw_Hitbox.png"
