@@ -35,6 +35,6 @@
 	{"input":"ロックザベイビー(63214P)","name":"ロックザベイビー","damage":"90","guard":"Ground Throw","startup":"27","active":"2","recovery":"28","hit":"強制ダウン+55","block":"N/A","level":"4","counter":"-","scaling":"50%","riscgain":"-","invincibility":"4~20F Airborne"},
 	{"input":"ロジャーダイブ(j236K)","name":"ロジャーダイブ","damage":"25, 35","guard":"上段","startup":"25","active":"Until Landing, 4","recovery":"15","hit":"KD +30","block":"-5","level":"2","counter":"Very Small","scaling":"80%","riscgain":"700×2","invincibility":"-"},
 	{"input":"j63214P","name":"空中ロックザベイビー","damage":"90","guard":"空中Throw ,  [Ground Throw]","startup":"27-37 ,  [or, 7 after landing]","active":"2","recovery":"Until Landing + 3 ,  [28]","hit":"強制ダウン+60 (IAD)","block":"N/A","level":"4","counter":"-","scaling":"50%","riscgain":"-","invincibility":"-"},
-	{"input":帰ってきたキルマシーン"(632146HS)","name":"帰ってきたキルマシーン","damage":"15×7","guard":"上段","startup":"9+1","active":"~","recovery":"~","hit":"強制ダウン+74","block":"+16","level":"2","counter":"Very Small","scaling":"100%","riscgain":"100×5","invincibility":"-"},
+	{"input":"帰ってきたキルマシーン(632146HS)","name":"帰ってきたキルマシーン","damage":"15×7","guard":"上段","startup":"9+1","active":"~","recovery":"~","hit":"強制ダウン+74","block":"+16","level":"2","counter":"Very Small","scaling":"100%","riscgain":"100×5","invincibility":"-"},
 	{"input":"ループザループ(632146S)","name":"ループザループ","damage":"[9, 1]×6, 9, 71","guard":"Mid","startup":"9+2","active":"45","recovery":"47","hit":"強制ダウン+53","block":"-29","level":"2","counter":"Mid","scaling":"100%","riscgain":"[300, 100]×7","invincibility":"-"}
 ]
