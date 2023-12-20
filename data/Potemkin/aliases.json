@@ -1,11 +1,11 @@
 [	
-	{"input":"c.S","aliases":["5S"]},
-	{"input":"2D","aliases":["Sweep"]},
-	{"input":"5[D]","aliases":["5D!"]},
-	{"input":"[4]6H","aliases":["Hammer Fall","HammerFall","HF","46H"]},
+	{"input":"近S","aliases":["5S"]},
+	{"input":"2D","aliases":["足払い"]},
+	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
+	{"input":"[4]6HS","aliases":["Hammer Fall","HammerFall","HF","46HS"]},
 	{"input":"[4]6H P","aliases":["Hammer Fall Break","Hammerfall Break","HFB","46HP"]},
 	{"input":"632146P","aliases":["Potemkin Buster","Pot Buster","Buster","Command Grab","Hug","CG","PB"]},
-	{"input":"623H","aliases":["Heat Knuckle","HK"]},
+	{"input":"623HS","aliases":["Heat Knuckle","HK"]},
 	{"input":"236P","aliases":["Mega Fist","F Mega Fist","F Megafist","Forward Mega fist","Forward Megafist","MF","FMF"]},
 	{"input":"214P","aliases":["B Mega Fist","B Megafist","Back Mega Fist","Back Megafist","Backward Megafist","Backward Mega fist","BMF"]},
 	{"input":"2146K~P","aliases":["Mega Fist","Kara Mega Fist","Kara Megafist","KBMF","KM","2146KP"]},
@@ -14,10 +14,10 @@
 	{"input":"Reflect Projectile","aliases":["Reflect Projectile","Reflect","Flick","RP"]},
 	{"input":"214H","aliases":["Garuda Impact","GI"]},
 	{"input":"236236S","aliases":["Heavenly Potemkin Buster","Command Grab Super","Super Hug","HPB","CGS"]},
-	{"input":"632146H","aliases":["Giganter Kai","Super","GK"]},
+	{"input":"632146HS","aliases":["Giganter Kai","Super","GK"]},
 	{"input":"Mirror","aliases":["Giganter Kai Barrier","Mirror","GKB"]},
-	{"input":"6D or 4D","aliases":["Throw","6D","4D"]},
-	{"input":"j.6D or j.4D","aliases":["Air Throw","J6D","J4D"]},
-	{"input":"236D","aliases":["Wild Assault","WA"]},
-    {"input":"236[D]","aliases":["Wild Assault Hold","WAH","WA!","236D!"]}
+	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
+	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
+	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
+	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
 ]
