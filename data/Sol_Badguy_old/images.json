@@ -67,7 +67,7 @@
   ]
 },
 	{
-  "input": "5D!",
+  "input": "5[D]",
   "move_img": "https://www.dustloop.com/wiki/images/b/be/GGST_Sol_Badguy_5D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/21/GGST_Sol_5D_Hitbox.png"
@@ -146,49 +146,49 @@
   ]
 },
 	{
-  "input": "ワイルドアサルト(236D)",
+  "input": "236D",
   "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Sol_Badguy_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input": "溜めワイルドアサルト(236D!)",
+  "input": "236[D]",
   "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Sol_Badguy_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input": "投げ(6D or 4D)",
+  "input": "6D or 4D",
   "move_img": "https://www.dustloop.com/wiki/images/f/fb/GGST_Sol_Badguy_Ground_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a1/GGST_Sol_Badguy_Ground_Throw_Hitbox.png"
   ]
 },
 	{
-  "input": "空投げ(j6D or j.4D)",
+  "input": "j6D or j.4D",
   "move_img": "https://www.dustloop.com/wiki/images/5/5f/GGST_Sol_Badguy_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1d/GGST_Sol_Badguy_Air_Throw_Hitbox.png"
   ]
 },
 	{
-  "input": "バンディットブリンガー(214K)",
+  "input": "214K",
   "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Sol_Badguy_214K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/92/GGST_Sol_214K_Hitbox.png"
   ]
 },
 	{
-  "input": "ガンフレイムフェイント(214P)",
+  "input": "214P",
   "move_img": "https://www.dustloop.com/wiki/images/d/dd/GGST_Sol_Badguy_214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c0/GGST_Sol_214P_Hitbox.png"
   ]
 },
 	{
-  "input": "ヴォルテックス(214S)",
+  "input": "214S",
   "move_img": "https://www.dustloop.com/wiki/images/0/0d/GGST_Sol_Badguy_214S_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9c/GGST_Sol_214S_01_Hitbox.png",
@@ -199,21 +199,21 @@
   ]
 },
 	{
-  "input": "バンディットリボルバー(236K)",
+  "input": "236K",
   "move_img": "https://www.dustloop.com/wiki/images/1/13/GGST_Sol_Badguy_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b8/GGST_Sol_236K_Hitbox.png"
   ]
 },
 	{
-  "input": "バンディットリボルバー2(236KK)",
+  "input": "236KK",
   "move_img": "https://www.dustloop.com/wiki/images/a/a9/GGST_Sol_Badguy_236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/34/GGST_Sol_236KK_Hitbox.png"
   ]
 },
 	{
-  "input": "ガンフレイム(236P)",
+  "input": "236P",
   "move_img": "https://www.dustloop.com/wiki/images/4/4f/GGST_Sol_Badguy_236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c4/GGST_Sol_236P_Hitbox.png",
@@ -221,14 +221,14 @@
   ]
 },
 	{
-  "input": "ファフニール(41236HS)",
+  "input": "41236HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/2c/GGST_Sol_Badguy_41236H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/74/GGST_Sol_41236H_Hitbox.png"
   ]
 },
 	{
-  "input": "HSヴォルカニックヴァイパー(623HS)",
+  "input": "623HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Sol_Badguy_623X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/77/GGST_Sol_623H_1_Hitbox.png",
@@ -236,14 +236,14 @@
   ]
 },
 	{
-  "input": "ぶっきらぼうに投げる(623K)",
+  "input": "623K",
   "move_img": "https://www.dustloop.com/wiki/images/e/e3/GGST_Sol_Badguy_623K_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d0/GGST_Sol_623K_Hitbox.png"
   ]
 },
 	{
-  "input": "ヴォルカニックファイパー(623S)",
+  "input": "623S",
   "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Sol_Badguy_623X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e4/GGST_Sol_623S_Hitbox.png",
@@ -251,28 +251,28 @@
   ]
 },
 	{
-  "input": "空中バンディットブリンガー(j214K)",
+  "input": "j214K",
   "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Sol_Badguy_214K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/92/GGST_Sol_214K_Hitbox.png"
   ]
 },
 	{
-  "input": "空中バンディットリボルバー(j236K)",
+  "input": "j236K",
   "move_img": "https://www.dustloop.com/wiki/images/1/13/GGST_Sol_Badguy_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b8/GGST_Sol_236K_Hitbox.png"
   ]
 },
 	{
-  "input": "空中バンディットリボルバー2(j236KK)",
+  "input": "j236KK",
   "move_img": "https://www.dustloop.com/wiki/images/a/a9/GGST_Sol_Badguy_236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/34/GGST_Sol_236KK_Hitbox.png"
   ]
 },
 	{
-  "input": "空中HSヴォルカニックヴァイパー(j623HS)",
+  "input": "j623HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Sol_Badguy_623X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/77/GGST_Sol_623H_1_Hitbox.png",
@@ -280,7 +280,7 @@
   ]
 },
 	{
-  "input": "空中ヴォルカニックヴァイパー(j623S)",
+  "input": "j623S",
   "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Sol_Badguy_623X.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e4/GGST_Sol_623S_Hitbox.png",
@@ -295,7 +295,7 @@
   ]
 },
 	{
-  "input": "タイラン(63214HS)",
+  "input": "63214HS",
   "move_img": "https://www.dustloop.com/wiki/images/2/2a/GGST_Sol_Badguy_632146H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/70/GGST_Sol_TyrantRave1_Hitbox.png",

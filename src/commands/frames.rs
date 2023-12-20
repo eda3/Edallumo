@@ -128,7 +128,7 @@ pub async fn frames(
                 ("始動", &mframes.startup.to_string(), true),
                 ("持続", &mframes.active.to_string(), true),
                 ("後隙", &mframes.recovery.to_string(), true),
-                ("Hit時", &mframes.hit.to_string(), true),
+                ("ヒット時", &mframes.hit.to_string(), true),
                 ("ガード時", &mframes.block.to_string(), true),
                 ("攻撃レベル", &mframes.level.to_string(), true),
                 ("リスクゲージ", &mframes.riscgain.to_string(), true),

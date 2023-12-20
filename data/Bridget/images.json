@@ -193,21 +193,21 @@
   ]
 },
 	{
-  "input": "214K",
+  "input": "ローリング移動(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a2/GGST_Bridget_214K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/68/GGST_Bridget_214K_Hitbox.png"
   ]
 },
 	{
-  "input": "214S/H",
+  "input": "ストップアンドダッシュリターン(214S-HS)",
   "move_img": "https://www.dustloop.com/wiki/images/0/00/GGST_Bridget_Stop_and_Dash_214X.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input": "236K",
+  "input": "キックスタートマイハート(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e9/GGST_Bridget_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/68/GGST_Bridget_236K_Hitbox.png"
@@ -239,14 +239,14 @@
   ]
 },
 	{
-  "input": "623P",
+  "input": "スターシップ(623P)",
   "move_img": "https://www.dustloop.com/wiki/images/d/dd/GGST_Bridget_623P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/46/GGST_Bridget_623P_Hitbox.png"
   ]
 },
 	{
-  "input": "63214P",
+  "input": "ロックザベイビー(63214P)",
   "move_img": "https://www.dustloop.com/wiki/images/3/34/GGST_Bridget_63214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/18/GGST_Bridget_63214P_Hitbox.png",
@@ -254,7 +254,7 @@
   ]
 },
 	{
-  "input": "j236K",
+  "input": "ロジャーダイブ(j236K)",
   "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Bridget_j236K_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9d/GGST_Bridget_j236K_1_Hitbox.png",
@@ -270,7 +270,7 @@
   ]
 },
 	{
-  "input": "632146HS",
+  "input": 帰ってきたキルマシーン"(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b2/GGST_Bridget_632146H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c0/GGST_Bridget_632146H_1_Hitbox.png",
@@ -278,7 +278,7 @@
   ]
 },
 	{
-  "input": "632146S",
+  "input": "ループザループ(632146S)",
   "move_img": "https://www.dustloop.com/wiki/images/f/f6/GGST_Bridget_632146S_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d4/GGST_Bridget_632146S_1_Hitbox.png",

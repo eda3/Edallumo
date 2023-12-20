@@ -2,7 +2,7 @@
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"[4]6S","aliases":["S横イルカ","46S"]},
+	{"input":"S横イルカ([4]6S)","aliases":["S横イルカ","46S"]},
 	{"input":"[4]6HS","aliases":["HS横イルカ","46HS"]},
 	{"input":"[2]8S","aliases":["S縦イルカ","28S"]},
 	{"input":"[2]8H","aliases":["HS縦イルカ","28HS"]},
@@ -15,5 +15,5 @@
 	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
 	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
 	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
-    {"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
+        {"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
 ]
