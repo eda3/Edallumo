@@ -67,7 +67,7 @@
   ]
 },
 	{
-  "input":"5D!","ためダスト","溜めダスト",
+  "input":"5D!",
   "move_img": "https://www.dustloop.com/wiki/images/b/be/GGST_Sol_Badguy_5D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/21/GGST_Sol_5D_Hitbox.png"
