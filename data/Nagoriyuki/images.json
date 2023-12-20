@@ -295,28 +295,28 @@
   ]
 },
 	{
-  "input":"jH Level 1",
+  "input":"jHS Level 1",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Nagoriyuki_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/4b/GGST_Nagoriyuki_jH1-Hitbox.png"
   ]
 },
 	{
-  "input":"jH Level 2",
+  "input":"jHS Level 2",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Nagoriyuki_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/37/GGST_Nagoriyuki_jH2-Hitbox.png"
   ]
 },
 	{
-  "input":"jH Level 3",
+  "input":"jHS Level 3",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Nagoriyuki_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c9/GGST_Nagoriyuki_jH3-Hitbox.png"
   ]
 },
 	{
-  "input":"jH Level BR",
+  "input":"jHS Level BR",
   "move_img": "https://www.dustloop.com/wiki/images/6/66/GGST_Nagoriyuki_jH2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Nagoriyuki_jHBR-Hitbox.png"
