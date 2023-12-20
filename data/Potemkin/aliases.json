@@ -17,7 +17,7 @@
 	{"input":"ガイガンダー改(632146HS)","aliases":["ガイガンダー改","632146HS","Super","GK"]},
 	{"input":"ガイガンダー改バリア(Mirror)","aliases":["ガイガンダー改バリア","Mirror","ガイガンダー改バリア(Mirror)","GKB"]},
 	{"input":"投げ(6D or 4D)","aliases":["投げ","6D or 4D","6D","4D"]},
-	{"input":"空投げ("j6D or j4D")","aliases":["空投げ",""j6D or j4D"","J6D","J4D"]},
+	{"input":"空投げ(j6D or j4D)","aliases":["空投げ",""j6D or j4D"","J6D","J4D"]},
 	{"input":"ワイルドアサルト(236D)","aliases":["ワイルドアサルト","236D","WA"]},
 	{"input":"溜めワイルドアサルト(236[D])","aliases":["溜めワイルドアサルト","236[D]","WAH","WA!","236D!"]}
 ]

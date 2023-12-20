@@ -156,7 +156,7 @@
   ]
 },
 	{
-  "input":"空投げ("j6D or j4D")",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/f/ff/GGST_Testament_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/29/GGST_Testament_Air_Throw_Hitbox.png"
