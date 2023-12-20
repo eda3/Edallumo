@@ -10,7 +10,7 @@
 	{"input":"214P","aliases":["Recover Servant","Unsummon Servant","Unsummon Minion","US","UM"]},
 	{"input":"214K","aliases":["Attack Command","Servant Attack","Minion Attack","Attack","AC","SA","MA"]},
 	{"input":"214S","aliases":["Defend Command","Servant Defend","Minion Defend","Servant Barrier","Minion Barrier","Barrier","DC","SD","MD","SB","MB"]},
-	{"input":"214H","aliases":["Countdown","Count"]},
+	{"input":"214HS","aliases":["Countdown","Count"]},
 	{"input":"236K","aliases":["Servant Shoot","Servant Kick","Minion Kick","Kick"]},
 	{"input":"Bounced Servant","aliases":["Bounced Servant","BS"]},
 	{"input":"Launched Servant","aliases":["Launched Servant","LS"]},

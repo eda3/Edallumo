@@ -17,7 +17,7 @@
 	{"input":"bt.D","aliases":["Kahn Schild","Back Turn Dust","Backturn Dust","Back Turn Parry","Backturn Parry","Bt Parry","Parry","Shield","KS","BD","BTD"]},
 	{"input":"bt.22","aliases":["Brynhildr Cancel","Stance Cancel","Bt Cancel","BRC","SC"]},
 	{"input":"bt.214K","aliases":["Gländzendes Dunkel","Command Grab","Bt Command Grab","Bt Grab","Bt Throw","BTCG","BTG","BTT","GD","CG"]},
-	{"input":"bt.214H","aliases":["Blitzschlag","Blitz","Bt Blitz"]},
+	{"input":"bt.214HS","aliases":["Blitzschlag","Blitz","Bt Blitz"]},
 	{"input":"632146S","aliases":["Stahl Wirbel","Projectile Super","SW","PS"]},
 	{"input":"632146HS","aliases":["Liedenschaft des Dirigenten","LDD","Slashing Super","SS"]},
 	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},

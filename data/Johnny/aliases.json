@@ -2,7 +2,7 @@
 	{"input":"c.S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-    {"input":"214H","aliases":["Ensenga"]},
+    {"input":"214HS","aliases":["Ensenga"]},
     {"input":"214[P/K/S]","aliases":["Mist Finer Stance","214K!","214P!","214S!","MF"]},
     {"input":"214]K[","aliases":["Mist Finer (Horizontal)","214K","Mist Finer","MFH","MFK"]},
     {"input":"214]P[","aliases":["Mist Finer (Upward)","214P","Mist Finer Up","MFU","MFP"]},

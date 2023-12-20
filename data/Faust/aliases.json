@@ -4,7 +4,7 @@
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
 	{"input":"突きます。(41236K)","aliases":["突きます。","41236K","Stab","Scalpel"]},
 	{"input":"引き戻し(41236K 4)","aliases":["引き戻し","41236K 4","Pull","41236K4"]},
-	{"input":"ナイスショット(41236K 4 H)","aliases":["ナイスショット","41236K 4 H","Bat","Swing","Bat Swing","41236K4H"]},
+	{"input":"ナイスショット(41236K 4 H)","aliases":["ナイスショット","41236K 4 H","Bat","Swing","Bat Swing","41236K4HS"]},
 	{"input":"何が出るかな？(236P)","aliases":["何が出るかな？","236P","Item Throw","Item","IT","22P","Spit"]},
 	{"input":"何が出るかな？(236[P])","aliases":["何が出るかな？","236[P]","Item Eat","Eat","IE","236P!"]},
 	{"input":"涅和混練(236S)","aliases":["涅和混練","236S","Tornado","Beyblade","BB","MMM"]},
