@@ -7,7 +7,7 @@
   ]
 },
 	{
-  "input":"2H",
+  "input":"2HS",
   "move_img": "https://www.dustloop.com/wiki/images/a/af/GGST_Faust_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/34/GGST_FA_HB_2H.png"
@@ -46,7 +46,7 @@
   ]
 },
 	{
-  "input":"5H",
+  "input":"5HS",
   "move_img": "https://www.dustloop.com/wiki/images/5/54/GGST_Faust_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/df/GGST_Faust_5H_1_Hitbox.png",
@@ -84,7 +84,7 @@
   ]
 },
 	{
-  "input":"6H",
+  "input":"6HS",
   "move_img": "https://www.dustloop.com/wiki/images/3/3c/GGST_Faust_6H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/79/GGST_Faust_6H_1_Hitbox.png",
@@ -100,7 +100,7 @@
   ]
 },
 	{
-  "input":"c.S",
+  "input":"近S",
   "move_img": "https://www.dustloop.com/wiki/images/d/d9/GGST_Faust_cS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/30/GGST_FA_HB_cS.png"
@@ -114,21 +114,21 @@
   ]
 },
 	{
-  "input":"j.2K",
+  "input":"j2K",
   "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Faust_j.2K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/cc/GGST_FA_HB_j2K.png"
   ]
 },
 	{
-  "input":"j.D",
+  "input":"jD",
   "move_img": "https://www.dustloop.com/wiki/images/2/22/GGST_Faust_j.D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c8/GGST_FA_HB_JD.png"
   ]
 },
 	{
-  "input":"j.H",
+  "input":"jH",
   "move_img": "https://www.dustloop.com/wiki/images/3/3f/GGST_Faust_j.H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7b/GGST_Faust_j.H_1_Hitbox.png",
@@ -136,21 +136,21 @@
   ]
 },
 	{
-  "input":"j.K",
+  "input":"jK",
   "move_img": "https://www.dustloop.com/wiki/images/a/a3/GGST_Faust_j.K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/6c/GGST_FA_HB_JK.png"
   ]
 },
 	{
-  "input":"j.P",
+  "input":"jP",
   "move_img": "https://www.dustloop.com/wiki/images/2/2d/GGST_Faust_j.P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/21/GGST_FA_HB_JP.png"
   ]
 },
 	{
-  "input":"j.S",
+  "input":"jS",
   "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Faust_j.S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/17/GGST_FA_HB_JS.png"
@@ -259,7 +259,7 @@
   ]
 },
 	{
-  "input":"j.6D or j.4D",
+  "input":"j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_Faust_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/00/GGST_Faust_Air_Throw_Hitbox.png"
@@ -301,7 +301,7 @@
   ]
 },
 	{
-  "input":"236H",
+  "input":"236HS",
   "move_img": "https://www.dustloop.com/wiki/images/0/00/GGST_Faust_236H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/69/GGST_Faust_236H_Hitbox.png"
@@ -362,7 +362,7 @@
   ]
 },
 	{
-  "input":"j.236P",
+  "input":"j236P",
   "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Faust_j236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c6/GGST_Faust_Love_hitbox.png",
@@ -370,7 +370,7 @@
   ]
 },
 	{
-  "input":"j.236P (With Afro)",
+  "input":"j236P (With Afro)",
   "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Faust_j236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/92/GGST_Faust_Afro_Love_hitbox_.png",
@@ -378,7 +378,7 @@
   ]
 },
 	{
-  "input":"j.236S",
+  "input":"j236S",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Faust_236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2c/GGST_Faust_236S_Hitbox.png"
@@ -399,7 +399,7 @@
   ]
 },
 	{
-  "input":"632146H",
+  "input":"632146HS",
   "move_img": "https://www.dustloop.com/wiki/images/b/b4/GGST_Faust_632146H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c9/GGST_Faust_632146H_Hitbox.png",
