@@ -154,14 +154,14 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/8/8a/GGST_Chipp_Zanuff_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/8/8a/GGST_Chipp_Zanuff_236D.png",
   "hitbox_img": [
     ""
@@ -175,14 +175,14 @@
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a6/GGST_Chipp_Zanuff_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/1/11/GGST_Chipp_Zanuff_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/16/GGST_Chipp_Zanuff_Air_Throw_Hitbox.png"
@@ -231,49 +231,49 @@
   ]
 },
 	{
-  "input":"236HS",
+  "input":"γブレード(236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/3/35/GGST_Chipp_Zanuff_Gamma_Blade.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f7/GGST_CH_HB_236H.png"
   ]
 },
 	{
-  "input":"236K",
+  "input":"αブレード・横(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_Chipp_Zanuff_Alpha_Blade_Diagonal_Ground.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/99/GGST_CH_HB_236K.png"
   ]
 },
 	{
-  "input":"236P",
+  "input":"αブレード・横(236P)",
   "move_img": "https://www.dustloop.com/wiki/images/8/8b/GGST_Chipp_Zanuff_Alpha_Blade_Horizontal_Ground.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/47/GGST_Chipp_Zanuff_236P_Hitbox.png"
   ]
 },
 	{
-  "input":"236S",
+  "input":"冽掌(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_Chipp_Zanuff_Resshou.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/ef/GGST_CH_HB_236S.png"
   ]
 },
 	{
-  "input":"236S 236K",
+  "input":"穿踵(236S 236K)",
   "move_img": "https://www.dustloop.com/wiki/images/4/43/GGST_Chipp_Zanu遠Senshuu.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/63/GGST_CH_HB_236S236S236K.png"
   ]
 },
 	{
-  "input":"236S 236S",
+  "input":"麓砕(236S 236S)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d0/GGST_Chipp_Zanuff_Rokusai.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/85/GGST_CH_HB_236S236S.png"
   ]
 },
 	{
-  "input":"623S",
+  "input":"βブレード(623S)",
   "move_img": "https://www.dustloop.com/wiki/images/9/95/GGST_Chipp_Zanuff_Beta_Blade.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/88/GGST_Chipp_Zanuff_Beta_Blade_1_Hitbox.png",
@@ -282,35 +282,35 @@
   ]
 },
 	{
-  "input":"63214S",
+  "input":"幻朧斬(63214S)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e7/GGST_Chipp_Zanuff_63214S_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/18/GGST_CH_HB_63214S.png"
   ]
 },
 	{
-  "input":"j214P",
+  "input":"手裏剣(j214P)",
   "move_img": "https://www.dustloop.com/wiki/images/2/26/GGST_Chipp_Zanu遠Shuriken.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9e/GGST_CH_HB_J214P.png"
   ]
 },
 	{
-  "input":"j236K",
+  "input":"空中αブレード・横(j236K)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b7/GGST_Chipp_Zanuff_Alpha_Blade_Diagonal_Air.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d4/GGST_CH_HB_J236K.png"
   ]
 },
 	{
-  "input":"j236P",
+  "input":"空中αブレード・横(j236P)",
   "move_img": "https://www.dustloop.com/wiki/images/c/cc/GGST_Chipp_Zanuff_Alpha_Blade_Horizontal_Air.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7a/GGST_Chipp_Zanuff_j236P_Hitbox.png"
   ]
 },
 	{
-  "input":"j623S",
+  "input":"空中βブレード(j623S)",
   "move_img": "https://www.dustloop.com/wiki/images/9/95/GGST_Chipp_Zanuff_Beta_Blade.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/88/GGST_Chipp_Zanuff_Beta_Blade_1_Hitbox.png",
@@ -319,14 +319,14 @@
   ]
 },
 	{
-  "input":"236236P",
+  "input":"万鬼滅砕(236236P)",
   "move_img": "https://www.dustloop.com/wiki/images/f/f2/GGST_Chipp_Zanuff_Banki_Messai_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c8/GGST_CH_HB_236236K.png"
   ]
 },
 	{
-  "input":"632146HS",
+  "input":"斬星狼牙(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/4/48/GGST_Chipp_Zanuff_Zansei_Rouga_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1f/GGST_Chipp_Zanuff_632146H_1_Hitbox.png",
@@ -334,7 +334,7 @@
   ]
 },
 	{
-  "input":"j632146HS",
+  "input":"空中斬星狼牙(j632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/4/48/GGST_Chipp_Zanuff_Zansei_Rouga_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1f/GGST_Chipp_Zanuff_632146H_1_Hitbox.png",
