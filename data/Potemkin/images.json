@@ -144,63 +144,63 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6e/GGST_Potemkin_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/6/6e/GGST_Potemkin_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Potemkin_Ground_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2d/GGST_Potemkin_Ground_Throw_Hitbox.png"
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9e/GGST_Potemkin_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/85/GGST_Potemkin_Air_Throw_Hitbox.png"
   ]
 },
 	{
-  "input":"2146K~P",
+  "input":"空メガフィスト・前方(2146K~P)",
   "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Potemkin_Mega_Fist_Back.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/12/GGST_Potemkin_Mega_Fist_Back_Hitbox.png"
   ]
 },
 	{
-  "input":"214H",
+  "input":"ガルダインパクト(214H)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_Potemkin_Garuda_Impact.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/26/GGST_Potemkin_Garuda_Impact_Hitbox.png"
   ]
 },
 	{
-  "input":"214P",
+  "input":"メガフィスト・後方(214P)",
   "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Potemkin_Mega_Fist_Back.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/12/GGST_Potemkin_Mega_Fist_Back_Hitbox.png"
   ]
 },
 	{
-  "input":"236P",
+  "input":"メガフィスト・前方(236P)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9e/GGST_Potemkin_Mega_Fist.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/69/GGST_Potemkin_Mega_Fist_Hitbox.png"
   ]
 },
 	{
-  "input":"236S",
+  "input":"スライドヘッド(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Potemkin_Slide_Head.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0b/GGST_Potemkin_236S_Hitbox.png"
@@ -214,14 +214,14 @@
   ]
 },
 	{
-  "input":"623HS",
+  "input":"ヒートナックル(623HS)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d0/GGST_Potemkin_Heat_Knuckle_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f9/GGST_Potemkin_Heat_Knuckle_Hitbox.png"
   ]
 },
 	{
-  "input":"632146P",
+  "input":"ポチョムキンバスター(632146P)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6f/GGST_Potemkin_Potemkin_Buster_Startup.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/32/GGST_Potemkin_Potemkin_Buster_1_Hitbox.png",
@@ -231,7 +231,7 @@
   ]
 },
 	{
-  "input":"63214S",
+  "input":"F.D.B.(63214S)",
   "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Potemkin_FDB.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1d/GGST_Potemkin_62134S_hitbox.png",
@@ -246,35 +246,35 @@
   ]
 },
 	{
-  "input":"Reflect Projectile",
+  "input":"Reflect Projectile(Reflect Projectile)",
   "move_img": "https://www.dustloop.com/wiki/images/f/f2/GGST_Potemkin_FDB_Reflect.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7b/GGST_Potemkin_FDB_Projectile_Hitbox.png"
   ]
 },
 	{
-  "input":"[4]6HS",
+  "input":"ハンマーフォール([4]6HS)",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Potemkin_Hammer_Fall.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/88/GGST_Potemkin_46H_Hitbox.png"
   ]
 },
 	{
-  "input":"[4]6H P",
+  "input":"ハンマーフォールブレーキ([4]6HS P)",
   "move_img": "",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236236S",
+  "input":"ヘブンリーポチョムキンバスター(236236S)",
   "move_img": "https://www.dustloop.com/wiki/images/b/bf/GGST_Potemkin_Heavenly_Potemkin_Buster.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/78/GGST_Potemkin_Heavenly_Potemkin_Buster_Hitbox.png"
   ]
 },
 	{
-  "input":"632146HS",
+  "input":"ガイガンダー改(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Potemkin_Giganter_Kai.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f7/GGST_Potemkin_Giganter_Kai_Hitbox.png",
@@ -282,7 +282,7 @@
   ]
 },
 	{
-  "input":"Mirror",
+  "input":"ガイガンダー改バリア(Mirror)",
   "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Potemkin_Giganter_Kai.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/24/GGST_Potemkin_Giganter_Kai_Mirror_Hitbox.png"
