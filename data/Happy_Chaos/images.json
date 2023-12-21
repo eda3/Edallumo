@@ -187,7 +187,7 @@
   ]
 },
 	{
-  "input":"214S H",
+  "input":"214S HS",
   "move_img": "https://www.dustloop.com/wiki/images/e/e7/GGST_Happy_Chaos_214S_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d9/GGST_Happy_Chaos_214S_H_Hitbox.png"
@@ -223,21 +223,21 @@
   ]
 },
 	{
-  "input":"236S 2H",
+  "input":"236S 2HS",
   "move_img": "https://www.dustloop.com/wiki/images/6/6e/GGST_Happy_Chaos_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c8/GGST_Happy_Chaos_2H_hitbox.png"
   ]
 },
 	{
-  "input":"236S H",
+  "input":"236S HS",
   "move_img": "https://www.dustloop.com/wiki/images/d/dc/GGST_Happy_Chaos_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9c/GGST_Happy_Chaos_H_hitbox.png"
   ]
 },
 	{
-  "input":"H",
+  "input":"",
   "move_img": "https://www.dustloop.com/wiki/images/2/25/GGST_Happy_Chaos_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/84/GGST_Happy_Chaos_5H_hitbox1.png",
