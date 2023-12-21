@@ -252,14 +252,14 @@
   ]
 },
 	{
-  "input":"87412H",
+  "input":"87412HS",
   "move_img": "https://www.dustloop.com/wiki/images/0/03/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842).png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/fd/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842)_Hitbox.png"
   ]
 },
 	{
-  "input":"89632H",
+  "input":"89632HS",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862).png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f7/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862)_Hitbox.png"
@@ -308,14 +308,14 @@
   ]
 },
 	{
-  "input":"j87412H",
+  "input":"j87412HS",
   "move_img": "https://www.dustloop.com/wiki/images/0/03/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842).png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/fd/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842)_Hitbox.png"
   ]
 },
 	{
-  "input":"j89632H",
+  "input":"j89632HS",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862).png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f7/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862)_Hitbox.png"
