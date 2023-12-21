@@ -88,7 +88,7 @@
   ]
 },
 	{
-  "input":"c.S",
+  "input":"近S",
   "move_img": "https://www.dustloop.com/wiki/images/0/02/GGST_Ramlethal_Valentine_cS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f9/GGST_Ramlethal_Valentine_cS_Hitbox.png"
@@ -142,35 +142,35 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/8/81/GGST_Ramlethal_Valentine_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/8/81/GGST_Ramlethal_Valentine_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/5/5d/GGST_Ramlethal_Valentine_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/47/GGST_Ramlethal_Valentine_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f2/GGST_Ramlethal_Valentine_Air_Throw_Hitbox.png"
   ]
 },
 	{
-  "input":"214HS",
+  "input":"サブロバート(214HS)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_Ramlethal_Valentine_Sabrubato.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/91/GGST_Ramlethal_Valentine_Sabrubato_Hitbox.png",
@@ -178,35 +178,35 @@
   ]
 },
 	{
-  "input":"214K",
+  "input":"シルド(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Ramlethal_Valentine_Sildo_Detruo.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/40/GGST_Ramlethal_Valentine_Sildo_Detruo_Hitbox.png"
   ]
 },
 	{
-  "input":"214P",
+  "input":"エラルルーモ1(214P)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9f/GGST_Ramlethal_Valentine_Erarlumo_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/ba/GGST_Ramlethal_Valentine_Erarlumo_1_Hitbox.png"
   ]
 },
 	{
-  "input":"214P 214P",
+  "input":"エラルルーモ2(214P214PP)",
   "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_Ramlethal_Valentine_Erarlumo_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/34/GGST_Ramlethal_Valentine_Erarlumo_2_Hitbox.png"
   ]
 },
 	{
-  "input":"214P 214P 214P",
+  "input":"エラルルーモ3(214P214P214P)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9c/GGST_Ramlethal_Valentine_Erarlumo_3.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/6b/GGST_Ramlethal_Valentine_Erarlumo_3_Hitbox.png"
   ]
 },
 	{
-  "input":"236HS",
+  "input":"HSバヨネート(236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1e/GGST_Ramlethal_Valentine_Bajoneto_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/51/GGST_Ramlethal_Valentine_Bajoneto_H_Hitbox.png",
@@ -214,14 +214,14 @@
   ]
 },
 	{
-  "input":"236K",
+  "input":"オンド(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/7/74/GGST_Ramlethal_Valentine_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/ba/GGST_Ramlethal_Valentine_236K_Hitbox.png"
   ]
 },
 	{
-  "input":"236S",
+  "input":"Sバヨネート(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/3/36/GGST_Ramlethal_Valentine_Bajoneto_S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c5/GGST_Ramlethal_Valentine_Bajoneto_S_Hitbox.png",
@@ -229,21 +229,21 @@
   ]
 },
 	{
-  "input":"623P",
+  "input":"ダウロ(623P)",
   "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Ramlethal_Valentine_Dauro.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/97/GGST_Ramlethal_Valentine_Dauro_Hitbox.png"
   ]
 },
 	{
-  "input":"j214K",
+  "input":"空中シルド(j214K)",
   "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Ramlethal_Valentine_Sildo_Detruo.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9f/GGST_Ramlethal_Valentine_Sildo_Detruo_Air_Hitbox.png"
   ]
 },
 	{
-  "input":"j214S",
+  "input":"アグレーサ(j214S)",
   "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Ramlethal_Valentine_Agressa_Ordono_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/db/GGST_Ramlethal_Valentine_Agressa_Ordono_1_Hitbox.png",
@@ -253,7 +253,7 @@
   ]
 },
 	{
-  "input":"236236S",
+  "input":"モルトバート(236236S)",
   "move_img": "https://www.dustloop.com/wiki/images/1/16/GGST_Ramlethal_Valentine_Mortobato.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/03/GGST_Ramlethal_Valentine_Mortobato_Hitbox.png",
@@ -263,7 +263,7 @@
   ]
 },
 	{
-  "input":"632146HS",
+  "input":"カルヴァドス(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/0/03/GGST_Ramlethal_Valentine_Calvados.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0d/GGST_Ramlethal_Valentine_Calvados_Hitbox.png"
