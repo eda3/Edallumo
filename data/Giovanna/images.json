@@ -154,49 +154,49 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Giovanna_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Giovanna_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/c/cd/GGST_Giovanna_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_Giovanna_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7a/GGST_Giovanna_Air_Throw_Hitbox.png"
   ]
 },
 	{
-  "input":"214HS",
+  "input":"シャーヴィ(214HS)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1e/GGST_Giovanna_214H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b0/GGST_Giovanna_214H_Hitbox.png"
   ]
 },
 	{
-  "input":"214K",
+  "input":"セパルトゥラ(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/8/8d/GGST_Giovanna_Sepultura.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/57/GGST_Giovanna_Sepultura_hitbox.png"
   ]
 },
 	{
-  "input":"214S",
+  "input":"ソウ・ポエンチ(214S)",
   "move_img": "https://www.dustloop.com/wiki/images/2/28/GGST_Giovanna_214S_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/fd/GGST_Giovanna_214S_1_Hitbox.png",
@@ -205,14 +205,14 @@
   ]
 },
 	{
-  "input":"236K",
+  "input":"トロヴァオン(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/8/81/GGST_Giovanna_Trovao.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/3b/GGST_Giovanna_Trovao_hitbox.png"
   ]
 },
 	{
-  "input":"623S",
+  "input":"ソウ・ナセンテ(623S)",
   "move_img": "https://www.dustloop.com/wiki/images/4/42/GGST_Giovanna_Sol_Nascente.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f1/GGST_Giovanna_Sol_Nascente_hitbox1.png",
@@ -221,14 +221,14 @@
   ]
 },
 	{
-  "input":"j214S",
+  "input":"空中ソウ・ポエンチ(j214S)",
   "move_img": "https://www.dustloop.com/wiki/images/2/28/GGST_Giovanna_214S_1.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"632146HS",
+  "input":"ヴェンターニア(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/7/7f/GGST_Giovanna_Ventania.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8f/GGST_Giovanna_Ventania_hitbox1.png",
@@ -236,7 +236,7 @@
   ]
 },
 	{
-  "input":"j236236HS",
+  "input":"テンペスターヂ(j236236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/f/fd/GGST_Giovanna_j236236H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8a/GGST_Giovanna_j236236H_Hitbox.png"
