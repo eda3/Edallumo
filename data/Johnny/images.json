@@ -214,7 +214,7 @@
   ]
 },
 	{
-  "input":"236HH",
+  "input":"236HSHS",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Johnny_236HH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b5/GGST_Johnny_236HH_Hitbox_1.png",
@@ -237,7 +237,7 @@
   ]
 },
 	{
-  "input":"H or D",
+  "input":"HS or D",
   "move_img": "",
   "hitbox_img": [
     ""

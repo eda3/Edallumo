@@ -6,7 +6,7 @@
 	{"input":"j236K","aliases":["空中Tatami Gaeshi","空中Mat","AM","JTG"]},
 	{"input":"41236S","aliases":["Kabari","S Kabari","Tether","Kabari Tether","KT"]},
 	{"input":"41236HS","aliases":["H Kabari","Claw","Kabari Claw","KC","426HS"]},
-	{"input":"41236H~H","aliases":["41236HH","Kabari Followup","Claw Followup","Kabari Claw Followup","KF","CF","KCF","426HH"]},
+	{"input":"41236HS~HS","aliases":["41236HH","Kabari Followup","Claw Followup","Kabari Claw Followup","KF","CF","KCF","426HH"]},
 	{"input":"j236S","aliases":["Youzansen","Fan","Overhead"]},
 	{"input":"236P","aliases":["Hiiragi","Parry","Deflect"]},
 	{"input":"236236S","aliases":["Tsurane Sanzu-watashi","Super"]},

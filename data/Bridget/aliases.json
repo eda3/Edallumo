@@ -2,7 +2,7 @@
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"SS","aliases":["5SS"]},
-	{"input":"HH","aliases":["5HH","HSHS","5HSHS"]},
+	{"input":"HSHS","aliases":["5HH","HSHS","5HSHS"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
 	{"input":"ストップアンドダッシュ(23S-HS)","aliases":["ストップアンドダッシュ","Yoyo Throw","SD","YYT"]},
 	{"input":"ストップアンドダッシュリターン(214S-HS)","aliases":["ストップアンドダッシュリターン","Return Fireball","Yoyo Return","SDR","YYR"]},

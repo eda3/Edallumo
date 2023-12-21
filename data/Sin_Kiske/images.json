@@ -180,7 +180,7 @@
   ]
 },
 	{
-  "input":"214S~S",
+  "input":"214SS",
   "move_img": "https://www.dustloop.com/wiki/images/9/9f/GGST_Sin_Kiske_214SS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/99/GGST_Sin_Kiske_214SS_Hitbox.png"
@@ -194,7 +194,7 @@
   ]
 },
 	{
-  "input":"236H~H",
+  "input":"236HSHS",
   "move_img": "https://www.dustloop.com/wiki/images/4/40/GGST_Sin_Kiske_236HH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9f/GGST_Sin_Kiske_236HH_Hitbox.png"
@@ -209,7 +209,7 @@
   ]
 },
 	{
-  "input":"236K~K",
+  "input":"236KK",
   "move_img": "https://www.dustloop.com/wiki/images/4/4e/GGST_Sin_Kiske_236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d4/GGST_Sin_Kiske_236KK_Hitbox.png"
@@ -224,7 +224,7 @@
   ]
 },
 	{
-  "input":"623S~S",
+  "input":"623SS",
   "move_img": "https://www.dustloop.com/wiki/images/5/5c/GGST_Sin_Kiske_623SS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/67/GGST_Sin_Kiske_623SS_Hitbox.png"
