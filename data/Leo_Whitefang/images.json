@@ -150,7 +150,7 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/4f/GGST_Leo_Whitefang_236D.png",
   "hitbox_img": [
     ""
@@ -164,63 +164,63 @@
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Leo_Whitefang_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"bt.22",
+  "input":"ブリュンヒルドの構え解除(bt.22)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b9/GGST_Leo_Whitefang_bt_22.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"bt.D",
+  "input":"カーンシルト(bt.D)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1a/GGST_Leo_Whitefang_bt_D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"bt.H",
+  "input":"（ブリュンヒルド構え中）HS(bt.H)",
   "move_img": "https://www.dustloop.com/wiki/images/f/f6/GGST_Leo_Whitefang_bt_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7f/GGST_Leo_btH_Hitbox.png"
   ]
 },
 	{
-  "input":"bt.K",
+  "input":"（ブリュンヒルド構え中）K(bt.K)",
   "move_img": "https://www.dustloop.com/wiki/images/c/cc/GGST_Leo_Whitefang_bt_K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b9/GGST_Leo_btK_Hitbox.png"
   ]
 },
 	{
-  "input":"bt.P",
+  "input":"（ブリュンヒルド構え中）P(bt.P)",
   "move_img": "https://www.dustloop.com/wiki/images/f/fa/GGST_Leo_Whitefang_bt_P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/58/GGST_Leo_btP_Hitbox.png"
   ]
 },
 	{
-  "input":"bt.S",
+  "input":"（ブリュンヒルド構え中）S(bt.S)",
   "move_img": "https://www.dustloop.com/wiki/images/9/96/GGST_Leo_Whitefang_bt_S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c6/GGST_Leo_btS_Hitbox.png"
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/7/77/GGST_Leo_Whitefang_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8a/GGST_Leo_Whitefang_Air_Throw_Hitbox.png"
   ]
 },
 	{
-  "input":"214S",
+  "input":"トゥルブレンツ(214S)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Leo_Whitefang_Turbulenz.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8f/GGST_Leo_214S1_Hitbox.png",
@@ -228,7 +228,7 @@
   ]
 },
 	{
-  "input":"236HS",
+  "input":"ツヴァイト・カルタスゲシュトゥーバー(236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/e/ee/GGST_Leo_Whitefang_Kaltes_Gestober_Zweit.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/43/GGST_Leo_236H1_Hitbox.png",
@@ -236,28 +236,28 @@
   ]
 },
 	{
-  "input":"236S",
+  "input":"エアースト・カルタスゲシュトゥーバー(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_Leo_Whitefang_Kaltes_Gestober_Erst.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e9/GGST_Leo_236S_Hitbox.png"
   ]
 },
 	{
-  "input":"bt.214HS",
+  "input":"ブリッツシュラーク(bt.214HS)",
   "move_img": "https://www.dustloop.com/wiki/images/4/42/GGST_Leo_Whitefang_bt_214H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/4e/GGST_Leo_bt214H_Hitbox.png"
   ]
 },
 	{
-  "input":"bt.214K",
+  "input":"グレンツェンドゥンケル(bt.214K)",
   "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_Leo_Whitefang_bt_214K_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/ec/GGST_Leo_bt214K_Hitbox.png"
   ]
 },
 	{
-  "input":"[2]8HS",
+  "input":"HSアイゼンシュトルム([2]8HS)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b5/GGST_Leo_Whitefang_Eisen_Sturm.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/59/GGST_Leo_28S1_Hitbox.png",
@@ -267,7 +267,7 @@
   ]
 },
 	{
-  "input":"[2]8S",
+  "input":"Sアイゼンシュトルム([2]8S)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b5/GGST_Leo_Whitefang_Eisen_Sturm.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/59/GGST_Leo_28S1_Hitbox.png",
@@ -276,21 +276,21 @@
   ]
 },
 	{
-  "input":"[4]6HS",
+  "input":"HSグラヴィエットヴァーダ([4]6HS)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d5/GGST_Leo_Whitefang_Graviert_Wurde.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/2d/GGST_Leo_46H_Hitbox.png"
   ]
 },
 	{
-  "input":"[4]6S",
+  "input":"Sグラヴィエットヴァーダ([4]6S)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d5/GGST_Leo_Whitefang_Graviert_Wurde.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/ce/GGST_Leo_46S_Hitbox.png"
   ]
 },
 	{
-  "input":"632146HS",
+  "input":"ライデンシャフトディリガント(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b3/GGST_Leo_Whitefang_Liedenschaft_des_Dirigenten.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b2/GGST_Leo_632146H1_Hitbox.png",
@@ -301,7 +301,7 @@
   ]
 },
 	{
-  "input":"632146S",
+  "input":"シュタイルヴァービル(632146S)",
   "move_img": "https://www.dustloop.com/wiki/images/7/71/GGST_Leo_Whitefang_Stahl_Wirbel.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/85/GGST_Leo_bt632146S_Hitbox.png"
