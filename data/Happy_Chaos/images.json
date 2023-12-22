@@ -131,21 +131,21 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1c/GGST_Happy_Chaos_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/1/1c/GGST_Happy_Chaos_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/4a/GGST_Happy_Chaos_Ground_Throw.png",
   "hitbox_img": [
     ""
@@ -159,49 +159,49 @@
   ]
 },
 	{
-  "input":"214K",
+  "input":"前転(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b7/GGST_Happy_Chaos_214K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/49/GGST_Happy_Chaos_214K_hitbox.png"
   ]
 },
 	{
-  "input":"214P",
+  "input":"フォーカス(214P)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e9/GGST_Happy_Chaos_214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/10/GGST_Happy_Chaos_214P_hitbox.png"
   ]
 },
 	{
-  "input":"214S",
+  "input":"しっかり狙いを定める(214S)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d8/GGST_Happy_Chaos_214S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/54/GGST_Happy_Chaos_214S_hitbox.png"
   ]
 },
 	{
-  "input":"214S 214S",
+  "input":"しっかり狙いを定める解除(214S 214S)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e3/GGST_Happy_Chaos_214S_Cancel.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c6/GGST_Happy_Chaos_214S_Cancel_hitbox.png"
   ]
 },
 	{
-  "input":"214S HS",
+  "input":"集中射撃(214S HS)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e7/GGST_Happy_Chaos_214S_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d9/GGST_Happy_Chaos_214S_H_Hitbox.png"
   ]
 },
 	{
-  "input":"22P",
+  "input":"リロード(22P)",
   "move_img": "https://www.dustloop.com/wiki/images/b/b6/GGST_Happy_Chaos_22P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a4/GGST_Happy_Chaos_22P_hitbox.png"
   ]
 },
 	{
-  "input":"236K",
+  "input":"スケープゴート(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_Happy_Chaos_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/e/e5/GGST_Happy_Chaos_236K_hitbox.png",
@@ -209,35 +209,35 @@
   ]
 },
 	{
-  "input":"236P",
+  "input":"カース(236P)",
   "move_img": "https://www.dustloop.com/wiki/images/2/22/GGST_Happy_Chaos_236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/80/GGST_Happy_Chaos_236P_hitbox.png"
   ]
 },
 	{
-  "input":"236S",
+  "input":"銃を構える(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e9/GGST_Happy_Chaos_236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/89/GGST_Happy_Chaos_236S_hitbox.png"
   ]
 },
 	{
-  "input":"236S 2HS",
+  "input":"構え解除(236S 2HS)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6e/GGST_Happy_Chaos_2H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c8/GGST_Happy_Chaos_2H_hitbox.png"
   ]
 },
 	{
-  "input":"236S HS",
+  "input":"射撃(236S HS)",
   "move_img": "https://www.dustloop.com/wiki/images/d/dc/GGST_Happy_Chaos_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9c/GGST_Happy_Chaos_H_hitbox.png"
   ]
 },
 	{
-  "input":"HS",
+  "input":"銃を構える(HS)",
   "move_img": "https://www.dustloop.com/wiki/images/2/25/GGST_Happy_Chaos_5H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/84/GGST_Happy_Chaos_5H_hitbox1.png",
@@ -246,14 +246,14 @@
   ]
 },
 	{
-  "input":"214214P",
+  "input":"超フォーカス(214214P)",
   "move_img": "https://www.dustloop.com/wiki/images/1/14/GGST_Happy_Chaos_Super_Focus.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"632146S",
+  "input":"デウス・エクス・マキナ(632146S)",
   "move_img": "https://www.dustloop.com/wiki/images/e/ed/GGST_Happy_Chaos_Deus_Ex_Machina2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/28/GGST_Happy_Chaos_Deus_Ex_Machina_hitbox.png"
