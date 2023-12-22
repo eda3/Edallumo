@@ -1,4 +1,6 @@
 [	
+	{"input":"jP","aliases":["最速2"]},
+	{"input":"5P","aliases":["最速","最速1"]},
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
@@ -11,7 +13,7 @@
 	{"input":"ツヴァイト・カルタスゲシュトゥーバー(236HS)","aliases":["ツヴァイト・カルタスゲシュトゥーバー","236HS"]},
 	{"input":"トゥルブレンツ(214S)","aliases":["トゥルブレンツ","214S","Firewall"]},
 	{"input":"（ブリュンヒルド構え中）P(bt.P)","aliases":["（ブリュンヒルド構え中）P","bt.P"]},
-	{"input":"（ブリュンヒルド構え中）K(bt.K)","aliases":["（ブリュンヒルド構え中）K","bt.K"]},
+	{"input":"（ブリュンヒルド構え中）K(bt.K)","aliases":["（ブリュンヒルド構え中）K","bt.K","最速3"]},
 	{"input":"（ブリュンヒルド構え中）S(bt.S)","aliases":["（ブリュンヒルド構え中）S","bt.S"]},
 	{"input":"（ブリュンヒルド構え中）HS(bt.H)","aliases":["（ブリュンヒルド構え中）HS","bt.H"]},
 	{"input":"カーンシルト(bt.D)","aliases":["カーンシルト","bt.D","Back Turn Dust","当て身"]},
