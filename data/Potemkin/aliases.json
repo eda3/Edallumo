@@ -4,7 +4,7 @@
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
 	{"input":"ハンマーフォール([4]6HS)","aliases":["ハンマーフォール","[4]6HS","HammerFall","HF","46HS"]},
 	{"input":"ハンマーフォールブレーキ([4]6HS P)","aliases":["ハンマーフォールブレーキ","[4]6HS P","Hammerfall Break","HFB","46HP"]},
-	{"input":"ポチョムキンバスター(632146P)","aliases":["ポチョムキンバスター","632146P","Pot Buster","Buster","Command Grab","Hug","CG","PB"]},
+	{"input":"ポチョムキンバスター(632146P)","aliases":["ポチョムキンバスター","632146P","Pot Buster","Buster","コマ投げ","Hug","CG","PB"]},
 	{"input":"ヒートナックル(623HS)","aliases":["ヒートナックル","623HS","HK"]},
 	{"input":"メガフィスト・前方(236P)","aliases":["メガフィスト・前方","236P","F Mega Fist","F Megafist","Forward Mega fist","Forward Megafist","MF","FMF"]},
 	{"input":"メガフィスト・後方(214P)","aliases":["メガフィスト・後方","214P","B Megafist","Back Mega Fist","Back Megafist","Backward Megafist","Backward Mega fist","BMF"]},
