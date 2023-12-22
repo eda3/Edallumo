@@ -165,28 +165,28 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Bridget_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Bridget_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/3/32/GGST_Bridget_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/47/GGST_Bridget_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/41/GGST_Bridget_Air_Throw_Hitbox.png"
