@@ -167,7 +167,7 @@
   ]
 },
 	{
-  "input":"Regular Throw(6[D] or 4[D])",
+  "input":"溜め投げ(6[D] or 4[D])",
   "move_img": "https://www.dustloop.com/wiki/images/5/51/GGST_Baiken_Ground_Throw_2.png",
   "hitbox_img": [
     ""
@@ -262,7 +262,7 @@
   ]
 },
 	{
-  "input":"空中Kenjyu(j214214P)",
+  "input":"空中拳銃(j214214P)",
   "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Baiken_j214214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/de/GGST_Baiken_j214214P_Hitbox.png",

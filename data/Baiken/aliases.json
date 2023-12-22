@@ -11,9 +11,9 @@
 	{"input":"柊(236P)","aliases":["柊","236P"]},
 	{"input":"連ね三途渡し(236236S)","aliases":["連ね三途渡し","236236S"]},
 	{"input":"拳銃(214214P)","aliases":["拳銃","214214P"]},
-	{"input":"空中Kenjyu(j214214P)","aliases":["空中Kenjyu","j214214P"]},
+	{"input":"空中拳銃(j214214P)","aliases":["空中拳銃","j214214P"]},
 	{"input":"投げ(6D or 4D)","aliases":["投げ","6D or 4D","Tether Throw","6D","4D"]},
-	{"input":"Regular Throw(6[D] or 4[D])","aliases":["Regular Throw","6[D] or 4[D]","6D!","4D!"]},
+	{"input":"溜め投げ(6[D] or 4[D])","aliases":["溜め投げ","6[D] or 4[D]","6D!","4D!"]},
 	{"input":"空投げ(j6D or j4D)","aliases":["空投げ","j6D or j4D","J6D","J4D"]},
 	{"input":"ワイルドアサルト(236D)","aliases":["ワイルドアサルト","236D","WA"]},
 	{"input":"溜めワイルドアサルト(236[D])","aliases":["溜めワイルドアサルト","236[D]","WAH","WA!","236D!"]}
