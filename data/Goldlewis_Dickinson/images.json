@@ -138,28 +138,28 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Goldlewis_Dickinson_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Goldlewis_Dickinson_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/9/98/GGST_Goldlewis_Dickinson_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/7/7b/GGST_Goldlewis_Dickinson_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1d/GGST_Goldlewis_Dickinson_Air_Throw_Hitbox.png"
@@ -173,7 +173,7 @@
   ]
 },
 	{
-  "input":"214S Level 1",
+  "input":"サンダーバード(214S Level 1)",
   "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Goldlewis_Dickinson_Thunderbird.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/76/GGST_Goldlewis_Dickinson_Thunderbird_Hitbox_a.png",
@@ -182,14 +182,14 @@
   ]
 },
 	{
-  "input":"214S Level 2",
+  "input":"サンダーバード2(214S Level 2)",
   "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Goldlewis_Dickinson_Thunderbird.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/25/GGST_Goldlewis_Dickinson_Thunderbird_Hitbox.png"
   ]
 },
 	{
-  "input":"214S Level 3",
+  "input":"サンダーバード3(214S Level 3)",
   "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Goldlewis_Dickinson_Thunderbird.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/25/GGST_Goldlewis_Dickinson_Thunderbird_Hitbox.png"
@@ -203,21 +203,21 @@
   ]
 },
 	{
-  "input":"236S Level 1",
+  "input":"スカイフィッシュ(236S Level 1)",
   "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"
   ]
 },
 	{
-  "input":"236S Level 2",
+  "input":"スカイフィッシュ2(236S Level 2)",
   "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"
   ]
 },
 	{
-  "input":"236S Level 3",
+  "input":"スカイフィッシュ3(236S Level 3)",
   "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"
@@ -322,42 +322,42 @@
   ]
 },
 	{
-  "input":"1080P",
+  "input":"ダウン・ウィズ・ザ・システム3(1080P)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_Down_with_the_System.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/33/GGST_Goldlewis_Dickinson_Down_with_the_System_Hitbox.png"
   ]
 },
 	{
-  "input":"236236K Level 1",
+  "input":"バーン・イット・ダウン(236236K Level 1)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Goldlewis_Dickinson_Burn_It_Down.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/11/GGST_Goldlewis_Dickinson_Burn_It_Down_Hitbox.png"
   ]
 },
 	{
-  "input":"236236K Level 2",
+  "input":"バーン・イット・ダウン2(236236K Level 2)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Goldlewis_Dickinson_Burn_It_Down.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/11/GGST_Goldlewis_Dickinson_Burn_It_Down_Hitbox.png"
   ]
 },
 	{
-  "input":"236236K Level 3",
+  "input":"バーン・イット・ダウン3(236236K Level 3)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Goldlewis_Dickinson_Burn_It_Down.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/11/GGST_Goldlewis_Dickinson_Burn_It_Down_Hitbox.png"
   ]
 },
 	{
-  "input":"632146P",
+  "input":"ダウン・ウィズ・ザ・システム(632146P)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_Down_with_the_System.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/33/GGST_Goldlewis_Dickinson_Down_with_the_System_Hitbox.png"
   ]
 },
 	{
-  "input":"720P",
+  "input":"ダウン・ウィズ・ザ・システム2(720P)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_Down_with_the_System.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/33/GGST_Goldlewis_Dickinson_Down_with_the_System_Hitbox.png"
