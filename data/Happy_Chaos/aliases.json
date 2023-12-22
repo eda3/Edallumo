@@ -2,7 +2,7 @@
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"","aliases":["At the Ready","Aim","Gun","ATR","AR","5HS"]},
+	{"input":"HS","aliases":["At the Ready","Aim","Gun","ATR","AR","5HS"]},
 	{"input":"236S","aliases":["At the Ready","S Aim","S Gun","SATR","SAR"]},
 	{"input":"236S HS","aliases":["Fire","S Fire","SF","236SH"]},
 	{"input":"214S","aliases":["Steady Aim","Focus Aim","FA"]},

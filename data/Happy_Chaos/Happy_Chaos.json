@@ -32,7 +32,7 @@
 	{"input":"236S","name":"At the Ready","damage":"42","guard":"上段","startup":"9","active":"3","recovery":"13","hit":"KD +48","block":"+3","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"236S 2HS","name":"Cancel Aim","damage":"-","guard":"-","startup":"-","active":"-","recovery":"0 [9]","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
 	{"input":"236S HS","name":"Fire","damage":"30 [20]","guard":"上段","startup":"1","active":"2","recovery":"-","hit":"+26","block":"+23","level":"1","counter":"Very Small","scaling":"80%","riscgain":"500","invincibility":"-"},
-	{"input":"","name":"At the Ready","damage":"-","guard":"-","startup":"-","active":"-","recovery":"Total 12","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
+	{"input":"HS","name":"At the Ready","damage":"-","guard":"-","startup":"-","active":"-","recovery":"Total 12","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
 	{"input":"214214P","name":"Super Focus","damage":"-","guard":"-","startup":"5","active":"(52 Flash)","recovery":"Total 11","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
 	{"input":"632146S","name":"Deus Ex Machina","damage":"20, 1×17, 100","guard":"上段","startup":"13+(193 Flash)+7","active":"-","recovery":"-","hit":"強制ダウン+31","block":"-25","level":"2×18, 4","counter":"Small","scaling":"100%","riscgain":"100×19","invincibility":"-"}
 ]
