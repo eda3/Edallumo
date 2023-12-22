@@ -146,42 +146,42 @@
   ]
 },
 	{
-  "input":"236D",
+  "input":"ワイルドアサルト(236D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/45/GGST_Baiken_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"236[D]",
+  "input":"溜めワイルドアサルト(236[D])",
   "move_img": "https://www.dustloop.com/wiki/images/4/45/GGST_Baiken_236D.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6D or 4D",
+  "input":"投げ(6D or 4D)",
   "move_img": "https://www.dustloop.com/wiki/images/8/82/GGST_Baiken_Ground_Throw.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"6[D] or 4[D]",
+  "input":"Regular Throw(6[D] or 4[D])",
   "move_img": "https://www.dustloop.com/wiki/images/5/51/GGST_Baiken_Ground_Throw_2.png",
   "hitbox_img": [
     ""
   ]
 },
 	{
-  "input":"j6D or j4D",
+  "input":"空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/5/55/GGST_Baiken_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/53/GGST_Baiken_Air_Throw_Hitbox.png"
   ]
 },
 	{
-  "input":"236K",
+  "input":"畳返し(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/2/29/GGST_Baiken_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/00/GGST_Baiken_236K_1_hitbox.png",
@@ -192,14 +192,14 @@
   ]
 },
 	{
-  "input":"236P",
+  "input":"柊(236P)",
   "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Baiken_236P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/ff/GGST_Baiken_236P_hitbox.png"
   ]
 },
 	{
-  "input":"41236HS",
+  "input":"HS蚊鉤(41236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/7/7c/GGST_Baiken_41236H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/38/GGST_Baiken_41236H_1_hitbox.png",
@@ -207,14 +207,14 @@
   ]
 },
 	{
-  "input":"41236HS~HS",
+  "input":"HS蚊鉤追撃(41236HSHS)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a3/GGST_Baiken_41236HH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/be/GGST_Baiken_41236HH_hitbox.png"
   ]
 },
 	{
-  "input":"41236S",
+  "input":"蚊鉤(41236S)",
   "move_img": "https://www.dustloop.com/wiki/images/2/28/GGST_Baiken_41236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/66/GGST_Baiken_41236S_1_hitbox.png",
@@ -222,7 +222,7 @@
   ]
 },
 	{
-  "input":"j236K",
+  "input":"空中畳返し(j236K)",
   "move_img": "https://www.dustloop.com/wiki/images/2/29/GGST_Baiken_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/38/GGST_Baiken_236K_Air_1_hitbox.png",
@@ -231,7 +231,7 @@
   ]
 },
 	{
-  "input":"j236S",
+  "input":"妖斬扇(j236S)",
   "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Baiken_j236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/ba/GGST_Baiken_j236S_1_hitbox.png",
@@ -243,7 +243,7 @@
   ]
 },
 	{
-  "input":"214214P",
+  "input":"拳銃(214214P)",
   "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Baiken_214214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/61/GGST_Baiken_214214P_1_hitbox.png",
@@ -253,7 +253,7 @@
   ]
 },
 	{
-  "input":"236236S",
+  "input":"連ね三途渡し(236236S)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a9/GGST_Baiken_236236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/79/GGST_Baiken_236236S_1_hitbox.png",
@@ -262,7 +262,7 @@
   ]
 },
 	{
-  "input":"j214214P",
+  "input":"空中Kenjyu(j214214P)",
   "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Baiken_j214214P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/de/GGST_Baiken_j214214P_Hitbox.png",
