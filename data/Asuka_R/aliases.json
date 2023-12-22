@@ -12,7 +12,7 @@
 	{"input":"Aquila Metron","aliases":["アクィラメトロン"]},
 	{"input":"Bit Shift Metron","aliases":["ビットシフトメトロン"]},
 	{"input":"Bookmark (Auto Import)","aliases":["ブックマーク（オートインポート）"]},
-	{"input":"Bookmark (Full Import)","aliases":"ブックマーク（フルインポート）"]},
+	{"input":"Bookmark (Full Import)","aliases":["ブックマーク（フルインポート）"]},
 	{"input":"Bookmark (Random Import)","aliases":["ブックマーク（ランダムインポート）"]},
 	{"input":"Chaotic Option","aliases":["カオティックオプション"]},
 	{"input":"Delayed Howling Metron","aliases":["ハウリングメトロンディレイ"]},
