@@ -32,7 +32,7 @@
 	{"input":"RMS Boost Metron","aliases":["RMSブーストメトロン"]},
 	{"input":"Sampler 404","aliases":["サンプラー404"]},
 	{"input":"Shooting Time Stretch (Accelerate)","aliases":["シューティングタイムストレッチ（加速）"]},
-	{"input":"Shooting Time Stretch (Decelerate)","aliases":["シューティングタイムストレッチ（原則）"]},
+	{"input":"Shooting Time Stretch (Decelerate)","aliases":["シューティングタイムストレッチ（減速）"]},
 	{"input":"Terra Metron","aliases":["テラメトロン"]},
 	{"input":"632146P/K","aliases":["Sサブミクロン粒子高圧縮球","覚醒1","無敵覚醒"]},
 	{"input":"632146S","aliases":["ブックマーク（フルオーダー）","Shuffle","Draw Super","BFO","DS","覚醒2","マリガン"]},
