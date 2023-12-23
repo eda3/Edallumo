@@ -109,9 +109,9 @@ pub async fn frames(
     //ctx.say(r"DIIIIE 💀💀💀.
 //__<https://github.com/yakiimoninja/baiken/releases>__").await?;
 
-    if let Some(image_path) = ran::random_p().await {
-        image_embed = image_path;
-    }
+    // if let Some(image_path) = ran::random_p().await {
+    // image_embed = image_path;
+    // }
 
     // Sending the data as an embed
     let _msg = ctx.send(|m| {
