@@ -3,3 +3,5 @@ Cargo.lock
 .env*
 workspace.code-workspace
 data/*_old
+.memo
+nohup.out
