@@ -14,7 +14,7 @@
 	{"input":"近S","name":"c.S","damage":"39","guard":"上段","startup":"7","active":"6","recovery":"12","hit":"+4","block":"+1","level":"4","counter":"Mid","scaling":"100%","riscgain":"2500","invincibility":"none"},
 	{"input":"遠S","name":"遠S","damage":"31","guard":"上段","startup":"11","active":"3","recovery":"23","hit":"-9","block":"-12","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"none"},
 	{"input":"jD","name":"jD","damage":"47","guard":"中段","startup":"14","active":"10","recovery":"14","hit":"+16 (IAD)","block":"+13 (IAD)","level":"3","counter":"Mid","scaling":"80%","riscgain":"1500","invincibility":"none"},
-	{"input":"jH","name":"jH","damage":"43","guard":"中段","startup":"15","active":"4","recovery":"20","hit":"-","block":"-","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"none"},
+	{"input":"jHS","name":"jHS","damage":"43","guard":"中段","startup":"15","active":"4","recovery":"20","hit":"-","block":"-","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"none"},
 	{"input":"jK","name":"jK","damage":"29","guard":"中段","startup":"9","active":"4","recovery":"17","hit":"-","block":"-","level":"1","counter":"Small","scaling":"80%","riscgain":"750","invincibility":"none"},
 	{"input":"jP","name":"jP","damage":"25","guard":"中段","startup":"6","active":"3","recovery":"12","hit":"-","block":"-","level":"0","counter":"Small","scaling":"80%","riscgain":"375","invincibility":"none"},
 	{"input":"jS","name":"jS","damage":"37","guard":"中段","startup":"11","active":"11","recovery":"13","hit":"+11 (IAD)","block":"+8 (IAD)","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"none"},
