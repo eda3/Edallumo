@@ -103,9 +103,9 @@
 },
 	{
   "input":"近S",
-  "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_May_近S.png",
+  "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_May_c.S.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/0/02/GGST_May_近S-Hitbox.png"
+    "https://www.dustloop.com/wiki/images/0/02/GGST_May_c.S-Hitbox.png"
   ]
 },
 	{
@@ -233,7 +233,7 @@
   ]
 },
 	{
-  "input":"S横イルカ(S横イルカ([4]6S))",
+  "input":"S横イルカ([4]6S)",
   "move_img": "https://www.dustloop.com/wiki/images/2/29/GGST_May_Mr._Dolphin_Horizontal.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/de/GGST_May_Mr._Dolphin_Horizontal-Hitbox.png"
