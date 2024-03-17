@@ -101,7 +101,7 @@ pub async fn fmeter(
         }
     }
     
-    let mut frame_meter_msg = r#"__始動__: "#.to_owned() + &mframes.startup + " → `";
+    let mut frame_meter_msg = r#"__発生__: "#.to_owned() + &mframes.startup + " → `";
 
     // Processing for startup frames
 
@@ -232,7 +232,7 @@ pub async fn fmeter(
         }
     }
 
-    frame_meter_msg = frame_meter_msg + "`\n__後隙__: " + &mframes.recovery + " → `";
+    frame_meter_msg = frame_meter_msg + "`\n__硬直__: " + &mframes.recovery + " → `";
 
     // Processing for recovery frames
     //println!("Original recovery: {:?}", mframes.recovery);
