@@ -5,7 +5,7 @@
 	{"input":"2P","name":"2P","damage":"19","guard":"All","startup":"4","active":"2","recovery":"10","hit":"+1","block":"-2","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"2S","name":"2S","damage":"33","guard":"All","startup":"7","active":"6","recovery":"20","hit":"-9","block":"-12","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
 	{"input":"5D","name":"Uncharged","damage":"45","guard":"High","startup":"20","active":"4","recovery":"25","hit":"0","block":"-15","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"none"},
-	{"input":"5H","name":"5H","damage":"39","guard":"All","startup":"15","active":"3","recovery":"31","hit":"-12","block":"-15","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
+	{"input":"5HS","name":"5H","damage":"39","guard":"All","startup":"15","active":"3","recovery":"31","hit":"-12","block":"-15","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"5K","name":"5K","damage":"25","guard":"All","startup":"6","active":"5","recovery":"10","hit":"0","block":"-3","level":"1","counter":"Small","scaling":"70%","riscgain":"1000","invincibility":"-"},
 	{"input":"5P","name":"5P","damage":"20","guard":"All","startup":"5","active":"3","recovery":"8","hit":"+2","block":"-1","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"5[D]","name":"Charged","damage":"56","guard":"High","startup":"28","active":"4","recovery":"25","hit":"KD +36","block":"-10","level":"4","counter":"Mid","scaling":"100%","riscgain":"1875","invincibility":"none"},
