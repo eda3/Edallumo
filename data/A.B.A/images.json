@@ -7,8 +7,8 @@
   ]
 },
 	{
-  "input": "2H",
-  "move_img": "https://www.dustloop.com/wiki/images/5/57/GGST_A.B.A_2H.png",
+  "input":"2HS",
+  "move_img": "https://www.dustloop.com/wiki/images/7/7c/GGST_A.B.A_2H_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/33/GGST_A.B.A_2H_Hitbox.png",
     "https://www.dustloop.com/wiki/images/b/bd/GGST_A.B.A_2H_Hitbox_2.png"
