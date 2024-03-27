@@ -9,7 +9,7 @@
 	{"input":"5K","name":"5K","damage":"25","guard":"All","startup":"6","active":"5","recovery":"10","hit":"0","block":"-3","level":"1","counter":"Small","scaling":"70%","riscgain":"1000","invincibility":"-"},
 	{"input":"5P","name":"5P","damage":"20","guard":"All","startup":"5","active":"3","recovery":"8","hit":"+2","block":"-1","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"5[D]","name":"Charged","damage":"56","guard":"High","startup":"28","active":"4","recovery":"25","hit":"KD +36","block":"-10","level":"4","counter":"Mid","scaling":"100%","riscgain":"1875","invincibility":"none"},
-	{"input":"6HS","name":"6H","damage":"49","guard":"All","startup":"17","active":"6","recovery":"25","hit":"KD","block":"-12","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
+	{"input":"6HS","name":"6HS","damage":"49","guard":"All","startup":"17","active":"6","recovery":"25","hit":"KD","block":"-12","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"6P","name":"6P","damage":"29","guard":"All","startup":"11","active":"6","recovery":"20","hit":"-9","block":"-12","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"1-2 Upper Body/3-16 Above Knees"},
 	{"input":"近S","name":"c.S","damage":"38","guard":"All","startup":"7","active":"6","recovery":"10","hit":"KD","block":"+1","level":"3","counter":"Mid","scaling":"100%","riscgain":"2000","invincibility":"-"},
 	{"input":"遠S","name":"f.S","damage":"29","guard":"All","startup":"10","active":"3","recovery":"14","hit":"0","block":"-3","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
@@ -28,7 +28,7 @@
 	{"input":"JR 5K","name":"JR 5K","damage":"31","guard":"All","startup":"6","active":"5","recovery":"10","hit":"0","block":"-3","level":"1","counter":"Small","scaling":"70%","riscgain":"1000","invincibility":"-"},
 	{"input":"JR 5P","name":"JR 5P","damage":"23","guard":"All","startup":"5","active":"3","recovery":"8","hit":"+2","block":"-1","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"JR 5[D]","name":"Charged","damage":"56","guard":"High","startup":"28","active":"4","recovery":"25","hit":"KD +36","block":"-10","level":"4","counter":"Mid","scaling":"100%","riscgain":"1875","invincibility":"none"},
-	{"input":"JR 6H","name":"JR 6H","damage":"62","guard":"All","startup":"17","active":"6","recovery":"25","hit":"KD","block":"-12","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
+	{"input":"JR 6HS","name":"JR 6HS","damage":"62","guard":"All","startup":"17","active":"6","recovery":"25","hit":"KD","block":"-12","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"JR 6P","name":"JR 6P","damage":"34","guard":"All","startup":"11","active":"6","recovery":"20","hit":"-9","block":"-12","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"1-2 Upper Body/3-16 Above Knees"},
 	{"input":"JR c.S","name":"JR c.S","damage":"43","guard":"All","startup":"7","active":"6","recovery":"10","hit":"+4","block":"+1","level":"3","counter":"Mid","scaling":"100%","riscgain":"2000","invincibility":"-"},
 	{"input":"JR f.S","name":"JR f.S","damage":"35","guard":"All","startup":"9","active":"3","recovery":"16","hit":"-2","block":"-5","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
@@ -56,6 +56,6 @@
 	{"input":"JR 236S~6S","name":"JR Restriction and Constraint","damage":"52","guard":"Low","startup":"11","active":"3","recovery":"31","hit":"HKD +60","block":"-15","level":"4","counter":"Very Small","scaling":"80%","riscgain":"2500","invincibility":"-"},
 	{"input":"JR 63214P","name":"JR Changing and Swaying","damage":"-","guard":"-","startup":"-","active":"-","recovery":"Total 29","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
 	{"input":"JR Deactivation","name":"Jealous Rage Deactivation","damage":"-","guard":"-","startup":"1+(59 Flash)","active":"-","recovery":"10","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"1F All, 2-11F Block"},
-	{"input":"632146H","name":"The Law is Key, Key is King.","damage":"-","guard":"-","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
+	{"input":"632146HS","name":"The Law is Key, Key is King.","damage":"-","guard":"-","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"},
 	{"input":"632146K","name":"Keeper of the Key","damage":"-","guard":"-","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"}
 ]
