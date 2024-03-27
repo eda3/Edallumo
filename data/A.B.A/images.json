@@ -102,21 +102,21 @@
   ]
 },
 	{
-  "input": "j.D",
+  "input": "jD",
   "move_img": "https://www.dustloop.com/wiki/images/3/3d/GGST_A.B.A_jD.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a4/GGST_A.B.A_j.D_Hitbox.png"
   ]
 },
 	{
-  "input": "j.H",
+  "input":"jHS",
   "move_img": "https://www.dustloop.com/wiki/images/a/a7/GGST_A.B.A_jH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a2/GGST_A.B.A_j.H_Hitbox.png"
   ]
 },
 	{
-  "input": "j.K",
+  "input": "jK",
   "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_A.B.A_jK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/ab/GGST_A.B.A_j.K_Hitbox_1.png",
@@ -125,14 +125,14 @@
   ]
 },
 	{
-  "input": "j.P",
+  "input": "jP",
   "move_img": "https://www.dustloop.com/wiki/images/5/50/GGST_A.B.A_jP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0d/GGST_A.B.A_j.P_Hitbox.png"
   ]
 },
 	{
-  "input": "j.S",
+  "input": "jS",
   "move_img": "https://www.dustloop.com/wiki/images/6/61/GGST_A.B.A_jS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f9/GGST_A.B.A_j.S_Hitbox.png"
@@ -300,7 +300,7 @@
   ]
 },
 	{
-  "input": "j.6D or j.4D",
+  "input": "j6D or j4D",
   "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_A.B.A_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/01/GGST_A.B.A_Air_Throw_Hitbox.png"
