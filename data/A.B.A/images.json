@@ -307,7 +307,7 @@
   ]
 },
 	{
-  "input": "214H",
+  "input": "214HS",
   "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_A.B.A_214H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d8/GGST_A.B.A_214H_Hitbox.png"
@@ -368,7 +368,7 @@
   ]
 },
 	{
-  "input": "JR 214H",
+  "input": "JR 214HS",
   "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_A.B.A_214H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d8/GGST_A.B.A_214H_Hitbox.png"
