@@ -2,7 +2,7 @@
 	{"input":"5P","aliases":["最速","最速1"]},
        {"input":"遠S","aliases":["fS"]},
 	{"input":"2P","aliases":["最速2"]},
-	{"input":"近S","aliases":["5S"]},
+	{"input":"近S","aliases":["5S","cS"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
 	{"input":"サーヴァント召喚(236P)","aliases":["サーヴァント召喚"]},

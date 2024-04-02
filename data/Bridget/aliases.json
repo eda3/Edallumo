@@ -1,7 +1,7 @@
 [	
 	{"input":"2K","aliases":["最速","最速1"]},
        {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S"]},
+	{"input":"近S","aliases":["5S","cS"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"SS","aliases":["5SS"]},
 	{"input":"HSHS","aliases":["5HH","HSHS","5HSHS"]},

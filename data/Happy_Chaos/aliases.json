@@ -3,7 +3,7 @@
        {"input":"遠S","aliases":["fS"]},
 	{"input":"2P","aliases":["最速2"]},
 	{"input":"jP","aliases":["最速3"]},
-	{"input":"近S","aliases":["5S"]},
+	{"input":"近S","aliases":["5S","cS"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
 	{"input":"銃を構える(HS)","aliases":["銃を構える","HS","5HS"]},

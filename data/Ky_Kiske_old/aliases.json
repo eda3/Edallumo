@@ -1,5 +1,5 @@
 [	
-	{"input":"近S","aliases":["5S"]},
+	{"input":"近S","aliases":["5S","cS"]},
        {"input":"遠S","aliases":["fS"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
