@@ -1,5 +1,6 @@
 [	
 	{"input":"5K","aliases":["最速","最速1"]},
+       {"input":"遠S","aliases":["fS"]},
 	{"input":"近S","aliases":["cs","5S"]},
 	{"input":"2D","aliases":["足払い"]},
 	{"input":"5D!","aliases":["5D!","ためダスト","溜めダスト"]},

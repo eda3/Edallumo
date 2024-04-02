@@ -1,5 +1,6 @@
 [	
 	{"input":"5P","aliases":["最速","最速1"]},
+       {"input":"遠S","aliases":["fS"]},
 	{"input":"2P","aliases":["最速2"]},
 	{"input":"近S","aliases":["5S"]},
 	{"input":"2D","aliases":["足払い"]},
