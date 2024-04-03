@@ -1,21 +1,180 @@
-[	
-	{"input":"2P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"Sタンデム(236S)","aliases":["Sタンデム","236S","S Tandem Top","Disk","S Disk","TT"]},
-	{"input":"HSタンデム(236HS)","aliases":["HSタンデム","236HS","Heavy Disk","H Disk","HTT"]},
-	{"input":"ラストシェイカー(214S)","aliases":["ラストシェイカー","214S","Stab","LS"]},
-	{"input":"アイアンセイバー(214P)","aliases":["アイアンセイバー","214P","Cart","IS","Hair Car","Car"]},
-	{"input":"バッドムーン(j236P)","aliases":["バッドムーン","j236P","Overhead","BM"]},
-	{"input":"高速落下(j236K)","aliases":["高速落下","j236K","Turbofall","Fast Fall","Fall","FF","TF"]},
-	{"input":"ミラーシュ(214K)","aliases":["ミラーシュ","214K","Dash"]},
-	{"input":"カピエル(j236HS)","aliases":["カピエル","j236HS","Rose","空中Dash","AD"]},
-	{"input":"セプテムヴォイシズ(236236S)","aliases":["セプテムヴォイシズ","236236S","Wheel Super","SV","WS","覚醒1"]},
-	{"input":"ヴィンガー(632146HS)","aliases":["ヴィンガー","632146HS","Wing Super","WS","覚醒2","無敵覚醒"]},
-	{"input":"投げ(6D or 4D)","aliases":["投げ","6D or 4D","6D","4D"]},
-	{"input":"空投げ(j6D or j4D)","aliases":["空投げ","j6D or j4D","J6D","J4D"]},
-	{"input":"ワイルドアサルト(236D)","aliases":["ワイルドアサルト","236D","WA"]},
-	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
+[
+	{
+		"input": "2P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "Sタンデム(236S)",
+		"aliases": [
+			"Sタンデム",
+			"236S",
+			"S Tandem Top",
+			"Disk",
+			"S Disk",
+			"TT"
+		]
+	},
+	{
+		"input": "HSタンデム(236HS)",
+		"aliases": [
+			"HSタンデム",
+			"236HS",
+			"Heavy Disk",
+			"H Disk",
+			"HTT"
+		]
+	},
+	{
+		"input": "ラストシェイカー(214S)",
+		"aliases": [
+			"ラストシェイカー",
+			"214S",
+			"Stab",
+			"LS"
+		]
+	},
+	{
+		"input": "アイアンセイバー(214P)",
+		"aliases": [
+			"アイアンセイバー",
+			"214P",
+			"Cart",
+			"IS",
+			"Hair Car",
+			"Car"
+		]
+	},
+	{
+		"input": "バッドムーン(j236P)",
+		"aliases": [
+			"バッドムーン",
+			"j236P",
+			"Overhead",
+			"BM"
+		]
+	},
+	{
+		"input": "高速落下(j236K)",
+		"aliases": [
+			"高速落下",
+			"j236K",
+			"Turbofall",
+			"Fast Fall",
+			"Fall",
+			"FF",
+			"TF"
+		]
+	},
+	{
+		"input": "ミラーシュ(214K)",
+		"aliases": [
+			"ミラーシュ",
+			"214K",
+			"Dash"
+		]
+	},
+	{
+		"input": "カピエル(j236HS)",
+		"aliases": [
+			"カピエル",
+			"j236HS",
+			"Rose",
+			"空中Dash",
+			"AD"
+		]
+	},
+	{
+		"input": "セプテムヴォイシズ(236236S)",
+		"aliases": [
+			"セプテムヴォイシズ",
+			"236236S",
+			"Wheel Super",
+			"SV",
+			"WS",
+			"覚醒1"
+		]
+	},
+	{
+		"input": "ヴィンガー(632146HS)",
+		"aliases": [
+			"ヴィンガー",
+			"632146HS",
+			"Wing Super",
+			"WS",
+			"覚醒2",
+			"無敵覚醒"
+		]
+	},
+	{
+		"input": "アルテミス(214HS)",
+		"aliases": [
+			"アルテミス",
+			"214HS"
+		]
+	},
+	{
+		"input": "投げ(6D or 4D)",
+		"aliases": [
+			"投げ",
+			"6D or 4D",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "空投げ(j6D or j4D)",
+		"aliases": [
+			"空投げ",
+			"j6D or j4D",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "ワイルドアサルト(236D)",
+		"aliases": [
+			"ワイルドアサルト",
+			"236D",
+			"WA"
+		]
+	},
+	{
+		"input": "236[D]",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]
