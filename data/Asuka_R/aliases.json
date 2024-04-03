@@ -1,44 +1,296 @@
 [
-	{"input":"2P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"214X","aliases":["ブックマーク"]},
-	{"input":"22H~X","aliases":["テストケース変更"]},
-	{"input":"22P/K/S","aliases":["マナ回復"]},
-	{"input":"236X","aliases":["詠唱"]},
-	{"input":"j214X","aliases":["空中ブックマーク"]},
-	{"input":"Accipiter Metron","aliases":["アキピテルメトロン"]},
-	{"input":"Aquila Metron","aliases":["アクィラメトロン"]},
-	{"input":"Bit Shift Metron","aliases":["ビットシフトメトロン","ビットシフト"]},
-	{"input":"Bookmark (Auto Import)","aliases":["ブックマーク（オートインポート）","オートインポート"]},
-	{"input":"Bookmark (Full Import)","aliases":["ブックマーク（フルインポート）","フルインポート"]},
-	{"input":"Bookmark (Random Import)","aliases":["ブックマーク（ランダムインポート）","ランダムインポート"]},
-	{"input":"Chaotic Option","aliases":["カオティックオプション"]},
-	{"input":"Delayed Howling Metron","aliases":["ハウリングメトロンディレイ"]},
-	{"input":"Delayed Tardus Metron","aliases":["タルドゥスメトロンディレイ","タルドゥス"]},
-	{"input":"Go to Marker","aliases":["ゴートゥマーカー","ゴーツーマーカー","gtm","g2m"]},
-	{"input":"Gravity Rod (Shooting)","aliases":["グラビティロッド（シューティング）","重力杖"]},
-	{"input":"High-Pass Filter Gravity","aliases":["ハイパスフィルターグラビティ"]},
-	{"input":"Howling Metron","aliases":["ハウリングメトロン"]},
-	{"input":"Howling Metron MS Processing","aliases":["ハウリングメトロンMSプロセッシング"]},
-	{"input":"Low-Pass Filter Gravity","aliases":["ローパスフィルターグラビティ"]},
-	{"input":"Metron Arpeggio","aliases":["メトロンアルペジオ","アルペジオ"]},
-	{"input":"Metron Screamer 808","aliases":["メトロンスクリーマー808","808","メトロンスクリーマー"]},
-	{"input":"Recover Mana (Continuous)","aliases":["マナ回復（継続）","RMC"]},
-	{"input":"Recover Mana (Instant)","aliases":["マナ回復（即時）","RMI"]},
-	{"input":"Reduce Mana Cost","aliases":["マナ消費軽減","MC"]},
-	{"input":"Repulsive Rod (Shooting)","aliases":["リパルシヴロッド（シューティング）","斥力杖"]},
-	{"input":"RMS Boost Metron","aliases":["RMSブーストメトロン","RMS","ブーストメロン"]},
-	{"input":"Sampler 404","aliases":["サンプラー404","サンプラー","404"]},
-	{"input":"Shooting Time Stretch (Accelerate)","aliases":["シューティングタイムストレッチ（加速）","加速杖","加速"]},
-	{"input":"Shooting Time Stretch (Decelerate)","aliases":["シューティングタイムストレッチ（減速）","減速杖","減速"]},
-	{"input":"Terra Metron","aliases":["テラメトロン"]},
-	{"input":"632146P/K","aliases":["Sサブミクロン粒子高圧縮球","覚醒","覚醒1","無敵覚醒"]},
-	{"input":"632146S","aliases":["ブックマーク（フルオーダー）","シャッフル","覚醒2","マリガン"]},
-	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
-	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
-	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
-	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
+	{
+		"input": "2P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "214X",
+		"aliases": [
+			"ブックマーク"
+		]
+	},
+	{
+		"input": "22H~X",
+		"aliases": [
+			"テストケース変更"
+		]
+	},
+	{
+		"input": "22P/K/S",
+		"aliases": [
+			"マナ回復"
+		]
+	},
+	{
+		"input": "236X",
+		"aliases": [
+			"詠唱"
+		]
+	},
+	{
+		"input": "j214X",
+		"aliases": [
+			"空中ブックマーク"
+		]
+	},
+	{
+		"input": "Accipiter Metron",
+		"aliases": [
+			"アキピテルメトロン"
+		]
+	},
+	{
+		"input": "Aquila Metron",
+		"aliases": [
+			"アクィラメトロン"
+		]
+	},
+	{
+		"input": "Bit Shift Metron",
+		"aliases": [
+			"ビットシフトメトロン",
+			"ビットシフト"
+		]
+	},
+	{
+		"input": "Bookmark (Auto Import)",
+		"aliases": [
+			"ブックマーク（オートインポート）",
+			"オートインポート"
+		]
+	},
+	{
+		"input": "Bookmark (Full Import)",
+		"aliases": [
+			"ブックマーク（フルインポート）",
+			"フルインポート"
+		]
+	},
+	{
+		"input": "Bookmark (Random Import)",
+		"aliases": [
+			"ブックマーク（ランダムインポート）",
+			"ランダムインポート"
+		]
+	},
+	{
+		"input": "Chaotic Option",
+		"aliases": [
+			"カオティックオプション"
+		]
+	},
+	{
+		"input": "Delayed Howling Metron",
+		"aliases": [
+			"ハウリングメトロンディレイ"
+		]
+	},
+	{
+		"input": "Delayed Tardus Metron",
+		"aliases": [
+			"タルドゥスメトロンディレイ",
+			"タルドゥス"
+		]
+	},
+	{
+		"input": "Go to Marker",
+		"aliases": [
+			"ゴートゥマーカー",
+			"ゴーツーマーカー",
+			"gtm",
+			"g2m"
+		]
+	},
+	{
+		"input": "Gravity Rod (Shooting)",
+		"aliases": [
+			"グラビティロッド（シューティング）",
+			"重力杖"
+		]
+	},
+	{
+		"input": "High-Pass Filter Gravity",
+		"aliases": [
+			"ハイパスフィルターグラビティ"
+		]
+	},
+	{
+		"input": "Howling Metron",
+		"aliases": [
+			"ハウリングメトロン"
+		]
+	},
+	{
+		"input": "Howling Metron MS Processing",
+		"aliases": [
+			"ハウリングメトロンMSプロセッシング"
+		]
+	},
+	{
+		"input": "Low-Pass Filter Gravity",
+		"aliases": [
+			"ローパスフィルターグラビティ"
+		]
+	},
+	{
+		"input": "Metron Arpeggio",
+		"aliases": [
+			"メトロンアルペジオ",
+			"アルペジオ"
+		]
+	},
+	{
+		"input": "Metron Screamer 808",
+		"aliases": [
+			"メトロンスクリーマー808",
+			"808",
+			"メトロンスクリーマー"
+		]
+	},
+	{
+		"input": "Recover Mana (Continuous)",
+		"aliases": [
+			"マナ回復（継続）",
+			"RMC"
+		]
+	},
+	{
+		"input": "Recover Mana (Instant)",
+		"aliases": [
+			"マナ回復（即時）",
+			"RMI"
+		]
+	},
+	{
+		"input": "Reduce Mana Cost",
+		"aliases": [
+			"マナ消費軽減",
+			"MC"
+		]
+	},
+	{
+		"input": "Repulsive Rod (Shooting)",
+		"aliases": [
+			"リパルシヴロッド（シューティング）",
+			"斥力杖"
+		]
+	},
+	{
+		"input": "RMS Boost Metron",
+		"aliases": [
+			"RMSブーストメトロン",
+			"RMS",
+			"ブーストメロン"
+		]
+	},
+	{
+		"input": "Sampler 404",
+		"aliases": [
+			"サンプラー404",
+			"サンプラー",
+			"404"
+		]
+	},
+	{
+		"input": "Shooting Time Stretch (Accelerate)",
+		"aliases": [
+			"シューティングタイムストレッチ（加速）",
+			"加速杖",
+			"加速"
+		]
+	},
+	{
+		"input": "Shooting Time Stretch (Decelerate)",
+		"aliases": [
+			"シューティングタイムストレッチ（減速）",
+			"減速杖",
+			"減速"
+		]
+	},
+	{
+		"input": "Terra Metron",
+		"aliases": [
+			"テラメトロン"
+		]
+	},
+	{
+		"input": "632146P/K",
+		"aliases": [
+			"Sサブミクロン粒子高圧縮球",
+			"覚醒",
+			"覚醒1",
+			"無敵覚醒"
+		]
+	},
+	{
+		"input": "632146S",
+		"aliases": [
+			"ブックマーク（フルオーダー）",
+			"シャッフル",
+			"覚醒2",
+			"マリガン"
+		]
+	},
+	{
+		"input": "6D or 4D",
+		"aliases": [
+			"投げ",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "j6D or j4D",
+		"aliases": [
+			"空投げ",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "236D",
+		"aliases": [
+			"ワイルドアサルト",
+			"WA"
+		]
+	},
+	{
+		"input": "236[D]",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]

@@ -1,62 +1,425 @@
-[	
-	{"input":"5P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"遠S Level 1","aliases":["遠S","遠S1"]},
-	{"input":"遠S Level 2","aliases":["遠S2"]},
-	{"input":"遠S Level 3","aliases":["遠S3"]},
-	{"input":"遠S Level BR","aliases":["遠SB"]},
-	{"input":"遠SS Level 1","aliases":["遠SS"]},
-	{"input":"遠SS Level 2","aliases":["遠SS2"]},
-	{"input":"遠SS Level 3","aliases":["遠SS3"]},
-	{"input":"遠SS Level BR","aliases":["遠SSB"]},
-	{"input":"遠SSS Level 1","aliases":["遠SSS"]},
-	{"input":"遠SSS Level 2","aliases":["遠SSS2"]},
-	{"input":"遠SSS Level 3","aliases":["遠SSS3"]},
-	{"input":"遠SSS Level BR","aliases":["遠SSSB"]},
-	{"input":"2S Level 1","aliases":["2S","2S1"]},
-	{"input":"2S Level 2","aliases":["2S2"]},
-	{"input":"2S Level 3","aliases":["2S3"]},
-	{"input":"2S Level BR","aliases":["2SB"]},
-	{"input":"5HS Level 1","aliases":["5HS","5HS1"]},
-	{"input":"5HS Level 2","aliases":["5HS2"]},
-	{"input":"5HS Level 3","aliases":["5HS3"]},
-	{"input":"5HS Level BR","aliases":["5HSB"]},
-	{"input":"2HS Level 1","aliases":["2HS","2HS1"]},
-	{"input":"2HS Level 2","aliases":["2HS2"]},
-	{"input":"2HS Level 3","aliases":["2HS3"]},
-	{"input":"2HS Level BR","aliases":["2HSB"]},
-	{"input":"6HS Level 1","aliases":["6HS","6HS1"]},
-	{"input":"6HS Level 2","aliases":["6HS2"]},
-	{"input":"6HS Level 3","aliases":["6HS3"]},
-	{"input":"6HS Level BR","aliases":["6HSB"]},
-	{"input":"jS Level 1","aliases":["jS","jS1"]},
-	{"input":"jS Level 2","aliases":["jS2"]},
-	{"input":"jS Level 3","aliases":["jS3"]},
-	{"input":"jS Level BR","aliases":["jSB"]},
-	{"input":"jHS Level 1","aliases":["jHS","jHS1"]},
-	{"input":"jHS Level 2","aliases":["jHS2"]},
-	{"input":"jHS Level 3","aliases":["jHS3"]},
-	{"input":"jHS Level BR","aliases":["jHSB"]},
-	{"input":"jD Level 1","aliases":["jD","jD1"]},
-	{"input":"jD Level 2","aliases":["jD2"]},
-	{"input":"jD Level 3","aliases":["jD3"]},
-	{"input":"jD Level BR","aliases":["jDB"]},
-	{"input":"粒雪（ざらめゆき）(236S)","aliases":["粒雪（ざらめゆき）","粒雪","ざらめゆき","236S"]},
-	{"input":"前不香（ふきょう）(236K)","aliases":["前不香（ふきょう）","前不香","不香","まえふきょう","ふきょう","236K"]},
-	{"input":"後ろ不香（ふきょう）(214K)","aliases":["後ろ不香（ふきょう）","後ろ不香","うしろふきょう","214K"]},
-	{"input":"冠雪（かむりゆき）(214HS)","aliases":["冠雪（かむりゆき）","冠雪","かむりゆき","かんせつ","214HS"]},
-	{"input":"垂雪（しずりゆき）(623HS)","aliases":["垂雪（しずりゆき）","垂雪","しずりゆき","623HS"]},
-	{"input":"垂雪（しずりゆき）追撃(623HSHS)","aliases":["垂雪（しずりゆき）追撃","垂雪追撃","しずりゆきついげき","623HSHS"]},
-	{"input":"Bloodsucking Universe(623P)","aliases":["Bloodsucking Universe","623P","コマ投げ","bsu","吸血"]},
-	{"input":"忘れ雪（わすれゆき）(632146S)","aliases":["忘れ雪（わすれゆき）","忘れ雪","わすれゆき","632146S","覚醒1","無敵覚醒"]},
-	{"input":"残雪（ざんせつ）(632146HS)","aliases":["残雪（ざんせつ）","残雪","ざんせつ","632146HS","ホームラン","覚醒2"]},
-	{"input":"ブラッドレイジ化","aliases":["ブラッドレイジ化","Mask Off","Maskoff"]},
-	{"input":"ブラッドレイジ解除","aliases":["ブラッドレイジ解除","Mask On","Maskon"]},
-	{"input":"投げ(6D or 4D)","aliases":["投げ","6D or 4D","6D","4D"]},
-	{"input":"空投げ(j6D or j4D)","aliases":["空投げ","j6D or j4D","J6D","J4D"]},
-	{"input":"ワイルドアサルト(236D)","aliases":["ワイルドアサルト","236D","WA"]},
-	{"input":"溜めワイルドアサルト(236[D])","aliases":["溜めワイルドアサルト","236[D]","WAH","WA!","236D!"]}
+[
+	{
+		"input": "5P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "遠S Level 1",
+		"aliases": [
+			"遠S",
+			"遠S1"
+		]
+	},
+	{
+		"input": "遠S Level 2",
+		"aliases": [
+			"遠S2"
+		]
+	},
+	{
+		"input": "遠S Level 3",
+		"aliases": [
+			"遠S3"
+		]
+	},
+	{
+		"input": "遠S Level BR",
+		"aliases": [
+			"遠SB"
+		]
+	},
+	{
+		"input": "遠SS Level 1",
+		"aliases": [
+			"遠SS"
+		]
+	},
+	{
+		"input": "遠SS Level 2",
+		"aliases": [
+			"遠SS2"
+		]
+	},
+	{
+		"input": "遠SS Level 3",
+		"aliases": [
+			"遠SS3"
+		]
+	},
+	{
+		"input": "遠SS Level BR",
+		"aliases": [
+			"遠SSB"
+		]
+	},
+	{
+		"input": "遠SSS Level 1",
+		"aliases": [
+			"遠SSS"
+		]
+	},
+	{
+		"input": "遠SSS Level 2",
+		"aliases": [
+			"遠SSS2"
+		]
+	},
+	{
+		"input": "遠SSS Level 3",
+		"aliases": [
+			"遠SSS3"
+		]
+	},
+	{
+		"input": "遠SSS Level BR",
+		"aliases": [
+			"遠SSSB"
+		]
+	},
+	{
+		"input": "2S Level 1",
+		"aliases": [
+			"2S",
+			"2S1"
+		]
+	},
+	{
+		"input": "2S Level 2",
+		"aliases": [
+			"2S2"
+		]
+	},
+	{
+		"input": "2S Level 3",
+		"aliases": [
+			"2S3"
+		]
+	},
+	{
+		"input": "2S Level BR",
+		"aliases": [
+			"2SB"
+		]
+	},
+	{
+		"input": "5HS Level 1",
+		"aliases": [
+			"5HS",
+			"5HS1"
+		]
+	},
+	{
+		"input": "5HS Level 2",
+		"aliases": [
+			"5HS2"
+		]
+	},
+	{
+		"input": "5HS Level 3",
+		"aliases": [
+			"5HS3"
+		]
+	},
+	{
+		"input": "5HS Level BR",
+		"aliases": [
+			"5HSB"
+		]
+	},
+	{
+		"input": "2HS Level 1",
+		"aliases": [
+			"2HS",
+			"2HS1"
+		]
+	},
+	{
+		"input": "2HS Level 2",
+		"aliases": [
+			"2HS2"
+		]
+	},
+	{
+		"input": "2HS Level 3",
+		"aliases": [
+			"2HS3"
+		]
+	},
+	{
+		"input": "2HS Level BR",
+		"aliases": [
+			"2HSB"
+		]
+	},
+	{
+		"input": "6HS Level 1",
+		"aliases": [
+			"6HS",
+			"6HS1"
+		]
+	},
+	{
+		"input": "6HS Level 2",
+		"aliases": [
+			"6HS2"
+		]
+	},
+	{
+		"input": "6HS Level 3",
+		"aliases": [
+			"6HS3"
+		]
+	},
+	{
+		"input": "6HS Level BR",
+		"aliases": [
+			"6HSB"
+		]
+	},
+	{
+		"input": "jS Level 1",
+		"aliases": [
+			"jS",
+			"jS1"
+		]
+	},
+	{
+		"input": "jS Level 2",
+		"aliases": [
+			"jS2"
+		]
+	},
+	{
+		"input": "jS Level 3",
+		"aliases": [
+			"jS3"
+		]
+	},
+	{
+		"input": "jS Level BR",
+		"aliases": [
+			"jSB"
+		]
+	},
+	{
+		"input": "jHS Level 1",
+		"aliases": [
+			"jHS",
+			"jHS1"
+		]
+	},
+	{
+		"input": "jHS Level 2",
+		"aliases": [
+			"jHS2"
+		]
+	},
+	{
+		"input": "jHS Level 3",
+		"aliases": [
+			"jHS3"
+		]
+	},
+	{
+		"input": "jHS Level BR",
+		"aliases": [
+			"jHSB"
+		]
+	},
+	{
+		"input": "jD Level 1",
+		"aliases": [
+			"jD",
+			"jD1"
+		]
+	},
+	{
+		"input": "jD Level 2",
+		"aliases": [
+			"jD2"
+		]
+	},
+	{
+		"input": "jD Level 3",
+		"aliases": [
+			"jD3"
+		]
+	},
+	{
+		"input": "jD Level BR",
+		"aliases": [
+			"jDB"
+		]
+	},
+	{
+		"input": "粒雪（ざらめゆき）(236S)",
+		"aliases": [
+			"粒雪（ざらめゆき）",
+			"粒雪",
+			"ざらめゆき",
+			"236S"
+		]
+	},
+	{
+		"input": "前不香（ふきょう）(236K)",
+		"aliases": [
+			"前不香（ふきょう）",
+			"前不香",
+			"不香",
+			"まえふきょう",
+			"ふきょう",
+			"236K"
+		]
+	},
+	{
+		"input": "後ろ不香（ふきょう）(214K)",
+		"aliases": [
+			"後ろ不香（ふきょう）",
+			"後ろ不香",
+			"うしろふきょう",
+			"214K"
+		]
+	},
+	{
+		"input": "冠雪（かむりゆき）(214HS)",
+		"aliases": [
+			"冠雪（かむりゆき）",
+			"冠雪",
+			"かむりゆき",
+			"かんせつ",
+			"214HS"
+		]
+	},
+	{
+		"input": "垂雪（しずりゆき）(623HS)",
+		"aliases": [
+			"垂雪（しずりゆき）",
+			"垂雪",
+			"しずりゆき",
+			"623HS"
+		]
+	},
+	{
+		"input": "垂雪（しずりゆき）追撃(623HSHS)",
+		"aliases": [
+			"垂雪（しずりゆき）追撃",
+			"垂雪追撃",
+			"しずりゆきついげき",
+			"623HSHS"
+		]
+	},
+	{
+		"input": "Bloodsucking Universe(623P)",
+		"aliases": [
+			"Bloodsucking Universe",
+			"623P",
+			"コマ投げ",
+			"bsu",
+			"吸血"
+		]
+	},
+	{
+		"input": "忘れ雪（わすれゆき）(632146S)",
+		"aliases": [
+			"忘れ雪（わすれゆき）",
+			"忘れ雪",
+			"わすれゆき",
+			"632146S",
+			"覚醒1",
+			"無敵覚醒"
+		]
+	},
+	{
+		"input": "残雪（ざんせつ）(632146HS)",
+		"aliases": [
+			"残雪（ざんせつ）",
+			"残雪",
+			"ざんせつ",
+			"632146HS",
+			"ホームラン",
+			"覚醒2"
+		]
+	},
+	{
+		"input": "ブラッドレイジ化",
+		"aliases": [
+			"ブラッドレイジ化",
+			"Mask Off",
+			"Maskoff"
+		]
+	},
+	{
+		"input": "ブラッドレイジ解除",
+		"aliases": [
+			"ブラッドレイジ解除",
+			"Mask On",
+			"Maskon"
+		]
+	},
+	{
+		"input": "投げ(6D or 4D)",
+		"aliases": [
+			"投げ",
+			"6D or 4D",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "空投げ(j6D or j4D)",
+		"aliases": [
+			"空投げ",
+			"j6D or j4D",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "ワイルドアサルト(236D)",
+		"aliases": [
+			"ワイルドアサルト",
+			"236D",
+			"WA"
+		]
+	},
+	{
+		"input": "溜めワイルドアサルト(236[D])",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"236[D]",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]

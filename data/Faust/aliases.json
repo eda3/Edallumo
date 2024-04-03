@@ -1,37 +1,313 @@
-[	
-	{"input":"5P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト","ためダスト","溜めダスト"]},
-	{"input":"突きます。(41236K)","aliases":["突きます。","41236K","Stab","Scalpel"]},
-	{"input":"引き戻し(41236K 4)","aliases":["引き戻し","41236K 4","Pull","41236K4"]},
-	{"input":"ナイスショット(41236K 4 H)","aliases":["ナイスショット","41236K 4 H","Bat","Swing","Bat Swing","41236K4HS"]},
-	{"input":"何が出るかな？(236P)","aliases":["何が出るかな？","236P","Item Throw","Item","IT","22P","Spit"]},
-	{"input":"何が出るかな？(236[P])","aliases":["何が出るかな？","236[P]","Item Eat","Eat","IE","236P!"]},
-	{"input":"涅和混練(236S)","aliases":["涅和混練","236S","Tornado","Beyblade","BB","MMM"]},
-	{"input":"空中Mix Mix Mix(j236S)","aliases":["空中Mix Mix Mix","j236S","空中Tornado","空中Beyblade","JBB","AMMM","JMMM"]},
-	{"input":"メッタ刈り(236HS)","aliases":["メッタ刈り","236HS","Haircut","Afro Grab","Command Grab"]},
-	{"input":"愛(j236P)","aliases":["愛","j236P","Head Throw","HT"]},
-	{"input":"愛アフロ(j236P (With Afro))","aliases":["愛アフロ","Afro Throw","LA","AT"]},
-	{"input":"P久延毘古(214P)","aliases":["P久延毘古","214P","P Scarecrow","Front Teleport","FT"]},
-	{"input":"K久延毘古(214K)","aliases":["K久延毘古","214K","Scarecrow Back","Back Teleport","Crossup Teleport","BT","CT"]},
-	{"input":"S久延毘古(214S)","aliases":["S久延毘古","214S","Scarecrow Overhead","Overhead Teleport","Overhead","OT"]},
-	{"input":"エキサイティング骨折(632146HS)","aliases":["エキサイティング骨折","632146HS","Bone Crushing Excitement","Wheelchair Super","Clover Super","Wheelchair","Clover","WS","覚醒1","無敵覚醒"]},
-	{"input":"な・な・な・なにがでるかな？(236236P)","aliases":["な・な・な・なにがでるかな？","236236P","Item Super","Item Throw Super","5 Items","IS","ITS","5I","覚醒2"]},
-	{"input":"な・な・な・な・な・な・な・な・な・なにがでるかな？(236236236P)","aliases":["な・な・な・な・な・な・な・な・な・なにがでるかな？","236236236P","10 Items","10 Item Super","10 Item Throw Super","10I","10IS","10ITS","覚醒3"]},
-	{"input":"爆弾","aliases":["爆弾"]},
-	{"input":"バナナ","aliases":["バナナ"]},
-	{"input":"バナナ","aliases":["バナナ"]},
-	{"input":"アフロ","aliases":["アフロ"]},
-	{"input":"ハンマー","aliases":["ハンマー"]},
-	{"input":"ちびファウスト","aliases":["ちびファウスト"]},
-	{"input":"100t重り","aliases":["100t重り","Weight"]},
-	{"input":"Earthquake","aliases":["Earthquake","Quake"]},
-	{"input":"ラッパ","aliases":["ラッパ","Trumpet"]},
-	{"input":"メテオ","aliases":["メテオ","Meteor"]},
-	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
-	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
-	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
-	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
+[
+	{
+		"input": "5P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "突きます。(41236K)",
+		"aliases": [
+			"突きます。",
+			"41236K",
+			"Stab",
+			"Scalpel"
+		]
+	},
+	{
+		"input": "引き戻し(41236K 4)",
+		"aliases": [
+			"引き戻し",
+			"41236K 4",
+			"Pull",
+			"41236K4"
+		]
+	},
+	{
+		"input": "ナイスショット(41236K 4 H)",
+		"aliases": [
+			"ナイスショット",
+			"41236K 4 H",
+			"Bat",
+			"Swing",
+			"Bat Swing",
+			"41236K4HS"
+		]
+	},
+	{
+		"input": "何が出るかな？(236P)",
+		"aliases": [
+			"何が出るかな？",
+			"236P",
+			"Item Throw",
+			"Item",
+			"IT",
+			"22P",
+			"Spit"
+		]
+	},
+	{
+		"input": "何が出るかな？(236[P])",
+		"aliases": [
+			"何が出るかな？",
+			"236[P]",
+			"Item Eat",
+			"Eat",
+			"IE",
+			"236P!"
+		]
+	},
+	{
+		"input": "涅和混練(236S)",
+		"aliases": [
+			"涅和混練",
+			"236S",
+			"Tornado",
+			"Beyblade",
+			"BB",
+			"MMM"
+		]
+	},
+	{
+		"input": "空中Mix Mix Mix(j236S)",
+		"aliases": [
+			"空中Mix Mix Mix",
+			"j236S",
+			"空中Tornado",
+			"空中Beyblade",
+			"JBB",
+			"AMMM",
+			"JMMM"
+		]
+	},
+	{
+		"input": "メッタ刈り(236HS)",
+		"aliases": [
+			"メッタ刈り",
+			"236HS",
+			"Haircut",
+			"Afro Grab",
+			"Command Grab"
+		]
+	},
+	{
+		"input": "愛(j236P)",
+		"aliases": [
+			"愛",
+			"j236P",
+			"Head Throw",
+			"HT"
+		]
+	},
+	{
+		"input": "愛アフロ(j236P (With Afro))",
+		"aliases": [
+			"愛アフロ",
+			"Afro Throw",
+			"LA",
+			"AT"
+		]
+	},
+	{
+		"input": "P久延毘古(214P)",
+		"aliases": [
+			"P久延毘古",
+			"214P",
+			"P Scarecrow",
+			"Front Teleport",
+			"FT"
+		]
+	},
+	{
+		"input": "K久延毘古(214K)",
+		"aliases": [
+			"K久延毘古",
+			"214K",
+			"Scarecrow Back",
+			"Back Teleport",
+			"Crossup Teleport",
+			"BT",
+			"CT"
+		]
+	},
+	{
+		"input": "S久延毘古(214S)",
+		"aliases": [
+			"S久延毘古",
+			"214S",
+			"Scarecrow Overhead",
+			"Overhead Teleport",
+			"Overhead",
+			"OT"
+		]
+	},
+	{
+		"input": "エキサイティング骨折(632146HS)",
+		"aliases": [
+			"エキサイティング骨折",
+			"632146HS",
+			"Bone Crushing Excitement",
+			"Wheelchair Super",
+			"Clover Super",
+			"Wheelchair",
+			"Clover",
+			"WS",
+			"覚醒1",
+			"無敵覚醒"
+		]
+	},
+	{
+		"input": "な・な・な・なにがでるかな？(236236P)",
+		"aliases": [
+			"な・な・な・なにがでるかな？",
+			"236236P",
+			"Item Super",
+			"Item Throw Super",
+			"5 Items",
+			"IS",
+			"ITS",
+			"5I",
+			"覚醒2"
+		]
+	},
+	{
+		"input": "な・な・な・な・な・な・な・な・な・なにがでるかな？(236236236P)",
+		"aliases": [
+			"な・な・な・な・な・な・な・な・な・なにがでるかな？",
+			"236236236P",
+			"10 Items",
+			"10 Item Super",
+			"10 Item Throw Super",
+			"10I",
+			"10IS",
+			"10ITS",
+			"覚醒3"
+		]
+	},
+	{
+		"input": "爆弾",
+		"aliases": [
+			"爆弾"
+		]
+	},
+	{
+		"input": "バナナ",
+		"aliases": [
+			"バナナ"
+		]
+	},
+	{
+		"input": "バナナ",
+		"aliases": [
+			"バナナ"
+		]
+	},
+	{
+		"input": "アフロ",
+		"aliases": [
+			"アフロ"
+		]
+	},
+	{
+		"input": "ハンマー",
+		"aliases": [
+			"ハンマー"
+		]
+	},
+	{
+		"input": "ちびファウスト",
+		"aliases": [
+			"ちびファウスト"
+		]
+	},
+	{
+		"input": "100t重り",
+		"aliases": [
+			"100t重り",
+			"Weight"
+		]
+	},
+	{
+		"input": "Earthquake",
+		"aliases": [
+			"Earthquake",
+			"Quake"
+		]
+	},
+	{
+		"input": "ラッパ",
+		"aliases": [
+			"ラッパ",
+			"Trumpet"
+		]
+	},
+	{
+		"input": "メテオ",
+		"aliases": [
+			"メテオ",
+			"Meteor"
+		]
+	},
+	{
+		"input": "6D or 4D",
+		"aliases": [
+			"投げ",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "j6D or j4D",
+		"aliases": [
+			"空投げ",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "236D",
+		"aliases": [
+			"ワイルドアサルト",
+			"WA"
+		]
+	},
+	{
+		"input": "236[D]",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]

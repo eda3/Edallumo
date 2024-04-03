@@ -1,24 +1,198 @@
 [
-	{"input":"2P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"疾(236P)","aliases":["疾","236P"]},
-	{"input":"水月のハコビ(236K)","aliases":["水月のハコビ","236K","水月","くるくる","クルクル"]},
-	{"input":"紅(236S)","aliases":["紅","236S"]},
-	{"input":"風神(236HS)","aliases":["風神","236HS"]},
-	{"input":"針・壱式(236H P)","aliases":["針・壱式","236H P","236HSP","しん","シン","針"]},
-	{"input":"一足飛び(236H K)","aliases":["一足飛び","236H K","236HSK"]},
-	{"input":"凪刃(236H S)","aliases":["凪刃","236H S","236HSS","なぎは","ナギハ"]},
-	{"input":"臨(236H H)","aliases":["臨","236H H","236HSHS","りん","リン"]},
-	{"input":"乱(236K~214P)","aliases":["乱","236K~214P","236214P","乱れ","みだれ","ミダレ"]},
-	{"input":"一誠奥義「彩」(632146HS)","aliases":["一誠奥義「彩」","632146HS","さい","サイ","彩","覚醒1"]},
-	{"input":"花鳥風月改(632146S)","aliases":["花鳥風月改","632146S","花鳥風月","無敵覚醒","覚醒2"]},
-	{"input":"花鳥風月近(632146S Attack Near)","aliases":["花鳥風月近","632146S Attack Near","Near Parry","Near Parry Super","NKFK","NP","NPS"]},
-	{"input":"花鳥風月遠(632146S Attack Far)","aliases":["花鳥風月遠","632146S Attack Far","Far Parry","Far Parry Super","FKFK","FP","FPS"]},
-	{"input":"投げ(6D or 4D)","aliases":["投げ","6D or 4D","6D","4D"]},
-	{"input":"空投げ(j6D or j4D)","aliases":["空投げ","j6D or j4D","J6D","J4D"]},
-	{"input":"ワイルドアサルト(236D)","aliases":["ワイルドアサルト","236D","WA"]},
-	{"input":"溜めワイルドアサルト(236[D])","aliases":["溜めワイルドアサルト","236[D]","WAH","WA!","236D!"]}
+	{
+		"input": "2P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "疾(236P)",
+		"aliases": [
+			"疾",
+			"236P"
+		]
+	},
+	{
+		"input": "水月のハコビ(236K)",
+		"aliases": [
+			"水月のハコビ",
+			"236K",
+			"水月",
+			"くるくる",
+			"クルクル"
+		]
+	},
+	{
+		"input": "紅(236S)",
+		"aliases": [
+			"紅",
+			"236S"
+		]
+	},
+	{
+		"input": "風神(236HS)",
+		"aliases": [
+			"風神",
+			"236HS"
+		]
+	},
+	{
+		"input": "針・壱式(236H P)",
+		"aliases": [
+			"針・壱式",
+			"236H P",
+			"236HSP",
+			"しん",
+			"シン",
+			"針"
+		]
+	},
+	{
+		"input": "一足飛び(236H K)",
+		"aliases": [
+			"一足飛び",
+			"236H K",
+			"236HSK"
+		]
+	},
+	{
+		"input": "凪刃(236H S)",
+		"aliases": [
+			"凪刃",
+			"236H S",
+			"236HSS",
+			"なぎは",
+			"ナギハ"
+		]
+	},
+	{
+		"input": "臨(236H H)",
+		"aliases": [
+			"臨",
+			"236H H",
+			"236HSHS",
+			"りん",
+			"リン"
+		]
+	},
+	{
+		"input": "乱(236K~214P)",
+		"aliases": [
+			"乱",
+			"236K~214P",
+			"236214P",
+			"乱れ",
+			"みだれ",
+			"ミダレ"
+		]
+	},
+	{
+		"input": "一誠奥義「彩」(632146HS)",
+		"aliases": [
+			"一誠奥義「彩」",
+			"632146HS",
+			"さい",
+			"サイ",
+			"彩",
+			"覚醒1"
+		]
+	},
+	{
+		"input": "花鳥風月改(632146S)",
+		"aliases": [
+			"花鳥風月改",
+			"632146S",
+			"花鳥風月",
+			"無敵覚醒",
+			"覚醒2"
+		]
+	},
+	{
+		"input": "花鳥風月近(632146S Attack Near)",
+		"aliases": [
+			"花鳥風月近",
+			"632146S Attack Near",
+			"Near Parry",
+			"Near Parry Super",
+			"NKFK",
+			"NP",
+			"NPS"
+		]
+	},
+	{
+		"input": "花鳥風月遠(632146S Attack Far)",
+		"aliases": [
+			"花鳥風月遠",
+			"632146S Attack Far",
+			"Far Parry",
+			"Far Parry Super",
+			"FKFK",
+			"FP",
+			"FPS"
+		]
+	},
+	{
+		"input": "投げ(6D or 4D)",
+		"aliases": [
+			"投げ",
+			"6D or 4D",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "空投げ(j6D or j4D)",
+		"aliases": [
+			"空投げ",
+			"j6D or j4D",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "ワイルドアサルト(236D)",
+		"aliases": [
+			"ワイルドアサルト",
+			"236D",
+			"WA"
+		]
+	},
+	{
+		"input": "溜めワイルドアサルト(236[D])",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"236[D]",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]

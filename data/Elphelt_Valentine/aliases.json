@@ -1,27 +1,198 @@
 [
-	{"input":"5P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"2P","aliases":["最速2"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"236S","aliases":["Missシャルロット","S Miss Charlotte","Fireball","FB","MC"]},
-	{"input":"236HS","aliases":["HSMissシャルロット","H Miss Charlotte","Heavy Fireball","HFB","HMC"]},
-	{"input":"214K","aliases":["Missシャルロット（お手入れ不足）","Buttslam","BS","MCOR"]},
-	{"input":"214HS","aliases":["ボンボン・ショコラ","Grenade","BBC"]},
-	{"input":"214S","aliases":["やります！","Rekka","Rekka 1","R1","HIG"]},
-	{"input":"214S~P","aliases":["上から！","Overhead","Rekka 2","R2","UH","214SP"]},
-	{"input":"214S~K","aliases":["下から！","Low","Rekka 3","R3","DL","214SK"]},
-	{"input":"214S~P/K~P","aliases":["上から！（上から！の後 or 下から！の後）","214SPP","214SKP"]},
-	{"input":"214S~P/K~K","aliases":["下から！（上から！の後 or 下から！の後）","214SPK","214SKK"]},
-	{"input":"214S~H","aliases":["決めます！","214SHS"]},
-	{"input":"j236S","aliases":["空中SMissシャルロット"]},
-	{"input":"j236HS","aliases":["空中HMissシャルロット"]},
-	{"input":"236236K","aliases":["ボンボニエール","BB"]},
-	{"input":"236236K Explosion","aliases":["ボンボニエール爆発","BBE"]},
-	{"input":"632146HS","aliases":["ジュガント ダ パルフェーオ"]},
-	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
-	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
-	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
-	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
+	{
+		"input": "5P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "2P",
+		"aliases": [
+			"最速2"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "236S",
+		"aliases": [
+			"Missシャルロット",
+			"S Miss Charlotte",
+			"Fireball",
+			"FB",
+			"MC"
+		]
+	},
+	{
+		"input": "236HS",
+		"aliases": [
+			"HSMissシャルロット",
+			"H Miss Charlotte",
+			"Heavy Fireball",
+			"HFB",
+			"HMC"
+		]
+	},
+	{
+		"input": "214K",
+		"aliases": [
+			"Missシャルロット（お手入れ不足）",
+			"Buttslam",
+			"BS",
+			"MCOR"
+		]
+	},
+	{
+		"input": "214HS",
+		"aliases": [
+			"ボンボン・ショコラ",
+			"Grenade",
+			"BBC"
+		]
+	},
+	{
+		"input": "214S",
+		"aliases": [
+			"やります！",
+			"Rekka",
+			"Rekka 1",
+			"R1",
+			"HIG"
+		]
+	},
+	{
+		"input": "214S~P",
+		"aliases": [
+			"上から！",
+			"Overhead",
+			"Rekka 2",
+			"R2",
+			"UH",
+			"214SP"
+		]
+	},
+	{
+		"input": "214S~K",
+		"aliases": [
+			"下から！",
+			"Low",
+			"Rekka 3",
+			"R3",
+			"DL",
+			"214SK"
+		]
+	},
+	{
+		"input": "214S~P/K~P",
+		"aliases": [
+			"上から！（上から！の後 or 下から！の後）",
+			"214SPP",
+			"214SKP"
+		]
+	},
+	{
+		"input": "214S~P/K~K",
+		"aliases": [
+			"下から！（上から！の後 or 下から！の後）",
+			"214SPK",
+			"214SKK"
+		]
+	},
+	{
+		"input": "214S~H",
+		"aliases": [
+			"決めます！",
+			"214SHS"
+		]
+	},
+	{
+		"input": "j236S",
+		"aliases": [
+			"空中SMissシャルロット"
+		]
+	},
+	{
+		"input": "j236HS",
+		"aliases": [
+			"空中HMissシャルロット"
+		]
+	},
+	{
+		"input": "236236K",
+		"aliases": [
+			"ボンボニエール",
+			"BB"
+		]
+	},
+	{
+		"input": "236236K Explosion",
+		"aliases": [
+			"ボンボニエール爆発",
+			"BBE"
+		]
+	},
+	{
+		"input": "632146HS",
+		"aliases": [
+			"ジュガント ダ パルフェーオ"
+		]
+	},
+	{
+		"input": "6D or 4D",
+		"aliases": [
+			"投げ",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "j6D or j4D",
+		"aliases": [
+			"空投げ",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "236D",
+		"aliases": [
+			"ワイルドアサルト",
+			"WA"
+		]
+	},
+	{
+		"input": "236[D]",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]

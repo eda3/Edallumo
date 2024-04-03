@@ -1,30 +1,229 @@
-[	
-	{"input":"2P","aliases":["最速","最速1"]},
-       {"input":"遠S","aliases":["fS"]},
-	{"input":"近S","aliases":["5S","cS"]},
-	{"input":"2D","aliases":["足払い"]},
-	{"input":"5[D]","aliases":["5D!","ためダスト","溜めダスト"]},
-	{"input":"214HS","aliases":["燕穿牙","えんせんが"]},
-	{"input":"214[P/K/S]","aliases":["ミストファイナー構え","214K!","214P!","214S!","MF"]},
-	{"input":"214]K[","aliases":["Kミストファイナー","214K","Mist Finer","MFH","MFK"]},
-	{"input":"214]P[","aliases":["Pミストファイナー","214P","Mist Finer Up","MFU","MFP"]},
-	{"input":"214]S[","aliases":["Sミストファイナー","214S","Mist Finer Down","MFD","MFS"]},
-	{"input":"236HS","aliases":["跳躍"]},
-	{"input":"236HSHS","aliases":["空中ディール","Flip Card","VD","FC"]},
-	{"input":"236P/K/S","aliases":["ディール","Card","236P","236K","236S"]},
-	{"input":"Card hit by Mist Finer","aliases":["ミストファイナー（カードヒット時）","Card Cut,","TU","CC"]},
-	{"input":"HS or D","aliases":["ミストファイナーキャンセル","MFC"]},
-	{"input":"j214[P/K/S]","aliases":["空中ミストファイナー構え","j214P!","j214K!","j214S!"]},
-	{"input":"j214]K[","aliases":["空中Kミストファイナー","j214K","AMFH","AMFK"]},
-	{"input":"j214]P[","aliases":["空中Pミストファイナー","j214k","AMFU","AMFP"]},
-	{"input":"j214]S[","aliases":["空中Sミストファイナー","j214k","AMFD","AMFK","Overhead"]},
-	{"input":"j236HS","aliases":["空中ディール"]},
-	{"input":"Mist Finer 44","aliases":["ミストファイナー構え後ろステップ","MFBS"]},
-	{"input":"Mist Finer 66","aliases":["ミストファイナー構え前ステップ","MFFS"]},
-	{"input":"236236S","aliases":["ジョーカートリック","Card Super","JT","CS"]},
-	{"input":"632146HS","aliases":["それが俺の名だ","Super"]},
-	{"input":"6D or 4D","aliases":["投げ","6D","4D"]},
-	{"input":"j6D or j4D","aliases":["空投げ","J6D","J4D"]},
-	{"input":"236D","aliases":["ワイルドアサルト","WA"]},
-	{"input":"236[D]","aliases":["溜めワイルドアサルト","WAH","WA!","236D!"]}
+[
+	{
+		"input": "2P",
+		"aliases": [
+			"最速",
+			"最速1"
+		]
+	},
+	{
+		"input": "遠S",
+		"aliases": [
+			"fS"
+		]
+	},
+	{
+		"input": "近S",
+		"aliases": [
+			"5S",
+			"cS"
+		]
+	},
+	{
+		"input": "2D",
+		"aliases": [
+			"足払い"
+		]
+	},
+	{
+		"input": "5[D]",
+		"aliases": [
+			"5D!",
+			"ためダスト",
+			"溜めダスト"
+		]
+	},
+	{
+		"input": "214HS",
+		"aliases": [
+			"燕穿牙",
+			"えんせんが"
+		]
+	},
+	{
+		"input": "214[P/K/S]",
+		"aliases": [
+			"ミストファイナー構え",
+			"214K!",
+			"214P!",
+			"214S!",
+			"MF"
+		]
+	},
+	{
+		"input": "214]K[",
+		"aliases": [
+			"Kミストファイナー",
+			"214K",
+			"Mist Finer",
+			"MFH",
+			"MFK"
+		]
+	},
+	{
+		"input": "214]P[",
+		"aliases": [
+			"Pミストファイナー",
+			"214P",
+			"Mist Finer Up",
+			"MFU",
+			"MFP"
+		]
+	},
+	{
+		"input": "214]S[",
+		"aliases": [
+			"Sミストファイナー",
+			"214S",
+			"Mist Finer Down",
+			"MFD",
+			"MFS"
+		]
+	},
+	{
+		"input": "236HS",
+		"aliases": [
+			"跳躍"
+		]
+	},
+	{
+		"input": "236HSHS",
+		"aliases": [
+			"空中ディール",
+			"Flip Card",
+			"VD",
+			"FC"
+		]
+	},
+	{
+		"input": "236P/K/S",
+		"aliases": [
+			"ディール",
+			"Card",
+			"236P",
+			"236K",
+			"236S"
+		]
+	},
+	{
+		"input": "Card hit by Mist Finer",
+		"aliases": [
+			"ミストファイナー（カードヒット時）",
+			"Card Cut,",
+			"TU",
+			"CC"
+		]
+	},
+	{
+		"input": "HS or D",
+		"aliases": [
+			"ミストファイナーキャンセル",
+			"MFC"
+		]
+	},
+	{
+		"input": "j214[P/K/S]",
+		"aliases": [
+			"空中ミストファイナー構え",
+			"j214P!",
+			"j214K!",
+			"j214S!"
+		]
+	},
+	{
+		"input": "j214]K[",
+		"aliases": [
+			"空中Kミストファイナー",
+			"j214K",
+			"AMFH",
+			"AMFK"
+		]
+	},
+	{
+		"input": "j214]P[",
+		"aliases": [
+			"空中Pミストファイナー",
+			"j214k",
+			"AMFU",
+			"AMFP"
+		]
+	},
+	{
+		"input": "j214]S[",
+		"aliases": [
+			"空中Sミストファイナー",
+			"j214k",
+			"AMFD",
+			"AMFK",
+			"Overhead"
+		]
+	},
+	{
+		"input": "j236HS",
+		"aliases": [
+			"空中ディール"
+		]
+	},
+	{
+		"input": "Mist Finer 44",
+		"aliases": [
+			"ミストファイナー構え後ろステップ",
+			"MFBS"
+		]
+	},
+	{
+		"input": "Mist Finer 66",
+		"aliases": [
+			"ミストファイナー構え前ステップ",
+			"MFFS"
+		]
+	},
+	{
+		"input": "236236S",
+		"aliases": [
+			"ジョーカートリック",
+			"Card Super",
+			"JT",
+			"CS"
+		]
+	},
+	{
+		"input": "632146HS",
+		"aliases": [
+			"それが俺の名だ",
+			"Super"
+		]
+	},
+	{
+		"input": "6D or 4D",
+		"aliases": [
+			"投げ",
+			"6D",
+			"4D"
+		]
+	},
+	{
+		"input": "j6D or j4D",
+		"aliases": [
+			"空投げ",
+			"J6D",
+			"J4D"
+		]
+	},
+	{
+		"input": "236D",
+		"aliases": [
+			"ワイルドアサルト",
+			"WA"
+		]
+	},
+	{
+		"input": "236[D]",
+		"aliases": [
+			"溜めワイルドアサルト",
+			"WAH",
+			"WA!",
+			"236D!"
+		]
+	}
 ]
