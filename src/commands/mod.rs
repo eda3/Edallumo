@@ -1,9 +1,9 @@
 pub mod feedback;
-pub mod frames;
 pub mod fmeter;
+pub mod frames;
 pub mod help;
 pub mod hitboxes;
-pub mod nicknames;
 pub mod moves;
+pub mod nicknames;
 pub mod register;
 pub mod update;
