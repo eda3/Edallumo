@@ -50,8 +50,6 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
     // Ino low profile
     chara_response_json = chara_response_json.replace(r#" &lt;span class=&quot;tooltip&quot; &gt;Low Profile&lt;span class=&quot;tooltiptext&quot; style=&quot;&quot;&gt;When a character's hurtbox is entirely beneath an opponent's attack. This can be caused by crouching, certain moves, and being short.&lt;/span&gt;&lt;/span&gt;"#, "");
 
-
-    // ミリア
     chara_response_json = chara_response_json
         .replace(r#""All""#, r#""上段""#)
         .replace(r#""High""#, r#""中段""#)
