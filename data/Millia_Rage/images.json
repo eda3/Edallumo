@@ -91,8 +91,7 @@
     "move_img": "https://www.dustloop.com/wiki/images/6/62/GGST_Millia_Rage_6P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b4/GGST_Millia_Rage_6P_Startup_Hitbox.png",
-      "https://www.dustloop.com/wiki/images/a/ad/GGST_Millia_Rage_6P_Hitbox_1.png",
-      "https://www.dustloop.com/wiki/images/7/70/GGST_Millia_Rage_6P_Hitbox_2.png"
+      "https://www.dustloop.com/wiki/images/a/ad/GGST_Millia_Rage_6P_Hitbox_1.png"
     ]
   },
   {
@@ -105,7 +104,7 @@
   },
   {
     "input": "遠S",
-    "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Millia_Rage_遠S.png",
+    "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Millia_Rage_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/3c/GGST_Millia_Rage_fS_Hitbox.png"
     ]
@@ -119,7 +118,7 @@
     ]
   },
   {
-    "input": "jHS",
+    "input": "jH",
     "move_img": "https://www.dustloop.com/wiki/images/d/d0/GGST_Millia_Rage_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0d/GGST_Millia_Rage_j.H_1_Hitbox.png",
@@ -150,31 +149,42 @@
     ]
   },
   {
-    "input": "ワイルドアサルト(236D)",
+    "input": "Wild Assault(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Millia_Rage_236D.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "236[D]",
+    "input": "Wild Assault (Hold)(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Millia_Rage_236D.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "投げ(6D or 4D)",
+    "input": "Ground Throw(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/8/82/GGST_Millia_Rage_Ground_Throw.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "空投げ(j6D or j4D)",
+    "input": "Air Throw(j6D or j.4D)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b1/GGST_Millia_Rage_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/87/GGST_Millia_Rage_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "アルテミス(214HS)",
+    "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_Millia_Rage_214H.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/3/38/GGST_Millia_Rage_214H_Hitbox_1.png",
+      "https://www.dustloop.com/wiki/images/3/33/GGST_Millia_Rage_214H_Hitbox_2.png",
+      "https://www.dustloop.com/wiki/images/4/46/GGST_Millia_Rage_214H_Hitbox_3.png",
+      "https://www.dustloop.com/wiki/images/2/2c/GGST_Millia_Rage_214H_Hitbox_4.png",
+      "https://www.dustloop.com/wiki/images/8/80/GGST_Millia_Rage_214H_Hitbox_5.png"
     ]
   },
   {
@@ -201,7 +211,7 @@
     ]
   },
   {
-    "input": "214S (3-Hit)",
+    "input": "3-Hit(214S (3-Hit))",
     "move_img": "https://www.dustloop.com/wiki/images/7/72/GGST_Millia_Rage_Lust_Shaker.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f4/GGST_Millia_Rage_Lust_Shaker_1_Hitbox.png",
@@ -209,7 +219,7 @@
     ]
   },
   {
-    "input": "214S (6-Hit)",
+    "input": "6-Hit(214S (6-Hit))",
     "move_img": "https://www.dustloop.com/wiki/images/7/72/GGST_Millia_Rage_Lust_Shaker.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f4/GGST_Millia_Rage_Lust_Shaker_1_Hitbox.png",
@@ -217,7 +227,7 @@
     ]
   },
   {
-    "input": "214S (9-Hit)",
+    "input": "9-Hit(214S (9-Hit))",
     "move_img": "https://www.dustloop.com/wiki/images/7/72/GGST_Millia_Rage_Lust_Shaker.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f4/GGST_Millia_Rage_Lust_Shaker_1_Hitbox.png",
@@ -232,14 +242,14 @@
     ]
   },
   {
-    "input": "Sタンデム(236S)",
+    "input": "S Tandem Top(236S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Millia_Rage_Tandem_Top_Full.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/1e/GGST_Millia_Rage_Tandem_Top_S_Hitbox.png"
     ]
   },
   {
-    "input": "カピエル(j236HS)",
+    "input": "カピエル(j236H)",
     "move_img": "https://www.dustloop.com/wiki/images/7/70/GGST_Millia_Rage_Kapel.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/83/GGST_Millia_Rage_Kapel_1_Hitbox.png",
@@ -274,17 +284,6 @@
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/17/GGST_Millia_Rage_632146H_1_Hitbox.png",
       "https://www.dustloop.com/wiki/images/1/15/GGST_Millia_Rage_632146H_2_Hitbox.png"
-    ]
-  },
-  {
-    "input": "アルテミス(214HS)",
-    "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_Millia_Rage_214H.png",
-    "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/3/38/GGST_Millia_Rage_214H_Hitbox_1.png",
-      "https://www.dustloop.com/wiki/images/3/33/GGST_Millia_Rage_214H_Hitbox_2.png",
-      "https://www.dustloop.com/wiki/images/4/46/GGST_Millia_Rage_214H_Hitbox_3.png",
-      "https://www.dustloop.com/wiki/images/2/2c/GGST_Millia_Rage_214H_Hitbox_4.png",
-      "https://www.dustloop.com/wiki/images/8/80/GGST_Millia_Rage_214H_Hitbox_5.png"
     ]
   }
 ]

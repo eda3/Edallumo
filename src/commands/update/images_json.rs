@@ -1,5 +1,6 @@
 use crate::{ImageLinks, CHARS};
 use md5::{Digest, Md5};
+use regex::Regex;
 use serde::Deserialize;
 use std::fs::File;
 use std::io::Write;
@@ -29,8 +30,44 @@ struct Imagetitle {
 
 const IMAGE_HALF: &str = "https://www.dustloop.com/wiki/images";
 
-pub async fn images_to_json(char_images_response_json: String, mut file: &File, char_count: usize) {
-    let mut imagedata: Imageresponse = serde_json::from_str(&char_images_response_json).unwrap();
+pub async fn images_to_json(mut chara_response_json: String, mut file: &File, char_count: usize) {
+    let mut re = Regex::new(r#""c.S""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""近S""#).to_string();
+
+    re = Regex::new(r#""f.S""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""遠S""#).to_string();
+
+    // re = Regex::new(r#"H""#).unwrap();
+    // chara_response_json = re
+        // .replace_all(&chara_response_json, r#"HS""#)
+        // .to_string();
+
+    re = Regex::new(r#""j\.(.+?)""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
+
+    chara_response_json = chara_response_json
+        .replace(r#""2H""#, r#""2HS""#)
+        .replace(r#""5H""#, r#""5HS""#)
+        .replace(r#""6H""#, r#""6HS""#)
+        .replace(r#""236H""#, r#""236HS""#)
+        .replace(r#""623H""#, r#""623HS""#)
+        .replace(r#""214H""#, r#""214HS""#)
+        .replace(r#""41236H""#, r#""41236HS""#)
+        .replace(r#""632146H""#, r#""632146HS""#)
+        .replace(r#""236236H""#, r#""236236HS""#)
+        .replace(r#""Tandem Top""#, r#""Sタンデム""#)
+        .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
+        .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
+        .replace(r#""Iron Savior""#, r#""アイアンセイバー""#)
+        .replace(r#""Bad Moon""#, r#""バッドムーン""#)
+        .replace(r#""Turbo Fall""#, r#""高速落下""#)
+        .replace(r#""Mirazh""#, r#""ミラーシュ""#)
+        .replace(r#""Kapel""#, r#""カピエル""#)
+        .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#)
+        .replace(r#""Winger""#, r#""ヴィンガー""#)
+        .replace(r#""Artemis""#, r#""アルテミス""#);
+
+    let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
 
     for x in 0..imagedata.cargoquery.len() {
         // Variable that the produced hitbox links will reside
@@ -208,14 +245,34 @@ pub async fn images_to_json(char_images_response_json: String, mut file: &File, 
             }
         }
 
-        // Serializing image data
-        let processed_imagedata = serde_json::to_string_pretty(&ImageLinks {
-            input: imagedata.cargoquery[x]
+        let input_str = imagedata.cargoquery[x]
+            .title
+            .input
+            .as_ref()
+            .unwrap()
+            .to_string();
+        let mut input_name = String::new();
+
+        if [
+            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P", "近S",
+            "遠S", "jD", "jH", "jK", "jP", "jS",
+        ]
+        .contains(&input_str.as_str())
+        {
+            input_name = input_str;
+        } else {
+            let name_str = imagedata.cargoquery[x]
                 .title
-                .input
+                .name
                 .as_ref()
                 .unwrap()
-                .to_string(),
+                .to_string();
+            input_name = format!("{}({})", name_str, input_str);
+        }
+
+        // Serializing image data
+        let processed_imagedata = serde_json::to_string_pretty(&ImageLinks {
+            input: input_name.to_string(),
             move_img: image_link,
             hitbox_img: hitboxes_link,
         })

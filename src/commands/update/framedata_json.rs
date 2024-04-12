@@ -1,8 +1,8 @@
 use crate::{MoveInfo, CHARS};
+use regex::Regex;
 use serde::Deserialize;
 use std::fs::File;
 use std::io::Write;
-extern crate ureq;
 
 #[derive(Deserialize, Debug)]
 struct Response {
@@ -35,17 +35,55 @@ struct Title {
     counter: Option<String>,
 }
 
-pub async fn frames_to_json(
-    mut char_page_response_json: String,
-    mut file: &File,
-    char_count: usize,
-) {
-    char_page_response_json = char_page_response_json.replace(r#"&lt;br&gt;"#, ", ");
-    char_page_response_json = char_page_response_json.replace(r#"&lt;br/&gt;"#, ", ");
-    // Ino low profile
-    char_page_response_json = char_page_response_json.replace(r#" &lt;span class=&quot;tooltip&quot; &gt;Low Profile&lt;span class=&quot;tooltiptext&quot; style=&quot;&quot;&gt;When a character's hurtbox is entirely beneath an opponent's attack. This can be caused by crouching, certain moves, and being short.&lt;/span&gt;&lt;/span&gt;"#, "");
+pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, char_count: usize) {
+    let mut re = Regex::new(r#""c.S""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""近S""#).to_string();
 
-    let mut moves_info: Response = serde_json::from_str(&char_page_response_json).unwrap();
+    re = Regex::new(r#""f.S""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""遠S""#).to_string();
+
+    re = Regex::new(r#""j\.(.+?)""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
+
+    chara_response_json = chara_response_json.replace(r#"&lt;br&gt;"#, ", ");
+    chara_response_json = chara_response_json.replace(r#"&lt;br/&gt;"#, ", ");
+    // Ino low profile
+    chara_response_json = chara_response_json.replace(r#" &lt;span class=&quot;tooltip&quot; &gt;Low Profile&lt;span class=&quot;tooltiptext&quot; style=&quot;&quot;&gt;When a character's hurtbox is entirely beneath an opponent's attack. This can be caused by crouching, certain moves, and being short.&lt;/span&gt;&lt;/span&gt;"#, "");
+
+    // ミリア
+    chara_response_json = chara_response_json
+        .replace(r#""2H""#, r#""2HS""#)
+        .replace(r#""5H""#, r#""5HS""#)
+        .replace(r#""6H""#, r#""6HS""#)
+        .replace(r#""236H""#, r#""236HS""#)
+        .replace(r#""623H""#, r#""623HS""#)
+        .replace(r#""214H""#, r#""214HS""#)
+        .replace(r#""41236H""#, r#""41236HS""#)
+        .replace(r#""632146H""#, r#""632146HS""#)
+        .replace(r#""236236H""#, r#""236236HS""#)
+        .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
+        .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
+        .replace(r#""Ground Throw""#, r#""地上投げ""#)
+        .replace(r#""Air Throw""#, r#""空投げ""#)
+        .replace(r#""""#, r#""""#)
+        .replace(r#""""#, r#""""#)
+        .replace(r#""""#, r#""""#)
+        .replace(r#""Tandem Top""#, r#""Sタンデム""#)
+        .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
+        .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
+        .replace(r#""Iron Savior""#, r#""アイアンセイバー""#)
+        .replace(r#""Bad Moon""#, r#""バッドムーン""#)
+        .replace(r#""Turbo Fall""#, r#""高速落下""#)
+        .replace(r#""Mirazh""#, r#""ミラーシュ""#)
+        .replace(r#""Kapel""#, r#""カピエル""#)
+        .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#)
+        .replace(r#""Winger""#, r#""ヴィンガー""#)
+        .replace(r#""Artemis""#, r#""アルテミス""#);
+
+    re = Regex::new(r#""j\.(.+?)""#).unwrap();
+    chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
+
+    let mut moves_info: Response = serde_json::from_str(&chara_response_json).unwrap();
 
     for x in 0..moves_info.cargoquery.len() {
         // Replacing None values with a generic '-'
@@ -115,14 +153,34 @@ pub async fn frames_to_json(
             moves_info.cargoquery[x].title.counter = Some("-".to_string());
         }
 
-        // Serializing frame data
-        let processed_moves_info = serde_json::to_string(&MoveInfo {
-            input: moves_info.cargoquery[x]
+        let input_str = moves_info.cargoquery[x]
+            .title
+            .input
+            .as_ref()
+            .unwrap()
+            .to_string();
+        let mut input_name = String::new();
+
+        if [
+            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P", "近S",
+            "遠S", "jD", "jH", "jK", "jP", "jS",
+        ]
+        .contains(&input_str.as_str())
+        {
+            input_name = input_str;
+        } else {
+            let name_str = moves_info.cargoquery[x]
                 .title
-                .input
+                .name
                 .as_ref()
                 .unwrap()
-                .to_string(),
+                .to_string();
+            input_name = format!("{}({})", name_str, input_str);
+        }
+
+        // Serializing frame data
+        let processed_moves_info = serde_json::to_string(&MoveInfo {
+            input: input_name.to_string(),
             name: moves_info.cargoquery[x]
                 .title
                 .name

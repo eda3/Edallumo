@@ -1,4 +1,4 @@
-use crate::serenity::futures::{self, Stream, StreamExt};
+// use crate::serenity::futures::{self, Stream, StreamExt};
 use crate::{check, find, IMAGE_DEFAULT};
 use crate::{Context, Error, ImageLinks, MoveInfo};
 use colored::Colorize;

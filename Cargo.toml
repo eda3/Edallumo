@@ -19,6 +19,7 @@ ureq = { version = "2.9.0", features = ["charset"] }
 md-5 = "0.10.6"
 rand = "0.8.5"
 colored = "2.0.4"
+regex = "1.5.4"
 # Uncomment for debugging
 # tracing = "0.1.29"
 # tracing-subscriber = "0.3.3"
