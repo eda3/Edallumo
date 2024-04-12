@@ -50,11 +50,22 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
     // Ino low profile
     chara_response_json = chara_response_json.replace(r#" &lt;span class=&quot;tooltip&quot; &gt;Low Profile&lt;span class=&quot;tooltiptext&quot; style=&quot;&quot;&gt;When a character's hurtbox is entirely beneath an opponent's attack. This can be caused by crouching, certain moves, and being short.&lt;/span&gt;&lt;/span&gt;"#, "");
 
+
     // ミリア
     chara_response_json = chara_response_json
+        .replace(r#""All""#, r#""上段""#)
+        .replace(r#""High""#, r#""中段""#)
+        .replace(r#""Low""#, r#""下段""#)
+        .replace(r#""HKD "#, r#""強制ダウン"#)
+        .replace(r#""KD "#, r#""ダウン"#);
+
+    // ミリア
+    chara_response_json = chara_response_json
+        // .replace(r#""guard": "All""#, r#""guard": "上段""#)
         .replace(r#""2H""#, r#""2HS""#)
         .replace(r#""5H""#, r#""5HS""#)
         .replace(r#""6H""#, r#""6HS""#)
+        .replace(r#""jH""#, r#""jHS""#)
         .replace(r#""236H""#, r#""236HS""#)
         .replace(r#""623H""#, r#""623HS""#)
         .replace(r#""214H""#, r#""214HS""#)
@@ -63,11 +74,21 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""236236H""#, r#""236236HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
         .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
-        .replace(r#""Ground Throw""#, r#""地上投げ""#)
+        .replace(r#""Ground Throw""#, r#""投げ""#)
         .replace(r#""Air Throw""#, r#""空投げ""#)
-        .replace(r#""""#, r#""""#)
-        .replace(r#""""#, r#""""#)
-        .replace(r#""""#, r#""""#)
+        .replace(r#""Shitsu""#, r#""疾""#)
+        .replace(r#""Suigetsu No Hakobi""#, r#""水月のハコビ""#)
+        .replace(r#""Kou""#, r#""紅""#)
+        .replace(r#""Fuujin""#, r#""風神""#)
+        .replace(r#""Shin: Ichishiki""#, r#""針・壱式""#)
+        .replace(r#""Issokutobi""#, r#""一足飛び""#)
+        .replace(r#""Nagiha""#, r#""凪刃""#)
+        .replace(r#""Rin""#, r#""臨""#)
+        .replace(r#""Midare""#, r#""乱""#)
+        .replace(r#""Issei Ougi: Sai""#, r#""一誠奥義「彩」""#)
+        .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#)
+        .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#)
+        .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#)
         .replace(r#""Tandem Top""#, r#""Sタンデム""#)
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
@@ -162,8 +183,8 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         let mut input_name = String::new();
 
         if [
-            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P", "近S",
-            "遠S", "jD", "jH", "jK", "jP", "jS",
+            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P",
+            "近S", "遠S", "jD", "jH", "jK", "jP", "jS",
         ]
         .contains(&input_str.as_str())
         {

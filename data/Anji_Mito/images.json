@@ -109,7 +109,7 @@
     ]
   },
   {
-    "input": "jHS",
+    "input": "jH",
     "move_img": "https://www.dustloop.com/wiki/images/a/a6/GGST_Anji_Mito_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/33/GGST_Anji_Mito_jH_Hitbox.png"
@@ -152,14 +152,14 @@
     ]
   },
   {
-    "input": "投げ(6D or 4D)",
+    "input": "Ground Throw(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bb/GGST_Anji_Mito_Ground_Throw.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "空投げ(j6D or j4D)",
+    "input": "Air Throw(j6D or j.4D)",
     "move_img": "https://www.dustloop.com/wiki/images/7/73/GGST_Anji_Mito_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/40/GGST_Anji_Mito_Air_Throw_Hitbox.png"
@@ -248,7 +248,7 @@
     ]
   },
   {
-    "input": "花鳥風月遠(632146S Attack Far)",
+    "input": "花鳥風月改(632146S Attack Far)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fb/GGST_Anji_Mito_632146S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5d/GGST_Anji_Mito_Kachoufuugetsu_2_Hitbox.png",
@@ -256,7 +256,7 @@
     ]
   },
   {
-    "input": "花鳥風月近(632146S Attack Near)",
+    "input": "花鳥風月改(632146S Attack Near)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fb/GGST_Anji_Mito_632146S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5d/GGST_Anji_Mito_Kachoufuugetsu_2_Hitbox.png",

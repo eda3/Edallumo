@@ -39,8 +39,8 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
 
     // re = Regex::new(r#"H""#).unwrap();
     // chara_response_json = re
-        // .replace_all(&chara_response_json, r#"HS""#)
-        // .to_string();
+    // .replace_all(&chara_response_json, r#"HS""#)
+    // .to_string();
 
     re = Regex::new(r#""j\.(.+?)""#).unwrap();
     chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
@@ -55,6 +55,23 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""41236H""#, r#""41236HS""#)
         .replace(r#""632146H""#, r#""632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
+        .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
+        .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
+        .replace(r#""Ground Throw""#, r#""投げ""#)
+        .replace(r#""Air Throw""#, r#""空投げ""#)
+        .replace(r#""Shitsu""#, r#""疾""#)
+        .replace(r#""Suigetsu No Hakobi""#, r#""水月のハコビ""#)
+        .replace(r#""Kou""#, r#""紅""#)
+        .replace(r#""Fuujin""#, r#""風神""#)
+        .replace(r#""Shin: Ichishiki""#, r#""針・壱式""#)
+        .replace(r#""Issokutobi""#, r#""一足飛び""#)
+        .replace(r#""Nagiha""#, r#""凪刃""#)
+        .replace(r#""Rin""#, r#""臨""#)
+        .replace(r#""Midare""#, r#""乱""#)
+        .replace(r#""Issei Ougi: Sai""#, r#""一誠奥義「彩」""#)
+        .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#)
+        .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#)
+        .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#)
         .replace(r#""Tandem Top""#, r#""Sタンデム""#)
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
@@ -254,8 +271,8 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         let mut input_name = String::new();
 
         if [
-            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P", "近S",
-            "遠S", "jD", "jH", "jK", "jP", "jS",
+            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P",
+            "近S", "遠S", "jD", "jH", "jK", "jP", "jS",
         ]
         .contains(&input_str.as_str())
         {
