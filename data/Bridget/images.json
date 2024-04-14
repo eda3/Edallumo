@@ -48,7 +48,8 @@
     "move_img": "https://www.dustloop.com/wiki/images/f/f1/GGST_Bridget_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fe/GGST_Bridget_5H_Hitbox-1.png",
-      "https://www.dustloop.com/wiki/images/2/23/GGST_Bridget_5H_Hitbox-2.png"
+      "https://www.dustloop.com/wiki/images/2/23/GGST_Bridget_5H_Hitbox-2.png",
+      "https://www.dustloop.com/wiki/images/5/53/GGST_Bridget_5H_Hitbox-3.png"
     ]
   },
   {
@@ -200,7 +201,7 @@
     ]
   },
   {
-    "input": "ストップアンドダッシュリターン(214S/214HS)",
+    "input": "ストップアンドダッシュ(214S/H)",
     "move_img": "https://www.dustloop.com/wiki/images/0/00/GGST_Bridget_Stop_and_Dash_214X.png",
     "hitbox_img": [
       ""
@@ -214,14 +215,14 @@
     ]
   },
   {
-    "input": "236K K",
+    "input": "発射(236K K)",
     "move_img": "https://www.dustloop.com/wiki/images/2/24/GGST_Bridget_236KK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/78/GGST_Bridget_236KK_Hitbox.png"
     ]
   },
   {
-    "input": "236K P",
+    "input": "停止(236K P)",
     "move_img": "https://www.dustloop.com/wiki/images/7/71/GGST_Bridget_236KP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c9/GGST_Bridget_236KP_Hitbox.png",
@@ -229,7 +230,7 @@
     ]
   },
   {
-    "input": "ストップアンドダッシュ(236S/236HS)",
+    "input": "ストップアンドダッシュ(236S/H)",
     "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_Bridget_Stop_and_Dash_Overlay.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f9/GGST_Bridget_236S_1_Hitbox.png",
@@ -262,7 +263,7 @@
     ]
   },
   {
-    "input": "j63214P",
+    "input": "空中ロックザベイビー(j63214P)",
     "move_img": "https://www.dustloop.com/wiki/images/3/34/GGST_Bridget_63214P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/18/GGST_Bridget_63214P_Hitbox.png",

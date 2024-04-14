@@ -52,6 +52,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
 
     chara_response_json = chara_response_json
         .replace(r#""All""#, r#""上段""#)
+        .replace(r#""All (Guard Crush)""#, r#""上段(ガードクラッシュ)""#)
         .replace(r#""High""#, r#""中段""#)
         .replace(r#""Low""#, r#""下段""#)
         .replace(r#""HKD "#, r#""強制ダウン"#)
@@ -59,7 +60,11 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
 
     // ミリア
     chara_response_json = chara_response_json
-        // .replace(r#""guard": "All""#, r#""guard": "上段""#)
+        .replace(r#""j.4D""#, r#""j4D""#)
+        .replace(r#""Sweep""#, r#""足払い""#)
+        .replace(r#""Uncharged""#, r#""ダスト""#)
+        .replace(r#""Dust Attack""#, r#""ダスト""#)
+        .replace(r#""Charged Dust Attack""#, r#""溜めダスト""#)
         .replace(r#""2H""#, r#""2HS""#)
         .replace(r#""5H""#, r#""5HS""#)
         .replace(r#""6H""#, r#""6HS""#)
@@ -72,6 +77,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""236236H""#, r#""236236HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
         .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
+        .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Ground Throw""#, r#""投げ""#)
         .replace(r#""Air Throw""#, r#""空投げ""#)
         .replace(r#""Shitsu""#, r#""疾""#)
@@ -87,6 +93,20 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#)
         .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#)
         .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#)
+        .replace(r#""Rolling Movement""#, r#""ローリング移動""#)
+        .replace(r#""Stop and Dash""#, r#""ストップアンドダッシュ""#)
+        .replace(r#""Kick Start My Heart""#, r#""キックスタートマイハート""#)
+        .replace(r#""Shoot""#, r#""発射""#)
+        .replace(r#""Brake""#, r#""停止""#)
+        .replace(r#""Starship""#, r#""スターシップ""#)
+        .replace(r#""Roger Dive""#, r#""ロジャーダイブ""#)
+        .replace(r#""Rock the Baby""#, r#""ロックザベイビー""#)
+        .replace(r#""Air Rock the Baby""#, r#""空中ロックザベイビー""#)
+        .replace(
+            r#""Return of the Killing Machine""#,
+            r#""帰ってきたキルマシーン""#,
+        )
+        .replace(r#""Loop the Loop""#, r#""ループザループ""#)
         .replace(r#""Tandem Top""#, r#""Sタンデム""#)
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
@@ -182,7 +202,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
 
         if [
             "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P",
-            "近S", "遠S", "jD", "jH", "jK", "jP", "jS",
+            "近S", "遠S", "S", "H", "jD", "jHS", "jK", "jP", "jS",
         ]
         .contains(&input_str.as_str())
         {
