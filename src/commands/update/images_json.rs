@@ -56,6 +56,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""632146H""#, r#""632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
+        .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Ground Throw""#, r#""投げ""#)
         .replace(r#""Air Throw""#, r#""空投げ""#)
