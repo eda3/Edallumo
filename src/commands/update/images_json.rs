@@ -46,6 +46,9 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
     chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
 
     chara_response_json = chara_response_json
+        .replace(r#""w."#, r#""w"#)
+        .replace(r#""w6H"#, r#""w6HS"#)
+        .replace(r#""wH"#, r#""wHS"#)
         .replace(r#"j.4D"#, r#"j4D"#)
         .replace(r#""2H""#, r#""2HS""#)
         .replace(r#""5H""#, r#""5HS""#)
@@ -56,6 +59,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""214H""#, r#""214HS""#)
         .replace(r#""41236H""#, r#""41236HS""#)
         .replace(r#""632146H""#, r#""632146HS""#)
+        .replace(r#""j632146H""#, r#""j632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
@@ -90,6 +94,31 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""帰ってきたキルマシーン""#,
         )
         .replace(r#""Loop the Loop""#, r#""ループザループ""#)
+        .replace(r#""Wall Run""#, r#""壁走り""#)
+        .replace(r#""Wall Run "#, r#""壁走り"#)
+        .replace(r#""壁走りH""#, r#""壁走りHS""#)
+        .replace(r#""壁走り6H""#, r#""壁走り6HS""#)
+        .replace(r#""Gamma Blade""#, r#""γブレード""#)
+        .replace(r#""Alpha Blade (Diagonal)""#, r#""αブレード・斜め""#)
+        .replace(r#""Alpha Blade (Horizontal)""#, r#""αブレード・横""#)
+        .replace(r#""Resshou""#, r#""冽掌""#)
+        .replace(r#""Rokusai""#, r#""麓砕""#)
+        .replace(r#""Senshuu""#, r#""穿踵""#)
+        .replace(r#""Beta Blade""#, r#""βブレード""#)
+        .replace(r#""Genrouzan""#, r#""幻朧斬""#)
+        .replace(r#""Shuriken""#, r#""手裏剣""#)
+        .replace(
+            r#""Air Alpha Blade (Diagonal)""#,
+            r#""空中αブレード・斜め""#,
+        )
+        .replace(
+            r#""Air Alpha Blade (Horizontal)""#,
+            r#""空中αブレード・横""#,
+        )
+        .replace(r#""Air Beta Blade""#, r#""空中βブレード""#)
+        .replace(r#""Banki Messai""#, r#""万鬼滅砕""#)
+        .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#)
+        .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#)
         .replace(r#""Tandem Top""#, r#""Sタンデム""#)
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
