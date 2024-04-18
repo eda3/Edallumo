@@ -1,29 +1,273 @@
 [
-    {"character":"Sol_Badguy","nicknames":["SO","soru","ソル"]},
-    {"character":"Ky_Kiske","nicknames":["KY","kai","カイ"]},
-    {"character":"May","nicknames":["MA","mei","メイ"]},
-    {"character":"Chipp_Zanuff","nicknames":["CH","tippu","チップ"]},
-    {"character":"Axl_Low","nicknames":["AX","akuseru","アクセル"]},
-    {"character":"Potemkin","nicknames":["PO","potyomukinn","ポチョムキン","ポチョ"]},
-    {"character":"Faust","nicknames":["FA","fausuto","ファウスト"]},
-    {"character":"Millia_Rage","nicknames":["MI","miria","ミリア"]},
-    {"character":"Zato-1","nicknames":["ZA","zato-","ザトー"]},
-    {"character":"Ramlethal_Valentine","nicknames":["RA","ram","ラムレザル","ラム","やっぱりカルヴァドスを撃つときのラムちゃん、最高なんだよなぁ……"]},
-    {"character":"Leo_Whitefang","nicknames":["LE","leo","レオ","reo"]},
-    {"character":"Nagoriyuki","nicknames":["NA","nagoriyuki","nago","なご","名残雪"]},
-    {"character":"Giovanna","nicknames":["GI","gio","ジオ","ジオヴァーナ"]},
-    {"character":"Anji_Mito","nicknames":["AN","anji","anzi","暗示","闇慈"]},
-    {"character":"I-No","nicknames":["IN","ino","イノ"]},
-    {"character":"Goldlewis_Dickinson","nicknames":["GO","di","ディキ","ディキンソン"]},
-    {"character":"Jack-O","nicknames":["JC","ジャックオー","ジャッコ"]},
-    {"character":"Happy_Chaos","nicknames":["HA","ケイオス"]},
-    {"character":"Baiken","nicknames":["BA","baiken","うめ","ume","梅喧"]},
-    {"character":"Testament","nicknames":["TE","テスタメント","テスタ"]},
-    {"character":"Bridget","nicknames":["BR","ブリ","ブリジット"]},
-    {"character":"Sin_Kiske","nicknames":["SI","sin","シン"]},
-    {"character":"Bedman","nicknames":["BE","ベッドマン","ベッドマン？"]},
-    {"character":"Asuka_R","nicknames":["AS","asuka","飛鳥"]},
-    {"character":"Johnny","nicknames":["JO","ジョニー"]},
-    {"character":"Elphelt_Valentine","nicknames":["EL","エル","エルフェルト"]},
-    {"character":"A.B.A","nicknames":["AB","ABA","アバ"]}
+    {
+        "character": "Sol_Badguy",
+        "nicknames": [
+            "SO",
+            "soru",
+            "そる",
+            "ソル"
+        ]
+    },
+    {
+        "character": "Ky_Kiske",
+        "nicknames": [
+            "KY",
+            "kai",
+            "かい",
+            "カイ"
+        ]
+    },
+    {
+        "character": "May",
+        "nicknames": [
+            "MA",
+            "mei",
+            "めい",
+            "メイ"
+        ]
+    },
+    {
+        "character": "Chipp_Zanuff",
+        "nicknames": [
+            "CH",
+            "tippu",
+            "ちっぷ",
+            "チップ"
+        ]
+    },
+    {
+        "character": "Axl_Low",
+        "nicknames": [
+            "AX",
+            "akuseru",
+            "あくせる",
+            "アクセル"
+        ]
+    },
+    {
+        "character": "Potemkin",
+        "nicknames": [
+            "PO",
+            "potyomukinn",
+            "ポチョムキン",
+            "ぽちょむきん",
+            "ポチョ",
+            "ぽちょ"
+        ]
+    },
+    {
+        "character": "Faust",
+        "nicknames": [
+            "FA",
+            "fausuto",
+            "ふぁうすと",
+            "ファウスト"
+        ]
+    },
+    {
+        "character": "Millia_Rage",
+        "nicknames": [
+            "MI",
+            "miria",
+            "みりあ",
+            "ミリア"
+        ]
+    },
+    {
+        "character": "Zato-1",
+        "nicknames": [
+            "ZA",
+            "zato-",
+            "ざとー",
+            "ザトー"
+        ]
+    },
+    {
+        "character": "Ramlethal_Valentine",
+        "nicknames": [
+            "RA",
+            "ram",
+            "らむれざる",
+            "ラムレザル",
+            "ラム",
+            "らむ",
+            "やっぱりカルヴァドスを撃つときのラムちゃん、最高なんだよなぁ……"
+        ]
+    },
+    {
+        "character": "Leo_Whitefang",
+        "nicknames": [
+            "LE",
+            "leo",
+            "レオ",
+            "れお",
+            "reo"
+        ]
+    },
+    {
+        "character": "Nagoriyuki",
+        "nicknames": [
+            "NA",
+            "nagoriyuki",
+            "nago",
+            "なご",
+            "なごりゆき",
+            "名残雪"
+        ]
+    },
+    {
+        "character": "Giovanna",
+        "nicknames": [
+            "GI",
+            "gio",
+            "ジオ",
+            "じお",
+            "ジオヴァーナ",
+            "じおう゛ぁーな"
+        ]
+    },
+    {
+        "character": "Anji_Mito",
+        "nicknames": [
+            "AN",
+            "anji",
+            "anzi",
+            "暗示",
+            "あんじ",
+            "アンジ",
+            "闇慈"
+        ]
+    },
+    {
+        "character": "I-No",
+        "nicknames": [
+            "IN",
+            "ino",
+            "いの",
+            "イノ"
+        ]
+    },
+    {
+        "character": "Goldlewis_Dickinson",
+        "nicknames": [
+            "GO",
+            "di",
+            "長官",
+            "でぃきんそん",
+            "ディキンソン"
+        ]
+    },
+    {
+        "character": "Jack-O",
+        "nicknames": [
+            "JC",
+            "ジャックオー",
+            "ジャックオー",
+            "じゃっく",
+            "じゃっこ",
+            "ジャッコ"
+        ]
+    },
+    {
+        "character": "Happy_Chaos",
+        "nicknames": [
+            "HA",
+            "けいおす",
+            "ハッピー",
+            "はっぴー",
+            "ケイオス"
+        ]
+    },
+    {
+        "character": "Baiken",
+        "nicknames": [
+            "BA",
+            "baiken",
+            "うめ",
+            "梅",
+            "ume",
+            "ばいけん",
+            "バイケン",
+            "梅喧"
+        ]
+    },
+    {
+        "character": "Testament",
+        "nicknames": [
+            "TE",
+            "テスタメント",
+            "てすためんと",
+            "てすた",
+            "テスタ"
+        ]
+    },
+    {
+        "character": "Bridget",
+        "nicknames": [
+            "BR",
+            "ぶり",
+            "鰤",
+            "ぶりじっと",
+            "ブリ",
+            "ブリジット"
+        ]
+    },
+    {
+        "character": "Sin_Kiske",
+        "nicknames": [
+            "SI",
+            "sin",
+            "しん",
+            "シン"
+        ]
+    },
+    {
+        "character": "Bedman",
+        "nicknames": [
+            "BE",
+            "ベッドマン",
+            "ベッド",
+            "べっど",
+            "べっどまん",
+            "べっどまん？",
+            "ベッドマン？"
+        ]
+    },
+    {
+        "character": "Asuka_R",
+        "nicknames": [
+            "AS",
+            "asuka",
+            "あすか",
+            "アスカ",
+            "飛鳥"
+        ]
+    },
+    {
+        "character": "Johnny",
+        "nicknames": [
+            "JO",
+            "じょにー",
+            "ジョニー"
+        ]
+    },
+    {
+        "character": "Elphelt_Valentine",
+        "nicknames": [
+            "EL",
+            "える",
+            "えるふぇると",
+            "エル",
+            "エルフェルト"
+        ]
+    },
+    {
+        "character": "A.B.A",
+        "nicknames": [
+            "AB",
+            "ABA",
+            "あば",
+            "アバ"
+        ]
+    }
 ]
