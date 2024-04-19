@@ -1,7 +1,7 @@
 [
 	{
 		"input": "2D",
-		"name": "2D",
+		"name": "足払い",
 		"damage": "40",
 		"guard": "下段",
 		"startup": "13",
@@ -17,13 +17,13 @@
 	},
 	{
 		"input": "2HS",
-		"name": "2H",
+		"name": "2HS",
 		"damage": "55",
 		"guard": "上段",
 		"startup": "13",
 		"active": "5",
 		"recovery": "35",
-		"hit": "KD +26",
+		"hit": "ダウン+26",
 		"block": "-21",
 		"level": "4",
 		"counter": "Large",
@@ -81,7 +81,7 @@
 	},
 	{
 		"input": "5D",
-		"name": "Uncharged",
+		"name": "ダスト",
 		"damage": "50",
 		"guard": "中段",
 		"startup": "20",
@@ -145,13 +145,13 @@
 	},
 	{
 		"input": "5[D]",
-		"name": "Charged",
+		"name": "溜めダスト",
 		"damage": "62",
 		"guard": "中段",
 		"startup": "28",
 		"active": "8",
 		"recovery": "21",
-		"hit": "KD +36",
+		"hit": "ダウン+36",
 		"block": "-10",
 		"level": "4",
 		"counter": "Mid",
@@ -167,7 +167,7 @@
 		"startup": "23",
 		"active": "5",
 		"recovery": "29",
-		"hit": "KD +34",
+		"hit": "ダウン+34",
 		"block": "-15",
 		"level": "4",
 		"counter": "Large",
@@ -199,17 +199,17 @@
 		"startup": "11",
 		"active": "7",
 		"recovery": "25",
-		"hit": "KD +17",
+		"hit": "ダウン+17",
 		"block": "-15",
 		"level": "3",
 		"counter": "Mid",
 		"scaling": "90%",
 		"riscgain": "2000",
-		"invincibility": "1-4F Upper Body, 5-17 Above Knees"
+		"invincibility": "1-3 Upper Body, 4-17 Above Knees"
 	},
 	{
 		"input": "近S",
-		"name": "c.S",
+		"name": "近S",
 		"damage": "45",
 		"guard": "上段",
 		"startup": "8",
@@ -323,39 +323,39 @@
 		"input": "ワイルドアサルト(236D)",
 		"name": "ワイルドアサルト",
 		"damage": "30",
-		"guard": "上段",
-		"startup": "20",
+		"guard": "上段(ガードクラッシュ)",
+		"startup": "20~31",
 		"active": "3",
 		"recovery": "20",
 		"hit": "HKD",
 		"block": "+7",
-		"level": "-",
-		"counter": "-",
+		"level": "4",
+		"counter": "Mid",
 		"scaling": "60%",
-		"riscgain": "-",
-		"invincibility": "9-22f strike/projectile"
+		"riscgain": "2500",
+		"invincibility": "9-22F Strike"
 	},
 	{
 		"input": "溜めワイルドアサルト(236[D])",
-		"name": "ワイルドアサルト",
+		"name": "溜めワイルドアサルト",
 		"damage": "50",
-		"guard": "上段",
+		"guard": "上段(ガードクラッシュ)",
 		"startup": "32",
 		"active": "3",
 		"recovery": "30",
 		"hit": "HKD",
 		"block": "+12",
-		"level": "-",
-		"counter": "-",
+		"level": "4",
+		"counter": "Mid",
 		"scaling": "60%",
-		"riscgain": "-",
-		"invincibility": "9-34f strike/projectile"
+		"riscgain": "2500",
+		"invincibility": "9-34F Strike"
 	},
 	{
 		"input": "投げ(6D or 4D)",
-		"name": "Ground Throw",
+		"name": "投げ",
 		"damage": "90",
-		"guard": "Ground Throw",
+		"guard": "投げ",
 		"startup": "2",
 		"active": "3",
 		"recovery": "38",
@@ -368,7 +368,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "空投げ(j6D or j4D)",
+		"input": "空投げ(j6D or j.4D)",
 		"name": "空投げ",
 		"damage": "90",
 		"guard": "空投げ",
@@ -384,11 +384,11 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "空メガフィスト・前方(2146K~P)",
+		"input": "メガフィスト・前方(2146K~P)",
 		"name": "メガフィスト・前方",
 		"damage": "80",
 		"guard": "中段",
-		"startup": "25-27",
+		"startup": "25~27",
 		"active": "7",
 		"recovery": "12",
 		"hit": "+2",
@@ -400,7 +400,7 @@
 		"invincibility": "Airborne 3f, Below Chest 2f"
 	},
 	{
-		"input": "ガルダインパクト(214H)",
+		"input": "ガルダインパクト(214HS)",
 		"name": "ガルダインパクト",
 		"damage": "63",
 		"guard": "上段(ガードクラッシュ)",
@@ -417,7 +417,7 @@
 	},
 	{
 		"input": "メガフィスト・後方(214P)",
-		"name": "Backward Mega Fist",
+		"name": "メガフィスト・後方",
 		"damage": "50",
 		"guard": "中段",
 		"startup": "25",
@@ -429,23 +429,23 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1500",
-		"invincibility": "Airborne 3f, Below Chest 2f"
+		"invincibility": "Airborne 3F, Below Chest 2F"
 	},
 	{
 		"input": "メガフィスト・前方(236P)",
-		"name": "Forward Mega Fist",
+		"name": "メガフィスト・前方",
 		"damage": "50",
 		"guard": "中段",
 		"startup": "25",
 		"active": "7",
 		"recovery": "16",
-		"hit": "KD +30",
+		"hit": "ダウン+30",
 		"block": "-6",
 		"level": "3",
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1500",
-		"invincibility": "Airborne 3f, Below Chest 3f"
+		"invincibility": "Airborne 3F, Below Chest 3F"
 	},
 	{
 		"input": "スライドヘッド(236S)",
@@ -461,29 +461,29 @@
 		"counter": "Very Small",
 		"scaling": "80%",
 		"riscgain": "375",
-		"invincibility": "1 Hit Armor 5~28f"
+		"invincibility": "1 Hit Armor 5-28F"
 	},
 	{
-		"input": "41236HS",
-		"name": "Heat Tackle",
-		"damage": "-",
-		"guard": "-",
-		"startup": "-",
-		"active": "-",
-		"recovery": "-",
-		"hit": "-",
-		"block": "-",
-		"level": "-",
-		"counter": "-",
-		"scaling": "-",
-		"riscgain": "-",
-		"invincibility": "-"
+		"input": "ヒートタックル(41236HS)",
+		"name": "ヒートタックル",
+		"damage": "60",
+		"guard": "上段",
+		"startup": "12",
+		"active": "20",
+		"recovery": "36",
+		"hit": "強制ダウン+20",
+		"block": "-37",
+		"level": "4",
+		"counter": "Large",
+		"scaling": "60%",
+		"riscgain": "2500",
+		"invincibility": "1 Hit Armor 12-31F"
 	},
 	{
 		"input": "ヒートナックル(623HS)",
 		"name": "ヒートナックル",
 		"damage": "0,8×7,60",
-		"guard": "空中Guard Crush",
+		"guard": "Air Guard Crush",
 		"startup": "12",
 		"active": "4",
 		"recovery": "18",
@@ -499,7 +499,7 @@
 		"input": "ポチョムキンバスター(632146P)",
 		"name": "ポチョムキンバスター",
 		"damage": "175",
-		"guard": "Ground Throw",
+		"guard": "投げ",
 		"startup": "5",
 		"active": "4",
 		"recovery": "37",
@@ -509,7 +509,7 @@
 		"counter": "-",
 		"scaling": "50%",
 		"riscgain": "-",
-		"invincibility": "1~8f Throw"
+		"invincibility": "1-8F Throw"
 	},
 	{
 		"input": "F.D.B.(63214S)",
@@ -525,10 +525,10 @@
 		"counter": "Mid",
 		"scaling": "90%",
 		"riscgain": "2000",
-		"invincibility": "Projectile Reflection 4~[17~35F]"
+		"invincibility": "Projectile Reflection 4-[17~35F]"
 	},
 	{
-		"input": "63214[S]",
+		"input": "F.D.B. (Charged)(63214[S])",
 		"name": "F.D.B. (Charged)",
 		"damage": "75",
 		"guard": "上段",
@@ -545,13 +545,13 @@
 	},
 	{
 		"input": "Reflect Projectile(Reflect Projectile)",
-		"name": "Reflect Projectile(Reflect Projectile)",
+		"name": "Reflect Projectile",
 		"damage": "50",
 		"guard": "上段",
 		"startup": "1",
 		"active": "-",
 		"recovery": "-",
-		"hit": "KD +44",
+		"hit": "ダウン+44",
 		"block": "+11",
 		"level": "3",
 		"counter": "Very Small",
@@ -565,7 +565,7 @@
 		"damage": "58",
 		"guard": "上段",
 		"startup": "18~62",
-		"active": "2f",
+		"active": "2",
 		"recovery": "26",
 		"hit": "SKD +18",
 		"block": "-9",
@@ -605,7 +605,7 @@
 		"counter": "Very Small",
 		"scaling": "100%",
 		"riscgain": "-",
-		"invincibility": "1~12f Full"
+		"invincibility": "1-12F Full"
 	},
 	{
 		"input": "ガイガンダー改(632146HS)",
@@ -625,7 +625,7 @@
 	},
 	{
 		"input": "ガイガンダー改バリア(Mirror)",
-		"name": "Giganter Kai (Barrier)",
+		"name": "ガイガンダー改バリア",
 		"damage": "15×3",
 		"guard": "上段",
 		"startup": "10+23",

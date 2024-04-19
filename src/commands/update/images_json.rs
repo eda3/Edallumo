@@ -129,7 +129,27 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Kapel""#, r#""カピエル""#)
         .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#)
         .replace(r#""Winger""#, r#""ヴィンガー""#)
-        .replace(r#""Artemis""#, r#""アルテミス""#);
+        .replace(r#""Artemis""#, r#""アルテミス""#)
+        .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#)
+        .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#)
+        .replace(r#""Potemkin Buster""#, r#""ポチョムキンバスター""#)
+        .replace(r#""Heat Knuckle""#, r#""ヒートナックル""#)
+        .replace(r#""Mega Fist""#, r#""メガフィスト・前方""#)
+        .replace(r#""B Mega Fist""#, r#""メガフィスト・後方""#)
+        .replace(r#""Forward Mega Fist""#, r#""メガフィスト・前方""#)
+        .replace(r#""Backward Mega Fist""#, r#""メガフィスト・後方""#)
+        .replace(r#""Slide Head""#, r#""スライドヘッド""#)
+        .replace(r#""Garuda Impact""#, r#""ガルダインパクト""#)
+        .replace(
+            r#""Heavenly Potemkin Buster""#,
+            r#""ヘブンリーポチョムキンバスター""#,
+        )
+        .replace(r#""Giganter Kai""#, r#""ガイガンダー改""#)
+        .replace(r#""Giganter Kai Barrier""#, r#""ガイガンダー改バリア""#)
+        .replace(r#""Giganter Kai (Barrier)""#, r#""ガイガンダー改バリア""#)
+        .replace(r#""[4]6H P""#, r#""[4]6HS P""#)
+        .replace(r#""[4]6H""#, r#""[4]6HS""#)
+        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#);
 
     let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
 
@@ -319,7 +339,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
 
         if [
             "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P",
-            "近S", "遠S", "S", "H", "jD", "jHS", "jK", "jP", "jS",
+            "近S", "遠S", "S", "H", "jD", "jHS", "jK", "jP", "jS","Reflect Projectile",
         ]
         .contains(&input_str.as_str())
         {
