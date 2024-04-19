@@ -73,6 +73,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""6H""#, r#""6HS""#)
         .replace(r#""jH""#, r#""jHS""#)
         .replace(r#""236H""#, r#""236HS""#)
+        .replace(r#""j236H""#, r#""j236HS""#)
         .replace(r#""623H""#, r#""623HS""#)
         .replace(r#""214H""#, r#""214HS""#)
         .replace(r#""41236H""#, r#""41236HS""#)
@@ -97,6 +98,19 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#)
         .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#)
         .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#)
+        .replace(r#""Snail""#, r#""蝸牛""#) // アクセル
+        .replace(r#""Whistling Wind""#, r#""虎落笛""#) // アクセル
+        .replace(r#""Rainwater""#, r#""潦""#) // アクセル
+        .replace(r#""Whistling Wind (Charged)""#, r#""溜め虎落笛""#) // アクセル
+        .replace(r#""Winter Mantis""#, r#""冬蟷螂""#) // アクセル
+        .replace(r#""Air Snail""#, r#""空中蝸牛""#) // アクセル
+        .replace(r#""Axl Bomber""#, r#""アクセルボンバー""#) // アクセル
+        .replace(r#""Sickle Flash""#, r#""鎌閃撃""#) // アクセル
+        .replace(r#""Spinning Chain Strike""#, r#""旋鎖撃""#) // アクセル
+        .replace(r#""Soaring Chain Strike""#, r#""曲鎖撃""#) // アクセル
+        .replace(r#""Winter Cherry""#, r#""鬼灯""#) // アクセル
+        .replace(r#""Sickle Storm""#, r#""百重鎌焼""#) // アクセル
+        .replace(r#""One Vision""#, r#""ワンヴィジョン""#) // アクセル
         .replace(r#""Rolling Movement""#, r#""ローリング移動""#)
         .replace(r#""Stop and Dash""#, r#""ストップアンドダッシュ""#)
         .replace(r#""Kick Start My Heart""#, r#""キックスタートマイハート""#)
