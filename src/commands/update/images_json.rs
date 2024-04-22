@@ -108,31 +108,31 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""帰ってきたキルマシーン""#,
         ) // ブリジット
         .replace(r#""Loop the Loop""#, r#""ループザループ""#) // ブリジット
-        .replace(r#""Wall Run""#, r#""壁走り""#)
-        .replace(r#""Wall Run "#, r#""壁走り"#)
-        .replace(r#""壁走りH""#, r#""壁走りHS""#)
-        .replace(r#""壁走り6H""#, r#""壁走り6HS""#)
-        .replace(r#""Gamma Blade""#, r#""γブレード""#)
-        .replace(r#""Alpha Blade (Diagonal)""#, r#""αブレード・斜め""#)
-        .replace(r#""Alpha Blade (Horizontal)""#, r#""αブレード・横""#)
-        .replace(r#""Resshou""#, r#""冽掌""#)
-        .replace(r#""Rokusai""#, r#""麓砕""#)
-        .replace(r#""Senshuu""#, r#""穿踵""#)
-        .replace(r#""Beta Blade""#, r#""βブレード""#)
-        .replace(r#""Genrouzan""#, r#""幻朧斬""#)
-        .replace(r#""Shuriken""#, r#""手裏剣""#)
+        .replace(r#""Wall Run""#, r#""壁走り""#) // チップ
+        .replace(r#""Wall Run "#, r#""壁走り"#) // チップ
+        .replace(r#""壁走りH""#, r#""壁走りHS""#) // チップ
+        .replace(r#""壁走り6H""#, r#""壁走り6HS""#) // チップ
+        .replace(r#""Gamma Blade""#, r#""γブレード""#) // チップ
+        .replace(r#""Alpha Blade (Diagonal)""#, r#""αブレード・斜め""#) // チップ
+        .replace(r#""Alpha Blade (Horizontal)""#, r#""αブレード・横""#) // チップ
+        .replace(r#""Resshou""#, r#""冽掌""#) // チップ
+        .replace(r#""Rokusai""#, r#""麓砕""#) // チップ
+        .replace(r#""Senshuu""#, r#""穿踵""#) // チップ
+        .replace(r#""Beta Blade""#, r#""βブレード""#) // チップ
+        .replace(r#""Genrouzan""#, r#""幻朧斬""#) // チップ
+        .replace(r#""Shuriken""#, r#""手裏剣""#) // チップ
         .replace(
             r#""Air Alpha Blade (Diagonal)""#,
             r#""空中αブレード・斜め""#,
-        )
+        ) // チップ
         .replace(
             r#""Air Alpha Blade (Horizontal)""#,
             r#""空中αブレード・横""#,
-        )
-        .replace(r#""Air Beta Blade""#, r#""空中βブレード""#)
-        .replace(r#""Banki Messai""#, r#""万鬼滅砕""#)
-        .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#)
-        .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#)
+        ) // チップ
+        .replace(r#""Air Beta Blade""#, r#""空中βブレード""#) // チップ
+        .replace(r#""Banki Messai""#, r#""万鬼滅砕""#) // チップ
+        .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#) // チップ
+        .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#) // チップ
         .replace(r#""Tandem Top""#, r#""Sタンデム""#)
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
