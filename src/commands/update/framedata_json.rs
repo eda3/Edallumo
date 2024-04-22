@@ -161,26 +161,26 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#) // ミリア
         .replace(r#""Winger""#, r#""ヴィンガー""#) // ミリア
         .replace(r#""Artemis""#, r#""アルテミス""#) // ミリア
-        .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#)
-        .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#)
-        .replace(r#""Potemkin Buster""#, r#""ポチョムキンバスター""#)
-        .replace(r#""Heat Knuckle""#, r#""ヒートナックル""#)
-        .replace(r#""Mega Fist""#, r#""メガフィスト・前方""#)
-        .replace(r#""B Mega Fist""#, r#""メガフィスト・後方""#)
-        .replace(r#""Forward Mega Fist""#, r#""メガフィスト・前方""#)
-        .replace(r#""Backward Mega Fist""#, r#""メガフィスト・後方""#)
-        .replace(r#""Slide Head""#, r#""スライドヘッド""#)
-        .replace(r#""Garuda Impact""#, r#""ガルダインパクト""#)
+        .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#) // ポチョムキン
+        .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#) // ポチョムキン
+        .replace(r#""Potemkin Buster""#, r#""ポチョムキンバスター""#) // ポチョムキン
+        .replace(r#""Heat Knuckle""#, r#""ヒートナックル""#) // ポチョムキン
+        .replace(r#""Mega Fist""#, r#""メガフィスト・前方""#) // ポチョムキン
+        .replace(r#""B Mega Fist""#, r#""メガフィスト・後方""#) // ポチョムキン
+        .replace(r#""Forward Mega Fist""#, r#""メガフィスト・前方""#) // ポチョムキン
+        .replace(r#""Backward Mega Fist""#, r#""メガフィスト・後方""#) // ポチョムキン
+        .replace(r#""Slide Head""#, r#""スライドヘッド""#) // ポチョムキン
+        .replace(r#""Garuda Impact""#, r#""ガルダインパクト""#) // ポチョムキン
         .replace(
             r#""Heavenly Potemkin Buster""#,
             r#""ヘブンリーポチョムキンバスター""#,
-        )
-        .replace(r#""Giganter Kai""#, r#""ガイガンダー改""#)
-        .replace(r#""Giganter Kai Barrier""#, r#""ガイガンダー改バリア""#)
-        .replace(r#""Giganter Kai (Barrier)""#, r#""ガイガンダー改バリア""#)
-        .replace(r#""[4]6H P""#, r#""[4]6HS P""#)
-        .replace(r#""[4]6H""#, r#""[4]6HS""#)
-        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#);
+        ) // ポチョムキン
+        .replace(r#""Giganter Kai""#, r#""ガイガンダー改""#) // ポチョムキン
+        .replace(r#""Giganter Kai Barrier""#, r#""ガイガンダー改バリア""#) // ポチョムキン
+        .replace(r#""Giganter Kai (Barrier)""#, r#""ガイガンダー改バリア""#) // ポチョムキン
+        .replace(r#""[4]6H P""#, r#""[4]6HS P""#) // ポチョムキン
+        .replace(r#""[4]6H""#, r#""[4]6HS""#) // ポチョムキン
+        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#); // ポチョムキン
 
     re = Regex::new(r#""j\.(.+?)""#).unwrap();
     chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
