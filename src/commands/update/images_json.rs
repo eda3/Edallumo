@@ -133,17 +133,17 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Banki Messai""#, r#""万鬼滅砕""#) // チップ
         .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#) // チップ
         .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#) // チップ
-        .replace(r#""Tandem Top""#, r#""Sタンデム""#)
-        .replace(r#""H Tandem Top""#, r#""HSタンデム""#)
-        .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#)
-        .replace(r#""Iron Savior""#, r#""アイアンセイバー""#)
-        .replace(r#""Bad Moon""#, r#""バッドムーン""#)
-        .replace(r#""Turbo Fall""#, r#""高速落下""#)
-        .replace(r#""Mirazh""#, r#""ミラーシュ""#)
-        .replace(r#""Kapel""#, r#""カピエル""#)
-        .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#)
-        .replace(r#""Winger""#, r#""ヴィンガー""#)
-        .replace(r#""Artemis""#, r#""アルテミス""#)
+        .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
+        .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
+        .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#) // ミリア
+        .replace(r#""Iron Savior""#, r#""アイアンセイバー""#) // ミリア
+        .replace(r#""Bad Moon""#, r#""バッドムーン""#) // ミリア
+        .replace(r#""Turbo Fall""#, r#""高速落下""#) // ミリア
+        .replace(r#""Mirazh""#, r#""ミラーシュ""#) // ミリア
+        .replace(r#""Kapel""#, r#""カピエル""#) // ミリア
+        .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#) // ミリア
+        .replace(r#""Winger""#, r#""ヴィンガー""#) // ミリア
+        .replace(r#""Artemis""#, r#""アルテミス""#) // ミリア
         .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#)
         .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#)
         .replace(r#""Potemkin Buster""#, r#""ポチョムキンバスター""#)
