@@ -167,6 +167,35 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Banki Messai""#, r#""万鬼滅砕""#) // チップ
         .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#) // チップ
         .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#) // チップ
+        .replace(r#""Thrust""#, r#""突きます。""#) // ファウスト
+        .replace(r#""Thrust (Charged)""#, r#""溜め突きます。""#) // ファウスト
+        .replace(r#""Pull Back""#, r#""引き戻し""#) // ファウスト
+        .replace(r#""Home Run!""#, r#""ナイスショット""#) // ファウスト
+        .replace(r#""Hole in One!""#, r#""ナイスショット""#) // ファウスト
+        .replace(r#""What Could This Be? (Eat)""#, r#""何が出るかな？（食べる）""#) // ファウスト
+        .replace(r#""What Could This Be?""#, r#""何が出るかな？""#) // ファウスト
+        .replace(r#""Mix Mix Mix""#, r#""涅和混練""#) // ファウスト
+        .replace(r#""Air Mix Mix Mix""#, r#""空中涅和混練""#) // ファウスト
+        .replace(r#""Snip Snip Snip""#, r#""メッタ刈り""#) // ファウスト
+        .replace(r#""Love""#, r#""愛""#) // ファウスト
+        .replace(r#""Scarecrow""#, r#""P久延毘古""#) // ファウスト
+        .replace(r#""P Scarecrow""#, r#""P久延毘古""#) // ファウスト
+        .replace(r#""S Scarecrow""#, r#""S久延毘古""#) // ファウスト
+        .replace(r#""K Scarecrow""#, r#""K久延毘古""#) // ファウスト
+        .replace(r#""Bone-crushing Excitement""#, r#""エキサイティング骨折""#) // ファウスト
+        .replace(r#""W-W-What Could This Be?""#, r#""な・な・な・なにがでるかな？""#) // ファウスト
+        .replace(r#""W-W-W-W-W-W-W-W-W-What Could This Be?""#, r#""な・な・な・な・な・な・な・な・な・なにがでるかな？""#) // ファウスト
+        .replace(r#""Bomb""#, r#""爆弾""#) // ファウスト
+        .replace(r#""Banana""#, r#""バナナ""#) // ファウスト
+        .replace(r#""Donut""#, r#""ドーナツ""#) // ファウスト
+        .replace(r#""Afro""#, r#""アフロ""#) // ファウスト
+        .replace(r#""Hammer""#, r#""ハンマー""#) // ファウスト
+        .replace(r#""Mini Faust""#, r#""ちびファウスト""#) // ファウスト
+        .replace(r#""Horn""#, r#""ラッパ""#) // ファウスト
+        .replace(r#""100T Weight""#, r#""100t重り""#) // ファウスト
+        .replace(r#""Earthquake""#, r#""100t重り""#) // ファウスト
+        .replace(r#""Meteors""#, r#""メテオ""#) // ファウスト
+        .replace(r#""Love Afro""#, r#""愛アフロ""#) // ファウスト
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#) // ミリア
@@ -282,7 +311,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
 
         if [
             "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P",
-            "近S", "遠S", "S", "H", "jD", "jHS", "jK", "jP", "jS",
+            "近S", "遠S", "S", "H", "jD", "jHS", "jK", "jP", "jS","j2K",
         ]
         .contains(&input_str.as_str())
         {
