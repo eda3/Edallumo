@@ -85,19 +85,19 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Ground Throw""#, r#""投げ""#)
         .replace(r#""Air Throw""#, r#""空投げ""#)
-        .replace(r#""Shitsu""#, r#""疾""#)
-        .replace(r#""Suigetsu No Hakobi""#, r#""水月のハコビ""#)
-        .replace(r#""Kou""#, r#""紅""#)
-        .replace(r#""Fuujin""#, r#""風神""#)
-        .replace(r#""Shin: Ichishiki""#, r#""針・壱式""#)
-        .replace(r#""Issokutobi""#, r#""一足飛び""#)
-        .replace(r#""Nagiha""#, r#""凪刃""#)
-        .replace(r#""Rin""#, r#""臨""#)
-        .replace(r#""Midare""#, r#""乱""#)
-        .replace(r#""Issei Ougi: Sai""#, r#""一誠奥義「彩」""#)
-        .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#)
-        .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#)
-        .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#)
+        .replace(r#""Shitsu""#, r#""疾""#) // 闇慈
+        .replace(r#""Suigetsu No Hakobi""#, r#""水月のハコビ""#) // 闇慈
+        .replace(r#""Kou""#, r#""紅""#) // 闇慈
+        .replace(r#""Fuujin""#, r#""風神""#) // 闇慈
+        .replace(r#""Shin: Ichishiki""#, r#""針・壱式""#) // 闇慈
+        .replace(r#""Issokutobi""#, r#""一足飛び""#) // 闇慈
+        .replace(r#""Nagiha""#, r#""凪刃""#) // 闇慈
+        .replace(r#""Rin""#, r#""臨""#) // 闇慈
+        .replace(r#""Midare""#, r#""乱""#) // 闇慈
+        .replace(r#""Issei Ougi: Sai""#, r#""一誠奥義「彩」""#) // 闇慈
+        .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#) // 闇慈
+        .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#) // 闇慈
+        .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#) // 闇慈
         .replace(r#""Snail""#, r#""蝸牛""#) // アクセル
         .replace(r#""Whistling Wind""#, r#""虎落笛""#) // アクセル
         .replace(r#""Rainwater""#, r#""潦""#) // アクセル
