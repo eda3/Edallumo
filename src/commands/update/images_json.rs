@@ -94,20 +94,20 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Winter Cherry""#, r#""鬼灯""#) // アクセル
         .replace(r#""Sickle Storm""#, r#""百重鎌焼""#) // アクセル
         .replace(r#""One Vision""#, r#""ワンヴィジョン""#) // アクセル
-        .replace(r#""Rolling Movement""#, r#""ローリング移動""#)
-        .replace(r#""Stop and Dash""#, r#""ストップアンドダッシュ""#)
-        .replace(r#""Kick Start My Heart""#, r#""キックスタートマイハート""#)
-        .replace(r#""Shoot""#, r#""発射""#)
-        .replace(r#""Brake""#, r#""停止""#)
-        .replace(r#""Starship""#, r#""スターシップ""#)
-        .replace(r#""Roger Dive""#, r#""ロジャーダイブ""#)
-        .replace(r#""Rock the Baby""#, r#""ロックザベイビー""#)
-        .replace(r#""Air Rock the Baby""#, r#""空中ロックザベイビー""#)
+        .replace(r#""Rolling Movement""#, r#""ローリング移動""#) // ブリジット
+        .replace(r#""Stop and Dash""#, r#""ストップアンドダッシュ""#) // ブリジット
+        .replace(r#""Kick Start My Heart""#, r#""キックスタートマイハート""#) // ブリジット
+        .replace(r#""Shoot""#, r#""発射""#) // ブリジット
+        .replace(r#""Brake""#, r#""停止""#) // ブリジット
+        .replace(r#""Starship""#, r#""スターシップ""#) // ブリジット
+        .replace(r#""Roger Dive""#, r#""ロジャーダイブ""#) // ブリジット
+        .replace(r#""Rock the Baby""#, r#""ロックザベイビー""#) // ブリジット
+        .replace(r#""Air Rock the Baby""#, r#""空中ロックザベイビー""#) // ブリジット
         .replace(
             r#""Return of the Killing Machine""#,
             r#""帰ってきたキルマシーン""#,
-        )
-        .replace(r#""Loop the Loop""#, r#""ループザループ""#)
+        ) // ブリジット
+        .replace(r#""Loop the Loop""#, r#""ループザループ""#) // ブリジット
         .replace(r#""Wall Run""#, r#""壁走り""#)
         .replace(r#""Wall Run "#, r#""壁走り"#)
         .replace(r#""壁走りH""#, r#""壁走りHS""#)
