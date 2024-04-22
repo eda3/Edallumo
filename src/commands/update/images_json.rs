@@ -94,6 +94,24 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Winter Cherry""#, r#""鬼灯""#) // アクセル
         .replace(r#""Sickle Storm""#, r#""百重鎌焼""#) // アクセル
         .replace(r#""One Vision""#, r#""ワンヴィジョン""#) // アクセル
+        .replace("23S", "236S") // 梅喧
+        .replace(r#""Ground Throw (Tether)""#, r#""投げ""#) // 梅喧
+        .replace(r#""Ground Throw (Knockback)""#, r#""溜め投げ""#) // 梅喧
+        .replace(r#""41236HS~HS""#, r#""41236HSHS""#) // 梅喧
+        .replace(r#""Tatami Gaeshi""#, r#""畳返し""#) // 梅喧
+        .replace(r#""Air Tatami Gaeshi""#, r#""空中畳返し""#) // 梅喧
+        .replace(r#""H Kabari""#, r#""HS蚊鉤""#) // 梅喧
+        .replace(r#""S Kabari""#, r#""S蚊鉤""#) // 梅喧
+        .replace(r#""Kabari""#, r#""蚊鉤""#) // 梅喧
+        .replace(r#""41236HH""#, r#""HS蚊鉤追撃""#) // 梅喧
+        .replace(r#""41236H~H""#, r#""41236HSHS""#) // 梅喧
+        .replace(r#""Kabari Followup""#, r#""HS蚊鉤追撃""#) // 梅喧
+        .replace(r#""Youzansen""#, r#""妖斬扇""#) // 梅喧
+        .replace(r#""Hiiragi""#, r#""柊""#) // 梅喧
+        .replace(r#""Tsurane Sanzu-watashi""#, r#""連ね三途渡し""#) // 梅喧
+        .replace(r#""Kenjyu""#, r#""拳銃""#) // 梅喧
+        .replace("Regular Throw", "溜め投げ") // 梅喧
+        .replace("Air Kenjyu", "空中拳銃") // 梅喧
         .replace(r#""Rolling Movement""#, r#""ローリング移動""#) // ブリジット
         .replace(r#""Stop and Dash""#, r#""ストップアンドダッシュ""#) // ブリジット
         .replace(r#""Kick Start My Heart""#, r#""キックスタートマイハート""#) // ブリジット
