@@ -97,6 +97,8 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Kachoufuugetsu Kai""#, r#""花鳥風月改""#) // 闇慈
         .replace(r#""Near Kachoufuugetsu Kai""#, r#""花鳥風月近""#) // 闇慈
         .replace(r#""Far Kachoufuugetsu Kai""#, r#""花鳥風月遠""#) // 闇慈
+        .replace(r#""Draw""#, r#""ブックマーク(ドロー)""#) // 飛鳥
+        .replace(r#""Discard""#, r#""ブックマーク(破棄)""#) // 飛鳥
         .replace(r#""Snail""#, r#""蝸牛""#) // アクセル
         .replace(r#""Whistling Wind""#, r#""虎落笛""#) // アクセル
         .replace(r#""Rainwater""#, r#""潦""#) // アクセル
@@ -172,7 +174,10 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Pull Back""#, r#""引き戻し""#) // ファウスト
         .replace(r#""Home Run!""#, r#""ナイスショット""#) // ファウスト
         .replace(r#""Hole in One!""#, r#""ナイスショット""#) // ファウスト
-        .replace(r#""What Could This Be? (Eat)""#, r#""何が出るかな？（食べる）""#) // ファウスト
+        .replace(
+            r#""What Could This Be? (Eat)""#,
+            r#""何が出るかな？（食べる）""#,
+        ) // ファウスト
         .replace(r#""What Could This Be?""#, r#""何が出るかな？""#) // ファウスト
         .replace(r#""Mix Mix Mix""#, r#""涅和混練""#) // ファウスト
         .replace(r#""Air Mix Mix Mix""#, r#""空中涅和混練""#) // ファウスト
@@ -183,8 +188,14 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""S Scarecrow""#, r#""S久延毘古""#) // ファウスト
         .replace(r#""K Scarecrow""#, r#""K久延毘古""#) // ファウスト
         .replace(r#""Bone-crushing Excitement""#, r#""エキサイティング骨折""#) // ファウスト
-        .replace(r#""W-W-What Could This Be?""#, r#""な・な・な・なにがでるかな？""#) // ファウスト
-        .replace(r#""W-W-W-W-W-W-W-W-W-What Could This Be?""#, r#""な・な・な・な・な・な・な・な・な・なにがでるかな？""#) // ファウスト
+        .replace(
+            r#""W-W-What Could This Be?""#,
+            r#""な・な・な・なにがでるかな？""#,
+        ) // ファウスト
+        .replace(
+            r#""W-W-W-W-W-W-W-W-W-What Could This Be?""#,
+            r#""な・な・な・な・な・な・な・な・な・なにがでるかな？""#,
+        ) // ファウスト
         .replace(r#""Bomb""#, r#""爆弾""#) // ファウスト
         .replace(r#""Banana""#, r#""バナナ""#) // ファウスト
         .replace(r#""Donut""#, r#""ドーナツ""#) // ファウスト
@@ -308,10 +319,60 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             .unwrap()
             .to_string();
         let mut input_name = String::new();
+        println!("{}", &input_str.as_str());
 
         if [
-            "2D", "2HS", "2K", "2P", "2S", "5D", "5HS", "5K", "5P", "5[D]", "6HS", "6K", "6P",
-            "近S", "遠S", "S", "H", "jD", "jHS", "jK", "jP", "jS","j2K",
+            "2D",
+            "2HS",
+            "2K",
+            "2P",
+            "2S",
+            "5D",
+            "5HS",
+            "5K",
+            "5P",
+            "5[D]",
+            "6HS",
+            "6K",
+            "6P",
+            "近S",
+            "遠S",
+            "S",
+            "H",
+            "jD",
+            "jHS",
+            "jK",
+            "jP",
+            "jS",
+            "j2K",
+            "214X (Discard)",
+            "214X (Draw)",
+            "Accipiter Metron",
+            "Aquila Metron",
+            "Bit Shift Metron",
+            "Bookmark (Auto Import)",
+            "Bookmark (Full Import)",
+            "Bookmark (Random Import)",
+            "Chaotic Option",
+            "Delayed Howling Metron",
+            "Delayed Tardus Metron",
+            "Go to Marker",
+            "Gravity Rod (Shooting)",
+            "High-Pass Filter Gravity",
+            "Howling Metron",
+            "Howling Metron MS Processing",
+            "Low-Pass Filter Gravity",
+            "Metron Arpeggio",
+            "Metron Screamer 808",
+            "Recover Mana (Continuous)",
+            "Recover Mana (Instant)",
+            "Reduce Mana Cost",
+            "Repulsive Rod (Shooting)",
+            "RMS Boost Metron",
+            "Sampler 404",
+            "Shooting Time Stretch (Accelerate)",
+            "Shooting Time Stretch (Decelerate)",
+            "Terra Metron",
         ]
         .contains(&input_str.as_str())
         {

@@ -34,27 +34,45 @@
 		]
 	},
 	{
-		"input": "214X",
+		"input": "214X (Draw)",
 		"aliases": [
-			"ブックマーク"
+			"ブックマーク",
+			"ブックマークドロー",
+			"ドロー"
 		]
 	},
 	{
-		"input": "22H~X",
+		"input": "214X (Discard)",
 		"aliases": [
-			"テストケース変更"
+			"破棄",
+			"Discard",
+			"ブックマーク破棄"
 		]
 	},
 	{
-		"input": "22P/K/S",
+		"input": "Change Test Case(22H~X)",
 		"aliases": [
-			"マナ回復"
+			"テストケース変更",
+			"22HS"
 		]
 	},
 	{
-		"input": "236X",
+		"input": "Recover Mana(22P/K/S)",
 		"aliases": [
-			"詠唱"
+			"マナ回復",
+			"22P",
+			"22K",
+			"22S"
+		]
+	},
+	{
+		"input": "Chant(236X)",
+		"aliases": [
+			"詠唱",
+			"236P",
+			"236K",
+			"236S",
+			"236HS"
 		]
 	},
 	{
@@ -244,17 +262,20 @@
 		]
 	},
 	{
-		"input": "632146P/K",
+		"input": "Submicron Particle Sphere(632146P/K)",
 		"aliases": [
-			"Sサブミクロン粒子高圧縮球",
+			"632146P",
+			"632146K",
+			"サブミクロン粒子高圧縮球",
 			"覚醒",
 			"覚醒1",
 			"無敵覚醒"
 		]
 	},
 	{
-		"input": "632146S",
+		"input": "Bookmark (Full Order)(632146S)",
 		"aliases": [
+			"632146S",
 			"ブックマーク（フルオーダー）",
 			"シャッフル",
 			"覚醒2",
