@@ -60,6 +60,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""214H""#, r#""214HS""#)
         .replace(r#""41236H""#, r#""41236HS""#)
         .replace(r#""632146H""#, r#""632146HS""#)
+        .replace(r#""63214H""#, r#""63214HS""#)
         .replace(r#""j632146H""#, r#""j632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
@@ -220,7 +221,20 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Giganter Kai (Barrier)""#, r#""ガイガンダー改バリア""#) // ポチョムキン
         .replace(r#""[4]6H P""#, r#""[4]6HS P""#) // ポチョムキン
         .replace(r#""[4]6H""#, r#""[4]6HS""#) // ポチョムキン
-        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#); // ポチョムキン
+        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
+        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
+        .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
+        .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー
+        .replace(r#""Master's Hammer""#, r#""マスターズハンマー""#) // スレイヤー
+        .replace(r#""Bump Ahead""#, r#""バンプアヘッド""#) // スレイヤー
+        .replace(r#""Pilebunker""#, r#""パイルバンカー""#) // スレイヤー
+        .replace(r#""It's Late""#, r#""イッツレイト""#) // スレイヤー
+        .replace(r#""Last Horizon""#, r#""ラスト・ホライズン""#) // スレイヤー
+        .replace(r#""Mappa Hunch K""#, r#""マッパハンチK""#) // スレイヤー
+        .replace(r#""Mappa Hunch P""#, r#""マッパハンチP""#) // スレイヤー
+        .replace(r#""Hand of Doom""#, r#""Hand of Doom""#) // スレイヤー
+        .replace(r#""Super Mappa Hunch""#, r#""スーパーマッパハンチ""#) // スレイヤー
+        .replace(r#""Bloodsucking Universe""#, r#""血を吸う宇宙""#); // スレイヤー
 
     let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
 
