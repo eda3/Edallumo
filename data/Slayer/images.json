@@ -71,23 +71,29 @@
 },
 	{
   "input": "6HS",
-  "move_img": "https://www.dustloop.com/wiki/images/8/8b/GGST_Slayer_6H.png",
+  "move_img": "https://www.dustloop.com/wiki/images/7/78/GGST_Slayer_6H_1.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/6/67/GGST_Slayer_6H_Hitbox.png"
+    "https://www.dustloop.com/wiki/images/b/b5/GGST_Slayer_6H_Hitbox_1.png",
+    "https://www.dustloop.com/wiki/images/3/3b/GGST_Slayer_6H_Hitbox_2.png",
+    "https://www.dustloop.com/wiki/images/d/d1/GGST_Slayer_6H_Hitbox_3.png"
   ]
 },
 	{
   "input": "6K",
-  "move_img": "https://www.dustloop.com/wiki/images/4/4e/GGST_Slayer_6K.png",
+  "move_img": "https://www.dustloop.com/wiki/images/1/19/GGST_Slayer_6K_1.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/3/3b/GGST_Slayer_6K_Hitbox.png"
+    "https://www.dustloop.com/wiki/images/0/0d/GGST_Slayer_6K_Hitbox_1.png",
+    "https://www.dustloop.com/wiki/images/7/73/GGST_Slayer_6K_Hitbox_2.png",
+    "https://www.dustloop.com/wiki/images/a/ae/GGST_Slayer_6K_Hitbox_3.png",
+    "https://www.dustloop.com/wiki/images/d/db/GGST_Slayer_6K_Hitbox_4.png"
   ]
 },
 	{
   "input": "6P",
   "move_img": "https://www.dustloop.com/wiki/images/d/db/GGST_Slayer_6P.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/e/e8/GGST_Slayer_6P_Hitbox.png"
+    "https://www.dustloop.com/wiki/images/5/58/GGST_Slayer_6P_Hitbox1.png",
+    "https://www.dustloop.com/wiki/images/1/15/GGST_Slayer_6P_Hitbox2.png"
   ]
 },
 	{
@@ -101,7 +107,8 @@
   "input": "遠S",
   "move_img": "https://www.dustloop.com/wiki/images/3/35/GGST_Slayer_fS.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/3/30/GGST_Slayer_fS_Hitbox.png"
+    "https://www.dustloop.com/wiki/images/8/8a/GGST_Slayer_fS_Hitbox_1.png",
+    "https://www.dustloop.com/wiki/images/b/bf/GST_Slayer_fS_Hitbox_2.png"
   ]
 },
 	{
