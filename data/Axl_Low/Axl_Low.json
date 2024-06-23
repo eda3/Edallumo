@@ -45,7 +45,7 @@
 		"counter": "Small",
 		"scaling": "70%",
 		"riscgain": "750",
-		"invincibility": "3-12F Low Profile"
+		"invincibility": "Low Profile 3-12, Below Crouch 13-16"
 	},
 	{
 		"input": "2P",
@@ -564,7 +564,7 @@
 		"name": "百重鎌焼",
 		"damage": "45×2, 18×3",
 		"guard": "上段",
-		"startup": "11+1",
+		"startup": "11+2",
 		"active": "4, 4(24)13",
 		"recovery": "26",
 		"hit": "強制ダウン+58",
