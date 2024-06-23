@@ -29,7 +29,7 @@
 		"counter": "Large",
 		"scaling": "90%",
 		"riscgain": "1875",
-		"invincibility": "-"
+		"invincibility": "Below Crouch 10-22"
 	},
 	{
 		"input": "2K",
@@ -423,7 +423,7 @@
 		"startup": "1",
 		"active": "7",
 		"recovery": "32",
-		"hit": "ダウン+14 [+11]",
+		"hit": "強制ダウン+25 [+11]",
 		"block": "-",
 		"level": "-",
 		"counter": "-",
