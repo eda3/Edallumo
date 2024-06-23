@@ -1,7 +1,7 @@
 [
 	{
 		"input": "2D",
-		"name": "Sweep",
+		"name": "足払い",
 		"damage": "31",
 		"guard": "下段",
 		"startup": "10",
@@ -13,7 +13,7 @@
 		"counter": "Large",
 		"scaling": "90%",
 		"riscgain": "1125",
-		"invincibility": "none"
+		"invincibility": "Below Crouch 1-3; 27-30 , Below Crouch (Lowest) 4-26"
 	},
 	{
 		"input": "2HS",
@@ -77,11 +77,11 @@
 		"counter": "Mid",
 		"scaling": "90%",
 		"riscgain": "1125",
-		"invincibility": "none"
+		"invincibility": "Below Crouch 1-29"
 	},
 	{
 		"input": "5D",
-		"name": "Dust Attack",
+		"name": "ダスト",
 		"damage": "45",
 		"guard": "中段",
 		"startup": "20",
@@ -145,7 +145,7 @@
 	},
 	{
 		"input": "5[D]",
-		"name": "Charged Dust Attack",
+		"name": "溜めダスト",
 		"damage": "56",
 		"guard": "中段",
 		"startup": "28",
@@ -240,7 +240,7 @@
 		"invincibility": "none"
 	},
 	{
-		"input": "jHS(jHS)",
+		"input": "jHS",
 		"name": "jHS",
 		"damage": "39",
 		"guard": "中段",
@@ -320,8 +320,8 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "Charged Wild Assault(236[D])",
-		"name": "Charged Wild Assault",
+		"input": "溜めワイルドアサルト(236[D])",
+		"name": "溜めワイルドアサルト",
 		"damage": "50",
 		"guard": "上段",
 		"startup": "29",
@@ -406,7 +406,7 @@
 		"guard": "-",
 		"startup": "-",
 		"active": "-",
-		"recovery": "22+6 after Landing",
+		"recovery": "22+4 after Landing",
 		"hit": "-",
 		"block": "-",
 		"level": "-",
@@ -452,9 +452,9 @@
 		"name": "水月のハコビ",
 		"damage": "-",
 		"guard": "-",
-		"startup": "-",
-		"active": "-",
-		"recovery": "Total 34~50",
+		"startup": "10",
+		"active": "16~32",
+		"recovery": "9",
 		"hit": "-",
 		"block": "-",
 		"level": "-",
