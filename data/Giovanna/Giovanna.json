@@ -448,8 +448,8 @@
 		"invincibility": "7-37F Airborne"
 	},
 	{
-		"input": "トロヴァオン(236K)",
-		"name": "トロヴァオン",
+		"input": "トロヴァォン(236K)",
+		"name": "トロヴァォン",
 		"damage": "48 [57]",
 		"guard": "All [上段(ガードクラッシュ)]",
 		"startup": "27",
