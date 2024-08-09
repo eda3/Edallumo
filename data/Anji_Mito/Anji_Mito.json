@@ -29,7 +29,7 @@
 		"counter": "Large",
 		"scaling": "90%",
 		"riscgain": "2500",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "2K",
@@ -45,7 +45,7 @@
 		"counter": "Small",
 		"scaling": "70%",
 		"riscgain": "750",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "2P",
@@ -61,7 +61,7 @@
 		"counter": "Small",
 		"scaling": "80%",
 		"riscgain": "500",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "2S",
@@ -93,7 +93,7 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1125",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "5HS",
@@ -109,7 +109,7 @@
 		"counter": "Large",
 		"scaling": "90%",
 		"riscgain": "2500",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "5K",
@@ -125,7 +125,7 @@
 		"counter": "Small",
 		"scaling": "90%",
 		"riscgain": "1000",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "5P",
@@ -141,7 +141,7 @@
 		"counter": "Small",
 		"scaling": "80%",
 		"riscgain": "1000",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "5[D]",
@@ -157,7 +157,7 @@
 		"counter": "Mid",
 		"scaling": "100%",
 		"riscgain": "1875",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "6HS",
@@ -173,7 +173,7 @@
 		"counter": "Large",
 		"scaling": "90%",
 		"riscgain": "500, 500, 600",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "6P",
@@ -205,7 +205,7 @@
 		"counter": "Mid",
 		"scaling": "100%",
 		"riscgain": "2500",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "遠S",
@@ -221,7 +221,7 @@
 		"counter": "Mid",
 		"scaling": "90%",
 		"riscgain": "1500",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "jD",
@@ -237,7 +237,7 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1500",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "jHS",
@@ -253,7 +253,7 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1125",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "jK",
@@ -269,7 +269,7 @@
 		"counter": "Small",
 		"scaling": "80%",
 		"riscgain": "750",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "jP",
@@ -285,7 +285,7 @@
 		"counter": "Small",
 		"scaling": "80%",
 		"riscgain": "375",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "jS",
@@ -301,7 +301,7 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1125",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "ワイルドアサルト(236D)",
@@ -349,7 +349,7 @@
 		"counter": "-",
 		"scaling": "50%",
 		"riscgain": "-",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "空投げ(j6D or j.4D)",
@@ -365,7 +365,7 @@
 		"counter": "-",
 		"scaling": "50%",
 		"riscgain": "-",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "風神(236HS)",
@@ -493,7 +493,7 @@
 		"counter": "Very Small×2",
 		"scaling": "80%",
 		"riscgain": "200×2",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "紅(236S)",
