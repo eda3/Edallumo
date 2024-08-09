@@ -240,7 +240,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "j2K(j2K)",
+		"input": "j2K",
 		"name": "j2K",
 		"damage": "14×N",
 		"guard": "中段",
@@ -557,7 +557,7 @@
 		"counter": "Very Small",
 		"scaling": "80%",
 		"riscgain": "500",
-		"invincibility": "-"
+		"invincibility": "Below Crouch 3-50"
 	},
 	{
 		"input": "冽掌(236S)",
@@ -608,7 +608,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "βブレード(623S)",
+		"input": "βブレード(6236S)",
 		"name": "βブレード",
 		"damage": "30, 26",
 		"guard": "上段",
@@ -688,7 +688,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "空中βブレード(j623S)",
+		"input": "空中βブレード(j6236S)",
 		"name": "空中βブレード",
 		"damage": "30, 26",
 		"guard": "上段",
