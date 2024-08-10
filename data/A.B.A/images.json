@@ -8,7 +8,7 @@
   },
   {
     "input": "2HS",
-    "move_img": "https://www.dustloop.com/wiki/images/7/7c/GGST_A.B.A_2H_2.png",
+    "move_img": "https://www.dustloop.com/wiki/images/5/57/GGST_A.B.A_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/33/GGST_A.B.A_2H_Hitbox.png",
       "https://www.dustloop.com/wiki/images/b/bd/GGST_A.B.A_2H_Hitbox_2.png"
@@ -139,14 +139,14 @@
     ]
   },
   {
-    "input": "JR2D",
+    "input": "Sweep(JR 2D)",
     "move_img": "https://www.dustloop.com/wiki/images/a/aa/GGST_A.B.A_JR_2D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/45/GGST_A.B.A_JR_2D_Hitbox.png"
     ]
   },
   {
-    "input": "JR2HS",
+    "input": "JR2HS(JR2HS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_A.B.A_JR_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/52/GGST_A.B.A_JR_2H_Hitbox.png",
@@ -154,21 +154,21 @@
     ]
   },
   {
-    "input": "JR2K",
+    "input": "JR2K(JR2K)",
     "move_img": "https://www.dustloop.com/wiki/images/8/82/GGST_A.B.A_2K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/77/GGST_A.B.A_2K_Hitbox.png"
     ]
   },
   {
-    "input": "JR2P",
+    "input": "JR2P(JR2P)",
     "move_img": "https://www.dustloop.com/wiki/images/4/4a/GGST_A.B.A_2P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fd/GGST_A.B.A_2P_Hitbox.png"
     ]
   },
   {
-    "input": "JR2S",
+    "input": "JR2S(JR2S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_A.B.A_JR_2S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a4/GGST_A.B.A_JR_2S_Hitbox.png",
@@ -176,42 +176,42 @@
     ]
   },
   {
-    "input": "JR5D",
+    "input": "Dust Attack(JR 5D)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_A.B.A_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_A.B.A_5D_Hitbox.png"
     ]
   },
   {
-    "input": "JR5HS",
+    "input": "JR5HS(JR5HS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a6/GGST_A.B.A_JR_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d3/GGST_A.B.A_JR_5H_Hitbox.png"
     ]
   },
   {
-    "input": "JR5K",
+    "input": "JR5K(JR5K)",
     "move_img": "https://www.dustloop.com/wiki/images/4/4f/GGST_A.B.A_5K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9e/GGST_A.B.A_5K_Hitbox.png"
     ]
   },
   {
-    "input": "JR5P",
+    "input": "JR5P(JR5P)",
     "move_img": "https://www.dustloop.com/wiki/images/4/4c/GGST_A.B.A_5P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/84/GGST_A.B.A_5P_Hitbox.png"
     ]
   },
   {
-    "input": "JR5[D]",
+    "input": "Charged Dust Attack(JR 5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_A.B.A_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_A.B.A_5D_Hitbox.png"
     ]
   },
   {
-    "input": "JR6HS",
+    "input": "JR6HS(JR6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d5/GGST_A.B.A_JR_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b9/GGST_A.B.A_6H_Hitbox_1.png",
@@ -219,7 +219,7 @@
     ]
   },
   {
-    "input": "JR6P",
+    "input": "JR6P(JR6P)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d3/GGST_A.B.A_6P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dd/GGST_A.B.A_6P_Hitbox_1.png",
@@ -227,28 +227,28 @@
     ]
   },
   {
-    "input": "JRcS",
+    "input": "JR近S(JR近S)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f7/GGST_A.B.A_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6d/GGST_A.B.A_c.S_Hitbox.png"
     ]
   },
   {
-    "input": "JRfS",
+    "input": "JR遠S(JR遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/6/6b/GGST_A.B.A_JR_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/98/GGST_A.B.A_JR_f.S_Hitbox.png"
     ]
   },
   {
-    "input": "JRjD",
+    "input": "JRjD(JRjD)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9f/GGST_A.B.A_JR_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/38/GGST_A.B.A_JR_j.D_Hitbox.png"
     ]
   },
   {
-    "input": "JRjHS",
+    "input": "JRjHS(JRjHS)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d3/GGST_A.B.A_JR_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/66/GGST_A.B.A_JR_j.H_Hitbox_1.png",
@@ -256,7 +256,7 @@
     ]
   },
   {
-    "input": "JRjK",
+    "input": "JRjK(JRjK)",
     "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_A.B.A_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/ab/GGST_A.B.A_j.K_Hitbox_1.png",
@@ -265,56 +265,56 @@
     ]
   },
   {
-    "input": "JRjP",
+    "input": "JRjP(JRjP)",
     "move_img": "https://www.dustloop.com/wiki/images/5/50/GGST_A.B.A_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0d/GGST_A.B.A_j.P_Hitbox.png"
     ]
   },
   {
-    "input": "JRjS",
+    "input": "JRjS(JRjS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c6/GGST_A.B.A_JR_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7e/GGST_A.B.A_JR_j.S_Hitbox.png"
     ]
   },
   {
-    "input": "236D",
+    "input": "ワイルドアサルト(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c6/GGST_A.B.A_236D.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "236[D]",
+    "input": "溜めワイルドアサルト(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/c/c6/GGST_A.B.A_236D.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "6D or 4D",
+    "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_A.B.A_Ground_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e5/GGST_A.B.A_Ground_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "j6D or j4D",
+    "input": "空投げ(j6D or j4D)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_A.B.A_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/01/GGST_A.B.A_Air_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "214HS",
+    "input": "結合と変性(214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_A.B.A_214H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d8/GGST_A.B.A_214H_Hitbox.png"
     ]
   },
   {
-    "input": "214K",
+    "input": "牽引と随順(214K)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_A.B.A_214K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/04/GGST_A.B.A_214K_Hitbox_1.png",
@@ -323,14 +323,14 @@
     ]
   },
   {
-    "input": "214S",
+    "input": "逆上と驚愕(214S)",
     "move_img": "https://www.dustloop.com/wiki/images/8/82/GGST_A.B.A_214S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e5/GGST_A.B.A_214S_Hitbox.png"
     ]
   },
   {
-    "input": "236K",
+    "input": "戮力と傾動(236K)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9e/GGST_A.B.A_236K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/66/GGST_A.B.A_236K_Hitbox_1.png",
@@ -339,21 +339,21 @@
     ]
   },
   {
-    "input": "236S",
+    "input": "威喝と嗚咽(236S)",
     "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_A.B.A_236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b6/GGST_A.B.A_236S_Hitbox.png"
     ]
   },
   {
-    "input": "236S~6S",
+    "input": "抑圧と束縛(236S6S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b1/GGST_A.B.A_236S_6S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e0/GGST_A.B.A_236S_6S_Hitbox.png"
     ]
   },
   {
-    "input": "623HS",
+    "input": "断罪と情動(623HS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/66/GGST_A.B.A_623H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e2/GGST_A.B.A_623H_Hitbox_1.png",
@@ -361,21 +361,21 @@
     ]
   },
   {
-    "input": "63214P",
+    "input": "変転と感化(63214P)",
     "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_A.B.A_63214P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/16/GGST_A.B.A_63214P_Hitbox.png"
     ]
   },
   {
-    "input": "JR214HS",
+    "input": "JR結合と変性(JR214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_A.B.A_214H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d8/GGST_A.B.A_214H_Hitbox.png"
     ]
   },
   {
-    "input": "JR214K",
+    "input": "JR牽引と随順(JR214K)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_A.B.A_214K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/04/GGST_A.B.A_214K_Hitbox_1.png",
@@ -384,7 +384,7 @@
     ]
   },
   {
-    "input": "JR236K",
+    "input": "JR戮力と傾動(JR236K)",
     "move_img": "https://www.dustloop.com/wiki/images/3/34/GGST_A.B.A_JR_236K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/1f/GGST_A.B.A_JR_236K_Hitbox_1.png",
@@ -392,35 +392,35 @@
     ]
   },
   {
-    "input": "JR236S",
+    "input": "JR威喝と嗚咽(JR236S)",
     "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_A.B.A_236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b6/GGST_A.B.A_236S_Hitbox.png"
     ]
   },
   {
-    "input": "JR236S~6S",
+    "input": "JR抑圧と束縛(JR236S6S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b1/GGST_A.B.A_236S_6S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e0/GGST_A.B.A_236S_6S_Hitbox.png"
     ]
   },
   {
-    "input": "JR63214P",
+    "input": "JR変転と感化(JR63214P)",
     "move_img": "https://www.dustloop.com/wiki/images/5/54/GGST_A.B.A_JR_63214P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/28/GGST_A.B.A_JR_63214P_Hitbox.png"
     ]
   },
   {
-    "input": "JRDeactivation",
-    "move_img": "",
+    "input": "JR解除(JR解除)",
+    "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_A.B.A_JR_Deactivation.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "632146HS",
+    "input": "鍵の支配(632146HS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_A.B.A_632146H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8b/GGST_A.B.A_632146H_Hitbox_1.png",
@@ -429,10 +429,28 @@
     ]
   },
   {
-    "input": "632146K",
+    "input": "鍵の守護者(632146K)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cc/GGST_A.B.A_632146K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7c/GGST_A.B.A_632146K_Hitbox.png"
+    ]
+  },
+  {
+    "input": "JR鍵の支配(JR632146HS)",
+    "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_A.B.A_632146H_1.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/8/8b/GGST_A.B.A_632146H_Hitbox_1.png",
+      "https://www.dustloop.com/wiki/images/1/1f/GGST_A.B.A_632146H_Hitbox_2.png",
+      "https://www.dustloop.com/wiki/images/e/ea/GGST_A.B.A_632146H_Hitbox_3.png"
+    ]
+  },
+  {
+    "input": "JR鍵の守護者(JR632146K)",
+    "move_img": "https://www.dustloop.com/wiki/images/6/67/GGST_A.B.A_632146K_JR.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/7/7c/GGST_A.B.A_632146K_Hitbox.png",
+      "https://www.dustloop.com/wiki/images/f/f5/GGST_A.B.A_632146K_JR_Hitbox2.png",
+      "https://www.dustloop.com/wiki/images/7/79/GGST_A.B.A_632146K_JR_Hitbox3.png"
     ]
   }
 ]

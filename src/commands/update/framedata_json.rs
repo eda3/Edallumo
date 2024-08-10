@@ -85,6 +85,52 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Ground Throw""#, r#""投げ""#)
         .replace(r#""Air Throw""#, r#""空投げ""#)
+        // A.B.A
+        .replace(r#""JR 2H""#, r#""JR2HS""#)
+        .replace(r#""JR 2K""#, r#""JR2K""#)
+        .replace(r#""JR 2P""#, r#""JR2P""#)
+        .replace(r#""JR 2S""#, r#""JR2S""#)
+        .replace(r#""JR 5H""#, r#""JR5HS""#)
+        .replace(r#""JR 5K""#, r#""JR5K""#)
+        .replace(r#""JR 5P""#, r#""JR5P""#)
+        .replace(r#""JR 6H""#, r#""JR6HS""#)
+        .replace(r#""JR 6P""#, r#""JR6P""#)
+        .replace(r#""JR c.S""#, r#""JR近S""#)
+        .replace(r#""JR f.S""#, r#""JR遠S""#)
+        .replace(r#""JR j.D""#, r#""JRjD""#)
+        .replace(r#""JR j.H""#, r#""JRjHS""#)
+        .replace(r#""JR j.K""#, r#""JRjK""#)
+        .replace(r#""JR j.P""#, r#""JRjP""#)
+        .replace(r#""JR j.S""#, r#""JRjS""#)
+        .replace(r#""236S~6S""#, r#""236S6S""#)
+        .replace(r#""JR 214H""#, r#""JR214HS""#)
+        .replace(r#""JR 214K""#, r#""JR214K""#)
+        .replace(r#""JR 236K""#, r#""JR236K""#)
+        .replace(r#""JR 236S""#, r#""JR236S""#)
+        .replace(r#""JR 236S~6S""#, r#""JR236S6S""#)
+        .replace(r#""JR 63214P""#, r#""JR63214P""#)
+        .replace(r#""JR Deactivation""#, r#""JR解除""#)
+        .replace(r#""JR 632146H""#, r#""JR632146HS""#)
+        .replace(r#""JR 632146K""#, r#""JR632146K""#)
+        .replace(r#""Bonding and Dissolving""#, r#""結合と変性""#)
+        .replace(r#""Haul and Heed""#, r#""牽引と随順""#)
+        .replace(r#""Frenzy and Astonishment""#, r#""逆上と驚愕""#)
+        .replace(r#""Intertwine and Tilt""#, r#""戮力と傾動""#)
+        .replace(r#""Menace and Groan""#, r#""威喝と嗚咽""#)
+        .replace(r#""Restriction and Constraint""#, r#""抑圧と束縛""#)
+        .replace(r#""Judgment and Sentiment""#, r#""断罪と情動""#)
+        .replace(r#""Changing and Swaying""#, r#""変転と感化""#)
+        .replace(r#""JR Bonding and Dissolving""#, r#""JR結合と変性""#)
+        .replace(r#""JR Haul and Heed""#, r#""JR牽引と随順""#)
+        .replace(r#""JR Intertwine and Tilt""#, r#""JR戮力と傾動""#)
+        .replace(r#""JR Menace and Groan""#, r#""JR威喝と嗚咽""#)
+        .replace(r#""JR Restriction and Constraint""#, r#""JR抑圧と束縛""#)
+        .replace(r#""JR Changing and Swaying""#, r#""JR変転と感化""#)
+        .replace(r#""Jealous Rage Deactivation""#, r#""JR解除""#)
+        .replace(r#""The Law is Key, Key is King.""#, r#""鍵の支配""#)
+        .replace(r#""Keeper of the Key""#, r#""鍵の守護者""#)
+        .replace(r#""JR The Law is Key, Key is King.""#, r#""JR鍵の支配""#)
+        .replace(r#""JR Keeper of the Key""#, r#""JR鍵の守護者""#)
         .replace(r#""Shitsu""#, r#""疾""#) // 闇慈
         .replace(r#""Suigetsu No Hakobi""#, r#""水月のハコビ""#) // 闇慈
         .replace(r#""Kou""#, r#""紅""#) // 闇慈
@@ -358,6 +404,23 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             "jP",
             "jS",
             "j2K",
+            "JR2HS",
+            "JR2K",
+            "JR2P",
+            "JR2S",
+            "JR5HS",
+            "JR5K",
+            "JR5P",
+            "JR6HS",
+            "JR6P",
+            "JR近S",
+            "JR遠S",
+            "JRjD",
+            "JRjHS",
+            "JRjK",
+            "JRjP",
+            "JRjS",
+            "JR解除",
             "214X (Discard)",
             "214X (Draw)",
             "Accipiter Metron",
