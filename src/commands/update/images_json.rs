@@ -199,7 +199,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Banki Messai""#, r#""万鬼滅砕""#) // チップ
         .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#) // チップ
         .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#) // チップ
-                // エルフェルト
+        // エルフェルト
         .replace(r#""214S~H""#, r#""214SHS""#)
         .replace(r#""214S~K""#, r#""214SK""#)
         .replace(r#""214S~P""#, r#""214SP""#)

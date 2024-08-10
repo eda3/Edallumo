@@ -80,6 +80,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""63214H""#, r#""63214HS""#)
         .replace(r#""j632146H""#, r#""j632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
+        .replace(r#""j236236H""#, r#""j236236HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
         .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
@@ -280,6 +281,18 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Earthquake""#, r#""100t重り""#) // ファウスト
         .replace(r#""Meteors""#, r#""メテオ""#) // ファウスト
         .replace(r#""Love Afro""#, r#""愛アフロ""#) // ファウスト
+        // ジオヴァーナ
+        .replace(r#""6236S""#, r#""623S""#)
+        .replace(r#""6HH""#, r#""6HSHS""#)
+        .replace(r#""6HHH""#, r#""6HSHSHS""#)
+        .replace(r#""Chave""#, r#""シャーヴィ""#)
+        .replace(r#""Sepultura""#, r#""セパルトゥラ""#)
+        .replace(r#""Sol Poente""#, r#""ソウ・ポエンチ""#)
+        .replace(r#""Trovao""#, r#""トロヴァォン""#)
+        .replace(r#""Sol Nascente""#, r#""ソウ・ナセンテ""#)
+        .replace(r#""Air Sol Poente""#, r#""空中ソウ・ナセンテ""#)
+        .replace(r#""Ventania""#, r#""ヴェンターニア""#)
+        .replace(r#""Tempestade""#, r#""テンペスターヂ""#)
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
         .replace(r#""Lust Shaker""#, r#""ラストシェイカー""#) // ミリア
@@ -447,6 +460,8 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             "JRjP",
             "JRjS",
             "JR解除",
+            "6HSHS",
+            "6HSHSHS",
             "214X (Discard)",
             "214X (Draw)",
             "Accipiter Metron",
