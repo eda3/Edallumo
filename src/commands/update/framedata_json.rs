@@ -216,6 +216,32 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Banki Messai""#, r#""万鬼滅砕""#) // チップ
         .replace(r#""Zansei Rouga""#, r#""斬星狼牙""#) // チップ
         .replace(r#""Air Zansei Rouga""#, r#""空中斬星狼牙""#) // チップ
+        // エルフェルト
+        .replace(r#""214S~H""#, r#""214SHS""#)
+        .replace(r#""214S~K""#, r#""214SK""#)
+        .replace(r#""214S~P""#, r#""214SP""#)
+        .replace(r#""214S~P/K~K""#, r#""214SP/KK""#)
+        .replace(r#""214S~P/K~P""#, r#""214SP/KP""#)
+        .replace(r#""236S/H""#, r#""236S/HS""#)
+        .replace(r#""j236S/H""#, r#""j236S/HS""#)
+        .replace(r#""236236K Explosion""#, r#""236236K爆発""#)
+        .replace(r#""Bomb-Bomb Chocolat""#, r#""ボンボン・ショコラ""#)
+        .replace(
+            r#""Miss Charlotte (Out of Repair)""#,
+            r#""Missシャルロット（お手入れ不足）""#,
+        )
+        .replace(r#""Here I Go!""#, r#""やります！""#)
+        .replace(r#""Nailed It!""#, r#""決めます！""#)
+        .replace(r#""Down Low!""#, r#""下から！""#)
+        .replace(r#""Up High!""#, r#""上から！""#)
+        .replace(r#""Down Low! (Finisher)""#, r#""下から！（フィニッシュ）""#)
+        .replace(r#""Up High! (Finisher)""#, r#""上から！（フィニッシュ）""#)
+        .replace(r#""Miss Charlotte""#, r#""Missシャルロット""#)
+        .replace(r#""Air Miss Charlotte""#, r#""空中Missシャルロット""#)
+        .replace(r#""Bomb-Bombnnière""#, r#""ボンボニエール""#)
+        .replace(r#""Bomb-Bombnnière Explosion""#, r#""ボンボニエール爆発""#)
+        .replace(r#""Juganto Da Parfeo""#, r#""ジュガント ダ パルフェーオ""#)
+        // ファウスト
         .replace(r#""Thrust""#, r#""突きます。""#) // ファウスト
         .replace(r#""Thrust (Charged)""#, r#""溜め突きます。""#) // ファウスト
         .replace(r#""Pull Back""#, r#""引き戻し""#) // ファウスト

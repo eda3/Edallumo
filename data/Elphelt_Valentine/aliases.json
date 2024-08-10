@@ -40,8 +40,10 @@
 		]
 	},
 	{
-		"input": "236S",
+		"input": "Missシャルロット(236S/HS)",
 		"aliases": [
+			"236S",
+			"236HS",
 			"Missシャルロット",
 			"S Miss Charlotte",
 			"Fireball",
@@ -50,18 +52,9 @@
 		]
 	},
 	{
-		"input": "236HS",
+		"input": "Missシャルロット（お手入れ不足）(214K)",
 		"aliases": [
-			"HSMissシャルロット",
-			"H Miss Charlotte",
-			"Heavy Fireball",
-			"HFB",
-			"HMC"
-		]
-	},
-	{
-		"input": "214K",
-		"aliases": [
+			"214K",
 			"Missシャルロット（お手入れ不足）",
 			"Buttslam",
 			"BS",
@@ -69,16 +62,18 @@
 		]
 	},
 	{
-		"input": "214HS",
+		"input": "ボンボン・ショコラ(214HS)",
 		"aliases": [
+			"214HS",
 			"ボンボン・ショコラ",
 			"Grenade",
 			"BBC"
 		]
 	},
 	{
-		"input": "214S",
+		"input": "やります！(214S)",
 		"aliases": [
+			"214S",
 			"やります！",
 			"Rekka",
 			"Rekka 1",
@@ -87,8 +82,9 @@
 		]
 	},
 	{
-		"input": "214S~P",
+		"input": "上から！(214SP)",
 		"aliases": [
+			"214SP",
 			"上から！",
 			"Overhead",
 			"Rekka 2",
@@ -98,8 +94,9 @@
 		]
 	},
 	{
-		"input": "214S~K",
+		"input": "下から！(214SK)",
 		"aliases": [
+			"214SK",
 			"下から！",
 			"Low",
 			"Rekka 3",
@@ -109,57 +106,56 @@
 		]
 	},
 	{
-		"input": "214S~P/K~P",
+		"input": "上から！（フィニッシュ）(214SP/KP)",
 		"aliases": [
-			"上から！（上から！の後 or 下から！の後）",
+			"上から！（フィニッシュ）",
 			"214SPP",
 			"214SKP"
 		]
 	},
 	{
-		"input": "214S~P/K~K",
+		"input": "下から！（フィニッシュ）(214SP/KK)",
 		"aliases": [
-			"下から！（上から！の後 or 下から！の後）",
+			"下から！（フィニッシュ）",
 			"214SPK",
 			"214SKK"
 		]
 	},
 	{
-		"input": "214S~H",
+		"input": "決めます！(214SHS)",
 		"aliases": [
 			"決めます！",
 			"214SHS"
 		]
 	},
 	{
-		"input": "j236S",
+		"input": "空中Missシャルロット(j236S/HS)",
 		"aliases": [
-			"空中SMissシャルロット"
+			"空中Missシャルロット",
+			"j236S",
+			"j236HS"
 		]
 	},
 	{
-		"input": "j236HS",
+		"input": "ボンボニエール(236236K)",
 		"aliases": [
-			"空中HMissシャルロット"
-		]
-	},
-	{
-		"input": "236236K",
-		"aliases": [
+			"236236K",
 			"ボンボニエール",
 			"BB"
 		]
 	},
 	{
-		"input": "236236K Explosion",
+		"input": "ボンボニエール爆発(236236K爆発)",
 		"aliases": [
+			"236236K爆発",
 			"ボンボニエール爆発",
 			"BBE"
 		]
 	},
 	{
-		"input": "632146HS",
+		"input": "ジュガント ダ パルフェーオ(632146HS)",
 		"aliases": [
+			"632146HS",
 			"ジュガント ダ パルフェーオ"
 		]
 	},

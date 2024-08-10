@@ -49,7 +49,7 @@
     ]
   },
   {
-    "input": "5HH",
+    "input": "5HH(5HH)",
     "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_Elphelt_Valentine_5HH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d7/GGST_Elphelt_Valentine_5HH_Hitbox.png"
@@ -144,35 +144,35 @@
     ]
   },
   {
-    "input": "236D",
+    "input": "ワイルドアサルト(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_Elphelt_Valentine_236D.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "236[D]",
+    "input": "溜めワイルドアサルト(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_Elphelt_Valentine_236D.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "6D or 4D",
+    "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/98/GGST_Elphelt_Valentine_Ground_Throw.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "j6D or j4D",
+    "input": "空投げ(j6D or j4D)",
     "move_img": "https://www.dustloop.com/wiki/images/2/28/GGST_Elphelt_Valentine_Air_Throw.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "214HS",
+    "input": "ボンボン・ショコラ(214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9d/GGST_Elphelt_Valentine_214H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/43/GGST_Elphelt_Valentine_214H_Hitbox_1.png",
@@ -181,14 +181,14 @@
     ]
   },
   {
-    "input": "214K",
+    "input": "Missシャルロット（お手入れ不足）(214K)",
     "move_img": "https://www.dustloop.com/wiki/images/7/7c/GGST_Elphelt_Valentine_214K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dc/GGST_Elphelt_Valentine_214K_Hitbox.png"
     ]
   },
   {
-    "input": "214S",
+    "input": "やります！(214S)",
     "move_img": "https://www.dustloop.com/wiki/images/7/73/GGST_Elphelt_Valentine_214S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/71/GGST_Elphelt_Valentine_214S_Hitbox.png",
@@ -196,21 +196,21 @@
     ]
   },
   {
-    "input": "214S~H",
+    "input": "決めます！(214SHS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a8/GGST_Elphelt_Valentine_214SH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/eb/GGST_Elphelt_Valentine_214SH_Hitbox.png"
     ]
   },
   {
-    "input": "214S~K",
+    "input": "下から！(214SK)",
     "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_Elphelt_Valentine_214SK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9c/GGST_Elphelt_Valentine_214SK_Hitbox.png"
     ]
   },
   {
-    "input": "214S~P",
+    "input": "上から！(214SP)",
     "move_img": "https://www.dustloop.com/wiki/images/d/db/GGST_Elphelt_Valentine_214SP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/26/GGST_Elphelt_Valentine_214SP_Hitbox_1.png",
@@ -219,14 +219,14 @@
     ]
   },
   {
-    "input": "214S~P/K~K",
+    "input": "下から！（フィニッシュ）(214SP/KK)",
     "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_Elphelt_Valentine_214SKK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/be/GGST_Elphelt_Valentine_214SKK_Hitbox.png"
     ]
   },
   {
-    "input": "214S~P/K~P",
+    "input": "上から！（フィニッシュ）(214SP/KP)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b2/GGST_Elphelt_Valentine_214SPP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/51/GGST_Elphelt_Valentine_214SPP_1_Hitbox.png",
@@ -235,16 +235,7 @@
     ]
   },
   {
-    "input": "236HS",
-    "move_img": "https://www.dustloop.com/wiki/images/b/b0/GGST_Elphelt_Valentine_236H.png",
-    "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/a/a1/GGST_Elphelt_Valentine_236H_Hitbox_1.png",
-      "https://www.dustloop.com/wiki/images/a/ae/GGST_Elphelt_Valentine_236H_Hitbox_2.png",
-      "https://www.dustloop.com/wiki/images/d/d4/"
-    ]
-  },
-  {
-    "input": "236S",
+    "input": "Missシャルロット(236S/HS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/61/GGST_Elphelt_Valentine_236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/61/GGST_Elphelt_Valentine_236S_Hitbox_1.png",
@@ -253,35 +244,28 @@
     ]
   },
   {
-    "input": "j236HS",
-    "move_img": "https://www.dustloop.com/wiki/images/7/7d/GGST_Elphelt_Valentine_j236H.png",
-    "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/2/2e/GGST_Elphelt_Valentine_j236H_Hitbox.png"
-    ]
-  },
-  {
-    "input": "j236S",
+    "input": "空中Missシャルロット(j236S/HS)",
     "move_img": "https://www.dustloop.com/wiki/images/7/78/GGST_Elphelt_Valentine_j236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b5/GGST_Elphelt_Valentine_j236S_Hitbox.png"
     ]
   },
   {
-    "input": "236236K",
+    "input": "ボンボニエール(236236K)",
     "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_Elphelt_Valentine_236236K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/02/GGST_Elphelt_Valentine_236236K_Hitbox.png"
     ]
   },
   {
-    "input": "236236K Explosion",
+    "input": "ボンボニエール爆発(236236K爆発)",
     "move_img": "https://www.dustloop.com/wiki/images/6/6f/GGST_Elphelt_Valentine_236236K_Explosion.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/30/GGST_Elphelt_Valentine_236236K_Explosion_Hitbox.png"
     ]
   },
   {
-    "input": "632146HS",
+    "input": "ジュガント ダ パルフェーオ(632146HS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a6/GGST_Elphelt_Valentine_632146H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/50/GGST_Elphelt_Valentine_632146H_Hitbox.png"
