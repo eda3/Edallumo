@@ -276,20 +276,59 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Behemoth Typhoon (684)""#, r#""ベヒーモスタイフーン""#)
         .replace(r#""Behemoth Typhoon (842)""#, r#""ベヒーモスタイフーン""#)
         .replace(r#""Behemoth Typhoon (862)""#, r#""ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (248)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (268)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (426)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (486)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (624)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (684)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (842)""#, r#""空中ベヒーモスタイフーン""#)
-        .replace(r#""Air Behemoth Typhoon (862)""#, r#""空中ベヒーモスタイフーン""#)
+        .replace(
+            r#""Air Behemoth Typhoon (248)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (268)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (426)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (486)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (624)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (684)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (842)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
+        .replace(
+            r#""Air Behemoth Typhoon (862)""#,
+            r#""空中ベヒーモスタイフーン""#,
+        )
         .replace(r#""Burn It Down (Level 1)""#, r#""バーン・イット・ダウン""#)
-        .replace(r#""Burn It Down (Level 2)""#, r#""バーン・イット・ダウン2""#)
-        .replace(r#""Burn It Down (Level 3)""#, r#""バーン・イット・ダウン3""#)
-        .replace(r#""Down With The System""#, r#""ダウン・ウィズ・ザ・システム""#)
-        .replace(r#""Down With The System (720)""#, r#""ダウン・ウィズ・ザ・システム""#)
-        .replace(r#""Down With The System (1080)""#, r#""ダウン・ウィズ・ザ・システム""#)
+        .replace(
+            r#""Burn It Down (Level 2)""#,
+            r#""バーン・イット・ダウン2""#,
+        )
+        .replace(
+            r#""Burn It Down (Level 3)""#,
+            r#""バーン・イット・ダウン3""#,
+        )
+        .replace(
+            r#""Down With The System""#,
+            r#""ダウン・ウィズ・ザ・システム""#,
+        )
+        .replace(
+            r#""Down With The System (720)""#,
+            r#""ダウン・ウィズ・ザ・システム""#,
+        )
+        .replace(
+            r#""Down With The System (1080)""#,
+            r#""ダウン・ウィズ・ザ・システム""#,
+        )
         .replace(r#""214S Level 1""#, r#""214S""#)
         .replace(r#""214S Level 2""#, r#""214S2""#)
         .replace(r#""214S Level 3""#, r#""214S3""#)
@@ -313,6 +352,22 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""j69874H""#, r#""j69874HS""#)
         .replace(r#""j87412H""#, r#""j87412HS""#)
         .replace(r#""j89632H""#, r#""j89632HS""#)
+        // ハッピー・ケイオス
+        .replace(r#""214S 214S""#, r#""214S214S""#)
+        .replace(r#""236S 2H""#, r#""236S2HS""#)
+        .replace(r#""236S H""#, r#""236SHS""#)
+        .replace(r#""H""#, r#""銃を構える(HS)""#)
+        .replace(r#""Roll""#, r#""前転""#)
+        .replace(r#""Focus""#, r#""フォーカス""#)
+        .replace(r#""Steady Aim""#, r#""しっかり狙いを定める""#)
+        .replace(r#""Cancel Aim""#, r#""構え解除""#)
+        .replace(r#""Fire""#, r#""射撃""#)
+        .replace(r#""Reload""#, r#""リロード""#)
+        .replace(r#""Scapegoat""#, r#""スケープゴート""#)
+        .replace(r#""Curse""#, r#""カース""#)
+        .replace(r#""At the Ready""#, r#""銃を構える""#)
+        .replace(r#""Super Focus""#, r#""超フォーカス""#)
+        .replace(r#""Deus Ex Machina""#, r#""デウス・エクス・マキナ""#)
         // ミリア
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
@@ -562,6 +617,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             "近S",
             "遠S",
             "S",
+            "6S",
             "H",
             "jD",
             "jHS",
@@ -569,6 +625,26 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             "jP",
             "jS",
             "j2K",
+            "JR2HS",
+            "JR2K",
+            "JR2P",
+            "JR2S",
+            "JR5HS",
+            "JR5K",
+            "JR5P",
+            "JR6HS",
+            "JR6P",
+            "JR近S",
+            "JR遠S",
+            "JRjD",
+            "JRjHS",
+            "JRjK",
+            "JRjP",
+            "JRjS",
+            "JR解除",
+            "6HSHS",
+            "6HSHSHS",
+            "銃を構える(HS)",
             "214X (Discard)",
             "214X (Draw)",
             "Accipiter Metron",

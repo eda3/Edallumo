@@ -1,7 +1,7 @@
 [
 	{
 		"input": "2D",
-		"name": "2D",
+		"name": "足払い",
 		"damage": "33",
 		"guard": "下段",
 		"startup": "10",
@@ -29,7 +29,7 @@
 		"counter": "Small",
 		"scaling": "70%",
 		"riscgain": "750",
-		"invincibility": "5-10F Low Profile"
+		"invincibility": "Below Crouch 3-4; 11-25, Low Profile 5-6, Low Profile (Lowest) 7-10"
 	},
 	{
 		"input": "2P",
@@ -65,7 +65,7 @@
 	},
 	{
 		"input": "5D",
-		"name": "Uncharged",
+		"name": "ダスト",
 		"damage": "40",
 		"guard": "中段",
 		"startup": "20",
@@ -113,13 +113,13 @@
 	},
 	{
 		"input": "5[D]",
-		"name": "Charged",
+		"name": "溜めダスト",
 		"damage": "50",
 		"guard": "中段",
 		"startup": "28",
 		"active": "3",
 		"recovery": "26",
-		"hit": "KD +36",
+		"hit": "ダウン+36",
 		"block": "-10",
 		"level": "4",
 		"counter": "Mid",
@@ -167,7 +167,7 @@
 		"startup": "12",
 		"active": "7",
 		"recovery": "24",
-		"hit": "KD +24",
+		"hit": "ダウン+24",
 		"block": "-14",
 		"level": "3",
 		"counter": "Mid",
@@ -177,7 +177,7 @@
 	},
 	{
 		"input": "近S",
-		"name": "c.S",
+		"name": "近S",
 		"damage": "38",
 		"guard": "上段",
 		"startup": "7",
@@ -291,12 +291,12 @@
 		"input": "ワイルドアサルト(236D)",
 		"name": "ワイルドアサルト",
 		"damage": "30",
-		"guard": "上段",
+		"guard": "上段(ガードクラッシュ)",
 		"startup": "20~31",
 		"active": "3",
 		"recovery": "20",
 		"hit": "Stagger +12",
-		"block": "+12",
+		"block": "+13",
 		"level": "4",
 		"counter": "Mid",
 		"scaling": "90%",
@@ -305,9 +305,9 @@
 	},
 	{
 		"input": "溜めワイルドアサルト(236[D])",
-		"name": "ワイルドアサルト",
+		"name": "溜めワイルドアサルト",
 		"damage": "50",
-		"guard": "上段",
+		"guard": "上段(ガードクラッシュ)",
 		"startup": "32",
 		"active": "3",
 		"recovery": "20",
@@ -321,9 +321,9 @@
 	},
 	{
 		"input": "投げ(6D or 4D)",
-		"name": "Ground Throw",
+		"name": "投げ",
 		"damage": "80",
-		"guard": "Ground Throw",
+		"guard": "投げ",
 		"startup": "2",
 		"active": "3",
 		"recovery": "38",
@@ -336,7 +336,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "j4D or j.6D",
+		"input": "空投げ(j4D or j.6D)",
 		"name": "空投げ",
 		"damage": "80",
 		"guard": "空投げ",
@@ -365,7 +365,7 @@
 		"counter": "-",
 		"scaling": "-",
 		"riscgain": "-",
-		"invincibility": "4-15F Upper Body"
+		"invincibility": "Pass-through 14-35, Low Profile 3-12"
 	},
 	{
 		"input": "フォーカス(214P)",
@@ -400,7 +400,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "しっかり狙いを定める解除(214S 214S)",
+		"input": "構え解除(214S214S)",
 		"name": "構え解除",
 		"damage": "-",
 		"guard": "-",
@@ -416,9 +416,9 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "集中射撃(214S HS)",
+		"input": "射撃(214S H)",
 		"name": "射撃",
-		"damage": "55 [35]",
+		"damage": "35 [55]",
 		"guard": "上段(ガードクラッシュ)",
 		"startup": "1",
 		"active": "2",
@@ -487,7 +487,7 @@
 		"startup": "9",
 		"active": "3",
 		"recovery": "13",
-		"hit": "KD +48",
+		"hit": "ダウン+48",
 		"block": "+3",
 		"level": "4",
 		"counter": "Large",
@@ -496,7 +496,7 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "構え解除(236S 2HS)",
+		"input": "構え解除(236S2HS)",
 		"name": "構え解除",
 		"damage": "-",
 		"guard": "-",
@@ -512,9 +512,9 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "射撃(236S HS)",
+		"input": "射撃(236SHS)",
 		"name": "射撃",
-		"damage": "30 [20]",
+		"damage": "20 [30]",
 		"guard": "上段",
 		"startup": "1",
 		"active": "2",
@@ -562,7 +562,7 @@
 	{
 		"input": "デウス・エクス・マキナ(632146S)",
 		"name": "デウス・エクス・マキナ",
-		"damage": "20, 1×17, 100",
+		"damage": "18, 1×17, 92",
 		"guard": "上段",
 		"startup": "13+(193 Flash)+7",
 		"active": "-",

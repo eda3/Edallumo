@@ -152,7 +152,7 @@
     ]
   },
   {
-    "input": "j4D or j.6D",
+    "input": "空投げ(j4D or j.6D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9b/GGST_Happy_Chaos_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a1/GGST_Happy_Chaos_Air_Throw_Hitbox.png"
@@ -180,14 +180,14 @@
     ]
   },
   {
-    "input": "しっかり狙いを定める解除(214S 214S)",
+    "input": "構え解除(214S214S)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e3/GGST_Happy_Chaos_214S_Cancel.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c6/GGST_Happy_Chaos_214S_Cancel_hitbox.png"
     ]
   },
   {
-    "input": "集中射撃(214S HS)",
+    "input": "射撃(214S H)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e7/GGST_Happy_Chaos_214S_H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d9/GGST_Happy_Chaos_214S_H_Hitbox.png"
@@ -223,14 +223,14 @@
     ]
   },
   {
-    "input": "構え解除(236S 2HS)",
+    "input": "構え解除(236S2HS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/6e/GGST_Happy_Chaos_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c8/GGST_Happy_Chaos_2H_hitbox.png"
     ]
   },
   {
-    "input": "射撃(236S HS)",
+    "input": "射撃(236SHS)",
     "move_img": "https://www.dustloop.com/wiki/images/d/dc/GGST_Happy_Chaos_H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9c/GGST_Happy_Chaos_H_hitbox.png"
