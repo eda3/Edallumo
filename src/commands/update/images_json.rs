@@ -380,6 +380,43 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""At the Ready""#, r#""銃を構える""#)
         .replace(r#""Super Focus""#, r#""超フォーカス""#)
         .replace(r#""Deus Ex Machina""#, r#""デウス・エクス・マキナ""#)
+        // ジョニー
+        .replace(r#""Ensenga""#, r#""燕穿牙""#)
+        .replace(r#""Mist Finer Stance""#, r#""ミストファイナー構え""#)
+        .replace(
+            r#""Mist Finer (Horizontal)""#,
+            r#""ミストファイナー（横）""#,
+        )
+        .replace(r#""Mist Finer (Upward)""#, r#""ミストファイナー（上）""#)
+        .replace(r#""Mist Finer (Downward)""#, r#""ミストファイナー（下）""#)
+        .replace(r#""Vault""#, r#""跳躍""#)
+        .replace(r#""Vault Deal""#, r#""跳躍ディール""#)
+        .replace(r#""Deal""#, r#""ディール""#)
+        .replace(r#""Turn Up""#, r#""ミストファイナー（カードヒット時）""#)
+        .replace(r#""Mist Finer Cancel""#, r#""ミストファイナーキャンセル""#)
+        .replace(
+            r#""Air Mist Finer (Horizontal)""#,
+            r#""空中ミストファイナー（横）""#,
+        )
+        .replace(
+            r#""Air Mist Finer (Upward)""#,
+            r#""空中ミストファイナー（上）""#,
+        )
+        .replace(
+            r#""Air Mist Finer (Downward)""#,
+            r#""空中ミストファイナー（下）""#,
+        )
+        .replace(r#""Air Deal""#, r#""空中ディール""#)
+        .replace(
+            r#""Mist Finer Dash (Backward)""#,
+            r#""ミストファイナーバックステップ""#,
+        )
+        .replace(
+            r#""Mist Finer Dash (Forward)""#,
+            r#""ミストファイナー前ステップ""#,
+        )
+        .replace(r#""Joker Trick""#, r#""ジョーカートリック""#)
+        .replace(r#""That&#039;s My Name""#, r#""それが俺の名だ""#)
         // ミリア
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
