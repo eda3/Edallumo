@@ -486,6 +486,81 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         )
         .replace(r#""Joker Trick""#, r#""ジョーカートリック""#)
         .replace(r#""That&#039;s My Name""#, r#""それが俺の名だ""#)
+        // カイ
+        .replace(r#""Foudre Arc""#, r#""フードゥルアルク""#)
+        .replace(r#""Dire Eclat""#, r#""ダイアエクラ""#)
+        .replace(
+            r#""Charged Stun Edge""#,
+            r#""スタンエッジ・チャージアタック""#,
+        )
+        .replace(r#""Stun Dipper""#, r#""スタンディッパー""#)
+        .replace(r#""Stun Edge""#, r#""スタンエッジ""#)
+        .replace(r#""H Vapor Thrust""#, r#""HSヴェイパースラスト""#)
+        .replace(r#""S Vapor Thrust""#, r#""ヴェイパースラスト""#)
+        .replace(
+            r#""DI Foudre Arc""#,
+            r#""ドラゴンインストールフードゥルアルク""#,
+        )
+        .replace(
+            r#""DI Dire Eclat""#,
+            r#""ドラゴンインストールダイアエクラ""#,
+        )
+        .replace(
+            r#""DI Charged Stun Edge""#,
+            r#""ドラゴンインストールスタンエッジ・チャージアタック""#,
+        )
+        .replace(
+            r#""DI Stun Dipper""#,
+            r#""ドラゴンインストールスタンディッパー""#,
+        )
+        .replace(r#""DI Stun Edge""#, r#""ドラゴンインストールスタンエッジ""#)
+        .replace(
+            r#""DI H Vapor Thrust""#,
+            r#""ドラゴンインストールH ヴェイパースラスト""#,
+        )
+        .replace(
+            r#""DI S Vapor Thrust""#,
+            r#""ドラゴンインストールヴェイパースラスト""#,
+        )
+        .replace(
+            r#""DI Aerial H Stun Edge""#,
+            r#""ドラゴンインストール空中HSスタンエッジ""#,
+        )
+        .replace(
+            r#""DI Aerial S Stun Edge""#,
+            r#""ドラゴンインストール空中スタンエッジ""#,
+        )
+        .replace(
+            r#""DI Air H Vapor Thrust""#,
+            r#""ドラゴンインストール空中HSヴェイパースラスト""#,
+        )
+        .replace(
+            r#""DI Air S Vapor Thrust""#,
+            r#""ドラゴンインストール空中ヴェイパースラスト""#,
+        )
+        .replace(r#""Aerial H Stun Edge""#, r#""空中HSスタンエッジ""#)
+        .replace(r#""Aerial S Stun Edge""#, r#""空中スタンエッジ""#)
+        .replace(r#""Air H Vapor Thrust""#, r#""空中HSヴェイパースラスト""#)
+        .replace(r#""Air S Vapor Thrust""#, r#""空中ヴェイパースラスト""#)
+        .replace(r#""Dragon Install""#, r#""ドラゴンインストール""#)
+        .replace(r#""Sacred Edge""#, r#""セイクリッドエッジ""#)
+        .replace(r#""Ride the Lightning""#, r#""ライドザライトニング""#)
+        .replace(
+            r#""DI Sacred Edge""#,
+            r#""ドラゴンインストールセイクリッドエッジ""#,
+        )
+        .replace(
+            r#""DI Ride the Lightning""#,
+            r#""ドラゴンインストールライドザライトニング""#,
+        )
+        .replace(
+            r#""DI Air Ride the Lightning""#,
+            r#""ドラゴンインストール空中ライドザライトニング""#,
+        )
+        .replace(
+            r#""Air Ride the Lightning""#,
+            r#""空中ライドザライトニング""#,
+        )
         // ミリア
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
