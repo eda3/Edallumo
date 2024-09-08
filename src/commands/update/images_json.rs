@@ -380,6 +380,29 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""At the Ready""#, r#""銃を構える""#)
         .replace(r#""Super Focus""#, r#""超フォーカス""#)
         .replace(r#""Deus Ex Machina""#, r#""デウス・エクス・マキナ""#)
+        // イノ
+        .replace(r#""Chemical Love""#, r#""ケミカル愛情""#)
+        .replace(r#""Antidepressant Scale""#, r#""抗鬱音階""#)
+        .replace(r#""Mad Love Agitato""#, r#""狂愛アジタート""#)
+        .replace(r#""H Stroke the Big Tree""#, r#""HS大木をさする手""#)
+        .replace(r#""S Stroke the Big Tree""#, r#""S大木をさする手""#)
+        .replace(r#""Air Chemical Love""#, r#""空中ケミカル愛情""#)
+        .replace(r#""Air Antidepressant Scale""#, r#""空中抗鬱音階""#)
+        .replace(r#""H Sultry Performance""#, r#""HS狂言実行""#)
+        .replace(r#""H Leap""#, r#""H跳躍""#)
+        .replace(r#""K Sultry Performance""#, r#""K狂言実行""#)
+        .replace(r#""K Leap""#, r#""K跳躍""#)
+        .replace(r#""S Sultry Performance""#, r#""S狂言実行""#)
+        .replace(r#""S Leap""#, r#""S跳躍""#)
+        .replace(r#""H Sultry Performance (charged)""#, r#""溜めHS狂言実行""#)
+        .replace(r#""K Sultry Performance (charged)""#, r#""溜めK狂言実行""#)
+        .replace(r#""S Sultry Performance (charged)""#, r#""溜めS狂言実行""#)
+        .replace(r#""Megalomania""#, r#""メガロマニア""#)
+        .replace(r#""Ultimate Fortissimo""#, r#""限界フォルテッシモ""#)
+        .replace(
+            r#""Air Ultimate Fortissimo""#,
+            r#""空中限界フォルテッシモ""#,
+        )
         // ジョニー
         .replace(r#""Ensenga""#, r#""燕穿牙""#)
         .replace(r#""Mist Finer Stance""#, r#""ミストファイナー構え""#)
