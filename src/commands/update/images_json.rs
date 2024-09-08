@@ -403,6 +403,28 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Air Ultimate Fortissimo""#,
             r#""空中限界フォルテッシモ""#,
         )
+        // ジャックオー
+        .replace(r#""Countdown""#, r#""カウントダウン""#)
+        .replace(r#""Attack Command""#, r#""攻撃指示""#)
+        .replace(r#""Recover Servant""#, r#""回収""#)
+        .replace(r#""Defend Command""#, r#""防御指示""#)
+        .replace(r#""Servant Shoot""#, r#""サーヴァントシュート""#)
+        .replace(r#""Summon Servant""#, r#""サーヴァント召喚""#)
+        .replace(r#""Summon Servant""#, r#""サーヴァント召喚""#)
+        .replace(r#""Pick Up Servant""#, r#""サーヴァントを持ち上げる""#)
+        .replace(r#""Throw Servant""#, r#""サーヴァントを投げる""#)
+        .replace(r#""Servant""#, r#""サーヴァント""#)
+        .replace(r#""Release Servant""#, r#""サーヴァントを放す""#)
+        .replace(r#""Air Servant Shoot""#, r#""空中サーヴァントシュート""#)
+        .replace(r#""Held Attack Command""#, r#""防御指示""#)
+        .replace(r#""Servant""#, r#""サーヴァント""#)
+        .replace(r#""Held Defend Command""#, r#""ディフェンスコマンド""#)
+        .replace(r#""Cheer Servant On (H)""#, r#""HSサーヴァントを激励する""#)
+        .replace(r#""Cheer Servant On (S)""#, r#""Sサーヴァントを激励すす""#)
+        .replace(
+            r#""Forever Elysion Driver""#,
+            r#""フォーエヴァーエリシオンドライバー""#,
+        )
         // ジョニー
         .replace(r#""Ensenga""#, r#""燕穿牙""#)
         .replace(r#""Mist Finer Stance""#, r#""ミストファイナー構え""#)
