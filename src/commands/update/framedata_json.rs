@@ -561,6 +561,37 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Air Ride the Lightning""#,
             r#""空中ライドザライトニング""#,
         )
+        // レオ
+        .replace(r#""Brynhildr Cancel""#, r#""ブリュンヒルドの構え解除""#)
+        .replace(r#""Kahn Schild""#, r#""カーンシルト""#)
+        .replace(
+            r#""name":"bt.H""#,
+            r#""name": "（ブリュンヒルド構え中）HS""#,
+        )
+        .replace(r#""name":"bt.K""#, r#""name": "（ブリュンヒルド構え中）K""#)
+        .replace(r#""name":"bt.P""#, r#""name": "（ブリュンヒルド構え中）P""#)
+        .replace(r#""name":"bt.S""#, r#""name": "（ブリュンヒルド構え中）S""#)
+        .replace(r#""Turbulenz""#, r#""トゥルブレンツ""#)
+        .replace(
+            r#""Kaltes Gestöber Zweit""#,
+            r#""ツヴァイト・カルタスゲシュトゥーバー""#,
+        )
+        .replace(
+            r#""Kaltes Gestöber Erst""#,
+            r#""エアースト・カルタスゲシュトゥーバー""#,
+        )
+        .replace(r#""Blitzschlag""#, r#""ブリッツシュラーク""#)
+        .replace(r#""Gländzendes Dunkel""#, r#""グレンツェンドゥンケル""#)
+        .replace(r#""H Eisen Sturm""#, r#""HSアイゼンシュトルム""#)
+        .replace(r#""S Eisen Sturm""#, r#""Sアイゼンシュトルム""#)
+        .replace(r#""H Graviert Wurde""#, r#""HSグラヴィエットヴァーダ""#)
+        .replace(r#""S Graviert Wurde""#, r#""Sグラヴィエットヴァーダ""#)
+        .replace(
+            r#""Leidenschaft des Dirigenten""#,
+            r#""ライデンシャフトディリガント""#,
+        )
+        .replace(r#"bt."#, r#"bt"#)
+        .replace(r#""Stahl Wirbel""#, r#""シュタイルヴァービル""#)
         // ミリア
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
