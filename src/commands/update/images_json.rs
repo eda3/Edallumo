@@ -568,6 +568,25 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         )
         .replace(r#"bt."#, r#"bt"#)
         .replace(r#""Stahl Wirbel""#, r#""シュタイルヴァービル""#)
+        // メイ
+        .replace(r#""K Arisugawa Sparkle""#, r#""K有栖川""#)
+        .replace(r#""P Arisugawa Sparkle""#, r#""P有栖川""#)
+        .replace(r#""Overhead Kiss""#, r#""オーバーヘッドキッス""#)
+        .replace(r#""H Mr. Dolphin Vertical""#, r#""HS縦イルカ""#)
+        .replace(r#""S Mr. Dolphin Vertical""#, r#""S縦イルカ""#)
+        .replace(r#""H Mr. Dolphin Horizontal""#, r#""HS横イルカ""#)
+        .replace(r#""S Mr. Dolphin Horizontal""#, r#""S横イルカ""#)
+        .replace(r#""Split""#, r#""分離""#)
+        .replace(r#""Whiff""#, r#""停止""#)
+        .replace(r#""Great Yamada Attack""#, r#""グレート山田アタック""#)
+        .replace(
+            r#""The Wonderful and Dynamic Goshogawara""#,
+            r#""ワンダフル五所川原ダイナミック""#,
+        )
+        .replace(
+            r#""Air The Wonderful and Dynamic Goshogawara""#,
+            r#""空中ワンダフル五所川原ダイナミック""#,
+        )
         // ミリア
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア
@@ -806,6 +825,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             "2K",
             "2P",
             "2S",
+            "3K",
             "5D",
             "5HS",
             "5K",
@@ -825,6 +845,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             "jP",
             "jS",
             "j2K",
+            "j2H",
             "JR2HS",
             "JR2K",
             "JR2P",
