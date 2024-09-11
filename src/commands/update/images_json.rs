@@ -599,6 +599,196 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Septem Voices""#, r#""セプテムヴォイシズ""#) // ミリア
         .replace(r#""Winger""#, r#""ヴィンガー""#) // ミリア
         .replace(r#""Artemis""#, r#""アルテミス""#) // ミリア
+        // 名残雪
+        .replace(
+            r#""input":"2H Level 1","name":"Level 1""#,
+            r#""input":"2HS1","name":"2HS Level 1""#,
+        )
+        .replace(
+            r#""input":"2H Level 2","name":"Level 2""#,
+            r#""input":"2HS2","name":"2HS Level 2""#,
+        )
+        .replace(
+            r#""input":"2H Level 3","name":"Level 3""#,
+            r#""input":"2HS3","name":"2HS Level 3""#,
+        )
+        .replace(
+            r#""input":"2H Level 1","name":"Level 1""#,
+            r#""input":"2HS1","name":"2HS Level 1""#,
+        )
+        .replace(
+            r#""input":"2H Level 2,"name":"Level 2""#,
+            r#""input":"2HS2","name":"2HS Level 2""#,
+        )
+        .replace(
+            r#""input":"2H Level 3","name":"Level 3""#,
+            r#""input":"2HS3","name":"2HS Level 3""#,
+        )
+        .replace(
+            r#""input":"2S Level 1","name":"Level 1""#,
+            r#""input":"2S1","name":"2S Level 1""#,
+        )
+        .replace(
+            r#""input":"2S Level 2","name":"Level 2""#,
+            r#""input":"2S2","name":"2S Level 2""#,
+        )
+        .replace(
+            r#""input":"2S Level 3","name":"Level 3""#,
+            r#""input":"2S3","name":"2S Level 3""#,
+        )
+        .replace(
+            r#""input":"5H Level 1","name":"Level 1""#,
+            r#""input":"5HS1","name":"5HS Level 1""#,
+        )
+        .replace(
+            r#""input":"5H Level 2","name":"Level 2""#,
+            r#""input":"5HS2","name":"5HS Level 2""#,
+        )
+        .replace(
+            r#""input":"5H Level 3","name":"Level 3""#,
+            r#""input":"5HS3","name":"5HS Level 3""#,
+        )
+        .replace(
+            r#""input":"6H Level 1","name":"Level 1""#,
+            r#""input":"6HS1","name":"6HS Level 1""#,
+        )
+        .replace(
+            r#""input":"6H Level 2","name":"Level 2""#,
+            r#""input":"6HS2","name":"6HS Level 2""#,
+        )
+        .replace(
+            r#""input":"6H Level 3","name":"Level 3""#,
+            r#""input":"6HS3","name":"6HS Level 3""#,
+        )
+        .replace(
+            r#""input":"f.S Level 1","name":"Level 1""#,
+            r#""input":"遠S1","name":"遠S Level 1""#,
+        )
+        .replace(
+            r#""input":"f.S Level 2","name":"Level 2""#,
+            r#""input":"遠S2","name":"遠S Level 2""#,
+        )
+        .replace(
+            r#""input":"f.S Level 3","name":"Level 3""#,
+            r#""input":"遠S3","name":"遠S Level 3""#,
+        )
+        .replace(
+            r#""input":"f.SS Level 1","name":"Level 1""#,
+            r#""input":"遠SS1","name":"遠SS Level 1""#,
+        )
+        .replace(
+            r#""input":"f.SS Level 2","name":"Level 2""#,
+            r#""input":"遠SS2","name":"遠SS Level 2""#,
+        )
+        .replace(
+            r#""input":"f.SS Level 3","name":"Level 3""#,
+            r#""input":"遠SS3","name":"遠SS Level 3""#,
+        )
+        .replace(
+            r#""input":"f.SSS Level 1","name":"Level 1""#,
+            r#""input":"遠SSS1","name":"遠SSS Level 1""#,
+        )
+        .replace(
+            r#""input":"f.SSS Level 2","name":"Level 2""#,
+            r#""input":"遠SSS2","name":"遠SSS Level 2""#,
+        )
+        .replace(
+            r#""input":"f.SSS Level 3","name":"Level 3""#,
+            r#""input":"遠SSS3","name":"遠SSS Level 3""#,
+        )
+        .replace(
+            r#""input":"jS Level 1","name":"Level 1""#,
+            r#""input":"jS1","name":"jS Level 1""#,
+        )
+        .replace(
+            r#""input":"jS Level 2","name":"Level 2""#,
+            r#""input":"jS2","name":"jS Level 2""#,
+        )
+        .replace(
+            r#""input":"jS Level 3","name":"Level 3""#,
+            r#""input":"jS3","name":"jS Level 3""#,
+        )
+        .replace(
+            r#""input":"jD Level 1","name":"Level 1""#,
+            r#""input":"jD1","name":"jD Level 1""#,
+        )
+        .replace(
+            r#""input":"jD Level 2","name":"Level 2""#,
+            r#""input":"jD2","name":"jD Level 2""#,
+        )
+        .replace(
+            r#""input":"jD Level 3","name":"Level 3""#,
+            r#""input":"jD3","name":"jD Level 3""#,
+        )
+        .replace(
+            r#""input":"jH Level 1","name":"Level 1""#,
+            r#""input":"jHS1","name":"jHS Level 1""#,
+        )
+        .replace(
+            r#""input":"jH Level 2","name":"Level 2""#,
+            r#""input":"jHS2","name":"jHS Level 2""#,
+        )
+        .replace(
+            r#""input":"jH Level 3","name":"Level 3""#,
+            r#""input":"jHS3","name":"jHS Level 3""#,
+        )
+        .replace(
+            r#""input":"2H Level BR","name":"Blood Rage""#,
+            r#""input":"2SBR","name":"2S Level BR""#,
+        )
+        .replace(
+            r#""input":"2S Level BR","name":"Blood Rage""#,
+            r#""input":"2SBR","name":"2S Level BR""#,
+        )
+        .replace(
+            r#""input":"5S Level BR","name":"Blood Rage""#,
+            r#""input":"5HSBR","name":"5S Level BR""#,
+        )
+        .replace(
+            r#""input":"5H Level BR","name":"Blood Rage""#,
+            r#""input":"5HSBR","name":"5S Level BR""#,
+        )
+        .replace(
+            r#""input":"6S Level BR","name":"Blood Rage""#,
+            r#""input":"6HSBR","name":"6HS Level BR""#,
+        )
+        .replace(
+            r#""input":"f.S Level BR","name":"Blood Rage""#,
+            r#""input":"遠SBR","name":"遠S Level BR""#,
+        )
+        .replace(
+            r#""input":"f.SS Level BR","name":"Blood Rage""#,
+            r#""input":"遠SSBR","name":"遠SS Level BR""#,
+        )
+        .replace(
+            r#""input":"f.SSS Level BR","name":"Blood Rage""#,
+            r#""input":"遠SSSBR","name":"遠SSS Level BR""#,
+        )
+        .replace(
+            r#""input":"jD Level BR","name":"Blood Rage""#,
+            r#""input":"jDBR","name":"jD Level BR""#,
+        )
+        .replace(
+            r#""input":"jH Level BR","name":"Blood Rage""#,
+            r#""input":"jHSBR","name":"jHS Level BR""#,
+        )
+        .replace(
+            r#""input":"jS Level BR","name":"Blood Rage""#,
+            r#""input":"jSBR","name":"jS Level BR""#,
+        )
+        .replace(
+            r#""input":"6H Level BR","name":"Blood Rage""#,
+            r#""input":"6HSBR","name":"6HS Level BR""#,
+        )
+        .replace(r#""Kamuriyuki""#, r#""冠雪""#)
+        .replace(r#""Backward Fukyo""#, r#""後ろ不香""#)
+        .replace(r#""Forward Fukyo""#, r#""不香""#)
+        .replace(r#""Zarameyuki""#, r#""粒雪""#)
+        .replace(r#""Shizuriyuki (1)""#, r#""垂雪""#)
+        .replace(r#""Shizuriyuki (2)""#, r#""垂雪追撃""#)
+        .replace(r#""Zansetsu""#, r#""残雪""#)
+        .replace(r#""Wasureyuki""#, r#""忘れ雪""#)
+        .replace(r#""623HH""#, r#""623HSHS""#)
         .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#) // ポチョムキン
         .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#) // ポチョムキン
         .replace(r#""Potemkin Buster""#, r#""ポチョムキンバスター""#) // ポチョムキン
@@ -866,6 +1056,8 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             "6HSHS",
             "6HSHSHS",
             "銃を構える(HS)",
+            "BR Activation",
+            "BR Deactivation",
             "214X (Discard)",
             "214X (Draw)",
             "Accipiter Metron",
