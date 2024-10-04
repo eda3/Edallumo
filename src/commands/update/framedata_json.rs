@@ -815,6 +815,22 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Zansetsu""#, r#""残雪""#)
         .replace(r#""Wasureyuki""#, r#""忘れ雪""#)
         .replace(r#""623HH""#, r#""623HSHS""#)
+        // ラムレザル
+        .replace(r#""H Bajoneto""#, r#""HSバヨネート""#)
+        .replace(r#""S Bajoneto""#, r#""Sバヨネート""#)
+        .replace(r#""Dauro""#, r#""ダウロ""#)
+        .replace(r#""Sildo Detruo""#, r#""シルド""#)
+        .replace(r#""Air Sildo Detruo""#, r#""空中シルド""#)
+        .replace(r#""Sabrubato""#, r#""サブロバート""#)
+        .replace(r#""Erarlumo (3)""#, r#""エラルルーモ3""#)
+        .replace(r#""Erarlumo (2)""#, r#""エラルルーモ2""#)
+        .replace(r#""Erarlumo (1)""#, r#""エラルルーモ1""#)
+        .replace(r#""Agressa Ordono""#, r#""アグレーサ""#)
+        .replace(r#""Ondo""#, r#""オンド""#)
+        .replace(r#""Calvados""#, r#""カルヴァドス""#)
+        .replace(r#""Mortobato""#, r#""モルトバート""#)
+        .replace(r#""214P 214P 214P""#, r#""214P214P214P""#)
+        .replace(r#""214P 214P""#, r#""214P214PP""#)
         // ポチョムキン
         .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#) // ポチョムキン
         .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#) // ポチョムキン
