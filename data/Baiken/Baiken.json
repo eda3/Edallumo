@@ -31,7 +31,7 @@
 	{"input":"S蚊鉤(41236S)","name":"S蚊鉤","damage":"30","guard":"上段","startup":"29","active":"10","recovery":"15","hit":"+6","block":"+3","level":"4","counter":"Mid","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"空中畳返し(j236K)","name":"空中畳返し","damage":"40 [20]","guard":"上段","startup":"20","active":"Until Tatami Lands","recovery":"Until Landing+7","hit":"+18 (IAD)","block":"+15 (IAD)","level":"2 [0]","counter":"Very Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"妖斬扇(j236S)","name":"妖斬扇","damage":"50","guard":"中段","startup":"9","active":"12","recovery":"7 after Landing","hit":"ダウン+30 (IAS)","block":"-14 (IAS)","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"-"},
-	{"input":"拳銃(214214P)","name":"拳銃","damage":"30,70","guard":"上段(ガードクラッシュ)","startup":"8+3","active":"28","recovery":"Total 47","hit":"強制ダウン+59","block":"+5","level":"4","counter":"Small","scaling":"-","riscgain":"500","invincibility":"-"},
+	{"input":"拳銃(214214P)","name":"拳銃","damage":"30,70","guard":"上段(ガードクラッシュ)","startup":"8+3","active":"28","recovery":"Total 47","hit":"強制ダウン+59","block":"+10-+25","level":"4","counter":"Small","scaling":"-","riscgain":"500","invincibility":"-"},
 	{"input":"連ね三途渡し(236236S)","name":"連ね三途渡し","damage":"35×2, 89, [35×2, 55]","guard":"上段","startup":"8+1","active":"3(20)3(36)3","recovery":"48","hit":"強制ダウン+42","block":"-32","level":"4","counter":"Mid","scaling":"100%","riscgain":"800×3","invincibility":"1-10 Full"},
 	{"input":"空中拳銃(j214214P)","name":"空中拳銃","damage":"30, 70","guard":"上段(ガードクラッシュ)","startup":"11+3","active":"28","recovery":"Total 45","hit":"HKD","block":"-","level":"4","counter":"Small","scaling":"-","riscgain":"500","invincibility":"-"}
 ]
