@@ -232,6 +232,13 @@
   ]
 },
 	{
+  "input": "Thightrope(214HS)",
+  "move_img": "",
+  "hitbox_img": [
+    ""
+  ]
+},
+	{
   "input": "γブレード(236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/3/35/GGST_Chipp_Zanuff_Gamma_Blade.png",
   "hitbox_img": [
