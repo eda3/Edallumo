@@ -83,6 +83,8 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""j632146H""#, r#""j632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
         .replace(r#""j236236H""#, r#""j236236HS""#)
+        .replace(r#""214214H""#, r#""214214HS""#)
+        .replace(r#""j623H""#, r#""j623HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
         .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
@@ -867,7 +869,6 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Tyrant Barrel Follow-up""#, r#""タイランレイブ""#)
         .replace(r#""R.T.L""#, r#""R.T.L.""#)
         .replace(r#""R.T.L Follow-up""#, r#""R.T.L.派生""#)
-        // シン
         // スレイヤー
         .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
         .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー
@@ -879,7 +880,40 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Mappa Hunch K""#, r#""マッパハンチK""#) // スレイヤー
         .replace(r#""Mappa Hunch P""#, r#""マッパハンチP""#) // スレイヤー
         .replace(r#""Hand of Doom""#, r#""Hand of Doom""#) // スレイヤー
-        .replace(r#""Super Mappa Hunch""#, r#""スーパーマッパハンチ""#); // スレイヤー
+        .replace(r#""Super Mappa Hunch""#, r#""スーパーマッパハンチ""#) // スレイヤー
+        // ソル
+        .replace(r#""Bandit Bringer""#, r#""バンディットブリンガー""#)
+        .replace(r#""Gun Flame (Feint)""#, r#""ガンフレイムフェイント""#)
+        .replace(r#""Night Raid Vortex""#, r#""ヴォルテックス""#)
+        .replace(r#""Bandit Revolver (1)""#, r#""バンディットリボルバー""#)
+        .replace(r#""Bandit Revolver (2)""#, r#""バンディットリボルバー2""#)
+        .replace(r#""Gun Flame""#, r#""ガンフレイム""#)
+        .replace(r#""Fafnir""#, r#""ファフニール""#)
+        .replace(r#""H Volcanic Viper""#, r#""HSヴォルカニックヴァイパー""#)
+        .replace(r#""Wild Throw""#, r#""ぶっきらぼうに投げる""#)
+        .replace(r#""S Volcanic Viper""#, r#""ヴォルカニックファイパー""#)
+        .replace(
+            r#""Aerial Bandit Bringer""#,
+            r#""空中バンディットブリンガー""#,
+        )
+        .replace(
+            r#""Aerial Bandit Revolver (1)""#,
+            r#""空中バンディットリボルバー""#,
+        )
+        .replace(
+            r#""Aerial Bandit Revolver (2)""#,
+            r#""空中バンディットリボルバー2""#,
+        )
+        .replace(
+            r#""Aerial H Volcanic Viper""#,
+            r#""空中HSヴォルカニックヴァイパー""#,
+        )
+        .replace(
+            r#""Aerial S Volcanic Viper""#,
+            r#""空中ヴォルカニックヴァイパー""#,
+        )
+        .replace(r#""Heavy Mob Cemetery""#, r#""ヘヴィモブセメタリー""#)
+        .replace(r#""Tyrant Rave""#, r#""タイランレイブ""#);
 
     re = Regex::new(r#""j\.(.+?)""#).unwrap();
     chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();

@@ -63,6 +63,9 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""63214H""#, r#""63214HS""#)
         .replace(r#""j632146H""#, r#""j632146HS""#)
         .replace(r#""236236H""#, r#""236236HS""#)
+        .replace(r#""j236236H""#, r#""j236236HS""#)
+        .replace(r#""214214H""#, r#""214214HS""#)
+        .replace(r#""j623H""#, r#""j623HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
@@ -853,7 +856,40 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Mappa Hunch P""#, r#""マッパハンチP""#) // スレイヤー
         .replace(r#""Hand of Doom""#, r#""Hand of Doom""#) // スレイヤー
         .replace(r#""Super Mappa Hunch""#, r#""スーパーマッパハンチ""#) // スレイヤー
-        .replace(r#""Bloodsucking Universe""#, r#""血を吸う宇宙""#); // スレイヤー
+        .replace(r#""Bloodsucking Universe""#, r#""血を吸う宇宙""#) // スレイヤー
+        // ソル
+        .replace(r#""Bandit Bringer""#, r#""バンディットブリンガー""#)
+        .replace(r#""Gun Flame (Feint)""#, r#""ガンフレイムフェイント""#)
+        .replace(r#""Night Raid Vortex""#, r#""ヴォルテックス""#)
+        .replace(r#""Bandit Revolver (1)""#, r#""バンディットリボルバー""#)
+        .replace(r#""Bandit Revolver (2)""#, r#""バンディットリボルバー2""#)
+        .replace(r#""Gun Flame""#, r#""ガンフレイム""#)
+        .replace(r#""Fafnir""#, r#""ファフニール""#)
+        .replace(r#""H Volcanic Viper""#, r#""HSヴォルカニックヴァイパー""#)
+        .replace(r#""Wild Throw""#, r#""ぶっきらぼうに投げる""#)
+        .replace(r#""S Volcanic Viper""#, r#""ヴォルカニックファイパー""#)
+        .replace(
+            r#""Aerial Bandit Bringer""#,
+            r#""空中バンディットブリンガー""#,
+        )
+        .replace(
+            r#""Aerial Bandit Revolver (1)""#,
+            r#""空中バンディットリボルバー""#,
+        )
+        .replace(
+            r#""Aerial Bandit Revolver (2)""#,
+            r#""空中バンディットリボルバー2""#,
+        )
+        .replace(
+            r#""Aerial H Volcanic Viper""#,
+            r#""空中HSヴォルカニックヴァイパー""#,
+        )
+        .replace(
+            r#""Aerial S Volcanic Viper""#,
+            r#""空中ヴォルカニックヴァイパー""#,
+        )
+        .replace(r#""Heavy Mob Cemetery""#, r#""ヘヴィモブセメタリー""#)
+        .replace(r#""Tyrant Rave""#, r#""タイランレイブ""#);
 
     let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
 
