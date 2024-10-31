@@ -890,6 +890,16 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         )
         .replace(r#""Heavy Mob Cemetery""#, r#""ヘヴィモブセメタリー""#)
         .replace(r#""Tyrant Rave""#, r#""タイランレイブ""#)
+        // テスタメント
+        .replace(r#""Possession""#, r#""ポゼッション""#)
+        .replace(r#""Unholy Diver""#, r#""アンホーリーダイバー""#)
+        .replace(r#""S Arbiter Sign""#, r#""Sアービターサイン""#)
+        .replace(r#""H Arbiter Sign""#, r#""HSアービターサイン""#)
+        .replace(r#""S Grave Reaper""#, r#""Sグレイヴリーパー""#)
+        .replace(r#""H Grave Reaper""#, r#""HSグレイヴリーパー""#)
+        .replace(r#""Stain""#, r#""ステイン""#)
+        .replace(r#""Calamity One""#, r#""カラミティ・ワン""#)
+        .replace(r#""Nostrovia""#, r#""ノストロヴィア""#)
         // ザトー
         .replace(r#""22H""#, r#""22HS""#)
         .replace(r#""]H[""#, r#""]HS[""#)
@@ -1171,6 +1181,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             "Shooting Time Stretch (Accelerate)",
             "Shooting Time Stretch (Decelerate)",
             "Terra Metron",
+            "ステイン",
         ]
         .contains(&input_str.as_str())
         {

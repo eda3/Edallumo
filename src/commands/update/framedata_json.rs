@@ -914,6 +914,18 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         )
         .replace(r#""Heavy Mob Cemetery""#, r#""ヘヴィモブセメタリー""#)
         .replace(r#""Tyrant Rave""#, r#""タイランレイブ""#)
+        // テスタメント
+        .replace(r#""Possession""#, r#""ポゼッション""#)
+        .replace(r#""Unholy Diver""#, r#""アンホーリーダイバー""#)
+        .replace(r#""S Arbiter Sign""#, r#""Sアービターサイン""#)
+        .replace(r#""H Arbiter Sign""#, r#""HSアービターサイン""#)
+        .replace(r#""S Grave Reaper""#, r#""Sグレイヴリーパー""#)
+        .replace(r#""H Grave Reaper""#, r#""HSグレイヴリーパー""#)
+        .replace(r#""Stain""#, r#""ステイン""#)
+        .replace(r#""Calamity One""#, r#""カラミティ・ワン""#)
+        .replace(r#""Nostrovia""#, r#""ノストロヴィア""#)
+        .replace(r#""236[H]""#, r#""236[HS]""#)
+        .replace(r#""236{H}""#, r#""236{HS}""#)
         // ザトー
         .replace(r#""22H""#, r#""22HS""#)
         .replace(r#""]H[""#, r#""]HS[""#)
@@ -932,7 +944,6 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Amorphous""#, r#""アモルファス""#)
         .replace(r#""That&#039;s a lot""#, r#""「多い」""#)
         .replace(r#""Sun Void""#, r#""サンヴォイド""#);
-        
 
     re = Regex::new(r#""j\.(.+?)""#).unwrap();
     chara_response_json = re.replace_all(&chara_response_json, r#""j$1""#).to_string();
@@ -1093,6 +1104,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             "Shooting Time Stretch (Accelerate)",
             "Shooting Time Stretch (Decelerate)",
             "Terra Metron",
+            "ステイン",
         ]
         .contains(&input_str.as_str())
         {
