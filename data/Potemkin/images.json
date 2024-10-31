@@ -24,8 +24,7 @@
   "input": "2P",
   "move_img": "https://www.dustloop.com/wiki/images/8/8b/GGST_Potemkin_2P.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/5/59/GGST_Potemkin_2P_1_Hitbox.png",
-    "https://www.dustloop.com/wiki/images/3/38/GGST_Potemkin_2P_2_Hitbox.png.png"
+    "https://www.dustloop.com/wiki/images/e/ec/GGST_Potemkin_2P_Hitbox.png"
   ]
 },
 	{
@@ -172,13 +171,6 @@
   ]
 },
 	{
-  "input": "メガフィスト・前方(2146K~P)",
-  "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Potemkin_Mega_Fist_Back.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/1/12/GGST_Potemkin_Mega_Fist_Back_Hitbox.png"
-  ]
-},
-	{
   "input": "ガルダインパクト(214HS)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_Potemkin_Garuda_Impact.png",
   "hitbox_img": [
@@ -186,10 +178,24 @@
   ]
 },
 	{
+  "input": "F.D.B.(214K)",
+  "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Potemkin_FDB.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/0/07/GGST_Potemkin_214K_hitbox.png"
+  ]
+},
+	{
   "input": "メガフィスト・後方(214P)",
   "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Potemkin_Mega_Fist_Back.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/12/GGST_Potemkin_Mega_Fist_Back_Hitbox.png"
+  ]
+},
+	{
+  "input": "ためF.D.B.(214[K])",
+  "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Potemkin_FDB.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/0/07/GGST_Potemkin_214K_hitbox.png"
   ]
 },
 	{
@@ -207,13 +213,6 @@
   ]
 },
 	{
-  "input": "ヒートタックル(41236HS)",
-  "move_img": "https://www.dustloop.com/wiki/images/c/c4/GGST_Potemkin_41236H.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/1/1e/GGST_Potemkin_41236H_Hitbox.png"
-  ]
-},
-	{
   "input": "ヒートナックル(623HS)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d0/GGST_Potemkin_Heat_Knuckle_1.png",
   "hitbox_img": [
@@ -221,28 +220,18 @@
   ]
 },
 	{
+  "input": "ヒートタックル(623K)",
+  "move_img": "https://www.dustloop.com/wiki/images/c/c4/GGST_Potemkin_41236H.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/1/1e/GGST_Potemkin_41236H_Hitbox.png"
+  ]
+},
+	{
   "input": "ポチョムキンバスター(632146P)",
   "move_img": "https://www.dustloop.com/wiki/images/6/6f/GGST_Potemkin_Potemkin_Buster_Startup.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/32/GGST_Potemkin_Potemkin_Buster_1_Hitbox.png",
-    "https://www.dustloop.com/wiki/images/a/aa/GGST_Potemkin_Potemkin_Buster_2_Hitbox.png",
-    "https://www.dustloop.com/wiki/images/3/38/GGST_Potemkin_Potemkin_Buster_3_Hitbox.png",
     "https://www.dustloop.com/wiki/images/0/08/GGST_Potemkin_Potemkin_Buster_4_Hitbox.png"
-  ]
-},
-	{
-  "input": "F.D.B.(63214S)",
-  "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Potemkin_FDB.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/1/1d/GGST_Potemkin_62134S_hitbox.png",
-    "https://www.dustloop.com/wiki/images/5/5b/GGST_Potemkin_FDB_Hitbox.png"
-  ]
-},
-	{
-  "input": "F.D.B. (Charged)(63214[S])",
-  "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Potemkin_FDB.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/5/5b/GGST_Potemkin_FDB_Hitbox.png"
   ]
 },
 	{
@@ -267,18 +256,18 @@
   ]
 },
 	{
-  "input": "ヘブンリーポチョムキンバスター(236236S)",
-  "move_img": "https://www.dustloop.com/wiki/images/b/bf/GGST_Potemkin_Heavenly_Potemkin_Buster.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/7/78/GGST_Potemkin_Heavenly_Potemkin_Buster_Hitbox.png"
-  ]
-},
-	{
   "input": "ガイガンダー改(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Potemkin_Giganter_Kai.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f7/GGST_Potemkin_Giganter_Kai_Hitbox.png",
     "https://www.dustloop.com/wiki/images/4/42/GGST_Potemkin_Giganter_Kai_Hitbox_2.png"
+  ]
+},
+	{
+  "input": "ヘブンリーポチョムキンバスター(632146S)",
+  "move_img": "https://www.dustloop.com/wiki/images/b/bf/GGST_Potemkin_Heavenly_Potemkin_Buster.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/7/78/GGST_Potemkin_Heavenly_Potemkin_Buster_Hitbox.png"
   ]
 },
 	{

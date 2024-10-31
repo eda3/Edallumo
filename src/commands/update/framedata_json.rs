@@ -833,22 +833,13 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Mortobato""#, r#""モルトバート""#)
         .replace(r#""214P 214P 214P""#, r#""214P214P214P""#)
         .replace(r#""214P 214P""#, r#""214P214PP""#)
-        .replace(r#""H Michael Sword""#, r#""HSミカエルソード""#)
         // ディズィー
-        .replace(
-            r#""We talked a lot together""#,
-            r#""よく話し相手になってくれました""#,
-        )
+        .replace(r#""H Michael Sword""#, r#""HSミカエルソード""#)
+        .replace(r#""We talked a lot together""#, r#""よく話し相手になってくれました""#)
         .replace(r#""S Michael Sword""#, r#""Sミカエルソード""#)
         .replace(r#""Wings of Light""#, r#""光の翼""#)
-        .replace(
-            r#""For roasting chestnuts""#,
-            r#""焼き栗が欲しい時に使ってたんです""#,
-        )
-        .replace(
-            r#""I used this to catch fish""#,
-            r#""魚を捕る時に使ってたんです""#,
-        )
+        .replace(r#""For roasting chestnuts""#, r#""焼き栗が欲しい時に使ってたんです""#)
+        .replace(r#""I used this to catch fish""#, r#""魚を捕る時に使ってたんです""#)
         .replace(r#""Ice Field""#, r#""氷原""#)
         .replace(r#""Gamma Ray""#, r#""ガンマレイ""#)
         .replace(r#""Imperial Ray""#, r#""インペリアルレイ""#)
@@ -874,6 +865,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""[4]6H P""#, r#""[4]6HS P""#) // ポチョムキン
         .replace(r#""[4]6H""#, r#""[4]6HS""#) // ポチョムキン
         .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
+        .replace(r#""F.D.B. (Charged)""#, r#""溜めF.D.B.""#) // ポチョムキン
         // シン
         .replace(r#""Hoof Stomp""#, r#""フーフスタンプ""#)
         .replace(r#""Hoof Stomp Follow-Up""#, r#""フーフスタンプ派生""#)
