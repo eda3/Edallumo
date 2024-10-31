@@ -173,7 +173,7 @@
   ]
 },
 	{
-  "input": "Chemical Love(214K)",
+  "input": "ケミカル愛情(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d5/GGST_I-No_Chemical_Love.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/07/GGST_I-No_Chemical_Love_Hitbox_1.png",
@@ -184,21 +184,21 @@
   ]
 },
 	{
-  "input": "Antidepressant Scale(214P)",
+  "input": "抗鬱音階(214P)",
   "move_img": "https://www.dustloop.com/wiki/images/d/df/GGST_I-No_Antidepressant_Scale.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1c/GGST_I-No_Antidepressant_Scale_Hitbox.png"
   ]
 },
 	{
-  "input": "Mad Love Agitato(214S)",
+  "input": "狂愛アジタート(214S)",
   "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_I-No_214S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9c/GGST_I-No_214S_Hitbox.png"
   ]
 },
 	{
-  "input": "H Stroke the Big Tree(236HS)",
+  "input": "HS大木をさする手(236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/7/73/GGST_I-No_Stroke_the_Big_Tree.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5f/GGST_I-No_Stroke_the_Big_Tree_Hitbox_1.png",
@@ -209,7 +209,7 @@
   ]
 },
 	{
-  "input": "S Stroke the Big Tree(236S)",
+  "input": "S大木をさする手(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/7/73/GGST_I-No_Stroke_the_Big_Tree.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5f/GGST_I-No_Stroke_the_Big_Tree_Hitbox_1.png",
@@ -220,7 +220,7 @@
   ]
 },
 	{
-  "input": "Air Chemical Love(j214K)",
+  "input": "空中ケミカル愛情(j214K)",
   "move_img": "https://www.dustloop.com/wiki/images/d/d5/GGST_I-No_Chemical_Love.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/07/GGST_I-No_Chemical_Love_Hitbox_1.png",
@@ -231,77 +231,77 @@
   ]
 },
 	{
-  "input": "Air Antidepressant Scale(j214P)",
+  "input": "空中抗鬱音階(j214P)",
   "move_img": "https://www.dustloop.com/wiki/images/d/df/GGST_I-No_Antidepressant_Scale.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/1c/GGST_I-No_Antidepressant_Scale_Hitbox.png"
   ]
 },
 	{
-  "input": "H Sultry Performance(j236HS)",
+  "input": "HS狂言実行(j236HS)",
   "move_img": "https://www.dustloop.com/wiki/images/f/f9/GGST_I-No_Sultry_Performance_3.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/14/GGST_I-No_Sultry_Performance_3_Hitbox.png"
   ]
 },
 	{
-  "input": "H Leap(j236HH)",
+  "input": "H跳躍(j236HH)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_I-No_j236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7b/GGST_I-No_j236KK_Hitbox.png"
   ]
 },
 	{
-  "input": "K Sultry Performance(j236K)",
+  "input": "K狂言実行(j236K)",
   "move_img": "https://www.dustloop.com/wiki/images/f/f3/GGST_I-No_Sultry_Performance_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f1/GGST_I-No_Sultry_Performance_1_Hitbox.png"
   ]
 },
 	{
-  "input": "K Leap(j236KK)",
+  "input": "K跳躍(j236KK)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_I-No_j236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7b/GGST_I-No_j236KK_Hitbox.png"
   ]
 },
 	{
-  "input": "S Sultry Performance(j236S)",
+  "input": "S狂言実行(j236S)",
   "move_img": "https://www.dustloop.com/wiki/images/8/8b/GGST_I-No_Sultry_Performance_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/94/GGST_I-No_Sultry_Performance_2_Hitbox.png"
   ]
 },
 	{
-  "input": "S Leap(j236SS)",
+  "input": "S跳躍(j236SS)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_I-No_j236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7b/GGST_I-No_j236KK_Hitbox.png"
   ]
 },
 	{
-  "input": "H Sultry Performance (charged)(j236[H])",
+  "input": "溜めHS狂言実行(j236[H])",
   "move_img": "https://www.dustloop.com/wiki/images/f/f9/GGST_I-No_Sultry_Performance_3.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/1/14/GGST_I-No_Sultry_Performance_3_Hitbox.png"
   ]
 },
 	{
-  "input": "K Sultry Performance (charged)(j236[K])",
+  "input": "溜めK狂言実行(j236[K])",
   "move_img": "https://www.dustloop.com/wiki/images/f/f3/GGST_I-No_Sultry_Performance_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f1/GGST_I-No_Sultry_Performance_1_Hitbox.png"
   ]
 },
 	{
-  "input": "S Sultry Performance (charged)(j236[S])",
+  "input": "溜めS狂言実行(j236[S])",
   "move_img": "https://www.dustloop.com/wiki/images/8/8b/GGST_I-No_Sultry_Performance_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/94/GGST_I-No_Sultry_Performance_2_Hitbox.png"
   ]
 },
 	{
-  "input": "Megalomania(632146HS)",
+  "input": "メガロマニア(632146HS)",
   "move_img": "https://www.dustloop.com/wiki/images/c/c9/GGST_I-No_Megalomania_flash.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/a1/GGST_I-No_Megalomania_flash_hitbox.png",
@@ -309,7 +309,7 @@
   ]
 },
 	{
-  "input": "Ultimate Fortissimo(632146S)",
+  "input": "限界フォルテッシモ(632146S)",
   "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_I-No_Ultimate_Fortissimo-2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d9/GGST_I-No_Ultimate_Fortissimo-2_hitbox.png",
@@ -317,7 +317,7 @@
   ]
 },
 	{
-  "input": "Air Ultimate Fortissimo(j632146S)",
+  "input": "空中限界フォルテッシモ(j632146S)",
   "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_I-No_Ultimate_Fortissimo.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/71/GGST_I-No_Ultimate_Fortissimo_hitbox.png"
