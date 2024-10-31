@@ -186,6 +186,20 @@
   ]
 },
 	{
+  "input": "bt44(bt44)",
+  "move_img": "",
+  "hitbox_img": [
+    ""
+  ]
+},
+	{
+  "input": "bt66(bt66)",
+  "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_Leo_Whitefang_Brynhildr_Stance.png",
+  "hitbox_img": [
+    ""
+  ]
+},
+	{
   "input": "カーンシルト(btD)",
   "move_img": "https://www.dustloop.com/wiki/images/1/1a/GGST_Leo_Whitefang_bt_D.png",
   "hitbox_img": [
