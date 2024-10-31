@@ -852,6 +852,22 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""[4]6H P""#, r#""[4]6HS P""#) // ポチョムキン
         .replace(r#""[4]6H""#, r#""[4]6HS""#) // ポチョムキン
         .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
+        // シン
+        .replace(r#""Hoof Stomp""#, r#""フーフスタンプ""#)
+        .replace(r#""Hoof Stomp Follow-Up""#, r#""フーフスタンプ派生""#)
+        .replace(r#""Beak Driver""#, r#""ビークドライバー""#)
+        .replace(r#""Beak Driver Follow-Up""#, r#""ビークドライバー派生""#)
+        .replace(r#""Elk Hunt""#, r#""エルクハント""#)
+        .replace(r#""Elk Hunt Follow-Up""#, r#""エルクハント派生""#)
+        .replace(r#""Hawk Baker""#, r#""ホークベイカー""#)
+        .replace(r#""Hawk Baker Follow-Up""#, r#""ホークベイカー派生""#)
+        .replace(r#""Still Growing""#, r#""育ち盛りだからな。""#)
+        .replace(r#""Gazelle Step""#, r#""ガゼルステップ""#)
+        .replace(r#""Tyrant Barrel""#, r#""タイランバレル""#)
+        .replace(r#""Tyrant Barrel Follow-up""#, r#""タイランレイブ""#)
+        .replace(r#""R.T.L""#, r#""R.T.L.""#)
+        .replace(r#""R.T.L Follow-up""#, r#""R.T.L.派生""#)
+        // シン
         // スレイヤー
         .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
         .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー

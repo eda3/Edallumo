@@ -805,6 +805,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Mortobato""#, r#""モルトバート""#)
         .replace(r#""214P 214P 214P""#, r#""214P214P214P""#)
         .replace(r#""214P 214P""#, r#""214P214PP""#)
+        .replace(r#""R.T.L Follow-up""#, r#""R.T.L.派生""#)
         // ポチョムキン
         .replace(r#""Hammer Fall""#, r#""ハンマーフォール""#) // ポチョムキン
         .replace(r#""Hammer Fall Break""#, r#""ハンマーフォールブレーキ""#) // ポチョムキン
@@ -827,6 +828,20 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""[4]6H""#, r#""[4]6HS""#) // ポチョムキン
         .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
         .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
+        // シン
+        .replace(r#""Hoof Stomp""#, r#""フーフスタンプ""#)
+        .replace(r#""Hoof Stomp Follow-Up""#, r#""フーフスタンプ派生""#)
+        .replace(r#""Beak Driver""#, r#""ビークドライバー""#)
+        .replace(r#""Beak Driver Follow-Up""#, r#""ビークドライバー派生""#)
+        .replace(r#""Elk Hunt""#, r#""エルクハント""#)
+        .replace(r#""Elk Hunt Follow-Up""#, r#""エルクハント派生""#)
+        .replace(r#""Hawk Baker""#, r#""ホークベイカー""#)
+        .replace(r#""Hawk Baker Follow-Up""#, r#""ホークベイカー派生""#)
+        .replace(r#""Still Growing""#, r#""育ち盛りだからな。""#)
+        .replace(r#""Gazelle Step""#, r#""ガゼルステップ""#)
+        .replace(r#""Tyrant Barrel""#, r#""タイランバレル""#)
+        .replace(r#""Tyrant Barrel Follow-up""#, r#""タイランレイブ""#)
+        .replace(r#""R.T.L""#, r#""R.T.L.""#)
         .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
         .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー
         .replace(r#""Master's Hammer""#, r#""マスターズハンマー""#) // スレイヤー

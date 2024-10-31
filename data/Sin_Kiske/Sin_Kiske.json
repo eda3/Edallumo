@@ -17,13 +17,13 @@
 	},
 	{
 		"input": "2HS",
-		"name": "2H",
+		"name": "2HS",
 		"damage": "15, 25",
 		"guard": "Low, All",
 		"startup": "14",
 		"active": "3(12)6",
 		"recovery": "27",
-		"hit": "KD +25",
+		"hit": "ダウン+25",
 		"block": "-16",
 		"level": "3",
 		"counter": "Large",
@@ -81,7 +81,7 @@
 	},
 	{
 		"input": "5D",
-		"name": "Uncharged",
+		"name": "ダスト",
 		"damage": "45",
 		"guard": "中段",
 		"startup": "20",
@@ -145,13 +145,13 @@
 	},
 	{
 		"input": "5[D]",
-		"name": "Charged",
+		"name": "溜めダスト",
 		"damage": "56",
 		"guard": "中段",
 		"startup": "28",
 		"active": "3",
 		"recovery": "26",
-		"hit": "KD +36",
+		"hit": "ダウン+36",
 		"block": "-10",
 		"level": "4",
 		"counter": "Mid",
@@ -167,7 +167,7 @@
 		"startup": "15",
 		"active": "4",
 		"recovery": "17",
-		"hit": "KD +30",
+		"hit": "ダウン+30",
 		"block": "-4",
 		"level": "3",
 		"counter": "Large",
@@ -183,7 +183,7 @@
 		"startup": "21",
 		"active": "4",
 		"recovery": "10",
-		"hit": "KD +39",
+		"hit": "ダウン+39",
 		"block": "+3",
 		"level": "3",
 		"counter": "Mid",
@@ -209,7 +209,7 @@
 	},
 	{
 		"input": "近S",
-		"name": "c.S",
+		"name": "近S",
 		"damage": "41",
 		"guard": "上段",
 		"startup": "7",
@@ -324,7 +324,7 @@
 		"name": "ワイルドアサルト",
 		"damage": "30",
 		"guard": "上段",
-		"startup": "16~27",
+		"startup": "16~28",
 		"active": "3",
 		"recovery": "20",
 		"hit": "-1",
@@ -337,13 +337,13 @@
 	},
 	{
 		"input": "溜めワイルドアサルト(236[D])",
-		"name": "Wild Assault (Hold)",
+		"name": "溜めワイルドアサルト",
 		"damage": "50",
 		"guard": "上段",
-		"startup": "28",
+		"startup": "29",
 		"active": "3",
 		"recovery": "20",
-		"hit": "HKD",
+		"hit": "強制ダウン+64",
 		"block": "-4",
 		"level": "4",
 		"counter": "Mid",
@@ -353,7 +353,7 @@
 	},
 	{
 		"input": "投げ(6D or 4D)",
-		"name": "Ground Throw",
+		"name": "投げ",
 		"damage": "80",
 		"guard": "-",
 		"startup": "2",
@@ -365,10 +365,10 @@
 		"counter": "-",
 		"scaling": "50%",
 		"riscgain": "-",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
-		"input": "空投げ(j6D or j4D)",
+		"input": "空投げ(j6D or j.4D)",
 		"name": "空投げ",
 		"damage": "80",
 		"guard": "-",
@@ -381,7 +381,7 @@
 		"counter": "-",
 		"scaling": "50%",
 		"riscgain": "-",
-		"invincibility": "none"
+		"invincibility": "-"
 	},
 	{
 		"input": "フーフスタンプ(214S)",
@@ -397,17 +397,17 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "525×2",
-		"invincibility": "6-23 Foot"
+		"invincibility": "6-23F Foot"
 	},
 	{
-		"input": "フーフスタンプ派生(214SS)",
-		"name": "Hoo遠Stomp Follow-Up",
+		"input": "フーフスタンプ派生(214S~S)",
+		"name": "フーフスタンプ派生",
 		"damage": "41",
 		"guard": "上段",
 		"startup": "13",
 		"active": "3",
 		"recovery": "22",
-		"hit": "KD +23",
+		"hit": "ダウン+23",
 		"block": "-8",
 		"level": "3",
 		"counter": "Mid",
@@ -432,14 +432,14 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "236HH(236HSHS)",
-		"name": "Beak Driver Follow-Up",
+		"input": "ビークドライバー派生(236H~H)",
+		"name": "ビークドライバー派生",
 		"damage": "47",
 		"guard": "上段",
 		"startup": "13",
 		"active": "11",
 		"recovery": "9",
-		"hit": "KD +29",
+		"hit": "ダウン+29",
 		"block": "-3",
 		"level": "3",
 		"counter": "Mid",
@@ -461,17 +461,17 @@
 		"counter": "Mid",
 		"scaling": "80%",
 		"riscgain": "1125",
-		"invincibility": "10-30? Low Profile"
+		"invincibility": "Low Profile 10-27"
 	},
 	{
-		"input": "エルクハント派生(236KK)",
-		"name": "Elk Hunt Follow-Up",
+		"input": "エルクハント派生(236K~K)",
+		"name": "エルクハント派生",
 		"damage": "41",
 		"guard": "上段(ガードクラッシュ)",
 		"startup": "13",
 		"active": "3",
 		"recovery": "20",
-		"hit": "KD +33",
+		"hit": "ダウン+33",
 		"block": "+8",
 		"level": "3",
 		"counter": "Mid",
@@ -487,29 +487,29 @@
 		"startup": "9",
 		"active": "6(23)4",
 		"recovery": "36",
-		"hit": "KD +3 [-22]",
+		"hit": "ダウン+3 [-22]",
 		"block": "-26",
 		"level": "2",
 		"counter": "Large, Very Small",
 		"scaling": "60%",
 		"riscgain": "700×2",
-		"invincibility": "1-11 Strike"
+		"invincibility": "Full 1-11"
 	},
 	{
-		"input": "ホークベイカー派生(623SS)",
-		"name": "Hawk Baker Follow-Up",
+		"input": "ホークベイカー派生(6236S~S)",
+		"name": "ホークベイカー派生",
 		"damage": "43",
 		"guard": "上段",
 		"startup": "12",
 		"active": "3",
 		"recovery": "33",
-		"hit": "KD +28",
+		"hit": "ダウン+28",
 		"block": "-19",
 		"level": "3",
 		"counter": "Mid",
 		"scaling": "60%",
 		"riscgain": "2000",
-		"invincibility": "1-14 Strike"
+		"invincibility": "Full 1-14"
 	},
 	{
 		"input": "育ち盛りだからな。(63214P)",
@@ -528,8 +528,8 @@
 		"invincibility": "-"
 	},
 	{
-		"input": "ガゼルステップ(66)",
-		"name": "Gazelle Step",
+		"input": "ガゼルステップ(66 after special move)",
+		"name": "ガゼルステップ",
 		"damage": "-",
 		"guard": "-",
 		"startup": "-",
@@ -557,12 +557,12 @@
 		"counter": "Mid",
 		"scaling": "100%",
 		"riscgain": "2500",
-		"invincibility": "None"
+		"invincibility": "-"
 	},
 	{
-		"input": "タイランレイブ(236236P]P[)",
-		"name": "Tyrant Barrel Follow-up",
-		"damage": "70→90→120",
+		"input": "タイランレイブ(236236P~]P[)",
+		"name": "タイランレイブ",
+		"damage": "45→65→95",
 		"guard": "上段(ガードクラッシュ)",
 		"startup": "3",
 		"active": "3",
@@ -573,11 +573,11 @@
 		"counter": "Mid",
 		"scaling": "100%",
 		"riscgain": "2500",
-		"invincibility": "None"
+		"invincibility": "-"
 	},
 	{
 		"input": "R.T.L.(632146HS)",
-		"name": "R.T.L",
+		"name": "R.T.L.",
 		"damage": "20×2, 50",
 		"guard": "上段",
 		"startup": "11+5",
@@ -589,11 +589,11 @@
 		"counter": "Mid",
 		"scaling": "100%",
 		"riscgain": "500×3",
-		"invincibility": "1~18 All"
+		"invincibility": "1-18F Full"
 	},
 	{
-		"input": "R.T.L.派生(632146HSHS)",
-		"name": "R.T.L Follow-up",
+		"input": "R.T.L.派生(632146HH)",
+		"name": "R.T.L.派生",
 		"damage": "10~100",
 		"guard": "上段",
 		"startup": "12",
