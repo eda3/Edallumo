@@ -10,7 +10,6 @@
 	{"input":"5P","name":"5P","damage":"-","guard":"上段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"none"},
 	{"input":"5[D]","name":"5[D]","damage":"-","guard":"中段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"none"},
 	{"input":"6HS","name":"6HS","damage":"-","guard":"上段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"none"},
-	{"input":"6K","name":"6K","damage":"-","guard":"上段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"none"},
 	{"input":"6P","name":"6P","damage":"-","guard":"上段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"1-3f Upper Body, 4-13f Above Knees"},
 	{"input":"近S","name":"近S","damage":"-","guard":"上段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"none"},
 	{"input":"遠S","name":"遠S","damage":"-","guard":"上段","startup":"-","active":"-","recovery":"-","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"none"},
