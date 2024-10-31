@@ -889,7 +889,24 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""空中ヴォルカニックヴァイパー""#,
         )
         .replace(r#""Heavy Mob Cemetery""#, r#""ヘヴィモブセメタリー""#)
-        .replace(r#""Tyrant Rave""#, r#""タイランレイブ""#);
+        .replace(r#""Tyrant Rave""#, r#""タイランレイブ""#)
+        // ザトー
+        .replace(r#""22H""#, r#""22HS""#)
+        .replace(r#""]H[""#, r#""]HS[""#)
+        .replace(r#""Unsummon Eddie""#, r#""エディ召喚""#)
+        .replace(r#""Summon Eddie""#, r#""エディ収納""#)
+        .replace(r#""Break The Law""#, r#""ブレイク・ザ・ロウ""#)
+        .replace(r#""Drunkard Shade""#, r#""ドランカーシェイド""#)
+        .replace(r#""Eddie Dash""#, r#""エディダッシュ""#)
+        .replace(r#""Eddie Teleport""#, r#""エディスワップ""#)
+        .replace(r#""Invite Hell""#, r#""インヴァイトヘル""#)
+        .replace(r#""Oppose""#, r#""「張り合う」""#)
+        .replace(r#""That's a lot""#, r#""「多い」""#)
+        .replace(r#""Pierce""#, r#""「突く」""#)
+        .replace(r#""Leap""#, r#""「跳ねる」""#)
+        .replace(r#""Damned Fang""#, r#""ダムドファング""#)
+        .replace(r#""Amorphous""#, r#""アモルファス""#)
+        .replace(r#""Sun Void""#, r#""サンヴォイド""#);
 
     let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
 
