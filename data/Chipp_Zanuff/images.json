@@ -62,8 +62,7 @@
   "input": "5P",
   "move_img": "https://www.dustloop.com/wiki/images/5/55/GGST_Chipp_Zanuff_5P.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/6/6b/GGST_Chipp_Zanuff_5P_Hitbox1.png",
-    "https://www.dustloop.com/wiki/images/a/ab/GGST_Chipp_Zanuff_5P_Hitbox2.png"
+    "https://www.dustloop.com/wiki/images/d/de/GGST_Chipp_Zanuff_5P_Hitbox.png"
   ]
 },
 	{
@@ -232,10 +231,17 @@
   ]
 },
 	{
-  "input": "Thightrope(214HS)",
-  "move_img": "",
+  "input": "綱張り(214HS)",
+  "move_img": "https://www.dustloop.com/wiki/images/f/ff/GGST_Chipp_Zanuff_214H.png",
   "hitbox_img": [
-    ""
+    "https://www.dustloop.com/wiki/images/5/5f/GGST_Chipp_Zanuff_214H_hitbox.png"
+  ]
+},
+	{
+  "input": "綱渡り(214[HS])",
+  "move_img": "https://www.dustloop.com/wiki/images/2/2d/GGST_Chipp_Zanuff_214(H).png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/6/62/GGST_Chipp_Zanuff_214(H)_hitbox.png"
   ]
 },
 	{
