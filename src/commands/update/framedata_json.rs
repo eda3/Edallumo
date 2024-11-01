@@ -580,13 +580,6 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         // レオ
         .replace(r#""Brynhildr Cancel""#, r#""ブリュンヒルドの構え解除""#)
         .replace(r#""Kahn Schild""#, r#""カーンシルト""#)
-        .replace(
-            r#""name":"bt.H""#,
-            r#""name": "（ブリュンヒルド構え中）HS""#,
-        )
-        .replace(r#""name":"bt.K""#, r#""name": "（ブリュンヒルド構え中）K""#)
-        .replace(r#""name":"bt.P""#, r#""name": "（ブリュンヒルド構え中）P""#)
-        .replace(r#""name":"bt.S""#, r#""name": "（ブリュンヒルド構え中）S""#)
         .replace(r#""Turbulenz""#, r#""トゥルブレンツ""#)
         .replace(
             r#""Kaltes Gestöber Zweit""#,
@@ -606,6 +599,8 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Leidenschaft des Dirigenten""#,
             r#""ライデンシャフトディリガント""#,
         )
+        .replace(r#""bt.H""#, r#""btHS""#)
+        .replace(r#""bt.214H""#, r#""bt.214HS""#)
         .replace(r#"bt."#, r#"bt"#)
         .replace(r#""Stahl Wirbel""#, r#""シュタイルヴァービル""#)
         // メイ

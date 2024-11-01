@@ -548,15 +548,8 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""空中ライドザライトニング""#,
         )
         // レオ
-        .replace(r#""Brynhildr Cancel""#, r#""ブリュンヒルドの構え解除""#)
+                .replace(r#""Brynhildr Cancel""#, r#""ブリュンヒルドの構え解除""#)
         .replace(r#""Kahn Schild""#, r#""カーンシルト""#)
-        .replace(
-            r#""name":"bt.H""#,
-            r#""name": "（ブリュンヒルド構え中）HS""#,
-        )
-        .replace(r#""name":"bt.K""#, r#""name": "（ブリュンヒルド構え中）K""#)
-        .replace(r#""name":"bt.P""#, r#""name": "（ブリュンヒルド構え中）P""#)
-        .replace(r#""name":"bt.S""#, r#""name": "（ブリュンヒルド構え中）S""#)
         .replace(r#""Turbulenz""#, r#""トゥルブレンツ""#)
         .replace(
             r#""Kaltes Gestöber Zweit""#,
@@ -576,8 +569,10 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Leidenschaft des Dirigenten""#,
             r#""ライデンシャフトディリガント""#,
         )
-        .replace(r#"bt."#, r#"bt"#)
         .replace(r#""Stahl Wirbel""#, r#""シュタイルヴァービル""#)
+        .replace(r#""bt.H""#, r#""btHS""#)
+        .replace(r#""bt.214H""#, r#""bt.214HS""#)
+        .replace(r#"bt."#, r#"bt"#)
         // メイ
         .replace(r#""K Arisugawa Sparkle""#, r#""K有栖川""#)
         .replace(r#""P Arisugawa Sparkle""#, r#""P有栖川""#)
