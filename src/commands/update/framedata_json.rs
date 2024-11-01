@@ -894,9 +894,11 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
         .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー
         .replace(r#""Master's Hammer""#, r#""マスターズハンマー""#) // スレイヤー
+        .replace(r#""Master&#039;s Hammer""#, r#""マスターズハンマー""#) // スレイヤー
         .replace(r#""Bump Ahead""#, r#""バンプアヘッド""#) // スレイヤー
         .replace(r#""Pilebunker""#, r#""パイルバンカー""#) // スレイヤー
         .replace(r#""It's Late""#, r#""イッツレイト""#) // スレイヤー
+        .replace(r#""It&#039;s Late""#, r#""イッツレイト""#) // スレイヤー
         .replace(r#""Last Horizon""#, r#""ラスト・ホライズン""#) // スレイヤー
         .replace(r#""Mappa Hunch K""#, r#""マッパハンチK""#) // スレイヤー
         .replace(r#""Mappa Hunch P""#, r#""マッパハンチP""#) // スレイヤー

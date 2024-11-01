@@ -870,18 +870,20 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Tyrant Barrel""#, r#""タイランバレル""#)
         .replace(r#""Tyrant Barrel Follow-up""#, r#""タイランレイブ""#)
         .replace(r#""R.T.L""#, r#""R.T.L.""#)
+        // スレイヤー
         .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
         .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー
         .replace(r#""Master's Hammer""#, r#""マスターズハンマー""#) // スレイヤー
+        .replace(r#""Master&#039;s Hammer""#, r#""マスターズハンマー""#) // スレイヤー
         .replace(r#""Bump Ahead""#, r#""バンプアヘッド""#) // スレイヤー
         .replace(r#""Pilebunker""#, r#""パイルバンカー""#) // スレイヤー
         .replace(r#""It's Late""#, r#""イッツレイト""#) // スレイヤー
+        .replace(r#""It&#039;s Late""#, r#""イッツレイト""#) // スレイヤー
         .replace(r#""Last Horizon""#, r#""ラスト・ホライズン""#) // スレイヤー
         .replace(r#""Mappa Hunch K""#, r#""マッパハンチK""#) // スレイヤー
         .replace(r#""Mappa Hunch P""#, r#""マッパハンチP""#) // スレイヤー
         .replace(r#""Hand of Doom""#, r#""Hand of Doom""#) // スレイヤー
         .replace(r#""Super Mappa Hunch""#, r#""スーパーマッパハンチ""#) // スレイヤー
-        .replace(r#""Bloodsucking Universe""#, r#""血を吸う宇宙""#) // スレイヤー
         // ソル
         .replace(r#""Bandit Bringer""#, r#""バンディットブリンガー""#)
         .replace(r#""Gun Flame (Feint)""#, r#""ガンフレイムフェイント""#)

@@ -122,7 +122,8 @@
   "input": "jD",
   "move_img": "https://www.dustloop.com/wiki/images/3/33/GGST_Slayer_jD.png",
   "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/5/5c/GGST_Slayer_jD_Hitbox.png"
+    "https://www.dustloop.com/wiki/images/5/5c/GGST_Slayer_jD_Hitbox.png",
+    "https://www.dustloop.com/wiki/images/4/4f/GGST_Slayer_jD_Hitbox_2.png"
   ]
 },
 	{
@@ -197,7 +198,7 @@
   ]
 },
 	{
-  "input": "Master&#039;s Hammer(214P/K~H)",
+  "input": "マスターズハンマー(214P/K~H)",
   "move_img": "https://www.dustloop.com/wiki/images/5/58/GGST_Slayer_214PK_H_1.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d6/GGST_Slayer_214PK_H_Hitbox_1.png",
@@ -220,7 +221,7 @@
   ]
 },
 	{
-  "input": "It&#039;s Late(214P/K~S)",
+  "input": "イッツレイト(214P/K~S)",
   "move_img": "https://www.dustloop.com/wiki/images/4/4c/GGST_Slayer_214PK_S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/7d/GGST_Slayer_214PK_S_Hitbox.png"
@@ -248,7 +249,7 @@
   ]
 },
 	{
-  "input": "血を吸う宇宙(63214HS)",
+  "input": "Bloodsucking Universe(63214HS)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a5/GGST_Slayer_63214H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9d/GGST_Slayer_63214H_Hitbox.png",
