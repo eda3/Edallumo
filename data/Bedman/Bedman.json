@@ -48,5 +48,5 @@
 	{"input":"call 4BA(j236P)","name":"call 4BA","damage":"32","guard":"上段","startup":"16","active":"-","recovery":"-","hit":"-7 (IAS)","block":"-10 (IAS)","level":"4","counter":"Very Small","scaling":"-","riscgain":"500","invincibility":"-"},
 	{"input":"call 4B3(j236S)","name":"call 4B3","damage":"9x5","guard":"上段","startup":"14","active":"18","recovery":"24","hit":"KD","block":"-13 (IAS)","level":"2","counter":"Very Small","scaling":"80%","riscgain":"300×5","invincibility":"-"},
 	{"input":"call 4CC(632146HS)","name":"call 4CC","damage":"133","guard":"上段","startup":"9+4","active":"3","recovery":"70","hit":"強制ダウン+43","block":"-39","level":"4","counter":"-","scaling":"100%","riscgain":"500","invincibility":"1-13F Full"},
-	{"input":"call 13C(632146S)","name":"call 13C","damage":"-","guard":"-","startup":"4","active":"300","recovery":"Total 11","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"}
+	{"input":"call 13C(632146S)","name":"call 13C","damage":"-","guard":"-","startup":"4","active":"300","recovery":"Total 9","hit":"-","block":"-","level":"-","counter":"-","scaling":"-","riscgain":"-","invincibility":"-"}
 ]
