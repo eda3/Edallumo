@@ -627,6 +627,9 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Air The Wonderful and Dynamic Goshogawara""#,
             r#""空中ワンダフル五所川原ダイナミック""#,
         )
+        .replace(r#""[2]8H""#, r#""[2]8HS""#)
+        .replace(r#""[4]6S/H~K""#, r#""[4]6SK/[4]6HSK""#)
+        .replace(r#""[4]6S/H~P""#, r#""[4]6SP/[4]6HSP""#)
         // ミリア
         .replace(r#""Tandem Top""#, r#""Sタンデム""#) // ミリア
         .replace(r#""H Tandem Top""#, r#""HSタンデム""#) // ミリア

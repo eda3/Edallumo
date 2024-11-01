@@ -212,7 +212,7 @@
   ]
 },
 	{
-  "input": "HS縦イルカ([2]8H)",
+  "input": "HS縦イルカ([2]8HS)",
   "move_img": "https://www.dustloop.com/wiki/images/f/ff/GGST_May_Mr._Dolphin_Vertical.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/ad/GGST_May_Mr._Dolphin_Vertical_Hitbox.png",
@@ -248,14 +248,14 @@
   ]
 },
 	{
-  "input": "分離([4]6S/H~K)",
+  "input": "分離([4]6SK/[4]6HSK)",
   "move_img": "https://www.dustloop.com/wiki/images/0/04/GGST_May_46X-K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/a/ac/GGST_May_46X-K_hitbox.png"
   ]
 },
 	{
-  "input": "停止([4]6S/H~P)",
+  "input": "停止([4]6SP/[4]6HSP)",
   "move_img": "",
   "hitbox_img": [
     ""
