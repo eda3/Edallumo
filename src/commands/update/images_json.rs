@@ -176,6 +176,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Return of the Killing Machine""#,
             r#""帰ってきたキルマシーン""#,
         ) // ブリジット
+        .replace(r#""214S/H""#, r#""214S/HS""#) // ブリジット
         .replace(r#""Loop the Loop""#, r#""ループザループ""#) // ブリジット
         .replace(r#""Wall Run""#, r#""壁走り""#) // チップ
         .replace(r#""Wall Run "#, r#""壁走り"#) // チップ
