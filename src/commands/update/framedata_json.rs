@@ -204,7 +204,10 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Wall Run "#, r#""壁走り"#) // チップ
         .replace(r#""壁走りH""#, r#""壁走りHS""#) // チップ
         .replace(r#""壁走り6H""#, r#""壁走り6HS""#) // チップ
-        .replace(r#""input":"214[H]","name":"Tightrope""#, r#""input":"214[H]","name":"綱渡り""#) // チップ
+        .replace(
+            r#""input":"214[H]","name":"Tightrope""#,
+            r#""input":"214[H]","name":"綱渡り""#,
+        ) // チップ
         .replace(r#""Tightrope""#, r#""綱張り""#) // チップ
         .replace(r#""214[H]""#, r#""214[HS]""#) // チップ
         .replace(r#""Gamma Blade""#, r#""γブレード""#) // チップ
@@ -844,11 +847,20 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""214P 214P""#, r#""214P214PP""#)
         // ディズィー
         .replace(r#""H Michael Sword""#, r#""HSミカエルソード""#)
-        .replace(r#""We talked a lot together""#, r#""よく話し相手になってくれました""#)
+        .replace(
+            r#""We talked a lot together""#,
+            r#""よく話し相手になってくれました""#,
+        )
         .replace(r#""S Michael Sword""#, r#""Sミカエルソード""#)
         .replace(r#""Wings of Light""#, r#""光の翼""#)
-        .replace(r#""For roasting chestnuts""#, r#""焼き栗が欲しい時に使ってたんです""#)
-        .replace(r#""I used this to catch fish""#, r#""魚を捕る時に使ってたんです""#)
+        .replace(
+            r#""For roasting chestnuts""#,
+            r#""焼き栗が欲しい時に使ってたんです""#,
+        )
+        .replace(
+            r#""I used this to catch fish""#,
+            r#""魚を捕る時に使ってたんです""#,
+        )
         .replace(r#""Ice Field""#, r#""氷原""#)
         .replace(r#""Gamma Ray""#, r#""ガンマレイ""#)
         .replace(r#""Imperial Ray""#, r#""インペリアルレイ""#)

@@ -182,7 +182,10 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Wall Run "#, r#""壁走り"#) // チップ
         .replace(r#""壁走りH""#, r#""壁走りHS""#) // チップ
         .replace(r#""壁走り6H""#, r#""壁走り6HS""#) // チップ
-        .replace(r#""input":"214[H]","name":"Tightrope""#, r#""input":"214[H]","name":"綱渡り""#) // チップ
+        .replace(
+            r#""input":"214[H]","name":"Tightrope""#,
+            r#""input":"214[H]","name":"綱渡り""#,
+        ) // チップ
         .replace(r#""Tightrope""#, r#""綱張り""#) // チップ
         .replace(r#""214[H]""#, r#""214[HS]""#) // チップ
         .replace(r#""Gamma Blade""#, r#""γブレード""#) // チップ
