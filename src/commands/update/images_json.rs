@@ -870,9 +870,18 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Hawk Baker Follow-Up""#, r#""ホークベイカー派生""#)
         .replace(r#""Still Growing""#, r#""育ち盛りだからな。""#)
         .replace(r#""Gazelle Step""#, r#""ガゼルステップ""#)
+        .replace(r#""Gazelle Step ""#, r#""ガゼルステップ""#)
+        .replace(r#""Gazelle Step Cancel""#, r#""ガゼルステップキャンセル""#)
         .replace(r#""Tyrant Barrel""#, r#""タイランバレル""#)
         .replace(r#""Tyrant Barrel Follow-up""#, r#""タイランレイブ""#)
         .replace(r#""R.T.L""#, r#""R.T.L.""#)
+        .replace(r#""R.T.L Follow-up""#, r#""R.T.L.派生""#)
+        .replace(r#""214S~S""#, r#""214SS""#)
+        .replace(r#""236H~H""#, r#""236HSHS""#)
+        .replace(r#""236K~K""#, r#""236KK""#)
+        .replace(r#""6236S~S""#, r#""623SS""#)
+        .replace(r#""236236P~]P[""#, r#""236236P]P[""#)
+        .replace(r#""632146HH""#, r#""632146HSHS""#)
         // スレイヤー
         .replace(r#""Dandy Step K""#, r#""ダンディーステップK""#) // スレイヤー
         .replace(r#""Dandy Step P""#, r#""ダンディーステップP""#) // スレイヤー

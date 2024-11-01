@@ -171,6 +171,13 @@
   ]
 },
 	{
+  "input": "ガゼルステップ(214K)",
+  "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Sin_Kiske_GazelleStep.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/d/d6/GGST_Sin_Kiske_GazelleStep_Hitbox.png"
+  ]
+},
+	{
   "input": "フーフスタンプ(214S)",
   "move_img": "https://www.dustloop.com/wiki/images/7/7f/GGST_Sin_Kiske_214S.png",
   "hitbox_img": [
@@ -179,7 +186,7 @@
   ]
 },
 	{
-  "input": "フーフスタンプ派生(214S~S)",
+  "input": "フーフスタンプ派生(214SS)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9f/GGST_Sin_Kiske_214SS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/99/GGST_Sin_Kiske_214SS_Hitbox.png"
@@ -193,7 +200,7 @@
   ]
 },
 	{
-  "input": "ビークドライバー派生(236H~H)",
+  "input": "ビークドライバー派生(236HSHS)",
   "move_img": "https://www.dustloop.com/wiki/images/4/40/GGST_Sin_Kiske_236HH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/9/9f/GGST_Sin_Kiske_236HH_Hitbox.png"
@@ -208,7 +215,7 @@
   ]
 },
 	{
-  "input": "エルクハント派生(236K~K)",
+  "input": "エルクハント派生(236KK)",
   "move_img": "https://www.dustloop.com/wiki/images/4/4e/GGST_Sin_Kiske_236KK.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d4/GGST_Sin_Kiske_236KK_Hitbox.png"
@@ -223,7 +230,7 @@
   ]
 },
 	{
-  "input": "ホークベイカー派生(6236S~S)",
+  "input": "ホークベイカー派生(623SS)",
   "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Sin_Kiske_6236SS.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5b/GGST_Sin_Kiske_6236SS_Hitbox.png"
@@ -237,7 +244,7 @@
   ]
 },
 	{
-  "input": "ガゼルステップ(66 after special move)",
+  "input": "ガゼルステップキャンセル(66 after special move)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Sin_Kiske_GazelleStep.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d6/GGST_Sin_Kiske_GazelleStep_Hitbox.png"
@@ -251,7 +258,7 @@
   ]
 },
 	{
-  "input": "タイランレイブ(236236P~]P[)",
+  "input": "タイランレイブ(236236P]P[)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e9/GGST_Sin_Kiske_236236PP.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/79/GGST_Sin_Kiske_236236PP_Hitbox.png"
@@ -268,7 +275,7 @@
   ]
 },
 	{
-  "input": "R.T.L.派生(632146HH)",
+  "input": "R.T.L.派生(632146HSHS)",
   "move_img": "https://www.dustloop.com/wiki/images/e/e5/GGST_Sin_Kiske_632146HH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b5/GGST_Sin_Kiske_632146HH_Hitbox.png",
