@@ -39,9 +39,16 @@
 		"input": "突きます。(41236K)",
 		"aliases": [
 			"突きます。",
-			"41236K",
-			"Stab",
-			"Scalpel"
+			"41236K"
+		]
+	},
+	{
+		"input": "溜め突きます。(41236[K])",
+		"aliases": [
+			"溜め突きます。",
+			"溜め突きます",
+			"ため突きます",
+			"41236[K]"
 		]
 	},
 	{
@@ -49,8 +56,14 @@
 		"aliases": [
 			"引き戻し",
 			"41236K 4",
-			"Pull",
 			"41236K4"
+		]
+	},
+	{
+		"input": "ナイスショット(214HS)",
+		"aliases": [
+			"ナイスショット",
+			"214HS"
 		]
 	},
 	{
@@ -58,9 +71,6 @@
 		"aliases": [
 			"ナイスショット",
 			"41236K 4 H",
-			"Bat",
-			"Swing",
-			"Bat Swing",
 			"41236K4HS"
 		]
 	},
@@ -68,107 +78,94 @@
 		"input": "何が出るかな？(236P)",
 		"aliases": [
 			"何が出るかな？",
-			"236P",
-			"Item Throw",
-			"Item",
-			"IT",
-			"22P",
-			"Spit"
+			"物投げ",
+			"ものなげ",
+			"236P"
 		]
 	},
 	{
-		"input": "何が出るかな？(236[P])",
+		"input": "何が出るかな？（食べる）(236[P])",
 		"aliases": [
-			"何が出るかな？",
-			"236[P]",
-			"Item Eat",
-			"Eat",
-			"IE",
-			"236P!"
+			"何が出るかな？（食べる）",
+			"食べる",
+			"物食べ",
+			"ものたべ",
+			"236[P]"
+		]
+	},
+	{
+		"input": "何が出るかな？（射出）(22P)",
+		"aliases": [
+			"何が出るかな？（射出）",
+			"射出",
+			"22P"
 		]
 	},
 	{
 		"input": "涅和混練(236S)",
 		"aliases": [
 			"涅和混練",
+			"ねつかれんこん",
 			"236S",
-			"Tornado",
-			"Beyblade",
-			"BB",
-			"MMM"
+			"ドリル"
+		]
+	},
+	{
+		"input": "空中涅和混練(j236S)",
+		"aliases": [
+			"空中涅和混練",
+			"くうちゅうねつかれんこん",
+			"j236S",
+			"jドリル",
+			"空中ドリル"
 		]
 	},
 	{
 		"input": "空中Mix Mix Mix(j236S)",
 		"aliases": [
 			"空中Mix Mix Mix",
-			"j236S",
-			"空中Tornado",
-			"空中Beyblade",
-			"JBB",
-			"AMMM",
-			"JMMM"
+			"j236S"
 		]
 	},
 	{
 		"input": "メッタ刈り(236HS)",
 		"aliases": [
 			"メッタ刈り",
-			"236HS",
-			"Haircut",
-			"Afro Grab",
-			"Command Grab"
+			"236HS"
 		]
 	},
 	{
 		"input": "愛(j236P)",
 		"aliases": [
 			"愛",
-			"j236P",
-			"Head Throw",
-			"HT"
+			"j236P"
 		]
 	},
 	{
-		"input": "愛アフロ(j236P (With Afro))",
+		"input": "愛(j236P (With Afro))",
 		"aliases": [
-			"愛アフロ",
-			"Afro Throw",
-			"LA",
-			"AT"
+			"愛アフロ"
 		]
 	},
 	{
 		"input": "P久延毘古(214P)",
 		"aliases": [
 			"P久延毘古",
-			"214P",
-			"P Scarecrow",
-			"Front Teleport",
-			"FT"
+			"214P"
 		]
 	},
 	{
 		"input": "K久延毘古(214K)",
 		"aliases": [
 			"K久延毘古",
-			"214K",
-			"Scarecrow Back",
-			"Back Teleport",
-			"Crossup Teleport",
-			"BT",
-			"CT"
+			"214K"
 		]
 	},
 	{
 		"input": "S久延毘古(214S)",
 		"aliases": [
 			"S久延毘古",
-			"214S",
-			"Scarecrow Overhead",
-			"Overhead Teleport",
-			"Overhead",
-			"OT"
+			"214S"
 		]
 	},
 	{
@@ -176,12 +173,7 @@
 		"aliases": [
 			"エキサイティング骨折",
 			"632146HS",
-			"Bone Crushing Excitement",
-			"Wheelchair Super",
-			"Clover Super",
-			"Wheelchair",
-			"Clover",
-			"WS",
+			"覚醒",
 			"覚醒1",
 			"無敵覚醒"
 		]
@@ -191,12 +183,6 @@
 		"aliases": [
 			"な・な・な・なにがでるかな？",
 			"236236P",
-			"Item Super",
-			"Item Throw Super",
-			"5 Items",
-			"IS",
-			"ITS",
-			"5I",
 			"覚醒2"
 		]
 	},
@@ -205,12 +191,6 @@
 		"aliases": [
 			"な・な・な・な・な・な・な・な・な・なにがでるかな？",
 			"236236236P",
-			"10 Items",
-			"10 Item Super",
-			"10 Item Throw Super",
-			"10I",
-			"10IS",
-			"10ITS",
 			"覚醒3"
 		]
 	},
@@ -267,15 +247,13 @@
 	{
 		"input": "ラッパ",
 		"aliases": [
-			"ラッパ",
-			"Trumpet"
+			"ラッパ"
 		]
 	},
 	{
 		"input": "メテオ",
 		"aliases": [
-			"メテオ",
-			"Meteor"
+			"メテオ"
 		]
 	},
 	{
