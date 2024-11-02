@@ -272,6 +272,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Meteors""#, r#""メテオ""#) // ファウスト
         .replace(r#""Love Afro""#, r#""愛アフロ""#) // ファウスト
         // ジオヴァーナ
+                // ジオヴァーナ
         .replace(r#""6236S""#, r#""623S""#)
         .replace(r#""6HH""#, r#""6HSHS""#)
         .replace(r#""6HHH""#, r#""6HSHSHS""#)
@@ -279,10 +280,13 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Sepultura""#, r#""セパルトゥラ""#)
         .replace(r#""Sol Poente""#, r#""ソウ・ポエンチ""#)
         .replace(r#""Trovao""#, r#""トロヴァォン""#)
+        .replace(r#""Trovão""#, r#""トロヴァォン""#)
+        .replace(r#""Enhanced Trovão""#, r#""シャーヴィトロヴァォン""#)
         .replace(r#""Sol Nascente""#, r#""ソウ・ナセンテ""#)
         .replace(r#""Air Sol Poente""#, r#""空中ソウ・ナセンテ""#)
         .replace(r#""Ventania""#, r#""ヴェンターニア""#)
         .replace(r#""Tempestade""#, r#""テンペスターヂ""#)
+        .replace(r#""214H~6K""#, r#""214HS6K""#)
         // ゴールドルイス・ディキンソン
         .replace(r#""Thunderbird (Level 1)""#, r#""サンダーバード""#)
         .replace(r#""Thunderbird (Level 2)""#, r#""サンダーバード2""#)

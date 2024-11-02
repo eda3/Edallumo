@@ -308,10 +308,13 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Sepultura""#, r#""セパルトゥラ""#)
         .replace(r#""Sol Poente""#, r#""ソウ・ポエンチ""#)
         .replace(r#""Trovao""#, r#""トロヴァォン""#)
+        .replace(r#""Trovão""#, r#""トロヴァォン""#)
+        .replace(r#""Enhanced Trovão""#, r#""シャーヴィトロヴァォン""#)
         .replace(r#""Sol Nascente""#, r#""ソウ・ナセンテ""#)
         .replace(r#""Air Sol Poente""#, r#""空中ソウ・ナセンテ""#)
         .replace(r#""Ventania""#, r#""ヴェンターニア""#)
         .replace(r#""Tempestade""#, r#""テンペスターヂ""#)
+        .replace(r#""214H~6K""#, r#""214HS6K""#)
         // ゴールドルイス・ディキンソン
         .replace(r#""Thunderbird (Level 1)""#, r#""サンダーバード""#)
         .replace(r#""Thunderbird (Level 2)""#, r#""サンダーバード2""#)
