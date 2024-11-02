@@ -7,7 +7,7 @@
 	{"input":"5D","name":"ダスト","damage":"40","guard":"中段","startup":"20","active":"5","recovery":"24","hit":"0","block":"-15","level":"2","counter":"Mid","scaling":"80%","riscgain":"1125","invincibility":"-"},
 	{"input":"5HS","name":"5HS","damage":"42","guard":"上段","startup":"11","active":"7","recovery":"16","hit":"-1","block":"-4","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"5K","name":"5K","damage":"24","guard":"上段","startup":"6","active":"5","recovery":"8","hit":"0","block":"-3","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
-	{"input":"5P","name":"5P","damage":"20","guard":"上段","startup":"3","active":"2","recovery":"10","hit":"+1","block":"-2","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
+	{"input":"5P","name":"5P","damage":"20","guard":"上段","startup":"4","active":"2","recovery":"10","hit":"+1","block":"-2","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"5[D]","name":"溜めダスト","damage":"50","guard":"中段","startup":"28","active":"5","recovery":"24","hit":"ダウン+36","block":"-10","level":"4","counter":"Mid","scaling":"100%","riscgain":"1875","invincibility":"-"},
 	{"input":"6HS","name":"6HS","damage":"50","guard":"上段","startup":"17","active":"6","recovery":"18","hit":"-2","block":"-5","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"6K","name":"6K","damage":"35","guard":"中段","startup":"28","active":"5","recovery":"7","hit":"+6","block":"+2","level":"2","counter":"Small","scaling":"80%","riscgain":"750","invincibility":"-"},
