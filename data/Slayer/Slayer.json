@@ -1,6 +1,6 @@
 [
 	{"input":"2D","name":"足払い","damage":"27","guard":"下段","startup":"10","active":"6","recovery":"16","hit":"強制ダウン+52","block":"-8","level":"2","counter":"Large","scaling":"90%","riscgain":"1125","invincibility":"-"},
-	{"input":"2HS","name":"2HS","damage":"52","guard":"下段","startup":"13","active":"2","recovery":"29","hit":"ダウン+23","block":"-12","level":"4","counter":"Large","scaling":"90%","riscgain":"1875","invincibility":"Low Crush 5-15"},
+	{"input":"2HS","name":"2HS","damage":"52","guard":"下段","startup":"13","active":"2","recovery":"37","hit":"ダウン+15","block":"-20","level":"4","counter":"Large","scaling":"90%","riscgain":"1875","invincibility":"Low Crush 5-15"},
 	{"input":"2K","name":"2K","damage":"29","guard":"下段","startup":"6","active":"4","recovery":"10","hit":"+1","block":"-2","level":"1","counter":"Small","scaling":"70%","riscgain":"750","invincibility":"-"},
 	{"input":"2P","name":"2P","damage":"23","guard":"上段","startup":"5","active":"4","recovery":"8","hit":"+1","block":"-2","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"2S","name":"2S","damage":"34","guard":"上段","startup":"10","active":"4","recovery":"21","hit":"-8","block":"-11","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
