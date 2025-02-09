@@ -192,7 +192,7 @@
   ]
 },
 	{
-  "input": "エラルルーモ2(214P214PP)",
+  "input": "エラルルーモ2(214P 4P)",
   "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_Ramlethal_Valentine_Erarlumo_2.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/3/34/GGST_Ramlethal_Valentine_Erarlumo_2_Hitbox.png",
@@ -200,7 +200,7 @@
   ]
 },
 	{
-  "input": "エラルルーモ3(214P214P214P)",
+  "input": "エラルルーモ3(214P 4P 4P)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9c/GGST_Ramlethal_Valentine_Erarlumo_3.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/6/6b/GGST_Ramlethal_Valentine_Erarlumo_3_Hitbox.png",

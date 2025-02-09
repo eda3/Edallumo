@@ -182,6 +182,49 @@
   ]
 },
 	{
+  "input": "Tightrope Run 6H(br.6H)",
+  "move_img": "https://www.dustloop.com/wiki/images/6/61/GGST_Chipp_Zanuff_br6H.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/1/11/GGST_Chipp_Zanuff_br6H_Hitbox-1.png",
+    "https://www.dustloop.com/wiki/images/8/85/GGST_Chipp_Zanuff_br6H_Hitbox-2.png"
+  ]
+},
+	{
+  "input": "Tightrope Run c.S(br.cS)",
+  "move_img": "https://www.dustloop.com/wiki/images/5/51/GGST_Chipp_Zanuff_brCs.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/8/8b/GGST_Chipp_Zanuff_brCs_Hitbox.png"
+  ]
+},
+	{
+  "input": "Tightrope Run f.S(br.fS)",
+  "move_img": "https://www.dustloop.com/wiki/images/8/8b/GGST_Chipp_Zanuff_brfS.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/b/b5/GGST_Chipp_Zanuff_brfS_Hitbox.png"
+  ]
+},
+	{
+  "input": "Tightrope Run H(br.H)",
+  "move_img": "https://www.dustloop.com/wiki/images/a/ad/GGST_Chipp_Zanuff_brH.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/9/98/GGST_Chipp_Zanuff_brH_Hitbox.png"
+  ]
+},
+	{
+  "input": "Tightrope Run K(br.K)",
+  "move_img": "https://www.dustloop.com/wiki/images/8/8c/GGST_Chipp_Zanuff_brK.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/d/d2/GGST_Chipp_Zanuff_brK_Hitbox.png"
+  ]
+},
+	{
+  "input": "Tightrope Run P(br.P)",
+  "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_Chipp_Zanuff_brP.png",
+  "hitbox_img": [
+    "https://www.dustloop.com/wiki/images/1/1d/GGST_Chipp_Zanuff_brP_Hitbox.png"
+  ]
+},
+	{
   "input": "空投げ(j6D or j4D)",
   "move_img": "https://www.dustloop.com/wiki/images/1/11/GGST_Chipp_Zanuff_Air_Throw.png",
   "hitbox_img": [
