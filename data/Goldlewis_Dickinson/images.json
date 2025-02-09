@@ -203,21 +203,7 @@
   ]
 },
 	{
-  "input": "スカイフィッシュ(236S)",
-  "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"
-  ]
-},
-	{
-  "input": "スカイフィッシュ2(236S2)",
-  "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"
-  ]
-},
-	{
-  "input": "スカイフィッシュ3(236S3)",
+  "input": "Skyfish(236S)",
   "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"

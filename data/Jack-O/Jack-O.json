@@ -1,6 +1,6 @@
 [
 	{"input":"2D","name":"足払い","damage":"29","guard":"下段","startup":"10","active":"15","recovery":"18","hit":"強制ダウン+41","block":"-19","level":"2","counter":"Large","scaling":"90%","riscgain":"1125","invincibility":"Below Crouch 10-33"},
-	{"input":"2HS","name":"2HS","damage":"41","guard":"上段","startup":"15","active":"6","recovery":"18","hit":"ダウン+37","block":"-5","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
+	{"input":"2HS","name":"2HS","damage":"55","guard":"上段","startup":"15","active":"6","recovery":"18","hit":"ダウン+37","block":"-5","level":"4","counter":"Large","scaling":"90%","riscgain":"2500","invincibility":"-"},
 	{"input":"2K","name":"2K","damage":"24","guard":"下段","startup":"6","active":"3","recovery":"12","hit":"+0","block":"-3","level":"1","counter":"Small","scaling":"70%","riscgain":"750","invincibility":"Low Profile 6-20"},
 	{"input":"2P","name":"2P","damage":"21","guard":"上段","startup":"5","active":"4","recovery":"9","hit":"0","block":"-3","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"2S","name":"2S","damage":"31","guard":"上段","startup":"9","active":"7","recovery":"22","hit":"-12","block":"-15","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
@@ -10,7 +10,7 @@
 	{"input":"5P","name":"5P","damage":"23","guard":"上段","startup":"5","active":"4","recovery":"8","hit":"+1","block":"-2","level":"0","counter":"Small","scaling":"80%","riscgain":"500","invincibility":"-"},
 	{"input":"5[D]","name":"溜めダスト","damage":"56","guard":"中段","startup":"28","active":"3","recovery":"26","hit":"ダウン+36","block":"-10","level":"4","counter":"Mid","scaling":"100%","riscgain":"1875","invincibility":"-"},
 	{"input":"6HS","name":"6HS","damage":"20, 40","guard":"上段","startup":"8,19","active":"2(9)11","recovery":"14","hit":"ダウン+28/-3","block":"-6","level":"3, 4","counter":"Large×2","scaling":"90%","riscgain":"1000, 1200","invincibility":"-"},
-	{"input":"6P","name":"6P","damage":"28","guard":"上段","startup":"10","active":"6","recovery":"20","hit":"ダウン+21","block":"-12","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"1-3 Upper Body, 4-12 Above Knees"},
+	{"input":"6P","name":"6P","damage":"28","guard":"上段","startup":"10","active":"6","recovery":"22","hit":"ダウン+23","block":"-14","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"1-3 Upper Body, 4-12 Above Knees"},
 	{"input":"近S","name":"近S","damage":"39","guard":"上段","startup":"7","active":"6","recovery":"10","hit":"+4","block":"+1","level":"3","counter":"Mid","scaling":"100%","riscgain":"2000","invincibility":"-"},
 	{"input":"遠S","name":"遠S","damage":"32","guard":"上段","startup":"11","active":"6","recovery":"17","hit":"-6","block":"-9","level":"2","counter":"Mid","scaling":"90%","riscgain":"1500","invincibility":"-"},
 	{"input":"jD","name":"jD","damage":"30","guard":"上段","startup":"21","active":"-","recovery":"Total 44","hit":"-","block":"-","level":"1","counter":"Very Small","scaling":"80%","riscgain":"500","invincibility":"-"},

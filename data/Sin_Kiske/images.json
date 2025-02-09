@@ -171,14 +171,7 @@
   ]
 },
 	{
-  "input": "ガゼルステップ(214K)",
-  "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Sin_Kiske_GazelleStep.png",
-  "hitbox_img": [
-    "https://www.dustloop.com/wiki/images/d/d6/GGST_Sin_Kiske_GazelleStep_Hitbox.png"
-  ]
-},
-	{
-  "input": "ガゼルステップキャンセル(214K, 66 after special move)",
+  "input": "ガゼルステップキャンセル(214K)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Sin_Kiske_GazelleStep.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d6/GGST_Sin_Kiske_GazelleStep_Hitbox.png"
