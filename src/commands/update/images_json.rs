@@ -272,7 +272,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Meteors""#, r#""メテオ""#) // ファウスト
         .replace(r#""Love Afro""#, r#""愛アフロ""#) // ファウスト
         // ジオヴァーナ
-                // ジオヴァーナ
+        // ジオヴァーナ
         .replace(r#""6236S""#, r#""623S""#)
         .replace(r#""6HH""#, r#""6HSHS""#)
         .replace(r#""6HHH""#, r#""6HSHSHS""#)
@@ -552,7 +552,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""空中ライドザライトニング""#,
         )
         // レオ
-                .replace(r#""Brynhildr Cancel""#, r#""ブリュンヒルドの構え解除""#)
+        .replace(r#""Brynhildr Cancel""#, r#""ブリュンヒルドの構え解除""#)
         .replace(r#""Kahn Schild""#, r#""カーンシルト""#)
         .replace(r#""Turbulenz""#, r#""トゥルブレンツ""#)
         .replace(
