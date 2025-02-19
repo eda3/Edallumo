@@ -152,7 +152,7 @@ pub async fn find_move_index(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::{env, fs, path::Path};
+    use std::{env, fs};
     use tempfile::tempdir; // 一時ディレクトリ作成用クレート
     use tokio;
 
