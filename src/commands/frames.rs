@@ -1,3 +1,9 @@
+//! frames.rs
+//!
+//! フレームデータ表示モジュール  
+//! Discord コマンド /frames 実装モジュール  
+//! 指定されたキャラクターの技のフレームデータを取得し、画像付きで表示する処理を提供  
+
 // 必要なモジュールや型をインポートする
 use crate::{check, find, IMAGE_DEFAULT}; // 入力チェック、キャラクター検索、デフォルト画像定数を利用
 use crate::{Context, Error, ImageLinks, MoveInfo}; // コマンド実行用コンテキスト、エラー型、画像リンク構造体、技情報構造体
