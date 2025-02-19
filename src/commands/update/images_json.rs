@@ -1143,7 +1143,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             .as_ref()
             .unwrap()
             .to_string();
-        let mut input_name = String::new();
+        let mut _input_name = String::new();
 
         if [
             "2D",
@@ -1226,7 +1226,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         ]
         .contains(&input_str.as_str())
         {
-            input_name = input_str;
+            _input_name = input_str;
         } else {
             let name_str = imagedata.cargoquery[x]
                 .title
@@ -1234,12 +1234,12 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
                 .as_ref()
                 .unwrap()
                 .to_string();
-            input_name = format!("{}({})", name_str, input_str);
+            _input_name = format!("{}({})", name_str, input_str);
         }
 
         // Serializing image data
         let processed_imagedata = serde_json::to_string_pretty(&ImageLinks {
-            input: input_name.to_string(),
+            input: _input_name.to_string(),
             move_img: image_link,
             hitbox_img: hitboxes_link,
         })

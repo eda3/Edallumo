@@ -1068,7 +1068,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             .as_ref()
             .unwrap()
             .to_string();
-        let mut input_name = String::new();
+        let mut _input_name = String::new();
         println!("{}", &input_str.as_str());
 
         if [
@@ -1152,7 +1152,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         ]
         .contains(&input_str.as_str())
         {
-            input_name = input_str;
+            _input_name = input_str;
         } else {
             let name_str = moves_info.cargoquery[x]
                 .title
@@ -1160,12 +1160,12 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
                 .as_ref()
                 .unwrap()
                 .to_string();
-            input_name = format!("{}({})", name_str, input_str);
+            _input_name = format!("{}({})", name_str, input_str);
         }
 
         // Serializing frame data
         let processed_moves_info = serde_json::to_string(&MoveInfo {
-            input: input_name.to_string(),
+            input: _input_name.to_string(),
             name: moves_info.cargoquery[x]
                 .title
                 .name
