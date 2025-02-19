@@ -8,9 +8,9 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
     // ※以降の処理ではフラグ自体は更新されず、常にfalseのままですが、論理上の説明用として記述
     let character_found = false;
 
-    // "data/nicknames.json" ファイルからキャラクターのニックネームデータを読み込む
-    let data_from_file =
-        fs::read_to_string("data/nicknames.json").expect("\nFailed to read 'nicknames.json' file.");
+    let error_message = "\n'nicknames.json' ファイルの読み込みに失敗しました。";
+    // data/nicknames.json ファイルを文字列として読み込み、失敗した場合はエラーメッセージを出力してプログラムを終了する
+    let data_from_file = fs::read_to_string("data/nicknames.json").expect(error_message);
 
     // 読み込んだJSON文字列を、Nicknames構造体のベクターにデシリアライズする
     let vec_nicknames = serde_json::from_str::<Vec<Nicknames>>(&data_from_file).unwrap();
