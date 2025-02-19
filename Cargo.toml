@@ -21,6 +21,7 @@ rand = "0.8.5"
 colored = "2.0.4"
 regex = "1.5.4"
 tempfile = "3.5" 
+toml = "0.5"
 # Uncomment for debugging
 # tracing = "0.1.29"
 # tracing-subscriber = "0.3.3"

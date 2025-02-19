@@ -1,72 +1,85 @@
-// 各種モジュールをインポート（別ファイルに分割された機能群を読み込む）
-mod check; // ディレクトリやファイルの存在チェックなどを行うモジュール
-mod commands; // 各種Discordコマンドの実装が含まれるモジュール
-mod find; // 特定の情報を検索するための機能を提供するモジュール
+//! # main.rs
+//!
+//! Discord Bot 起動基盤  
+//! 各種機能モジュール（check、commands、find）読み込み  
+//! 外部クレート（colored、poise、serde など）利用  
+//! 本ファイルは、Bot 起動処理および初期チェック、エラーハンドリング、テスト群を含む
 
-// 外部クレートのインポート
-use colored::Colorize; // ターミナル出力に色付けを行うためのクレート
-use commands::*; // commandsモジュール内の全ての項目をインポート
-use poise::serenity_prelude as serenity; // poise内のserenity関連の型や関数を利用するためのエイリアス
-use serde::{Deserialize, Serialize}; // JSON等のシリアライズ/デシリアライズ用に必要な機能
-use std::time::Duration; // 時間計測やタイムアウト設定に使用
+// 各種機能モジュール読み込み
+mod check; // ディレクトリ・ファイル存在チェックモジュール
+mod commands; // Discord コマンド実装モジュール
+mod find; // 情報検索機能提供モジュール
 
-// 全てのコマンド関数で使用する型の定義
-type Error = Box<dyn std::error::Error + Send + Sync>; // 送信可能かつ同期可能な汎用エラー型
-type Context<'a> = poise::Context<'a, Data, Error>; // poiseフレームワーク用のコンテキスト型
+// 外部クレート読み込み
+use colored::Colorize; // ターミナル出力色付け用クレート
+use commands::*; // commands モジュール全項目読み込み
+use poise::serenity_prelude as serenity; // poise 内 serenity 関連型・関数利用用エイリアス
+use serde::{Deserialize, Serialize}; // JSON シリアライズ/デシリアライズ用
+use std::time::Duration; // 時間計測・タイムアウト設定用
 
-// 全てのコマンド関数に渡されるカスタムユーザーデータ
+// 汎用エラー型定義
+type Error = Box<dyn std::error::Error + Send + Sync>; // 送信可能・同期可能な汎用エラー型
+type Context<'a> = poise::Context<'a, Data, Error>; // poise フレームワーク用コンテキスト型
+
+/// カスタムユーザーデータ構造体  
+/// 必要に応じフィールド追加可
 pub struct Data {
-    // 必要に応じてフィールドを追加可能
+    // フィールド追加用
 }
 
-// キャラクター情報を保持するための構造体
+/// キャラクター情報保持構造体  
+/// 項目：ページ URL 等
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CharInfo {
-    page: String, // キャラクターに関する詳細情報が記載されたページのURLや識別子
+    page: String, // キャラクター詳細情報記載ページ URL または識別子
 }
 
-// 各技（ムーブ）の詳細情報を保持する構造体
+/// 各技（ムーブ）詳細情報保持構造体  
+/// 項目：入力、名称、ダメージ、ガード、スタートアップ、アクティブ、リカバリー、ヒット、ブロック、レベル、カウンター、スケーリング、リスクゲイン、無敵フレーム
 #[derive(Serialize, Deserialize, Debug)]
 pub struct MoveInfo {
     input: String,         // 入力コマンド（例：コマンド入力文字列）
-    name: String,          // 技の名称
+    name: String,          // 技名称
     damage: String,        // ダメージ量
-    guard: String,         // ガード時の情報
-    startup: String,       // 技の発生（スタートアップ）フレーム
-    active: String,        // 技が当たり判定を持つ（アクティブ）フレーム
-    recovery: String,      // 技のリカバリーフレーム
-    hit: String,           // ヒット時の効果やダメージ
-    block: String,         // ブロック時の効果やダメージ
-    level: String,         // 技のレベルやランク
+    guard: String,         // ガード情報
+    startup: String,       // 発生（スタートアップ）フレーム
+    active: String,        // 当たり判定（アクティブ）フレーム
+    recovery: String,      // リカバリーフレーム
+    hit: String,           // ヒット効果・ダメージ
+    block: String,         // ブロック効果・ダメージ
+    level: String,         // 技レベル・ランク
     counter: String,       // カウンター対応情報
-    scaling: String,       // ダメージのスケーリング情報
-    riscgain: String,      // リスクゲインに関する情報
-    invincibility: String, // 無敵フレームの情報
+    scaling: String,       // ダメージスケーリング情報
+    riscgain: String,      // リスクゲイン情報
+    invincibility: String, // 無敵フレーム情報
 }
 
-// 技の画像リンクやヒットボックス画像のリンク情報を保持する構造体
+/// 技画像およびヒットボックス画像リンク情報保持構造体  
+/// 項目：入力、技画像 URL、複数ヒットボックス画像 URL 集合
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ImageLinks {
-    input: String,           // 技の入力情報（識別キーとして利用）
-    move_img: String,        // 技の画像URL
-    hitbox_img: Vec<String>, // 複数のヒットボックス画像のURLを格納するベクター
+    input: String,           // 技入力情報（識別キー）
+    move_img: String,        // 技画像 URL
+    hitbox_img: Vec<String>, // ヒットボックス画像 URL 集合
 }
 
-// 技の別名（エイリアス）情報を保持する構造体
+/// 技別名（エイリアス）情報保持構造体  
+/// 項目：入力、別名リスト
 #[derive(Serialize, Deserialize, Debug)]
 pub struct MoveAliases {
-    input: String,        // 技の入力情報（識別キー）
-    aliases: Vec<String>, // 別名のリスト
+    input: String,        // 技入力情報（識別キー）
+    aliases: Vec<String>, // 別名リスト
 }
 
-// キャラクターの愛称（ニックネーム）情報を保持する構造体
+/// キャラクター愛称（ニックネーム）情報保持構造体  
+/// 項目：キャラクター名、複数愛称集合
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Nicknames {
     character: String,      // キャラクター名
-    nicknames: Vec<String>, // 複数の愛称を保持するベクター
+    nicknames: Vec<String>, // 愛称集合
 }
 
-// 28体のキャラクター名を定数として定義
+/// 28体キャラクター名定数  
 pub const CHARS: [&str; 28] = [
     "A.B.A",
     "Anji_Mito",
@@ -98,28 +111,26 @@ pub const CHARS: [&str; 28] = [
     "Zato-1",
 ];
 
-// 画像が存在しない場合のデフォルトURL
+/// 画像非存在時デフォルト URL  
 const IMAGE_DEFAULT: &str =
     "https://raw.githubusercontent.com/yakiimoninja/baiken/main/data/images/no_image.png";
-// ヒットボックス画像が存在しない場合のデフォルトURL
+/// ヒットボックス画像非存在時デフォルト URL  
 const HITBOX_DEFAULT: &str =
     "https://raw.githubusercontent.com/yakiimoninja/baiken/main/data/images/no_hitbox.png";
 
-// 非同期関数として定義されたエラーハンドラー
+/// エラーハンドラー非同期関数  
+/// 発生エラーに対しカスタム処理実施  
 async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
-    // 発生したエラーに対して、カスタムなエラー処理を実施
     match error {
-        // Botのセットアップ中にエラーが発生した場合
+        // Botセットアップ中エラー時
         poise::FrameworkError::Setup { error, .. } => panic!(
             "{}",
-            // エラーメッセージを赤色で出力し、プログラムを強制終了
             ("Failed to start bot: ".to_owned() + &error.to_string() + ".").red()
         ),
-        // コマンド実行時にエラーが発生した場合
+        // コマンド実行中エラー時
         poise::FrameworkError::Command { error, ctx } => {
             println!(
                 "{}",
-                // コマンド名とエラー内容を赤色で出力
                 ("Error in command `".to_owned()
                     + &ctx.command().name
                     + "`: "
@@ -128,7 +139,7 @@ async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
                     .red()
             );
         }
-        // その他のエラーに対して、poiseの標準エラーハンドラーを利用
+        // その他エラー時、poise 標準ハンドラー利用
         error => {
             if let Err(e) = poise::builtins::on_error(error).await {
                 println!(
@@ -140,12 +151,13 @@ async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
     }
 }
 
-// Tokioの非同期ランタイムを利用してメイン関数を定義
+/// Bot 起動エントリーポイント  
+/// Tokio 非同期ランタイム利用  
 #[tokio::main]
 async fn main() {
     println!("メイン！");
 
-    // Bot起動前の初期チェック（必要なフォルダやファイルが存在するかを確認）
+    // Bot 起動前初期チェック実施
     println!();
     check::data_folder_exists(true).await;
     check::nicknames_json_exists(true).await;
@@ -153,9 +165,9 @@ async fn main() {
     check::character_jsons_exist(true).await;
     check::character_images_exist(true).await;
 
-    // poiseフレームワークのオプションを設定
+    // poise フレームワークオプション設定
     let options = poise::FrameworkOptions {
-        // 利用するコマンド群をベクターで指定（各モジュールの関数を呼び出して登録）
+        // 登録コマンド群指定
         commands: vec![
             feedback::feedback(),
             fmeter::fmeter(),
@@ -167,49 +179,44 @@ async fn main() {
             register::register(),
             update::update(),
         ],
-        // コマンドの呼び出しに利用するプレフィックスの設定
+        // コマンド呼出用プレフィックス設定
         prefix_options: poise::PrefixFrameworkOptions {
-            prefix: Some("!".into()), // メインのプレフィックスは "!"
-            // コマンド編集の有効期限を1時間に設定
-            edit_tracker: Some(poise::EditTracker::for_timespan(Duration::from_secs(3600))),
-            // 追加のプレフィックスとして "b." も利用可能
-            additional_prefixes: vec![poise::Prefix::Literal("b.")],
+            prefix: Some("!".into()), // メインプレフィックス "!"
+            edit_tracker: Some(poise::EditTracker::for_timespan(Duration::from_secs(3600))), // コマンド編集有効期限 1 時間
+            additional_prefixes: vec![poise::Prefix::Literal("b.")], // 追加プレフィックス "b."
             ..Default::default()
         },
-        // 全体のエラーハンドラとして先ほど定義した on_error を指定
+        // グローバルエラーハンドラ設定
         on_error: |error| Box::pin(on_error(error)),
-        // 各コマンド実行前に実行されるフック
+        // コマンド実行前フック設定
         pre_command: |ctx| {
             Box::pin(async move {
                 println!(
                     "{}",
-                    // コマンド開始時のログをシアン色で出力
                     ("\nExecuting command ".to_owned() + &ctx.command().qualified_name + "...")
                         .cyan()
                 );
             })
         },
-        // 各コマンド実行後（正常終了時）に実行されるフック
+        // コマンド実行後フック設定
         post_command: |ctx| {
             Box::pin(async move {
                 println!(
                     "{}",
-                    // コマンド完了時のログをシアン色で出力
                     ("Executed command ".to_owned() + &ctx.command().qualified_name + "!").cyan()
                 );
             })
         },
-        // 各コマンド実行前に実行されるチェック関数
-        // 特定のユーザーID（ここでは例として123456789）を拒否する処理
+        // コマンド実行前チェック関数設定
         command_check: Some(|ctx| {
             Box::pin(async move {
                 if ctx.author().id == 123456789 {
-                    return Ok(false); // このユーザーの場合、コマンドの実行を中止
+                    return Ok(false); // 指定ユーザーIDの場合、コマンド実行拒否
                 }
-                Ok(true) // それ以外は正常に実行
+                Ok(true) // それ以外は実行許可
             })
         }),
-        // 以下はデバッグ用リスナーの例（コメントアウトされている）
+        // デバッグ用リスナー例（未利用、コメントアウト）
         // listener: |_ctx, event, _framework, _data| {
         //     Box::pin(async move {
         //         println!("Got an event in listener: {:?}", event.name());
@@ -219,53 +226,46 @@ async fn main() {
         ..Default::default()
     };
 
-    // .envファイルから環境変数を読み込む
+    // .env ファイルから環境変数読み込み実施
     dotenv::dotenv().expect("Failed to load .env file.");
 
-    // poiseフレームワークのbuilderを利用してBotを起動
+    // poise フレームワーク builder 利用、Bot 起動
     poise::Framework::builder()
-        // DiscordのBotトークンを環境変数から取得
         .token(std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN."))
-        // Bot起動時のセットアップ処理（ここでは空のData構造体を返す）
         .setup(move |_ctx, _ready, _framework| {
             Box::pin(async move {
                 Ok(Data {})
             })
         })
-        .options(options) // 先ほど定義したオプションを設定
+        .options(options)
         .intents(
-            // 非特権のゲートウェイインテントを指定（必要に応じて変更可能）
+            // 非特権ゲートウェイインテント指定  
             serenity::GatewayIntents::non_privileged() /*| serenity::GatewayIntents::MESSAGE_CONTENT*/,
         )
-        .run()    // Botを実行開始
+        .run()
         .await
-        .unwrap(); // エラーが発生した場合はパニックさせる
+        .unwrap(); // エラー発生時パニック
 }
 
-// main.rs の末尾にテストモジュールを追加する例
+// テストモジュール
 #[cfg(test)]
 mod tests {
     use super::*;
     use std::env;
-    use tokio; // #[tokio::test] を使うため
+    use tokio; // 非同期テスト用
 
-    // テスト用に DISCORD_TOKEN 環境変数が正しく設定され、読み込めるか確認するテスト
+    /// DISCORD_TOKEN 環境変数設定および取得確認テスト  
     #[test]
     fn test_環境変数設定() {
-        // テスト用の値を設定
         env::set_var("DISCORD_TOKEN", "test_token");
-        // 設定した値が正しく取得できることを確認
-        let token = env::var("DISCORD_TOKEN").expect("DISCORD_TOKENが設定されていません");
+        let token = env::var("DISCORD_TOKEN").expect("DISCORD_TOKEN 未設定");
         assert_eq!(token, "test_token");
     }
 
-    // 初期チェック関数のテスト（ファイルが存在する前提の場合）
-    // ここでは実際に panic しなければ初期チェックは通過したと判断する
+    /// 初期チェック関数テスト  
+    /// 必要ファイル・ディレクトリ存在前提、panic 非発生確認テスト
     #[tokio::test]
     async fn test_初期チェック() {
-        // テスト環境用に必要なファイルやディレクトリが存在しなければ、
-        // あらかじめダミーのデータを用意しておくか、チェック関数をテスト用にモックする必要がある
-        // ここでは、panic しなければテスト成功と判断する例となる
         check::data_folder_exists(true).await;
         check::nicknames_json_exists(true).await;
         check::character_folders_exist(true).await;
@@ -274,28 +274,21 @@ mod tests {
         assert!(true);
     }
 
-    // setup クロージャの動作確認テスト
+    /// setup クロージャ動作確認テスト  
+    /// Bot 起動時 setup クロージャ呼出し、Data 返却確認テスト
     #[tokio::test]
     async fn test_セットアップクロージャ() {
-        // Bot起動時の setup クロージャを直接呼び出して、Data が返るかテストする
-        let setup_future = (|| {
-            Box::pin(async move {
-                // main 関数内の setup クロージャと同様に Data{} を返す
-                Ok::<_, Box<dyn std::error::Error>>(Data {})
-            })
-        })();
+        let setup_future =
+            (|| Box::pin(async move { Ok::<_, Box<dyn std::error::Error>>(Data {}) }))();
         let data = setup_future.await.unwrap();
-        // Data は空の構造体なので、存在することを確認（サイズが 0 でもコンパイル上は OK）
         assert!(std::mem::size_of_val(&data) >= 0);
     }
 
-    // dotenv の読み込みテスト
+    /// dotenv 読み込み確認テスト  
+    /// .env ファイル有無に関係なく環境変数設定確認テスト
     #[test]
     fn test_dotenvの読み込み() {
-        // .env ファイルが存在しなくてもエラーにならないように、
-        // dotenv::dotenv() の戻り値は Result なので、結果を確認
-        let _result = dotenv::dotenv().expect(".env ファイルの読み込みに失敗しました");
-        // dotenv の読み込み結果にかかわらず、環境変数がセットできるか確認するテスト
+        let _result = dotenv::dotenv().expect(".env 読み込み失敗");
         env::set_var("TEST_ENV", "value");
         let value = env::var("TEST_ENV").unwrap();
         assert_eq!(value, "value");
