@@ -281,7 +281,7 @@ mod tests {
         let setup_future =
             (|| Box::pin(async move { Ok::<_, Box<dyn std::error::Error>>(Data {}) }))();
         let data = setup_future.await.unwrap();
-        assert!(std::mem::size_of_val(&data) >= 0);
+        assert!(std::mem::size_of_val(&data) == 0); // Data構造体は現在空なので
     }
 
     /// dotenv 読み込み確認テスト  
