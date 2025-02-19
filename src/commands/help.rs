@@ -1,11 +1,26 @@
+// futures クレートから、Stream 型や拡張メソッド StreamExt をインポートする。
+// これにより、非同期ストリームの操作が可能になる。
 use crate::serenity::futures::{self, Stream, StreamExt};
+
+// Discord コマンドの実行コンテキスト (Context) とエラー型 (Error) を定義しているモジュールをインポート
 use crate::{Context, Error};
+
+// colored クレートを利用して、コンソール出力に色付けするための拡張メソッドを使用する
 use colored::Colorize;
 
+/// ヘルプコマンドの自動補完候補を生成する非同期関数
+///
+/// # 引数
+/// * `_ctx` - コマンド実行時のコンテキスト（今回は使用していない）
+/// * `partial` - ユーザーが入力した部分文字列
+///
+/// # 戻り値
+/// ユーザーの入力にマッチする候補文字列の非同期ストリームを返す
 async fn autocomplete_help<'a>(
     _ctx: Context<'_>,
     partial: &'a str,
 ) -> impl Stream<Item = String> + 'a {
+    // ヘルプ候補の一覧を列挙したストリームを作成する
     futures::stream::iter(&[
         "general",
         "frames",
@@ -19,27 +34,36 @@ async fn autocomplete_help<'a>(
         "update",
         "feedback",
     ])
+    // ユーザー入力 (partial) にマッチする候補のみフィルタリングする
     .filter(move |name| {
+        // すべて小文字に変換して比較（大文字小文字を区別しない）
         futures::future::ready(name.to_lowercase().contains(&partial.to_lowercase()))
     })
+    // 各候補を String 型に変換して返す
     .map(|name| name.to_string())
 }
 
-/// Prints a help message.
+/// ヘルプメッセージを表示するコマンド
+///
+/// ユーザーが指定したオプションに応じて、対応するヘルプメッセージを送信する。
+/// オプションに該当するヘルプが存在しない場合は、エラーメッセージを出力する。
 #[poise::command(prefix_command, slash_command, aliases("?"))]
 pub async fn help(
-    ctx: Context<'_>,
+    ctx: Context<'_>, // コマンド実行時のコンテキスト。ユーザー情報やチャンネル情報を含む。
     #[description = "Pick a command to display help for."]
-    #[autocomplete = "autocomplete_help"]
-    option: String,
+    #[autocomplete = "autocomplete_help"] // オートコンプリートに先ほど定義した関数を使用
+    option: String, // ユーザーが表示したいヘルプの対象コマンドを指定する文字列
 ) -> Result<(), Error> {
+    // コマンド実行時の引数を紫色でログ出力
     println!(
         "{}",
         ("Command Args: '".to_owned() + &option + "'").purple()
     );
 
+    // ヘルプメッセージの一時格納用変数
     let help_message;
 
+    // ユーザーの入力に応じて、対応するヘルプ関数を呼び出す
     match option.trim() {
         "feedback" => help_feedback(ctx).await,
         "fmeter" => help_fmeter(ctx).await,
@@ -53,10 +77,12 @@ pub async fn help(
         "specifics" => help_specifics(ctx).await,
         "update" => help_update(ctx).await,
         _ => {
-            help_message = "Help for `".to_owned().to_string() + &option + "` not found!";
+            // 入力に該当するヘルプがない場合、エラーメッセージを生成
+            help_message = "Help for `".to_owned() + &option + "` not found!";
+            // Discord にエラーメッセージを送信
             ctx.say(&help_message).await?;
+            // エラー内容を赤色でコンソール出力
             println!("{}", ("Error: ".to_owned() + &help_message).red());
-
             return Ok(());
         }
     }
@@ -64,7 +90,9 @@ pub async fn help(
     Ok(())
 }
 
+/// 一般的なヘルプメッセージを送信する関数
 async fn help_general(ctx: Context<'_>) {
+    // ヘルプメッセージ（Markdown フォーマット）を定義
     let help_msg = r#"
 __**コマンドリスト**__
 ```frames``````
@@ -80,9 +108,11 @@ __<https://github.com/yakiimoninja/baiken>__
 
 "#;
 
+    // Discord にヘルプメッセージを送信する
     let _ = ctx.say(help_msg).await;
 }
 
+/// フィードバック用ヘルプメッセージを送信する関数
 async fn help_feedback(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/feedback`.
@@ -91,7 +121,9 @@ __**text**__: Any text. Cannot be empty.
 
 Sends feedback or a request to the dev."#;
 
+    // ヘルプメッセージ送信
     let _ = ctx.say(help_msg).await;
+    // さらに、関連画像の URL を Discord チャンネルに送信する
     let _ = ctx
         .channel_id()
         .say(
@@ -101,6 +133,7 @@ Sends feedback or a request to the dev."#;
         .await;
 }
 
+/// フレームメーター用ヘルプメッセージを送信する関数
 async fn help_fmeter(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/fmeter`.
@@ -112,6 +145,7 @@ __**character_move_arg**__: キャラクターのコマンド名や技名は空�
 キャラクターの技の始動フレーム、持続フレーム、後隙フレームを視覚的に表示するよ！"#;
 
     let _ = ctx.say(help_msg).await;
+    // 関連画像の URL を送信
     let _ = ctx
         .channel_id()
         .say(
@@ -121,6 +155,7 @@ __**character_move_arg**__: キャラクターのコマンド名や技名は空�
         .await;
 }
 
+/// フレームデータ表示用ヘルプメッセージを送信する関数
 async fn help_frames(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/frames`.
@@ -132,6 +167,7 @@ __**character_move_arg**__: Character move name, input or alias. Cannot be empty
 Displays the frame data of a move along with an image."#;
 
     let _ = ctx.say(help_msg).await;
+    // 関連画像の URL を送信
     let _ = ctx
         .channel_id()
         .say(
@@ -141,6 +177,7 @@ Displays the frame data of a move along with an image."#;
         .await;
 }
 
+/// ヒットボックス表示用ヘルプメッセージを送信する関数
 async fn help_hitboxes(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/hitboxes`. 
@@ -152,6 +189,7 @@ __**character_move_arg**__: Character move name, input or alias. Cannot be empty
 Displays the hitbox images of a character's move."#;
 
     let _ = ctx.say(help_msg).await;
+    // ヒットボックス画像の URL を送信
     let _ = ctx
         .channel_id()
         .say(
@@ -161,6 +199,7 @@ Displays the hitbox images of a character's move."#;
         .await;
 }
 
+/// 技一覧表示用ヘルプメッセージを送信する関数
 async fn help_moves(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/moves`.
@@ -171,6 +210,7 @@ __**character_arg**__: Character name or nickname. Cannot be empty.
 Displays all the moves, inputs and move aliases of a character."#;
 
     let _ = ctx.say(help_msg).await;
+    // 技一覧画像の URL を送信
     let _ = ctx
         .channel_id()
         .say(
@@ -180,6 +220,7 @@ Displays all the moves, inputs and move aliases of a character."#;
         .await;
 }
 
+/// キャラクター愛称表示用ヘルプメッセージを送信する関数
 async fn help_nicknames(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/nicknames`.
@@ -187,6 +228,7 @@ __**Command**__: `/nicknames`.
 Displays all the nicknames for each character."#;
 
     let _ = ctx.say(help_msg).await;
+    // 愛称一覧画像の URL を送信
     let _ = ctx
         .channel_id()
         .say(
@@ -196,6 +238,7 @@ Displays all the nicknames for each character."#;
         .await;
 }
 
+/// 使用上の注意点を説明するヘルプメッセージを送信する関数
 async fn help_notes(ctx: Context<'_>) {
     let help_msg = r#"
 __**Usage notes.**__
@@ -226,6 +269,7 @@ __**Usage notes.**__
     let _ = ctx.say(help_msg).await;
 }
 
+/// コマンド登録用ヘルプメッセージを送信する関数
 async fn help_register(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**__: `/register`.
@@ -234,6 +278,7 @@ __**Command**__: `/register`.
 Registers or removes all slash commands in the current server or every server the bot is in."#;
 
     let _ = ctx.say(help_msg).await;
+    // 登録画面の画像 URL を送信
     let _ = ctx
         .channel_id()
         .say(
@@ -243,6 +288,7 @@ Registers or removes all slash commands in the current server or every server th
         .await;
 }
 
+/// キャラクター固有の仕様について説明するヘルプメッセージを送信する関数
 async fn help_specifics(ctx: Context<'_>) {
     let help_msg = r#"
 __**Character specifics.**__
@@ -274,6 +320,7 @@ __**Character specifics.**__
     let _ = ctx.say(help_msg).await;
 }
 
+/// 更新コマンド用ヘルプメッセージを送信する関数
 async fn help_update(ctx: Context<'_>) {
     let help_msg = r#"
 __**Command**: `/update`.
@@ -287,6 +334,7 @@ Meaning that it requires an instance of the source code to use it.
 Updates the frame data and or image links for all or a specific character according to dustloop."#;
 
     let _ = ctx.say(help_msg).await;
+    // 更新画面の画像 URL を送信
     let _ = ctx
         .channel_id()
         .say(
