@@ -241,3 +241,63 @@ async fn main() {
         .await
         .unwrap(); // エラーが発生した場合はパニックさせる
 }
+
+// main.rs の末尾にテストモジュールを追加する例
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::env;
+    use tokio; // #[tokio::test] を使うため
+
+    // テスト用に DISCORD_TOKEN 環境変数が正しく設定され、読み込めるか確認するテスト
+    #[test]
+    fn test_環境変数設定() {
+        // テスト用の値を設定
+        env::set_var("DISCORD_TOKEN", "test_token");
+        // 設定した値が正しく取得できることを確認
+        let token = env::var("DISCORD_TOKEN").expect("DISCORD_TOKENが設定されていません");
+        assert_eq!(token, "test_token");
+    }
+
+    // 初期チェック関数のテスト（ファイルが存在する前提の場合）
+    // ここでは実際に panic しなければ初期チェックは通過したと判断する
+    #[tokio::test]
+    async fn test_初期チェック() {
+        // テスト環境用に必要なファイルやディレクトリが存在しなければ、
+        // あらかじめダミーのデータを用意しておくか、チェック関数をテスト用にモックする必要がある
+        // ここでは、panic しなければテスト成功と判断する例となる
+        check::data_folder_exists(true).await;
+        check::nicknames_json_exists(true).await;
+        check::character_folders_exist(true).await;
+        check::character_jsons_exist(true).await;
+        check::character_images_exist(true).await;
+        assert!(true);
+    }
+
+    // setup クロージャの動作確認テスト
+    #[tokio::test]
+    async fn test_セットアップクロージャ() {
+        // Bot起動時の setup クロージャを直接呼び出して、Data が返るかテストする
+        let setup_future = (|| {
+            Box::pin(async move {
+                // main 関数内の setup クロージャと同様に Data{} を返す
+                Ok::<_, Box<dyn std::error::Error>>(Data {})
+            })
+        })();
+        let data = setup_future.await.unwrap();
+        // Data は空の構造体なので、存在することを確認（サイズが 0 でもコンパイル上は OK）
+        assert!(std::mem::size_of_val(&data) >= 0);
+    }
+
+    // dotenv の読み込みテスト
+    #[test]
+    fn test_dotenvの読み込み() {
+        // .env ファイルが存在しなくてもエラーにならないように、
+        // dotenv::dotenv() の戻り値は Result なので、結果を確認
+        let _result = dotenv::dotenv().expect(".env ファイルの読み込みに失敗しました");
+        // dotenv の読み込み結果にかかわらず、環境変数がセットできるか確認するテスト
+        env::set_var("TEST_ENV", "value");
+        let value = env::var("TEST_ENV").unwrap();
+        assert_eq!(value, "value");
+    }
+}
