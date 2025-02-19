@@ -13,8 +13,9 @@ use crate::serenity::futures::{self, Stream, StreamExt};
 use crate::{check, find, Context, Error, CHARS};
 use colored::Colorize;
 
-/// 更新オプションのオートコンプリートを提供する関数  
+/// 更新オプションのオートコンプリートを提供する関数
 /// ユーザーの入力に基づき、"all"、"frames"、"images" のいずれかを提案する
+/// ユーザーが入力した部分文字列にマッチする候補を返す
 async fn autocomplete_option<'a>(
     _ctx: Context<'_>,
     partial: &'a str,
@@ -30,7 +31,9 @@ async fn autocomplete_option<'a>(
 #[poise::command(prefix_command, slash_command, aliases("u"), owners_only)]
 pub async fn update(
     ctx: Context<'_>,
+    // キャラクター名、ニックネーム、または 'all' を指定する
     #[description = "キャラクター名、ニックネーム、または 'all'"] character: String,
+    // 更新対象のデータ ('frames', 'images', 'all') を指定する
     #[description = "更新対象のデータ ('frames', 'images', 'all')"]
     #[autocomplete = "autocomplete_option"]
     option: String,
@@ -54,7 +57,7 @@ pub async fn update(
         return Ok(());
     }
 
-    // キャラクターの正式名称を検索
+    // キャラクターの正式名称を検索し、存在しない場合はエラーメッセージを返す
     let character_arg_altered = match find::find_character(&character).await {
         Ok(character_arg_altered) => character_arg_altered,
         Err(err) => {
@@ -94,7 +97,7 @@ pub async fn update(
             images::get_char_data(CHARS, &character_arg_altered).await;
         }
     } else {
-        // 無効なオプションの場合
+        // 無効なオプションの場合、エラーメッセージを返す
         let error_msg = format!("選択 `{}` は無効", option);
         ctx.say(&error_msg).await?;
         println!("{}", format!("エラー: 選択 `{}` は無効", option).red());
