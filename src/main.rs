@@ -56,7 +56,7 @@ pub struct MoveInfo {
 
 /// 技画像およびヒットボックス画像リンク情報保持構造体  
 /// 項目：入力、技画像 URL、複数ヒットボックス画像 URL 集合
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct ImageLinks {
     input: String,           // 技入力情報（識別キー）
     move_img: String,        // 技画像 URL
