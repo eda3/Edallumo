@@ -1,41 +1,52 @@
-// 必要な型や構造体を他モジュールからインポート
-use crate::{Error, MoveAliases, MoveInfo, Nicknames};
-use std::{fs, path::Path};
+//! # find.rs
+//!
+//! キャラクター名、ニックネーム、技情報検索機能  
+//! テスト実行時、環境変数 `TEST_DATA_DIR` 設定時は該当ディレクトリ内データ利用  
+//! 含む関数：キャラクター検索関数 `find_character`、技検索関数 `find_move_index`
 
-// キャラクター名やニックネーム、技情報から検索を行う非同期関数
+use crate::{Error, MoveAliases, MoveInfo, Nicknames};
+use std::{env, fs, path::Path};
+
+/// キャラクター名、ニックネーム、技情報検索関数  
+/// 引数：`character` - ユーザー入力キャラクター名またはニックネーム  
+/// 戻り値：該当キャラクター正式名称 (Ok(String)) / 未検出時エラーメッセージ (Err)  
+/// 特記事項：入力 "all" 時はファイル読み込み省略、空文字返却
 pub async fn find_character(character: &String) -> Result<String, Error> {
-    // 検索結果が見つかったかどうかの判定用フラグ
-    // ※以降の処理ではフラグ自体は更新されず、常にfalseのままですが、論理上の説明用として記述
+    // 入力 "all" 判定
+    if character.trim().to_lowercase() == "all" {
+        return Ok("".into());
+    }
+
+    // 検索結果判定フラグ（常に false 固定）
     let character_found = false;
 
-    let error_message = "\n'nicknames.json' ファイルの読み込みに失敗しました。";
-    // data/nicknames.json ファイルを文字列として読み込み、失敗した場合はエラーメッセージを出力してプログラムを終了する
-    let data_from_file = fs::read_to_string("data/nicknames.json").expect(error_message);
+    // データディレクトリ選択（環境変数 TEST_DATA_DIR 優先、未設定時は "data"）
+    let data_dir = if let Ok(test_dir) = env::var("TEST_DATA_DIR") {
+        test_dir
+    } else {
+        "data".to_string()
+    };
+    let file_path = format!("{}/nicknames.json", data_dir);
+    let error_message = "\n'nicknames.json' ファイル読み込み失敗";
+    let data_from_file = fs::read_to_string(&file_path).expect(error_message);
 
-    // 読み込んだJSON文字列を、Nicknames構造体のベクターにデシリアライズする
+    // JSON文字列 → Nicknames 構造体ベクター変換
     let vec_nicknames = serde_json::from_str::<Vec<Nicknames>>(&data_from_file).unwrap();
 
-    // まず、ニックネームから該当キャラクターを探す処理
+    // ニックネーム検索処理
     if !character_found {
-        // JSON内の各キャラクターエントリをループ処理
         for x_nicknames in &vec_nicknames {
-            // 各キャラクターに紐付くニックネームを順にチェック
             for y_nicknames in &x_nicknames.nicknames {
-                // ユーザー入力とニックネームを大文字小文字無視で比較し、一致する場合
                 if y_nicknames.to_lowercase() == character.to_lowercase().trim() {
-                    // 該当するキャラクターの正式な名前を返す
                     return Ok(x_nicknames.character.to_owned());
                 }
             }
         }
     }
 
-    // 次に、キャラクターの正式な名前から部分一致で検索する処理
+    // 正式名称部分一致検索処理
     if !character_found {
-        // 各キャラクターエントリをループ処理
         for x_nicknames in &vec_nicknames {
-            // ユーザー入力が、キャラクター名全体または一部に含まれているかチェック
-            // '-' は取り除いて比較する
             if x_nicknames
                 .character
                 .to_lowercase()
@@ -46,96 +57,280 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
                     .to_lowercase()
                     .contains(&character.to_lowercase())
             {
-                // 一致したキャラクターの正式な名前を返す
                 return Ok(x_nicknames.character.to_owned());
             }
         }
     }
 
-    // エッジケース：ユーザーが "all" と入力した場合（update.rs用の特別処理）
-    if !character_found && character.trim().to_lowercase() == "all".to_lowercase() {
-        return Ok("".into());
-    }
-
-    // 上記のいずれの方法でもキャラクターが見つからなかった場合は、エラーを返す
+    // 未検出時エラー返却
     if !character_found {
         let error_msg = "Character `".to_owned() + &character + "` was not found!";
         Err(error_msg.into())
     } else {
-        // 本来ここには到達しないはずの論理エラー（念のためのエラー）
         Err("Weird logic error in find_character".into())
     }
 }
 
-// ユーザーの入力に基づき、キャラクターの技情報から該当する技のインデックスと技名を返す非同期関数
+/// 技検索関数  
+/// 引数：  
+/// - `character_arg_altered` - 正式キャラクター名または調整済み名称  
+/// - `character_move` - ユーザー入力技名またはエイリアス  
+/// - `moves_info` - キャラクター技情報スライス  
+/// 戻り値：一致技インデックスと最終技名のタプル (usize, String) / 未検出時エラーメッセージ  
+/// 特記事項：内部フラグ `move_found` 常に false 固定
 pub async fn find_move_index(
-    character_arg_altered: &String, // 正式なキャラクター名（または調整済みの名前）
-    mut character_move: String,     // ユーザーが入力した技名（またはエイリアス）
-    moves_info: &[MoveInfo],        // キャラクターの技情報が格納されたスライス
+    character_arg_altered: &String,
+    mut character_move: String,
+    moves_info: &[MoveInfo],
 ) -> Result<(usize, String), Error> {
-    // 技が見つかったかどうかの判定用フラグ（以降の処理で変更は行われない）
     let move_found = false;
 
-    // 対象キャラクターのエイリアス情報が格納されているJSONファイルのパスを生成
-    let aliases_path = "data/".to_owned() + &character_arg_altered + "/aliases.json";
-    // エイリアスファイルが存在するかチェック
-    if Path::new(&aliases_path).exists() {
-        // エイリアスファイルを読み込む
-        let aliases_data = fs::read_to_string(&aliases_path)
-            .expect(&("\nFailed to read '".to_owned() + &aliases_path + "' file."));
+    // データディレクトリ選択（環境変数 TEST_DATA_DIR 優先、未設定時は "data"）
+    let data_dir = if let Ok(test_dir) = env::var("TEST_DATA_DIR") {
+        test_dir
+    } else {
+        "data".to_string()
+    };
 
-        // 読み込んだJSON文字列を、MoveAliases構造体のベクターにデシリアライズする
+    // aliases.json パス組立
+    let aliases_path = format!("{}/{}", data_dir, character_arg_altered) + "/aliases.json";
+    if Path::new(&aliases_path).exists() {
+        let aliases_data = fs::read_to_string(&aliases_path)
+            .expect(&format!("\nFailed to read '{}' file.", aliases_path));
         let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data).unwrap();
 
-        // エイリアス情報を探索するための外側のループにラベルを付与
         'outer: for alias_data in aliases_data {
-            // 各エイリアスリスト内の各エイリアスをチェック
             for x_aliases in alias_data.aliases {
-                // ユーザーの入力（不要な記号を除去し小文字に変換）とエイリアスを比較
                 if x_aliases.to_lowercase().trim().replace(['.', ' '], "")
                     == character_move.to_lowercase().trim().replace(['.', ' '], "")
                 {
-                    // 一致した場合、ユーザー入力を実際の技名に置き換える
                     character_move = alias_data.input.to_string();
-                    // エイリアスが見つかったので、外側のループを抜ける
                     break 'outer;
                 }
             }
         }
     }
 
-    // moves_info内の各技について、入力と正確に一致するかチェック
+    // 入力技名と正確一致検索
     for (x, moves) in moves_info.iter().enumerate() {
         if moves.input.to_string().to_lowercase().replace('.', "")
             == character_move.to_string().to_lowercase().replace('.', "")
         {
-            // 一致した技が見つかった場合、技のインデックスと技名を返す
             return Ok((x, character_move));
         }
     }
 
-    // 正確な一致が見つからなかった場合、技名に部分一致するかどうかチェックする処理
+    // 部分一致検索
     if !move_found {
         for (x, moves) in moves_info.iter().enumerate() {
-            // ユーザー入力が、技の名称の一部に含まれているかチェック
             if moves
                 .name
                 .to_string()
                 .to_lowercase()
                 .contains(&character_move.to_string().to_lowercase())
             {
-                // 部分一致した場合、該当する技のインデックスと技名を返す
                 return Ok((x, character_move));
             }
         }
     }
 
-    // 上記のいずれの方法でも技が見つからなかった場合、エラーメッセージを返す
+    // 未検出時エラー返却
     if !move_found {
         let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
         Err(error_msg.into())
     } else {
-        // 本来ここには到達しないはずの論理エラー（念のためのエラー）
         Err("Weird logic error in find_move".into())
+    }
+}
+
+//
+// 以下、テストコード
+// テスト実行時、tempfile クレート利用で一時ディレクトリ作成、
+// TEST_DATA_DIR 環境変数設定により実データ影響回避
+//
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::{env, fs, path::Path};
+    use tempfile::tempdir; // 一時ディレクトリ作成用クレート
+    use tokio;
+
+    /// 一時ディレクトリ作成し、TEST_DATA_DIR 環境変数設定するヘルパー関数  
+    /// テスト用ファイル配置用ディレクトリ
+    fn setup_test_data_dir_with_nicknames(content: &str) -> tempfile::TempDir {
+        let dir = tempdir().expect("一時ディレクトリ作成失敗");
+        let file_path = dir.path().join("nicknames.json");
+        fs::write(&file_path, content.trim()).expect("テスト用 nicknames.json ファイル作成失敗");
+        env::set_var("TEST_DATA_DIR", dir.path());
+        dir
+    }
+
+    /// キャラクター用エイリアスファイル作成するヘルパー関数  
+    /// 指定キャラクター名サブディレクトリに aliases.json 作成
+    fn setup_test_aliases_dir(character: &str, aliases_content: &str) -> tempfile::TempDir {
+        let dir = tempdir().expect("一時ディレクトリ作成失敗");
+        let character_dir = dir.path().join(character);
+        fs::create_dir_all(&character_dir).expect("キャラクターディレクトリ作成失敗");
+        let file_path = character_dir.join("aliases.json");
+        fs::write(&file_path, aliases_content.trim())
+            .expect("テスト用 aliases.json ファイル作成失敗");
+        env::set_var("TEST_DATA_DIR", dir.path());
+        dir
+    }
+
+    /// test_ニックネーム一致  
+    /// テスト用ニックネーム JSON 作成し、ニックネーム検索正しく行われるか確認
+    #[tokio::test]
+    async fn test_ニックネーム一致() {
+        let test_nicknames = r#"
+        [
+            {
+                "character": "テストキャラ",
+                "nicknames": ["テスト", "キャラ"]
+            }
+        ]
+        "#;
+        let _temp_dir = setup_test_data_dir_with_nicknames(test_nicknames);
+        let result = find_character(&"テスト".to_string()).await;
+        assert_eq!(result.unwrap(), "テストキャラ".to_string());
+    }
+
+    /// test_正式名称部分一致  
+    /// 正式キャラクター名一部に入力文字列含有時、正しい正式名称返却確認
+    #[tokio::test]
+    async fn test_正式名称部分一致() {
+        let test_nicknames = r#"
+        [
+            {
+                "character": "テストキャラ",
+                "nicknames": ["ニックネーム無し"]
+            }
+        ]
+        "#;
+        let _temp_dir = setup_test_data_dir_with_nicknames(test_nicknames);
+        let result = find_character(&"キャラ".to_string()).await;
+        assert_eq!(result.unwrap(), "テストキャラ".to_string());
+    }
+
+    /// test_all入力  
+    /// 入力 "all" 時、特別処理により空文字返却確認
+    #[tokio::test]
+    async fn test_all入力() {
+        let _temp_dir = tempdir().expect("一時ディレクトリ作成失敗");
+        let result = find_character(&"all".to_string()).await;
+        assert_eq!(result.unwrap(), "".to_string());
+    }
+
+    /// test_見つからない場合  
+    /// 存在しないキャラクター名入力時、エラー返却確認
+    #[tokio::test]
+    async fn test_見つからない場合() {
+        let test_nicknames = r#"
+        [
+            {
+                "character": "テストキャラ",
+                "nicknames": ["テスト"]
+            }
+        ]
+        "#;
+        let _temp_dir = setup_test_data_dir_with_nicknames(test_nicknames);
+        let result = find_character(&"存在しない".to_string()).await;
+        assert!(result.is_err());
+    }
+
+    /// test_技検索_エイリアス無し  
+    /// エイリアスファイル非存在時、直接技名検索可能確認
+    #[tokio::test]
+    async fn test_技検索_エイリアス無し() {
+        let _temp_dir = tempdir().expect("一時ディレクトリ作成失敗");
+        let moves_info = vec![MoveInfo {
+            input: "testmove".to_string(),
+            name: "Test Move".to_string(),
+            damage: "".to_string(),
+            guard: "".to_string(),
+            startup: "".to_string(),
+            active: "".to_string(),
+            recovery: "".to_string(),
+            hit: "".to_string(),
+            block: "".to_string(),
+            level: "".to_string(),
+            counter: "".to_string(),
+            scaling: "".to_string(),
+            riscgain: "".to_string(),
+            invincibility: "".to_string(),
+        }];
+        let result = find_move_index(
+            &"ノーエイリアス".to_string(),
+            "testmove".to_string(),
+            &moves_info,
+        )
+        .await;
+        assert_eq!(result.unwrap(), (0, "testmove".to_string()));
+    }
+
+    /// test_技検索_エイリアス有り  
+    /// エイリアスファイル存在時、エイリアス経由で正しい技名返却確認
+    #[tokio::test]
+    async fn test_技検索_エイリアス有り() {
+        let character_name = "テストキャラ";
+        let test_aliases = r#"
+        [
+            {
+                "input": "testmove",
+                "aliases": ["tm", "テスト技"]
+            }
+        ]
+        "#;
+        let _temp_dir = setup_test_aliases_dir(character_name, test_aliases);
+        let moves_info = vec![MoveInfo {
+            input: "testmove".to_string(),
+            name: "Test Move".to_string(),
+            damage: "".to_string(),
+            guard: "".to_string(),
+            startup: "".to_string(),
+            active: "".to_string(),
+            recovery: "".to_string(),
+            hit: "".to_string(),
+            block: "".to_string(),
+            level: "".to_string(),
+            counter: "".to_string(),
+            scaling: "".to_string(),
+            riscgain: "".to_string(),
+            invincibility: "".to_string(),
+        }];
+        let result =
+            find_move_index(&character_name.to_string(), "tm".to_string(), &moves_info).await;
+        assert_eq!(result.unwrap(), (0, "testmove".to_string()));
+    }
+
+    /// test_技検索_見つからない場合  
+    /// 存在しない技名入力時、エラー返却確認
+    #[tokio::test]
+    async fn test_技検索_見つからない場合() {
+        let _temp_dir = tempdir().expect("一時ディレクトリ作成失敗");
+        let moves_info = vec![MoveInfo {
+            input: "testmove".to_string(),
+            name: "Test Move".to_string(),
+            damage: "".to_string(),
+            guard: "".to_string(),
+            startup: "".to_string(),
+            active: "".to_string(),
+            recovery: "".to_string(),
+            hit: "".to_string(),
+            block: "".to_string(),
+            level: "".to_string(),
+            counter: "".to_string(),
+            scaling: "".to_string(),
+            riscgain: "".to_string(),
+            invincibility: "".to_string(),
+        }];
+        let result = find_move_index(
+            &"ノーエイリアス".to_string(),
+            "nonexistent".to_string(),
+            &moves_info,
+        )
+        .await;
+        assert!(result.is_err());
     }
 }
