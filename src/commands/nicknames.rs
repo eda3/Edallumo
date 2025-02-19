@@ -1,18 +1,24 @@
+//! キャラクターのニックネーム一覧表示モジュール  
+//! Discordコマンド /nicknames 実装モジュール  
+//! JSONファイルからキャラクターごとのニックネームを取得し、整形後に送信する処理を提供
+
 use crate::{check, Context, Error, Nicknames};
 use std::{fs, string::String};
 
-/// Displays all the nicknames for all characters.
+/// キャラクターごとのニックネーム一覧を表示する処理  
 #[poise::command(prefix_command, slash_command, aliases("n"))]
 pub async fn nicknames(ctx: Context<'_>) -> Result<(), Error> {
+    // 入力検証および必要なファイルの存在確認処理
+    // adaptive_check: ファイルの整合性確認（失敗時は処理を中断）
     if (check::adaptive_check(
         ctx,
-        (false, &String::new()),
-        (false, &String::new()),
-        true,
-        true,
-        false,
-        false,
-        false,
+        (false, &String::new()), // キャラクター名のチェック不要
+        (false, &String::new()), // 技名のチェック不要
+        true,                    // データフォルダ存在チェック
+        true,                    // nicknames.json 存在チェック
+        false,                   // キャラクターフォルダ存在チェック不要
+        false,                   // キャラクター JSON 存在チェック不要
+        false,                   // 画像 JSON 存在チェック不要
     )
     .await)
         .is_err()
@@ -20,27 +26,28 @@ pub async fn nicknames(ctx: Context<'_>) -> Result<(), Error> {
         return Ok(());
     }
 
-    // Reading the nicknames json
+    // ニックネーム情報JSONファイルの読み込み処理
     let data_from_file =
         fs::read_to_string("data/nicknames.json").expect("\nFailed to read 'nicknames.json' file.");
 
-    // Deserializing from nicknames json
+    // JSON文字列を Nicknames 型の Vec にデシリアライズ
     let vec_nicknames = serde_json::from_str::<Vec<Nicknames>>(&data_from_file).unwrap();
 
-    // Formatting string for in discord print
+    // Discord 送信用のメッセージ文字列の初期化
     let mut nicks_as_msg = "__**Character Nicknames**__\n```diff".to_string();
 
+    // ニックネーム情報を整形し、メッセージ文字列に追加
     for nicknames in vec_nicknames {
-        // Character portion
+        // キャラクター名の追加
         nicks_as_msg =
             nicks_as_msg.to_owned() + "\n* Character: " + &nicknames.character.to_string();
 
-        // Nickname portion
+        // ニックネームの追加
         nicks_as_msg += "\n+ Nicknames: ";
 
         for x in 0..nicknames.nicknames.len() {
             if x != nicknames.nicknames.len() - 1 {
-                // Taking into account the lack of nicknames for some characters
+                // 空のニックネームが含まれている場合を考慮し、カンマ区切りで追加
                 if !nicknames.nicknames[x].is_empty() {
                     nicks_as_msg = nicks_as_msg + &nicknames.nicknames[x] + ", ";
                 } else {
@@ -50,11 +57,14 @@ pub async fn nicknames(ctx: Context<'_>) -> Result<(), Error> {
                 nicks_as_msg = nicks_as_msg + &nicknames.nicknames[x];
             }
         }
+        // 各キャラクターのニックネーム情報の終了マーク
         nicks_as_msg = nicks_as_msg.to_owned() + ".\n";
     }
 
+    // メッセージ終端のマーク
     nicks_as_msg += "```";
-    nicks_as_msg += "";
+
+    // Discordへメッセージを送信
     ctx.say(&nicks_as_msg).await?;
 
     Ok(())
