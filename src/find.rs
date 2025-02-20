@@ -28,7 +28,7 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
     };
     let file_path = format!("{}/nicknames.json", data_dir);
     let error_message = "\n'nicknames.json' ファイル読み込み失敗";
-    let data_from_file = fs::read_to_string(&file_path).expect(error_message);
+    let data_from_file = fs::read_to_string(file_path).expect(error_message);
 
     // JSON文字列 → Nicknames 構造体ベクター変換
     let vec_nicknames = serde_json::from_str::<Vec<Nicknames>>(&data_from_file).unwrap();
