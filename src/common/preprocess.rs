@@ -24,30 +24,21 @@ use regex::Regex;
 /// let output = preprocess_json(input);
 /// println!("{}", output);
 /// ```
-pub fn preprocess_json(mut json: String) -> String {
-    // 正規表現生成　パターン："c.S"
-    // 対象文字列："c.S"（入力中の特定パターン）
-    let mut re = Regex::new(r#""c.S""#).unwrap();
-    // 置換実施　"c.S" → "近S"
-    // 結果："c.S"が"近S"へ変換
-    json = re.replace_all(&json, r#""近S""#).to_string();
+pub fn preprocess_json(json: String) -> String {
+    let mut result = json;
 
-    // 正規表現生成　パターン："f.S"
-    // 対象文字列："f.S"（入力中の特定パターン）
-    re = Regex::new(r#""f.S""#).unwrap();
-    // 置換実施　"f.S" → "遠S"
-    // 結果："f.S"が"遠S"へ変換
-    json = re.replace_all(&json, r#""遠S""#).to_string();
+    // 正規表現による置換
+    let re = Regex::new(r#""c.S""#).unwrap();
+    result = re.replace_all(&result, r#""近S""#).to_string();
 
-    // 正規表現生成　パターン："j\.(.+?)"
-    // 対象文字列："j.XXXX"（ドットの除去対象）
-    re = Regex::new(r#""j\.(.+?)""#).unwrap();
-    // 置換実施　"j.XXXX" → "jXXXX"
-    // 結果："j."のドットが削除される
-    json = re.replace_all(&json, r#""j$1""#).to_string();
+    let re = Regex::new(r#""f.S""#).unwrap();
+    result = re.replace_all(&result, r#""遠S""#).to_string();
 
-    // 置換チェーン開始　目的：HTMLエンティティや英語表記の日本語統一
-    json = json
+    let re = Regex::new(r#""j\.(.+?)""#).unwrap();
+    result = re.replace_all(&result, r#""j$1""#).to_string();
+
+    // 文字列置換チェーン
+    result = result
         .replace(r#"&lt;br&gt;"#, ", ")
         .replace(r#"&lt;br/&gt;"#, ", ")
         .replace(r#""All""#, r#""上段""#)
@@ -987,5 +978,6 @@ pub fn preprocess_json(mut json: String) -> String {
         .replace(r#""Amorphous""#, r#""アモルファス""#)
         .replace(r#""That&#039;s a lot""#, r#""「多い」""#)
         .replace(r#""Sun Void""#, r#""サンヴォイド""#);
-    json
+
+    result
 }
