@@ -48,11 +48,10 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
     for x in 0..moves_info.cargoquery.len() {
         if moves_info.cargoquery[x].title.input.is_none() {
             moves_info.cargoquery[x].title.input = Some("-".to_string());
-        } else {
-            if *moves_info.cargoquery[x].title.input.as_ref().unwrap() == "j.XX during Homing Jump"
-            {
-                continue;
-            }
+        } else if *moves_info.cargoquery[x].title.input.as_ref().unwrap()
+            == "j.XX during Homing Jump"
+        {
+            continue;
         }
         if moves_info.cargoquery[x].title.name.is_none() {
             moves_info.cargoquery[x].title.name = Some(
