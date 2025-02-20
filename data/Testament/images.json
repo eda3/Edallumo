@@ -157,7 +157,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/f/ff/GGST_Testament_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/2/29/GGST_Testament_Air_Throw_Hitbox.png"
@@ -215,7 +215,7 @@
   ]
 },
 	{
-  "input": "HSグレイヴリーパー(236[H])",
+  "input": "HSグレイヴリーパー(236[HS])",
   "move_img": "https://www.dustloop.com/wiki/images/2/23/GGST_Testament_236S.png",
   "hitbox_img": [
     ""
@@ -229,7 +229,7 @@
   ]
 },
 	{
-  "input": "HSグレイヴリーパー(236{H})",
+  "input": "HSグレイヴリーパー(236{HS})",
   "move_img": "https://www.dustloop.com/wiki/images/2/23/GGST_Testament_236S.png",
   "hitbox_img": [
     ""

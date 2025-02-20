@@ -139,7 +139,7 @@
   ]
 },
 	{
-  "input": "Sweep(JR 2D)",
+  "input": "足払い(JR 2D)",
   "move_img": "https://www.dustloop.com/wiki/images/a/aa/GGST_A.B.A_JR_2D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/45/GGST_A.B.A_JR_2D_Hitbox.png"
@@ -176,7 +176,7 @@
   ]
 },
 	{
-  "input": "Dust Attack(JR 5D)",
+  "input": "ダスト(JR 5D)",
   "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_A.B.A_5D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5c/GGST_A.B.A_5D_Hitbox.png"
@@ -204,7 +204,7 @@
   ]
 },
 	{
-  "input": "Charged Dust Attack(JR 5[D])",
+  "input": "溜めダスト(JR 5[D])",
   "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_A.B.A_5D.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5c/GGST_A.B.A_5D_Hitbox.png"
@@ -300,7 +300,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_A.B.A_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/01/GGST_A.B.A_Air_Throw_Hitbox.png"

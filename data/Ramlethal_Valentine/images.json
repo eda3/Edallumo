@@ -163,7 +163,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/47/GGST_Ramlethal_Valentine_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f2/GGST_Ramlethal_Valentine_Air_Throw_Hitbox.png"

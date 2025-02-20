@@ -173,7 +173,7 @@
   ]
 },
 	{
-  "input": "j6D or j4D(j6D or j4D)",
+  "input": "j6D or j.4D(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/0/09/GGST_Queen_Dizzy_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/dc/GGST_Queen_Dizzy_Air_Throw_Hitbox.png"

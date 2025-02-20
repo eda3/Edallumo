@@ -163,7 +163,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/8/8d/GGST_Ky_Kiske_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/f/f6/GGST_Ky_Kiske_Air_Throw_Hitbox.png"
@@ -324,7 +324,7 @@
   ]
 },
 	{
-  "input": "空中ヴェイパースラスト(j6236S)",
+  "input": "空中ヴェイパースラスト(j623S)",
   "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"

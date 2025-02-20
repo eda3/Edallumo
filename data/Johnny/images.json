@@ -164,7 +164,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Johnny_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/be/GGST_Johnny_Air_Throw_Hitbox.png"
@@ -214,7 +214,7 @@
   ]
 },
 	{
-  "input": "跳躍ディール(236HH)",
+  "input": "跳躍ディール(236HSHS)",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Johnny_236HH.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/b/b5/GGST_Johnny_236HH_Hitbox_1.png",

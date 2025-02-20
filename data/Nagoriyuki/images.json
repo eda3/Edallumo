@@ -400,7 +400,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/f/fc/GGST_Nagoriyuki_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/d/d5/GGST_Nagoriyuki_Air_Throw_Hitbox.png"

@@ -262,7 +262,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_Faust_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/00/GGST_Faust_Air_Throw_Hitbox.png"
@@ -276,7 +276,7 @@
   ]
 },
 	{
-  "input": "Hole In One(214HS)",
+  "input": "ナイスショット(214HS)",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Faust_41236K_4_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/4/4b/GGST_Faust_214H_Hitbox_1.png",
@@ -306,7 +306,7 @@
   ]
 },
 	{
-  "input": "What Could This Be? (Spit)(22P)",
+  "input": "何が出るかな？（射出）(22P)",
   "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_Faust_22P.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/8/8f/GGST_Faust_22P_Hitbox.png"
@@ -356,7 +356,7 @@
   ]
 },
 	{
-  "input": "Hole in One!(41236K 4 H)",
+  "input": "ナイスショット(41236K 4 H)",
   "move_img": "https://www.dustloop.com/wiki/images/7/79/GGST_Faust_41236K_4_H.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/0/0d/GGST_Faust_41236K_4_H_Hitbox_1.png",

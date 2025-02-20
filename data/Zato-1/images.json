@@ -175,7 +175,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Zato-1_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/c/c0/GGST_Zato-1_Air_Throw_Hitbox.png"
@@ -237,7 +237,7 @@
   ]
 },
 	{
-  "input": "That&#039;s a lot(236K)",
+  "input": "「多い」(236K)",
   "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Zato-1_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5c/GGST_Zato-1_236K_Hitbox.png"
@@ -288,7 +288,7 @@
   ]
 },
 	{
-  "input": "That&#039;s a lot(]K[)",
+  "input": "「多い」(]K[)",
   "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Zato-1_236K.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/5c/GGST_Zato-1_236K_Hitbox.png"

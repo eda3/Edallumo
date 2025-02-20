@@ -174,7 +174,7 @@
   ]
 },
 	{
-  "input": "空投げ(j6D or j4D)",
+  "input": "空投げ(j6D or j.4D)",
   "move_img": "https://www.dustloop.com/wiki/images/5/55/GGST_Baiken_Air_Throw.png",
   "hitbox_img": [
     "https://www.dustloop.com/wiki/images/5/53/GGST_Baiken_Air_Throw_Hitbox.png"
