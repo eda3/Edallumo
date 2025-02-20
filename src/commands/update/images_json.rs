@@ -452,6 +452,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""フォーエヴァーエリシオンドライバー""#,
         )
         // ジョニー
+        .replace(r#""236HH""#, r#""236HSHS""#)
         .replace(r#""Ensenga""#, r#""燕穿牙""#)
         .replace(r#""Mist Finer Stance""#, r#""ミストファイナー構え""#)
         .replace(
