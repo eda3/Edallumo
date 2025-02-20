@@ -96,7 +96,7 @@ pub async fn find_move_index(
     let aliases_path = format!("{}/{}", data_dir, character_arg_altered) + "/aliases.json";
     if Path::new(&aliases_path).exists() {
         let aliases_data = fs::read_to_string(&aliases_path)
-            .expect(&format!("\nFailed to read '{}' file.", aliases_path));
+            .unwrap_or_else(|_| panic!("\nFailed to read '{}' file.", aliases_path));
         let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data).unwrap();
 
         'outer: for alias_data in aliases_data {
