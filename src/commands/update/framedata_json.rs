@@ -196,7 +196,6 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""帰ってきたキルマシーン""#,
         ) // ブリジット
         .replace(r#""214S/H""#, r#""214S/HS""#) // ブリジット
-        // チップ
         .replace(r#""Loop the Loop""#, r#""ループザループ""#) // ブリジット
         // チップ
         .replace(r#""j6236S""#, r#""j623S""#) // チップ
