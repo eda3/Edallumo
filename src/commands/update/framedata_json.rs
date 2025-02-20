@@ -86,8 +86,8 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""214214H""#, r#""214214HS""#)
         .replace(r#""j623H""#, r#""j623HS""#)
         .replace(r#""Wild Assault""#, r#""ワイルドアサルト""#)
-        .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Charged Wild Assault""#, r#""溜めワイルドアサルト""#)
+        .replace(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#)
         .replace(r#""Ground Throw""#, r#""投げ""#)
         .replace(r#""Air Throw""#, r#""空投げ""#)
         // A.B.A
