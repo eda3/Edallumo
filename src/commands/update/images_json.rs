@@ -590,6 +590,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""bt.H""#, r#""btHS""#)
         .replace(r#""bt.214H""#, r#""bt.214HS""#)
         .replace(r#"bt."#, r#"bt"#)
+        .replace(r#""Stahl Wirbel""#, r#""シュタイルヴァービル""#)
         // メイ
         .replace(r#""K Arisugawa Sparkle""#, r#""K有栖川""#)
         .replace(r#""P Arisugawa Sparkle""#, r#""P有栖川""#)
