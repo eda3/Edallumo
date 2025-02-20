@@ -601,6 +601,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
             r#""Leidenschaft des Dirigenten""#,
             r#""ライデンシャフトディリガント""#,
         )
+        .replace(r#""Stahl Wirbel""#, r#""シュタイルヴァービル""#)
         .replace(r#""bt.H""#, r#""btHS""#)
         .replace(r#""bt.214H""#, r#""bt.214HS""#)
         .replace(r#"bt."#, r#"bt"#)
