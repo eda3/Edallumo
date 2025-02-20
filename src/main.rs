@@ -8,6 +8,7 @@
 // 各種機能モジュール読み込み
 mod check; // ディレクトリ・ファイル存在チェックモジュール
 mod commands; // Discord コマンド実装モジュール
+mod common;
 mod find; // 情報検索機能提供モジュール
 
 // 外部クレート読み込み
