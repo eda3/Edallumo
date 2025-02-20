@@ -954,6 +954,8 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Stain""#, r#""ステイン""#)
         .replace(r#""Calamity One""#, r#""カラミティ・ワン""#)
         .replace(r#""Nostrovia""#, r#""ノストロヴィア""#)
+        .replace(r#""236[H]""#, r#""236[HS]""#)
+        .replace(r#""236{H}""#, r#""236{HS}""#)
         // ザトー
         .replace(r#""22H""#, r#""22HS""#)
         .replace(r#""]H[""#, r#""]HS[""#)
