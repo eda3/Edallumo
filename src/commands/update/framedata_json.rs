@@ -62,15 +62,13 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
                     .unwrap()
                     .to_string(),
             );
-        } else {
-            if *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Dash Cancel"
-                || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Hoverdash"
-                || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Finish Blow"
-                || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Flight"
-                || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Escape"
-            {
-                continue;
-            }
+        } else if *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Dash Cancel"
+            || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Hoverdash"
+            || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Finish Blow"
+            || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Flight"
+            || *moves_info.cargoquery[x].title.name.as_ref().unwrap() == "Escape"
+        {
+            continue;
         }
         if moves_info.cargoquery[x].title.damage.is_none() {
             moves_info.cargoquery[x].title.damage = Some("-".to_string());
