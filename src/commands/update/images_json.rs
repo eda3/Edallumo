@@ -60,15 +60,14 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         {
             continue;
         }
-        if imagedata.cargoquery[x].title.images.is_none() {
-            image_link = "".to_string();
-        } else if imagedata.cargoquery[x]
-            .title
-            .images
-            .as_ref()
-            .unwrap()
-            .trim()
-            == ""
+        if imagedata.cargoquery[x].title.images.is_none()
+            || imagedata.cargoquery[x]
+                .title
+                .images
+                .as_ref()
+                .unwrap()
+                .trim()
+                == ""
         {
             image_link = "".to_string();
         } else if imagedata.cargoquery[x]
@@ -116,16 +115,15 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
             )
             .await;
         }
-        if imagedata.cargoquery[x].title.hitboxes.is_none() {
-            hitboxes_link.push("".to_string());
-        } else if imagedata.cargoquery[x]
-            .title
-            .hitboxes
-            .as_ref()
-            .unwrap()
-            .trim()
-            .to_lowercase()
-            .contains("6d")
+        if imagedata.cargoquery[x].title.hitboxes.is_none()
+            || imagedata.cargoquery[x]
+                .title
+                .hitboxes
+                .as_ref()
+                .unwrap()
+                .trim()
+                .to_lowercase()
+                .contains("6d")
         {
             hitboxes_link.push("".to_string());
         } else {
