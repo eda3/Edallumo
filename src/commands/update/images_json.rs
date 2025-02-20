@@ -873,7 +873,6 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""[4]6H P""#, r#""[4]6HS P""#) // ポチョムキン
         .replace(r#""[4]6H""#, r#""[4]6HS""#) // ポチョムキン
         .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
-        .replace(r#""Heat Tackle""#, r#""ヒートタックル""#) // ポチョムキン
         .replace(r#""F.D.B. (Charged)""#, r#""溜めF.D.B.""#) // ポチョムキン
         // シン
         .replace(r#""Hoof Stomp""#, r#""フーフスタンプ""#)
