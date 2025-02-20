@@ -298,7 +298,7 @@ pub async fn fmeter(
 /// 指定された文字列を分割し、区切り文字も保持して Vec<String> に変換する非同期処理
 ///
 /// 例： "236K" → 数字部分と記号部分に分割して ["236", "K"] のようなベクターに変換
-async fn sep_frame_vec(text: &String) -> Vec<String> {
+async fn sep_frame_vec(text: &str) -> Vec<String> {
     // 結果を格納するための空のベクターを用意
     let mut result = Vec::new();
     // 分割開始位置を記録する変数
