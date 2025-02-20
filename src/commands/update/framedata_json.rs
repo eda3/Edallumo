@@ -845,6 +845,7 @@ pub async fn frames_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Mortobato""#, r#""モルトバート""#)
         .replace(r#""214P 214P 214P""#, r#""214P214P214P""#)
         .replace(r#""214P 214P""#, r#""214P214PP""#)
+        .replace(r#""R.T.L Follow-up""#, r#""R.T.L.派生""#)
         // ディズィー
         .replace(r#""H Michael Sword""#, r#""HSミカエルソード""#)
         .replace(
