@@ -972,6 +972,7 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Leap""#, r#""「跳ねる」""#)
         .replace(r#""Damned Fang""#, r#""ダムドファング""#)
         .replace(r#""Amorphous""#, r#""アモルファス""#)
+        .replace(r#""That&#039;s a lot""#, r#""「多い」""#)
         .replace(r#""Sun Void""#, r#""サンヴォイド""#);
 
     let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
