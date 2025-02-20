@@ -1,16 +1,21 @@
+//! preprocess.rs
+//!
+//! JSON置換処理モジュール。  
+//! このモジュールは、入力されたJSON文字列に対して、HTMLエンティティや特定の英語表記を日本語表記へ変換する共通の置換処理を行う。
+
 use regex::Regex;
 
-/// JSON文字列に対して共通の置換処理を実施する関数
+/// 与えられたJSON文字列に対して共通の置換処理を実施する関数
 ///
 /// # 概要
-/// 与えられたJSON文字列に対して、各種パターンの置換処理を連続して実施し、  
-/// フレームデータ等の文字列を正規化する。  
+/// 入力されたJSON文字列内の特定パターンを、所定の日本語表記へ変換する。  
+/// フレームデータ等の文字列の正規化に利用する。
 ///
 /// # 引数
-/// * `json` - 入力JSON文字列（置換前）
+/// * `json` - 置換前のJSON文字列
 ///
 /// # 戻り値
-/// 置換処理を実施した後のJSON文字列（置換後）
+/// 置換処理後のJSON文字列
 ///
 /// # 例
 /// ```rust,no_run
@@ -20,22 +25,28 @@ use regex::Regex;
 /// println!("{}", output);
 /// ```
 pub fn preprocess_json(mut json: String) -> String {
-    // 正規表現作成　パターン："c.S"　目的：置換対象文字列
-    let mut re = Regex::new(r#""c.S""#).unwrap(); // 正規表現生成
-                                                  // "c.S" を "近S" に置換　結果：json内の "c.S" が "近S" に変換
-    json = re.replace_all(&json, r#""近S""#).to_string(); // 置換実施
+    // 正規表現生成　パターン："c.S"
+    // 対象文字列："c.S"（入力中の特定パターン）
+    let mut re = Regex::new(r#""c.S""#).unwrap();
+    // 置換実施　"c.S" → "近S"
+    // 結果："c.S"が"近S"へ変換
+    json = re.replace_all(&json, r#""近S""#).to_string();
 
-    // 正規表現作成　パターン："f.S"　目的：置換対象文字列
-    re = Regex::new(r#""f.S""#).unwrap(); // 正規表現生成
-                                          // "f.S" を "遠S" に置換　結果：json内の "f.S" が "遠S" に変換
-    json = re.replace_all(&json, r#""遠S""#).to_string(); // 置換実施
+    // 正規表現生成　パターン："f.S"
+    // 対象文字列："f.S"（入力中の特定パターン）
+    re = Regex::new(r#""f.S""#).unwrap();
+    // 置換実施　"f.S" → "遠S"
+    // 結果："f.S"が"遠S"へ変換
+    json = re.replace_all(&json, r#""遠S""#).to_string();
 
-    // 正規表現作成　パターン："j.XXXX"　目的："j." を削除する
-    re = Regex::new(r#""j\.(.+?)""#).unwrap(); // 正規表現生成
-                                               // "j.XXXX" を "jXXXX" に置換　結果："j." のドットが除去
-    json = re.replace_all(&json, r#""j$1""#).to_string(); // 置換実施
+    // 正規表現生成　パターン："j\.(.+?)"
+    // 対象文字列："j.XXXX"（ドットの除去対象）
+    re = Regex::new(r#""j\.(.+?)""#).unwrap();
+    // 置換実施　"j.XXXX" → "jXXXX"
+    // 結果："j."のドットが削除される
+    json = re.replace_all(&json, r#""j$1""#).to_string();
 
-    // 以下、文字列置換チェーン　目的：HTMLエンティティや英語表記を日本語表記に統一
+    // 置換チェーン開始　目的：HTMLエンティティや英語表記の日本語統一
     json = json
         .replace(r#"&lt;br&gt;"#, ", ")
         .replace(r#"&lt;br/&gt;"#, ", ")
