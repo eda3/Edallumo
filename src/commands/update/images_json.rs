@@ -285,7 +285,6 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Meteors""#, r#""メテオ""#) // ファウスト
         .replace(r#""Love Afro""#, r#""愛アフロ""#) // ファウスト
         // ジオヴァーナ
-        // ジオヴァーナ
         .replace(r#""6236S""#, r#""623S""#)
         .replace(r#""6HH""#, r#""6HSHS""#)
         .replace(r#""6HHH""#, r#""6HSHSHS""#)
