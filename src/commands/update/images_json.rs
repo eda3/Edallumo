@@ -38,10 +38,10 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         let image_link;
         if imagedata.cargoquery[x].title.input.is_none() {
             imagedata.cargoquery[x].title.input = Some("".to_string());
-        } else {
-            if *imagedata.cargoquery[x].title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
-                continue;
-            }
+        } else if *imagedata.cargoquery[x].title.input.as_ref().unwrap()
+            == "j.XX during Homing Jump"
+        {
+            continue;
         }
         if imagedata.cargoquery[x].title.name.is_none() {
             imagedata.cargoquery[x].title.name = Some(
@@ -52,15 +52,13 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
                     .unwrap()
                     .to_string(),
             );
-        } else {
-            if *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Dash Cancel"
-                || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Hoverdash"
-                || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Finish Blow"
-                || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Flight"
-                || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Escape"
-            {
-                continue;
-            }
+        } else if *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Dash Cancel"
+            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Hoverdash"
+            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Finish Blow"
+            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Flight"
+            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Escape"
+        {
+            continue;
         }
         if imagedata.cargoquery[x].title.images.is_none() {
             image_link = "".to_string();
