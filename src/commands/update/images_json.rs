@@ -240,13 +240,20 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         .replace(r#""Bomb-Bombnnière""#, r#""ボンボニエール""#)
         .replace(r#""Bomb-Bombnnière Explosion""#, r#""ボンボニエール爆発""#)
         .replace(r#""Juganto Da Parfeo""#, r#""ジュガント ダ パルフェーオ""#)
+        // ファウスト
         .replace(r#""Thrust""#, r#""突きます。""#) // ファウスト
         .replace(r#""Thrust (Charged)""#, r#""溜め突きます。""#) // ファウスト
         .replace(r#""Pull Back""#, r#""引き戻し""#) // ファウスト
         .replace(r#""Home Run!""#, r#""ナイスショット""#) // ファウスト
+        .replace(r#""Hole In One""#, r#""ナイスショット""#) // ファウスト
+        .replace(r#""Hole in One!""#, r#""ナイスショット""#) // ファウスト
         .replace(
             r#""What Could This Be? (Eat)""#,
             r#""何が出るかな？（食べる）""#,
+        ) // ファウスト
+        .replace(
+            r#""What Could This Be? (Spit)""#,
+            r#""何が出るかな？（射出）""#,
         ) // ファウスト
         .replace(r#""What Could This Be?""#, r#""何が出るかな？""#) // ファウスト
         .replace(r#""Mix Mix Mix""#, r#""涅和混練""#) // ファウスト
