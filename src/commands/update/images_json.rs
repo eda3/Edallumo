@@ -62,91 +62,84 @@ pub async fn images_to_json(mut chara_response_json: String, mut file: &File, ch
         }
         if imagedata.cargoquery[x].title.images.is_none() {
             image_link = "".to_string();
-        } else {
-            if imagedata.cargoquery[x]
+        } else if imagedata.cargoquery[x]
+            .title
+            .images
+            .as_ref()
+            .unwrap()
+            .trim()
+            == ""
+        {
+            image_link = "".to_string();
+        } else if imagedata.cargoquery[x]
+            .title
+            .images
+            .as_mut()
+            .unwrap()
+            .contains(';')
+        {
+            let split_image: Vec<&str> = imagedata.cargoquery[x]
                 .title
                 .images
-                .as_ref()
+                .as_mut()
                 .unwrap()
-                .trim()
-                == ""
-            {
-                image_link = "".to_string();
-            } else {
-                if imagedata.cargoquery[x]
+                .split(';')
+                .collect();
+            imagedata.cargoquery[x].title.images =
+                Some(split_image[0].to_string().replace(' ', "_"));
+            image_link = link_utils::make_link(
+                imagedata.cargoquery[x]
                     .title
                     .images
-                    .as_mut()
+                    .as_ref()
                     .unwrap()
-                    .contains(';')
-                {
-                    let split_image: Vec<&str> = imagedata.cargoquery[x]
-                        .title
-                        .images
-                        .as_mut()
-                        .unwrap()
-                        .split(';')
-                        .collect();
-                    imagedata.cargoquery[x].title.images =
-                        Some(split_image[0].to_string().replace(' ', "_"));
-                    image_link = link_utils::make_link(
-                        imagedata.cargoquery[x]
-                            .title
-                            .images
-                            .as_ref()
-                            .unwrap()
-                            .to_string(),
-                    )
-                    .await;
-                } else {
-                    imagedata.cargoquery[x].title.images = Some(
-                        imagedata.cargoquery[x]
-                            .title
-                            .images
-                            .as_ref()
-                            .unwrap()
-                            .to_string()
-                            .replace(' ', "_"),
-                    );
-                    image_link = link_utils::make_link(
-                        imagedata.cargoquery[x]
-                            .title
-                            .images
-                            .as_ref()
-                            .unwrap()
-                            .to_string(),
-                    )
-                    .await;
-                }
-            }
+                    .to_string(),
+            )
+            .await;
+        } else {
+            imagedata.cargoquery[x].title.images = Some(
+                imagedata.cargoquery[x]
+                    .title
+                    .images
+                    .as_ref()
+                    .unwrap()
+                    .to_string()
+                    .replace(' ', "_"),
+            );
+            image_link = link_utils::make_link(
+                imagedata.cargoquery[x]
+                    .title
+                    .images
+                    .as_ref()
+                    .unwrap()
+                    .to_string(),
+            )
+            .await;
         }
         if imagedata.cargoquery[x].title.hitboxes.is_none() {
             hitboxes_link.push("".to_string());
+        } else if imagedata.cargoquery[x]
+            .title
+            .hitboxes
+            .as_ref()
+            .unwrap()
+            .trim()
+            .to_lowercase()
+            .contains("6d")
+        {
+            hitboxes_link.push("".to_string());
         } else {
-            if imagedata.cargoquery[x]
+            let hitbox_str: Vec<&str> = imagedata.cargoquery[x]
                 .title
                 .hitboxes
                 .as_ref()
                 .unwrap()
-                .trim()
-                .to_lowercase()
-                .contains("6d")
-            {
-                hitboxes_link.push("".to_string());
-            } else {
-                let hitbox_str: Vec<&str> = imagedata.cargoquery[x]
-                    .title
-                    .hitboxes
-                    .as_ref()
-                    .unwrap()
-                    .split(';')
-                    .collect();
-                for hitbox_string in &hitbox_str {
-                    hitboxes_link.push(
-                        link_utils::make_link(hitbox_string.to_string().trim().replace(' ', "_"))
-                            .await,
-                    );
-                }
+                .split(';')
+                .collect();
+            for hitbox_string in &hitbox_str {
+                hitboxes_link.push(
+                    link_utils::make_link(hitbox_string.to_string().trim().replace(' ', "_")).await,
+                );
             }
         }
         let input_str = imagedata.cargoquery[x]
