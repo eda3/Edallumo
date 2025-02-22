@@ -13,14 +13,13 @@ pub async fn nicknames(ctx: Context<'_>) -> Result<(), Error> {
     // 入力検証および必要なファイルの存在確認処理
     // adaptive_check: ファイルの整合性確認（失敗時は処理を中断）
     if (check::adaptive_check(
-        ctx,
-        (false, &String::new()), // キャラクター名のチェック不要
-        (false, &String::new()), // 技名のチェック不要
-        true,                    // データフォルダ存在チェック
-        true,                    // nicknames.json 存在チェック
-        false,                   // キャラクターフォルダ存在チェック不要
-        false,                   // キャラクター JSON 存在チェック不要
-        false,                   // 画像 JSON 存在チェック不要
+        ctx, false, // キャラクター名のチェック不要
+        false, // 技名のチェック不要
+        true,  // データフォルダ存在チェック
+        true,  // nicknames.json 存在チェック
+        false, // キャラクターフォルダ存在チェック不要
+        false, // キャラクター JSON 存在チェック不要
+        false, // 画像 JSON 存在チェック不要
     )
     .await)
         .is_err()

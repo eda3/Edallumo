@@ -169,34 +169,16 @@ pub async fn correct_character_move_arg(character_move_arg: &String) -> Option<S
 #[allow(clippy::too_many_arguments)]
 pub async fn adaptive_check(
     ctx: Context<'_>,
-    correct_character_check: (bool, &String),
-    correct_character_move_check: (bool, &String),
     data_folder_check: bool,
     nicknames_json_check: bool,
     character_folders_check: bool,
     character_jsons_check: bool,
     character_images_check: bool,
+    character_info_check: bool,
+    gids_json_check: bool,
 ) -> Result<(), Error> {
-    let mut checks_passed = true;
-
-    if correct_character_check.0 {
-        // キャラクター引数正当性チェック
-        if let Some(error_msg) = correct_character_arg(correct_character_check.1).await {
-            ctx.say(&error_msg).await?;
-            println!("{}", ("Error: ".to_owned() + &error_msg).red());
-            checks_passed = false;
-        }
-    }
-    if correct_character_move_check.0 {
-        // 技引数正当性チェック
-        if let Some(error_msg) = correct_character_move_arg(correct_character_move_check.1).await {
-            ctx.say(&error_msg).await?;
-            println!("{}", ("Error: ".to_owned() + &error_msg).red());
-            checks_passed = false;
-        }
-    }
     if data_folder_check {
-        // データフォルダ存在チェック
+        // Checking if data folder exists
         if let Some(error_msg) = data_folder_exists(false).await {
             ctx.say(&error_msg.replace('\'', "`")).await?;
             println!();
@@ -204,7 +186,7 @@ pub async fn adaptive_check(
         }
     }
     if nicknames_json_check {
-        // nicknames.json 存在チェック
+        // Checking if nicknames.json exists
         if let Some(error_msg) = nicknames_json_exists(false).await {
             ctx.say(&error_msg.replace('\'', "`")).await?;
             println!();
@@ -212,7 +194,7 @@ pub async fn adaptive_check(
         }
     }
     if character_folders_check {
-        // キャラクターフォルダ存在チェック
+        // Checking if character folders exist
         if let Some(error_msg) = character_folders_exist(false).await {
             ctx.say(&error_msg.replace('\'', "`")).await?;
             println!();
@@ -220,7 +202,7 @@ pub async fn adaptive_check(
         }
     }
     if character_jsons_check {
-        // キャラクター JSON 存在チェック
+        // Checking if character jsons exist
         if let Some(error_msg) = character_jsons_exist(false).await {
             ctx.say(&error_msg.replace('\'', "`")).await?;
             println!();
@@ -228,17 +210,12 @@ pub async fn adaptive_check(
         }
     }
     if character_images_check {
-        // 画像 JSON 存在チェック
+        // Checking if image jsons exist
         if let Some(error_msg) = character_images_exist(false).await {
             ctx.say(&error_msg.replace('\'', "`")).await?;
             println!();
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-
-    if checks_passed {
-        Ok(())
-    } else {
-        Err("Failed adaptive_check".into())
-    }
+    Ok(())
 }

@@ -1,14 +1,9 @@
-use crate::commands::update::framedata_json::frames_to_json;
-use crate::CHARS;
-use colored::Colorize;
-use std::fs::OpenOptions;
-use std::io::Write;
-use std::path::Path;
-use std::time::Instant;
-use tokio::fs::remove_file;
 extern crate ureq;
+use crate::{commands::update::framedata_json::frames_to_json, CHARS};
+use colored::Colorize;
+use std::{fs::OpenOptions, time::Instant};
 
-const SITE_LINK: &str = "https://dustloop.com/wiki/api.php?action=cargoquery&format=json&limit=100&tables=MoveData_GGST&fields=MoveData_GGST.input%2C%20MoveData_GGST.name%2C%20MoveData_GGST.damage%2C%20MoveData_GGST.guard%2C%20MoveData_GGST.invuln%2C%20MoveData_GGST.startup%2C%20MoveData_GGST.active%2C%20MoveData_GGST.recovery%2C%20MoveData_GGST.onHit%2C%20MoveData_GGST.onBlock%2C%20MoveData_GGST.level%2C%20MoveData_GGST.riscGain%2C%20MoveData_GGST.prorate%2C%20MoveData_GGST.counter&where=chara%3D%22";
+const SITE_LINK: &str = "https://www.dustloop.com/wiki/api.php?action=cargoquery&format=json&limit=100&tables=MoveData_GGST&fields=MoveData_GGST.input%2C%20MoveData_GGST.name%2C%20MoveData_GGST.damage%2C%20MoveData_GGST.guard%2C%20MoveData_GGST.startup%2C%20MoveData_GGST.active%2C%20MoveData_GGST.recovery%2C%20MoveData_GGST.onHit%2C%20MoveData_GGST.onBlock%2C%20MoveData_GGST.level%2C%20MoveData_GGST.counter%2C%20MoveData_GGST.type%2C%20MoveData_GGST.riscGain%2C%20MoveData_GGST.riscLoss%2C%20MoveData_GGST.wallDamage%2C%20MoveData_GGST.inputTension%2C%20MoveData_GGST.chipRatio%2C%20MoveData_GGST.OTGRatio%2C%20MoveData_GGST.prorate%2C%20MoveData_GGST.invuln%2C%20MoveData_GGST.cancel%2C%20MoveData_GGST.caption%2C%20MoveData_GGST.notes%2C%20MoveData_GGST.hitboxCaption%2C%20MoveData_GGST.images%2C%20MoveData_GGST.hitboxes%2C&where=chara%3D%22";
 const SITE_HALF: &str =
     "%22&order_by=MoveData_GGST.type%20ASC%2C%20MoveData_GGST.input%20ASC&utf8=1";
 
@@ -20,19 +15,16 @@ pub async fn get_char_data(chars_ids: [&str; CHARS.len()], specific_char: &str) 
         for (x, char_id) in chars_ids.iter().enumerate() {
             println!(
                 "{}",
-                ("Creating '".to_owned() + &char_id + ".json' file.").green()
+                ("Creating '".to_owned() + char_id + ".json' file.").green()
             );
 
             let char_json_path = "data/".to_owned() + char_id + "/" + char_id + ".json";
 
-            if Path::new(&char_json_path).exists() {
-                remove_file(&char_json_path).await.unwrap();
-            }
-
-            // Creating character json file
-            let mut file = OpenOptions::new()
+            // Creating multiple character json files
+            let file = OpenOptions::new()
                 .create(true)
-                .append(true)
+                .truncate(true)
+                .write(true)
                 .open(char_json_path)
                 .expect(&("\nFailed to open '".to_owned() + char_id + ".json' file."));
 
@@ -50,21 +42,9 @@ pub async fn get_char_data(chars_ids: [&str; CHARS.len()], specific_char: &str) 
             // Requested website source to file
             let char_page_response_json = char_page_response_json.into_string().unwrap();
 
-            // More character json file stuff
-            let mut char_json_schema = "[\n\t";
-            write!(file, "{}", char_json_schema).expect(
-                &("\nFailed to write 'char_json_schema' to '".to_owned() + char_id + ".json'."),
-            );
-
             // Sending response to get processed and serialized to a json file
             // char_count is a counter to specify which json file fails to update
             frames_to_json(char_page_response_json, &file, x).await;
-
-            // Finalizing character json
-            char_json_schema = "\n]";
-            write!(file, "{}", char_json_schema).expect(
-                &("\nFailed to write 'json_schema' to '{".to_owned() + char_id + "}.json'."),
-            );
         }
     } else {
         println!(
@@ -74,14 +54,11 @@ pub async fn get_char_data(chars_ids: [&str; CHARS.len()], specific_char: &str) 
 
         let char_json_path = "data/".to_owned() + specific_char + "/" + specific_char + ".json";
 
-        if Path::new(&char_json_path).exists() {
-            remove_file(&char_json_path).await.unwrap();
-        }
-
-        // Creating character json file
-        let mut file = OpenOptions::new()
+        // Creating singular character json file
+        let file = OpenOptions::new()
             .create(true)
-            .append(true)
+            .truncate(true)
+            .write(true)
             .open(char_json_path)
             .expect(&("\nFailed to open '".to_owned() + specific_char + ".json' file."));
 
@@ -99,21 +76,9 @@ pub async fn get_char_data(chars_ids: [&str; CHARS.len()], specific_char: &str) 
         // Requested website source to file
         let char_page_response_json = char_page_response_json.into_string().unwrap();
 
-        // More character json file stuff
-        let mut char_json_schema = "[\n\t";
-        write!(file, "{}", char_json_schema).expect(
-            &("\nFailed to write 'char_json_schema' to '".to_owned() + specific_char + ".json'."),
-        );
-
         // Sending response to get processed and serialized to a json file
         // char_count is a counter to specify which json file fails to update
         frames_to_json(char_page_response_json, &file, 0).await;
-
-        // Finalizing character json
-        char_json_schema = "\n]";
-        write!(file, "{}", char_json_schema).expect(
-            &("\nFailed to write 'json_schema' to '{".to_owned() + specific_char + "}.json'."),
-        );
     }
 
     let elapsed_time = now.elapsed();

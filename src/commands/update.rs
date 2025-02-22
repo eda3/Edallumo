@@ -1,110 +1,92 @@
-//! # update.rs
-//!
-//! フレームデータおよび画像データの更新処理を提供するモジュール
-//! Dustloop API からデータを取得し、ローカルのデータを更新する
-//! このコマンドはボットの所有者のみ実行可能
-
 mod framedata;
 mod framedata_json;
 mod images;
 mod images_json;
-
-use crate::serenity::futures::{self, Stream, StreamExt};
 use crate::{check, find, Context, Error, CHARS};
 use colored::Colorize;
 
-/// 更新オプションのオートコンプリートを提供する関数
-/// ユーザーの入力に基づき、"all"、"frames"、"images" のいずれかを提案する
-/// ユーザーが入力した部分文字列にマッチする候補を返す
-async fn autocomplete_option<'a>(
-    _ctx: Context<'_>,
-    partial: &'a str,
-) -> impl Stream<Item = String> + 'a {
-    futures::stream::iter(&["all", "frames", "images"])
-        .filter(move |name| {
-            futures::future::ready(name.to_lowercase().contains(&partial.to_lowercase()))
-        })
-        .map(|name| name.to_string())
+#[derive(Debug, poise::ChoiceParameter)]
+pub enum UpdateChoice {
+    #[name = "all"]
+    All,
+    #[name = "frames"]
+    Frames,
+    #[name = "images"]
+    Images,
 }
 
-/// フレームデータおよび画像データを更新するコマンド
-#[poise::command(prefix_command, slash_command, aliases("u"), owners_only)]
+/// Update data according to dustloop. Owners only.
+#[poise::command(prefix_command, slash_command, owners_only, ephemeral)]
 pub async fn update(
     ctx: Context<'_>,
-    // キャラクター名、ニックネーム、または 'all' を指定する
-    #[description = "キャラクター名、ニックネーム、または 'all'"] character: String,
-    // 更新対象のデータ ('frames', 'images', 'all') を指定する
-    #[description = "更新対象のデータ ('frames', 'images', 'all')"]
-    #[autocomplete = "autocomplete_option"]
-    option: String,
+    #[min_length = 2]
+    #[description = r#"Character name, nickname or "all"."#]
+    character: String,
+    #[description = r#"Select "frames", "images" or "all"."#] option: UpdateChoice,
 ) -> Result<(), Error> {
-    let option = option.trim().to_lowercase();
-
-    // キャラクター名の妥当性をチェック
-    if (check::adaptive_check(
-        ctx,
-        (true, &character),
-        (false, &String::new()),
-        true,
-        true,
-        true,
-        false,
-        false,
-    )
-    .await)
-        .is_err()
-    {
+    if (check::adaptive_check(ctx, true, true, true, false, false, false, false).await).is_err() {
         return Ok(());
     }
 
-    // キャラクターの正式名称を検索し、存在しない場合はエラーメッセージを返す
+    // Finding character
     let character_arg_altered = match find::find_character(&character).await {
         Ok(character_arg_altered) => character_arg_altered,
         Err(err) => {
             ctx.say(err.to_string()).await?;
-            println!("{}", ("エラー: ".to_owned() + &err.to_string()).red());
+            println!("{}", ("Error: ".to_owned() + &err.to_string()).red());
             return Ok(());
         }
     };
 
-    // フレームデータの更新処理
-    if option == "frames" {
-        if character.trim().to_lowercase() == "all" {
-            ctx.say("更新開始").await?;
-            framedata::get_char_data(CHARS, "all").await;
-        } else {
-            ctx.say("更新開始").await?;
-            framedata::get_char_data(CHARS, &character_arg_altered).await;
+    match option {
+        UpdateChoice::All => {
+            // If character arg is all; update frames, images and info for all characters
+            if character.trim().to_lowercase() == "all" {
+                ctx.say("Update started!").await?;
+                update_all_char_data().await;
+            } else {
+                // If user input isnt the full name, part of a full name or a nickname
+                // Update frames, images and info for specific character
+                ctx.say("Update started!").await?;
+                framedata::get_char_data(CHARS, &character_arg_altered).await;
+                images::get_char_images(CHARS, &character_arg_altered).await;
+            }
         }
-    } else if option == "images" {
-        // 画像データの更新処理
-        if character.trim().to_lowercase() == "all" {
-            ctx.say("更新開始").await?;
-            images::get_char_data(CHARS, "all").await;
-        } else {
-            ctx.say("更新開始").await?;
-            images::get_char_data(CHARS, &character_arg_altered).await;
+        UpdateChoice::Frames => {
+            // If character arg is all; update frames for all characters
+            if character.trim().to_lowercase() == "all" {
+                ctx.say("Update started!").await?;
+                framedata::get_char_data(CHARS, "all").await;
+            } else {
+                // Updates images for specific character
+                // If user input isnt the full name, part of a full name or a nickname
+                // Update frames for specific character
+                ctx.say("Update started!").await?;
+                framedata::get_char_data(CHARS, &character_arg_altered).await;
+            }
         }
-    } else if option == "all" {
-        // 両方のデータを更新
-        if character.trim().to_lowercase() == "all" {
-            ctx.say("更新開始").await?;
-            framedata::get_char_data(CHARS, "all").await;
-            images::get_char_data(CHARS, "all").await;
-        } else {
-            ctx.say("更新開始").await?;
-            framedata::get_char_data(CHARS, &character_arg_altered).await;
-            images::get_char_data(CHARS, &character_arg_altered).await;
+        UpdateChoice::Images => {
+            // If character arg is all; update images for all characters
+            if character.trim().to_lowercase() == "all" {
+                ctx.say("Update started!").await?;
+                images::get_char_images(CHARS, "all").await;
+            } else {
+                // Updates images for specific character
+                // If user input isnt the full name, part of a full name or a nickname
+                // Update images for specific character
+                ctx.say("Update started!").await?;
+                images::get_char_images(CHARS, &character_arg_altered).await;
+            }
         }
-    } else {
-        // 無効なオプションの場合、エラーメッセージを返す
-        let error_msg = format!("選択 `{}` は無効", option);
-        ctx.say(&error_msg).await?;
-        println!("{}", format!("エラー: 選択 `{}` は無効", option).red());
-        return Ok(());
     }
 
-    ctx.channel_id().say(ctx, "更新完了").await?;
+    ctx.say("Update succesful!").await?;
 
     Ok(())
+}
+
+pub async fn update_all_char_data() {
+    // 24 hour character data auto update function
+    framedata::get_char_data(CHARS, "all").await;
+    images::get_char_images(CHARS, "all").await;
 }

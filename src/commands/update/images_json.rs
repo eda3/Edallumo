@@ -1,263 +1,191 @@
-use crate::{ImageLinks, CHARS};
-use serde::Deserialize;
-use std::fs::File;
-use std::io::Write;
 extern crate ureq;
-use crate::common::link_utils;
-use crate::common::preprocess;
+use crate::{ImageLinks, CHARS};
+use md5::{Digest, Md5};
+use serde::Deserialize;
+use std::{fs::File, io::Write};
+//use ureq::Error;
+//use std::fs::OpenOptions;
 
 #[derive(Deserialize, Debug)]
-struct Imageresponse {
+struct ImageResponse {
     #[serde(rename = "cargoquery")]
-    cargoquery: Vec<Imagedata>,
+    cargoquery: Vec<ImageData>,
 }
 
 #[derive(Deserialize, Debug)]
-struct Imagedata {
+struct ImageData {
     #[serde(rename = "title")]
-    title: Imagetitle,
+    title: ImageTitle,
 }
 
 #[derive(Deserialize, Debug)]
-struct Imagetitle {
+struct ImageTitle {
     input: Option<String>,
     name: Option<String>,
     images: Option<String>,
     hitboxes: Option<String>,
 }
 
-/// 画像データ JSON を前処理後、パースしてファイルへシリアライズする関数
-pub async fn images_to_json(mut chara_response_json: String, mut file: &File, char_count: usize) {
-    // 共通前処理を適用
-    chara_response_json = preprocess::preprocess_json(chara_response_json);
+const IMAGE_HALF: &str = "https://www.dustloop.com/wiki/images";
 
-    let mut imagedata: Imageresponse = serde_json::from_str(&chara_response_json).unwrap();
+pub async fn images_to_json(
+    mut char_images_response_json: String,
+    mut file: &File,
+    char_count: usize,
+) {
+    // Replace apostrophe
+    char_images_response_json = char_images_response_json.replace(r#"&#039;"#, "'");
 
-    for x in 0..imagedata.cargoquery.len() {
-        let mut hitboxes_link: Vec<String> = Vec::new();
+    let mut image_data_response: ImageResponse =
+        serde_json::from_str(&char_images_response_json).unwrap();
+    let char_image_data = &mut image_data_response.cargoquery;
+    let mut vec_processed_imagedata = Vec::new();
+
+    for image_data in char_image_data {
+        // Variable that the produced hitbox links will reside
+        let mut hitbox_links: Vec<String> = Vec::new();
+        // Variable that the produced image link will reside
         let image_link;
-        if imagedata.cargoquery[x].title.input.is_none() {
-            imagedata.cargoquery[x].title.input = Some("".to_string());
-        } else if *imagedata.cargoquery[x].title.input.as_ref().unwrap()
-            == "j.XX during Homing Jump"
-        {
-            continue;
-        }
-        if imagedata.cargoquery[x].title.name.is_none() {
-            imagedata.cargoquery[x].title.name = Some(
-                imagedata.cargoquery[x]
-                    .title
-                    .input
-                    .as_ref()
-                    .unwrap()
-                    .to_string(),
-            );
-        } else if *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Dash Cancel"
-            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Hoverdash"
-            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Finish Blow"
-            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Flight"
-            || *imagedata.cargoquery[x].title.name.as_ref().unwrap() == "Escape"
-        {
-            continue;
-        }
-        if imagedata.cargoquery[x].title.images.is_none()
-            || imagedata.cargoquery[x]
-                .title
-                .images
-                .as_ref()
-                .unwrap()
-                .trim()
-                == ""
-        {
-            image_link = "".to_string();
-        } else if imagedata.cargoquery[x]
-            .title
-            .images
-            .as_mut()
-            .unwrap()
-            .contains(';')
-        {
-            let split_image: Vec<&str> = imagedata.cargoquery[x]
-                .title
-                .images
-                .as_mut()
-                .unwrap()
-                .split(';')
-                .collect();
-            imagedata.cargoquery[x].title.images =
-                Some(split_image[0].to_string().replace(' ', "_"));
-            image_link = link_utils::make_link(
-                imagedata.cargoquery[x]
-                    .title
-                    .images
-                    .as_ref()
-                    .unwrap()
-                    .to_string(),
-            )
-            .await;
+
+        // Replacing None values with a generic '-'
+        if image_data.title.input.is_none() {
+            image_data.title.input = Some("".to_string());
         } else {
-            imagedata.cargoquery[x].title.images = Some(
-                imagedata.cargoquery[x]
-                    .title
-                    .images
-                    .as_ref()
-                    .unwrap()
-                    .to_string()
-                    .replace(' ', "_"),
-            );
-            image_link = link_utils::make_link(
-                imagedata.cargoquery[x]
-                    .title
-                    .images
-                    .as_ref()
-                    .unwrap()
-                    .to_string(),
-            )
-            .await;
-        }
-        if imagedata.cargoquery[x].title.hitboxes.is_none()
-            || imagedata.cargoquery[x]
-                .title
-                .hitboxes
-                .as_ref()
-                .unwrap()
-                .trim()
-                .to_lowercase()
-                .contains("6d")
-        {
-            hitboxes_link.push("".to_string());
-        } else {
-            let hitbox_str: Vec<&str> = imagedata.cargoquery[x]
-                .title
-                .hitboxes
-                .as_ref()
-                .unwrap()
-                .split(';')
-                .collect();
-            for hitbox_string in &hitbox_str {
-                hitboxes_link.push(
-                    link_utils::make_link(hitbox_string.to_string().trim().replace(' ', "_")).await,
-                );
+            // Skips finish blow for sol
+            if *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
+                continue;
             }
         }
-        let input_str = imagedata.cargoquery[x]
-            .title
-            .input
-            .as_ref()
-            .unwrap()
-            .to_string();
-        let mut _input_name = String::new();
-        println!("{}", &input_str.as_str());
-        if [
-            "2D",
-            "2HS",
-            "2K",
-            "2P",
-            "2S",
-            "3K",
-            "5D",
-            "5HS",
-            "5K",
-            "5P",
-            "5[D]",
-            "6HS",
-            "6K",
-            "6P",
-            "近S",
-            "遠S",
-            "S",
-            "6S",
-            "H",
-            "jD",
-            "jHS",
-            "jK",
-            "jP",
-            "jS",
-            "j2K",
-            "j2H",
-            "JR2HS",
-            "JR2K",
-            "JR2P",
-            "JR2S",
-            "JR5HS",
-            "JR5K",
-            "JR5P",
-            "JR6HS",
-            "JR6P",
-            "JR近S",
-            "JR遠S",
-            "JRjD",
-            "JRjHS",
-            "JRjK",
-            "JRjP",
-            "JRjS",
-            "JR解除",
-            "6HSHS",
-            "6HSHSHS",
-            "銃を構える(HS)",
-            "BR Activation",
-            "BR Deactivation",
-            "214X (Discard)",
-            "214X (Draw)",
-            "Accipiter Metron",
-            "Aquila Metron",
-            "Bit Shift Metron",
-            "Bookmark (Auto Import)",
-            "Bookmark (Full Import)",
-            "Bookmark (Random Import)",
-            "Chaotic Option",
-            "Delayed Howling Metron",
-            "Delayed Tardus Metron",
-            "Go to Marker",
-            "Gravity Rod (Shooting)",
-            "High-Pass Filter Gravity",
-            "Howling Metron",
-            "Howling Metron MS Processing",
-            "Low-Pass Filter Gravity",
-            "Metron Arpeggio",
-            "Metron Screamer 808",
-            "Recover Mana (Continuous)",
-            "Recover Mana (Instant)",
-            "Reduce Mana Cost",
-            "Repulsive Rod (Shooting)",
-            "RMS Boost Metron",
-            "Sampler 404",
-            "Shooting Time Stretch (Accelerate)",
-            "Shooting Time Stretch (Decelerate)",
-            "Terra Metron",
-            "ステイン",
-        ]
-        .contains(&input_str.as_str())
-        {
-            _input_name = input_str;
+        if image_data.title.name.is_none() {
+            image_data.title.name = Some(image_data.title.input.as_ref().unwrap().to_string());
         } else {
-            let name_str = imagedata.cargoquery[x]
+            // Skips dash cancel entry ino hoverdash chipp escape zato flight and finish blow
+            if image_data.title.name.as_ref().unwrap().to_string().trim() == "Dash Cancel"
+                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Hoverdash"
+                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Finish Blow"
+                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Flight"
+                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Escape"
+            {
+                continue;
+            }
+        }
+        if image_data.title.images.is_none() {
+            image_link = "".to_string();
+        } else {
+            // If image field contains only spaces
+            if image_data.title.images.as_ref().unwrap().trim() == "" {
+                image_link = "".to_string();
+            } else {
+                // Multiple image names
+                // Removing any subsequent image names from field
+                if image_data.title.images.as_mut().unwrap().contains(';') {
+                    let split_image: Vec<&str> = image_data
+                        .title
+                        .images
+                        .as_mut()
+                        .unwrap()
+                        .split(';')
+                        .collect();
+
+                    image_data.title.images = Some(split_image[0].to_string().replace(' ', "_"));
+
+                    // Sending image name to make_link to become a link
+                    image_link =
+                        make_link(image_data.title.images.as_ref().unwrap().to_string()).await;
+                } else {
+                    // Single image name
+                    image_data.title.images = Some(
+                        image_data
+                            .title
+                            .images
+                            .as_ref()
+                            .unwrap()
+                            .to_string()
+                            .replace(' ', "_"),
+                    );
+                    // Sending image name to make_link to become a link
+                    image_link =
+                        make_link(image_data.title.images.as_ref().unwrap().to_string()).await;
+                }
+            }
+        }
+
+        // If hitbox empty
+        if image_data.title.hitboxes.is_none() {
+            hitbox_links.push("".to_string());
+        } else {
+            // // If image field contains only spaces
+            // if char_image_data[x].title.hitboxes.as_ref().unwrap().trim() == "" {
+            //     hitbox_links.push("".to_string());
+            // }
+            // Remove any hitbox images for throws cause they dont exist !!!!! this breaks wa
+            //if char_image_data[x].title.hitboxes.as_ref().unwrap().trim().to_lowercase().contains("6d") {
+            //    hitbox_links.push("".to_string());
+            //}
+            //else{
+            // Splitting the hitboxes names into a vector
+            let hitbox_str: Vec<&str> = image_data
                 .title
-                .name
+                .hitboxes
                 .as_ref()
                 .unwrap()
-                .to_string();
-            _input_name = format!("{}({})", name_str, input_str);
+                .split(';')
+                .collect();
+
+            for hitbox_string in &hitbox_str {
+                // Sending hitbox names to make_link to become a vector of links
+                hitbox_links
+                    .push(make_link(hitbox_string.to_string().trim().replace(' ', "_")).await);
+            }
+            //}
         }
-        let processed_imagedata = serde_json::to_string_pretty(&ImageLinks {
-            input: _input_name.to_string(),
+
+        // Serializing image data
+        let processed_imagedata = ImageLinks {
+            input: image_data.title.input.as_ref().unwrap().to_string(),
             move_img: image_link,
-            hitbox_img: hitboxes_link,
-        })
-        .unwrap();
-        write!(file, "{}", processed_imagedata)
-            .expect(&("\nFailed to serialize '".to_owned() + CHARS[char_count] + ".json'."));
-        if x == imagedata.cargoquery.len() - 2
-            && *imagedata.cargoquery[x + 1].title.input.as_ref().unwrap()
-                == "j.XX during Homing Jump"
-        {
-            continue;
-        } else if x != imagedata.cargoquery.len() - 1 {
-            (&mut file).write_all(b",\n\t").expect(
-                &("\nFailed to write ',\\n\\t' while serializing '".to_owned()
-                    + CHARS[char_count]
-                    + ".json'."),
-            );
-        }
+            hitbox_img: hitbox_links,
+        };
+
+        vec_processed_imagedata.push(processed_imagedata);
     }
+
+    file.write_all(&(serde_json::to_vec_pretty(&vec_processed_imagedata).unwrap()))
+        .expect(&("\nFailed to serialize '".to_owned() + CHARS[char_count] + ".json'."));
+}
+
+async fn make_link(image_name: String) -> String {
+    let image_bytes = image_name.as_bytes();
+
+    // Creating a Md5 hasher instance
+    let mut hasher = Md5::new();
+    hasher.update(image_bytes);
+    // Converting hex to string
+    let result = format!("{:x}", hasher.finalize());
+    // Getting the first two hex digits from the md5sum
+    // let char1 = result.chars().nth(0).unwrap();
+    let char1 = result.chars().next().unwrap();
+    let char2 = result.chars().nth(1).unwrap();
+    // Making final link by concating
+    // https://www.dustloop.com/wiki/images/first hex digit/first hex second hex/image names with underscores instead of spaces
+    let image_link = format!("{}/{}/{}{}/{}", IMAGE_HALF, char1, char1, char2, image_name);
+
+    // // Debug testing links and outputting the broken ones in a file
+    // match ureq::get(&image_link).call() {
+    //     Ok(_) => {},
+    //     Err(Error::Status(code, _/*response*/)) => {
+    //         // Creating character images json file
+    //         let mut file = OpenOptions::new()
+    //             .create(true)
+    //             .append(true)
+    //             .open("broken_links.txt")
+    //             .expect("\nFailed to open 'broken_links.txt'");
+
+    //         write!(file, "Code: {}, Link: {}\n", code, image_link)
+    //             .expect("\nFailed to write to 'broken_links.txt'");
+    //     }
+    //     Err(_) => {}
+    // }
+
+    image_link
 }

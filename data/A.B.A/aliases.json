@@ -1,5 +1,18 @@
 [
     {
+        "input": "5D",
+        "aliases": [
+            "D",
+            "ダスト"
+        ]
+    },
+    {
+        "input": "jD",
+        "aliases": [
+            "空中D"
+        ]
+    },
+    {
         "input": "遠S",
         "aliases": [
             "fS"

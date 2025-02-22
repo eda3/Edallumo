@@ -9,7 +9,7 @@
     ]
   },
   {
-    "input": "2HS",
+    "input": "2H",
     "move_img": "https://www.dustloop.com/wiki/images/4/42/GGST_Asuka_R_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/79/GGST_Asuka_R_2H_Hitbox.png"
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "input": "5HS",
+    "input": "5H",
     "move_img": "https://www.dustloop.com/wiki/images/8/8f/GGST_Asuka_R_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/03/GGST_Asuka_R_5H_Hitbox.png"
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "input": "6HS",
+    "input": "6H",
     "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Asuka_R_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/39/GGST_Asuka_R_6H_Hitbox_1.png",
@@ -95,77 +95,77 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "c.S",
     "move_img": "https://www.dustloop.com/wiki/images/2/28/GGST_Asuka_R_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/23/GGST_Asuka_R_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "f.S",
     "move_img": "https://www.dustloop.com/wiki/images/3/3f/GGST_Asuka_R_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fe/GGST_Asuka_R_fS_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "j.D",
     "move_img": "https://www.dustloop.com/wiki/images/f/f5/GGST_Asuka_R_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dd/GGST_Asuka_R_jD_Hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "j.H",
     "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Asuka_R_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e1/GGST_Asuka_R_jH_Hitbox.png"
     ]
   },
   {
-    "input": "jK",
+    "input": "j.K",
     "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_Asuka_R_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8d/GGST_Asuka_R_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "j.P",
     "move_img": "https://www.dustloop.com/wiki/images/1/11/GGST_Asuka_R_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d2/GGST_Asuka_R_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "j.S",
     "move_img": "https://www.dustloop.com/wiki/images/6/67/GGST_Asuka_R_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/93/GGST_Asuka_R_jS_Hitbox.png"
     ]
   },
   {
-    "input": "ワイルドアサルト(236D)",
+    "input": "236D",
     "move_img": "https://www.dustloop.com/wiki/images/f/fe/GGST_Asuka_R_236D.png",
     "hitbox_img": [
-      ""
+      "https://www.dustloop.com/wiki/images/b/bb/GGST_Asuka_R_236D_Hitbox.png"
     ]
   },
   {
-    "input": "溜めワイルドアサルト(236[D])",
+    "input": "236[D]",
     "move_img": "https://www.dustloop.com/wiki/images/f/fe/GGST_Asuka_R_236D.png",
     "hitbox_img": [
-      ""
+      "https://www.dustloop.com/wiki/images/b/bb/GGST_Asuka_R_236D_Hitbox.png"
     ]
   },
   {
-    "input": "投げ(6D or 4D)",
+    "input": "6D or 4D",
     "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_Asuka_R_Ground_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/15/GGST_Asuka_R_Ground_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "空投げ(j6D or j4D)",
+    "input": "j.6D or j.4D",
     "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Asuka_R_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dd/GGST_Asuka_R_Air_Throw_Hitbox.png"
@@ -186,21 +186,21 @@
     ]
   },
   {
-    "input": "Change Test Case(22H~X)",
+    "input": "22H~X",
     "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Asuka_R_22HX.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/40/GGST_Asuka_R_22HX_Hitbox.png"
     ]
   },
   {
-    "input": "Recover Mana(22P/K/S)",
+    "input": "22P/K/S",
     "move_img": "https://www.dustloop.com/wiki/images/4/49/GGST_Asuka_R_22PKS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b9/GGST_Asuka_R_22PKS_Hitbox.png"
     ]
   },
   {
-    "input": "Chant(236X)",
+    "input": "236X",
     "move_img": "https://www.dustloop.com/wiki/images/c/c1/GGST_Asuka_236X.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/28/GGST_Asuka_236X_Hitbox.png"
@@ -391,7 +391,7 @@
     ]
   },
   {
-    "input": "Submicron Particle Sphere(632146P/K)",
+    "input": "632146P/K",
     "move_img": "https://www.dustloop.com/wiki/images/8/8e/GGST_Asuka_R_632146PK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0b/GGST_Asuka_R_632146PK_Hitbox_1.png",
@@ -399,7 +399,7 @@
     ]
   },
   {
-    "input": "Bookmark (Full Order)(632146S)",
+    "input": "632146S",
     "move_img": "https://www.dustloop.com/wiki/images/c/c6/GGST_Asuka_R_632146S.png",
     "hitbox_img": [
       ""
