@@ -130,30 +130,6 @@ pub async fn character_images_exist(init_check: bool) -> Option<String> {
     None
 }
 
-/// キャラクター引数正当性チェック関数である。  
-/// 引数の文字数が 2 文字未満の場合はエラー文字列を返す。  
-/// 正常時は None を返す。
-pub async fn correct_character_arg(character_arg: &String) -> Option<String> {
-    if character_arg.len() < 2 {
-        let error_msg = "Character name `".to_owned() + &character_arg + "` is invalid!";
-        Some(error_msg)
-    } else {
-        None
-    }
-}
-
-/// 技引数正当性チェック関数である。  
-/// 引数の文字数が 2 文字未満の場合はエラー文字列を返す。  
-/// 正常時は None を返す。
-pub async fn correct_character_move_arg(character_move_arg: &String) -> Option<String> {
-    if character_move_arg.len() < 2 {
-        let error_msg = "Move `".to_owned() + &character_move_arg + "` is invalid!";
-        Some(error_msg)
-    } else {
-        None
-    }
-}
-
 /// Adaptive check 関数である。  
 /// 複数のチェック関数を実行し、各チェック結果に基づきエラーメッセージ出力またはパニックを実施する。  
 /// 引数：  
