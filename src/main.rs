@@ -250,12 +250,12 @@ async fn main() {
                 match event {
                     serenity::FullEvent::Ready { data_about_bot: _ } => {
                         let forever = task::spawn(async {
-                            // let mut interval = time::interval(Duration::from_secs(86400));
-                            // loop {
-                            // Runs update_all_char_data every 24h
-                            // interval.tick().await;
-                            // update::update_all_char_data().await;
-                            // }
+                            let mut interval = time::interval(Duration::from_secs(86400));
+                            loop {
+                                // Runs update_all_char_data every 24h
+                                interval.tick().await;
+                                update::update_all_char_data().await;
+                            }
                         });
 
                         let _ = forever.await;
