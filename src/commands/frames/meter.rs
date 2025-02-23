@@ -244,7 +244,7 @@ pub async fn meter(
         ("Command Args: '".to_owned() + &character + ", " + &character_move + "'").purple()
     ); // コマンド引数出力
 
-    if (check::adaptive_check(ctx, true, true, true, true, true, false, false).await).is_err() {
+    if (check::adaptive_check(ctx, true, true, true, true, true).await).is_err() {
         return Ok(()); // チェック失敗時早期返却
     }
 

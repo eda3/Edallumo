@@ -54,7 +54,7 @@ pub async fn advanced(
     let mut embed_image = IMAGE_DEFAULT.to_string();
 
     // 入力チェックの実施　各種前提条件チェック
-    if (check::adaptive_check(ctx, true, true, true, true, true, false, true).await).is_err() {
+    if (check::adaptive_check(ctx, true, true, true, true, true).await).is_err() {
         return Ok(());
     }
 

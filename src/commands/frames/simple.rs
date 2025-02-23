@@ -49,7 +49,7 @@ pub async fn simple(
     let mut embed_image = IMAGE_DEFAULT.to_string();
 
     // 必要チェック実施　データ整合性確認
-    if (check::adaptive_check(ctx, true, true, true, true, true, false, true).await).is_err() {
+    if (check::adaptive_check(ctx, true, true, true, true, true).await).is_err() {
         return Ok(());
     }
 
