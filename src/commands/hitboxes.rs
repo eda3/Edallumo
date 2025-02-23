@@ -75,13 +75,7 @@ pub async fn hitboxes(
     let move_info = &moves_info[index];
     let mut vec_embeds = Vec::new();
 
-    let embed_title = "__**".to_owned()
-        + &character_arg_altered.replace("_", " ")
-        + " "
-        + &move_info.input
-        + " / "
-        + &move_info.name
-        + "**__";
+    let embed_title = "__**".to_owned() + &move_info.input + "**__";
 
     let embed_url =
         "https://dustloop.com/w/GGST/".to_owned() + &character_arg_altered + "#Overview";
