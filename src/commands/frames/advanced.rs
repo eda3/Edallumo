@@ -121,13 +121,7 @@ pub async fn advanced(
     // 埋め込みメッセージ群生成用ベクターの初期化
     let mut vec_embeds = Vec::new();
     // 埋め込みタイトルの作成　キャラクター名と技名を組み合わせたタイトル
-    let embed_title = "__**".to_owned()
-        + &character_arg_altered.replace('_', " ")
-        + " "
-        + &move_info.input
-        + " / "
-        + &move_info.name
-        + "**__";
+    let embed_title = "__**".to_owned() + &move_info.input + "**__";
     // 埋め込みURLの作成　Dustloop Wiki のキャラクター概要ページURL生成
     let embed_url =
         "https://dustloop.com/w/GGST/".to_owned() + &character_arg_altered + "#Overview";
