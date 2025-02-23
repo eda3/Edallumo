@@ -1,5 +1,6 @@
 mod check;
 mod commands;
+mod common;
 mod find;
 
 use colored::Colorize;
