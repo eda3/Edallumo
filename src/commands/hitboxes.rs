@@ -20,7 +20,7 @@ pub async fn hitboxes(
         ("Command Args: '".to_owned() + &character + ", " + &character_move + "'").purple()
     );
 
-    if (check::adaptive_check(ctx, true, true, true, true, true, false, false).await).is_err() {
+    if (check::adaptive_check(ctx, true, true, true, true, true).await).is_err() {
         return Ok(());
     }
 

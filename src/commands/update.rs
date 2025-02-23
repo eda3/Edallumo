@@ -24,7 +24,7 @@ pub async fn update(
     character: String,
     #[description = r#"Select "frames", "images" or "all"."#] option: UpdateChoice,
 ) -> Result<(), Error> {
-    if (check::adaptive_check(ctx, true, true, true, false, false, false, false).await).is_err() {
+    if (check::adaptive_check(ctx, true, true, true, false, false).await).is_err() {
         return Ok(());
     }
 

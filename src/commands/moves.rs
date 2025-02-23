@@ -33,7 +33,7 @@ pub async fn moves(
         ("Command Args: '".to_owned() + &character + "'").purple()
     );
 
-    if (check::adaptive_check(ctx, true, true, true, true, false, false, false).await).is_err() {
+    if (check::adaptive_check(ctx, true, true, true, true, false).await).is_err() {
         return Ok(());
     }
 

@@ -174,8 +174,6 @@ pub async fn adaptive_check(
     character_folders_check: bool,
     character_jsons_check: bool,
     character_images_check: bool,
-    character_info_check: bool,
-    gids_json_check: bool,
 ) -> Result<(), Error> {
     if data_folder_check {
         // Checking if data folder exists
