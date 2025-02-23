@@ -127,13 +127,7 @@ pub async fn simple(
     }
 
     // 埋め込みタイトル組み立て　キャラクター名と技情報を連結
-    let embed_title = "__**".to_owned()
-        + &character_arg_altered.replace('_', " ")
-        + " "
-        + &move_info.input
-        + " / "
-        + &move_info.name
-        + "**__";
+    let embed_title = "__**".to_owned() + &move_info.input + "**__";
 
     // 埋め込みURL組み立て　Dustloop Wiki の対象キャラクターページ
     let embed_url =
