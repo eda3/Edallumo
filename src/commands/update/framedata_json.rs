@@ -171,7 +171,7 @@ pub async fn frames_to_json(
 
         // move_data の title フィールドから name を取得
         // 取得結果：input_str（所有権移動）
-        let input_str = &move_data.title.name;
+        let _name_str = &move_data.title.name;
 
         // 空の文字列を生成
         // 用途：後続の文字列操作用の初期化
@@ -180,7 +180,7 @@ pub async fn frames_to_json(
         // input_str を文字列スライスに変換して標準出力へ表示
         // 表示結果：input_str の内容
         let input_str = move_data.title.input.as_deref().unwrap_or("");
-        println!("{}", input_str);
+        // println!("{}", _name_str.unwrap());
 
         if [
             "2D",
