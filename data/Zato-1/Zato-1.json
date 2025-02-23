@@ -622,7 +622,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Eddie disappears on frame 1, or is buffered until the frame he exits hitstop. Unsummoning during frames 11-36 of &quot\nLeap&quot\nwill buffer the unsummon until frame 37."
+    "notes": "Eddie disappears on frame 1, or is buffered until the frame he exits hitstop.\nUnsummon can only be done if the Eddie gauge is not empty."
   },
   {
     "input": "ブレイク・ザ・ロウ(214K)",
@@ -697,7 +697,7 @@
     "invincibility": "1-15 Full",
     "cancel": "-",
     "caption": "Eddie dash",
-    "notes": "The area where Eddie must be in to start a dash is slightly behind Zato, up to about the range of Zato's 2S.\nEddie has invulnerability on frames 1-15 after he is launched by 214S.\nThe recovery of Eddie's dash (frames 19-30) can be cancelled into any negative edge input.\nIf 214S is done during Eddie's hitstop, Eddie's dash will be buffered until after hitstop ends."
+    "notes": "The area where Eddie must be in to start a dash is slightly behind Zato, up to about the range of Zato's 2S.\nEddie has invulnerability on frames 1-15 after he is launched by 214S.\nThe recovery of Eddie's dash (frames 19-30) can be cancelled into any negative edge input.\nIf 214S is done during Eddie's hitstop, Eddie's dash will be buffered until after hitstop ends.\nEddie can still dash if the Eddie gauge is empty."
   },
   {
     "input": "エディスワップ(22 During 214K(HOLD))",
@@ -922,7 +922,7 @@
     "invincibility": "8-65F Guardpoint",
     "cancel": "-",
     "caption": "GuardpointAttack",
-    "notes": "Horizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, the 1st attack uses 1100 hp, the 2nd uses 900 hp with the final attack taking the remaining Eddie gauge.\nIf Zato is in hitstop, &quot\nOppose&quot\nwill use 0 HP of Eddie gauge each frame.\nEach of &quot\nOppose&quot\n's attacks have 7f hitstop.\nAn attacker is able to use their attack's cancel options after hitting &quot\nOppose&quot\n's guardpoint.\n"
+    "notes": "Horizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, the 1st attack uses 1100 hp, the 2nd uses 900 hp with the final attack taking the remaining Eddie gauge.\nIf Zato is in hitstop, &quot\nOppose&quot\nwill use 0 HP of Eddie gauge each frame.\nUnsummoning during the active or recovery frames of &quot\nOppose&quot\n's attack (frame 66-110) will buffer the unsummon until after the recovery ends.\nAn attacker is able to use their attack's cancel options after hitting &quot\nOppose&quot\n's guardpoint.\nEach of &quot\nOppose&quot\n's attacks have 7f hitstop.\n"
   },
   {
     "input": "「多い」(]K[)",
