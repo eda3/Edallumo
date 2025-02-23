@@ -7,7 +7,7 @@
     ]
   },
   {
-    "input": "2H",
+    "input": "2HS",
     "move_img": "https://www.dustloop.com/wiki/images/a/a8/GGST_Goldlewis_Dickinson_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/36/GGST_Goldlewis_Dickinson_2H_Hitbox_1.png",
@@ -43,7 +43,7 @@
     ]
   },
   {
-    "input": "5H",
+    "input": "5HS",
     "move_img": "https://www.dustloop.com/wiki/images/3/36/GGST_Goldlewis_Dickinson_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/74/GGST_Goldlewis_Dickinson_5H_Hitbox.png"
@@ -73,7 +73,7 @@
     ]
   },
   {
-    "input": "6H",
+    "input": "6HS",
     "move_img": "https://www.dustloop.com/wiki/images/f/fa/GGST_Goldlewis_Dickinson_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/cd/GGST_Goldlewis_Dickinson_6H_Hitbox.png"
@@ -88,28 +88,28 @@
     ]
   },
   {
-    "input": "c.S",
+    "input": "近S",
     "move_img": "https://www.dustloop.com/wiki/images/0/0d/GGST_Goldlewis_Dickinson_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/26/GGST_Goldlewis_Dickinson_c.S_Hitbox.png"
     ]
   },
   {
-    "input": "f.S",
+    "input": "遠S",
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/85/GGST_Goldlewis_Dickinson_f.S_Hitbox.png"
     ]
   },
   {
-    "input": "j.D",
+    "input": "jD",
     "move_img": "https://www.dustloop.com/wiki/images/7/71/GGST_Goldlewis_Dickinson_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/74/GGST_Goldlewis_Dickinson_jD_Hitbox.png"
     ]
   },
   {
-    "input": "j.H",
+    "input": "jHS",
     "move_img": "https://www.dustloop.com/wiki/images/f/f4/GGST_Goldlewis_Dickinson_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b2/GGST_Goldlewis_Dickinson_jH_Hitbox.png",
@@ -117,63 +117,63 @@
     ]
   },
   {
-    "input": "j.K",
+    "input": "jK",
     "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Goldlewis_Dickinson_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/93/GGST_Goldlewis_Dickinson_jK_Hitbox.png"
     ]
   },
   {
-    "input": "j.P",
+    "input": "jP",
     "move_img": "https://www.dustloop.com/wiki/images/2/24/GGST_Goldlewis_Dickinson_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e2/GGST_Goldlewis_Dickinson_jP_Hitbox.png"
     ]
   },
   {
-    "input": "j.S",
+    "input": "jS",
     "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Goldlewis_Dickinson_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/42/GGST_Goldlewis_Dickinson_jS_Hitbox.png"
     ]
   },
   {
-    "input": "236D",
+    "input": "ワイルドアサルト(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Goldlewis_Dickinson_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7e/GGST_Goldlewis_Dickinson_236D_Hitbox.png"
     ]
   },
   {
-    "input": "236[D]",
+    "input": "溜めワイルドアサルト(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Goldlewis_Dickinson_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7e/GGST_Goldlewis_Dickinson_236D_Hitbox.png"
     ]
   },
   {
-    "input": "6D or 4D",
+    "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/98/GGST_Goldlewis_Dickinson_Ground_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/4d/GGST_Goldlewis_Dickinson_Ground_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "j.6D or j.4D",
+    "input": "空投げ(j6D or j.4D)",
     "move_img": "https://www.dustloop.com/wiki/images/7/7b/GGST_Goldlewis_Dickinson_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/1d/GGST_Goldlewis_Dickinson_Air_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "21478H",
+    "input": "ベヒーモスタイフーン(21478HS)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f9/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(248).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/73/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(248)_Hitbox.png"
     ]
   },
   {
-    "input": "214S Level 1",
+    "input": "サンダーバード(214S)",
     "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Goldlewis_Dickinson_Thunderbird.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/76/GGST_Goldlewis_Dickinson_Thunderbird_Hitbox_a.png",
@@ -182,168 +182,168 @@
     ]
   },
   {
-    "input": "214S Level 2",
+    "input": "サンダーバード2(214S2)",
     "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Goldlewis_Dickinson_Thunderbird.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/25/GGST_Goldlewis_Dickinson_Thunderbird_Hitbox.png"
     ]
   },
   {
-    "input": "214S Level 3",
+    "input": "サンダーバード3(214S3)",
     "move_img": "https://www.dustloop.com/wiki/images/e/ef/GGST_Goldlewis_Dickinson_Thunderbird.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/25/GGST_Goldlewis_Dickinson_Thunderbird_Hitbox.png"
     ]
   },
   {
-    "input": "23698H",
+    "input": "ベヒーモスタイフーン(23698HS)",
     "move_img": "https://www.dustloop.com/wiki/images/1/12/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(268).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/73/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(268)_Hitbox.png"
     ]
   },
   {
-    "input": "236S",
+    "input": "Skyfish(236S)",
     "move_img": "https://www.dustloop.com/wiki/images/5/5e/GGST_Goldlewis_Dickinson_Skyfish.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/75/GGST_Goldlewis_Dickinson_Skyfish_Hitbox.png"
     ]
   },
   {
-    "input": "41236H",
+    "input": "ベヒーモスタイフーン(41236HS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(426).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f7/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(426)_Hitbox.png"
     ]
   },
   {
-    "input": "47896H",
+    "input": "ベヒーモスタイフーン(47896HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3d/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(486).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/63/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(486)_Hitbox.png"
     ]
   },
   {
-    "input": "63214H",
+    "input": "ベヒーモスタイフーン(63214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/04/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(624).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9f/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(624)_Hitbox.png"
     ]
   },
   {
-    "input": "69874H",
+    "input": "ベヒーモスタイフーン(69874HS)",
     "move_img": "https://www.dustloop.com/wiki/images/5/56/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(684).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/db/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(684)_Hitbox.png"
     ]
   },
   {
-    "input": "87412H",
+    "input": "ベヒーモスタイフーン(87412HS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/03/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fd/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842)_Hitbox.png"
     ]
   },
   {
-    "input": "89632H",
+    "input": "ベヒーモスタイフーン(89632HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f7/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862)_Hitbox.png"
     ]
   },
   {
-    "input": "j.21478H",
+    "input": "空中ベヒーモスタイフーン(j21478HS)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f9/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(248).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/73/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(248)_Hitbox.png"
     ]
   },
   {
-    "input": "j.23698H",
+    "input": "空中ベヒーモスタイフーン(j23698HS)",
     "move_img": "https://www.dustloop.com/wiki/images/1/12/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(268).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/73/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(268)_Hitbox.png"
     ]
   },
   {
-    "input": "j.41236H",
+    "input": "空中ベヒーモスタイフーン(j41236HS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cf/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(426).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f7/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(426)_Hitbox.png"
     ]
   },
   {
-    "input": "j.47896H",
+    "input": "空中ベヒーモスタイフーン(j47896HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3d/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(486).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/63/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(486)_Hitbox.png"
     ]
   },
   {
-    "input": "j.63214H",
+    "input": "空中ベヒーモスタイフーン(j63214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/04/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(624).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9f/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(624)_Hitbox.png"
     ]
   },
   {
-    "input": "j.69874H",
+    "input": "空中ベヒーモスタイフーン(j69874HS)",
     "move_img": "https://www.dustloop.com/wiki/images/5/56/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(684).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/db/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(684)_Hitbox.png"
     ]
   },
   {
-    "input": "j.87412H",
+    "input": "空中ベヒーモスタイフーン(j87412HS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/03/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fd/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(842)_Hitbox.png"
     ]
   },
   {
-    "input": "j.89632H",
+    "input": "空中ベヒーモスタイフーン(j89632HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f7/GGST_Goldlewis_Dickinson_Behemoth_Typhoon_(862)_Hitbox.png"
     ]
   },
   {
-    "input": "1080P",
+    "input": "ダウン・ウィズ・ザ・システム(1080P)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_Down_with_the_System.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/33/GGST_Goldlewis_Dickinson_Down_with_the_System_Hitbox.png"
     ]
   },
   {
-    "input": "236236K Level 1",
+    "input": "バーン・イット・ダウン(236236K)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Goldlewis_Dickinson_Burn_It_Down.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/11/GGST_Goldlewis_Dickinson_Burn_It_Down_Hitbox.png"
     ]
   },
   {
-    "input": "236236K Level 2",
+    "input": "バーン・イット・ダウン2(236236K2)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Goldlewis_Dickinson_Burn_It_Down.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/11/GGST_Goldlewis_Dickinson_Burn_It_Down_Hitbox.png"
     ]
   },
   {
-    "input": "236236K Level 3",
+    "input": "バーン・イット・ダウン3(236236K3)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a1/GGST_Goldlewis_Dickinson_Burn_It_Down.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/11/GGST_Goldlewis_Dickinson_Burn_It_Down_Hitbox.png"
     ]
   },
   {
-    "input": "632146P",
+    "input": "ダウン・ウィズ・ザ・システム(632146P)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_Down_with_the_System.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/33/GGST_Goldlewis_Dickinson_Down_with_the_System_Hitbox.png"
     ]
   },
   {
-    "input": "720P",
+    "input": "ダウン・ウィズ・ザ・システム(720P)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_Down_with_the_System.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/33/GGST_Goldlewis_Dickinson_Down_with_the_System_Hitbox.png"

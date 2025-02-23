@@ -7,7 +7,7 @@
     ]
   },
   {
-    "input": "2H",
+    "input": "2HS",
     "move_img": "https://www.dustloop.com/wiki/images/9/91/GGST_Axl_Low_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f5/GGST_Axl_Low_2H_hitbox_1.png",
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "input": "5H",
+    "input": "5HS",
     "move_img": "https://www.dustloop.com/wiki/images/6/60/GGST_Axl_Low_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f6/GGST_Axl_5H_Hitbox_1.png",
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "input": "6H",
+    "input": "6HS",
     "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Axl_Low_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/89/GGST_Axl_Low_6H_hitbox_1.png",
@@ -101,7 +101,7 @@
     ]
   },
   {
-    "input": "c.S",
+    "input": "近S",
     "move_img": "https://www.dustloop.com/wiki/images/3/32/GGST_Axl_Low_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0b/GGST_Axl_cS_Hitbox_1.png",
@@ -109,35 +109,35 @@
     ]
   },
   {
-    "input": "f.S",
+    "input": "遠S",
     "move_img": "https://www.dustloop.com/wiki/images/4/4a/GGST_Axl_Low_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/ea/GGST_Axl_fS_Hitbox.png"
     ]
   },
   {
-    "input": "j.D",
+    "input": "jD",
     "move_img": "https://www.dustloop.com/wiki/images/9/9c/GGST_Axl_Low_j.D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a4/GGST_Axl_Low_j.D-hitbox.png"
     ]
   },
   {
-    "input": "j.H",
+    "input": "jHS",
     "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Axl_Low_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8d/GGST_Axl_jH_Hitbox.png"
     ]
   },
   {
-    "input": "j.K",
+    "input": "jK",
     "move_img": "https://www.dustloop.com/wiki/images/e/e6/GGST_Axl_Low_j.K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/db/GGST_Axl_Low_j.K-hitbox.png"
     ]
   },
   {
-    "input": "j.P",
+    "input": "jP",
     "move_img": "https://www.dustloop.com/wiki/images/a/ae/GGST_Axl_Low_j.P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/23/GGST_Axl_Low_j.P_hitbox_1.png",
@@ -145,49 +145,49 @@
     ]
   },
   {
-    "input": "j.S",
+    "input": "jS",
     "move_img": "https://www.dustloop.com/wiki/images/2/23/GGST_Axl_Low_j.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/85/GGST_Axl_jS_Hitbox.png"
     ]
   },
   {
-    "input": "236D",
+    "input": "ワイルドアサルト(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/e/ee/GGST_Axl_Low_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/31/GGST_Axl_Low_236D_Hitbox.png"
     ]
   },
   {
-    "input": "236[D]",
+    "input": "溜めワイルドアサルト(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/e/ee/GGST_Axl_Low_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/31/GGST_Axl_Low_236D_Hitbox.png"
     ]
   },
   {
-    "input": "6D or 4D",
+    "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8e/GGST_Axl_Low_Ground_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c9/GGST_Axl_Low_Ground_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "j.6D or j.4D",
+    "input": "空投げ(j6D or j.4D)",
     "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Axl_Low_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a6/GGST_Axl_Low_Air_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "214H",
+    "input": "蝸牛(214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9b/GGST_Axl_Low_214H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/93/GGST_Axl_Low_Snail_hitbox.png"
     ]
   },
   {
-    "input": "214K",
+    "input": "虎落笛(214K)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f1/GGST_Axl_Low_214K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6e/GGST_Axl_Low_214K_Hitbox.png",
@@ -196,14 +196,14 @@
     ]
   },
   {
-    "input": "214S",
+    "input": "潦(214S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/21/GGST_Axl_Low_214S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/4e/GGST_Axl_Low_Rainwater_hitbox.png"
     ]
   },
   {
-    "input": "214[K]",
+    "input": "溜め虎落笛(214[K])",
     "move_img": "https://www.dustloop.com/wiki/images/f/f1/GGST_Axl_Low_214K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6e/GGST_Axl_Low_214K_Hitbox.png",
@@ -212,7 +212,7 @@
     ]
   },
   {
-    "input": "236S",
+    "input": "鎌閃撃(236S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_Axl_Low_46S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/10/GGST_Axl_Low_Sickle_Flash_hitbox_1.png",
@@ -220,42 +220,42 @@
     ]
   },
   {
-    "input": "236S 2",
+    "input": "旋鎖撃(236S 2)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c9/GGST_Axl_Low_46S2.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/30/GGST_Axl_Low_Spinning_Chain_Strike_hitbox.png"
     ]
   },
   {
-    "input": "236S 8",
+    "input": "曲鎖撃(236S 8)",
     "move_img": "https://www.dustloop.com/wiki/images/3/37/GGST_Axl_Low_46S8.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/de/GGST_Axl_Low_Soaring_Chain_Strike_hitbox.png"
     ]
   },
   {
-    "input": "236S S",
+    "input": "鬼灯(236S S)",
     "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Axl_Low_46SS_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/91/GGST_Axl_Low_Winter_Cherry_hitbox.png"
     ]
   },
   {
-    "input": "41236H",
+    "input": "冬蟷螂(41236HS)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d6/GGST_Axl_Low_41236H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/23/GGST_Axl_Low_Winter_Mantis_hitbox.png"
     ]
   },
   {
-    "input": "j.214H",
+    "input": "空中蝸牛(j214H)",
     "move_img": "https://www.dustloop.com/wiki/images/8/86/GGST_Axl_Low_j.214H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d9/GGST_Axl_Low_Snail_hitbox_Air.png"
     ]
   },
   {
-    "input": "j.236H",
+    "input": "アクセルボンバー(j236HS)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8d/GGST_Axl_Low_j.623H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0a/GGST_Axl_Low_Axl_Bomber_hitbox.png",
@@ -263,7 +263,7 @@
     ]
   },
   {
-    "input": "236236H",
+    "input": "百重鎌焼(236236HS)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e0/GGST_Axl_Low_236236H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2b/GGST_Axl_Low_Sickle_Storm_hitbox.png",
@@ -271,21 +271,21 @@
     ]
   },
   {
-    "input": "632146P",
+    "input": "ワンヴィジョン(632146P)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d4/GGST_Axl_Low_632146P_1.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "632146P Attack",
+    "input": "ワンヴィジョン(632146P Attack)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8d/GGST_Axl_Low_632146P_2.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "j.632146P Attack",
+    "input": "ワンヴィジョン(j632146P Attack)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8d/GGST_Axl_Low_632146P_2.png",
     "hitbox_img": [
       ""

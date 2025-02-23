@@ -7,7 +7,7 @@
     ]
   },
   {
-    "input": "2H",
+    "input": "2HS",
     "move_img": "https://www.dustloop.com/wiki/images/e/e3/GGST_Zato-1_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f6/GGST_Zato-1_2H_Hitbox1.png",
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "input": "5H",
+    "input": "5HS",
     "move_img": "https://www.dustloop.com/wiki/images/1/15/GGST_Zato-1_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f8/GGST_Zato-1_5H_Hitbox1.png",
@@ -75,7 +75,7 @@
     ]
   },
   {
-    "input": "6H",
+    "input": "6HS",
     "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_Zato-1_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/35/GGST_Zato-1_6H_Hitbox1.png",
@@ -98,7 +98,7 @@
     ]
   },
   {
-    "input": "c.S",
+    "input": "近S",
     "move_img": "https://www.dustloop.com/wiki/images/9/97/GGST_Zato-1_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/02/GGST_Zato-1_c.S_Hitbox.png",
@@ -106,7 +106,7 @@
     ]
   },
   {
-    "input": "f.S",
+    "input": "遠S",
     "move_img": "https://www.dustloop.com/wiki/images/7/7d/GGST_Zato-1_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/11/GGST_Zato-1_f.S_Hitbox1.png",
@@ -114,14 +114,14 @@
     ]
   },
   {
-    "input": "j.D",
+    "input": "jD",
     "move_img": "https://www.dustloop.com/wiki/images/6/6b/GGST_Zato-1_j.D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/49/GGST_Zato-1_j.D_Hitbox.png"
     ]
   },
   {
-    "input": "j.H",
+    "input": "jHS",
     "move_img": "https://www.dustloop.com/wiki/images/1/12/GGST_Zato-1_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e6/GGST_Zato-1_j.H_Hitbox1.png",
@@ -131,14 +131,14 @@
     ]
   },
   {
-    "input": "j.K",
+    "input": "jK",
     "move_img": "https://www.dustloop.com/wiki/images/0/0c/GGST_Zato-1_j.K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c2/GGST_Zato-1_j.K_Hitbox.png"
     ]
   },
   {
-    "input": "j.P",
+    "input": "jP",
     "move_img": "https://www.dustloop.com/wiki/images/3/32/GGST_Zato-1_j.P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/22/GGST_Zato-1_j.P_Hitbox1.png",
@@ -147,77 +147,77 @@
     ]
   },
   {
-    "input": "j.S",
+    "input": "jS",
     "move_img": "https://www.dustloop.com/wiki/images/e/e1/GGST_Zato-1_j.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6c/GGST_Zato-1_j.S_Hitbox.png"
     ]
   },
   {
-    "input": "236D",
+    "input": "ワイルドアサルト(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Zato-1_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_Zato-1_236D_Hitbox.png"
     ]
   },
   {
-    "input": "236[D]",
+    "input": "溜めワイルドアサルト(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Zato-1_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_Zato-1_236D_Hitbox.png"
     ]
   },
   {
-    "input": "6D or 4D",
+    "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/1/14/GGST_Zato-1_Ground_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dc/GGST_Zato-1_Ground_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "j.6D or j.4D",
+    "input": "空投げ(j6D or j.4D)",
     "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Zato-1_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c0/GGST_Zato-1_Air_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "214H",
+    "input": "エディ召喚(214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Zato-1_Summon_Eddie.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "214K",
+    "input": "ブレイク・ザ・ロウ(214K)",
     "move_img": "https://www.dustloop.com/wiki/images/a/aa/GGST_Zato-1_Break_The_Law.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "214S",
+    "input": "ドランカーシェイド(214S)",
     "move_img": "https://www.dustloop.com/wiki/images/8/80/GGST_Zato-1_Drunkard_Shade.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/42/GGST_Zato-1_Drunkard_Shade_Hitbox.png"
     ]
   },
   {
-    "input": "214S (Dash)",
+    "input": "エディダッシュ(214S (Dash))",
     "move_img": "https://www.dustloop.com/wiki/images/0/02/GGST_Zato-1_Drunkard_Shade_Dash.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "22 During 214K(HOLD)",
+    "input": "エディスワップ(22 During 214K(HOLD))",
     "move_img": "https://www.dustloop.com/wiki/images/a/aa/GGST_Zato-1_Break_The_Law.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "22H",
+    "input": "インヴァイトヘル(22HS)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f9/GGST_Zato-1_Invite_Hell_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8e/GGST_Zato-1_Invite_Hell_1_Hitbox.png",
@@ -225,7 +225,7 @@
     ]
   },
   {
-    "input": "236H",
+    "input": "「張り合う」(236HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3b/GGST_Zato-1_Oppose_Armor.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/40/GGST_Zato-1_Oppose_Armor_Hitbox.png",
@@ -237,14 +237,14 @@
     ]
   },
   {
-    "input": "236K",
+    "input": "「多い」(236K)",
     "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Zato-1_236K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_Zato-1_236K_Hitbox.png"
     ]
   },
   {
-    "input": "236P",
+    "input": "「突く」(236P)",
     "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Zato-1_Pierce.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a5/GGST_Zato-1_Pierce_Hitbox1.png",
@@ -252,7 +252,7 @@
     ]
   },
   {
-    "input": "236S",
+    "input": "「跳ねる」(236S)",
     "move_img": "https://www.dustloop.com/wiki/images/9/98/GGST_Zato-1_Leap.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/34/GGST_Zato-1_Leap_Hitbox1.png",
@@ -262,21 +262,21 @@
     ]
   },
   {
-    "input": "623S",
+    "input": "ダムドファング(623S)",
     "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Zato-1_Damned_Fang.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/90/GGST_Zato-1_Damned_Fang_hitbox.png"
     ]
   },
   {
-    "input": "Summon 214H",
+    "input": "エディ収納(Summon 214H)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Zato-1_Summon_Eddie.png",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "]H[",
+    "input": "「張り合う」(]HS[)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3b/GGST_Zato-1_Oppose_Armor.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/40/GGST_Zato-1_Oppose_Armor_Hitbox.png",
@@ -288,14 +288,14 @@
     ]
   },
   {
-    "input": "]K[",
+    "input": "「多い」(]K[)",
     "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Zato-1_236K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_Zato-1_236K_Hitbox.png"
     ]
   },
   {
-    "input": "]P[",
+    "input": "「突く」(]P[)",
     "move_img": "https://www.dustloop.com/wiki/images/5/59/GGST_Zato-1_Pierce.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a5/GGST_Zato-1_Pierce_Hitbox1.png",
@@ -303,7 +303,7 @@
     ]
   },
   {
-    "input": "]S[",
+    "input": "「跳ねる」(]S[)",
     "move_img": "https://www.dustloop.com/wiki/images/9/98/GGST_Zato-1_Leap.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/34/GGST_Zato-1_Leap_Hitbox1.png",
@@ -313,21 +313,21 @@
     ]
   },
   {
-    "input": "632146H",
+    "input": "アモルファス(632146HS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/62/GGST_Zato-1_Amorphous.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/92/GGST_Zato-1_Amorphous_Hitbox.png"
     ]
   },
   {
-    "input": "632146S",
+    "input": "サンヴォイド(632146S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bc/GGST_Zato-1_Sun_Void.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/74/GGST_Zato-1_Sun_Void_Hitbox.png"
     ]
   },
   {
-    "input": "j.632146S",
+    "input": "サンヴォイド(j632146S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bc/GGST_Zato-1_Sun_Void.png",
     "hitbox_img": [
       ""

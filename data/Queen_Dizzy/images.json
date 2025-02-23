@@ -7,7 +7,7 @@
     ]
   },
   {
-    "input": "2H",
+    "input": "2HS",
     "move_img": "https://www.dustloop.com/wiki/images/d/d2/GGST_Queen_Dizzy_2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b9/GGST_Queen_Dizzy_2H_Hitbox_1.png",
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "input": "5H",
+    "input": "5HS",
     "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_Queen_Dizzy_5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/39/GGST_Queen_Dizzy_5H_hitbox.png"
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "input": "6H",
+    "input": "6HS",
     "move_img": "https://www.dustloop.com/wiki/images/7/72/GGST_Queen_Dizzy_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7b/GGST_Queen_Dizzy_6H_hitbox_1.png",
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "input": "6[H]",
+    "input": "6[H](6[H])",
     "move_img": "https://www.dustloop.com/wiki/images/7/72/GGST_Queen_Dizzy_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7b/GGST_Queen_Dizzy_6H_hitbox_1.png",
@@ -96,91 +96,91 @@
     ]
   },
   {
-    "input": "c.S",
+    "input": "近S",
     "move_img": "https://www.dustloop.com/wiki/images/3/3c/GGST_Queen_Dizzy_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/77/GGST_Queen_Dizzy_cS_hitbox.png"
     ]
   },
   {
-    "input": "f.S",
+    "input": "遠S",
     "move_img": "https://www.dustloop.com/wiki/images/f/fe/GGST_Queen_Dizzy_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2b/GGST_Queen_Dizzy_f.S_hitbox.png"
     ]
   },
   {
-    "input": "j.D",
+    "input": "jD",
     "move_img": "https://www.dustloop.com/wiki/images/8/84/GGST_Queen_Dizzy_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2c/GGST_Queen_Dizzy_j.D_hitbox.png"
     ]
   },
   {
-    "input": "j.H",
+    "input": "jHS",
     "move_img": "https://www.dustloop.com/wiki/images/b/bb/GGST_Queen_Dizzy_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fe/GGST_Queen_Dizzy_j.H_hitbox.png"
     ]
   },
   {
-    "input": "j.K",
+    "input": "jK",
     "move_img": "https://www.dustloop.com/wiki/images/f/f7/GGST_Queen_Dizzy_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/78/GGST_Queen_Dizzy_j.K_hitbox.png"
     ]
   },
   {
-    "input": "j.P",
+    "input": "jP",
     "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Queen_Dizzy_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/19/GGST_Queen_Dizzy_j.P_hitbox.png"
     ]
   },
   {
-    "input": "j.S",
+    "input": "jS",
     "move_img": "https://www.dustloop.com/wiki/images/e/eb/GGST_Queen_Dizzy_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/ae/GGST_Queen_Dizzy_j.S_hitbox.png"
     ]
   },
   {
-    "input": "236D",
+    "input": "ワイルドアサルト(236D)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f0/GGST_Queen_Dizzy_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/da/GGST_Queen_Dizzy_236D_Hitbox.png"
     ]
   },
   {
-    "input": "236[D]",
+    "input": "溜めワイルドアサルト(236[D])",
     "move_img": "https://www.dustloop.com/wiki/images/f/f0/GGST_Queen_Dizzy_236D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/da/GGST_Queen_Dizzy_236D_Hitbox.png"
     ]
   },
   {
-    "input": "66",
+    "input": "66(66)",
     "move_img": "",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "6D or 4D",
+    "input": "6D or 4D(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/7/7d/GGST_Queen_Dizzy_Ground_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/95/GGST_Queen_Dizzy_Ground_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "j.6D or j.4D",
+    "input": "j6D or j.4D(j6D or j.4D)",
     "move_img": "https://www.dustloop.com/wiki/images/0/09/GGST_Queen_Dizzy_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dc/GGST_Queen_Dizzy_Air_Throw_Hitbox.png"
     ]
   },
   {
-    "input": "!H",
+    "input": "Wings of Light !H(!H)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Queen_Dizzy_22H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0d/GGST_Queen_Dizzy_22H_Hitbox_1.png",
@@ -188,14 +188,14 @@
     ]
   },
   {
-    "input": "214H",
+    "input": "HSミカエルソード(214HS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Queen_Dizzy_214H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e7/GGST_Queen_Dizzy_214H_Hitbox.png"
     ]
   },
   {
-    "input": "214P/K",
+    "input": "よく話し相手になってくれました(214P/K)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f2/GGST_Queen_Dizzy_214PK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/88/GGST_Queen_Dizzy_214PK_Hitbox_1.png",
@@ -205,14 +205,14 @@
     ]
   },
   {
-    "input": "214S",
+    "input": "Sミカエルソード(214S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b1/GGST_Queen_Dizzy_214S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0d/GGST_Queen_Dizzy_214S_Hitbox.png"
     ]
   },
   {
-    "input": "22H",
+    "input": "光の翼(22HS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Queen_Dizzy_22H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0d/GGST_Queen_Dizzy_22H_Hitbox_1.png",
@@ -220,7 +220,7 @@
     ]
   },
   {
-    "input": "236K",
+    "input": "焼き栗が欲しい時に使ってたんです(236K)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e5/GGST_Queen_Dizzy_236K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/25/GGST_Queen_Dizzy_236K_Hitbox_1.png",
@@ -229,7 +229,7 @@
     ]
   },
   {
-    "input": "236S/H",
+    "input": "魚を捕る時に使ってたんです(236S/HS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_Queen_Dizzy_236S-H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d5/GGST_Queen_Dizzy_236S_Hitbox.png",
@@ -237,14 +237,14 @@
     ]
   },
   {
-    "input": "236S~6S/236H~6H",
+    "input": "氷原(236S6S/236HS6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2a/GGST_Queen_Dizzy_236S-6S-236H~6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/07/GGST_Queen_Dizzy_236S-6S-236H~6H_hitbox.png"
     ]
   },
   {
-    "input": "632146H",
+    "input": "ガンマレイ(632146HS)",
     "move_img": "https://www.dustloop.com/wiki/images/e/ea/GGST_Queen_Dizzy_632146H.PNG",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c6/GGST_Queen_Dizzy_632146H_Hitbox_1.PNG",
@@ -252,7 +252,7 @@
     ]
   },
   {
-    "input": "632146S",
+    "input": "インペリアルレイ(632146S)",
     "move_img": "https://www.dustloop.com/wiki/images/5/50/GGST_Queen_Dizzy_632146S_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/53/GGST_Queen_Dizzy_632146S_Hitbox.png"
