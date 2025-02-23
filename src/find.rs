@@ -1,25 +1,38 @@
+//! find.rs
+//!
+//! このファイルは、キャラクター名や技名の検索機能を提供する。
+//! nicknames.json 及びキャラクター JSON から、ユーザー入力に対応する正式なキャラクター名や技のインデックスを返却する。
+
 use crate::{Error, MoveAliases, MoveInfo, Nicknames};
 use std::{fs, path::Path};
 
-/// Function that finds and returns the character name inside from nicknames.json file.
+/// キャラクター名を検索し、該当する正式なキャラクター名を返却する非同期関数
+///
+/// # 概要
+/// nicknames.json ファイルを読み込み、ユーザーの入力文字列と比較して  
+/// 一致または部分一致するキャラクターの正式名称を返却する。
+///
+/// # 引数
+/// * `character` - ユーザー入力のキャラクター名またはニックネーム
+///
+/// # 戻り値
+/// 正式なキャラクター名を含む `Result<String, Error>` を返す
 pub async fn find_character(character: &String) -> Result<String, Error> {
-    // Flags that will be used for logic to determine output
+    // 出力判定用フラグ（常に false、後の分岐で利用）
     let character_found = false;
 
-    // Reading the nicknames json
+    // nicknames.json ファイル読み込み　結果：JSON文字列取得
     let data_from_file =
         fs::read_to_string("data/nicknames.json").expect("\nFailed to read 'nicknames.json' file.");
 
-    // Deserializing from nicknames json
+    // JSON文字列を Nicknames 構造体のベクターへデシリアライズ　結果：vec_nicknames
     let vec_nicknames = serde_json::from_str::<Vec<Nicknames>>(&data_from_file).unwrap();
 
-    // Iterating through the nicknames.json character entries
+    // 各キャラクターエントリ走査　結果：該当エントリ検出時に正式名称返却
     if !character_found {
         for x_nicknames in &vec_nicknames {
-            // Iterating through the nicknames.json nickname entries
+            // 各ニックネーム走査　結果：入力文字列と完全一致すれば正式名称返却
             for y_nicknames in &x_nicknames.nicknames {
-                // If user input equals a character nickname then pass the full character name
-                // To the new variable 'character_arg_altered'
                 if y_nicknames.to_lowercase() == character.to_lowercase().trim() {
                     return Ok(x_nicknames.character.to_owned());
                 }
@@ -28,10 +41,8 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
     }
 
     if !character_found {
-        // Iterating through the nicknames.json character entries
+        // キャラクター名の部分一致走査　結果：入力文字列が正式名称の一部に含まれていれば返却
         for x_nicknames in &vec_nicknames {
-            // If user input is part of a characters full name or the full name itself
-            // Then pass the full and correct charactet name to the new var 'character_arg_altered'
             if x_nicknames
                 .character
                 .to_lowercase()
@@ -46,14 +57,13 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
             }
         }
     }
-    // Edge case for update.rs
+    // "all" の場合の例外処理　結果：空文字列返却
     if !character_found && character.trim().to_lowercase() == "all".to_lowercase() {
         return Ok("".into());
     }
 
     if !character_found {
-        // If user input isnt the full name, part of a full name or a nickname
-        // Error out cause requested character was not found in the json
+        // キャラクター未検出時エラーメッセージ作成　結果：エラー返却
         let error_msg = "Character `".to_owned() + character + "` was not found!";
         Err(error_msg.into())
     } else {
@@ -61,29 +71,41 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
     }
 }
 
-/// Function that finds and returns the index and then move from character json.
+/// 技のインデックスを検索し、該当する技のインデックスを返却する非同期関数
+///
+/// # 概要
+/// 指定されたキャラクターの技情報（moves_info）から、  
+/// ユーザー入力に対応する技のインデックスを検索する。  
+/// 入力がエイリアスであれば、実際の技入力に変換する。
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザー入力の技名、入力、またはエイリアス
+/// * `moves_info` - キャラクターの技情報のスライス
+///
+/// # 戻り値
+/// 該当技のインデックスを含む `Result<usize, Error>` を返す
 pub async fn find_move_index(
     character_arg_altered: &String,
     mut character_move: String,
     moves_info: &[MoveInfo],
 ) -> Result<usize, Error> {
-    // Flags that will be used for logic to determine output
+    // 出力判定用フラグ（常に false、後の分岐で利用）
     let move_found = false;
 
-    // Checking if aliases for this characters moves exist
+    // 対象キャラクターの aliases.json のパス生成　結果：aliases_path
     let aliases_path = "data/".to_owned() + character_arg_altered + "/aliases.json";
     if Path::new(&aliases_path).exists() {
-        // Reading the aliases json
+        // aliases.json ファイル読み込み　結果：JSON文字列取得
         let aliases_data = fs::read_to_string(&aliases_path)
             .expect(&("\nFailed to read '".to_owned() + &aliases_path + "' file."));
 
-        // Deserializing the aliases json
+        // JSON文字列を MoveAliases 構造体のベクターにデシリアライズ　結果：aliases_data
         let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data).unwrap();
 
         'outer: for alias_data in aliases_data {
+            // 各エイリアス走査　結果：入力文字列と一致すれば実際の技入力に変換
             for x_aliases in alias_data.aliases {
-                // If the requested argument (character_move) is an alias for any of the moves listed in aliases.json
-                // Change the given argument (character_move) to the actual move name instead of the alias
                 if x_aliases.to_lowercase().trim().replace(['.', ' '], "")
                     == character_move.to_lowercase().trim().replace(['.', ' '], "")
                 {
@@ -94,9 +116,8 @@ pub async fn find_move_index(
         }
     }
 
+    // 正確な技入力一致走査　結果：完全一致すれば該当インデックス返却
     for (x, moves) in moves_info.iter().enumerate() {
-        // Iterating through the moves of the json file to find the move requested
-        // Specifically if user arg is exactly move input
         if moves.input.to_string().to_lowercase().replace('.', "")
             == character_move.to_string().to_lowercase().replace('.', "")
         {
@@ -105,9 +126,8 @@ pub async fn find_move_index(
     }
 
     if !move_found {
+        // 技名称部分一致走査　結果：入力が技名称に含まれていれば該当インデックス返却
         for (x, moves) in moves_info.iter().enumerate() {
-            // Iterating through the moves of the json file to find the move requested
-            // Specifically if user arg is contained in move name
             if moves
                 .name
                 .to_string()
@@ -120,7 +140,7 @@ pub async fn find_move_index(
     }
 
     if !move_found {
-        // Error message cause given move wasnt found in the json
+        // 技未検出時エラーメッセージ作成　結果：エラー返却
         let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
         Err(error_msg.into())
     } else {
