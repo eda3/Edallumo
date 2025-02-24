@@ -24,13 +24,12 @@ pub async fn get_normal_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlias
         .take_while(|x| x.move_type.to_lowercase() == "normal")
     {
         // 技情報を整形して追加：入力と名称を表示
-        normal_moves =
-            normal_moves.to_owned() + "\n- **" + &moves.input + " / " + &moves.name + "**";
+        normal_moves = normal_moves.to_owned() + "\n- **" + &moves.input + "**";
         // エイリアス情報を確認
         for moves_aliases in aliases_data.iter() {
             // 一致する入力があればエイリアス情報を追加
             if moves.input == moves_aliases.input {
-                normal_moves += "\n\tAliases → `";
+                normal_moves += "\n\t別名 → `";
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
                     if a != moves_aliases.aliases.len() - 1 {
@@ -66,12 +65,11 @@ pub async fn get_special_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlia
             x.move_type.to_lowercase() == "special" || x.move_type.to_lowercase() == "other"
         })
     {
-        special_moves =
-            special_moves.to_owned() + "\n- **" + &moves.input + " / " + &moves.name + "**";
+        special_moves = special_moves.to_owned() + "\n- **" + &moves.input + "**";
         for moves_aliases in aliases_data.iter() {
             // 一致する入力があればエイリアス情報を追加
             if moves.input == moves_aliases.input {
-                special_moves += "\n\tAliases → `";
+                special_moves += "\n\t別名 → `";
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
                     if a != moves_aliases.aliases.len() - 1 {
@@ -106,11 +104,11 @@ pub async fn get_super_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAliase
         .iter()
         .skip_while(|x| x.move_type.to_lowercase() != "super")
     {
-        super_moves = super_moves.to_owned() + "\n- **" + &moves.input + " / " + &moves.name + "**";
+        super_moves = super_moves.to_owned() + "\n- **" + &moves.input + "**";
         for moves_aliases in aliases_data.iter() {
             // 一致する入力があればエイリアス情報を追加
             if moves.input == moves_aliases.input {
-                super_moves += "\n\tAliases → `";
+                super_moves += "\n\t別名 → `";
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
                     if a != moves_aliases.aliases.len() - 1 {
