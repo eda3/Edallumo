@@ -289,32 +289,36 @@
 		]
 	},
 	{
-		"input": "6D or 4D",
+		"input": "投げ(6D or 4D)",
 		"aliases": [
 			"投げ",
+			"6D or 4D",
 			"6D",
 			"4D"
 		]
 	},
 	{
-		"input": "j6D or j4D",
+		"input": "空投げ(j6D or j4D)",
 		"aliases": [
 			"空投げ",
+			"j6D or j4D",
 			"J6D",
 			"J4D"
 		]
 	},
 	{
-		"input": "236D",
+		"input": "ワイルドアサルト(236D)",
 		"aliases": [
 			"ワイルドアサルト",
+			"236D",
 			"WA"
 		]
 	},
 	{
-		"input": "236[D]",
+		"input": "溜めワイルドアサルト(236[D])",
 		"aliases": [
 			"溜めワイルドアサルト",
+			"236[D]",
 			"WAH",
 			"WA!",
 			"236D!"

@@ -196,17 +196,19 @@
 		]
 	},
 	{
-		"input": "6D or 4D",
+		"input": "投げ(6D or 4D)",
 		"aliases": [
 			"投げ",
+			"6D or 4D",
 			"6D",
 			"4D"
 		]
 	},
 	{
-		"input": "j6D or j4D",
+		"input": "空投げ(j6D or j4D)",
 		"aliases": [
 			"空投げ",
+			"j6D or j4D",
 			"J6D",
 			"J4D"
 		]
