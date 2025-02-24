@@ -284,7 +284,9 @@ async fn main() {
                     // Ready イベント発生時の処理
                     serenity::FullEvent::Ready { data_about_bot: _ } => {
                         let forever = task::spawn(async {
-                            let mut interval = time::interval(Duration::from_secs(86400));
+                            let start: tokio::time::Instant =
+                                (Instant::now() + Duration::from_secs(86400)).into();
+                            let mut interval = time::interval_at(start, Duration::from_secs(86400));
                             loop {
                                 // 24時間毎に全キャラクターデータ更新実行
                                 interval.tick().await;
