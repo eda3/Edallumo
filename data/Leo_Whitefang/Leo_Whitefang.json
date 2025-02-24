@@ -650,8 +650,8 @@
     "notes": ""
   },
   {
-    "input": "bt44(bt44)",
-    "name": "bt44",
+    "input": "ブリュンヒルデの構え44(bt44)",
+    "name": "ブリュンヒルデの構え44",
     "damage": "-",
     "guard": "-",
     "startup": "-",
@@ -675,8 +675,8 @@
     "notes": ""
   },
   {
-    "input": "bt66(bt66)",
-    "name": "bt66",
+    "input": "ブリュンヒルデの構え66(bt66)",
+    "name": "ブリュンヒルデの構え66",
     "damage": "-",
     "guard": "-",
     "startup": "6",
@@ -725,8 +725,8 @@
     "notes": "Invulnerability starts from frame 1, but the parry doesn't activate until frame 3, so it is possible to make an attack whiff without actually parrying it.\nNon-damaging stagger occurs if opponent is more than 500 units horizontally or vertically spaced.\nStaggers opponent for 49 frames, but Leo is stuck in the hitstop of the attack during the stagger, decreasing its effective duration and making it vary slightly.\nOpponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nDoes not apply 25% R.I.S.C. Loss reduction on hit, similar to grabs."
   },
   {
-    "input": "btHS(btHS)",
-    "name": "btHS",
+    "input": "ブリュンヒルデの構えHS(btHS)",
+    "name": "ブリュンヒルデの構えHS",
     "damage": "48",
     "guard": "中段",
     "startup": "18",
@@ -750,8 +750,8 @@
     "notes": "Airborne frames 9~19\nCan be up to +7 on stance cancel if it hits meaty, as Leo cannot cancel until frame 20"
   },
   {
-    "input": "btK(btK)",
-    "name": "btK",
+    "input": "ブリュンヒルデの構えK(btK)",
+    "name": "ブリュンヒルデの構えK",
     "damage": "27",
     "guard": "下段",
     "startup": "5",
@@ -775,8 +775,8 @@
     "notes": "Does ''not'' clash on trade with 5K or 2K attacks.\nCannot be cancelled during recovery frames, like other K  normals."
   },
   {
-    "input": "btP(btP)",
-    "name": "btP",
+    "input": "ブリュンヒルデの構えP(btP)",
+    "name": "ブリュンヒルデの構えP",
     "damage": "33",
     "guard": "上段",
     "startup": "7",
@@ -800,8 +800,8 @@
     "notes": "Hitstop on ground hit: 16F\nFloating crumple on ground hit: Total 28F (airborne hitstun 1-11F, standing hitstun 12-18F, can block 19~28F)\nDoes ''not'' clash on trade with 5P or 2P attacks.\nIf the first hit of a combo, applies an additional +20 Combo Decay."
   },
   {
-    "input": "btS(btS)",
-    "name": "btS",
+    "input": "ブリュンヒルデの構えS(btS)",
+    "name": "ブリュンヒルデの構えS",
     "damage": "30",
     "guard": "上段",
     "startup": "6",
@@ -825,7 +825,7 @@
     "notes": "Staggers for 44 frames on Counter Hit (+33 on stance cancel, +25 with no cancel)"
   },
   {
-    "input": "空投げ(j6D or j.4D)",
+    "input": "空投げ(j6D or j4D)",
     "name": "空投げ",
     "damage": "80",
     "guard": "空投げ",

@@ -186,14 +186,14 @@
     ]
   },
   {
-    "input": "bt44(bt44)",
+    "input": "ブリュンヒルデの構え44(bt44)",
     "move_img": "https://www.dustloop.com/wiki/images/5/51/GGST_Leo_Whitefang_bt44.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/48/GGST_Leo_Whitefang_bt44_Hitbox.png"
     ]
   },
   {
-    "input": "bt66(bt66)",
+    "input": "ブリュンヒルデの構え66(bt66)",
     "move_img": "https://www.dustloop.com/wiki/images/8/87/GGST_Leo_Whitefang_Brynhildr_Stance.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d9/GGST_Leo_WhiteFang_Brynhildr_Stance_Hitbox.png",
@@ -208,35 +208,35 @@
     ]
   },
   {
-    "input": "btHS(btHS)",
+    "input": "ブリュンヒルデの構えHS(btHS)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f6/GGST_Leo_Whitefang_bt_H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7f/GGST_Leo_btH_Hitbox.png"
     ]
   },
   {
-    "input": "btK(btK)",
+    "input": "ブリュンヒルデの構えK(btK)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cc/GGST_Leo_Whitefang_bt_K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b9/GGST_Leo_btK_Hitbox.png"
     ]
   },
   {
-    "input": "btP(btP)",
+    "input": "ブリュンヒルデの構えP(btP)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fa/GGST_Leo_Whitefang_bt_P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/58/GGST_Leo_btP_Hitbox.png"
     ]
   },
   {
-    "input": "btS(btS)",
+    "input": "ブリュンヒルデの構えS(btS)",
     "move_img": "https://www.dustloop.com/wiki/images/9/96/GGST_Leo_Whitefang_bt_S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c6/GGST_Leo_btS_Hitbox.png"
     ]
   },
   {
-    "input": "空投げ(j6D or j.4D)",
+    "input": "空投げ(j6D or j4D)",
     "move_img": "https://www.dustloop.com/wiki/images/7/77/GGST_Leo_Whitefang_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8a/GGST_Leo_Whitefang_Air_Throw_Hitbox.png"
