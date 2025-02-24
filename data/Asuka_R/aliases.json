@@ -1,5 +1,12 @@
 [
 	{
+		"input": "5D",
+		"aliases": [
+			"D",
+			"ダスト"
+		]
+	},
+	{
 		"input": "2P",
 		"aliases": [
 			"最速",
