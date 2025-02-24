@@ -327,3 +327,236 @@ async fn main() {
     // Bot 起動開始
     client.unwrap().start().await.unwrap();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json;
+
+    /// CharInfo のシリアライズ／デシリアライズ検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: `CharInfo` 構造体の JSON 変換機能  
+    /// - 入力値: 各フィールドに文字列を設定  
+    /// - 期待結果: 変換前後で各フィールド値の一致  
+    /// 検証項目: defense、guts など  
+    #[test]
+    fn test_charinfo_serialization() {
+        // サンプルデータ生成
+        // 入力値: defense "50", guts "30", guard_balance "20", など
+        let char_info = CharInfo {
+            defense: "50".to_string(),
+            guts: "30".to_string(),
+            guard_balance: "20".to_string(),
+            prejump: "10".to_string(),
+            umo: "unused".to_string(),
+            forward_dash: "5".to_string(),
+            backdash: "5".to_string(),
+            backdash_duration: "3".to_string(),
+            backdash_invincibility: "2".to_string(),
+            backdash_airborne: "yes".to_string(),
+            backdash_distance: "15".to_string(),
+            jump_duration: "8".to_string(),
+            jump_height: "12".to_string(),
+            high_jump_duration: "10".to_string(),
+            high_jump_height: "18".to_string(),
+            earliest_iad: "0".to_string(),
+            ad_duration: "0".to_string(),
+            ad_distance: "0".to_string(),
+            abd_duration: "0".to_string(),
+            abd_distance: "0".to_string(),
+            movement_tension: "low".to_string(),
+            jump_tension: "medium".to_string(),
+            airdash_tension: "high".to_string(),
+            walk_speed: "4".to_string(),
+            back_walk_speed: "3".to_string(),
+            dash_initial_speed: "6".to_string(),
+            dash_acceleration: "1".to_string(),
+            dash_friction: "0.5".to_string(),
+            jump_gravity: "9.8".to_string(),
+            high_jump_gravity: "9.8".to_string(),
+        };
+        // シリアライズ処理
+        // JSON 文字列生成
+        let json = serde_json::to_string(&char_info).unwrap();
+        // デシリアライズ処理
+        // JSON 文字列から構造体復元
+        let deserialized: CharInfo = serde_json::from_str(&json).unwrap();
+        // defense フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(char_info.defense, deserialized.defense);
+        // guts フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(char_info.guts, deserialized.guts);
+        // （その他フィールド検証省略）
+    }
+
+    /// MoveInfo のシリアライズ／デシリアライズ検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: `MoveInfo` 構造体の JSON 変換機能  
+    /// - 入力値: 各フィールドに適切な値設定  
+    /// - 期待結果: 変換前後で各フィールド値の一致  
+    /// 検証項目: input、name など  
+    #[test]
+    fn test_moveinfo_serialization() {
+        // サンプルデータ生成
+        // 入力値: input "236H", name "Dragon Punch", damage "20", など
+        let move_info = MoveInfo {
+            input: "236H".to_string(),
+            name: "Dragon Punch".to_string(),
+            damage: "20".to_string(),
+            guard: "S".to_string(),
+            startup: "5".to_string(),
+            active: "3".to_string(),
+            recovery: "10".to_string(),
+            on_hit: "KO".to_string(),
+            on_block: "SD".to_string(),
+            level: "1".to_string(),
+            counter: "none".to_string(),
+            move_type: "normal".to_string(),
+            risc_gain: "0".to_string(),
+            risc_loss: "0".to_string(),
+            wall_damage: "0".to_string(),
+            input_tension: "0".to_string(),
+            chip_ratio: "1.0".to_string(),
+            otg_ratio: "0".to_string(),
+            scaling: "1.0".to_string(),
+            invincibility: "0".to_string(),
+            cancel: "none".to_string(),
+            caption: "A powerful uppercut".to_string(),
+            notes: "".to_string(),
+        };
+        // シリアライズ処理
+        // JSON 文字列生成
+        let json = serde_json::to_string(&move_info).unwrap();
+        // デシリアライズ処理
+        // JSON 文字列から構造体復元
+        let deserialized: MoveInfo = serde_json::from_str(&json).unwrap();
+        // input フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(move_info.input, deserialized.input);
+        // name フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(move_info.name, deserialized.name);
+    }
+
+    /// ImageLinks のシリアライズ／デシリアライズ検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: `ImageLinks` 構造体の JSON 変換機能  
+    /// - 入力値: 画像 URL およびヒットボックス画像配列の設定  
+    /// - 期待結果: 変換前後で各フィールド値の一致  
+    /// 検証項目: input、hitbox_img 配列長  
+    #[test]
+    fn test_image_links_serialization() {
+        // サンプルデータ生成
+        // 入力値: input "236H", move_img URL, hitbox_img 配列
+        let image_links = ImageLinks {
+            input: "236H".to_string(),
+            move_img: "https://example.com/move.png".to_string(),
+            hitbox_img: vec![
+                "https://example.com/hitbox1.png".to_string(),
+                "https://example.com/hitbox2.png".to_string(),
+            ],
+        };
+        // シリアライズ処理
+        // JSON 文字列生成
+        let json = serde_json::to_string(&image_links).unwrap();
+        // デシリアライズ処理
+        // JSON 文字列から構造体復元
+        let deserialized: ImageLinks = serde_json::from_str(&json).unwrap();
+        // input フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(image_links.input, deserialized.input);
+        // hitbox_img 配列長比較検証
+        // 入力配列長と出力配列長の一致確認
+        assert_eq!(image_links.hitbox_img.len(), deserialized.hitbox_img.len());
+    }
+
+    /// MoveAliases のシリアライズ／デシリアライズ検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: `MoveAliases` 構造体の JSON 変換機能  
+    /// - 入力値: エイリアス情報の設定  
+    /// - 期待結果: 変換前後で各フィールド値の一致  
+    /// 検証項目: input、aliases の一致  
+    #[test]
+    fn test_move_aliases_serialization() {
+        // サンプルデータ生成
+        // 入力値: input "236H", aliases ["Dragon", "Uppercut"]
+        let move_aliases = MoveAliases {
+            input: "236H".to_string(),
+            aliases: vec!["Dragon".to_string(), "Uppercut".to_string()],
+        };
+        // シリアライズ処理
+        // JSON 文字列生成
+        let json = serde_json::to_string(&move_aliases).unwrap();
+        // デシリアライズ処理
+        // JSON 文字列から構造体復元
+        let deserialized: MoveAliases = serde_json::from_str(&json).unwrap();
+        // input フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(move_aliases.input, deserialized.input);
+        // aliases フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(move_aliases.aliases, deserialized.aliases);
+    }
+
+    /// Nicknames のシリアライズ／デシリアライズ検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: `Nicknames` 構造体の JSON 変換機能  
+    /// - 入力値: キャラクター名および愛称リストの設定  
+    /// - 期待結果: 変換前後で各フィールド値の一致  
+    /// 検証項目: character、nicknames の一致  
+    #[test]
+    fn test_nicknames_serialization() {
+        // サンプルデータ生成
+        // 入力値: character "Baiken", nicknames ["Bay", "Baik"]
+        let nicknames = Nicknames {
+            character: "Baiken".to_string(),
+            nicknames: vec!["Bay".to_string(), "Baik".to_string()],
+        };
+        // シリアライズ処理
+        // JSON 文字列生成
+        let json = serde_json::to_string(&nicknames).unwrap();
+        // デシリアライズ処理
+        // JSON 文字列から構造体復元
+        let deserialized: Nicknames = serde_json::from_str(&json).unwrap();
+        // character フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(nicknames.character, deserialized.character);
+        // nicknames フィールド比較検証
+        // 入力値と出力値の一致確認
+        assert_eq!(nicknames.nicknames, deserialized.nicknames);
+    }
+
+    /// CHARS 定数の要素数検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: 定数 `CHARS` の要素数  
+    /// - 入力値: 定数 `CHARS`  
+    /// - 期待結果: 要素数 29 体の確認  
+    /// 検証項目: `CHARS.len()` の一致  
+    #[test]
+    fn test_chars_constant() {
+        // 要素数比較検証
+        // 期待値: 29 体
+        assert_eq!(CHARS.len(), 29);
+    }
+
+    /// EMBED_COLOR 定数の値検証用テスト
+    ///
+    /// # 説明
+    /// - テスト対象: 定数 `EMBED_COLOR` の値  
+    /// - 入力値: 定数 `EMBED_COLOR`  
+    /// - 期待結果: 値 (140, 75, 64) の確認  
+    /// 検証項目: `EMBED_COLOR` の値一致  
+    #[test]
+    fn test_embed_color() {
+        // 値比較検証
+        // 期待値: (140, 75, 64)
+        assert_eq!(EMBED_COLOR, (140, 75, 64));
+    }
+}
