@@ -7,6 +7,46 @@
 		]
 	},
 	{
+		"input": "jD",
+		"aliases": [
+			"空中D",
+			"空D",
+			"ジャンプD"
+		]
+	},
+	{
+		"input": "jHS",
+		"aliases": [
+			"空中HS",
+			"空HS",
+			"ジャンプHS"
+		]
+	},
+	{
+		"input": "jK",
+		"aliases": [
+			"空中K",
+			"空K",
+			"ジャンプK"
+		]
+	},
+	{
+		"input": "jP",
+		"aliases": [
+			"空中P",
+			"空P",
+			"ジャンプP"
+		]
+	},
+	{
+		"input": "jS",
+		"aliases": [
+			"空中S",
+			"空S",
+			"ジャンプS"
+		]
+	},
+	{
 		"input": "2K",
 		"aliases": [
 			"最速",
