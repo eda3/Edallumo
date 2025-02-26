@@ -1,0 +1,29 @@
+name: ドキュメントのデプロイ
+
+on:
+  push:
+    branches:
+      - main  # ドキュメントを生成するブランチを指定
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: リポジトリのチェックアウト
+      uses: actions/checkout@v2
+
+    - name: Rustのセットアップ
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: ドキュメントのビルド
+      run: cargo doc --no-deps
+
+    - name: GitHub Pagesへのデプロイ
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/doc
