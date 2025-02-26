@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["TypeChoice"],"fn":["moves"],"mod":["utils"]};

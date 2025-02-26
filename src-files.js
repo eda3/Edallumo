@@ -1,0 +1,3 @@
+var srcIndex = new Map(JSON.parse('[["baiken",["",[["commands",[["frames",[],["advanced.rs","meter.rs","simple.rs"]],["moves",[],["utils.rs"]],["update",[],["framedata.rs","framedata_json.rs","images.rs","images_json.rs"]]],["feedback.rs","frames.rs","help.rs","hitboxes.rs","mod.rs","moves.rs","nicknames.rs","register.rs","update.rs"]],["common",[],["mod.rs","preprocess.rs"]]],["check.rs","find.rs","main.rs"]]]]'));
+createSrcSidebar();
+//{"start":36,"fragment_lengths":[378]}

@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/commands/frames/advanced.rs`."><title>advanced.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="baiken" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0 (4d91de4e4 2025-02-17)" data-channel="1.85.0" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../../../static.files/storage-59e33391.js"></script><script defer src="../../../../static.files/src-script-56102188.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">baiken/commands/frames/</div>advanced.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<a href="#1" id="1">1</a>
+<a href="#2" id="2">2</a>
+<a href="#3" id="3">3</a>
+<a href="#4" id="4">4</a>
+<a href="#5" id="5">5</a>
+<a href="#6" id="6">6</a>
+<a href="#7" id="7">7</a>
+<a href="#8" id="8">8</a>
+<a href="#9" id="9">9</a>
+<a href="#10" id="10">10</a>
+<a href="#11" id="11">11</a>
+<a href="#12" id="12">12</a>
+<a href="#13" id="13">13</a>
+<a href="#14" id="14">14</a>
+<a href="#15" id="15">15</a>
+<a href="#16" id="16">16</a>
+<a href="#17" id="17">17</a>
+<a href="#18" id="18">18</a>
+<a href="#19" id="19">19</a>
+<a href="#20" id="20">20</a>
+<a href="#21" id="21">21</a>
+<a href="#22" id="22">22</a>
+<a href="#23" id="23">23</a>
+<a href="#24" id="24">24</a>
+<a href="#25" id="25">25</a>
+<a href="#26" id="26">26</a>
+<a href="#27" id="27">27</a>
+<a href="#28" id="28">28</a>
+<a href="#29" id="29">29</a>
+<a href="#30" id="30">30</a>
+<a href="#31" id="31">31</a>
+<a href="#32" id="32">32</a>
+<a href="#33" id="33">33</a>
+<a href="#34" id="34">34</a>
+<a href="#35" id="35">35</a>
+<a href="#36" id="36">36</a>
+<a href="#37" id="37">37</a>
+<a href="#38" id="38">38</a>
+<a href="#39" id="39">39</a>
+<a href="#40" id="40">40</a>
+<a href="#41" id="41">41</a>
+<a href="#42" id="42">42</a>
+<a href="#43" id="43">43</a>
+<a href="#44" id="44">44</a>
+<a href="#45" id="45">45</a>
+<a href="#46" id="46">46</a>
+<a href="#47" id="47">47</a>
+<a href="#48" id="48">48</a>
+<a href="#49" id="49">49</a>
+<a href="#50" id="50">50</a>
+<a href="#51" id="51">51</a>
+<a href="#52" id="52">52</a>
+<a href="#53" id="53">53</a>
+<a href="#54" id="54">54</a>
+<a href="#55" id="55">55</a>
+<a href="#56" id="56">56</a>
+<a href="#57" id="57">57</a>
+<a href="#58" id="58">58</a>
+<a href="#59" id="59">59</a>
+<a href="#60" id="60">60</a>
+<a href="#61" id="61">61</a>
+<a href="#62" id="62">62</a>
+<a href="#63" id="63">63</a>
+<a href="#64" id="64">64</a>
+<a href="#65" id="65">65</a>
+<a href="#66" id="66">66</a>
+<a href="#67" id="67">67</a>
+<a href="#68" id="68">68</a>
+<a href="#69" id="69">69</a>
+<a href="#70" id="70">70</a>
+<a href="#71" id="71">71</a>
+<a href="#72" id="72">72</a>
+<a href="#73" id="73">73</a>
+<a href="#74" id="74">74</a>
+<a href="#75" id="75">75</a>
+<a href="#76" id="76">76</a>
+<a href="#77" id="77">77</a>
+<a href="#78" id="78">78</a>
+<a href="#79" id="79">79</a>
+<a href="#80" id="80">80</a>
+<a href="#81" id="81">81</a>
+<a href="#82" id="82">82</a>
+<a href="#83" id="83">83</a>
+<a href="#84" id="84">84</a>
+<a href="#85" id="85">85</a>
+<a href="#86" id="86">86</a>
+<a href="#87" id="87">87</a>
+<a href="#88" id="88">88</a>
+<a href="#89" id="89">89</a>
+<a href="#90" id="90">90</a>
+<a href="#91" id="91">91</a>
+<a href="#92" id="92">92</a>
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
+<a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a>
+<a href="#100" id="100">100</a>
+<a href="#101" id="101">101</a>
+<a href="#102" id="102">102</a>
+<a href="#103" id="103">103</a>
+<a href="#104" id="104">104</a>
+<a href="#105" id="105">105</a>
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a>
+<a href="#110" id="110">110</a>
+<a href="#111" id="111">111</a>
+<a href="#112" id="112">112</a>
+<a href="#113" id="113">113</a>
+<a href="#114" id="114">114</a>
+<a href="#115" id="115">115</a>
+<a href="#116" id="116">116</a>
+<a href="#117" id="117">117</a>
+<a href="#118" id="118">118</a>
+<a href="#119" id="119">119</a>
+<a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a>
+<a href="#122" id="122">122</a>
+<a href="#123" id="123">123</a>
+<a href="#124" id="124">124</a>
+<a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
+<a href="#133" id="133">133</a>
+<a href="#134" id="134">134</a>
+<a href="#135" id="135">135</a>
+<a href="#136" id="136">136</a>
+<a href="#137" id="137">137</a>
+<a href="#138" id="138">138</a>
+<a href="#139" id="139">139</a>
+<a href="#140" id="140">140</a>
+<a href="#141" id="141">141</a>
+<a href="#142" id="142">142</a>
+<a href="#143" id="143">143</a>
+<a href="#144" id="144">144</a>
+<a href="#145" id="145">145</a>
+<a href="#146" id="146">146</a>
+<a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a>
+<a href="#149" id="149">149</a>
+<a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+<a href="#181" id="181">181</a>
+<a href="#182" id="182">182</a>
+<a href="#183" id="183">183</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
+//!
+//! このファイルは、キャラクターの技データの詳細情報をDiscordの埋め込みメッセージで表示するコマンドを実装。
+//! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
+//! JSONファイルから該当データを取得し、画像リンクや各種技パラメータを整形して表示する。
+
+</span><span class="kw">use crate</span>::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, IMAGE_DEFAULT};
+<span class="kw">use </span>colored::Colorize;
+<span class="kw">use </span>poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
+<span class="kw">use </span>std::{fs, string::String};
+
+<span class="doccomment">/// 指定されたキャラクターの技データを詳細に表示する非同期コマンド
+///
+/// # 概要
+/// 入力されたキャラクター名（または愛称）と技名（入力またはエイリアス）から、
+/// キャラクター情報ファイルおよび画像リンクファイルを読み込み、  
+/// 対象の技データを抽出し、Discord用の埋め込みメッセージとして表示する。
+///
+/// # 引数
+/// * `ctx` - コマンド実行コンテキスト（Discordとの通信に利用）
+/// * `character` - キャラクター名または愛称（2文字以上必須）
+/// * `character_move` - 技名、入力、またはエイリアス（2文字以上必須）
+///
+/// # 戻り値
+/// 正常終了時は `Ok(())` を返し、エラー発生時は `Err(Error)` を返す。
+///
+/// # 例
+/// ```rust,no_run
+/// # async fn example(ctx: Context&lt;'_&gt;) -&gt; Result&lt;(), Error&gt; {
+/// advanced(ctx, "Sol".to_string(), "236H".to_string()).await?;
+/// # Ok(()) }
+/// ```
+///
+/// # 注意
+/// この関数は非同期関数であるため、呼び出し時に `.await` が必要。
+</span><span class="attr">#[poise::command(prefix_command, slash_command)]
+</span><span class="kw">pub async fn </span>advanced(
+    ctx: Context&lt;<span class="lifetime">'_</span>&gt;,
+    <span class="attr">#[min_length = <span class="number">2</span>]
+    #[description = <span class="string">"キャラクター名または愛称"</span>]
+    </span>character: String,
+    <span class="attr">#[min_length = <span class="number">2</span>]
+    #[rename = <span class="string">"move"</span>]
+    #[description = <span class="string">"技名、入力、またはエイリアス"</span>]
+    </span>character_move: String,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+    <span class="comment">// コマンド引数の表示　引数確認用
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">", " </span>+ <span class="kw-2">&amp;</span>character_move + <span class="string">"'"</span>).purple()
+    );
+
+    <span class="comment">// 埋め込み画像用変数の初期化　初期値はデフォルト画像URL
+    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = IMAGE_DEFAULT.to_string();
+
+    <span class="comment">// 入力チェックの実施　各種前提条件チェック
+    </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>).<span class="kw">await</span>).is_err() {
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    }
+
+    <span class="comment">// キャラクター名の正規化　入力に基づく正式名称の取得
+    </span><span class="kw">let </span>character_arg_altered = <span class="kw">match </span>find::find_character(<span class="kw-2">&amp;</span>character).<span class="kw">await </span>{
+        <span class="prelude-val">Ok</span>(character_arg_altered) =&gt; character_arg_altered, <span class="comment">// 正式名称取得
+        </span><span class="prelude-val">Err</span>(err) =&gt; {
+            ctx.say(err.to_string()).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
+            </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red());
+            <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// 処理中断
+        </span>}
+    };
+
+    <span class="comment">// JSONファイルパスの組み立て　キャラクター情報ファイルのパス生成
+    </span><span class="kw">let </span>char_file_path =
+        <span class="string">"data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"/" </span>+ <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json"</span>;
+    <span class="comment">// JSONファイルの読み込み　キャラクター情報の取得
+    </span><span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path)
+        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json" </span>+ <span class="string">"' file."</span>));
+
+    <span class="comment">// JSON文字列のデシリアライズ　技情報の構造体へ変換
+    </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).unwrap();
+
+    <span class="comment">// JSON読み込み成功の表示　確認メッセージ出力
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        (<span class="string">"Successfully read '"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json' file."</span>).green()
+    );
+
+    <span class="comment">// 画像リンク用JSONファイルのパス組み立て　画像情報ファイルの指定
+    </span><span class="kw">let </span>image_links = fs::read_to_string(
+        <span class="string">"data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"/images.json"</span>,
+    )
+    .expect(
+        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"'/images.json' file."</span>),
+    );
+
+    <span class="comment">// 画像リンクJSONのデシリアライズ　画像リンク情報の構造体へ変換
+    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap();
+    <span class="comment">// 対象技情報の取得　入力に対応する技データの抽出
+    </span><span class="kw">let </span>move_info = <span class="kw-2">&amp;</span>moves_info
+        [find::find_move_index(<span class="kw-2">&amp;</span>character_arg_altered, character_move, <span class="kw-2">&amp;</span>moves_info).<span class="kw">await</span><span class="question-mark">?</span>];
+
+    <span class="comment">// 対象技の読み込み成功の表示　確認メッセージ出力
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        (<span class="string">"Successfully read move '"</span>.to_owned()
+            + <span class="kw-2">&amp;</span>move_info.input.to_string()
+            + <span class="string">"' in '"
+            </span>+ <span class="kw-2">&amp;</span>character_arg_altered
+            + <span class="string">".json' file."</span>)
+            .green()
+    );
+
+    <span class="comment">// 画像リンクの探索　対象技の画像リンクを検索
+    </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
+        <span class="comment">// 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
+        </span><span class="kw">if </span>move_info.input == img_links.input &amp;&amp; !img_links.move_img.is_empty() {
+            embed_image = img_links.move_img.to_string(); <span class="comment">// 画像リンク更新
+            </span><span class="kw">break</span>; <span class="comment">// 探索終了
+        </span>}
+    }
+
+    <span class="comment">// 埋め込みメッセージ群生成用ベクターの初期化
+    </span><span class="kw">let </span><span class="kw-2">mut </span>vec_embeds = Vec::new();
+    <span class="comment">// 埋め込みタイトルの作成　キャラクター名と技名を組み合わせたタイトル
+    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>;
+    <span class="comment">// 埋め込みURLの作成　Dustloop Wiki のキャラクター概要ページURL生成
+    </span><span class="kw">let </span>embed_url =
+        <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"#Overview"</span>;
+    <span class="comment">// 埋め込みフッターの作成　技に関するキャプションを利用
+    </span><span class="kw">let </span>embed_footer = CreateEmbedFooter::new(<span class="kw-2">&amp;</span>move_info.caption);
+
+    <span class="comment">// 埋め込みメッセージの生成　技データの各パラメータをフィールドとして追加
+    </span><span class="kw">let </span>embed = CreateEmbed::new()
+        .color(EMBED_COLOR) <span class="comment">// 埋め込みカラー設定
+        </span>.title(<span class="kw-2">&amp;</span>embed_title) <span class="comment">// タイトル設定
+        </span>.url(<span class="kw-2">&amp;</span>embed_url) <span class="comment">// URL設定
+        </span>.image(<span class="kw-2">&amp;</span>embed_image) <span class="comment">// 画像リンク設定
+        </span>.fields(<span class="macro">vec!</span>[
+            (<span class="string">"ダメージ"</span>, <span class="kw-2">&amp;</span>move_info.damage.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ガード"</span>, <span class="kw-2">&amp;</span>move_info.guard.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"無敵"</span>, <span class="kw-2">&amp;</span>move_info.invincibility.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"始動"</span>, <span class="kw-2">&amp;</span>move_info.startup.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"持続"</span>, <span class="kw-2">&amp;</span>move_info.active.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"硬直"</span>, <span class="kw-2">&amp;</span>move_info.recovery.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ヒット時"</span>, <span class="kw-2">&amp;</span>move_info.on_hit.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ガード時"</span>, <span class="kw-2">&amp;</span>move_info.on_block.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"カウンター"</span>, <span class="kw-2">&amp;</span>move_info.counter.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"技レベル"</span>, <span class="kw-2">&amp;</span>move_info.level.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"リスク増加"</span>, <span class="kw-2">&amp;</span>move_info.risc_gain.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"リスク減少"</span>, <span class="kw-2">&amp;</span>move_info.risc_loss.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ダメージ倍率"</span>, <span class="kw-2">&amp;</span>move_info.scaling.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"壁割ダメージ"</span>, <span class="kw-2">&amp;</span>move_info.wall_damage.to_string(), <span class="bool-val">true</span>),
+            (
+                <span class="string">"テンションゲージ"</span>,
+                <span class="kw-2">&amp;</span>move_info.input_tension.to_string(),
+                <span class="bool-val">true</span>,
+            ),
+            (<span class="string">"削り比率"</span>, <span class="kw-2">&amp;</span>move_info.chip_ratio.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ダウン追い打ち比率"</span>, <span class="kw-2">&amp;</span>move_info.otg_ratio.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"キャンセル先"</span>, <span class="kw-2">&amp;</span>move_info.cancel.to_string(), <span class="bool-val">true</span>),
+        ])
+        .footer(embed_footer); <span class="comment">// フッター設定
+
+    // 生成した埋め込みメッセージをベクターに追加
+    </span>vec_embeds.push(embed);
+
+    <span class="comment">// 備考（notes）が存在する場合、別の埋め込みメッセージを生成
+    </span><span class="kw">if </span>!<span class="kw-2">&amp;</span>move_info.notes.is_empty() {
+        <span class="kw">let </span>embed2 = CreateEmbed::new()
+            .color(EMBED_COLOR) <span class="comment">// 埋め込みカラー設定
+            </span>.description(<span class="kw-2">&amp;</span>move_info.notes); <span class="comment">// 備考記述設定
+        </span>vec_embeds.push(embed2); <span class="comment">// ベクターに追加
+    </span>}
+
+    <span class="comment">// 返信メッセージ用オブジェクト生成　送信用オブジェクトの初期化
+    </span><span class="kw">let </span><span class="kw-2">mut </span>reply = poise::CreateReply::default();
+    <span class="comment">// 生成した埋め込みメッセージ群を返信オブジェクトに追加
+    </span>reply.embeds.extend(vec_embeds);
+    <span class="comment">// 返信メッセージの送信　Discordへ送信
+    </span>ctx.send(reply).<span class="kw">await</span><span class="question-mark">?</span>;
+
+    <span class="comment">// 正常終了の返却　処理完了
+    </span><span class="prelude-val">Ok</span>(())
+}
+</code></pre></div></section></main></body></html>

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["get_normal_moves","get_special_moves","get_super_moves"]};

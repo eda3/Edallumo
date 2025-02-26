@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["frames"],"mod":["advanced","meter","simple"]};

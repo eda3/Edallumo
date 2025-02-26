@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["find_character","find_move_index"]};

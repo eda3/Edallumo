@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["feedback","frames","help","hitboxes","moves","nicknames","register","update"]};

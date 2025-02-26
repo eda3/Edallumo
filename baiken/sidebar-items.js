@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["CHARS","EMBED_COLOR","HITBOX_DEFAULT","IMAGE_DEFAULT"],"fn":["main","on_error"],"mod":["check","commands","common","find"],"struct":["CharInfo","Data","Gids","ImageLinks","MoveAliases","MoveInfo","Nicknames"],"type":["Context","Error"]};

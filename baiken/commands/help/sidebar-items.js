@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["autocomplete_help","help","help_feedback","help_fmeter","help_frames","help_general","help_hitboxes","help_moves","help_nicknames","help_notes","help_register","help_specifics","help_update"]};
