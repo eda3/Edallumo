@@ -1657,7 +1657,7 @@
     "startup": "7+(173 Flash)+2",
     "active": "2",
     "recovery": "54",
-    "on_hit": "強制ダウン+39 [HKD +73]",
+    "on_hit": "強制ダウン+39 [強制ダウン+73]",
     "on_block": "-39",
     "level": "3",
     "counter": "Mid",

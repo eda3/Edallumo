@@ -882,7 +882,7 @@
     "startup": "3",
     "active": "3",
     "recovery": "39",
-    "on_hit": "強制ダウン+19 [CL HKD +56] (OTG -6)",
+    "on_hit": "強制ダウン+19 [CL 強制ダウン+56] (OTG -6)",
     "on_block": "-12",
     "level": "4",
     "counter": "Mid",

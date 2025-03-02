@@ -282,7 +282,7 @@
     "startup": "16~39 [40]",
     "active": "6",
     "recovery": "24",
-    "on_hit": "-5 [KD +44]",
+    "on_hit": "-5 [ダウン+44]",
     "on_block": "-8 [+8]",
     "level": "4",
     "counter": "Large",

@@ -604,9 +604,9 @@
     "name": "エディ召喚",
     "damage": "-",
     "guard": "-",
-    "startup": "0",
+    "startup": "1",
     "active": "-",
-    "recovery": "32",
+    "recovery": "Total 32",
     "on_hit": "-",
     "on_block": "-",
     "level": "-",
@@ -741,7 +741,7 @@
     "risc_loss": "1000",
     "wall_damage": "300",
     "input_tension": "100",
-    "chip_ratio": "-",
+    "chip_ratio": "12%",
     "otg_ratio": "80%",
     "scaling": "80%",
     "invincibility": "-",
@@ -757,7 +757,7 @@
     "startup": "74 [78]",
     "active": "3,7,8",
     "recovery": "27",
-    "on_hit": "ダウン+134 [KD +138]",
+    "on_hit": "ダウン+134 [ダウン+138]",
     "on_block": "+87 [+91]",
     "level": "4",
     "counter": "Very Small",
@@ -772,7 +772,7 @@
     "invincibility": "16-73 [20-77] Guardpoint",
     "cancel": "-",
     "caption": "GuardpointAttack",
-    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nHorizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, the 1st attack uses 1100 hp, the 2nd uses 900 hp with the final attack taking the remaining Eddie gauge.\nUsing 236H without Eddie will use 0 HP of the Eddie gauge each frame for the first 12 frames of Eddie's &quot\nOppose&quot\n.\nIf Eddie is already summoned, 236H uses 3 HP of the Eddie gauge each frame the move is active and each hit from the attack portion uses 675HP (2025HP total)."
+    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nHorizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, the 1st attack uses 1100 hp, the 2nd uses 900 hp with the final attack taking the remaining Eddie gauge.\nIf Eddie is already summoned, 236H uses 3 HP of the Eddie gauge each frame the move is active and each hit from the attack portion uses 675HP (2025HP total)."
   },
   {
     "input": "「多い」(236K)",
@@ -782,7 +782,7 @@
     "startup": "27→42→57→72 [31→46→61→76]",
     "active": "71 (26×4)",
     "recovery": "Total 74 [Total 78]",
-    "on_hit": "ダウン+89 [KD +93]",
+    "on_hit": "ダウン+89 [ダウン+93]",
     "on_block": "+55 [+59]",
     "level": "2",
     "counter": "Very Small",
@@ -832,7 +832,7 @@
     "startup": "21 [25]",
     "active": "11(6)9",
     "recovery": "34",
-    "on_hit": "強制ダウン+107 [HKD +111]",
+    "on_hit": "強制ダウン+107 [強制ダウン+111]",
     "on_block": "+15 [+19]",
     "level": "3",
     "counter": "Very Small",
@@ -879,9 +879,9 @@
     "name": "エディ収納",
     "damage": "-",
     "guard": "-",
-    "startup": "20",
+    "startup": "21",
     "active": "-",
-    "recovery": "8",
+    "recovery": "Total 28",
     "on_hit": "-",
     "on_block": "-",
     "level": "-",
@@ -897,7 +897,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nConsumes 3 HP (of 3000 total) of the Eddie gauge per frame Eddie is idling. Uses 0 HP of the Eddie gauge per frame during frames 9-20.\nIf Zato is in hitstop, Eddie idling will use 0 HP of Eddie gauge each frame.\nEddie becomes actionable on frame 21."
+    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nConsumes 3 HP (of 3000 total) of the Eddie gauge per frame Eddie is idling. Uses 0 HP of the Eddie gauge per frame during frames 9-20.\nIf Zato is in hitstop, Eddie idling will use 0 HP of Eddie gauge each frame.\nThe Eddie gauge UI covers up 69 Eddie HP on the left side of the gauge.\nEddie becomes actionable on frame 21."
   },
   {
     "input": "「張り合う」(]HS[)",
@@ -1022,7 +1022,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Projectile spawns during super freeze on frame 9 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: -\nClash Hits: -\n0f hitstop."
+    "notes": "Projectile spawns during super freeze on frame 9 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: -\nClash Hits: -\nFrom frames 1-67, or until Zato does an action, the Eddie gauge will not regenerate, and will not be used by Eddie idling.\n0f hitstop."
   },
   {
     "input": "サンヴォイド(632146S)",
@@ -1047,7 +1047,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Projectile spawns during super freeze on frame 11 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: 4\nClash Hits: 3\nFor the first 11 frames, the Eddie gauge will not regenerate, and will not be drained by Eddie idling. Eddie cannot receive new actions such as movement or negative edge, and will continue his movement from the frame before.\nThe Eddie gauge will be refilled during the super freeze.\nThe projectile has asymmetrical hitstop: The projectile inflicts 8f of hitstop, and takes 3f of hitstop on each hit.\nAfter hitting, the active frames of the projectile are 3,3,3."
+    "notes": "Projectile spawns during super freeze on frame 11 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: 4\nClash Hits: 3\nFrom frames 1-11, Eddie cannot receive new actions such as movement or negative edge, and will continue his movement from the frame before.\nFrom frames 1-72, or until Zato does any other action before then, the Eddie gauge will not regenerate, and will not be used by Eddie idling.\nThe Eddie gauge will be refilled during the super freeze.\nThe projectile has asymmetrical hitstop: The projectile inflicts 8f of hitstop, and takes 3f of hitstop on each hit.\nAfter leaving hitstop, the projectile will have 2 frames before the next multihit becomes active."
   },
   {
     "input": "サンヴォイド(j632146S)",

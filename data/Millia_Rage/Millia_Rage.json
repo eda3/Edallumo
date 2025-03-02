@@ -682,7 +682,7 @@
     "startup": "13",
     "active": "[1(3)]×2~8, 1",
     "recovery": "-16, -18, -20",
-    "on_hit": "-2, -4, KD +30",
+    "on_hit": "-2, -4, ダウン+30",
     "on_block": "-5, -7, -9",
     "level": "1",
     "counter": "Very Small",

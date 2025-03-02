@@ -246,56 +246,56 @@
     ]
   },
   {
-    "input": "Down Escape(w2)",
+    "input": "Down Escape(w.2)",
     "move_img": "",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "Out Escape(w4)",
+    "input": "Out Escape(w.4)",
     "move_img": "",
     "hitbox_img": [
       ""
     ]
   },
   {
-    "input": "壁走り6HS(w6HS)",
+    "input": "Wall Run 6H(w.6H)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2a/GGST_Chipp_Zanuff_w6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7d/GGST_Chipp_Zanuff_w6H_1_Hitbox.png"
     ]
   },
   {
-    "input": "壁走りHS(wHS)",
+    "input": "Wall Run H(w.H)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e4/GGST_Chipp_Zanuff_w5H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e0/GGST_Chipp_Zanuff_w5H_Hitbox.png"
     ]
   },
   {
-    "input": "壁走りK(wK)",
+    "input": "Wall Run K(w.K)",
     "move_img": "https://www.dustloop.com/wiki/images/7/74/GGST_Chipp_Zanuff_wK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/37/GGST_Chipp_Zanuff_wK_Hitbox.png"
     ]
   },
   {
-    "input": "壁走りP(wP)",
+    "input": "Wall Run P(w.P)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b0/GGST_Chipp_Zanuff_wP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e0/GGST_Chipp_Zanuff_wP_Hitbox.png"
     ]
   },
   {
-    "input": "壁走りS(wS)",
+    "input": "Wall Run S(w.S)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fe/GGST_Chipp_Zanuff_wcS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/68/GGST_Chipp_Zanuff_wcS_Hitbox.png"
     ]
   },
   {
-    "input": "壁走りSS(wSS)",
+    "input": "Wall Run SS(w.SS)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9b/GGST_Chipp_Zanuff_wfS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5e/GGST_Chipp_Zanuff_wfS_Hitbox.png"
@@ -309,7 +309,7 @@
     ]
   },
   {
-    "input": "綱渡り(214[HS])",
+    "input": "綱張り(214[HS])",
     "move_img": "https://www.dustloop.com/wiki/images/2/2d/GGST_Chipp_Zanuff_214(H).png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/62/GGST_Chipp_Zanuff_214(H)_hitbox.png"

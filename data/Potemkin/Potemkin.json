@@ -22,7 +22,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "This hit? Good job! You can start winning now.",
-    "notes": "On hit HKD +44 when cancelled instantly into Hammerfall Brake (HFB)"
+    "notes": "On hit 強制ダウン+44 when cancelled instantly into Hammerfall Brake (HFB)"
   },
   {
     "input": "2HS",
@@ -47,7 +47,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "Send them to heaven or die trying",
-    "notes": "On Counter Hit: HKD (+73)"
+    "notes": "On Counter Hit: 強制ダウン(+73)"
   },
   {
     "input": "2K",
@@ -647,7 +647,7 @@
     "invincibility": "Projectile Reflection 4-[18~35F], Upon Reflection+18 Full",
     "cancel": "-",
     "caption": "",
-    "notes": "Reflects projectile starting on frame 4 until active frames\nUpon reflecting a projectile, fully invulnerable until end of recovery\nCannot reflect Overdrive projectiles\nOn Counter Hit: HKD (+59)"
+    "notes": "Reflects projectile starting on frame 4 until active frames\nUpon reflecting a projectile, fully invulnerable until end of recovery\nCannot reflect Overdrive projectiles\nOn Counter Hit: 強制ダウン(+59)"
   },
   {
     "input": "メガフィスト・後方(214P)",
@@ -872,7 +872,7 @@
     "invincibility": "1 Hit Armor 5~72F",
     "cancel": "-",
     "caption": "",
-    "notes": "Has 1 hit of armor starting on frame 5 until recovery frames\nOn Counter Hit: HKD (+48)\nIf the first hit of a combo, applies an additional +20 Combo Decay.\nThe first four frames of Hammer Fall cannot be cancelled into Hammer Fall Break."
+    "notes": "Has 1 hit of armor starting on frame 5 until recovery frames\nOn Counter Hit: 強制ダウン(+48)\nIf the first hit of a combo, applies an additional +20 Combo Decay.\nThe first four frames of Hammer Fall cannot be cancelled into Hammer Fall Break."
   },
   {
     "input": "ハンマーフォールブレーキ([4]6HS P)",

@@ -707,7 +707,7 @@
     "startup": "{4} 27",
     "active": "6(20)3",
     "recovery": "21",
-    "on_hit": "強制ダウン+62 [+69], KD +28 [+43]",
+    "on_hit": "強制ダウン+62 [+69], ダウン+28 [+43]",
     "on_block": "-5",
     "level": "3, 4",
     "counter": "Very Small",

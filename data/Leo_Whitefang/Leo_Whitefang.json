@@ -725,14 +725,14 @@
     "notes": "Invulnerability starts from frame 1, but the parry doesn't activate until frame 3, so it is possible to make an attack whiff without actually parrying it.\nNon-damaging stagger occurs if opponent is more than 500 units horizontally or vertically spaced.\nStaggers opponent for 49 frames, but Leo is stuck in the hitstop of the attack during the stagger, decreasing its effective duration and making it vary slightly.\nOpponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nDoes not apply 25% R.I.S.C. Loss reduction on hit, similar to grabs."
   },
   {
-    "input": "ブリュンヒルデの構えHS(btHS)",
-    "name": "ブリュンヒルデの構えHS",
+    "input": "btH(btH)",
+    "name": "btH",
     "damage": "48",
     "guard": "中段",
     "startup": "18",
     "active": "4",
     "recovery": "21",
-    "on_hit": "ダウン+38 [KD +50]",
+    "on_hit": "ダウン+38 [ダウン+50]",
     "on_block": "-6 [+5]",
     "level": "4",
     "counter": "Mid",
@@ -825,7 +825,7 @@
     "notes": "Staggers for 44 frames on Counter Hit (+33 on stance cancel, +25 with no cancel)"
   },
   {
-    "input": "空投げ(j6D or j4D)",
+    "input": "空投げ(j6D or j.4D)",
     "name": "空投げ",
     "damage": "80",
     "guard": "空投げ",
@@ -882,7 +882,7 @@
     "startup": "25 [27]",
     "active": "3 [2]",
     "recovery": "22 [15]",
-    "on_hit": "ダウン+26 [KD +34]",
+    "on_hit": "ダウン+26 [ダウン+34]",
     "on_block": "-6 [+2]",
     "level": "4",
     "counter": "Very Small",
@@ -925,7 +925,7 @@
     "notes": ""
   },
   {
-    "input": "ブリッツシュラーク(bt214HS)",
+    "input": "ブリッツシュラーク(bt214H)",
     "name": "ブリッツシュラーク",
     "damage": "75",
     "guard": "上段(ガードクラッシュ)",
