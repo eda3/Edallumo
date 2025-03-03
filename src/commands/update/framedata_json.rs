@@ -164,22 +164,33 @@ fn format_input_name(input: &str, name: &str) -> String {
     }
 }
 
+// 型エイリアス定義
+/// 文字列フィールドのタプル型
+type StringFields = (
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+);
+/// 整数フィールドのタプル型
+type IntegerFields = (Option<i32>, Option<i32>, Option<i32>, Option<i32>);
+/// 浮動小数点フィールドのタプル型
+type FloatFields = (
+    Option<f64>,
+    Option<f64>,
+    Option<f64>,
+    Option<f64>,
+    Option<f64>,
+);
+
 /// `文字列型フィールドをMoveInfoに設定する補助関数`
-fn set_string_fields(
-    move_data: &Data,
-    empty: &str,
-) -> (
-    String,
-    String,
-    String,
-    String,
-    String,
-    String,
-    String,
-    String,
-    String,
-    String,
-) {
+fn set_string_fields(move_data: &Data, empty: &str) -> StringFields {
     (
         // 名前
         move_data.title.name.as_deref().unwrap_or(empty).to_string(),
@@ -250,7 +261,7 @@ fn set_string_fields(
 }
 
 /// 数値型フィールドをMoveInfoに設定する補助関数（整数型）
-fn set_integer_fields(move_data: &Data) -> (Option<i32>, Option<i32>, Option<i32>, Option<i32>) {
+fn set_integer_fields(move_data: &Data) -> IntegerFields {
     (
         // ダメージ
         move_data
@@ -280,15 +291,7 @@ fn set_integer_fields(move_data: &Data) -> (Option<i32>, Option<i32>, Option<i32
 }
 
 /// 数値型フィールドをMoveInfoに設定する補助関数（浮動小数点型）
-fn set_float_fields(
-    move_data: &Data,
-) -> (
-    Option<f64>,
-    Option<f64>,
-    Option<f64>,
-    Option<f64>,
-    Option<f64>,
-) {
+fn set_float_fields(move_data: &Data) -> FloatFields {
     (
         // リスクゲイン
         move_data
