@@ -73,17 +73,7 @@
 <a href="#72" id="72">72</a>
 <a href="#73" id="73">73</a>
 <a href="#74" id="74">74</a>
-<a href="#75" id="75">75</a>
-<a href="#76" id="76">76</a>
-<a href="#77" id="77">77</a>
-<a href="#78" id="78">78</a>
-<a href="#79" id="79">79</a>
-<a href="#80" id="80">80</a>
-<a href="#81" id="81">81</a>
-<a href="#82" id="82">82</a>
-<a href="#83" id="83">83</a>
-<a href="#84" id="84">84</a>
-<a href="#85" id="85">85</a></pre></div><pre class="rust"><code><span class="doccomment">//! update.rs
+<a href="#75" id="75">75</a></pre></div><pre class="rust"><code><span class="doccomment">//! update.rs
 //!
 //! このファイルは、Dustloop Wiki のデータ更新機能を提供する。
 //! フレームデータ、画像データの更新処理を実行する関数群を実装する。
@@ -127,16 +117,6 @@
 
     </span><span class="prelude-val">Ok</span>(()) <span class="comment">// 正常終了
 </span>}
-
-<span class="doccomment">/// 全キャラクター更新処理　自動更新用関数
-///
-/// 24時間ごとに全キャラクターのフレームデータおよび画像データを更新する。
-</span><span class="kw">pub async fn </span>update_all_char_data() {
-    <span class="comment">// 全キャラクターのフレームデータ更新
-    </span>framedata::get_char_data(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>;
-    <span class="comment">// 全キャラクターの画像データ更新
-    </span>images::get_char_images(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>;
-}
 
 <span class="doccomment">/// キャラクター別アップデートサブコマンド  
 </span><span class="attr">#[poise::command(prefix_command, slash_command, owners_only)]

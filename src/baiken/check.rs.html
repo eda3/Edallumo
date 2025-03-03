@@ -472,14 +472,7 @@
 <a href="#471" id="471">471</a>
 <a href="#472" id="472">472</a>
 <a href="#473" id="473">473</a>
-<a href="#474" id="474">474</a>
-<a href="#475" id="475">475</a>
-<a href="#476" id="476">476</a>
-<a href="#477" id="477">477</a>
-<a href="#478" id="478">478</a>
-<a href="#479" id="479">479</a>
-<a href="#480" id="480">480</a>
-<a href="#481" id="481">481</a></pre></div><pre class="rust"><code><span class="doccomment">//! # check.rs
+<a href="#474" id="474">474</a></pre></div><pre class="rust"><code><span class="doccomment">//! # check.rs
 //!
 //! 各種チェック機能提供モジュールである。  
 //! ディレクトリ、ファイル、JSON の存在および正当性を確認する関数群を含む。
@@ -669,7 +662,7 @@
         <span class="comment">// Checking if character folders exist
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = character_folders_exist(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
-                <span class="macro">println!</span>(<span class="string">"Failed to send message: {}"</span>, e);
+                <span class="macro">println!</span>(<span class="string">"Failed to send message: {e}"</span>);
             }
             <span class="macro">println!</span>();
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
@@ -679,7 +672,7 @@
         <span class="comment">// Checking if character jsons exist
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = character_jsons_exist(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
-                <span class="macro">println!</span>(<span class="string">"Failed to send message: {}"</span>, e);
+                <span class="macro">println!</span>(<span class="string">"Failed to send message: {e}"</span>);
             }
             <span class="macro">println!</span>();
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
@@ -689,7 +682,7 @@
         <span class="comment">// Checking if image jsons exist
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = character_images_exist(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
-                <span class="macro">println!</span>(<span class="string">"Failed to send message: {}"</span>, e);
+                <span class="macro">println!</span>(<span class="string">"Failed to send message: {e}"</span>);
             }
             <span class="macro">println!</span>();
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
@@ -715,21 +708,19 @@
     </span><span class="kw">let </span>data_path = Path::new(data_dir);
     <span class="kw">if </span>!data_path.exists() {
         <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::FileNotFound(<span class="macro">format!</span>(
-            <span class="string">"データディレクトリが見つかりません: {}"</span>,
-            data_dir
-        )));
+            <span class="string">"データディレクトリが見つかりません: {data_dir}"
+        </span>)));
     }
 
     <span class="kw">if </span>!data_path.is_dir() {
         <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::Config(<span class="macro">format!</span>(
-            <span class="string">"指定されたパスはディレクトリではありません: {}"</span>,
-            data_dir
-        )));
+            <span class="string">"指定されたパスはディレクトリではありません: {data_dir}"
+        </span>)));
     }
 
     <span class="macro">println!</span>(
         <span class="string">"{}"</span>,
-        <span class="macro">format!</span>(<span class="string">"データディレクトリを確認しました: {}"</span>, data_dir).green()
+        <span class="macro">format!</span>(<span class="string">"データディレクトリを確認しました: {data_dir}"</span>).green()
     );
 
     <span class="comment">// 必要なサブディレクトリの存在確認（例として一部のキャラクター）
@@ -738,9 +729,8 @@
         <span class="kw">let </span>char_dir = data_path.join(char_name);
         <span class="kw">if </span>!char_dir.exists() || !char_dir.is_dir() {
             <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::Config(<span class="macro">format!</span>(
-                <span class="string">"必要なキャラクターディレクトリが見つかりません: {}"</span>,
-                char_name
-            )));
+                <span class="string">"必要なキャラクターディレクトリが見つかりません: {char_name}"
+            </span>)));
         }
     }
 
@@ -750,24 +740,24 @@
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="doccomment">/// キャラクターフォルダの存在を確認する
+<span class="doccomment">/// キャラクターフォルダの整合性チェック
 ///
-/// すべてのキャラクターフォルダが存在するかを確認します。
+/// すべてのキャラクター用フォルダが存在するかチェックする
 ///
 /// # 引数
-/// * `data_dir` - データディレクトリのパス
+/// * `data_dir` - データディレクトリへのパス
 ///
 /// # 戻り値
-/// `Result&lt;()&gt;` - 成功時は `Ok(())`, 失敗時はエラー
+/// `Result&lt;()&gt;` - 成功時は (), 失敗時はエラー
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>check_character_folders(data_dir: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"キャラクターフォルダの検証を開始します..."</span>.cyan());
 
     <span class="kw">let </span>data_path = Path::new(data_dir);
     <span class="kw">if </span>!data_path.exists() {
         <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::FileNotFound(<span class="macro">format!</span>(
-            <span class="string">"データディレクトリが見つかりません: {}"</span>,
-            data_dir
-        )));
+            <span class="string">"データディレクトリが見つかりません: {data_dir}"
+        </span>)));
     }
 
     <span class="comment">// CHARS配列からキャラクターフォルダを確認
@@ -791,15 +781,16 @@
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="doccomment">/// 不正なファイルデータをチェックする
+<span class="doccomment">/// データ整合性チェック
 ///
-/// JSON ファイルが正しく解析できるかを確認します。
+/// 全キャラクターデータの整合性を検証する
 ///
 /// # 引数
-/// * `data_dir` - データディレクトリのパス
+/// * `data_dir` - データディレクトリへのパス
 ///
 /// # 戻り値
-/// `Result&lt;()&gt;` - 成功時は `Ok(())`, 失敗時はエラー
+/// `Result&lt;()&gt;` - 成功時は (), 失敗時はエラー
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>check_data_integrity(data_dir: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"データ整合性の検証を開始します..."</span>.cyan());
 
@@ -821,9 +812,8 @@
                         <span class="macro">println!</span>(
                             <span class="string">"{}"</span>,
                             <span class="macro">format!</span>(
-                                <span class="string">"警告: キャラクターデータの解析に失敗しました: {} - {}"</span>,
-                                char_data_path.display(),
-                                e
+                                <span class="string">"警告: キャラクターデータの解析に失敗しました: {} - {e}"</span>,
+                                char_data_path.display()
                             )
                             .yellow()
                         );
@@ -833,9 +823,8 @@
                     <span class="macro">println!</span>(
                         <span class="string">"{}"</span>,
                         <span class="macro">format!</span>(
-                            <span class="string">"警告: キャラクターデータの読み込みに失敗しました: {} - {}"</span>,
-                            char_data_path.display(),
-                            e
+                            <span class="string">"警告: キャラクターデータの読み込みに失敗しました: {} - {e}"</span>,
+                            char_data_path.display()
                         )
                         .yellow()
                     );
@@ -852,9 +841,8 @@
                         <span class="macro">println!</span>(
                             <span class="string">"{}"</span>,
                             <span class="macro">format!</span>(
-                                <span class="string">"警告: 技データの解析に失敗しました: {} - {}"</span>,
-                                moves_data_path.display(),
-                                e
+                                <span class="string">"警告: 技データの解析に失敗しました: {} - {e}"</span>,
+                                moves_data_path.display()
                             )
                             .yellow()
                         );
@@ -864,9 +852,8 @@
                     <span class="macro">println!</span>(
                         <span class="string">"{}"</span>,
                         <span class="macro">format!</span>(
-                            <span class="string">"警告: 技データの読み込みに失敗しました: {} - {}"</span>,
-                            moves_data_path.display(),
-                            e
+                            <span class="string">"警告: 技データの読み込みに失敗しました: {} - {e}"</span>,
+                            moves_data_path.display()
                         )
                         .yellow()
                     );
@@ -882,10 +869,9 @@
 
 <span class="attr">#[cfg(test)]
 </span><span class="kw">mod </span>tests {
-    <span class="kw">use super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use </span><span class="kw">crate</span>::test_utils::{create_test_dir_structure, create_test_json_file};
+    <span class="kw">use super</span>::<span class="kw-2">*</span>; <span class="comment">// 親モジュールの全ての要素をインポート
+    </span><span class="kw">use </span><span class="kw">crate</span>::test_utils::{create_test_dir_structure, create_test_json_file};
     <span class="kw">use </span>std::path::PathBuf;
-    <span class="kw">use </span>tempfile::TempDir;
 
     <span class="kw">fn </span>setup_test_data(temp_dir: <span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
         <span class="comment">// Sol_Badguy のデータを作成

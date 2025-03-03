@@ -225,7 +225,7 @@
 <a href="#224" id="224">224</a>
 <a href="#225" id="225">225</a>
 <a href="#226" id="226">226</a>
-<a href="#227" id="227">227</a></pre></div><pre class="rust"><code><span class="doccomment">//! test_utils.rs
+<a href="#227" id="227">227</a></pre></div><pre class="rust"><code><span class="doccomment">//! `test_utils.rs`
 //!
 //! このファイルでは、テスト用のユーティリティ関数とモックデータを提供します。
 //! ユニットテストや結合テストで使用するためのヘルパー関数、テストデータ生成機能などを含みます。
@@ -272,7 +272,7 @@
         guts: <span class="prelude-val">Some</span>(<span class="number">2.0</span>),
         guard_balance: <span class="prelude-val">Some</span>(<span class="number">1.5</span>),
         prejump: <span class="prelude-val">Some</span>(<span class="number">4</span>),
-        umo: <span class="string">""</span>.to_string(),
+        umo: String::new(),
         forward_dash: <span class="prelude-val">Some</span>(<span class="number">7.5</span>),
         backdash: <span class="prelude-val">Some</span>(<span class="number">6.0</span>),
         backdash_duration: <span class="prelude-val">Some</span>(<span class="number">20</span>),
@@ -283,11 +283,11 @@
         jump_height: <span class="prelude-val">Some</span>(<span class="number">3.5</span>),
         high_jump_duration: <span class="prelude-val">Some</span>(<span class="number">55</span>),
         high_jump_height: <span class="prelude-val">Some</span>(<span class="number">4.7</span>),
-        earliest_iad: <span class="string">""</span>.to_string(),
-        ad_duration: <span class="string">""</span>.to_string(),
-        ad_distance: <span class="string">""</span>.to_string(),
-        abd_duration: <span class="string">""</span>.to_string(),
-        abd_distance: <span class="string">""</span>.to_string(),
+        earliest_iad: String::new(),
+        ad_duration: String::new(),
+        ad_distance: String::new(),
+        abd_duration: String::new(),
+        abd_distance: String::new(),
         movement_tension: <span class="prelude-val">Some</span>(<span class="number">0.1</span>),
         jump_tension: <span class="prelude-val">Some</span>(<span class="number">0.2</span>),
         airdash_tension: <span class="prelude-val">Some</span>(<span class="number">0.15</span>),
@@ -332,8 +332,8 @@
             scaling: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
             invincibility: <span class="string">"None"</span>.to_string(),
             cancel: <span class="string">"Special, Super"</span>.to_string(),
-            caption: <span class="string">""</span>.to_string(),
-            notes: <span class="string">""</span>.to_string(),
+            caption: String::new(),
+            notes: String::new(),
         },
         MoveInfo {
             input: <span class="string">"236K"</span>.to_string(),
@@ -357,8 +357,8 @@
             scaling: <span class="prelude-val">Some</span>(<span class="number">0.9</span>),
             invincibility: <span class="string">"None"</span>.to_string(),
             cancel: <span class="string">"None"</span>.to_string(),
-            caption: <span class="string">""</span>.to_string(),
-            notes: <span class="string">""</span>.to_string(),
+            caption: String::new(),
+            notes: String::new(),
         },
     ]
 }

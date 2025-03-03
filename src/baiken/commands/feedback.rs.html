@@ -51,8 +51,7 @@
 <a href="#50" id="50">50</a>
 <a href="#51" id="51">51</a>
 <a href="#52" id="52">52</a>
-<a href="#53" id="53">53</a>
-<a href="#54" id="54">54</a></pre></div><pre class="rust"><code><span class="doccomment">//! feedback.rs
+<a href="#53" id="53">53</a></pre></div><pre class="rust"><code><span class="doccomment">//! `feedback.rs`
 //!
 //! フィードバック送信モジュール  
 //! Discordコマンド /feedback 実装モジュール  
@@ -82,7 +81,6 @@
     // ファイルオープン処理
     // 'request.txt' を新規作成（存在しなければ）し、既存の場合は末尾に追記するモードでオープンする
     </span><span class="kw">let </span><span class="kw-2">mut </span>file = OpenOptions::new()
-        .write(<span class="bool-val">true</span>)
         .create(<span class="bool-val">true</span>)
         .append(<span class="bool-val">true</span>)
         .open(<span class="string">"./request.txt"</span>)
@@ -94,7 +92,7 @@
 
     <span class="comment">// ファイル書き込み処理
     // 整形済みのテキストを 'request.txt' に書き込む
-    </span><span class="macro">write!</span>(file, <span class="string">"{}"</span>, new_text).expect(<span class="string">"\nFailed to write to 'request.txt'"</span>);
+    </span><span class="macro">write!</span>(file, <span class="string">"{new_text}"</span>).expect(<span class="string">"\nFailed to write to 'request.txt'"</span>);
 
     <span class="comment">// ログ出力処理
     // コンソールに書き込み完了のログを出力し、黄色で強調表示する

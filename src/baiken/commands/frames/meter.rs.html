@@ -667,18 +667,18 @@
 
     // 画像情報デシリアライズ
     </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap(); <span class="comment">// 画像リンク抽出
-    </span><span class="kw">let </span>move_info = <span class="kw-2">&amp;</span>moves_info[index]; <span class="comment">// 対象ムーブ情報取得
+    </span><span class="kw">let </span>selected_move_info = <span class="kw-2">&amp;</span>moves_info[index]; <span class="comment">// 対象ムーブ情報取得
     </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = String::new(); <span class="comment">// 埋め込み画像初期化
 
     // ムーブ画像送信処理
     </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
         <span class="comment">// 画像リンク走査ループ
-        </span><span class="kw">if </span>move_info.input == img_links.input {
+        </span><span class="kw">if </span>selected_move_info.input == img_links.input {
             <span class="comment">// ヒット判定
             </span><span class="macro">println!</span>(
                 <span class="string">"{}"</span>,
                 (<span class="string">"Successfully read move '"</span>.to_owned()
-                    + <span class="kw-2">&amp;</span>move_info.input.to_string()
+                    + <span class="kw-2">&amp;</span>selected_move_info.input.to_string()
                     + <span class="string">"' in '"
                     </span>+ <span class="kw-2">&amp;</span>character_arg_altered
                     + <span class="string">".json' file."</span>)
@@ -695,12 +695,12 @@
 
     <span class="comment">// フレームメーター文字列生成処理
     </span><span class="kw">let </span><span class="kw-2">mut </span>meter_msg = String::from(<span class="string">"`"</span>); <span class="comment">// バッククォート開始
-    </span>meter_msg += <span class="kw-2">&amp;</span>startup_frames(move_info).<span class="kw">await</span>; <span class="comment">// 開始フレーム処理
-    </span>meter_msg += <span class="kw-2">&amp;</span>active_frames(move_info).<span class="kw">await</span>; <span class="comment">// アクティブフレーム処理
-    </span>meter_msg += <span class="kw-2">&amp;</span>recovery_frames(move_info).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム処理
+    </span>meter_msg += <span class="kw-2">&amp;</span>startup_frames(selected_move_info).<span class="kw">await</span>; <span class="comment">// 開始フレーム処理
+    </span>meter_msg += <span class="kw-2">&amp;</span>active_frames(selected_move_info).<span class="kw">await</span>; <span class="comment">// アクティブフレーム処理
+    </span>meter_msg += <span class="kw-2">&amp;</span>recovery_frames(selected_move_info).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム処理
     </span>meter_msg += <span class="string">"`"</span>; <span class="comment">// バッククォート終了
 
-    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>; <span class="comment">// 埋め込みタイトル生成
+    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>selected_move_info.input + <span class="string">"**__"</span>; <span class="comment">// 埋め込みタイトル生成
 
     </span><span class="kw">let </span>embed_url =
         <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"#Overview"</span>; <span class="comment">// 埋め込みURL生成
@@ -710,9 +710,9 @@
         </span>.title(embed_title) <span class="comment">// タイトル設定
         </span>.url(embed_url) <span class="comment">// URL設定
         </span>.fields(<span class="macro">vec!</span>[
-            (<span class="string">"Startup"</span>, <span class="kw-2">&amp;</span>startup_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// 開始フレームフィールド
-            </span>(<span class="string">"Active"</span>, <span class="kw-2">&amp;</span>active_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>),   <span class="comment">// アクティブフレームフィールド
-            </span>(<span class="string">"Recovery"</span>, <span class="kw-2">&amp;</span>recovery_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// リカバリーフレームフィールド
+            (<span class="string">"Startup"</span>, <span class="kw-2">&amp;</span>startup_frames(selected_move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// 開始フレームフィールド
+            </span>(<span class="string">"Active"</span>, <span class="kw-2">&amp;</span>active_frames(selected_move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// アクティブフレームフィールド
+            </span>(<span class="string">"Recovery"</span>, <span class="kw-2">&amp;</span>recovery_frames(selected_move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// リカバリーフレームフィールド
         </span>])
         .image(embed_image); <span class="comment">// 画像設定
 

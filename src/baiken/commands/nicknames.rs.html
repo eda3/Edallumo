@@ -90,26 +90,26 @@
     <span class="comment">// ニックネーム情報を整形し、メッセージ文字列に追加
     </span><span class="kw">for </span>nicknames <span class="kw">in </span>vec_nicknames {
         <span class="comment">// キャラクター名の追加
-        </span>nicks_as_msg =
-            nicks_as_msg.to_owned() + <span class="string">"\n* Character: " </span>+ <span class="kw-2">&amp;</span>nicknames.character.to_string();
+        </span>nicks_as_msg = nicks_as_msg.clone() + <span class="string">"\n* Character: " </span>+ <span class="kw-2">&amp;</span>nicknames.character.to_string();
 
         <span class="comment">// ニックネームの追加
         </span>nicks_as_msg += <span class="string">"\n+ Nicknames: "</span>;
 
         <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..nicknames.nicknames.len() {
-            <span class="kw">if </span>x != nicknames.nicknames.len() - <span class="number">1 </span>{
-                <span class="comment">// 空のニックネームが含まれている場合を考慮し、カンマ区切りで追加
-                </span><span class="kw">if </span>!nicknames.nicknames[x].is_empty() {
-                    nicks_as_msg = nicks_as_msg + <span class="kw-2">&amp;</span>nicknames.nicknames[x] + <span class="string">", "</span>;
-                } <span class="kw">else </span>{
-                    nicks_as_msg = nicks_as_msg + <span class="kw-2">&amp;</span>nicknames.nicknames[x];
-                }
+            <span class="kw">if </span>x == nicknames.nicknames.len() - <span class="number">1 </span>{
+                nicks_as_msg.push_str(<span class="kw-2">&amp;</span>nicknames.nicknames[x]);
             } <span class="kw">else </span>{
-                nicks_as_msg = nicks_as_msg + <span class="kw-2">&amp;</span>nicknames.nicknames[x];
+                <span class="comment">// 空のニックネームが含まれている場合を考慮し、カンマ区切りで追加
+                </span><span class="kw">if </span>nicknames.nicknames[x].is_empty() {
+                    nicks_as_msg.push_str(<span class="kw-2">&amp;</span>nicknames.nicknames[x]);
+                } <span class="kw">else </span>{
+                    nicks_as_msg.push_str(<span class="kw-2">&amp;</span>nicknames.nicknames[x]);
+                    nicks_as_msg.push_str(<span class="string">", "</span>);
+                }
             }
         }
         <span class="comment">// 各キャラクターのニックネーム情報の終了マーク
-        </span>nicks_as_msg = nicks_as_msg.to_owned() + <span class="string">".\n"</span>;
+        </span>nicks_as_msg = nicks_as_msg.clone() + <span class="string">".\n"</span>;
     }
 
     <span class="comment">// メッセージ終端のマーク

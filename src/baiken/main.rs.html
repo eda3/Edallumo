@@ -295,8 +295,7 @@
 <a href="#294" id="294">294</a>
 <a href="#295" id="295">295</a>
 <a href="#296" id="296">296</a>
-<a href="#297" id="297">297</a>
-<a href="#298" id="298">298</a></pre></div><pre class="rust"><code><span class="doccomment">//! main.rs
+<a href="#297" id="297">297</a></pre></div><pre class="rust"><code><span class="doccomment">//! `main.rs`
 //!
 //! このファイルは、Discord Bot の起動基盤および各種機能モジュールの読み込み・初期設定を行う。
 //! poise フレームワークを利用し、コマンドの登録、エラーハンドリング、定期更新タスクなどを構成する。
@@ -320,8 +319,8 @@
 <span class="comment">// 外部クレート読み込み
 </span><span class="kw">use </span>colored::Colorize; <span class="comment">// 文字色変換用
 </span><span class="kw">use </span>commands::{feedback, frames, help, hitboxes, moves, nicknames, register, update};
-<span class="kw">use </span>dotenv;
-<span class="kw">use </span>poise::serenity_prelude <span class="kw">as </span>serenity; <span class="comment">// Serenity 用エイリアス
+<span class="attr">#[allow(unused_imports)]
+</span><span class="kw">use </span>poise::serenity_prelude <span class="kw">as </span>serenity; <span class="comment">// Serenity 用エイリアス
 
 </span><span class="doccomment">/// コンテキスト型定義
 ///
@@ -400,25 +399,25 @@
         poise::FrameworkError::Setup { error, .. } =&gt; {
             <span class="macro">eprintln!</span>(
                 <span class="string">"{}"</span>,
-                <span class="macro">format!</span>(<span class="string">"フレームワークのセットアップエラー: {}"</span>, error).red()
+                <span class="macro">format!</span>(<span class="string">"フレームワークのセットアップエラー: {error}"</span>).red()
             );
-            <span class="prelude-val">Err</span>(AppError::Discord(<span class="macro">format!</span>(<span class="string">"セットアップエラー: {}"</span>, error)))
+            <span class="prelude-val">Err</span>(AppError::Discord(<span class="macro">format!</span>(<span class="string">"セットアップエラー: {error}"</span>)))
         }
         poise::FrameworkError::Command { error, ctx, .. } =&gt; {
-            <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"コマンド実行エラー: {}"</span>, error).red());
+            <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"コマンド実行エラー: {error}"</span>).red());
             <span class="kw">let </span>embed = poise::CreateReply::default().embed(
                 serenity::CreateEmbed::new()
                     .title(<span class="string">"エラーが発生しました"</span>)
-                    .description(<span class="macro">format!</span>(<span class="string">"```{:?}```"</span>, error))
+                    .description(<span class="macro">format!</span>(<span class="string">"```{error:?}```"</span>))
                     .color(<span class="number">0xFF0000</span>),
             );
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.send(embed).<span class="kw">await </span>{
-                <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"エラーメッセージ送信失敗: {}"</span>, e).red());
+                <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"エラーメッセージ送信失敗: {e}"</span>).red());
             }
             <span class="prelude-val">Ok</span>(())
         }
         poise::FrameworkError::CommandPanic { payload, ctx, .. } =&gt; {
-            <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"コマンドパニック: {:?}"</span>, payload).red());
+            <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"コマンドパニック: {payload:?}"</span>).red());
             <span class="kw">let </span>embed = poise::CreateReply::default().embed(
                 serenity::CreateEmbed::new()
                     .title(<span class="string">"内部エラーが発生しました"</span>)
@@ -428,12 +427,12 @@
                     .color(<span class="number">0xFF0000</span>),
             );
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.send(embed).<span class="kw">await </span>{
-                <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"エラーメッセージ送信失敗: {}"</span>, e).red());
+                <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"エラーメッセージ送信失敗: {e}"</span>).red());
             }
             <span class="prelude-val">Ok</span>(())
         }
         <span class="kw">_ </span>=&gt; {
-            <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"その他のエラー: {}"</span>, error).red());
+            <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"その他のエラー: {error}"</span>).red());
             <span class="prelude-val">Ok</span>(())
         }
     }
@@ -449,9 +448,9 @@
     </span>dotenv::dotenv().map_err(|e| {
         <span class="macro">eprintln!</span>(
             <span class="string">"{}"</span>,
-            <span class="macro">format!</span>(<span class="string">".envファイルの読み込みに失敗しました: {}"</span>, e).red()
+            <span class="macro">format!</span>(<span class="string">".envファイルの読み込みに失敗しました: {e}"</span>).red()
         );
-        AppError::Config(<span class="macro">format!</span>(<span class="string">".envファイルの読み込みに失敗しました: {}"</span>, e))
+        AppError::Config(<span class="macro">format!</span>(<span class="string">".envファイルの読み込みに失敗しました: {e}"</span>))
     })<span class="question-mark">?</span>;
 
     <span class="comment">// 環境変数からトークンを読み込む（.envから設定された変数）
@@ -478,12 +477,11 @@
     </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = check::validate_data_dir(<span class="kw-2">&amp;</span>data_dir) {
         <span class="macro">eprintln!</span>(
             <span class="string">"{}"</span>,
-            <span class="macro">format!</span>(<span class="string">"エラー: データディレクトリの確認に失敗しました: {}"</span>, e).red()
+            <span class="macro">format!</span>(<span class="string">"エラー: データディレクトリの確認に失敗しました: {e}"</span>).red()
         );
         <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::Config(<span class="macro">format!</span>(
-            <span class="string">"データディレクトリの確認に失敗しました: {}"</span>,
-            e
-        )));
+            <span class="string">"データディレクトリの確認に失敗しました: {e}"
+        </span>)));
     }
 
     <span class="comment">// フレームワークの設定
@@ -511,7 +509,7 @@
                     <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = on_error(error).<span class="kw">await </span>{
                         <span class="macro">eprintln!</span>(
                             <span class="string">"{}"</span>,
-                            <span class="macro">format!</span>(<span class="string">"エラー処理中にエラーが発生しました: {}"</span>, e).red()
+                            <span class="macro">format!</span>(<span class="string">"エラー処理中にエラーが発生しました: {e}"</span>).red()
                         );
                     }
                 })
@@ -522,7 +520,7 @@
                     <span class="kw">if let </span>serenity::FullEvent::Ready { data_about_bot, .. } = event {
                         <span class="macro">println!</span>(
                             <span class="string">"{}"</span>,
-                            <span class="macro">format!</span>(<span class="string">"ログイン: {}"</span>, data_about_bot.user.name).green()
+                            <span class="macro">format!</span>(<span class="string">"ログイン: {name}"</span>, name = data_about_bot.user.name).green()
                         );
                     }
                     <span class="prelude-val">Ok</span>(())

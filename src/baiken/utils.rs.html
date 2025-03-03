@@ -548,34 +548,43 @@
 <a href="#547" id="547">547</a>
 <a href="#548" id="548">548</a>
 <a href="#549" id="549">549</a>
-<a href="#550" id="550">550</a></pre></div><pre class="rust"><code><span class="doccomment">//! utils.rs
+<a href="#550" id="550">550</a>
+<a href="#551" id="551">551</a>
+<a href="#552" id="552">552</a>
+<a href="#553" id="553">553</a>
+<a href="#554" id="554">554</a>
+<a href="#555" id="555">555</a>
+<a href="#556" id="556">556</a>
+<a href="#557" id="557">557</a></pre></div><pre class="rust"><code><span class="doccomment">//! `utils.rs`
 //!
 //! このファイルでは、アプリケーション全体で使用される共通ユーティリティ関数を提供します。
 //! ファイル操作、文字列処理、データ変換などの汎用的な機能を含みます。
 
-</span><span class="kw">use </span><span class="kw">crate</span>::error::{AppError, <span class="prelude-ty">Result</span>};
-<span class="kw">use </span><span class="kw">crate</span>::models::{CharInfo, MoveAliases, MoveInfo};
-<span class="kw">use </span>colored::Colorize;
+</span><span class="kw">use </span>md5::{Digest, Md5};
 <span class="kw">use </span>serde::{de, ser};
-<span class="kw">use </span>serde_json;
 <span class="kw">use </span>std::{
     fs::{<span class="self">self</span>, File},
     io::{<span class="self">self</span>, Read, Write},
     path::Path,
 };
 
-<span class="doccomment">/// ファイルからJSONデータを読み込む
+<span class="kw">use </span><span class="kw">crate</span>::error::{AppError, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span><span class="kw">crate</span>::models::{CharInfo, MoveAliases, MoveInfo};
+<span class="kw">use </span>colored::Colorize;
+
+<span class="doccomment">/// JSONファイルを読み込む
 ///
 /// 指定されたパスのJSONファイルを読み込み、指定された型にデシリアライズします。
 ///
 /// # 引数
-/// * `path` - 読み込むJSONファイルのパス
+/// * `path` - 読み込むファイルのパス
 ///
 /// # 戻り値
 /// `Result&lt;T&gt;` - デシリアライズされたデータ
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>read_json_file&lt;T&gt;(path: <span class="kw">impl </span>AsRef&lt;Path&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;T&gt;
 <span class="kw">where
-    </span>T: serde::de::DeserializeOwned,
+    </span>T: <span class="kw">for</span>&lt;<span class="lifetime">'de</span>&gt; serde::Deserialize&lt;<span class="lifetime">'de</span>&gt;,
 {
     <span class="kw">let </span>path = path.as_ref();
     <span class="kw">let </span><span class="kw-2">mut </span>file = File::open(path).map_err(|e| {
@@ -617,6 +626,7 @@
 ///
 /// # 戻り値
 /// `Result&lt;()&gt;` - 書き込み結果
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>write_json_file&lt;T&gt;(path: <span class="kw">impl </span>AsRef&lt;Path&gt;, data: <span class="kw-2">&amp;</span>T) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt;
 <span class="kw">where
     </span>T: serde::Serialize,
@@ -624,15 +634,17 @@
     <span class="kw">let </span>path = path.as_ref();
     <span class="kw">let </span>json = serde_json::to_string_pretty(data).map_err(|e| {
         AppError::Json(ser::Error::custom(<span class="macro">format!</span>(
-            <span class="string">"JSONへの変換に失敗しました: {}"</span>,
-            e
-        )))
+            <span class="string">"JSONへの変換に失敗しました: {e}"
+        </span>)))
     })<span class="question-mark">?</span>;
 
     <span class="kw">let </span><span class="kw-2">mut </span>file = File::create(path).map_err(|e| {
         AppError::Io(io::Error::new(
             io::ErrorKind::Other,
-            <span class="macro">format!</span>(<span class="string">"ファイルの作成に失敗しました: {} - {}"</span>, path.display(), e),
+            <span class="macro">format!</span>(
+                <span class="string">"ファイルの作成に失敗しました: {path_display} - {e}"</span>,
+                path_display = path.display()
+            ),
         ))
     })<span class="question-mark">?</span>;
 
@@ -640,9 +652,8 @@
         AppError::Io(io::Error::new(
             io::ErrorKind::Other,
             <span class="macro">format!</span>(
-                <span class="string">"ファイルの書き込みに失敗しました: {} - {}"</span>,
-                path.display(),
-                e
+                <span class="string">"ファイルの書き込みに失敗しました: {path_display} - {e}"</span>,
+                path_display = path.display()
             ),
         ))
     })<span class="question-mark">?</span>;
@@ -650,24 +661,23 @@
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="doccomment">/// ディレクトリ内のすべてのJSONファイルを読み込む
+<span class="doccomment">/// 複数のJSONファイルを読み込む
 ///
-/// 指定されたディレクトリ内のすべてのJSONファイルを読み込み、
-/// ファイル名とデシリアライズされたデータのマップを返します。
+/// 指定されたディレクトリ内のJSONファイルをすべて読み込み、指定された型にデシリアライズします。
 ///
 /// # 引数
-/// * `dir_path` - 読み込むディレクトリのパス
+/// * `dir` - 読み込むディレクトリのパス
+/// * `extension` - 読み込むファイルの拡張子（デフォルトは "json"）
 ///
 /// # 戻り値
-/// `Result&lt;HashMap&lt;String, T&gt;&gt;` - ファイル名とデータのマップ
-</span><span class="kw">pub fn </span>read_all_json_files&lt;T&gt;(
-    dir_path: <span class="kw">impl </span>AsRef&lt;Path&gt;,
-) -&gt; <span class="prelude-ty">Result</span>&lt;std::collections::HashMap&lt;String, T&gt;&gt;
+/// `Result&lt;Vec&lt;T&gt;&gt;` - デシリアライズされたデータのベクター
+</span><span class="attr">#[allow(dead_code)]
+</span><span class="kw">pub fn </span>read_all_json_files&lt;T&gt;(dir: <span class="kw">impl </span>AsRef&lt;Path&gt;, extension: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;T&gt;&gt;
 <span class="kw">where
-    </span>T: serde::de::DeserializeOwned,
+    </span>T: <span class="kw">for</span>&lt;<span class="lifetime">'de</span>&gt; serde::Deserialize&lt;<span class="lifetime">'de</span>&gt;,
 {
-    <span class="kw">let </span>dir_path = dir_path.as_ref();
-    <span class="kw">let </span><span class="kw-2">mut </span>result = std::collections::HashMap::new();
+    <span class="kw">let </span>dir_path = dir.as_ref();
+    <span class="kw">let </span><span class="kw-2">mut </span>result = Vec::new();
 
     <span class="kw">for </span>entry <span class="kw">in </span>fs::read_dir(dir_path).map_err(|e| {
         AppError::FileNotFound(<span class="macro">format!</span>(
@@ -679,20 +689,18 @@
         <span class="kw">let </span>entry = entry.map_err(|e| {
             AppError::Io(io::Error::new(
                 io::ErrorKind::Other,
-                <span class="macro">format!</span>(<span class="string">"ディレクトリエントリの読み込みに失敗しました: {}"</span>, e),
+                <span class="macro">format!</span>(<span class="string">"ディレクトリエントリの読み込みに失敗しました: {e}"</span>),
             ))
         })<span class="question-mark">?</span>;
 
         <span class="kw">let </span>path = entry.path();
-        <span class="kw">if </span>path.is_file() &amp;&amp; path.extension().map_or(<span class="bool-val">false</span>, |ext| ext == <span class="string">"json"</span>) {
-            <span class="kw">let </span>file_name = path
-                .file_stem()
-                .and_then(|s| s.to_str())
-                .ok_or_else(|| AppError::Other(<span class="macro">format!</span>(<span class="string">"無効なファイル名: {}"</span>, path.display())))<span class="question-mark">?
-                </span>.to_string();
-
+        <span class="kw">if </span>path.is_file()
+            &amp;&amp; path
+                .extension()
+                .map_or(<span class="bool-val">false</span>, |ext| ext == extension.unwrap_or(<span class="string">"json"</span>))
+        {
             <span class="kw">let </span>data = read_json_file(<span class="kw-2">&amp;</span>path)<span class="question-mark">?</span>;
-            result.insert(file_name, data);
+            result.push(data);
         }
     }
 
@@ -701,7 +709,7 @@
 
 <span class="doccomment">/// キャラクター情報を読み込む
 ///
-/// 指定されたキャラクター名の情報をデータディレクトリから読み込みます。
+/// 指定されたキャラクターの情報をJSONファイルから読み込みます。
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリのパス
@@ -709,53 +717,53 @@
 ///
 /// # 戻り値
 /// `Result&lt;CharInfo&gt;` - キャラクター情報
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>load_character_info(data_dir: <span class="kw-2">&amp;</span>str, char_name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;CharInfo&gt; {
     <span class="kw">let </span>char_path = Path::new(data_dir).join(char_name).join(<span class="string">"character.json"</span>);
 
     <span class="kw">if </span>!char_path.exists() {
         <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::CharacterNotFound(<span class="macro">format!</span>(
-            <span class="string">"キャラクター情報が見つかりません: {}"</span>,
-            char_name
-        )));
+            <span class="string">"キャラクター情報が見つかりません: {char_name}"
+        </span>)));
     }
 
     read_json_file(char_path)
 }
 
-<span class="doccomment">/// キャラクターの技情報を読み込む
+<span class="doccomment">/// 技情報を読み込む
 ///
-/// 指定されたキャラクター名の技情報をデータディレクトリから読み込みます。
+/// 指定されたキャラクターの技情報をJSONファイルから読み込みます。
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリのパス
 /// * `char_name` - キャラクター名
 ///
 /// # 戻り値
-/// `Result&lt;Vec&lt;MoveInfo&gt;&gt;` - 技情報のリスト
+/// `Result&lt;Vec&lt;MoveInfo&gt;&gt;` - 技情報のベクター
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>load_move_info(data_dir: <span class="kw-2">&amp;</span>str, char_name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;MoveInfo&gt;&gt; {
     <span class="kw">let </span>moves_path = Path::new(data_dir).join(char_name).join(<span class="string">"moves.json"</span>);
 
     <span class="kw">if </span>!moves_path.exists() {
         <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::CharacterNotFound(<span class="macro">format!</span>(
-            <span class="string">"技情報が見つかりません: {}"</span>,
-            char_name
-        )));
+            <span class="string">"技情報が見つかりません: {char_name}"
+        </span>)));
     }
 
     read_json_file(moves_path)
 }
 
-<span class="doccomment">/// キャラクターの技エイリアス情報を読み込む
+<span class="doccomment">/// 技エイリアス情報を読み込む
 ///
-/// 指定されたキャラクター名の技エイリアス情報をデータディレクトリから読み込みます。
-/// エイリアスファイルが存在しない場合は空のリストを返します。
+/// 指定されたキャラクターの技エイリアス情報をJSONファイルから読み込みます。
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリのパス
 /// * `char_name` - キャラクター名
 ///
 /// # 戻り値
-/// `Result&lt;Vec&lt;MoveAliases&gt;&gt;` - 技エイリアス情報のリスト
+/// `Result&lt;Vec&lt;MoveAliases&gt;&gt;` - 技エイリアス情報のベクター
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>load_move_aliases(data_dir: <span class="kw-2">&amp;</span>str, char_name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;MoveAliases&gt;&gt; {
     <span class="kw">let </span>aliases_path = Path::new(data_dir).join(char_name).join(<span class="string">"aliases.json"</span>);
 
@@ -766,51 +774,52 @@
     read_json_file(aliases_path)
 }
 
-<span class="doccomment">/// 入力コマンドを正規化する
+<span class="doccomment">/// 入力文字列を正規化する
 ///
-/// 入力コマンドを正規化し、検索しやすい形式に変換します。
+/// 入力文字列から空白や記号を削除し、小文字に変換します。
 ///
 /// # 引数
-/// * `input` - 正規化する入力コマンド
+/// * `input` - 正規化する入力文字列
 ///
 /// # 戻り値
-/// `String` - 正規化された入力コマンド
+/// `String` - 正規化された文字列
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>normalize_input(input: <span class="kw-2">&amp;</span>str) -&gt; String {
-    input
-        .to_lowercase()
-        .replace(<span class="string">" "</span>, <span class="string">""</span>)
-        .replace(<span class="string">"　"</span>, <span class="string">""</span>)
-        .replace(<span class="string">"."</span>, <span class="string">""</span>)
+    <span class="kw">let </span><span class="kw-2">mut </span>result = input.to_lowercase();
+    <span class="kw">for </span>c <span class="kw">in </span>[<span class="string">' '</span>, <span class="string">'　'</span>, <span class="string">'.'</span>] {
+        result = result.replace(c, <span class="string">""</span>);
+    }
+    result
 }
 
-<span class="doccomment">/// 技名を正規化する
+<span class="doccomment">/// 技名称を正規化する
 ///
-/// 技名を正規化し、検索しやすい形式に変換します。
+/// 技名称から空白や記号を削除し、正規化します。
 ///
 /// # 引数
-/// * `name` - 正規化する技名
+/// * `name` - 正規化する技名称
 ///
 /// # 戻り値
-/// `String` - 正規化された技名
+/// `String` - 正規化された技名称
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>normalize_move_name(name: <span class="kw-2">&amp;</span>str) -&gt; String {
-    name.to_lowercase()
-        .replace(<span class="string">" "</span>, <span class="string">""</span>)
-        .replace(<span class="string">"　"</span>, <span class="string">""</span>)
-        .replace(<span class="string">"-"</span>, <span class="string">""</span>)
-        .replace(<span class="string">"_"</span>, <span class="string">""</span>)
+    <span class="kw">let </span><span class="kw-2">mut </span>result = name.to_lowercase();
+    <span class="kw">for </span>c <span class="kw">in </span>[<span class="string">' '</span>, <span class="string">'　'</span>, <span class="string">'-'</span>, <span class="string">'_'</span>] {
+        result = result.replace(c, <span class="string">""</span>);
+    }
+    result
 }
 
-<span class="doccomment">/// 指定された技を検索する
-///
-/// 指定されたキャラクターの技リストから、指定された入力または名前に一致する技を検索します。
+<span class="doccomment">/// 入力に一致する技を検索する
 ///
 /// # 引数
-/// * `moves` - 検索対象の技リスト
-/// * `aliases` - 技のエイリアスリスト
-/// * `query` - 検索クエリ（入力コマンドまたは技名）
+/// * `moves` - 検索対象の技情報のベクター
+/// * `aliases` - 技エイリアス情報のベクター
+/// * `query` - 検索クエリ
 ///
 /// # 戻り値
-/// `Option&lt;MoveInfo&gt;` - 見つかった技情報
+/// `Option&lt;MoveInfo&gt;` - 一致した技情報（見つからなかった場合は None）
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>find_move(moves: <span class="kw-2">&amp;</span>[MoveInfo], aliases: <span class="kw-2">&amp;</span>[MoveAliases], query: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;MoveInfo&gt; {
     <span class="kw">let </span>normalized_query = normalize_input(query);
 
@@ -852,13 +861,12 @@
 /// 指定されたファイルのMD5ハッシュを計算します。
 ///
 /// # 引数
-/// * `path` - ハッシュを計算するファイルのパス
+/// * `path` - ファイルのパス
 ///
 /// # 戻り値
 /// `Result&lt;String&gt;` - MD5ハッシュ文字列
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>calculate_file_hash(path: <span class="kw">impl </span>AsRef&lt;Path&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;String&gt; {
-    <span class="kw">use </span>md5::{Digest, Md5};
-
     <span class="kw">let </span>path = path.as_ref();
     <span class="kw">let </span><span class="kw-2">mut </span>file = File::open(path).map_err(|e| {
         AppError::FileNotFound(<span class="macro">format!</span>(
@@ -884,7 +892,7 @@
     hasher.update(<span class="kw-2">&amp;</span>buffer);
     <span class="kw">let </span>result = hasher.finalize();
 
-    <span class="prelude-val">Ok</span>(<span class="macro">format!</span>(<span class="string">"{:x}"</span>, result))
+    <span class="prelude-val">Ok</span>(<span class="macro">format!</span>(<span class="string">"{result:x}"</span>))
 }
 
 <span class="doccomment">/// ディレクトリが存在することを確認し、存在しない場合は作成する
@@ -892,10 +900,11 @@
 /// 指定されたディレクトリが存在することを確認し、存在しない場合は作成します。
 ///
 /// # 引数
-/// * `dir_path` - 確認または作成するディレクトリのパス
+/// * `dir_path` - ディレクトリのパス
 ///
 /// # 戻り値
-/// `Result&lt;()&gt;` - 処理結果
+/// `Result&lt;()&gt;` - 結果
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>ensure_directory_exists(dir_path: <span class="kw">impl </span>AsRef&lt;Path&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="kw">let </span>dir_path = dir_path.as_ref();
 
@@ -912,16 +921,20 @@
         })<span class="question-mark">?</span>;
         <span class="macro">println!</span>(
             <span class="string">"{}"</span>,
-            <span class="macro">format!</span>(<span class="string">"ディレクトリを作成しました: {}"</span>, dir_path.display()).green()
+            <span class="macro">format!</span>(
+                <span class="string">"ディレクトリを作成しました: {dir_path_display}"</span>,
+                dir_path_display = dir_path.display()
+            )
+            .green()
         );
     }
 
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="doccomment">/// 文字列を指定された長さで切り詰める
+<span class="doccomment">/// 文字列を指定した長さに切り詰める
 ///
-/// 文字列が指定された長さを超える場合、切り詰めて末尾に「...」を追加します。
+/// 文字列が指定した長さを超える場合、切り詰めて末尾に「...」を追加します。
 ///
 /// # 引数
 /// * `s` - 切り詰める文字列
@@ -929,6 +942,7 @@
 ///
 /// # 戻り値
 /// `String` - 切り詰められた文字列
+</span><span class="attr">#[allow(dead_code)]
 </span><span class="kw">pub fn </span>truncate_string(s: <span class="kw-2">&amp;</span>str, max_len: usize) -&gt; String {
     <span class="kw">if </span>s.len() &lt;= max_len {
         s.to_string()
@@ -987,8 +1001,8 @@
                 scaling: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
                 invincibility: <span class="string">"None"</span>.to_string(),
                 cancel: <span class="string">"Special, Super"</span>.to_string(),
-                caption: <span class="string">""</span>.to_string(),
-                notes: <span class="string">""</span>.to_string(),
+                caption: String::new(),
+                notes: String::new(),
             },
             MoveInfo {
                 input: <span class="string">"236P"</span>.to_string(),
@@ -1012,8 +1026,8 @@
                 scaling: <span class="prelude-val">Some</span>(<span class="number">0.9</span>),
                 invincibility: <span class="string">"None"</span>.to_string(),
                 cancel: <span class="string">"Super"</span>.to_string(),
-                caption: <span class="string">""</span>.to_string(),
-                notes: <span class="string">""</span>.to_string(),
+                caption: String::new(),
+                notes: String::new(),
             },
         ];
 
@@ -1078,8 +1092,8 @@
             scaling: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
             invincibility: <span class="string">"None"</span>.to_string(),
             cancel: <span class="string">"Special, Super"</span>.to_string(),
-            caption: <span class="string">""</span>.to_string(),
-            notes: <span class="string">""</span>.to_string(),
+            caption: String::new(),
+            notes: String::new(),
         }];
 
         <span class="kw">let </span>test_file = temp_path.join(<span class="string">"test_moves.json"</span>);

@@ -60,7 +60,7 @@
 <a href="#59" id="59">59</a>
 <a href="#60" id="60">60</a>
 <a href="#61" id="61">61</a>
-<a href="#62" id="62">62</a></pre></div><pre class="rust"><code><span class="doccomment">//! error.rs
+<a href="#62" id="62">62</a></pre></div><pre class="rust"><code><span class="doccomment">//! `error.rs`
 //!
 //! このファイルでは、アプリケーション全体で使用するエラー型を定義します。
 //! `thiserror`クレートを使用して構造化エラー処理を実装しています。
@@ -113,13 +113,13 @@
     </span>Other(String),
 }
 
-<span class="doccomment">/// Box&lt;dyn std::error::Error&gt;型からAppError型への変換
+<span class="comment">// `Box&lt;dyn std::error::Error&gt;型からAppError型への変換
 </span><span class="kw">impl </span>From&lt;Box&lt;<span class="kw">dyn </span>std::error::Error&gt;&gt; <span class="kw">for </span>AppError {
     <span class="kw">fn </span>from(error: Box&lt;<span class="kw">dyn </span>std::error::Error&gt;) -&gt; <span class="self">Self </span>{
         AppError::Other(error.to_string())
     }
 }
 
-<span class="doccomment">/// 結果型の別名定義（アプリケーション全体で使用）
+<span class="doccomment">/// `結果型の別名定義（アプリケーション全体で使用）`
 </span><span class="kw">pub type </span><span class="prelude-ty">Result</span>&lt;T&gt; = std::result::Result&lt;T, AppError&gt;;
 </code></pre></div></section></main></body></html>

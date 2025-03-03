@@ -124,8 +124,7 @@
 <a href="#123" id="123">123</a>
 <a href="#124" id="124">124</a>
 <a href="#125" id="125">125</a>
-<a href="#126" id="126">126</a>
-<a href="#127" id="127">127</a></pre></div><pre class="rust"><code><span class="doccomment">//! utils.rs
+<a href="#126" id="126">126</a></pre></div><pre class="rust"><code><span class="doccomment">//! `utils.rs`
 //!
 //! このファイルは、ムーブのフレームメーター表示機能に関連する関数群を定義する。
 //! 各ムーブの開始、アクティブ、リカバリーフレームをシンボルとして表現し、
@@ -133,7 +132,7 @@
 
 </span><span class="kw">use crate</span>::{MoveAliases, MoveInfo};
 
-<span class="doccomment">/// 与えられた MoveInfo と MoveAliases のデータから、
+<span class="doccomment">/// 与えられた `MoveInfo` と `MoveAliases` のデータから、
 /// 通常技の情報を文字列として整形して返す非同期関数。
 ///
 /// # 引数
@@ -151,18 +150,18 @@
         .take_while(|x| x.move_type.to_lowercase() == <span class="string">"normal"</span>)
     {
         <span class="comment">// 技情報を整形して追加：入力と名称を表示
-        </span>normal_moves = normal_moves.to_owned() + <span class="string">"\n- **" </span>+ <span class="kw-2">&amp;</span>moves.input + <span class="string">"**"</span>;
+        </span>normal_moves = normal_moves.clone() + <span class="string">"\n- **" </span>+ <span class="kw-2">&amp;</span>moves.input + <span class="string">"**"</span>;
         <span class="comment">// エイリアス情報を確認
-        </span><span class="kw">for </span>moves_aliases <span class="kw">in </span>aliases_data.iter() {
+        </span><span class="kw">for </span>moves_aliases <span class="kw">in </span>aliases_data {
             <span class="comment">// 一致する入力があればエイリアス情報を追加
             </span><span class="kw">if </span>moves.input == moves_aliases.input {
                 normal_moves += <span class="string">"\n\t別名 → `"</span>;
                 <span class="comment">// エイリアス一覧をカンマ区切りで追加
                 </span><span class="kw">for </span>a <span class="kw">in </span><span class="number">0</span>..moves_aliases.aliases.len() {
-                    <span class="kw">if </span>a != moves_aliases.aliases.len() - <span class="number">1 </span>{
-                        normal_moves = normal_moves.to_owned() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a] + <span class="string">"`, `"</span>;
+                    <span class="kw">if </span>a == moves_aliases.aliases.len() - <span class="number">1 </span>{
+                        normal_moves = normal_moves.clone() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a];
                     } <span class="kw">else </span>{
-                        normal_moves = normal_moves.to_owned() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a];
+                        normal_moves = normal_moves.clone() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a] + <span class="string">"`, `"</span>;
                     }
                 }
                 normal_moves += <span class="string">"`\n"</span>;
@@ -173,7 +172,7 @@
     </span>normal_moves
 }
 
-<span class="doccomment">/// 与えられた MoveInfo と MoveAliases のデータから、
+<span class="doccomment">/// 与えられた `MoveInfo` と `MoveAliases` のデータから、
 /// スペシャル技の情報を文字列として整形して返す非同期関数。
 ///
 /// # 引数
@@ -192,21 +191,20 @@
             x.move_type.to_lowercase() == <span class="string">"special" </span>|| x.move_type.to_lowercase() == <span class="string">"other"
         </span>})
     {
-        special_moves = special_moves.to_owned() + <span class="string">"\n- **" </span>+ <span class="kw-2">&amp;</span>moves.input + <span class="string">"**"</span>;
-        <span class="kw">for </span>moves_aliases <span class="kw">in </span>aliases_data.iter() {
+        special_moves = special_moves.clone() + <span class="string">"\n- **" </span>+ <span class="kw-2">&amp;</span>moves.input + <span class="string">"**"</span>;
+        <span class="kw">for </span>moves_aliases <span class="kw">in </span>aliases_data {
             <span class="comment">// 一致する入力があればエイリアス情報を追加
             </span><span class="kw">if </span>moves.input == moves_aliases.input {
                 special_moves += <span class="string">"\n\t別名 → `"</span>;
                 <span class="comment">// エイリアス一覧をカンマ区切りで追加
                 </span><span class="kw">for </span>a <span class="kw">in </span><span class="number">0</span>..moves_aliases.aliases.len() {
-                    <span class="kw">if </span>a != moves_aliases.aliases.len() - <span class="number">1 </span>{
-                        special_moves =
-                            special_moves.to_owned() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a] + <span class="string">"`, `"</span>;
+                    <span class="kw">if </span>a == moves_aliases.aliases.len() - <span class="number">1 </span>{
+                        special_moves = special_moves.clone() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a];
                     } <span class="kw">else </span>{
-                        special_moves = special_moves.to_owned() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a];
+                        special_moves = special_moves.clone() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a] + <span class="string">"`, `"</span>;
                     }
                 }
-                special_moves = special_moves.to_owned() + <span class="string">"`\n"</span>;
+                special_moves = special_moves.clone() + <span class="string">"`\n"</span>;
             } <span class="kw">else </span>{
                 <span class="kw">continue</span>;
             }
@@ -215,7 +213,7 @@
     special_moves
 }
 
-<span class="doccomment">/// 与えられた MoveInfo と MoveAliases のデータから、
+<span class="doccomment">/// 与えられた `MoveInfo` と `MoveAliases` のデータから、
 /// スーパー技の情報を文字列として整形して返す非同期関数。
 ///
 /// # 引数
@@ -231,20 +229,20 @@
         .iter()
         .skip_while(|x| x.move_type.to_lowercase() != <span class="string">"super"</span>)
     {
-        super_moves = super_moves.to_owned() + <span class="string">"\n- **" </span>+ <span class="kw-2">&amp;</span>moves.input + <span class="string">"**"</span>;
-        <span class="kw">for </span>moves_aliases <span class="kw">in </span>aliases_data.iter() {
+        super_moves = super_moves.clone() + <span class="string">"\n- **" </span>+ <span class="kw-2">&amp;</span>moves.input + <span class="string">"**"</span>;
+        <span class="kw">for </span>moves_aliases <span class="kw">in </span>aliases_data {
             <span class="comment">// 一致する入力があればエイリアス情報を追加
             </span><span class="kw">if </span>moves.input == moves_aliases.input {
                 super_moves += <span class="string">"\n\t別名 → `"</span>;
                 <span class="comment">// エイリアス一覧をカンマ区切りで追加
                 </span><span class="kw">for </span>a <span class="kw">in </span><span class="number">0</span>..moves_aliases.aliases.len() {
-                    <span class="kw">if </span>a != moves_aliases.aliases.len() - <span class="number">1 </span>{
-                        super_moves = super_moves.to_owned() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a] + <span class="string">"`, `"</span>;
+                    <span class="kw">if </span>a == moves_aliases.aliases.len() - <span class="number">1 </span>{
+                        super_moves = super_moves.clone() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a];
                     } <span class="kw">else </span>{
-                        super_moves = super_moves.to_owned() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a];
+                        super_moves = super_moves.clone() + <span class="kw-2">&amp;</span>moves_aliases.aliases[a] + <span class="string">"`, `"</span>;
                     }
                 }
-                super_moves = super_moves.to_owned() + <span class="string">"`\n"</span>;
+                super_moves = super_moves.clone() + <span class="string">"`\n"</span>;
             } <span class="kw">else </span>{
                 <span class="kw">continue</span>;
             }

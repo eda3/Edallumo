@@ -310,7 +310,12 @@
 <a href="#309" id="309">309</a>
 <a href="#310" id="310">310</a>
 <a href="#311" id="311">311</a>
-<a href="#312" id="312">312</a></pre></div><pre class="rust"><code><span class="doccomment">//! images_json.rs
+<a href="#312" id="312">312</a>
+<a href="#313" id="313">313</a>
+<a href="#314" id="314">314</a>
+<a href="#315" id="315">315</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
+
+</span><span class="doccomment">//! `images_json.rs`
 //!
 //! このファイルは、Dustloop Wiki から取得した画像関連の JSON データを前処理し、
 //! ImageLinks 構造体の形式に変換するための関数群を定義する。
@@ -318,7 +323,7 @@
 </span><span class="kw">extern crate </span>ureq;
 <span class="kw">use </span><span class="kw">crate</span>::common::preprocess; <span class="comment">// JSON 前処理関数群の利用
 </span><span class="kw">use crate</span>::{ImageLinks, CHARS}; <span class="comment">// ImageLinks 構造体およびキャラクター定数群の利用
-</span><span class="kw">use </span>md5::{Digest, Md5}; <span class="comment">// MD5 ハッシュ計算ライブラリの利用
+</span><span class="kw">use </span>md5::{Digest, Md5}; <span class="comment">// MD5 ハッシュ計算用
 </span><span class="kw">use </span>serde::Deserialize; <span class="comment">// JSON デシリアライズ用
 </span><span class="kw">use </span>std::{fs::File, io::Write}; <span class="comment">// ファイル操作および書き込み用
 
@@ -359,7 +364,7 @@
 // ======================================================================
 
 </span><span class="doccomment">/// 与えられた画像関連 JSON 文字列に対して前処理を実施し、
-/// ImageLinks 構造体の形式に変換した整形済み JSON を指定ファイルに書き込む非同期関数
+/// `ImageLinks` 構造体の形式に変換した整形済み JSON を指定ファイルに書き込む非同期関数
 ///
 /// # 引数
 /// * `char_images_response_json` - 取得した画像データの JSON 文字列（前処理前）
@@ -400,7 +405,7 @@
 
         <span class="comment">// 入力文字列が未定義の場合は空文字に置換　結果：image_data.title.input が定義される
         </span><span class="kw">if </span>image_data.title.input.is_none() {
-            image_data.title.input = <span class="prelude-val">Some</span>(<span class="string">""</span>.to_string());
+            image_data.title.input = <span class="prelude-val">Some</span>(String::new());
         } <span class="kw">else </span>{
             <span class="comment">// 特定の入力（"j.XX during Homing Jump"）の場合はスキップ　動作：continue
             </span><span class="kw">if </span><span class="kw-2">*</span>image_data.title.input.as_ref().unwrap() == <span class="string">"j.XX during Homing Jump" </span>{
@@ -423,11 +428,11 @@
         }
         <span class="comment">// 画像ファイル名が未定義の場合は空文字とする　結果：image_link に空文字が設定
         </span><span class="kw">if </span>image_data.title.images.is_none() {
-            image_link = <span class="string">""</span>.to_string();
+            image_link = String::new();
         } <span class="kw">else </span>{
             <span class="comment">// 画像ファイル名が空白のみの場合は空文字に設定　結果：image_link に空文字が設定
             </span><span class="kw">if </span>image_data.title.images.as_ref().unwrap().trim() == <span class="string">"" </span>{
-                image_link = <span class="string">""</span>.to_string();
+                image_link = String::new();
             } <span class="kw">else </span>{
                 <span class="comment">// 複数の画像ファイル名が存在する場合の処理
                 </span><span class="kw">if </span>image_data.title.images.as_mut().unwrap().contains(<span class="string">';'</span>) {
@@ -465,7 +470,7 @@
 
         <span class="comment">// ヒットボックス情報が未定義の場合は空文字をベクターに追加　結果：hitbox_links に空文字追加
         </span><span class="kw">if </span>image_data.title.hitboxes.is_none() {
-            hitbox_links.push(<span class="string">""</span>.to_string());
+            hitbox_links.push(String::new());
         } <span class="kw">else </span>{
             <span class="comment">// ヒットボックス情報をセミコロンで分割　結果：hitbox_str に分割された各ヒットボックス名を格納
             </span><span class="kw">let </span>hitbox_str: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = image_data
@@ -564,12 +569,12 @@
             <span class="string">"Terra Metron"</span>,
             <span class="string">"ステイン"</span>,
         ]
-        .contains(<span class="kw-2">&amp;</span>input_str)
+        .contains(input_str)
         {
             _input_name = input_str.to_string();
         } <span class="kw">else </span>{
             <span class="kw">let </span>name_str = image_data.title.name.as_deref().unwrap_or(<span class="string">""</span>);
-            _input_name = <span class="macro">format!</span>(<span class="string">"{}({})"</span>, name_str, input_str);
+            _input_name = <span class="macro">format!</span>(<span class="string">"{name_str}({input_str})"</span>);
         }
 
         <span class="comment">// ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
@@ -607,7 +612,8 @@
     </span>hasher.update(image_bytes);
 
     <span class="comment">// ハッシュ計算結果を 16 進数文字列に変換　結果：MD5 ハッシュ値（16 進数文字列）
-    </span><span class="kw">let </span>result = <span class="macro">format!</span>(<span class="string">"{:x}"</span>, hasher.finalize());
+    </span><span class="kw">let </span>hash_result = hasher.finalize();
+    <span class="kw">let </span>result = <span class="macro">format!</span>(<span class="string">"{hash_result:x}"</span>);
 
     <span class="comment">// 16 進数文字列の先頭 1 文字を取得　結果：ハッシュ値の先頭文字
     </span><span class="kw">let </span>char1 = result.chars().next().unwrap();
@@ -617,7 +623,7 @@
 
     <span class="comment">// 画像リンクを組み立て　組み立て方法：基本 URL / 先頭文字 + 先頭文字 + 2文字目 / 画像名
     // 組み立て結果：生成された画像リンク
-    </span><span class="kw">let </span>image_link = <span class="macro">format!</span>(<span class="string">"{}/{}/{}{}/{}"</span>, IMAGE_HALF, char1, char1, char2, image_name);
+    </span><span class="kw">let </span>image_link = <span class="macro">format!</span>(<span class="string">"{IMAGE_HALF}/{char1}/{char1}{char2}/{image_name}"</span>);
 
     <span class="comment">// 生成された画像リンクを返却　返却結果：最終画像リンク
     </span>image_link
