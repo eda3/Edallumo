@@ -169,7 +169,7 @@ pub async fn images_to_json(
             // 各ヒットボックス名に対して画像リンク生成関数を呼び出し　結果：hitbox_links に生成されたリンクを追加
             for hitbox_string in &hitbox_str {
                 hitbox_links
-                    .push(make_link(hitbox_string.to_string().trim().replace(' ', "_")).await);
+                    .push(make_link((*hitbox_string).to_string().trim().replace(' ', "_")).await);
             }
         }
 
