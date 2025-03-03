@@ -4,7 +4,7 @@
 //! キャラクター名および技情報の取得、整形、埋め込みメッセージ生成を行う。
 
 mod utils; // ユーティリティ関数群
-use crate::{check, find, Context, Error, MoveAliases, MoveInfo, EMBED_COLOR}; // 必要な型・関数群
+use crate::{check, error::AppError, find, Context, MoveAliases, MoveInfo, EMBED_COLOR}; // 必要な型・関数群
 use colored::Colorize; // 文字色変換用
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; // 埋め込み生成用
 use std::{fs, string::String}; // ファイル操作・文字列操作用
@@ -44,7 +44,7 @@ pub async fn moves(
     #[rename = "type"]
     #[description = "Move type."] // 技種別指定
     category: TypeChoice, // 技種別選択値
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     println!(
         "{}",
         ("Command Args: '".to_owned() + &character + "'").purple() // 引数出力

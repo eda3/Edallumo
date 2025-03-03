@@ -4,12 +4,15 @@
 //! Discordコマンド /feedback 実装モジュール  
 //! ユーザーから受け取ったフィードバックメッセージをファイルに保存し、送信完了を通知する処理を提供
 
-// crate 内の共通型（Context, Error）をインポート
-use crate::{Context, Error};
+// crate 内の共通型（Context, AppError）をインポート
+use crate::{error::AppError, Context};
 // colored クレートを利用して、コンソール出力文字列に色を付けるための拡張メソッドを使用
 use colored::Colorize;
 // ファイル操作および書き込み操作に必要な標準ライブラリのモジュールをインポート
-use std::{fs::OpenOptions, io::Write};
+use std::{
+    fs::OpenOptions, // ファイルオープンのためのオプション指定をサポート
+    io::Write,       // ファイル書き込み操作のためのトレイトをインポート
+};
 
 /// フィードバック送信処理
 /// 開発者宛フィードバック登録
@@ -20,14 +23,15 @@ use std::{fs::OpenOptions, io::Write};
 pub async fn feedback(
     ctx: Context<'_>, // Discord コマンド実行時のコンテキスト（ユーザー情報、チャンネル情報等）を保持
     #[description = "Message for the dev."] text: String, // 開発者へ送るフィードバックのメッセージ
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     // 正常終了時は Ok(())、エラー時は Error を返す非同期関数
     // ファイルオープン処理
     // 'request.txt' を新規作成（存在しなければ）し、既存の場合は末尾に追記するモードでオープンする
     let mut file = OpenOptions::new()
-        .create(true) // ファイルが存在しない場合は新しく作成する
-        .append(true) // 既存ファイルの場合は末尾に追記する
-        .open("request.txt") // 対象ファイルのパスを指定
+        .write(true)
+        .create(true)
+        .append(true)
+        .open("./request.txt")
         .expect("\nFailed to open 'request.txt' file."); // オープン失敗時はエラーメッセージを出力してパニック
 
     // テキスト整形処理

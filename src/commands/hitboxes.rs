@@ -5,10 +5,13 @@
 //! 指定されたキャラクターと技に対応するヒットボックス画像をDiscord上に埋め込み表示する。
 
 // 必要なインポート
-use crate::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, HITBOX_DEFAULT}; // 各種機能とデータ型
+use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR}; // 各種機能とデータ型
 use colored::Colorize; // ターミナル出力の色付け
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; // Discord埋め込み作成
 use std::{fs, string::String}; // ファイル操作と文字列型
+
+/// デフォルトヒットボックス画像URL
+const HITBOX_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
 
 /// ヒットボックス画像表示コマンド
 ///
@@ -34,7 +37,7 @@ pub async fn hitboxes(
     #[rename = "move"]
     #[description = "Move name, input or alias."]
     character_move: String,
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     // コマンド引数のログ出力
     println!(
         "{}",

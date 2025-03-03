@@ -277,15 +277,13 @@ pub async fn frames_to_json(
                 .title
                 .damage
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // ダメージ設定
+                .and_then(|s| s.parse::<i32>().ok()), // ダメージ設定
             guard: move_data.title.guard.as_ref().unwrap_or(&empty).to_string(), // ガード設定
             startup: move_data
                 .title
                 .startup
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // 始動フレーム設定
+                .and_then(|s| s.parse::<i32>().ok()), // 始動フレーム設定
             active: move_data
                 .title
                 .active
@@ -296,8 +294,7 @@ pub async fn frames_to_json(
                 .title
                 .recovery
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // リカバリーフレーム設定
+                .and_then(|s| s.parse::<i32>().ok()), // リカバリーフレーム設定
             on_hit: move_data
                 .title
                 .on_hit
@@ -327,44 +324,37 @@ pub async fn frames_to_json(
                 .title
                 .risc_gain
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // リスクゲイン設定
+                .and_then(|s| s.parse::<f64>().ok()), // リスクゲイン設定
             risc_loss: move_data
                 .title
                 .risc_loss
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // リスクロス設定
+                .and_then(|s| s.parse::<f64>().ok()), // リスクロス設定
             wall_damage: move_data
                 .title
                 .wall_damage
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // 壁ダメージ設定
+                .and_then(|s| s.parse::<i32>().ok()), // 壁ダメージ設定
             input_tension: move_data
                 .title
                 .input_tension
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // 入力緊張度設定
+                .and_then(|s| s.parse::<f64>().ok()), // 入力緊張度設定
             chip_ratio: move_data
                 .title
                 .chip_ratio
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // チップ比率設定
+                .and_then(|s| s.parse::<f64>().ok()), // チップ比率設定
             otg_ratio: move_data
                 .title
                 .otg_ratio
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // OTG比率設定
+                .and_then(|s| s.parse::<f64>().ok()), // OTG比率設定
             scaling: move_data
                 .title
                 .scaling
                 .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // ダメージスケーリング設定
+                .and_then(|s| s.parse::<f64>().ok()), // ダメージスケーリング設定
             invincibility: move_data
                 .title
                 .invincibility

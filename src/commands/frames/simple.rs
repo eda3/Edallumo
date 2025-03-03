@@ -12,10 +12,13 @@
 //! # 注意
 //! コマンド実行前に必要なデータファイル（dataフォルダ内のJSONファイル）が存在していること。
 
-use crate::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, IMAGE_DEFAULT};
+use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR};
 use colored::Colorize;
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
 use std::{fs, string::String};
+
+/// デフォルト画像URL
+const IMAGE_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
 
 // 指定キャラクターの技のフレームデータ・画像情報を読み取り、
 // シンプルな埋め込みメッセージとして送信する非同期コマンド関数
@@ -38,7 +41,7 @@ pub async fn simple(
     #[rename = "move"]
     #[description = "技名、入力、またはエイリアス"]
     character_move: String,
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     // コマンド引数表示
     println!(
         "{}",
@@ -142,14 +145,28 @@ pub async fn simple(
         .url(&embed_url) // URL設定
         .image(&embed_image) // 画像設定
         .fields(vec![
-            ("ダメージ", &move_info.damage.to_string(), true),
-            ("ガード", &move_info.guard.to_string(), true),
-            ("無敵", &move_info.invincibility.to_string(), true),
-            ("始動", &move_info.startup.to_string(), true),
-            ("持続", &move_info.active.to_string(), true),
-            ("硬直", &move_info.recovery.to_string(), true),
-            ("ヒット時", &move_info.on_hit.to_string(), true),
-            ("ガード時", &move_info.on_block.to_string(), true),
+            (
+                "ダメージ",
+                &move_info.damage.map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            ("ガード", &move_info.guard, true),
+            ("無敵", &move_info.invincibility, true),
+            (
+                "始動",
+                &move_info.startup.map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            ("持続", &move_info.active, true),
+            (
+                "硬直",
+                &move_info
+                    .recovery
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            ("ヒット時", &move_info.on_hit, true),
+            ("ガード時", &move_info.on_block, true),
             ("カウンター", &move_info.counter.to_string(), true),
         ])
         .footer(embed_footer); // フッター設定

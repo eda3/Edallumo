@@ -10,7 +10,7 @@ mod meter; // メーター関連フレームデータ表示モジュール
 mod simple; // 簡易フレームデータ表示モジュール
 
 // 必要なインポート
-use crate::{Context, Error}; // コンテキストとエラー型
+use crate::{error::AppError, Context}; // コンテキストとエラー型
 use advanced::advanced; // advanced サブコマンド関数
 use meter::meter; // meter サブコマンド関数
 use simple::simple; // simple サブコマンド関数
@@ -26,13 +26,13 @@ use std::string::String; // 標準文字列型
 /// - meter: メーター関連のフレームデータを表示
 ///
 /// # 戻り値
-/// 成功時は `Ok(())`, エラー時は `Err(Error)` を返す
+/// 成功時は `Ok(())`, エラー時は `Err(AppError)` を返す
 #[poise::command(
     prefix_command,
     slash_command,
     subcommands("simple", "advanced", "meter"),
     subcommand_required
 )]
-pub async fn frames(_: Context<'_>) -> Result<(), Error> {
+pub async fn frames(_: Context<'_>) -> Result<(), AppError> {
     Ok(())
 }

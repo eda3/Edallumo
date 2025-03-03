@@ -3,8 +3,19 @@
 //! このファイルは、キャラクター名や技名の検索機能を提供する。
 //! nicknames.json 及びキャラクター JSON から、ユーザー入力に対応する正式なキャラクター名や技のインデックスを返却する。
 
-use crate::{Error, MoveAliases, MoveInfo, Nicknames};
+use crate::error::{AppError, Result};
+use crate::models::{MoveAliases, MoveInfo};
+use serde::{Deserialize, Serialize};
 use std::{fs, path::Path};
+
+/// ニックネーム情報を保持する構造体
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Nicknames {
+    /// 正式キャラクター名
+    pub character: String,
+    /// ニックネームリスト
+    pub nicknames: Vec<String>,
+}
 
 /// キャラクター名を検索し、該当する正式なキャラクター名を返却する非同期関数
 ///
@@ -16,17 +27,19 @@ use std::{fs, path::Path};
 /// * `character` - ユーザー入力のキャラクター名またはニックネーム
 ///
 /// # 戻り値
-/// 正式なキャラクター名を含む `Result<String, Error>` を返す
-pub async fn find_character(character: &String) -> Result<String, Error> {
+/// 正式なキャラクター名を含む `Result<String>` を返す
+pub async fn find_character(character: &String) -> Result<String> {
     // 出力判定用フラグ（常に false、後の分岐で利用）
     let character_found = false;
 
     // nicknames.json ファイル読み込み　結果：JSON文字列取得
-    let data_from_file =
-        fs::read_to_string("data/nicknames.json").expect("\nFailed to read 'nicknames.json' file.");
+    let data_from_file = fs::read_to_string("data/nicknames.json").map_err(|e| {
+        AppError::FileNotFound(format!("nicknames.jsonの読み込みに失敗しました: {}", e))
+    })?;
 
     // JSON文字列を Nicknames 構造体のベクターへデシリアライズ　結果：vec_nicknames
-    let vec_nicknames = serde_json::from_str::<Vec<Nicknames>>(&data_from_file).unwrap();
+    let vec_nicknames =
+        serde_json::from_str::<Vec<Nicknames>>(&data_from_file).map_err(|e| AppError::Json(e))?;
 
     // 各キャラクターエントリ走査　結果：該当エントリ検出時に正式名称返却
     if !character_found {
@@ -65,9 +78,11 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
     if !character_found {
         // キャラクター未検出時エラーメッセージ作成　結果：エラー返却
         let error_msg = "Character `".to_owned() + character + "` was not found!";
-        Err(error_msg.into())
+        Err(AppError::CharacterNotFound(error_msg))
     } else {
-        Err("Weird logic error in find_character".into())
+        Err(AppError::Other(
+            "Weird logic error in find_character".to_string(),
+        ))
     }
 }
 
@@ -84,12 +99,12 @@ pub async fn find_character(character: &String) -> Result<String, Error> {
 /// * `moves_info` - キャラクターの技情報のスライス
 ///
 /// # 戻り値
-/// 該当技のインデックスを含む `Result<usize, Error>` を返す
+/// 該当技のインデックスを含む `Result<usize>` を返す
 pub async fn find_move_index(
     character_arg_altered: &String,
     mut character_move: String,
     moves_info: &[MoveInfo],
-) -> Result<usize, Error> {
+) -> Result<usize> {
     // 出力判定用フラグ（常に false、後の分岐で利用）
     let move_found = false;
 
@@ -97,11 +112,16 @@ pub async fn find_move_index(
     let aliases_path = "data/".to_owned() + character_arg_altered + "/aliases.json";
     if Path::new(&aliases_path).exists() {
         // aliases.json ファイル読み込み　結果：JSON文字列取得
-        let aliases_data = fs::read_to_string(&aliases_path)
-            .expect(&("\nFailed to read '".to_owned() + &aliases_path + "' file."));
+        let aliases_data = fs::read_to_string(&aliases_path).map_err(|e| {
+            AppError::FileNotFound(format!(
+                "{}ファイルの読み込みに失敗しました: {}",
+                aliases_path, e
+            ))
+        })?;
 
         // JSON文字列を MoveAliases 構造体のベクターにデシリアライズ　結果：aliases_data
-        let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data).unwrap();
+        let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data)
+            .map_err(|e| AppError::Json(e))?;
 
         'outer: for alias_data in aliases_data {
             // 各エイリアス走査　結果：入力文字列と一致すれば実際の技入力に変換
@@ -142,8 +162,54 @@ pub async fn find_move_index(
     if !move_found {
         // 技未検出時エラーメッセージ作成　結果：エラー返却
         let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
-        Err(error_msg.into())
+        Err(AppError::MoveNotFound(error_msg))
     } else {
-        Err("Weird logic error in find_move".into())
+        Err(AppError::Other(
+            "Weird logic error in find_move".to_string(),
+        ))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::test_utils::create_test_json_file;
+    use std::path::PathBuf;
+    use tempfile::TempDir;
+
+    fn setup_test_nicknames() -> (TempDir, PathBuf) {
+        let temp_dir = TempDir::new().unwrap();
+        let temp_path = temp_dir.path().to_path_buf();
+
+        let nicknames_json = r#"[
+            {
+                "character": "sol",
+                "nicknames": ["sol", "sol badguy", "badguy", "frederick", "flamethrower"]
+            },
+            {
+                "character": "ky",
+                "nicknames": ["ky", "ky kiske", "kiske", "lightning", "boy scout"]
+            }
+        ]"#;
+
+        let data_dir = temp_path.join("data");
+        fs::create_dir_all(&data_dir).unwrap();
+        create_test_json_file(data_dir.join("nicknames.json"), nicknames_json).unwrap();
+
+        (temp_dir, temp_path)
+    }
+
+    #[tokio::test]
+    async fn test_find_character() {
+        let (temp_dir, temp_path) = setup_test_nicknames();
+
+        // TODO: テストコードを実装
+        // 現在のコードだとdata/nicknames.jsonに依存しているため、
+        // テスト用のパスを注入できるように関数を修正する必要がある
+    }
+
+    #[tokio::test]
+    async fn test_find_move_index() {
+        // TODO: テストコードを実装
     }
 }

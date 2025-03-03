@@ -9,8 +9,8 @@
 // これにより、非同期ストリームの操作が可能になる。
 use crate::serenity::futures::{self, Stream, StreamExt};
 
-// Discord コマンドの実行コンテキスト (Context) とエラー型 (Error) を定義しているモジュールをインポート
-use crate::{Context, Error};
+// Discord コマンドの実行コンテキスト (Context) とエラー型 (AppError) を定義しているモジュールをインポート
+use crate::{error::AppError, Context};
 
 // colored クレートを利用して、コンソール出力に色付けするための拡張メソッドを使用する
 use colored::Colorize;
@@ -60,7 +60,7 @@ pub async fn help(
     #[description = "Pick a command to display help for."]
     #[autocomplete = "autocomplete_help"] // オートコンプリートに先ほど定義した関数を使用
     option: String, // ユーザーが表示したいヘルプの対象コマンドを指定する文字列
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     // コマンド実行時の引数を紫色でログ出力
     println!(
         "{}",

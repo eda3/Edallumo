@@ -4,10 +4,13 @@
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
 //! JSONファイルから該当データを取得し、画像リンクや各種技パラメータを整形して表示する。
 
-use crate::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, IMAGE_DEFAULT};
+use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR};
 use colored::Colorize;
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
 use std::{fs, string::String};
+
+/// デフォルト画像URL
+const IMAGE_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
 
 /// 指定されたキャラクターの技データを詳細に表示する非同期コマンド
 ///
@@ -43,7 +46,7 @@ pub async fn advanced(
     #[rename = "move"]
     #[description = "技名、入力、またはエイリアス"]
     character_move: String,
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     // コマンド引数の表示　引数確認用
     println!(
         "{}",
@@ -135,28 +138,77 @@ pub async fn advanced(
         .url(&embed_url) // URL設定
         .image(&embed_image) // 画像リンク設定
         .fields(vec![
-            ("ダメージ", &move_info.damage.to_string(), true),
-            ("ガード", &move_info.guard.to_string(), true),
-            ("無敵", &move_info.invincibility.to_string(), true),
-            ("始動", &move_info.startup.to_string(), true),
-            ("持続", &move_info.active.to_string(), true),
-            ("硬直", &move_info.recovery.to_string(), true),
-            ("ヒット時", &move_info.on_hit.to_string(), true),
-            ("ガード時", &move_info.on_block.to_string(), true),
-            ("カウンター", &move_info.counter.to_string(), true),
-            ("技レベル", &move_info.level.to_string(), true),
-            ("リスク増加", &move_info.risc_gain.to_string(), true),
-            ("リスク減少", &move_info.risc_loss.to_string(), true),
-            ("ダメージ倍率", &move_info.scaling.to_string(), true),
-            ("壁割ダメージ", &move_info.wall_damage.to_string(), true),
             (
-                "テンションゲージ",
-                &move_info.input_tension.to_string(),
+                "ダメージ",
+                &move_info.damage.map_or("-".to_string(), |v| v.to_string()),
                 true,
             ),
-            ("削り比率", &move_info.chip_ratio.to_string(), true),
-            ("ダウン追い打ち比率", &move_info.otg_ratio.to_string(), true),
-            ("キャンセル先", &move_info.cancel.to_string(), true),
+            ("ガード", &move_info.guard, true),
+            ("無敵", &move_info.invincibility, true),
+            (
+                "始動",
+                &move_info.startup.map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            ("持続", &move_info.active, true),
+            (
+                "硬直",
+                &move_info
+                    .recovery
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            ("ヒット時", &move_info.on_hit, true),
+            ("ガード時", &move_info.on_block, true),
+            ("カウンター", &move_info.counter, true),
+            ("技レベル", &move_info.level, true),
+            (
+                "リスク増加",
+                &move_info
+                    .risc_gain
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            (
+                "リスク減少",
+                &move_info
+                    .risc_loss
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            (
+                "壁ダメージ",
+                &move_info
+                    .wall_damage
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            (
+                "入力緊張度",
+                &move_info
+                    .input_tension
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            (
+                "チップ比率",
+                &move_info
+                    .chip_ratio
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            (
+                "OTG比率",
+                &move_info
+                    .otg_ratio
+                    .map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
+            (
+                "スケーリング",
+                &move_info.scaling.map_or("-".to_string(), |v| v.to_string()),
+                true,
+            ),
         ])
         .footer(embed_footer); // フッター設定
 

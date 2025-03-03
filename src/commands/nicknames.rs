@@ -4,12 +4,12 @@
 //! Discordコマンド /nicknames 実装モジュール  
 //! JSONファイルからキャラクターごとのニックネームを取得し、整形後に送信する処理を提供
 
-use crate::{check, Context, Error, Nicknames};
+use crate::{check, error::AppError, Context, Nicknames};
 use std::{fs, string::String};
 
 /// キャラクターごとのニックネーム一覧を表示する処理  
 #[poise::command(prefix_command, slash_command, aliases("n"))]
-pub async fn nicknames(ctx: Context<'_>) -> Result<(), Error> {
+pub async fn nicknames(ctx: Context<'_>) -> Result<(), AppError> {
     // 入力検証および必要なファイルの存在確認処理
     // adaptive_check: ファイルの整合性確認（失敗時は処理を中断）
     if (check::adaptive_check(ctx, false, false, true, true, false).await).is_err() {

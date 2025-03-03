@@ -4,7 +4,7 @@
 //! 開始・アクティブ・リカバリーフレーム情報処理
 //! コマンド実行機能
 
-use crate::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, IMAGE_DEFAULT}; // 依存モジュール群
+use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR}; // 依存モジュール群
 use colored::Colorize; // 文字色変換ライブラリ
 use poise::serenity_prelude::CreateEmbed; // 埋め込み作成ライブラリ
 use std::{fs, string::String}; // ファイル操作・文字列操作
@@ -12,6 +12,9 @@ use std::{fs, string::String}; // ファイル操作・文字列操作
 const GREEN_CIRCLE: &str = "🟢\u{200b}"; // 緑丸定数
 const RED_SQUARE: &str = "🟥\u{200b}"; // 赤四角定数
 const BLUE_DIAMOND: &str = "🔷\u{200b}"; // 青菱形定数
+
+/// デフォルト画像URL
+const IMAGE_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
 
 /// 指定ムーブの開始フレーム情報からシンボル文字列生成
 ///
@@ -21,7 +24,9 @@ const BLUE_DIAMOND: &str = "🔷\u{200b}"; // 青菱形定数
 /// # 戻り値
 /// 開始フレームシンボル文字列
 async fn startup_frames(move_info: &MoveInfo) -> String {
-    let startup_vec = sep_frame_vec(&move_info.startup).await; // 開始フレーム分割結果取得
+    // Option<i32>の場合は文字列に変換
+    let startup_str = move_info.startup.map_or("-".to_string(), |v| v.to_string());
+    let startup_vec = sep_frame_vec(&startup_str).await; // 開始フレーム分割結果取得
     let mut meter_msg = String::new(); // メーター文字列初期化
                                        // println!("startup_vec: {:?}", startup_vec); // デバッグ出力用
 
@@ -138,7 +143,11 @@ async fn active_frames(move_info: &MoveInfo) -> String {
 /// # 戻り値
 /// リカバリーフレームシンボル文字列
 async fn recovery_frames(move_info: &MoveInfo) -> String {
-    let recovery_vec = sep_frame_vec(&move_info.recovery).await; // リカバリーフレーム分割結果取得
+    // Option<i32>の場合は文字列に変換
+    let recovery_str = move_info
+        .recovery
+        .map_or("-".to_string(), |v| v.to_string());
+    let recovery_vec = sep_frame_vec(&recovery_str).await; // リカバリーフレーム分割結果取得
     let mut meter_msg = String::new(); // メーター文字列初期化
 
     if recovery_vec.len() == 1 && recovery_vec[0] == "-" {
@@ -227,7 +236,7 @@ async fn sep_frame_vec(text: &str) -> Vec<String> {
 /// * `character_move` - ムーブ名・入力またはエイリアス
 ///
 /// # 戻り値
-/// 処理結果 `Result<(), Error>`
+/// 処理結果 `Result<(), AppError>`
 #[poise::command(prefix_command, slash_command)]
 pub async fn meter(
     ctx: Context<'_>, // コマンドコンテキスト
@@ -238,7 +247,7 @@ pub async fn meter(
     #[rename = "move"]
     #[description = "Move name, input or alias."]
     character_move: String, // ムーブ指定文字列
-) -> Result<(), Error> {
+) -> Result<(), AppError> {
     println!(
         "{}",
         ("Command Args: '".to_owned() + &character + ", " + &character_move + "'").purple()
@@ -337,9 +346,9 @@ pub async fn meter(
         .title(embed_title) // タイトル設定
         .url(embed_url) // URL設定
         .fields(vec![
-            ("Startup", &move_info.startup.to_string(), true), // 開始フレームフィールド
-            ("Active", &move_info.active.to_string(), true),   // アクティブフレームフィールド
-            ("Recovery", &move_info.recovery.to_string(), true), // リカバリーフレームフィールド
+            ("Startup", &startup_frames(move_info).await, true), // 開始フレームフィールド
+            ("Active", &active_frames(move_info).await, true),   // アクティブフレームフィールド
+            ("Recovery", &recovery_frames(move_info).await, true), // リカバリーフレームフィールド
         ])
         .image(embed_image); // 画像設定
 
