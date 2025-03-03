@@ -257,7 +257,7 @@ pub async fn images_to_json(
             _input_name = input_str.to_string();
         } else {
             let name_str = image_data.title.name.as_deref().unwrap_or("");
-            _input_name = format!("{}({})", name_str, input_str);
+            _input_name = format!("{name_str}({input_str})");
         }
 
         // ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
@@ -306,7 +306,7 @@ async fn make_link(image_name: String) -> String {
 
     // 画像リンクを組み立て　組み立て方法：基本 URL / 先頭文字 + 先頭文字 + 2文字目 / 画像名
     // 組み立て結果：生成された画像リンク
-    let image_link = format!("{}/{}/{}{}/{}", IMAGE_HALF, char1, char1, char2, image_name);
+    let image_link = format!("{IMAGE_HALF}/{char1}/{char1}{char2}/{image_name}");
 
     // 生成された画像リンクを返却　返却結果：最終画像リンク
     image_link

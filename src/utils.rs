@@ -192,8 +192,7 @@ pub fn load_move_info(data_dir: &str, char_name: &str) -> Result<Vec<MoveInfo>> 
 
     if !moves_path.exists() {
         return Err(AppError::CharacterNotFound(format!(
-            "技情報が見つかりません: {}",
-            char_name
+            "技情報が見つかりません: {char_name}"
         )));
     }
 

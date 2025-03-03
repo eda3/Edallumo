@@ -193,7 +193,7 @@ pub async fn frames_to_json(
             _input_name = input_str.to_string();
         } else {
             let name_str = move_data.title.name.as_deref().unwrap_or("");
-            _input_name = format!("{}({})", name_str, input_str);
+            _input_name = format!("{name_str}({input_str})");
         }
 
         // MoveInfo 構造体へ変換　各フィールドが未定義の場合、プレースホルダー使用

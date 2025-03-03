@@ -240,7 +240,7 @@ mod tests {
 
         for i in 0..5 {
             let counter_clone = counter.clone();
-            tasks.push((format!("並列タスク{}", i), move || {
+            tasks.push((format!("並列タスク{i}"), move || {
                 let counter = counter_clone.clone();
                 async move {
                     let mut count = counter.lock().unwrap();

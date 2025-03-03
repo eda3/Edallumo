@@ -34,7 +34,7 @@ pub async fn find_character(character: &String) -> Result<String> {
 
     // nicknames.json ファイル読み込み　結果：JSON文字列取得
     let data_from_file = fs::read_to_string("data/nicknames.json").map_err(|e| {
-        AppError::FileNotFound(format!("nicknames.jsonの読み込みに失敗しました: {}", e))
+        AppError::FileNotFound(format!("nicknames.jsonの読み込みに失敗しました: {e}"))
     })?;
 
     // JSON文字列を Nicknames 構造体のベクターへデシリアライズ　結果：vec_nicknames
@@ -120,8 +120,8 @@ pub async fn find_move_index(
         })?;
 
         // JSON文字列を MoveAliases 構造体のベクターにデシリアライズ　結果：aliases_data
-        let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data)
-            .map_err(AppError::Json)?;
+        let aliases_data =
+            serde_json::from_str::<Vec<MoveAliases>>(&aliases_data).map_err(AppError::Json)?;
 
         'outer: for alias_data in aliases_data {
             // 各エイリアス走査　結果：入力文字列と一致すれば実際の技入力に変換
