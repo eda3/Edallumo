@@ -115,10 +115,10 @@ async fn active_frames(move_info: &MoveInfo) -> String {
             if let Ok(num) = active_vec_string.parse::<u16>() {
                 // 数値エントリの場合、数値分ループ
                 for _ in 0..num {
-                    if !hit_recovery {
-                        meter_msg += RED_SQUARE; // 括弧前：赤四角追加
-                    } else {
+                    if hit_recovery {
                         meter_msg += BLUE_DIAMOND; // 括弧内：青菱形追加
+                    } else {
+                        meter_msg += RED_SQUARE; // 括弧前：赤四角追加
                     }
                 }
             }
