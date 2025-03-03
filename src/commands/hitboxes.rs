@@ -45,7 +45,19 @@ pub async fn hitboxes(
     );
 
     // 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
-    if (check::adaptive_check(ctx, true, true, true, true, true).await).is_err() {
+    if (check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: true,
+            nicknames_json: true,
+            character_folders: true,
+            character_jsons: true,
+            character_images: true,
+        },
+    )
+    .await)
+        .is_err()
+    {
         return Ok(());
     }
 

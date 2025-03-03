@@ -143,28 +143,34 @@ pub async fn character_images_exist(init_check: bool) -> Option<String> {
     None
 }
 
-/// Adaptive check 関数である。  
-/// 複数のチェック関数を実行し、各チェック結果に基づきエラーメッセージ出力またはパニックを実施する。  
-/// 引数：  
-/// - `ctx` - コマンドコンテキスト  
-/// - `correct_character_check` - (bool, &String) 型タプル  
-/// - `correct_character_move_check` - (bool, &String) 型タプル  
-/// - `data_folder_check` - データフォルダ存在チェック有無  
-/// - `nicknames_json_check` - nicknames.json 存在チェック有無  
-/// - `character_folders_check` - キャラクターフォルダ存在チェック有無  
-/// - `character_jsons_check` - キャラクター JSON 存在チェック有無  
-/// - `character_images_check` - 画像 JSON 存在チェック有無  
+/// チェックオプション構造体
+///
+/// 各種チェック機能の有効・無効を指定するための構造体
+#[derive(Default)]
+pub struct CheckOptions {
+    /// データフォルダの存在チェック
+    pub data_folder: bool,
+    /// ニックネームJSONの存在チェック
+    pub nicknames_json: bool,
+    /// キャラクターフォルダの存在チェック
+    pub character_folders: bool,
+    /// キャラクターJSONの存在チェック
+    pub character_jsons: bool,
+    /// キャラクター画像の存在チェック
+    pub character_images: bool,
+}
+
+/// アダプティブチェック関数
+///
+/// 指定されたオプションに基づいて、必要なチェックのみを実行する
+///
+/// # 引数
+/// - `ctx` - Discordのコンテキスト
+/// - `options` - 実行するチェックを指定するオプション構造体
+///
 /// 戻り値：全チェック成功時 Ok(()) / 失敗時 Err("Failed adaptive_check")
-#[allow(clippy::too_many_arguments)]
-pub async fn adaptive_check(
-    ctx: Context<'_>,
-    data_folder_check: bool,
-    nicknames_json_check: bool,
-    character_folders_check: bool,
-    character_jsons_check: bool,
-    character_images_check: bool,
-) -> Result<()> {
-    if data_folder_check {
+pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<()> {
+    if options.data_folder {
         // Checking if data folder exists
         if let Some(error_msg) = data_folder_exists(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -174,7 +180,7 @@ pub async fn adaptive_check(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if nicknames_json_check {
+    if options.nicknames_json {
         // Checking if nicknames.json exists
         if let Some(error_msg) = nicknames_json_exists(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -184,7 +190,7 @@ pub async fn adaptive_check(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if character_folders_check {
+    if options.character_folders {
         // Checking if character folders exist
         if let Some(error_msg) = character_folders_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -194,7 +200,7 @@ pub async fn adaptive_check(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if character_jsons_check {
+    if options.character_jsons {
         // Checking if character jsons exist
         if let Some(error_msg) = character_jsons_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -204,8 +210,8 @@ pub async fn adaptive_check(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if character_images_check {
-        // Checking if image jsons exist
+    if options.character_images {
+        // Checking if character images exist
         if let Some(error_msg) = character_images_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
                 println!("Failed to send message: {e}");
@@ -214,6 +220,7 @@ pub async fn adaptive_check(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
+
     Ok(())
 }
 

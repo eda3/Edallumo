@@ -27,9 +27,21 @@ pub enum UpdateChoice {
 /// ロール名：BotOwner が必須
 #[poise::command(prefix_command, slash_command, owners_only)]
 pub async fn update(ctx: Context<'_>) -> Result<()> {
-    // 入力チェック実施　条件確認
-    if (check::adaptive_check(ctx, true, true, true, true, false).await).is_err() {
-        return Ok(()); // チェック失敗時終了
+    // 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
+    if (check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: true,
+            nicknames_json: true,
+            character_folders: true,
+            character_jsons: true,
+            character_images: false,
+        },
+    )
+    .await)
+        .is_err()
+    {
+        return Ok(());
     }
 
     ctx.say("Update started!").await?; // 更新開始通知
@@ -49,9 +61,21 @@ pub async fn character(
     ctx: Context<'_>,
     #[description = "対象キャラクター名"] character: String,
 ) -> Result<()> {
-    // 入力チェック実施　条件確認
-    if (check::adaptive_check(ctx, true, true, true, true, false).await).is_err() {
-        return Ok(()); // チェック失敗時終了
+    // 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
+    if (check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: true,
+            nicknames_json: true,
+            character_folders: true,
+            character_jsons: true,
+            character_images: false,
+        },
+    )
+    .await)
+        .is_err()
+    {
+        return Ok(());
     }
 
     // キャラクター探索処理　find関数呼出
