@@ -23,7 +23,6 @@ pub use models::{CharInfo, GuardType, MoveAliases, MoveInfo};
 use colored::Colorize; // 文字色変換用
 use commands::{feedback, frames, help, hitboxes, moves, nicknames, register, update};
 #[allow(unused_imports)]
-
 use poise::serenity_prelude as serenity; // Serenity 用エイリアス
 
 /// コンテキスト型定義
@@ -103,25 +102,25 @@ async fn on_error(error: poise::FrameworkError<'_, Data, AppError>) -> Result<()
         poise::FrameworkError::Setup { error, .. } => {
             eprintln!(
                 "{}",
-                format!("フレームワークのセットアップエラー: {}", error).red()
+                format!("フレームワークのセットアップエラー: {error}").red()
             );
-            Err(AppError::Discord(format!("セットアップエラー: {}", error)))
+            Err(AppError::Discord(format!("セットアップエラー: {error}")))
         }
         poise::FrameworkError::Command { error, ctx, .. } => {
-            eprintln!("{}", format!("コマンド実行エラー: {}", error).red());
+            eprintln!("{}", format!("コマンド実行エラー: {error}").red());
             let embed = poise::CreateReply::default().embed(
                 serenity::CreateEmbed::new()
                     .title("エラーが発生しました")
-                    .description(format!("```{:?}```", error))
+                    .description(format!("```{error:?}```"))
                     .color(0xFF0000),
             );
             if let Err(e) = ctx.send(embed).await {
-                eprintln!("{}", format!("エラーメッセージ送信失敗: {}", e).red());
+                eprintln!("{}", format!("エラーメッセージ送信失敗: {e}").red());
             }
             Ok(())
         }
         poise::FrameworkError::CommandPanic { payload, ctx, .. } => {
-            eprintln!("{}", format!("コマンドパニック: {:?}", payload).red());
+            eprintln!("{}", format!("コマンドパニック: {payload:?}").red());
             let embed = poise::CreateReply::default().embed(
                 serenity::CreateEmbed::new()
                     .title("内部エラーが発生しました")
@@ -131,12 +130,12 @@ async fn on_error(error: poise::FrameworkError<'_, Data, AppError>) -> Result<()
                     .color(0xFF0000),
             );
             if let Err(e) = ctx.send(embed).await {
-                eprintln!("{}", format!("エラーメッセージ送信失敗: {}", e).red());
+                eprintln!("{}", format!("エラーメッセージ送信失敗: {e}").red());
             }
             Ok(())
         }
         _ => {
-            eprintln!("{}", format!("その他のエラー: {}", error).red());
+            eprintln!("{}", format!("その他のエラー: {error}").red());
             Ok(())
         }
     }
@@ -152,9 +151,9 @@ async fn main() -> Result<()> {
     dotenv::dotenv().map_err(|e| {
         eprintln!(
             "{}",
-            format!(".envファイルの読み込みに失敗しました: {}", e).red()
+            format!(".envファイルの読み込みに失敗しました: {e}").red()
         );
-        AppError::Config(format!(".envファイルの読み込みに失敗しました: {}", e))
+        AppError::Config(format!(".envファイルの読み込みに失敗しました: {e}"))
     })?;
 
     // 環境変数からトークンを読み込む（.envから設定された変数）
@@ -181,11 +180,10 @@ async fn main() -> Result<()> {
     if let Err(e) = check::validate_data_dir(&data_dir) {
         eprintln!(
             "{}",
-            format!("エラー: データディレクトリの確認に失敗しました: {}", e).red()
+            format!("エラー: データディレクトリの確認に失敗しました: {e}").red()
         );
         return Err(AppError::Config(format!(
-            "データディレクトリの確認に失敗しました: {}",
-            e
+            "データディレクトリの確認に失敗しました: {e}"
         )));
     }
 
@@ -214,7 +212,7 @@ async fn main() -> Result<()> {
                     if let Err(e) = on_error(error).await {
                         eprintln!(
                             "{}",
-                            format!("エラー処理中にエラーが発生しました: {}", e).red()
+                            format!("エラー処理中にエラーが発生しました: {e}").red()
                         );
                     }
                 })
@@ -225,7 +223,7 @@ async fn main() -> Result<()> {
                     if let serenity::FullEvent::Ready { data_about_bot, .. } = event {
                         println!(
                             "{}",
-                            format!("ログイン: {}", data_about_bot.user.name).green()
+                            format!("ログイン: {name}", name = data_about_bot.user.name).green()
                         );
                     }
                     Ok(())
