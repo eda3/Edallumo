@@ -401,7 +401,7 @@ pub fn check_data_integrity(data_dir: &str) -> Result<()> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::*; // 親モジュールの全ての要素をインポート
     use crate::test_utils::{create_test_dir_structure, create_test_json_file};
     use std::path::PathBuf;
     use tempfile::TempDir;
