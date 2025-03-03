@@ -6,7 +6,7 @@
 extern crate ureq;
 use crate::common::preprocess; // JSON 前処理関数群の利用
 use crate::{ImageLinks, CHARS}; // ImageLinks 構造体およびキャラクター定数群の利用
-use md5::{Digest, Md5}; // MD5 ハッシュ計算ライブラリの利用
+use md5::{Digest, Md5}; // MD5 ハッシュ計算用
 use serde::Deserialize; // JSON デシリアライズ用
 use std::{fs::File, io::Write}; // ファイル操作および書き込み用
 
