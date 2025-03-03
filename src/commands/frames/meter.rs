@@ -160,9 +160,7 @@ async fn recovery_frames(move_info: &MoveInfo) -> String {
             if let Ok(num) = recovery_vec[x].parse::<u16>() {
                 // 数値エントリの場合、数値分ループ
                 for _ in 0..num {
-                    if !recovery_tilde {
-                        meter_msg += BLUE_DIAMOND; // チルダ前：青菱形追加
-                    } else {
+                    if recovery_tilde {
                         // チルダ内：前エントリとの差分回数青菱形追加
                         for _ in 0..((recovery_vec[x].parse::<u16>().unwrap())
                             - (recovery_vec[x - 2].parse::<u16>()).unwrap())
@@ -170,6 +168,8 @@ async fn recovery_frames(move_info: &MoveInfo) -> String {
                             meter_msg += BLUE_DIAMOND; // チルダ内青菱形追加
                         }
                         break; // ループ中断
+                    } else {
+                        meter_msg += BLUE_DIAMOND; // チルダ前：青菱形追加
                     }
                 }
             }
