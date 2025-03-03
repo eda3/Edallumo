@@ -39,7 +39,7 @@ pub async fn feedback(
 
     // ファイル書き込み処理
     // 整形済みのテキストを 'request.txt' に書き込む
-    write!(file, "{}", new_text).expect("\nFailed to write to 'request.txt'");
+    write!(file, "{new_text}").expect("\nFailed to write to 'request.txt'");
 
     // ログ出力処理
     // コンソールに書き込み完了のログを出力し、黄色で強調表示する

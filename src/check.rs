@@ -188,7 +188,7 @@ pub async fn adaptive_check(
         // Checking if character folders exist
         if let Some(error_msg) = character_folders_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
-                println!("Failed to send message: {}", e);
+                println!("Failed to send message: {e}");
             }
             println!();
             panic!("{}", error_msg.replace('\n', " ").red());
@@ -198,7 +198,7 @@ pub async fn adaptive_check(
         // Checking if character jsons exist
         if let Some(error_msg) = character_jsons_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
-                println!("Failed to send message: {}", e);
+                println!("Failed to send message: {e}");
             }
             println!();
             panic!("{}", error_msg.replace('\n', " ").red());
@@ -208,7 +208,7 @@ pub async fn adaptive_check(
         // Checking if image jsons exist
         if let Some(error_msg) = character_images_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
-                println!("Failed to send message: {}", e);
+                println!("Failed to send message: {e}");
             }
             println!();
             panic!("{}", error_msg.replace('\n', " ").red());
@@ -234,15 +234,13 @@ pub fn validate_data_dir(data_dir: &str) -> Result<()> {
     let data_path = Path::new(data_dir);
     if !data_path.exists() {
         return Err(AppError::FileNotFound(format!(
-            "データディレクトリが見つかりません: {}",
-            data_dir
+            "データディレクトリが見つかりません: {data_dir}"
         )));
     }
 
     if !data_path.is_dir() {
         return Err(AppError::Config(format!(
-            "指定されたパスはディレクトリではありません: {}",
-            data_dir
+            "指定されたパスはディレクトリではありません: {data_dir}"
         )));
     }
 
@@ -257,8 +255,7 @@ pub fn validate_data_dir(data_dir: &str) -> Result<()> {
         let char_dir = data_path.join(char_name);
         if !char_dir.exists() || !char_dir.is_dir() {
             return Err(AppError::Config(format!(
-                "必要なキャラクターディレクトリが見つかりません: {}",
-                char_name
+                "必要なキャラクターディレクトリが見つかりません: {char_name}"
             )));
         }
     }
@@ -285,8 +282,7 @@ pub fn check_character_folders(data_dir: &str) -> Result<()> {
     let data_path = Path::new(data_dir);
     if !data_path.exists() {
         return Err(AppError::FileNotFound(format!(
-            "データディレクトリが見つかりません: {}",
-            data_dir
+            "データディレクトリが見つかりません: {data_dir}"
         )));
     }
 
@@ -342,9 +338,8 @@ pub fn check_data_integrity(data_dir: &str) -> Result<()> {
                         println!(
                             "{}",
                             format!(
-                                "警告: キャラクターデータの解析に失敗しました: {} - {}",
-                                char_data_path.display(),
-                                e
+                                "警告: キャラクターデータの解析に失敗しました: {} - {e}",
+                                char_data_path.display()
                             )
                             .yellow()
                         );
@@ -354,9 +349,8 @@ pub fn check_data_integrity(data_dir: &str) -> Result<()> {
                     println!(
                         "{}",
                         format!(
-                            "警告: キャラクターデータの読み込みに失敗しました: {} - {}",
-                            char_data_path.display(),
-                            e
+                            "警告: キャラクターデータの読み込みに失敗しました: {} - {e}",
+                            char_data_path.display()
                         )
                         .yellow()
                     );
@@ -373,9 +367,8 @@ pub fn check_data_integrity(data_dir: &str) -> Result<()> {
                         println!(
                             "{}",
                             format!(
-                                "警告: 技データの解析に失敗しました: {} - {}",
-                                moves_data_path.display(),
-                                e
+                                "警告: 技データの解析に失敗しました: {} - {e}",
+                                moves_data_path.display()
                             )
                             .yellow()
                         );
@@ -385,9 +378,8 @@ pub fn check_data_integrity(data_dir: &str) -> Result<()> {
                     println!(
                         "{}",
                         format!(
-                            "警告: 技データの読み込みに失敗しました: {} - {}",
-                            moves_data_path.display(),
-                            e
+                            "警告: 技データの読み込みに失敗しました: {} - {e}",
+                            moves_data_path.display()
                         )
                         .yellow()
                     );
