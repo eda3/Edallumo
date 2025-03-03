@@ -40,8 +40,7 @@ struct ImageTitle {
 // 定数定義
 // ======================================================================
 
-/// 画像の基本URL  
-/// Dustloop Wiki の画像が配置されている基本パス
+/// Dustloopの画像用半URL（ハッシュ文字列と画像名を追加する必要がある）
 const IMAGE_HALF: &str = "https://www.dustloop.com/wiki/images";
 
 // ======================================================================
@@ -73,6 +72,7 @@ async fn generate_hitbox_links(hitboxes: &Option<String>) -> Vec<String> {
 
         // 各ヒットボックス名に対して画像リンク生成関数を呼び出し
         for hitbox_string in &hitbox_str {
+            // スペースをアンダースコアに置換し、URLとして正規化
             hitbox_links
                 .push(make_link((*hitbox_string).to_string().trim().replace(' ', "_")).await);
         }
@@ -82,95 +82,46 @@ async fn generate_hitbox_links(hitboxes: &Option<String>) -> Vec<String> {
 }
 
 /// 画像リンクを生成する関数
-async fn generate_image_link(images: &Option<String>) -> String {
-    // 画像ファイル名が未定義の場合は空文字とする
-    if images.is_none() {
-        return String::new();
+///
+/// # 引数
+/// * `image_name` - 画像ファイル名
+///
+/// # 戻り値
+/// 生成された画像リンク（例："https://www.dustloop.com/wiki/images/e/e1/example.png"）
+async fn make_link(image_name: String) -> String {
+    // スペースをアンダースコアに置換して、URL形式として有効にする
+    let normalized_image_name = image_name.replace(' ', "_");
+
+    // 画像名をバイト列に変換　結果：画像名のバイト列
+    let image_bytes = normalized_image_name.as_bytes();
+
+    // MD5 ハッシュ計算器を生成　結果：MD5 ハッシュ計算器
+    let mut hasher = Md5::new();
+
+    // 画像のバイト列をハッシュ計算器に投入　結果：ハッシュ計算器に画像情報を反映
+    hasher.update(image_bytes);
+
+    // ハッシュ計算結果を 16 進数文字列に変換　結果：MD5 ハッシュ値（16 進数文字列）
+    let hash_result = hasher.finalize();
+    let result = format!("{hash_result:x}");
+
+    // 16 進数文字列の先頭 1 文字を取得　結果：ハッシュ値の先頭文字
+    let char1 = result.chars().next().unwrap();
+
+    // 16 進数文字列の 2 文字目を取得　結果：ハッシュ値の 2 文字目
+    let char2 = result.chars().nth(1).unwrap();
+
+    // 画像リンクを組み立て　組み立て方法：基本 URL / 先頭文字 + 先頭文字 + 2文字目 / 画像名
+    // 組み立て結果：生成された画像リンク
+    let image_link = format!("{IMAGE_HALF}/{char1}/{char1}{char2}/{normalized_image_name}");
+
+    // ログ出力（デバッグ用）
+    if image_name != normalized_image_name {
+        println!("URL正規化: {} → {}", image_name, normalized_image_name);
     }
 
-    // 画像ファイル名が空白のみの場合は空文字に設定
-    if images.as_ref().unwrap().trim() == "" {
-        return String::new();
-    }
-
-    // 複数の画像ファイル名が存在する場合の処理
-    if images.as_ref().unwrap().contains(';') {
-        // セミコロンで分割し、先頭要素を使用
-        let split_image: Vec<&str> = images.as_ref().unwrap().split(';').collect();
-        // 画像リンク生成関数でリンク形式に整形
-        make_link(split_image[0].to_string().trim().replace(' ', "_")).await
-    } else {
-        // 単一の画像ファイル名の場合の処理
-        make_link(images.as_ref().unwrap().to_string()).await
-    }
-}
-
-/// 入力名を整形する関数
-fn format_input_name(input: &Option<String>, name: &Option<String>) -> String {
-    let input_str = input.as_deref().unwrap_or("");
-
-    // 特定の入力文字列の場合はそのまま使用
-    if [
-        "2D",
-        "2HS",
-        "2K",
-        "2P",
-        "2S",
-        "3K",
-        "5D",
-        "5HS",
-        "5K",
-        "5P",
-        "5S",
-        "6K",
-        "6P",
-        "Fスタート",
-        "Jスタート",
-        "JD",
-        "JHS",
-        "JK",
-        "JP",
-        "JS",
-        "Pスタート",
-        "Sスタート",
-        "エアダッシュ",
-        "ガトリング",
-        "クローゼライン",
-        "ジャンプ",
-        "スタンプ",
-        "ダッシュ",
-        "ダブルジャンプ",
-        "バックステップ",
-        "フォルト",
-        "ロマンキャンセル",
-        "入力猶予",
-        "前ジャンプ",
-        "後ジャンプ",
-        "攻撃判定",
-        "特殊技",
-        "置換表",
-        "通常技",
-        "必殺技",
-        "打撃無敵",
-        "投げ",
-        "投げ無敵",
-        "歩き",
-        "殴られ判定",
-        "空中ダッシュ",
-        "空中投げ",
-        "立ち",
-        "起き上がり",
-        "走り",
-        "通常投げ",
-        "ステイン",
-    ]
-    .contains(&input_str)
-    {
-        input_str.to_string()
-    } else {
-        let name_str = name.as_deref().unwrap_or("");
-        format!("{name_str}({input_str})")
-    }
+    // 生成された画像リンクを返却　返却結果：最終画像リンク
+    image_link
 }
 
 /// 画像データを処理する関数
@@ -252,37 +203,104 @@ pub async fn images_to_json(char_images_response_json: String, mut file: &File, 
         .expect(&("\nFailed to serialize '".to_owned() + CHARS[char_count] + ".json'."));
 }
 
-/// 画像ファイル名から MD5 ハッシュを利用して画像リンクを生成する非同期関数
-///
-/// # 引数
-/// * `image_name` - 画像ファイル名（例："example.png"）
-///
-/// # 戻り値
-/// 生成された画像リンク（例："https://www.dustloop.com/wiki/images/e/e1/example.png"）
-async fn make_link(image_name: String) -> String {
-    // 画像名をバイト列に変換　結果：画像名のバイト列
-    let image_bytes = image_name.as_bytes();
+/// 画像リンクを生成する関数
+async fn generate_image_link(images: &Option<String>) -> String {
+    // 画像ファイル名が未定義の場合は空文字とする
+    if images.is_none() {
+        return String::new();
+    }
 
-    // MD5 ハッシュ計算器を生成　結果：MD5 ハッシュ計算器
-    let mut hasher = Md5::new();
+    // 画像ファイル名が空白のみの場合は空文字に設定
+    if images.as_ref().unwrap().trim() == "" {
+        return String::new();
+    }
 
-    // 画像のバイト列をハッシュ計算器に投入　結果：ハッシュ計算器に画像情報を反映
-    hasher.update(image_bytes);
+    // 複数の画像ファイル名が存在する場合の処理
+    if images.as_ref().unwrap().contains(';') {
+        // セミコロンで分割し、先頭要素を使用
+        let split_image: Vec<&str> = images.as_ref().unwrap().split(';').collect();
+        // 画像リンク生成関数でリンク形式に整形
+        // 先頭にあるスペースを削除し、残るスペースはアンダースコアに置換
+        make_link(split_image[0].to_string().trim().replace(' ', "_")).await
+    } else {
+        // 単一の画像ファイル名の場合の処理
+        // スペースをアンダースコアに置換
+        make_link(
+            images
+                .as_ref()
+                .unwrap()
+                .to_string()
+                .trim()
+                .replace(' ', "_"),
+        )
+        .await
+    }
+}
 
-    // ハッシュ計算結果を 16 進数文字列に変換　結果：MD5 ハッシュ値（16 進数文字列）
-    let hash_result = hasher.finalize();
-    let result = format!("{hash_result:x}");
+/// 入力名を整形する関数
+fn format_input_name(input: &Option<String>, name: &Option<String>) -> String {
+    let input_str = input.as_deref().unwrap_or("");
 
-    // 16 進数文字列の先頭 1 文字を取得　結果：ハッシュ値の先頭文字
-    let char1 = result.chars().next().unwrap();
-
-    // 16 進数文字列の 2 文字目を取得　結果：ハッシュ値の 2 文字目
-    let char2 = result.chars().nth(1).unwrap();
-
-    // 画像リンクを組み立て　組み立て方法：基本 URL / 先頭文字 + 先頭文字 + 2文字目 / 画像名
-    // 組み立て結果：生成された画像リンク
-    let image_link = format!("{IMAGE_HALF}/{char1}/{char1}{char2}/{image_name}");
-
-    // 生成された画像リンクを返却　返却結果：最終画像リンク
-    image_link
+    // 特定の入力文字列の場合はそのまま使用
+    if [
+        "2D",
+        "2HS",
+        "2K",
+        "2P",
+        "2S",
+        "3K",
+        "5D",
+        "5HS",
+        "5K",
+        "5P",
+        "5S",
+        "6K",
+        "6P",
+        "Fスタート",
+        "Jスタート",
+        "JD",
+        "JHS",
+        "JK",
+        "JP",
+        "JS",
+        "Pスタート",
+        "Sスタート",
+        "エアダッシュ",
+        "ガトリング",
+        "クローゼライン",
+        "ジャンプ",
+        "スタンプ",
+        "ダッシュ",
+        "ダブルジャンプ",
+        "バックステップ",
+        "フォルト",
+        "ロマンキャンセル",
+        "入力猶予",
+        "前ジャンプ",
+        "後ジャンプ",
+        "攻撃判定",
+        "特殊技",
+        "置換表",
+        "通常技",
+        "必殺技",
+        "打撃無敵",
+        "投げ",
+        "投げ無敵",
+        "歩き",
+        "殴られ判定",
+        "空中ダッシュ",
+        "空中投げ",
+        "立ち",
+        "起き上がり",
+        "走り",
+        "通常投げ",
+        "ステイン",
+    ]
+    .contains(&input_str)
+    {
+        input_str.to_string()
+    } else {
+        let name_str = name.as_deref().unwrap_or("");
+        format!("{name_str}({input_str})")
+    }
 }

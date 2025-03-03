@@ -66,14 +66,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/9/95/GGST_Ramlethal_Valentine_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c1/GGST_Ramlethal_Valentine_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d3/GGST_Ramlethal_Valentine_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f1/GGST_Ramlethal_Valentine_6H_Hitbox.png",
@@ -88,14 +88,14 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/0/02/GGST_Ramlethal_Valentine_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f9/GGST_Ramlethal_Valentine_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d4/GGST_Ramlethal_Valentine_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/cd/GGST_Ramlethal_Valentine_fS_Hitbox.png",
@@ -103,7 +103,7 @@
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8a/GGST_Ramlethal_Valentine_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/96/GGST_Ramlethal_Valentine_jD_Hitbox.png",
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3c/GGST_Ramlethal_Valentine_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/54/GGST_Ramlethal_Valentine_jH_1_Hitbox.png",
@@ -120,21 +120,21 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/5/53/GGST_Ramlethal_Valentine_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/43/GGST_Ramlethal_Valentine_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/0/03/GGST_Ramlethal_Valentine_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9c/GGST_Ramlethal_Valentine_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b9/GGST_Ramlethal_Valentine_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/10/GGST_Ramlethal_Valentine_jS_Hitbox.png",
@@ -156,6 +156,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/5/5d/GGST_Ramlethal_Valentine_Ground_Throw.png",
     "hitbox_img": [
@@ -167,6 +174,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/4/47/GGST_Ramlethal_Valentine_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f2/GGST_Ramlethal_Valentine_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Ramlethal_Valentine_Sildo_Detruo.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/4/40/GGST_Ramlethal_Valentine_Sildo_Detruo_Hitbox.png"
     ]
   },
   {

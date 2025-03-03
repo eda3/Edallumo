@@ -65,14 +65,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "5[D](5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/9/97/GGST_Queen_Dizzy_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5d/GGST_Queen_Dizzy_5D_hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/7/72/GGST_Queen_Dizzy_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7b/GGST_Queen_Dizzy_6H_hitbox_1.png",
@@ -96,49 +96,49 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3c/GGST_Queen_Dizzy_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/77/GGST_Queen_Dizzy_cS_hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fe/GGST_Queen_Dizzy_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2b/GGST_Queen_Dizzy_f.S_hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/8/84/GGST_Queen_Dizzy_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2c/GGST_Queen_Dizzy_j.D_hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bb/GGST_Queen_Dizzy_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/fe/GGST_Queen_Dizzy_j.H_hitbox.png"
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f7/GGST_Queen_Dizzy_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/78/GGST_Queen_Dizzy_j.K_hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Queen_Dizzy_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/19/GGST_Queen_Dizzy_j.P_hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/e/eb/GGST_Queen_Dizzy_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/ae/GGST_Queen_Dizzy_j.S_hitbox.png"
@@ -177,6 +177,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/0/09/GGST_Queen_Dizzy_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dc/GGST_Queen_Dizzy_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
     ]
   },
   {

@@ -67,14 +67,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/b/be/GGST_Sol_Badguy_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/21/GGST_Sol_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/ac/GGST_Sol_Badguy_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/11/GGST_Sol_6H_Hitbox.png"
@@ -88,35 +88,35 @@
     ]
   },
   {
-    "input": "6S",
+    "input": "6S(6S)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a3/GGST_Sol_Badguy_6S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c2/GGST_Sol_6S_Hitbox.png"
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/1/1b/GGST_Sol_Badguy_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/81/GGST_Sol_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/6/60/GGST_Sol_Badguy_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9e/GGST_Sol_fS_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/4/43/GGST_Sol_Badguy_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/07/GGST_Sol_jD_Hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/5/5a/GGST_Sol_Badguy_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5d/GGST_Sol_jH_1_Hitbox.png",
@@ -125,21 +125,21 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/5/5f/GGST_Sol_Badguy_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b7/GGST_Sol_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a7/GGST_Sol_Badguy_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/74/GGST_Sol_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c1/GGST_Sol_Badguy_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8a/GGST_Sol_jS_Hitbox.png"
@@ -160,6 +160,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fb/GGST_Sol_Badguy_Ground_Throw.png",
     "hitbox_img": [
@@ -171,6 +178,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/5/5f/GGST_Sol_Badguy_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/1d/GGST_Sol_Badguy_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/b/bd/GGST_Sol_Badguy_214K.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/9/92/GGST_Sol_214K_Hitbox.png"
     ]
   },
   {
@@ -244,7 +258,7 @@
     ]
   },
   {
-    "input": "ヴォルカニックファイパー(623S)",
+    "input": "ヴォルカニックファイパー(6236S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Sol_Badguy_623X.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c2/GGST_Sol_6236S_Hitbox.png",
@@ -283,7 +297,7 @@
     ]
   },
   {
-    "input": "空中ヴォルカニックヴァイパー(j623S)",
+    "input": "空中ヴォルカニックヴァイパー(j6236S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/20/GGST_Sol_Badguy_623X.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c2/GGST_Sol_6236S_Hitbox.png",

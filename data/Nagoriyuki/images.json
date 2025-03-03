@@ -126,7 +126,7 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/e/e5/GGST_Nagoriyuki_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d8/GGST_Nagoriyuki_5D-Hitbox.png"
@@ -176,7 +176,7 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a0/GGST_Nagoriyuki_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/61/GGST_Nagoriyuki_cS-Hitbox.png"
@@ -323,14 +323,14 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e9/GGST_Nagoriyuki_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2c/GGST_Nagoriyuki_jK-Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9a/GGST_Nagoriyuki_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6a/GGST_Nagoriyuki_jP-Hitbox.png"
@@ -386,14 +386,14 @@
     ]
   },
   {
-    "input": "BR Activation",
+    "input": "BR Activation(BR Activation)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d6/GGST_Nagoriyuki_Activation.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/77/GGST_Nagoriyuki_Activation-Hitbox.png"
     ]
   },
   {
-    "input": "BR Deactivation",
+    "input": "BR Deactivation(BR Deactivation)",
     "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_Nagoriyuki_Deactivation.png",
     "hitbox_img": [
       ""
@@ -404,6 +404,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/f/fc/GGST_Nagoriyuki_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/d5/GGST_Nagoriyuki_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/3/3d/GGST_Nagoriyuki_Kamuriyuki1.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/a/a9/GGST_Nagoriyuki_Kamuriyuki1-Hitbox.png"
     ]
   },
   {

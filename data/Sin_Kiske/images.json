@@ -66,14 +66,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/c/c2/GGST_Sin_Kiske_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0f/GGST_Sin_Kiske_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2f/GGST_Sin_Kiske_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/ac/GGST_Sin_Kiske_6H_Hitbox.png"
@@ -94,49 +94,49 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f2/GGST_Sin_Kiske_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/cb/GGST_Sin_Kiske_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Sin_Kiske_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e7/GGST_Sin_Kiske_fS_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/3/31/GGST_Sin_Kiske_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/48/GGST_Sin_Kiske_jD_Hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/b/b9/GGST_Sin_Kiske_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f3/GGST_Sin_Kiske_jH_Hitbox.png"
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cb/GGST_Sin_Kiske_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2d/GGST_Sin_Kiske_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Sin_Kiske_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8a/GGST_Sin_Kiske_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Sin_Kiske_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/39/GGST_Sin_Kiske_jS_Hitbox.png"
@@ -157,6 +157,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/99/GGST_Sin_Kiske_Ground_Throw.png",
     "hitbox_img": [
@@ -168,6 +175,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/7/71/GGST_Sin_Kiske_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/9d/GGST_Sin_Kiske_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/7/7f/GGST_Sin_Kiske_214S.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/d/dd/GGST_Sin_Kiske_214S_Hitbox.png"
     ]
   },
   {
@@ -222,7 +236,7 @@
     ]
   },
   {
-    "input": "ホークベイカー(623S)",
+    "input": "ホークベイカー(6236S)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f5/GGST_Sin_Kiske_6236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f9/GGST_Sin_Kiske_6236S_1_Hitbox.png",
@@ -230,7 +244,7 @@
     ]
   },
   {
-    "input": "ホークベイカー派生(623SS)",
+    "input": "ホークベイカー派生(6236S~S)",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Sin_Kiske_6236SS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5b/GGST_Sin_Kiske_6236SS_Hitbox.png"

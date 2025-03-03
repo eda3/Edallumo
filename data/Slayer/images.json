@@ -63,14 +63,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/f/fb/GGST_Slayer_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/73/GGST_Slayer_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/7/78/GGST_Slayer_6H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b5/GGST_Slayer_6H_Hitbox_1.png",
@@ -104,14 +104,14 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/1/15/GGST_Slayer_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f6/GGST_Slayer_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/3/35/GGST_Slayer_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8a/GGST_Slayer_fS_Hitbox_1.png",
@@ -119,7 +119,7 @@
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/3/33/GGST_Slayer_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_Slayer_jD_Hitbox.png",
@@ -127,28 +127,28 @@
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Slayer_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e2/GGST_Slayer_jH_Hitbox.png"
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a4/GGST_Slayer_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6c/GGST_Slayer_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f1/GGST_Slayer_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/13/GGST_Slayer_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_Slayer_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/68/GGST_Slayer_jS_Hitbox.png"
@@ -169,6 +169,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/2/29/GGST_Slayer_Ground_Throw.png",
     "hitbox_img": [
@@ -180,6 +187,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_Slayer_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/de/GGST_SlayerAir_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/d/da/GGST_Slayer_Air_Throw.png",
+    "hitbox_img": [
+      ""
     ]
   },
   {

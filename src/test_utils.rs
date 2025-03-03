@@ -194,7 +194,7 @@ impl _MockDiscordContext {
     ///
     /// # 戻り値
     /// `MockDiscordContext` - 新しいモックコンテキスト
-    pub fn _new() -> Self {
+    pub fn new() -> Self {
         Self {
             messages: Vec::new(),
             embeds: Vec::new(),
@@ -208,7 +208,7 @@ impl _MockDiscordContext {
     ///
     /// # 戻り値
     /// `Result<(), ()>` - 常に `Ok(())`
-    pub fn _send_message(&mut self, content: &str) -> Result<(), ()> {
+    pub fn send_message(&mut self, content: &str) -> Result<(), ()> {
         self.messages.push(content.to_string());
         Ok(())
     }
@@ -220,7 +220,7 @@ impl _MockDiscordContext {
     ///
     /// # 戻り値
     /// `Result<(), ()>` - 常に `Ok(())`
-    pub fn _send_embed(&mut self, content: &str) -> Result<(), ()> {
+    pub fn send_embed(&mut self, content: &str) -> Result<(), ()> {
         self.embeds.push(content.to_string());
         Ok(())
     }

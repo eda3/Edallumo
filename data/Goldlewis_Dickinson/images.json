@@ -66,14 +66,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/1/19/GGST_Goldlewis_Dickinson_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e6/GGST_Goldlewis_Dickinson_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/f/fa/GGST_Goldlewis_Dickinson_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/cd/GGST_Goldlewis_Dickinson_6H_Hitbox.png"
@@ -88,28 +88,28 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/0/0d/GGST_Goldlewis_Dickinson_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/26/GGST_Goldlewis_Dickinson_c.S_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Goldlewis_Dickinson_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/85/GGST_Goldlewis_Dickinson_f.S_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/7/71/GGST_Goldlewis_Dickinson_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/74/GGST_Goldlewis_Dickinson_jD_Hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/f/f4/GGST_Goldlewis_Dickinson_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b2/GGST_Goldlewis_Dickinson_jH_Hitbox.png",
@@ -117,21 +117,21 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Goldlewis_Dickinson_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/93/GGST_Goldlewis_Dickinson_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/2/24/GGST_Goldlewis_Dickinson_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/e2/GGST_Goldlewis_Dickinson_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/68/GGST_Goldlewis_Dickinson_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/42/GGST_Goldlewis_Dickinson_jS_Hitbox.png"
@@ -152,6 +152,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/98/GGST_Goldlewis_Dickinson_Ground_Throw.png",
     "hitbox_img": [
@@ -163,6 +170,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/7/7b/GGST_Goldlewis_Dickinson_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/1d/GGST_Goldlewis_Dickinson_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
     ]
   },
   {

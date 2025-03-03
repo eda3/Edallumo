@@ -73,14 +73,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/e/e3/GGST_May_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/12/GGST_May_5D-Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/7/75/GGST_May_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/15/GGST_May_6H-Hitbox.png",
@@ -102,35 +102,35 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/1/17/GGST_May_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/02/GGST_May_c.S-Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/a/ab/GGST_May_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/03/GGST_May_f.S-Hitbox.png"
     ]
   },
   {
-    "input": "j2H",
+    "input": "j2H(j2H)",
     "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_May_j.2H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/98/GGST_May_j.2H-Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/5/50/GGST_May_j.D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/58/GGST_May_j.D-Hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_May_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/9/94/GGST_May_j.H-Hitbox.png",
@@ -138,21 +138,21 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c9/GGST_May_j.K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/15/GGST_May_j.K-Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_May_j.P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/f/f4/GGST_May_j.P-Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/1/1e/GGST_May_j.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/db/GGST_May_j.S-Hitbox.png"
@@ -173,6 +173,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_May_Ground_Throw.png",
     "hitbox_img": [
@@ -184,6 +191,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_May_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/dc/GGST_May_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/f/f6/GGST_May_Overhead_Kiss_2.png",
+    "hitbox_img": [
+      ""
     ]
   },
   {

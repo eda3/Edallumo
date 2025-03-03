@@ -69,7 +69,7 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/f/ff/GGST_Axl_Low_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/bc/GGST_Axl_5D_Hitbox_1.png",
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3e/GGST_Axl_Low_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/89/GGST_Axl_Low_6H_hitbox_1.png",
@@ -101,7 +101,7 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/3/32/GGST_Axl_Low_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0b/GGST_Axl_cS_Hitbox_1.png",
@@ -109,35 +109,35 @@
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/4/4a/GGST_Axl_Low_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/e/ea/GGST_Axl_fS_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9c/GGST_Axl_Low_j.D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a4/GGST_Axl_Low_j.D-hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2e/GGST_Axl_Low_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/8d/GGST_Axl_jH_Hitbox.png"
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e6/GGST_Axl_Low_j.K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/d/db/GGST_Axl_Low_j.K-hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/a/ae/GGST_Axl_Low_j.P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/23/GGST_Axl_Low_j.P_hitbox_1.png",
@@ -145,7 +145,7 @@
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/2/23/GGST_Axl_Low_j.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/85/GGST_Axl_jS_Hitbox.png"
@@ -166,6 +166,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/8/8e/GGST_Axl_Low_Ground_Throw.png",
     "hitbox_img": [
@@ -177,6 +184,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Axl_Low_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a6/GGST_Axl_Low_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/2/21/GGST_Axl_Low_214S.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/4/4e/GGST_Axl_Low_Rainwater_hitbox.png"
     ]
   },
   {

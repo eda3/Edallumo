@@ -65,14 +65,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/9/92/GGST_Anji_Mito_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/06/GGST_Anji_Mito_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/2/25/GGST_Anji_Mito_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/37/GGST_Anji_Mito_6H_1_Hitbox.png",
@@ -88,49 +88,49 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/4/42/GGST_Anji_Mito_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/57/GGST_Anji_Mito_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/0/08/GGST_Anji_Mito_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2b/GGST_Anji_Mito_fS_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c0/GGST_Anji_Mito_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5d/GGST_Anji_Mito_jD_Hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a6/GGST_Anji_Mito_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/33/GGST_Anji_Mito_jH_Hitbox.png"
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/c/ca/GGST_Anji_Mito_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b4/GGST_Anji_Mito_jK_Hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/0/04/GGST_Anji_Mito_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/3e/GGST_Anji_Mito_jP_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3f/GGST_Anji_Mito_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/aa/GGST_Anji_Mito_jS_1_Hitbox.png",
@@ -152,6 +152,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/b/bb/GGST_Anji_Mito_Ground_Throw.png",
     "hitbox_img": [
@@ -163,6 +170,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/7/73/GGST_Anji_Mito_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/40/GGST_Anji_Mito_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/6/6f/GGST_Anji_Mito_236S.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/6/64/GGST_Anji_Mito_Kou_2_Hitbox.png"
     ]
   },
   {

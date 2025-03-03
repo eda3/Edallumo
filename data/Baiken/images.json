@@ -65,14 +65,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/3/35/GGST_Baiken_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c4/GGST_Baiken_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/05/GGST_Baiken_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/17/GGST_Baiken_6H_1_hitbox.png",
@@ -95,28 +95,28 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9e/GGST_Baiken_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/2b/GGST_Baiken_cS_Hitbox.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2b/GGST_Baiken_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/cc/GGST_Baiken_fS_hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/4/4b/GGST_Baiken_jD.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/77/GGST_Baiken_jD_hitbox.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/1/1a/GGST_Baiken_jH.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/80/GGST_Baiken_jH_1_hitbox.png",
@@ -124,21 +124,21 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/7/7a/GGST_Baiken_jK.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/65/GGST_Baiken_jK_hitbox.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/d/df/GGST_Baiken_jP.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/84/GGST_Baiken_jP_hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/1/18/GGST_Baiken_jS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a3/GGST_Baiken_jS_1_hitbox.png",
@@ -160,6 +160,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/8/82/GGST_Baiken_Ground_Throw.png",
     "hitbox_img": [
@@ -178,6 +185,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/5/55/GGST_Baiken_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/53/GGST_Baiken_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
     ]
   },
   {

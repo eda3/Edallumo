@@ -65,14 +65,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/e/e7/GGST_Millia_Rage_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/13/GGST_Millia_Rage_5D_Hitbox.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3a/GGST_Millia_Rage_6H_1.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7d/GGST_Millia_Rage_6H_1_Hitbox.png",
@@ -95,7 +95,7 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d1/GGST_Millia_Rage_c.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/37/GGST_Millia_Rage_cS_1_Hitbox.png",
@@ -103,14 +103,14 @@
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/c/c5/GGST_Millia_Rage_f.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/3c/GGST_Millia_Rage_fS_Hitbox.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/6/69/GGST_Millia_Rage_j.D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a0/GGST_Millia_Rage_j.D_1_Hitbox.png",
@@ -118,7 +118,7 @@
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d0/GGST_Millia_Rage_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/0d/GGST_Millia_Rage_j.H_1_Hitbox.png",
@@ -128,7 +128,7 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cd/GGST_Millia_Rage_j.K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/41/GGST_Millia_Rage_j.K_1_Hitbox.png",
@@ -136,14 +136,14 @@
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Millia_Rage_j.P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/5/5c/GGST_Millia_Rage_j.P_Hitbox.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/6/6b/GGST_Millia_Rage_j.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/a/a2/GGST_Millia_Rage_j.S_1_Hitbox.png",
@@ -165,6 +165,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/8/82/GGST_Millia_Rage_Ground_Throw.png",
     "hitbox_img": [
@@ -176,6 +183,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/b/b1/GGST_Millia_Rage_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/87/GGST_Millia_Rage_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "https://www.dustloop.com/wiki/images/0/0b/GGST_Millia_Rage_6H_2.png",
+    "hitbox_img": [
+      "https://www.dustloop.com/wiki/images/8/8c/GGST_Millia_Rage_6H_2_Hitbox.png"
     ]
   },
   {

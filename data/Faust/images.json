@@ -78,14 +78,14 @@
     ]
   },
   {
-    "input": "5[D]",
+    "input": "溜めダスト(5[D])",
     "move_img": "https://www.dustloop.com/wiki/images/4/44/GGST_Faust_5D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/8/84/GGST_FA_HB_5D.png"
     ]
   },
   {
-    "input": "6HS",
+    "input": "6HS(6HS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3c/GGST_Faust_6H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/79/GGST_Faust_6H_1_Hitbox.png",
@@ -101,35 +101,35 @@
     ]
   },
   {
-    "input": "近S",
+    "input": "近S(近S)",
     "move_img": "https://www.dustloop.com/wiki/images/d/d9/GGST_Faust_cS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/3/30/GGST_FA_HB_cS.png"
     ]
   },
   {
-    "input": "遠S",
+    "input": "遠S(遠S)",
     "move_img": "https://www.dustloop.com/wiki/images/e/e1/GGST_Faust_fS.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/4/4a/GGST_Faust_fS_Hitbox.png"
     ]
   },
   {
-    "input": "j2K",
+    "input": "j2K(j2K)",
     "move_img": "https://www.dustloop.com/wiki/images/9/90/GGST_Faust_j.2K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/cc/GGST_FA_HB_j2K.png"
     ]
   },
   {
-    "input": "jD",
+    "input": "jD(jD)",
     "move_img": "https://www.dustloop.com/wiki/images/2/22/GGST_Faust_j.D.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c8/GGST_FA_HB_JD.png"
     ]
   },
   {
-    "input": "jHS",
+    "input": "jHS(jHS)",
     "move_img": "https://www.dustloop.com/wiki/images/3/3f/GGST_Faust_j.H.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/7/7b/GGST_Faust_j.H_1_Hitbox.png",
@@ -137,21 +137,21 @@
     ]
   },
   {
-    "input": "jK",
+    "input": "jK(jK)",
     "move_img": "https://www.dustloop.com/wiki/images/a/a3/GGST_Faust_j.K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/6/6c/GGST_FA_HB_JK.png"
     ]
   },
   {
-    "input": "jP",
+    "input": "jP(jP)",
     "move_img": "https://www.dustloop.com/wiki/images/2/2d/GGST_Faust_j.P.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/2/21/GGST_FA_HB_JP.png"
     ]
   },
   {
-    "input": "jS",
+    "input": "jS(jS)",
     "move_img": "https://www.dustloop.com/wiki/images/0/06/GGST_Faust_j.S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/1/17/GGST_FA_HB_JS.png"
@@ -248,6 +248,13 @@
     ]
   },
   {
+    "input": "Dash Cancel(66)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
+    ]
+  },
+  {
     "input": "投げ(6D or 4D)",
     "move_img": "https://www.dustloop.com/wiki/images/9/9b/GGST_Faust_Ground_Throw.png",
     "hitbox_img": [
@@ -266,6 +273,13 @@
     "move_img": "https://www.dustloop.com/wiki/images/4/4d/GGST_Faust_Air_Throw.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/0/00/GGST_Faust_Air_Throw_Hitbox.png"
+    ]
+  },
+  {
+    "input": "Finish Blow(jXX during Homing Jump)",
+    "move_img": "",
+    "hitbox_img": [
+      ""
     ]
   },
   {
