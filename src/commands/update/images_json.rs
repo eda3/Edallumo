@@ -198,14 +198,12 @@ async fn process_image_data(image_data: &mut ImageData) -> ImageLinks {
     }
 
     // ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
-    let processed_imagedata = ImageLinks {
+    ImageLinks {
         input: input_name.to_string(),
         // input: image_data.title.input.as_ref().unwrap().to_string(),
         move_img: image_link,
         hitbox_img: hitbox_links,
-    };
-
-    processed_imagedata
+    }
 }
 
 /// メイン処理：キャラクター画像データをJSONファイルに変換する関数
