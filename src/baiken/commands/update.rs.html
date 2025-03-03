@@ -110,8 +110,8 @@
     ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
 
     // 全キャラクター情報更新
-    </span>framedata::get_char_data(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
-    </span>images::get_char_images(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// 画像データ更新
+    </span>framedata::get_char_data(<span class="kw-2">&amp;</span>CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
+    </span>images::get_char_images(<span class="kw-2">&amp;</span>CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// 画像データ更新
 
     </span>ctx.say(<span class="string">"Update succesful!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新完了通知
 
@@ -141,8 +141,8 @@
 
     <span class="comment">// 更新対象分岐処理
     </span>ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-    </span>framedata::get_char_data(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
-    </span>images::get_char_images(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// 画像データ更新
+    </span>framedata::get_char_data(<span class="kw-2">&amp;</span>CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
+    </span>images::get_char_images(<span class="kw-2">&amp;</span>CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// 画像データ更新
 
     </span>ctx.say(<span class="string">"Update succesful!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新完了通知
 

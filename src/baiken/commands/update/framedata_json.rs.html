@@ -318,12 +318,114 @@
 <a href="#317" id="317">317</a>
 <a href="#318" id="318">318</a>
 <a href="#319" id="319">319</a>
-<a href="#320" id="320">320</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
+<a href="#320" id="320">320</a>
+<a href="#321" id="321">321</a>
+<a href="#322" id="322">322</a>
+<a href="#323" id="323">323</a>
+<a href="#324" id="324">324</a>
+<a href="#325" id="325">325</a>
+<a href="#326" id="326">326</a>
+<a href="#327" id="327">327</a>
+<a href="#328" id="328">328</a>
+<a href="#329" id="329">329</a>
+<a href="#330" id="330">330</a>
+<a href="#331" id="331">331</a>
+<a href="#332" id="332">332</a>
+<a href="#333" id="333">333</a>
+<a href="#334" id="334">334</a>
+<a href="#335" id="335">335</a>
+<a href="#336" id="336">336</a>
+<a href="#337" id="337">337</a>
+<a href="#338" id="338">338</a>
+<a href="#339" id="339">339</a>
+<a href="#340" id="340">340</a>
+<a href="#341" id="341">341</a>
+<a href="#342" id="342">342</a>
+<a href="#343" id="343">343</a>
+<a href="#344" id="344">344</a>
+<a href="#345" id="345">345</a>
+<a href="#346" id="346">346</a>
+<a href="#347" id="347">347</a>
+<a href="#348" id="348">348</a>
+<a href="#349" id="349">349</a>
+<a href="#350" id="350">350</a>
+<a href="#351" id="351">351</a>
+<a href="#352" id="352">352</a>
+<a href="#353" id="353">353</a>
+<a href="#354" id="354">354</a>
+<a href="#355" id="355">355</a>
+<a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
+<a href="#360" id="360">360</a>
+<a href="#361" id="361">361</a>
+<a href="#362" id="362">362</a>
+<a href="#363" id="363">363</a>
+<a href="#364" id="364">364</a>
+<a href="#365" id="365">365</a>
+<a href="#366" id="366">366</a>
+<a href="#367" id="367">367</a>
+<a href="#368" id="368">368</a>
+<a href="#369" id="369">369</a>
+<a href="#370" id="370">370</a>
+<a href="#371" id="371">371</a>
+<a href="#372" id="372">372</a>
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
+<a href="#381" id="381">381</a>
+<a href="#382" id="382">382</a>
+<a href="#383" id="383">383</a>
+<a href="#384" id="384">384</a>
+<a href="#385" id="385">385</a>
+<a href="#386" id="386">386</a>
+<a href="#387" id="387">387</a>
+<a href="#388" id="388">388</a>
+<a href="#389" id="389">389</a>
+<a href="#390" id="390">390</a>
+<a href="#391" id="391">391</a>
+<a href="#392" id="392">392</a>
+<a href="#393" id="393">393</a>
+<a href="#394" id="394">394</a>
+<a href="#395" id="395">395</a>
+<a href="#396" id="396">396</a>
+<a href="#397" id="397">397</a>
+<a href="#398" id="398">398</a>
+<a href="#399" id="399">399</a>
+<a href="#400" id="400">400</a>
+<a href="#401" id="401">401</a>
+<a href="#402" id="402">402</a>
+<a href="#403" id="403">403</a>
+<a href="#404" id="404">404</a>
+<a href="#405" id="405">405</a>
+<a href="#406" id="406">406</a>
+<a href="#407" id="407">407</a>
+<a href="#408" id="408">408</a>
+<a href="#409" id="409">409</a>
+<a href="#410" id="410">410</a>
+<a href="#411" id="411">411</a>
+<a href="#412" id="412">412</a>
+<a href="#413" id="413">413</a>
+<a href="#414" id="414">414</a>
+<a href="#415" id="415">415</a>
+<a href="#416" id="416">416</a>
+<a href="#417" id="417">417</a>
+<a href="#418" id="418">418</a>
+<a href="#419" id="419">419</a>
+<a href="#420" id="420">420</a>
+<a href="#421" id="421">421</a>
+<a href="#422" id="422">422</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
 
 </span><span class="doccomment">//! `framedata_json.rs`
 //!
 //! Dustloop Wiki から取得したフレームデータ JSON を前処理し、
-//! MoveInfo 構造体として整形するための機能群。
+//! `MoveInfo` 構造体として整形するための機能群。
 //! 不要なタグやエンティティの除去、各フィールドの補完処理を行う。
 
 </span><span class="comment">// 外部クレートおよびモジュールのインポート
@@ -422,23 +524,287 @@
     </span>char_page_response_json <span class="comment">// 除去後の文字列返却
 </span>}
 
-<span class="comment">// ======================================================================
-// JSON 変換関数
-// ======================================================================
+<span class="doccomment">/// 特殊な入力または技名称の場合にスキップするかどうかを判断する関数
+</span><span class="kw">fn </span>should_skip_move(move_data: <span class="kw-2">&amp;</span>Data) -&gt; bool {
+    <span class="comment">// 特定の入力 ("j.XX during Homing Jump") の場合、処理スキップ
+    </span><span class="kw">if </span>move_data.title.input.is_some()
+        &amp;&amp; <span class="kw-2">*</span>move_data.title.input.as_ref().unwrap() == <span class="string">"j.XX during Homing Jump"
+    </span>{
+        <span class="kw">return </span><span class="bool-val">true</span>;
+    }
 
-</span><span class="doccomment">/// 取得したフレームデータ JSON 文字列を MoveInfo 構造体のベクターに変換し、
-/// 整形済み JSON として指定ファイルに書き込む非同期関数
-///
-/// # 引数
-/// * `char_page_response_json` - キャラクターページから取得した JSON 文字列
-/// * `file` - 書き込み対象のファイルハンドル
-/// * `char_count` - CHARS 配列内のキャラクターインデックス
-///
-/// # 動作
-/// 1. JSON 文字列から不要なタグやエンティティを除去する。  
-/// 2. 除去後の文字列を Response 構造体にデシリアライズする。  
-/// 3. 各技情報を MoveInfo 構造体に変換する。  
-/// 4. 変換済みの MoveInfo ベクターを整形済み JSON としてファイルに書き込む。
+    <span class="comment">// 特定の技名称の場合、処理スキップ
+    </span><span class="kw">if </span>move_data.title.name.is_some() {
+        <span class="kw">let </span>name = move_data.title.name.as_ref().unwrap();
+        <span class="kw">if </span>name == <span class="string">"Dash Cancel"
+            </span>|| name == <span class="string">"Hoverdash"
+            </span>|| name == <span class="string">"Finish Blow"
+            </span>|| name == <span class="string">"Flight"
+            </span>|| name == <span class="string">"Escape"
+        </span>{
+            <span class="kw">return </span><span class="bool-val">true</span>;
+        }
+    }
+
+    <span class="bool-val">false
+</span>}
+
+<span class="doccomment">/// 移動データを前処理する関数（入力と名前の補完、キャプションの正規化）
+</span><span class="kw">fn </span>preprocess_move_data(move_data: <span class="kw-2">&amp;mut </span>Data) {
+    <span class="comment">// 入力情報が未定義の場合、プレースホルダー "-" を設定
+    </span><span class="kw">if </span>move_data.title.input.is_none() {
+        move_data.title.input = <span class="prelude-val">Some</span>(<span class="string">"-"</span>.to_string());
+    }
+
+    <span class="comment">// 技名称が未定義の場合、入力情報を技名称として設定
+    </span><span class="kw">if </span>move_data.title.name.is_none() {
+        move_data.title.name = <span class="prelude-val">Some</span>(move_data.title.input.as_ref().unwrap().to_string());
+    }
+
+    <span class="comment">// キャプションが "Ground" または "Air" の場合、空文字に置換
+    </span><span class="kw">if </span>move_data.title.caption.is_some()
+        &amp;&amp; (move_data.title.caption.as_ref().unwrap() == <span class="string">"Ground"
+            </span>|| move_data.title.caption.as_ref().unwrap() == <span class="string">"Air"</span>)
+    {
+        move_data.title.caption = <span class="prelude-val">Some</span>(String::new());
+    }
+}
+
+<span class="doccomment">/// 入力名を整形する関数
+</span><span class="kw">fn </span>format_input_name(input: <span class="kw-2">&amp;</span>str, name: <span class="kw-2">&amp;</span>str) -&gt; String {
+    <span class="kw">if </span>[
+        <span class="string">"Shooting Time Stretch (Accelerate)"</span>,
+        <span class="string">"Shooting Time Stretch (Decelerate)"</span>,
+        <span class="string">"Terra Metron"</span>,
+        <span class="string">"ステイン"</span>,
+    ]
+    .contains(<span class="kw-2">&amp;</span>input)
+    {
+        input.to_string()
+    } <span class="kw">else </span>{
+        <span class="macro">format!</span>(<span class="string">"{name}({input})"</span>)
+    }
+}
+
+<span class="comment">// 型エイリアス定義
+</span><span class="doccomment">/// 文字列フィールドのタプル型
+</span><span class="kw">type </span>StringFields = (
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+);
+<span class="doccomment">/// 整数フィールドのタプル型
+</span><span class="kw">type </span>IntegerFields = (<span class="prelude-ty">Option</span>&lt;i32&gt;, <span class="prelude-ty">Option</span>&lt;i32&gt;, <span class="prelude-ty">Option</span>&lt;i32&gt;, <span class="prelude-ty">Option</span>&lt;i32&gt;);
+<span class="doccomment">/// 浮動小数点フィールドのタプル型
+</span><span class="kw">type </span>FloatFields = (
+    <span class="prelude-ty">Option</span>&lt;f64&gt;,
+    <span class="prelude-ty">Option</span>&lt;f64&gt;,
+    <span class="prelude-ty">Option</span>&lt;f64&gt;,
+    <span class="prelude-ty">Option</span>&lt;f64&gt;,
+    <span class="prelude-ty">Option</span>&lt;f64&gt;,
+);
+
+<span class="doccomment">/// `文字列型フィールドをMoveInfoに設定する補助関数`
+</span><span class="kw">fn </span>set_string_fields(move_data: <span class="kw-2">&amp;</span>Data, empty: <span class="kw-2">&amp;</span>str) -&gt; StringFields {
+    (
+        <span class="comment">// 名前
+        </span>move_data.title.name.as_deref().unwrap_or(empty).to_string(),
+        <span class="comment">// ガード
+        </span>move_data
+            .title
+            .guard
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// アクティブフレーム
+        </span>move_data
+            .title
+            .active
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// ヒット効果
+        </span>move_data
+            .title
+            .on_hit
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// ブロック効果
+        </span>move_data
+            .title
+            .on_block
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// 技レベル
+        </span>move_data
+            .title
+            .level
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// カウンター
+        </span>move_data
+            .title
+            .counter
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// 技種別
+        </span>move_data
+            .title
+            .move_type
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// 無敵フレーム
+        </span>move_data
+            .title
+            .invincibility
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        <span class="comment">// キャンセル情報
+        </span>move_data
+            .title
+            .cancel
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+    )
+}
+
+<span class="doccomment">/// 数値型フィールドをMoveInfoに設定する補助関数（整数型）
+</span><span class="kw">fn </span>set_integer_fields(move_data: <span class="kw-2">&amp;</span>Data) -&gt; IntegerFields {
+    (
+        <span class="comment">// ダメージ
+        </span>move_data
+            .title
+            .damage
+            .as_ref()
+            .and_then(|s| s.parse::&lt;i32&gt;().ok()),
+        <span class="comment">// 始動フレーム
+        </span>move_data
+            .title
+            .startup
+            .as_ref()
+            .and_then(|s| s.parse::&lt;i32&gt;().ok()),
+        <span class="comment">// リカバリーフレーム
+        </span>move_data
+            .title
+            .recovery
+            .as_ref()
+            .and_then(|s| s.parse::&lt;i32&gt;().ok()),
+        <span class="comment">// 壁ダメージ
+        </span>move_data
+            .title
+            .wall_damage
+            .as_ref()
+            .and_then(|s| s.parse::&lt;i32&gt;().ok()),
+    )
+}
+
+<span class="doccomment">/// 数値型フィールドをMoveInfoに設定する補助関数（浮動小数点型）
+</span><span class="kw">fn </span>set_float_fields(move_data: <span class="kw-2">&amp;</span>Data) -&gt; FloatFields {
+    (
+        <span class="comment">// リスクゲイン
+        </span>move_data
+            .title
+            .risc_gain
+            .as_ref()
+            .and_then(|s| s.parse::&lt;f64&gt;().ok()),
+        <span class="comment">// リスクロス
+        </span>move_data
+            .title
+            .risc_loss
+            .as_ref()
+            .and_then(|s| s.parse::&lt;f64&gt;().ok()),
+        <span class="comment">// 入力緊張度
+        </span>move_data
+            .title
+            .input_tension
+            .as_ref()
+            .and_then(|s| s.parse::&lt;f64&gt;().ok()),
+        <span class="comment">// チップ比率
+        </span>move_data
+            .title
+            .chip_ratio
+            .as_ref()
+            .and_then(|s| s.parse::&lt;f64&gt;().ok()),
+        <span class="comment">// OTG比率
+        </span>move_data
+            .title
+            .otg_ratio
+            .as_ref()
+            .and_then(|s| s.parse::&lt;f64&gt;().ok()),
+    )
+}
+
+<span class="doccomment">/// `移動データからMoveInfo構造体を作成する関数`
+</span><span class="kw">fn </span>create_move_info(move_data: <span class="kw-2">&amp;</span>Data, empty: <span class="kw-2">&amp;</span>str) -&gt; MoveInfo {
+    <span class="comment">// 入力名の整形
+    </span><span class="kw">let </span>input_str = move_data.title.input.as_deref().unwrap_or(<span class="string">""</span>);
+    <span class="kw">let </span>name_str = move_data.title.name.as_deref().unwrap_or(<span class="string">""</span>);
+    <span class="kw">let </span>input_name = format_input_name(input_str, name_str);
+
+    <span class="comment">// 文字列フィールドをまとめて取得
+    </span><span class="kw">let </span>(name, guard, active, on_hit, on_block, level, counter, move_type, invincibility, cancel) =
+        set_string_fields(move_data, empty);
+
+    <span class="comment">// 整数型フィールドをまとめて取得
+    </span><span class="kw">let </span>(damage, startup, recovery, wall_damage) = set_integer_fields(move_data);
+
+    <span class="comment">// 浮動小数点型フィールドをまとめて取得
+    </span><span class="kw">let </span>(risc_gain, risc_loss, input_tension, chip_ratio, otg_ratio) = set_float_fields(move_data);
+
+    <span class="comment">// スケーリングはユースケースが単独なので個別に取得
+    </span><span class="kw">let </span>scaling = move_data
+        .title
+        .scaling
+        .as_ref()
+        .and_then(|s| s.parse::&lt;f64&gt;().ok());
+
+    <span class="comment">// キャプションと備考は既定値が異なるので個別に取得
+    </span><span class="kw">let </span>caption = move_data.title.caption.as_deref().unwrap_or(<span class="string">""</span>).to_string();
+    <span class="kw">let </span>notes = move_data.title.notes.as_deref().unwrap_or(<span class="string">""</span>).to_string();
+
+    <span class="comment">// MoveInfo 構造体へ変換
+    </span>MoveInfo {
+        input: input_name,
+        name,
+        damage,
+        guard,
+        startup,
+        active,
+        recovery,
+        on_hit,
+        on_block,
+        level,
+        counter,
+        move_type,
+        risc_gain,
+        risc_loss,
+        wall_damage,
+        input_tension,
+        chip_ratio,
+        otg_ratio,
+        scaling,
+        invincibility,
+        cancel,
+        caption,
+        notes,
+    }
+}
+
+<span class="doccomment">/// フレームデータをJSON形式に変換するメイン関数
 </span><span class="kw">pub async fn </span>frames_to_json(
     <span class="kw-2">mut </span>char_page_response_json: String,
     <span class="kw-2">mut </span>file: <span class="kw-2">&amp;</span>File,
@@ -459,179 +825,17 @@
 
     <span class="comment">// 各技情報処理ループ　結果：各技情報の補完と変換
     </span><span class="kw">for </span>move_data <span class="kw">in </span>char_move_data {
-        <span class="comment">// 入力情報が未定義の場合、プレースホルダー "-" を設定
-        </span><span class="kw">if </span>move_data.title.input.is_none() {
-            move_data.title.input = <span class="prelude-val">Some</span>(<span class="string">"-"</span>.to_string());
-        } <span class="kw">else </span>{
-            <span class="comment">// 特定の入力 ("j.XX during Homing Jump") の場合、処理スキップ
-            </span><span class="kw">if </span><span class="kw-2">*</span>move_data.title.input.as_ref().unwrap() == <span class="string">"j.XX during Homing Jump" </span>{
-                <span class="kw">continue</span>;
-            }
-        }
-        <span class="comment">// 技名称が未定義の場合、入力情報を技名称として設定
-        </span><span class="kw">if </span>move_data.title.name.is_none() {
-            move_data.title.name = <span class="prelude-val">Some</span>(move_data.title.input.as_ref().unwrap().to_string());
-        } <span class="kw">else </span>{
-            <span class="comment">// 特定の技名称 ("Dash Cancel", "Hoverdash", "Finish Blow", "Flight", "Escape") の場合、処理スキップ
-            </span><span class="kw">if </span><span class="kw-2">*</span>move_data.title.name.as_ref().unwrap() == <span class="string">"Dash Cancel"
-                </span>|| <span class="kw-2">*</span>move_data.title.name.as_ref().unwrap() == <span class="string">"Hoverdash"
-                </span>|| <span class="kw-2">*</span>move_data.title.name.as_ref().unwrap() == <span class="string">"Finish Blow"
-                </span>|| <span class="kw-2">*</span>move_data.title.name.as_ref().unwrap() == <span class="string">"Flight"
-                </span>|| <span class="kw-2">*</span>move_data.title.name.as_ref().unwrap() == <span class="string">"Escape"
-            </span>{
-                <span class="kw">continue</span>;
-            }
+        <span class="comment">// 前処理
+        </span>preprocess_move_data(move_data);
+
+        <span class="comment">// スキップすべき技かどうかを確認
+        </span><span class="kw">if </span>should_skip_move(move_data) {
+            <span class="kw">continue</span>;
         }
 
-        <span class="comment">// キャプションが "Ground" または "Air" の場合、空文字に置換
-        </span><span class="kw">if </span>move_data.title.caption.is_some()
-            &amp;&amp; (move_data.title.caption.as_ref().unwrap() == <span class="string">"Ground"
-                </span>|| move_data.title.caption.as_ref().unwrap() == <span class="string">"Air"</span>)
-        {
-            move_data.title.caption = <span class="prelude-val">Some</span>(String::from(<span class="string">""</span>));
-        }
-
-        <span class="comment">// move_data の title フィールドから name を取得
-        // 取得結果：input_str（所有権移動）
-        </span><span class="kw">let </span>_name_str = <span class="kw-2">&amp;</span>move_data.title.name;
-
-        <span class="comment">// 空の文字列を生成
-        // 用途：後続の文字列操作用の初期化
-        </span><span class="kw">let </span><span class="kw-2">mut </span>_input_name = String::new();
-
-        <span class="comment">// input_str を文字列スライスに変換して標準出力へ表示
-        // 表示結果：input_str の内容
-        </span><span class="kw">let </span>input_str = move_data.title.input.as_deref().unwrap_or(<span class="string">""</span>);
-        <span class="comment">// println!("{}", _name_str.unwrap());
-
-        </span><span class="kw">if </span>[
-            <span class="string">"Shooting Time Stretch (Accelerate)"</span>,
-            <span class="string">"Shooting Time Stretch (Decelerate)"</span>,
-            <span class="string">"Terra Metron"</span>,
-            <span class="string">"ステイン"</span>,
-        ]
-        .contains(<span class="kw-2">&amp;</span>input_str)
-        {
-            _input_name = input_str.to_string();
-        } <span class="kw">else </span>{
-            <span class="kw">let </span>name_str = move_data.title.name.as_deref().unwrap_or(<span class="string">""</span>);
-            _input_name = <span class="macro">format!</span>(<span class="string">"{name_str}({input_str})"</span>);
-        }
-
-        <span class="comment">// MoveInfo 構造体へ変換　各フィールドが未定義の場合、プレースホルダー使用
-        </span><span class="kw">let </span>processed_moves_info = MoveInfo {
-            input: _input_name,                                                <span class="comment">// 入力情報設定
-            </span>name: move_data.title.name.as_ref().unwrap_or(<span class="kw-2">&amp;</span>empty).to_string(), <span class="comment">// 技名称設定
-            </span>damage: move_data
-                .title
-                .damage
-                .as_ref()
-                .and_then(|s| s.parse::&lt;i32&gt;().ok()), <span class="comment">// ダメージ設定
-            </span>guard: move_data.title.guard.as_ref().unwrap_or(<span class="kw-2">&amp;</span>empty).to_string(), <span class="comment">// ガード設定
-            </span>startup: move_data
-                .title
-                .startup
-                .as_ref()
-                .and_then(|s| s.parse::&lt;i32&gt;().ok()), <span class="comment">// 始動フレーム設定
-            </span>active: move_data
-                .title
-                .active
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// アクティブフレーム設定
-            </span>recovery: move_data
-                .title
-                .recovery
-                .as_ref()
-                .and_then(|s| s.parse::&lt;i32&gt;().ok()), <span class="comment">// リカバリーフレーム設定
-            </span>on_hit: move_data
-                .title
-                .on_hit
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// ヒット効果設定
-            </span>on_block: move_data
-                .title
-                .on_block
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// ブロック効果設定
-            </span>level: move_data.title.level.as_ref().unwrap_or(<span class="kw-2">&amp;</span>empty).to_string(), <span class="comment">// 技レベル設定
-            </span>counter: move_data
-                .title
-                .counter
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// カウンター設定
-            </span>move_type: move_data
-                .title
-                .move_type
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// 技種別設定
-            </span>risc_gain: move_data
-                .title
-                .risc_gain
-                .as_ref()
-                .and_then(|s| s.parse::&lt;f64&gt;().ok()), <span class="comment">// リスクゲイン設定
-            </span>risc_loss: move_data
-                .title
-                .risc_loss
-                .as_ref()
-                .and_then(|s| s.parse::&lt;f64&gt;().ok()), <span class="comment">// リスクロス設定
-            </span>wall_damage: move_data
-                .title
-                .wall_damage
-                .as_ref()
-                .and_then(|s| s.parse::&lt;i32&gt;().ok()), <span class="comment">// 壁ダメージ設定
-            </span>input_tension: move_data
-                .title
-                .input_tension
-                .as_ref()
-                .and_then(|s| s.parse::&lt;f64&gt;().ok()), <span class="comment">// 入力緊張度設定
-            </span>chip_ratio: move_data
-                .title
-                .chip_ratio
-                .as_ref()
-                .and_then(|s| s.parse::&lt;f64&gt;().ok()), <span class="comment">// チップ比率設定
-            </span>otg_ratio: move_data
-                .title
-                .otg_ratio
-                .as_ref()
-                .and_then(|s| s.parse::&lt;f64&gt;().ok()), <span class="comment">// OTG比率設定
-            </span>scaling: move_data
-                .title
-                .scaling
-                .as_ref()
-                .and_then(|s| s.parse::&lt;f64&gt;().ok()), <span class="comment">// ダメージスケーリング設定
-            </span>invincibility: move_data
-                .title
-                .invincibility
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// 無敵フレーム設定
-            </span>cancel: move_data
-                .title
-                .cancel
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>empty)
-                .to_string(), <span class="comment">// キャンセル情報設定
-            </span>caption: move_data
-                .title
-                .caption
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>String::new())
-                .to_string(), <span class="comment">// キャプション設定
-            </span>notes: move_data
-                .title
-                .notes
-                .as_ref()
-                .unwrap_or(<span class="kw-2">&amp;</span>String::new())
-                .to_string(), <span class="comment">// 備考設定
-        </span>};
-
-        <span class="comment">// 変換済み技情報をベクターに追加
-        </span>vec_processed_moves_info.push(processed_moves_info);
+        <span class="comment">// MoveInfo構造体の作成と追加
+        </span><span class="kw">let </span>processed_moves_info = create_move_info(move_data, <span class="kw-2">&amp;</span>empty);
+        vec_processed_moves_info.push(processed_moves_info);
     }
 
     <span class="comment">// 変換済み MoveInfo ベクターを整形済み JSON としてファイルへ書き込み

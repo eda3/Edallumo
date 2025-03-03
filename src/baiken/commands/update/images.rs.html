@@ -153,7 +153,7 @@
 /// ```rust,no_run
 /// get_char_images(CHARS, "Sol_Badguy").await;
 /// ```
-</span><span class="kw">pub async fn </span>get_char_images(chars_ids: [<span class="kw-2">&amp;</span>str; CHARS.len()], specific_char: <span class="kw-2">&amp;</span>str) {
+</span><span class="kw">pub async fn </span>get_char_images(chars_ids: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span>str; CHARS.len()], specific_char: <span class="kw-2">&amp;</span>str) {
     <span class="comment">// 更新時間計測開始
     </span><span class="kw">let </span>now = Instant::now();
 

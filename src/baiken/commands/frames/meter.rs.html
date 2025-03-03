@@ -524,9 +524,7 @@
             <span class="kw">if let </span><span class="prelude-val">Ok</span>(num) = recovery_vec[x].parse::&lt;u16&gt;() {
                 <span class="comment">// 数値エントリの場合、数値分ループ
                 </span><span class="kw">for _ in </span><span class="number">0</span>..num {
-                    <span class="kw">if </span>!recovery_tilde {
-                        meter_msg += BLUE_DIAMOND; <span class="comment">// チルダ前：青菱形追加
-                    </span>} <span class="kw">else </span>{
+                    <span class="kw">if </span>recovery_tilde {
                         <span class="comment">// チルダ内：前エントリとの差分回数青菱形追加
                         </span><span class="kw">for _ in </span><span class="number">0</span>..((recovery_vec[x].parse::&lt;u16&gt;().unwrap())
                             - (recovery_vec[x - <span class="number">2</span>].parse::&lt;u16&gt;()).unwrap())
@@ -534,6 +532,8 @@
                             meter_msg += BLUE_DIAMOND; <span class="comment">// チルダ内青菱形追加
                         </span>}
                         <span class="kw">break</span>; <span class="comment">// ループ中断
+                    </span>} <span class="kw">else </span>{
+                        meter_msg += BLUE_DIAMOND; <span class="comment">// チルダ前：青菱形追加
                     </span>}
                 }
             }

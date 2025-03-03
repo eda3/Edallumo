@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["frames_to_json","remove_tags"],"struct":["Data","Response","Title"]};
+window.SIDEBAR_ITEMS = {"fn":["create_move_info","format_input_name","frames_to_json","preprocess_move_data","remove_tags","set_float_fields","set_integer_fields","set_string_fields","should_skip_move"],"struct":["Data","Response","Title"],"type":["FloatFields","IntegerFields","StringFields"]};

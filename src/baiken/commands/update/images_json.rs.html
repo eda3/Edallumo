@@ -286,39 +286,12 @@
 <a href="#285" id="285">285</a>
 <a href="#286" id="286">286</a>
 <a href="#287" id="287">287</a>
-<a href="#288" id="288">288</a>
-<a href="#289" id="289">289</a>
-<a href="#290" id="290">290</a>
-<a href="#291" id="291">291</a>
-<a href="#292" id="292">292</a>
-<a href="#293" id="293">293</a>
-<a href="#294" id="294">294</a>
-<a href="#295" id="295">295</a>
-<a href="#296" id="296">296</a>
-<a href="#297" id="297">297</a>
-<a href="#298" id="298">298</a>
-<a href="#299" id="299">299</a>
-<a href="#300" id="300">300</a>
-<a href="#301" id="301">301</a>
-<a href="#302" id="302">302</a>
-<a href="#303" id="303">303</a>
-<a href="#304" id="304">304</a>
-<a href="#305" id="305">305</a>
-<a href="#306" id="306">306</a>
-<a href="#307" id="307">307</a>
-<a href="#308" id="308">308</a>
-<a href="#309" id="309">309</a>
-<a href="#310" id="310">310</a>
-<a href="#311" id="311">311</a>
-<a href="#312" id="312">312</a>
-<a href="#313" id="313">313</a>
-<a href="#314" id="314">314</a>
-<a href="#315" id="315">315</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
+<a href="#288" id="288">288</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
 
 </span><span class="doccomment">//! `images_json.rs`
 //!
-//! このファイルは、Dustloop Wiki から取得した画像関連の JSON データを前処理し、
-//! ImageLinks 構造体の形式に変換するための関数群を定義する。
+//! `このファイルは、Dustloop Wiki から取得した画像関連の JSON データを前処理し、
+//! ImageLinks 構造体の形式に変換するための関数群を定義する。`
 
 </span><span class="kw">extern crate </span>ureq;
 <span class="kw">use </span><span class="kw">crate</span>::common::preprocess; <span class="comment">// JSON 前処理関数群の利用
@@ -363,227 +336,200 @@
 // 画像リンク生成および JSON 変換関数群
 // ======================================================================
 
-</span><span class="doccomment">/// 与えられた画像関連 JSON 文字列に対して前処理を実施し、
-/// `ImageLinks` 構造体の形式に変換した整形済み JSON を指定ファイルに書き込む非同期関数
-///
-/// # 引数
-/// * `char_images_response_json` - 取得した画像データの JSON 文字列（前処理前）
-/// * `file` - 書き込み対象のファイルハンドル
-/// * `char_count` - CHARS 配列内の対象キャラクターのインデックス
-///
-/// # 動作
-/// 1. 前処理関数 `preprocess_json` により、不要なタグやエンティティを除去する。  
-/// 2. 除去後の JSON を `ImageResponse` 構造体にデシリアライズする。  
-/// 3. 各画像データを処理し、ImageLinks 構造体へ変換する。  
-/// 4. 変換済みのデータを整形済み JSON としてファイルへ書き込む。
-</span><span class="kw">pub async fn </span>images_to_json(
-    <span class="kw-2">mut </span>char_images_response_json: String,
-    <span class="kw-2">mut </span>file: <span class="kw-2">&amp;</span>File,
-    char_count: usize,
-) {
+</span><span class="doccomment">/// キャラクター画像JSONデータを前処理する関数
+</span><span class="kw">async fn </span>preprocess_images_json(<span class="kw-2">mut </span>json_str: String) -&gt; String {
     <span class="comment">// 共通前処理適用
     // JSON 文字列を前処理関数で整形　前処理結果：整形済み JSON 文字列
-    </span>char_images_response_json = preprocess::preprocess_json(char_images_response_json);
+    </span>json_str = preprocess::preprocess_json(json_str);
 
     <span class="comment">// アポストロフィのエンティティを置換　置換結果：アポストロフィに変換
-    </span>char_images_response_json = char_images_response_json.replace(<span class="string">r#"&amp;#039;"#</span>, <span class="string">"'"</span>);
+    </span>json_str = json_str.replace(<span class="string">r#"&amp;#039;"#</span>, <span class="string">"'"</span>);
+
+    json_str
+}
+
+<span class="doccomment">/// ヒットボックスリンクを生成する関数
+</span><span class="kw">async fn </span>generate_hitbox_links(hitboxes: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; Vec&lt;String&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>hitbox_links: Vec&lt;String&gt; = Vec::new();
+
+    <span class="comment">// ヒットボックス情報が未定義の場合は空文字をベクターに追加
+    </span><span class="kw">if </span>hitboxes.is_none() {
+        hitbox_links.push(String::new());
+    } <span class="kw">else </span>{
+        <span class="comment">// ヒットボックス情報をセミコロンで分割
+        </span><span class="kw">let </span>hitbox_str: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = hitboxes.as_ref().unwrap().split(<span class="string">';'</span>).collect();
+
+        <span class="comment">// 各ヒットボックス名に対して画像リンク生成関数を呼び出し
+        </span><span class="kw">for </span>hitbox_string <span class="kw">in </span><span class="kw-2">&amp;</span>hitbox_str {
+            hitbox_links
+                .push(make_link((<span class="kw-2">*</span>hitbox_string).to_string().trim().replace(<span class="string">' '</span>, <span class="string">"_"</span>)).<span class="kw">await</span>);
+        }
+    }
+
+    hitbox_links
+}
+
+<span class="doccomment">/// 画像リンクを生成する関数
+</span><span class="kw">async fn </span>generate_image_link(images: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; String {
+    <span class="comment">// 画像ファイル名が未定義の場合は空文字とする
+    </span><span class="kw">if </span>images.is_none() {
+        <span class="kw">return </span>String::new();
+    }
+
+    <span class="comment">// 画像ファイル名が空白のみの場合は空文字に設定
+    </span><span class="kw">if </span>images.as_ref().unwrap().trim() == <span class="string">"" </span>{
+        <span class="kw">return </span>String::new();
+    }
+
+    <span class="comment">// 複数の画像ファイル名が存在する場合の処理
+    </span><span class="kw">if </span>images.as_ref().unwrap().contains(<span class="string">';'</span>) {
+        <span class="comment">// セミコロンで分割し、先頭要素を使用
+        </span><span class="kw">let </span>split_image: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = images.as_ref().unwrap().split(<span class="string">';'</span>).collect();
+        <span class="comment">// 画像リンク生成関数でリンク形式に整形
+        </span>make_link(split_image[<span class="number">0</span>].to_string().trim().replace(<span class="string">' '</span>, <span class="string">"_"</span>)).<span class="kw">await
+    </span>} <span class="kw">else </span>{
+        <span class="comment">// 単一の画像ファイル名の場合の処理
+        </span>make_link(images.as_ref().unwrap().to_string()).<span class="kw">await
+    </span>}
+}
+
+<span class="doccomment">/// 入力名を整形する関数
+</span><span class="kw">fn </span>format_input_name(input: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;, name: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; String {
+    <span class="kw">let </span>input_str = input.as_deref().unwrap_or(<span class="string">""</span>);
+
+    <span class="comment">// 特定の入力文字列の場合はそのまま使用
+    </span><span class="kw">if </span>[
+        <span class="string">"2D"</span>,
+        <span class="string">"2HS"</span>,
+        <span class="string">"2K"</span>,
+        <span class="string">"2P"</span>,
+        <span class="string">"2S"</span>,
+        <span class="string">"3K"</span>,
+        <span class="string">"5D"</span>,
+        <span class="string">"5HS"</span>,
+        <span class="string">"5K"</span>,
+        <span class="string">"5P"</span>,
+        <span class="string">"5S"</span>,
+        <span class="string">"6K"</span>,
+        <span class="string">"6P"</span>,
+        <span class="string">"Fスタート"</span>,
+        <span class="string">"Jスタート"</span>,
+        <span class="string">"JD"</span>,
+        <span class="string">"JHS"</span>,
+        <span class="string">"JK"</span>,
+        <span class="string">"JP"</span>,
+        <span class="string">"JS"</span>,
+        <span class="string">"Pスタート"</span>,
+        <span class="string">"Sスタート"</span>,
+        <span class="string">"エアダッシュ"</span>,
+        <span class="string">"ガトリング"</span>,
+        <span class="string">"クローゼライン"</span>,
+        <span class="string">"ジャンプ"</span>,
+        <span class="string">"スタンプ"</span>,
+        <span class="string">"ダッシュ"</span>,
+        <span class="string">"ダブルジャンプ"</span>,
+        <span class="string">"バックステップ"</span>,
+        <span class="string">"フォルト"</span>,
+        <span class="string">"ロマンキャンセル"</span>,
+        <span class="string">"入力猶予"</span>,
+        <span class="string">"前ジャンプ"</span>,
+        <span class="string">"後ジャンプ"</span>,
+        <span class="string">"攻撃判定"</span>,
+        <span class="string">"特殊技"</span>,
+        <span class="string">"置換表"</span>,
+        <span class="string">"通常技"</span>,
+        <span class="string">"必殺技"</span>,
+        <span class="string">"打撃無敵"</span>,
+        <span class="string">"投げ"</span>,
+        <span class="string">"投げ無敵"</span>,
+        <span class="string">"歩き"</span>,
+        <span class="string">"殴られ判定"</span>,
+        <span class="string">"空中ダッシュ"</span>,
+        <span class="string">"空中投げ"</span>,
+        <span class="string">"立ち"</span>,
+        <span class="string">"起き上がり"</span>,
+        <span class="string">"走り"</span>,
+        <span class="string">"通常投げ"</span>,
+        <span class="string">"ステイン"</span>,
+    ]
+    .contains(<span class="kw-2">&amp;</span>input_str)
+    {
+        input_str.to_string()
+    } <span class="kw">else </span>{
+        <span class="kw">let </span>name_str = name.as_deref().unwrap_or(<span class="string">""</span>);
+        <span class="macro">format!</span>(<span class="string">"{name_str}({input_str})"</span>)
+    }
+}
+
+<span class="doccomment">/// 画像データを処理する関数
+</span><span class="kw">async fn </span>process_image_data(image_data: <span class="kw-2">&amp;mut </span>ImageData) -&gt; ImageLinks {
+    <span class="comment">// 入力文字列が未定義の場合は空文字に置換
+    </span><span class="kw">if </span>image_data.title.input.is_none() {
+        image_data.title.input = <span class="prelude-val">Some</span>(String::new());
+    } <span class="kw">else if </span><span class="kw-2">*</span>image_data.title.input.as_ref().unwrap() == <span class="string">"j.XX during Homing Jump" </span>{
+        <span class="comment">// 特定の入力（"j.XX during Homing Jump"）の場合は空のデータを返す
+        </span><span class="kw">return </span>ImageLinks {
+            input: String::new(),
+            move_img: String::new(),
+            hitbox_img: Vec::new(),
+        };
+    }
+
+    <span class="comment">// 画像名称が未定義の場合は入力文字列を名称として設定
+    </span><span class="kw">if </span>image_data.title.name.is_none() {
+        image_data.title.name = image_data.title.input.clone();
+    }
+
+    <span class="comment">// 画像リンクの生成
+    </span><span class="kw">let </span>image_link = generate_image_link(<span class="kw-2">&amp;</span>image_data.title.images).<span class="kw">await</span>;
+
+    <span class="comment">// ヒットボックスリンクの生成
+    </span><span class="kw">let </span>hitbox_links = generate_hitbox_links(<span class="kw-2">&amp;</span>image_data.title.hitboxes).<span class="kw">await</span>;
+
+    <span class="comment">// 入力名の整形
+    </span><span class="kw">let </span>input_name = format_input_name(<span class="kw-2">&amp;</span>image_data.title.input, <span class="kw-2">&amp;</span>image_data.title.name);
+
+    <span class="comment">// ImageLinks 構造体へ変換
+    </span>ImageLinks {
+        input: input_name,
+        move_img: image_link,
+        hitbox_img: hitbox_links,
+    }
+}
+
+<span class="doccomment">/// メイン処理：キャラクター画像データをJSONファイルに変換する関数
+</span><span class="kw">pub async fn </span>images_to_json(char_images_response_json: String, <span class="kw-2">mut </span>file: <span class="kw-2">&amp;</span>File, char_count: usize) {
+    <span class="comment">// JSONデータを前処理
+    </span><span class="kw">let </span>preprocessed_json = preprocess_images_json(char_images_response_json).<span class="kw">await</span>;
 
     <span class="comment">// JSON 文字列を ImageResponse 構造体にデシリアライズ　結果：image_data_response
-    </span><span class="kw">let </span><span class="kw-2">mut </span>image_data_response: ImageResponse =
-        serde_json::from_str(<span class="kw-2">&amp;</span>char_images_response_json).unwrap();
+    </span><span class="kw">let </span><span class="kw-2">mut </span>image_data_response: ImageResponse = serde_json::from_str(<span class="kw-2">&amp;</span>preprocessed_json).unwrap();
+
     <span class="comment">// 画像データエントリの可変参照取得　結果：char_image_data
     </span><span class="kw">let </span>char_image_data = <span class="kw-2">&amp;mut </span>image_data_response.cargoquery;
+
     <span class="comment">// 変換後の ImageLinks 構造体を格納するベクターを初期化　結果：vec_processed_imagedata
     </span><span class="kw">let </span><span class="kw-2">mut </span>vec_processed_imagedata = Vec::new();
 
     <span class="comment">// 各画像データエントリに対するループ処理
     </span><span class="kw">for </span>image_data <span class="kw">in </span>char_image_data {
-        <span class="comment">// ヒットボックスリンク格納用ベクターを初期化　結果：hitbox_links
-        </span><span class="kw">let </span><span class="kw-2">mut </span>hitbox_links: Vec&lt;String&gt; = Vec::new();
-        <span class="comment">// 画像リンク格納用変数の宣言　結果：image_link
-        </span><span class="kw">let </span>image_link;
-
-        <span class="comment">// 入力文字列が未定義の場合は空文字に置換　結果：image_data.title.input が定義される
-        </span><span class="kw">if </span>image_data.title.input.is_none() {
-            image_data.title.input = <span class="prelude-val">Some</span>(String::new());
-        } <span class="kw">else </span>{
-            <span class="comment">// 特定の入力（"j.XX during Homing Jump"）の場合はスキップ　動作：continue
-            </span><span class="kw">if </span><span class="kw-2">*</span>image_data.title.input.as_ref().unwrap() == <span class="string">"j.XX during Homing Jump" </span>{
-                <span class="kw">continue</span>;
-            }
-        }
-        <span class="comment">// 画像名称が未定義の場合は入力文字列を名称として設定　結果：image_data.title.name に値が入る
-        </span><span class="kw">if </span>image_data.title.name.is_none() {
-            image_data.title.name = <span class="prelude-val">Some</span>(image_data.title.input.as_ref().unwrap().to_string());
-        } <span class="kw">else </span>{
-            <span class="comment">// 特定の画像名称（"Dash Cancel", "Hoverdash", "Finish Blow", "Flight", "Escape"）の場合はスキップ
-            </span><span class="kw">if </span>image_data.title.name.as_ref().unwrap().to_string().trim() == <span class="string">"Dash Cancel"
-                </span>|| image_data.title.name.as_ref().unwrap().to_string().trim() == <span class="string">"Hoverdash"
-                </span>|| image_data.title.name.as_ref().unwrap().to_string().trim() == <span class="string">"Finish Blow"
-                </span>|| image_data.title.name.as_ref().unwrap().to_string().trim() == <span class="string">"Flight"
-                </span>|| image_data.title.name.as_ref().unwrap().to_string().trim() == <span class="string">"Escape"
-            </span>{
-                <span class="kw">continue</span>;
-            }
-        }
-        <span class="comment">// 画像ファイル名が未定義の場合は空文字とする　結果：image_link に空文字が設定
-        </span><span class="kw">if </span>image_data.title.images.is_none() {
-            image_link = String::new();
-        } <span class="kw">else </span>{
-            <span class="comment">// 画像ファイル名が空白のみの場合は空文字に設定　結果：image_link に空文字が設定
-            </span><span class="kw">if </span>image_data.title.images.as_ref().unwrap().trim() == <span class="string">"" </span>{
-                image_link = String::new();
-            } <span class="kw">else </span>{
-                <span class="comment">// 複数の画像ファイル名が存在する場合の処理
-                </span><span class="kw">if </span>image_data.title.images.as_mut().unwrap().contains(<span class="string">';'</span>) {
-                    <span class="comment">// セミコロンで分割し、先頭要素を使用　結果：split_image[0] に設定
-                    </span><span class="kw">let </span>split_image: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = image_data
-                        .title
-                        .images
-                        .as_mut()
-                        .unwrap()
-                        .split(<span class="string">';'</span>)
-                        .collect();
-
-                    image_data.title.images = <span class="prelude-val">Some</span>(split_image[<span class="number">0</span>].to_string().replace(<span class="string">' '</span>, <span class="string">"_"</span>));
-
-                    <span class="comment">// 画像リンク生成関数を呼び出し　結果：image_link に生成されたリンクを設定
-                    </span>image_link =
-                        make_link(image_data.title.images.as_ref().unwrap().to_string()).<span class="kw">await</span>;
-                } <span class="kw">else </span>{
-                    <span class="comment">// 単一の画像ファイル名の場合　結果：画像ファイル名の空白をアンダースコアに置換
-                    </span>image_data.title.images = <span class="prelude-val">Some</span>(
-                        image_data
-                            .title
-                            .images
-                            .as_ref()
-                            .unwrap()
-                            .to_string()
-                            .replace(<span class="string">' '</span>, <span class="string">"_"</span>),
-                    );
-                    <span class="comment">// 画像リンク生成関数を呼び出し　結果：image_link に生成されたリンクを設定
-                    </span>image_link =
-                        make_link(image_data.title.images.as_ref().unwrap().to_string()).<span class="kw">await</span>;
-                }
-            }
+        <span class="comment">// 特殊なケースをスキップする処理（"j.XX during Homing Jump"）
+        </span><span class="kw">if </span>image_data.title.input.is_some()
+            &amp;&amp; <span class="kw-2">*</span>image_data.title.input.as_ref().unwrap() == <span class="string">"j.XX during Homing Jump"
+        </span>{
+            <span class="kw">continue</span>;
         }
 
-        <span class="comment">// ヒットボックス情報が未定義の場合は空文字をベクターに追加　結果：hitbox_links に空文字追加
-        </span><span class="kw">if </span>image_data.title.hitboxes.is_none() {
-            hitbox_links.push(String::new());
-        } <span class="kw">else </span>{
-            <span class="comment">// ヒットボックス情報をセミコロンで分割　結果：hitbox_str に分割された各ヒットボックス名を格納
-            </span><span class="kw">let </span>hitbox_str: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = image_data
-                .title
-                .hitboxes
-                .as_ref()
-                .unwrap()
-                .split(<span class="string">';'</span>)
-                .collect();
+        <span class="comment">// 各画像データを処理してImageLinks構造体に変換
+        </span><span class="kw">let </span>processed_imagedata = process_image_data(image_data).<span class="kw">await</span>;
 
-            <span class="comment">// 各ヒットボックス名に対して画像リンク生成関数を呼び出し　結果：hitbox_links に生成されたリンクを追加
-            </span><span class="kw">for </span>hitbox_string <span class="kw">in </span><span class="kw-2">&amp;</span>hitbox_str {
-                hitbox_links
-                    .push(make_link(hitbox_string.to_string().trim().replace(<span class="string">' '</span>, <span class="string">"_"</span>)).<span class="kw">await</span>);
-            }
-        }
-
-        <span class="kw">let </span>input_str = <span class="kw-2">&amp;</span>image_data.title.input.as_deref().unwrap_or(<span class="string">""</span>);
-        <span class="kw">let </span><span class="kw-2">mut </span>_input_name = String::new();
-        <span class="kw">if </span>[
-            <span class="string">"2D"</span>,
-            <span class="string">"2HS"</span>,
-            <span class="string">"2K"</span>,
-            <span class="string">"2P"</span>,
-            <span class="string">"2S"</span>,
-            <span class="string">"3K"</span>,
-            <span class="string">"5D"</span>,
-            <span class="string">"5HS"</span>,
-            <span class="string">"5K"</span>,
-            <span class="string">"5P"</span>,
-            <span class="string">"5[D]"</span>,
-            <span class="string">"6HS"</span>,
-            <span class="string">"6K"</span>,
-            <span class="string">"6P"</span>,
-            <span class="string">"近S"</span>,
-            <span class="string">"遠S"</span>,
-            <span class="string">"S"</span>,
-            <span class="string">"6S"</span>,
-            <span class="string">"H"</span>,
-            <span class="string">"jD"</span>,
-            <span class="string">"jHS"</span>,
-            <span class="string">"jK"</span>,
-            <span class="string">"jP"</span>,
-            <span class="string">"jS"</span>,
-            <span class="string">"j2K"</span>,
-            <span class="string">"j2H"</span>,
-            <span class="string">"JR2HS"</span>,
-            <span class="string">"JR2K"</span>,
-            <span class="string">"JR2P"</span>,
-            <span class="string">"JR2S"</span>,
-            <span class="string">"JR5HS"</span>,
-            <span class="string">"JR5K"</span>,
-            <span class="string">"JR5P"</span>,
-            <span class="string">"JR6HS"</span>,
-            <span class="string">"JR6P"</span>,
-            <span class="string">"JR近S"</span>,
-            <span class="string">"JR遠S"</span>,
-            <span class="string">"JRjD"</span>,
-            <span class="string">"JRjHS"</span>,
-            <span class="string">"JRjK"</span>,
-            <span class="string">"JRjP"</span>,
-            <span class="string">"JRjS"</span>,
-            <span class="string">"JR解除"</span>,
-            <span class="string">"6HSHS"</span>,
-            <span class="string">"6HSHSHS"</span>,
-            <span class="string">"銃を構える(HS)"</span>,
-            <span class="string">"BR Activation"</span>,
-            <span class="string">"BR Deactivation"</span>,
-            <span class="string">"214X (Discard)"</span>,
-            <span class="string">"214X (Draw)"</span>,
-            <span class="string">"Accipiter Metron"</span>,
-            <span class="string">"Aquila Metron"</span>,
-            <span class="string">"Bit Shift Metron"</span>,
-            <span class="string">"Bookmark (Auto Import)"</span>,
-            <span class="string">"Bookmark (Full Import)"</span>,
-            <span class="string">"Bookmark (Random Import)"</span>,
-            <span class="string">"Chaotic Option"</span>,
-            <span class="string">"Delayed Howling Metron"</span>,
-            <span class="string">"Delayed Tardus Metron"</span>,
-            <span class="string">"Go to Marker"</span>,
-            <span class="string">"Gravity Rod (Shooting)"</span>,
-            <span class="string">"High-Pass Filter Gravity"</span>,
-            <span class="string">"Howling Metron"</span>,
-            <span class="string">"Howling Metron MS Processing"</span>,
-            <span class="string">"Low-Pass Filter Gravity"</span>,
-            <span class="string">"Metron Arpeggio"</span>,
-            <span class="string">"Metron Screamer 808"</span>,
-            <span class="string">"Recover Mana (Continuous)"</span>,
-            <span class="string">"Recover Mana (Instant)"</span>,
-            <span class="string">"Reduce Mana Cost"</span>,
-            <span class="string">"Repulsive Rod (Shooting)"</span>,
-            <span class="string">"RMS Boost Metron"</span>,
-            <span class="string">"Sampler 404"</span>,
-            <span class="string">"Shooting Time Stretch (Accelerate)"</span>,
-            <span class="string">"Shooting Time Stretch (Decelerate)"</span>,
-            <span class="string">"Terra Metron"</span>,
-            <span class="string">"ステイン"</span>,
-        ]
-        .contains(input_str)
+        <span class="comment">// 空のデータ（スキップするべきデータ）を除外
+        </span><span class="kw">if </span>processed_imagedata.input.is_empty()
+            &amp;&amp; processed_imagedata.move_img.is_empty()
+            &amp;&amp; processed_imagedata.hitbox_img.is_empty()
         {
-            _input_name = input_str.to_string();
-        } <span class="kw">else </span>{
-            <span class="kw">let </span>name_str = image_data.title.name.as_deref().unwrap_or(<span class="string">""</span>);
-            _input_name = <span class="macro">format!</span>(<span class="string">"{name_str}({input_str})"</span>);
+            <span class="kw">continue</span>;
         }
-
-        <span class="comment">// ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
-        </span><span class="kw">let </span>processed_imagedata = ImageLinks {
-            input: _input_name.to_string(),
-            <span class="comment">// input: image_data.title.input.as_ref().unwrap().to_string(),
-            </span>move_img: image_link,
-            hitbox_img: hitbox_links,
-        };
 
         <span class="comment">// 処理済み画像データをベクターへ追加
         </span>vec_processed_imagedata.push(processed_imagedata);

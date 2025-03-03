@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["IMAGE_HALF"],"fn":["images_to_json","make_link"],"struct":["ImageData","ImageResponse","ImageTitle"]};
+window.SIDEBAR_ITEMS = {"constant":["IMAGE_HALF"],"fn":["format_input_name","generate_hitbox_links","generate_image_link","images_to_json","make_link","preprocess_images_json","process_image_data"],"struct":["ImageData","ImageResponse","ImageTitle"]};
