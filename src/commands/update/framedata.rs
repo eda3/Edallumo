@@ -32,7 +32,7 @@ const SITE_HALF: &str =
 /// ```rust,no_run
 /// get_char_data(CHARS, "Sol_Badguy").await;
 /// ```
-pub async fn get_char_data(chars_ids: [&str; CHARS.len()], specific_char: &str) {
+pub async fn get_char_data(chars_ids: &[&str; CHARS.len()], specific_char: &str) {
     // 更新時間計測開始
     let now = Instant::now();
 

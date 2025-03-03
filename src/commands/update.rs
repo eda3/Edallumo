@@ -35,7 +35,7 @@ pub async fn update(ctx: Context<'_>) -> Result<()> {
     ctx.say("Update started!").await?; // 更新開始通知
 
     // 全キャラクター情報更新
-    framedata::get_char_data(CHARS, "all").await; // フレームデータ更新
+    framedata::get_char_data(&CHARS, "all").await; // フレームデータ更新
     images::get_char_images(&CHARS, "all").await; // 画像データ更新
 
     ctx.say("Update succesful!").await?; // 更新完了通知
@@ -66,7 +66,7 @@ pub async fn character(
 
     // 更新対象分岐処理
     ctx.say("Update started!").await?; // 更新開始通知
-    framedata::get_char_data(CHARS, &character_arg_altered).await; // フレームデータ更新
+    framedata::get_char_data(&CHARS, &character_arg_altered).await; // フレームデータ更新
     images::get_char_images(&CHARS, &character_arg_altered).await; // 画像データ更新
 
     ctx.say("Update succesful!").await?; // 更新完了通知
