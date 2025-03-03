@@ -37,9 +37,7 @@ pub async fn data_folder_exists(init_check: bool) -> Option<String> {
 /// 戻り値：正常時 None / エラー発生時エラーメッセージ (Some(String)) を返す。
 pub async fn nicknames_json_exists(init_check: bool) -> Option<String> {
     // nicknames.json ファイル読み込み
-    let data_from_file = if let Ok(data) = fs::read_to_string("data/nicknames.json") {
-        data
-    } else {
+    let Ok(data_from_file) = fs::read_to_string("data/nicknames.json") else {
         let error_msg = "Error: Failed to read 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken.".to_string();
 
         if init_check {
