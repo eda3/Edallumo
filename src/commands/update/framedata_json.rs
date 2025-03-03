@@ -102,23 +102,189 @@ async fn remove_tags(mut char_page_response_json: String) -> String {
     char_page_response_json // 除去後の文字列返却
 }
 
-// ======================================================================
-// JSON 変換関数
-// ======================================================================
+/// 特殊な入力または技名称の場合にスキップするかどうかを判断する関数
+fn should_skip_move(move_data: &Data) -> bool {
+    // 特定の入力 ("j.XX during Homing Jump") の場合、処理スキップ
+    if move_data.title.input.is_some()
+        && *move_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump"
+    {
+        return true;
+    }
 
-/// 取得したフレームデータ JSON 文字列を MoveInfo 構造体のベクターに変換し、
-/// 整形済み JSON として指定ファイルに書き込む非同期関数
-///
-/// # 引数
-/// * `char_page_response_json` - キャラクターページから取得した JSON 文字列
-/// * `file` - 書き込み対象のファイルハンドル
-/// * `char_count` - CHARS 配列内のキャラクターインデックス
-///
-/// # 動作
-/// 1. JSON 文字列から不要なタグやエンティティを除去する。  
-/// 2. 除去後の文字列を Response 構造体にデシリアライズする。  
-/// 3. 各技情報を MoveInfo 構造体に変換する。  
-/// 4. 変換済みの MoveInfo ベクターを整形済み JSON としてファイルに書き込む。
+    // 特定の技名称の場合、処理スキップ
+    if move_data.title.name.is_some() {
+        let name = move_data.title.name.as_ref().unwrap();
+        if name == "Dash Cancel"
+            || name == "Hoverdash"
+            || name == "Finish Blow"
+            || name == "Flight"
+            || name == "Escape"
+        {
+            return true;
+        }
+    }
+
+    false
+}
+
+/// 移動データを前処理する関数（入力と名前の補完、キャプションの正規化）
+fn preprocess_move_data(move_data: &mut Data) {
+    // 入力情報が未定義の場合、プレースホルダー "-" を設定
+    if move_data.title.input.is_none() {
+        move_data.title.input = Some("-".to_string());
+    }
+
+    // 技名称が未定義の場合、入力情報を技名称として設定
+    if move_data.title.name.is_none() {
+        move_data.title.name = Some(move_data.title.input.as_ref().unwrap().to_string());
+    }
+
+    // キャプションが "Ground" または "Air" の場合、空文字に置換
+    if move_data.title.caption.is_some()
+        && (move_data.title.caption.as_ref().unwrap() == "Ground"
+            || move_data.title.caption.as_ref().unwrap() == "Air")
+    {
+        move_data.title.caption = Some(String::new());
+    }
+}
+
+/// 入力名を整形する関数
+fn format_input_name(input: &str, name: &str) -> String {
+    if [
+        "Shooting Time Stretch (Accelerate)",
+        "Shooting Time Stretch (Decelerate)",
+        "Terra Metron",
+        "ステイン",
+    ]
+    .contains(&input)
+    {
+        input.to_string()
+    } else {
+        format!("{name}({input})")
+    }
+}
+
+/// 移動データからMoveInfo構造体を作成する関数
+fn create_move_info(move_data: &Data, empty: &str) -> MoveInfo {
+    // 入力名の整形
+    let input_str = move_data.title.input.as_deref().unwrap_or("");
+    let name_str = move_data.title.name.as_deref().unwrap_or("");
+    let input_name = format_input_name(input_str, name_str);
+
+    // MoveInfo 構造体へ変換　各フィールドが未定義の場合、プレースホルダー使用
+    MoveInfo {
+        input: input_name,                                                  // 入力情報設定
+        name: move_data.title.name.as_deref().unwrap_or(empty).to_string(), // 技名称設定
+        damage: move_data
+            .title
+            .damage
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()), // ダメージ設定
+        guard: move_data
+            .title
+            .guard
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // ガード設定
+        startup: move_data
+            .title
+            .startup
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()), // 始動フレーム設定
+        active: move_data
+            .title
+            .active
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // アクティブフレーム設定
+        recovery: move_data
+            .title
+            .recovery
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()), // リカバリーフレーム設定
+        on_hit: move_data
+            .title
+            .on_hit
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // ヒット効果設定
+        on_block: move_data
+            .title
+            .on_block
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // ブロック効果設定
+        level: move_data
+            .title
+            .level
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // 技レベル設定
+        counter: move_data
+            .title
+            .counter
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // カウンター設定
+        move_type: move_data
+            .title
+            .move_type
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // 技種別設定
+        risc_gain: move_data
+            .title
+            .risc_gain
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()), // リスクゲイン設定
+        risc_loss: move_data
+            .title
+            .risc_loss
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()), // リスクロス設定
+        wall_damage: move_data
+            .title
+            .wall_damage
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()), // 壁ダメージ設定
+        input_tension: move_data
+            .title
+            .input_tension
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()), // 入力緊張度設定
+        chip_ratio: move_data
+            .title
+            .chip_ratio
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()), // チップ比率設定
+        otg_ratio: move_data
+            .title
+            .otg_ratio
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()), // OTG比率設定
+        scaling: move_data
+            .title
+            .scaling
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()), // ダメージスケーリング設定
+        invincibility: move_data
+            .title
+            .invincibility
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // 無敵フレーム設定
+        cancel: move_data
+            .title
+            .cancel
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(), // キャンセル情報設定
+        caption: move_data.title.caption.as_deref().unwrap_or("").to_string(), // キャプション設定
+        notes: move_data.title.notes.as_deref().unwrap_or("").to_string(),  // 備考設定
+    }
+}
+
+/// フレームデータをJSON形式に変換するメイン関数
 pub async fn frames_to_json(
     mut char_page_response_json: String,
     mut file: &File,
@@ -139,177 +305,16 @@ pub async fn frames_to_json(
 
     // 各技情報処理ループ　結果：各技情報の補完と変換
     for move_data in char_move_data {
-        // 入力情報が未定義の場合、プレースホルダー "-" を設定
-        if move_data.title.input.is_none() {
-            move_data.title.input = Some("-".to_string());
-        } else {
-            // 特定の入力 ("j.XX during Homing Jump") の場合、処理スキップ
-            if *move_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
-                continue;
-            }
-        }
-        // 技名称が未定義の場合、入力情報を技名称として設定
-        if move_data.title.name.is_none() {
-            move_data.title.name = Some(move_data.title.input.as_ref().unwrap().to_string());
-        } else {
-            // 特定の技名称 ("Dash Cancel", "Hoverdash", "Finish Blow", "Flight", "Escape") の場合、処理スキップ
-            if *move_data.title.name.as_ref().unwrap() == "Dash Cancel"
-                || *move_data.title.name.as_ref().unwrap() == "Hoverdash"
-                || *move_data.title.name.as_ref().unwrap() == "Finish Blow"
-                || *move_data.title.name.as_ref().unwrap() == "Flight"
-                || *move_data.title.name.as_ref().unwrap() == "Escape"
-            {
-                continue;
-            }
+        // 前処理
+        preprocess_move_data(move_data);
+
+        // スキップすべき技かどうかを確認
+        if should_skip_move(move_data) {
+            continue;
         }
 
-        // キャプションが "Ground" または "Air" の場合、空文字に置換
-        if move_data.title.caption.is_some()
-            && (move_data.title.caption.as_ref().unwrap() == "Ground"
-                || move_data.title.caption.as_ref().unwrap() == "Air")
-        {
-            move_data.title.caption = Some(String::new());
-        }
-
-        // 取得結果：input_str（所有権移動）
-        let name_str = &move_data.title.name;
-
-        // 空の文字列を生成
-        // 用途：後続の文字列操作用の初期化
-        let mut input_name = String::new();
-
-        // input_str を文字列スライスに変換して標準出力へ表示
-        // 表示結果：input_str の内容
-        let input_str = move_data.title.input.as_deref().unwrap_or("");
-        // println!("{}", name_str.unwrap());
-
-        if [
-            "Shooting Time Stretch (Accelerate)",
-            "Shooting Time Stretch (Decelerate)",
-            "Terra Metron",
-            "ステイン",
-        ]
-        .contains(&input_str)
-        {
-            input_name = input_str.to_string();
-        } else {
-            let name_str = move_data.title.name.as_deref().unwrap_or("");
-            input_name = format!("{name_str}({input_str})");
-        }
-
-        // MoveInfo 構造体へ変換　各フィールドが未定義の場合、プレースホルダー使用
-        let processed_moves_info = MoveInfo {
-            input: input_name,                                                 // 入力情報設定
-            name: move_data.title.name.as_ref().unwrap_or(&empty).to_string(), // 技名称設定
-            damage: move_data
-                .title
-                .damage
-                .as_ref()
-                .and_then(|s| s.parse::<i32>().ok()), // ダメージ設定
-            guard: move_data.title.guard.as_ref().unwrap_or(&empty).to_string(), // ガード設定
-            startup: move_data
-                .title
-                .startup
-                .as_ref()
-                .and_then(|s| s.parse::<i32>().ok()), // 始動フレーム設定
-            active: move_data
-                .title
-                .active
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // アクティブフレーム設定
-            recovery: move_data
-                .title
-                .recovery
-                .as_ref()
-                .and_then(|s| s.parse::<i32>().ok()), // リカバリーフレーム設定
-            on_hit: move_data
-                .title
-                .on_hit
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // ヒット効果設定
-            on_block: move_data
-                .title
-                .on_block
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // ブロック効果設定
-            level: move_data.title.level.as_ref().unwrap_or(&empty).to_string(), // 技レベル設定
-            counter: move_data
-                .title
-                .counter
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // カウンター設定
-            move_type: move_data
-                .title
-                .move_type
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // 技種別設定
-            risc_gain: move_data
-                .title
-                .risc_gain
-                .as_ref()
-                .and_then(|s| s.parse::<f64>().ok()), // リスクゲイン設定
-            risc_loss: move_data
-                .title
-                .risc_loss
-                .as_ref()
-                .and_then(|s| s.parse::<f64>().ok()), // リスクロス設定
-            wall_damage: move_data
-                .title
-                .wall_damage
-                .as_ref()
-                .and_then(|s| s.parse::<i32>().ok()), // 壁ダメージ設定
-            input_tension: move_data
-                .title
-                .input_tension
-                .as_ref()
-                .and_then(|s| s.parse::<f64>().ok()), // 入力緊張度設定
-            chip_ratio: move_data
-                .title
-                .chip_ratio
-                .as_ref()
-                .and_then(|s| s.parse::<f64>().ok()), // チップ比率設定
-            otg_ratio: move_data
-                .title
-                .otg_ratio
-                .as_ref()
-                .and_then(|s| s.parse::<f64>().ok()), // OTG比率設定
-            scaling: move_data
-                .title
-                .scaling
-                .as_ref()
-                .and_then(|s| s.parse::<f64>().ok()), // ダメージスケーリング設定
-            invincibility: move_data
-                .title
-                .invincibility
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // 無敵フレーム設定
-            cancel: move_data
-                .title
-                .cancel
-                .as_ref()
-                .unwrap_or(&empty)
-                .to_string(), // キャンセル情報設定
-            caption: move_data
-                .title
-                .caption
-                .as_ref()
-                .unwrap_or(&String::new())
-                .to_string(), // キャプション設定
-            notes: move_data
-                .title
-                .notes
-                .as_ref()
-                .unwrap_or(&String::new())
-                .to_string(), // 備考設定
-        };
-
-        // 変換済み技情報をベクターに追加
+        // MoveInfo構造体の作成と追加
+        let processed_moves_info = create_move_info(move_data, &empty);
         vec_processed_moves_info.push(processed_moves_info);
     }
 
