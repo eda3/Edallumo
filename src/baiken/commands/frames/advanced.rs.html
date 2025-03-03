@@ -400,13 +400,13 @@
     };
 
     <span class="comment">// 対象技情報の取得　入力に対応する技データの抽出
-    </span><span class="kw">let </span>move_info = moves_info[move_index].clone();
+    </span><span class="kw">let </span>move_data = moves_info[move_index].clone();
 
     <span class="comment">// 対象技の読み込み成功の表示　確認メッセージ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Successfully read move '"</span>.to_owned()
-            + <span class="kw-2">&amp;</span>move_info.input
+            + <span class="kw-2">&amp;</span>move_data.input
             + <span class="string">"' in '"
             </span>+ character_arg_altered
             + <span class="string">".json' file."</span>)
@@ -419,13 +419,13 @@
     <span class="comment">// 画像リンクの探索　対象技の画像リンクを検索
     </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
         <span class="comment">// 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
-        </span><span class="kw">if </span>move_info.input == img_links.input &amp;&amp; !img_links.move_img.is_empty() {
+        </span><span class="kw">if </span>move_data.input == img_links.input &amp;&amp; !img_links.move_img.is_empty() {
             embed_image = img_links.move_img.to_string(); <span class="comment">// 画像リンク更新
             </span><span class="kw">break</span>; <span class="comment">// 探索終了
         </span>}
     }
 
-    <span class="prelude-val">Ok</span>((move_info, embed_image))
+    <span class="prelude-val">Ok</span>((move_data, embed_image))
 }
 
 <span class="doccomment">/// 技情報の詳細な埋め込みメッセージを作成する関数

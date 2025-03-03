@@ -345,13 +345,13 @@
     <span class="comment">// 画像データデシリアライズ　画像リンク配列取得
     </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap();
     <span class="comment">// 対象技情報取得
-    </span><span class="kw">let </span>move_info = moves_info[index].clone();
+    </span><span class="kw">let </span>move_data = moves_info[index].clone();
 
     <span class="comment">// 技読み込み成功表示
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Successfully read move '"</span>.to_owned()
-            + <span class="kw-2">&amp;</span>move_info.input
+            + <span class="kw-2">&amp;</span>move_data.input
             + <span class="string">"' in '"
             </span>+ character_arg_altered
             + <span class="string">".json' file."</span>)
@@ -364,36 +364,36 @@
     <span class="comment">// 画像リンク検索　画像JSONから対象技のリンク取得
     </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
         <span class="comment">// 画像リンク確認　対象技と一致かつ画像リンク非空
-        </span><span class="kw">if </span>move_info.input == img_links.input &amp;&amp; !img_links.move_img.is_empty() {
+        </span><span class="kw">if </span>move_data.input == img_links.input &amp;&amp; !img_links.move_img.is_empty() {
             embed_image = img_links.move_img.to_string(); <span class="comment">// 画像リンク更新
             </span><span class="kw">break</span>; <span class="comment">// ループ抜け
         </span>}
     }
 
-    <span class="prelude-val">Ok</span>((move_info, embed_image))
+    <span class="prelude-val">Ok</span>((move_data, embed_image))
 }
 
 <span class="doccomment">/// 技情報の埋め込みメッセージを作成する関数
 ///
 /// # 引数
-/// * `move_info` - 技情報
+/// * `move_data` - 技情報
 /// * `embed_image` - 埋め込む画像のURL
 /// * `character_arg_altered` - 正式なキャラクター名
 ///
 /// # 戻り値
 /// 埋め込みメッセージ
 </span><span class="kw">fn </span>create_move_embed(
-    move_info: <span class="kw-2">&amp;</span>MoveInfo,
+    move_data: <span class="kw-2">&amp;</span>MoveInfo,
     embed_image: <span class="kw-2">&amp;</span>str,
     character_arg_altered: <span class="kw-2">&amp;</span>str,
 ) -&gt; CreateEmbed {
     <span class="comment">// 埋め込みタイトル組み立て　キャラクター名と技情報を連結
-    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>;
+    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_data.input + <span class="string">"**__"</span>;
 
     <span class="comment">// 埋め込みURL組み立て　Dustloop Wiki の対象キャラクターページ
     </span><span class="kw">let </span>embed_url = <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + character_arg_altered + <span class="string">"#Overview"</span>;
     <span class="comment">// 埋め込みフッター作成　キャプション利用
-    </span><span class="kw">let </span>embed_footer = CreateEmbedFooter::new(<span class="kw-2">&amp;</span>move_info.caption);
+    </span><span class="kw">let </span>embed_footer = CreateEmbedFooter::new(<span class="kw-2">&amp;</span>move_data.caption);
 
     <span class="comment">// 埋め込みメッセージ作成　各種フィールド追加
     </span>CreateEmbed::new()
@@ -404,27 +404,27 @@
         </span>.fields(<span class="macro">vec!</span>[
             (
                 <span class="string">"ダメージ"</span>,
-                <span class="kw-2">&amp;</span>move_info.damage.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="kw-2">&amp;</span>move_data.damage.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
                 <span class="bool-val">true</span>,
             ),
-            (<span class="string">"ガード"</span>, <span class="kw-2">&amp;</span>move_info.guard, <span class="bool-val">true</span>),
-            (<span class="string">"無敵"</span>, <span class="kw-2">&amp;</span>move_info.invincibility, <span class="bool-val">true</span>),
+            (<span class="string">"ガード"</span>, <span class="kw-2">&amp;</span>move_data.guard, <span class="bool-val">true</span>),
+            (<span class="string">"無敵"</span>, <span class="kw-2">&amp;</span>move_data.invincibility, <span class="bool-val">true</span>),
             (
                 <span class="string">"始動"</span>,
-                <span class="kw-2">&amp;</span>move_info.startup.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="kw-2">&amp;</span>move_data.startup.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
                 <span class="bool-val">true</span>,
             ),
-            (<span class="string">"持続"</span>, <span class="kw-2">&amp;</span>move_info.active, <span class="bool-val">true</span>),
+            (<span class="string">"持続"</span>, <span class="kw-2">&amp;</span>move_data.active, <span class="bool-val">true</span>),
             (
                 <span class="string">"硬直"</span>,
-                <span class="kw-2">&amp;</span>move_info
+                <span class="kw-2">&amp;</span>move_data
                     .recovery
                     .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
                 <span class="bool-val">true</span>,
             ),
-            (<span class="string">"ヒット時"</span>, <span class="kw-2">&amp;</span>move_info.on_hit, <span class="bool-val">true</span>),
-            (<span class="string">"ガード時"</span>, <span class="kw-2">&amp;</span>move_info.on_block, <span class="bool-val">true</span>),
-            (<span class="string">"カウンター"</span>, <span class="kw-2">&amp;</span>move_info.counter.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ヒット時"</span>, <span class="kw-2">&amp;</span>move_data.on_hit, <span class="bool-val">true</span>),
+            (<span class="string">"ガード時"</span>, <span class="kw-2">&amp;</span>move_data.on_block, <span class="bool-val">true</span>),
+            (<span class="string">"カウンター"</span>, <span class="kw-2">&amp;</span>move_data.counter.to_string(), <span class="bool-val">true</span>),
         ])
         .footer(embed_footer) <span class="comment">// フッター設定
 </span>}
@@ -468,14 +468,14 @@
     };
 
     <span class="comment">// 技情報と画像データ読み込み
-    </span><span class="kw">let </span><span class="prelude-val">Ok</span>((move_info, embed_image)) =
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>((move_data, embed_image)) =
         find_move_data(<span class="kw-2">&amp;</span>character_arg_altered, <span class="kw-2">&amp;</span>character_move, <span class="kw-2">&amp;</span>ctx).<span class="kw">await
     else </span>{
         <span class="kw">return </span><span class="prelude-val">Ok</span>(());
     };
 
     <span class="comment">// 埋め込みメッセージ作成
-    </span><span class="kw">let </span>embed = create_move_embed(<span class="kw-2">&amp;</span>move_info, <span class="kw-2">&amp;</span>embed_image, <span class="kw-2">&amp;</span>character_arg_altered);
+    </span><span class="kw">let </span>embed = create_move_embed(<span class="kw-2">&amp;</span>move_data, <span class="kw-2">&amp;</span>embed_image, <span class="kw-2">&amp;</span>character_arg_altered);
 
     <span class="comment">// 埋め込みメッセージ送信　Discordへ出力
     </span>ctx.send(poise::CreateReply::default().embed(embed)).<span class="kw">await</span><span class="question-mark">?</span>;

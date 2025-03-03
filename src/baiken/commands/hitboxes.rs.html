@@ -349,20 +349,20 @@
     </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap();
 
     <span class="comment">// 技情報取得
-    </span><span class="kw">let </span>move_info = moves_info[index].clone();
+    </span><span class="kw">let </span>move_data = moves_info[index].clone();
 
     <span class="comment">// 技情報読み込み成功ログ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Successfully read move '"</span>.to_owned()
-            + <span class="kw-2">&amp;</span>move_info.input
+            + <span class="kw-2">&amp;</span>move_data.input
             + <span class="string">"' in '"
             </span>+ character_arg_altered
             + <span class="string">".json' file."</span>)
             .green()
     );
 
-    <span class="prelude-val">Ok</span>((move_info, image_links))
+    <span class="prelude-val">Ok</span>((move_data, image_links))
 }
 
 <span class="doccomment">/// ヒットボックス画像の埋め込みメッセージを作成する関数
@@ -488,14 +488,14 @@
     };
 
     <span class="comment">// 技情報と画像データ読み込み
-    </span><span class="kw">let </span><span class="prelude-val">Ok</span>((move_info, image_links)) =
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>((move_data, image_links)) =
         find_move_and_images(<span class="kw-2">&amp;</span>character_arg_altered, <span class="kw-2">&amp;</span>character_move, <span class="kw-2">&amp;</span>ctx).<span class="kw">await
     else </span>{
         <span class="kw">return </span><span class="prelude-val">Ok</span>(());
     };
 
     <span class="comment">// 埋め込みメッセージ作成
-    </span><span class="kw">let </span>vec_embeds = create_hitbox_embeds(<span class="kw-2">&amp;</span>move_info, <span class="kw-2">&amp;</span>image_links, <span class="kw-2">&amp;</span>character_arg_altered);
+    </span><span class="kw">let </span>vec_embeds = create_hitbox_embeds(<span class="kw-2">&amp;</span>move_data, <span class="kw-2">&amp;</span>image_links, <span class="kw-2">&amp;</span>character_arg_altered);
 
     <span class="comment">// 返信作成と送信
     </span><span class="kw">let </span><span class="kw-2">mut </span>reply = poise::CreateReply::default();

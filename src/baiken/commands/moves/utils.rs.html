@@ -121,10 +121,7 @@
 <a href="#120" id="120">120</a>
 <a href="#121" id="121">121</a>
 <a href="#122" id="122">122</a>
-<a href="#123" id="123">123</a>
-<a href="#124" id="124">124</a>
-<a href="#125" id="125">125</a>
-<a href="#126" id="126">126</a></pre></div><pre class="rust"><code><span class="doccomment">//! `utils.rs`
+<a href="#123" id="123">123</a></pre></div><pre class="rust"><code><span class="doccomment">//! `utils.rs`
 //!
 //! このファイルは、ムーブのフレームメーター表示機能に関連する関数群を定義する。
 //! 各ムーブの開始、アクティブ、リカバリーフレームをシンボルとして表現し、
@@ -205,8 +202,6 @@
                     }
                 }
                 special_moves = special_moves.clone() + <span class="string">"`\n"</span>;
-            } <span class="kw">else </span>{
-                <span class="kw">continue</span>;
             }
         }
     }
@@ -243,9 +238,8 @@
                     }
                 }
                 super_moves = super_moves.clone() + <span class="string">"`\n"</span>;
-            } <span class="kw">else </span>{
-                <span class="kw">continue</span>;
             }
+            <span class="kw">continue</span>;
         }
     }
     super_moves
