@@ -112,9 +112,9 @@ pub async fn get_super_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAliase
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
                     if a != moves_aliases.aliases.len() - 1 {
-                        super_moves = super_moves.to_owned() + &moves_aliases.aliases[a] + "`, `";
+                        super_moves = super_moves.clone() + &moves_aliases.aliases[a] + "`, `";
                     } else {
-                        super_moves = super_moves.to_owned() + &moves_aliases.aliases[a];
+                        super_moves = super_moves.clone() + &moves_aliases.aliases[a];
                     }
                 }
                 super_moves = super_moves.to_owned() + "`\n";
