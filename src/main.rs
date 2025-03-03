@@ -219,7 +219,7 @@ async fn main() -> Result<()> {
                 })
             },
             // イベントハンドラ
-            event_handler: |ctx, event, _framework, _data| {
+            event_handler: |_ctx, event, _framework, _data| {
                 Box::pin(async move {
                     if let serenity::FullEvent::Ready { data_about_bot, .. } = event {
                         println!(
