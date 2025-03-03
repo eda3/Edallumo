@@ -321,11 +321,11 @@ pub async fn meter(
                     .green()
             ); // 成功出力
 
-            if !img_links.move_img.is_empty() {
-                embed_image = img_links.move_img; // ムーブ画像設定
+            embed_image = if img_links.move_img.is_empty() {
+                String::from(IMAGE_DEFAULT) // デフォルト画像設定
             } else {
-                embed_image = String::from(IMAGE_DEFAULT); // デフォルト画像設定
-            }
+                img_links.move_img // ムーブ画像設定
+            };
         }
     }
 
