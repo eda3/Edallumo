@@ -90,7 +90,7 @@ pub async fn images_to_json(
 
         // 入力文字列が未定義の場合は空文字に置換　結果：image_data.title.input が定義される
         if image_data.title.input.is_none() {
-            image_data.title.input = Some("".to_string());
+            image_data.title.input = Some(String::new());
         } else {
             // 特定の入力（"j.XX during Homing Jump"）の場合はスキップ　動作：continue
             if *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
@@ -113,11 +113,11 @@ pub async fn images_to_json(
         }
         // 画像ファイル名が未定義の場合は空文字とする　結果：image_link に空文字が設定
         if image_data.title.images.is_none() {
-            image_link = "".to_string();
+            image_link = String::new();
         } else {
             // 画像ファイル名が空白のみの場合は空文字に設定　結果：image_link に空文字が設定
             if image_data.title.images.as_ref().unwrap().trim() == "" {
-                image_link = "".to_string();
+                image_link = String::new();
             } else {
                 // 複数の画像ファイル名が存在する場合の処理
                 if image_data.title.images.as_mut().unwrap().contains(';') {
@@ -155,7 +155,7 @@ pub async fn images_to_json(
 
         // ヒットボックス情報が未定義の場合は空文字をベクターに追加　結果：hitbox_links に空文字追加
         if image_data.title.hitboxes.is_none() {
-            hitbox_links.push("".to_string());
+            hitbox_links.push(String::new());
         } else {
             // ヒットボックス情報をセミコロンで分割　結果：hitbox_str に分割された各ヒットボックス名を格納
             let hitbox_str: Vec<&str> = image_data

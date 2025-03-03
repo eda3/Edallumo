@@ -300,13 +300,13 @@ pub async fn frames_to_json(
                 .title
                 .caption
                 .as_ref()
-                .unwrap_or(&"".to_string())
+                .unwrap_or(&String::new())
                 .to_string(), // キャプション設定
             notes: move_data
                 .title
                 .notes
                 .as_ref()
-                .unwrap_or(&"".to_string())
+                .unwrap_or(&String::new())
                 .to_string(), // 備考設定
         };
 

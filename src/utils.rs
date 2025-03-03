@@ -444,8 +444,8 @@ mod tests {
                 scaling: Some(0.8),
                 invincibility: "None".to_string(),
                 cancel: "Special, Super".to_string(),
-                caption: "".to_string(),
-                notes: "".to_string(),
+                caption: String::new(),
+                notes: String::new(),
             },
             MoveInfo {
                 input: "236P".to_string(),
@@ -469,8 +469,8 @@ mod tests {
                 scaling: Some(0.9),
                 invincibility: "None".to_string(),
                 cancel: "Super".to_string(),
-                caption: "".to_string(),
-                notes: "".to_string(),
+                caption: String::new(),
+                notes: String::new(),
             },
         ];
 
@@ -535,8 +535,8 @@ mod tests {
             scaling: Some(0.8),
             invincibility: "None".to_string(),
             cancel: "Special, Super".to_string(),
-            caption: "".to_string(),
-            notes: "".to_string(),
+            caption: String::new(),
+            notes: String::new(),
         }];
 
         let test_file = temp_path.join("test_moves.json");
