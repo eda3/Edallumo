@@ -168,7 +168,7 @@ pub struct CheckOptions {
 /// - `ctx` - Discordのコンテキスト
 /// - `options` - 実行するチェックを指定するオプション構造体
 ///
-/// 戻り値：全チェック成功時 Ok(()) / 失敗時 Err("Failed adaptive_check")
+/// 戻り値：全チェック成功時 Ok(()) / 失敗時 Err("Failed `adaptive_check`")
 pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<()> {
     if options.data_folder {
         // Checking if data folder exists
