@@ -178,7 +178,7 @@ pub async fn adaptive_check(
         // Checking if nicknames.json exists
         if let Some(error_msg) = nicknames_json_exists(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
-                println!("Failed to send message: {}", e);
+                println!("Failed to send message: {e}");
             }
             println!();
             panic!("{}", error_msg.replace('\n', " ").red());
