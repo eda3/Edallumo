@@ -34,7 +34,7 @@ where
         let start_time = Instant::now();
 
         match f().await {
-            Ok(_) => {
+            Ok(()) => {
                 let elapsed = start_time.elapsed();
                 info!(
                     "タスク完了: {} (所要時間: {:.2}秒)",
@@ -79,7 +79,7 @@ where
             let start_time = Instant::now();
 
             match f().await {
-                Ok(_) => {
+                Ok(()) => {
                     let elapsed = start_time.elapsed();
                     info!(
                         "定期タスク完了: {} (所要時間: {:.2}秒)",
@@ -125,7 +125,7 @@ where
         let start_time = Instant::now();
 
         match f().await {
-            Ok(_) => {
+            Ok(()) => {
                 let elapsed = start_time.elapsed();
                 info!(
                     "遅延タスク完了: {} (所要時間: {:.2}秒)",
@@ -166,7 +166,7 @@ where
             let start_time = Instant::now();
 
             match task_fn().await {
-                Ok(_) => {
+                Ok(()) => {
                     let elapsed = start_time.elapsed();
                     info!(
                         "タスク完了: {} (所要時間: {:.2}秒)",
@@ -185,7 +185,7 @@ where
     let mut results = Vec::with_capacity(handles.len());
     for handle in handles {
         match handle.await {
-            Ok(_) => results.push(()),
+            Ok(()) => results.push(()),
             Err(e) => {
                 error!("タスク実行エラー: {}", e);
                 eprintln!("{}", format!("タスク実行エラー: {e}").red());
