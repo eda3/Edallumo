@@ -68,16 +68,17 @@ async fn startup_frames(move_info: &MoveInfo) -> String {
                         if num == 1 {
                             meter_msg += GREEN_CIRCLE; // 単一数値：緑丸置換
                         } else {
-                            meter_msg = meter_msg + GREEN_CIRCLE + &startup_vec[x];
+                            meter_msg.push_str(GREEN_CIRCLE);
+                            meter_msg.push_str(&startup_vec[x]);
                             // 複数数値：緑丸＋"+"追加
                         }
                     } else {
-                        meter_msg = meter_msg + &startup_vec[x]; // 数字変換失敗：記号そのまま追加
+                        meter_msg.push_str(&startup_vec[x]); // 数字変換失敗：記号そのまま追加
                     }
                 }
                 // その他の記号処理
                 else {
-                    meter_msg = meter_msg + &startup_vec[x]; // 記号追加
+                    meter_msg.push_str(&startup_vec[x]); // 記号追加
                 }
 
                 // 括弧・チルダ判定更新
@@ -123,7 +124,7 @@ async fn active_frames(move_info: &MoveInfo) -> String {
             }
             // 数値以外のエントリの場合
             else {
-                meter_msg = meter_msg + active_vec_string; // 記号追加
+                meter_msg.push_str(active_vec_string); // 記号追加
                 if active_vec_string == "(" {
                     hit_recovery = true; // 括弧開始
                 } else if active_vec_string == ")" {
@@ -175,8 +176,8 @@ async fn recovery_frames(move_info: &MoveInfo) -> String {
             }
             // 数値以外のエントリの場合
             else {
-                meter_msg = meter_msg + &recovery_vec[x]; // 記号追加
-                                                          // チルダ・括弧判定更新
+                meter_msg.push_str(&recovery_vec[x]); // 記号追加
+                                                      // チルダ・括弧判定更新
                 recovery_tilde = recovery_vec[x] == "~" || recovery_vec[x] == "(";
             }
         }
