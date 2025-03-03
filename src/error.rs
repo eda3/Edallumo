@@ -51,12 +51,12 @@ pub enum AppError {
     Other(String),
 }
 
-/// Box<dyn std::error::Error>型からAppError型への変換
+// `Box<dyn std::error::Error>型からAppError型への変換
 impl From<Box<dyn std::error::Error>> for AppError {
     fn from(error: Box<dyn std::error::Error>) -> Self {
         AppError::Other(error.to_string())
     }
 }
 
-/// 結果型の別名定義（アプリケーション全体で使用）
+/// `結果型の別名定義（アプリケーション全体で使用）`
 pub type Result<T> = std::result::Result<T, AppError>;

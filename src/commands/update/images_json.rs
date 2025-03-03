@@ -49,7 +49,7 @@ const IMAGE_HALF: &str = "https://www.dustloop.com/wiki/images";
 // ======================================================================
 
 /// 与えられた画像関連 JSON 文字列に対して前処理を実施し、
-/// ImageLinks 構造体の形式に変換した整形済み JSON を指定ファイルに書き込む非同期関数
+/// `ImageLinks` 構造体の形式に変換した整形済み JSON を指定ファイルに書き込む非同期関数
 ///
 /// # 引数
 /// * `char_images_response_json` - 取得した画像データの JSON 文字列（前処理前）
