@@ -216,7 +216,7 @@ pub async fn advanced(
     vec_embeds.push(embed);
 
     // 備考（notes）が存在する場合、別の埋め込みメッセージを生成
-    if !&move_info.notes.is_empty() {
+    if !move_info.notes.is_empty() {
         let embed2 = CreateEmbed::new()
             .color(EMBED_COLOR) // 埋め込みカラー設定
             .description(&move_info.notes); // 備考記述設定
