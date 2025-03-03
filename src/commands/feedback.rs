@@ -35,7 +35,7 @@ pub async fn feedback(
 
     // テキスト整形処理
     // ユーザーから送られたフィードバックテキストに改行を追加し、各メッセージ間に空行を挿入する
-    let new_text = text.to_owned() + "\n\n";
+    let new_text = text.clone() + "\n\n";
 
     // ファイル書き込み処理
     // 整形済みのテキストを 'request.txt' に書き込む
