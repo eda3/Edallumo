@@ -46,9 +46,7 @@ async fn startup_frames(move_info: &MoveInfo) -> String {
             if let Ok(num) = startup_vec[x].parse::<u16>() {
                 // 数値-1回分ループ処理
                 for _ in 0..num - 1 {
-                    if !startup_bra {
-                        meter_msg += GREEN_CIRCLE; // 括弧前：緑丸追加
-                    } else {
+                    if startup_bra {
                         // 括弧内：前エントリとの差分回数緑丸追加
                         for _ in 0..((startup_vec[x].parse::<u16>().unwrap())
                             - (startup_vec[x - 2].parse::<u16>()).unwrap())
@@ -56,6 +54,8 @@ async fn startup_frames(move_info: &MoveInfo) -> String {
                             meter_msg += GREEN_CIRCLE; // 括弧内緑丸追加
                         }
                         break; // ループ中断
+                    } else {
+                        meter_msg += GREEN_CIRCLE; // 括弧前：緑丸追加
                     }
                 }
             }
