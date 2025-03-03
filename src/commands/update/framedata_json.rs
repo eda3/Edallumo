@@ -171,18 +171,17 @@ pub async fn frames_to_json(
             move_data.title.caption = Some(String::from(""));
         }
 
-        // move_data の title フィールドから name を取得
         // 取得結果：input_str（所有権移動）
-        let _name_str = &move_data.title.name;
+        let name_str = &move_data.title.name;
 
         // 空の文字列を生成
         // 用途：後続の文字列操作用の初期化
-        let mut _input_name = String::new();
+        let mut input_name = String::new();
 
         // input_str を文字列スライスに変換して標準出力へ表示
         // 表示結果：input_str の内容
         let input_str = move_data.title.input.as_deref().unwrap_or("");
-        // println!("{}", _name_str.unwrap());
+        // println!("{}", name_str.unwrap());
 
         if [
             "Shooting Time Stretch (Accelerate)",
@@ -192,15 +191,15 @@ pub async fn frames_to_json(
         ]
         .contains(&input_str)
         {
-            _input_name = input_str.to_string();
+            input_name = input_str.to_string();
         } else {
             let name_str = move_data.title.name.as_deref().unwrap_or("");
-            _input_name = format!("{name_str}({input_str})");
+            input_name = format!("{name_str}({input_str})");
         }
 
         // MoveInfo 構造体へ変換　各フィールドが未定義の場合、プレースホルダー使用
         let processed_moves_info = MoveInfo {
-            input: _input_name,                                                // 入力情報設定
+            input: input_name,                                                 // 入力情報設定
             name: move_data.title.name.as_ref().unwrap_or(&empty).to_string(), // 技名称設定
             damage: move_data
                 .title
