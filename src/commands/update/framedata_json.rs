@@ -168,7 +168,7 @@ pub async fn frames_to_json(
             && (move_data.title.caption.as_ref().unwrap() == "Ground"
                 || move_data.title.caption.as_ref().unwrap() == "Air")
         {
-            move_data.title.caption = Some(String::from(""));
+            move_data.title.caption = Some(String::new());
         }
 
         // 取得結果：input_str（所有権移動）
