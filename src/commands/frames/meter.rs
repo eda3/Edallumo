@@ -54,9 +54,8 @@ async fn startup_frames(move_info: &MoveInfo) -> String {
                             meter_msg += GREEN_CIRCLE; // 括弧内緑丸追加
                         }
                         break; // ループ中断
-                    } else {
-                        meter_msg += GREEN_CIRCLE; // 括弧前：緑丸追加
                     }
+                    meter_msg += GREEN_CIRCLE; // 括弧前：緑丸追加
                 }
             }
             // 数字以外のエントリの場合
@@ -169,9 +168,8 @@ async fn recovery_frames(move_info: &MoveInfo) -> String {
                             meter_msg += BLUE_DIAMOND; // チルダ内青菱形追加
                         }
                         break; // ループ中断
-                    } else {
-                        meter_msg += BLUE_DIAMOND; // チルダ前：青菱形追加
                     }
+                    meter_msg += BLUE_DIAMOND; // チルダ前：青菱形追加
                 }
             }
             // 数値以外のエントリの場合
