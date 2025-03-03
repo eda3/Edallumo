@@ -60,81 +60,56 @@ async fn preprocess_images_json(mut json_str: String) -> String {
     json_str
 }
 
-/// 画像データエントリを処理して ImageLinks 構造体に変換する関数
-async fn process_image_data(image_data: &mut ImageData) -> ImageLinks {
-    // ヒットボックスリンク格納用ベクターを初期化　結果：hitbox_links
+/// ヒットボックスリンクを生成する関数
+async fn generate_hitbox_links(hitboxes: &Option<String>) -> Vec<String> {
     let mut hitbox_links: Vec<String> = Vec::new();
-    // 画像リンク格納用変数の宣言　結果：image_link
-    let image_link;
 
-    // 入力文字列が未定義の場合は空文字に置換　結果：image_data.title.input が定義される
-    if image_data.title.input.is_none() {
-        image_data.title.input = Some(String::new());
-    } else {
-        // 特定の入力（"j.XX during Homing Jump"）の場合はスキップ　動作：continue
-        if *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
-            // この場合は特別な処理が必要なため、空のデータを返す
-            return ImageLinks {
-                input: String::new(),
-                move_img: String::new(),
-                hitbox_img: Vec::new(),
-            };
-        }
-    }
-    // 画像名称が未定義の場合は入力文字列を名称として設定　結果：image_data.title.name に値が入る
-    if image_data.title.name.is_none() {
-        image_data.title.name = image_data.title.input.clone();
-    }
-
-    // 画像ファイル名が未定義の場合は空文字とする　結果：image_link に空文字が設定
-    if image_data.title.images.is_none() {
-        image_link = String::new();
-    } else {
-        // 画像ファイル名が空白のみの場合は空文字に設定　結果：image_link に空文字が設定
-        if image_data.title.images.as_ref().unwrap().trim() == "" {
-            image_link = String::new();
-        } else {
-            // 複数の画像ファイル名が存在する場合の処理
-            if image_data.title.images.as_mut().unwrap().contains(';') {
-                // セミコロンで分割し、先頭要素を使用　結果：split_image[0] に設定
-                let split_image: Vec<&str> = image_data
-                    .title
-                    .images
-                    .as_ref()
-                    .unwrap()
-                    .split(';')
-                    .collect();
-                // 画像リンク生成関数でリンク形式に整形　結果：image_link
-                image_link = make_link(split_image[0].to_string().trim().replace(' ', "_")).await;
-            } else {
-                // 単一の画像ファイル名の場合の処理
-                image_link = make_link(image_data.title.images.as_ref().unwrap().to_string()).await;
-            }
-        }
-    }
-
-    // ヒットボックス情報が未定義の場合は空文字をベクターに追加　結果：hitbox_links に空文字追加
-    if image_data.title.hitboxes.is_none() {
+    // ヒットボックス情報が未定義の場合は空文字をベクターに追加
+    if hitboxes.is_none() {
         hitbox_links.push(String::new());
     } else {
-        // ヒットボックス情報をセミコロンで分割　結果：hitbox_str に分割された各ヒットボックス名を格納
-        let hitbox_str: Vec<&str> = image_data
-            .title
-            .hitboxes
-            .as_ref()
-            .unwrap()
-            .split(';')
-            .collect();
+        // ヒットボックス情報をセミコロンで分割
+        let hitbox_str: Vec<&str> = hitboxes.as_ref().unwrap().split(';').collect();
 
-        // 各ヒットボックス名に対して画像リンク生成関数を呼び出し　結果：hitbox_links に生成されたリンクを追加
+        // 各ヒットボックス名に対して画像リンク生成関数を呼び出し
         for hitbox_string in &hitbox_str {
             hitbox_links
                 .push(make_link((*hitbox_string).to_string().trim().replace(' ', "_")).await);
         }
     }
 
-    let input_str = &image_data.title.input.as_deref().unwrap_or("");
-    let mut input_name = String::new();
+    hitbox_links
+}
+
+/// 画像リンクを生成する関数
+async fn generate_image_link(images: &Option<String>) -> String {
+    // 画像ファイル名が未定義の場合は空文字とする
+    if images.is_none() {
+        return String::new();
+    }
+
+    // 画像ファイル名が空白のみの場合は空文字に設定
+    if images.as_ref().unwrap().trim() == "" {
+        return String::new();
+    }
+
+    // 複数の画像ファイル名が存在する場合の処理
+    if images.as_ref().unwrap().contains(';') {
+        // セミコロンで分割し、先頭要素を使用
+        let split_image: Vec<&str> = images.as_ref().unwrap().split(';').collect();
+        // 画像リンク生成関数でリンク形式に整形
+        make_link(split_image[0].to_string().trim().replace(' ', "_")).await
+    } else {
+        // 単一の画像ファイル名の場合の処理
+        make_link(images.as_ref().unwrap().to_string()).await
+    }
+}
+
+/// 入力名を整形する関数
+fn format_input_name(input: &Option<String>, name: &Option<String>) -> String {
+    let input_str = input.as_deref().unwrap_or("");
+
+    // 特定の入力文字列の場合はそのまま使用
     if [
         "2D",
         "2HS",
@@ -189,18 +164,46 @@ async fn process_image_data(image_data: &mut ImageData) -> ImageLinks {
         "通常投げ",
         "ステイン",
     ]
-    .contains(input_str)
+    .contains(&input_str)
     {
-        input_name = (*input_str).to_string();
+        input_str.to_string()
     } else {
-        let name_str = image_data.title.name.as_deref().unwrap_or("");
-        input_name = format!("{name_str}({input_str})");
+        let name_str = name.as_deref().unwrap_or("");
+        format!("{name_str}({input_str})")
+    }
+}
+
+/// 画像データを処理する関数
+async fn process_image_data(image_data: &mut ImageData) -> ImageLinks {
+    // 入力文字列が未定義の場合は空文字に置換
+    if image_data.title.input.is_none() {
+        image_data.title.input = Some(String::new());
+    } else if *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
+        // 特定の入力（"j.XX during Homing Jump"）の場合は空のデータを返す
+        return ImageLinks {
+            input: String::new(),
+            move_img: String::new(),
+            hitbox_img: Vec::new(),
+        };
     }
 
-    // ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
+    // 画像名称が未定義の場合は入力文字列を名称として設定
+    if image_data.title.name.is_none() {
+        image_data.title.name = image_data.title.input.clone();
+    }
+
+    // 画像リンクの生成
+    let image_link = generate_image_link(&image_data.title.images).await;
+
+    // ヒットボックスリンクの生成
+    let hitbox_links = generate_hitbox_links(&image_data.title.hitboxes).await;
+
+    // 入力名の整形
+    let input_name = format_input_name(&image_data.title.input, &image_data.title.name);
+
+    // ImageLinks 構造体へ変換
     ImageLinks {
-        input: input_name.to_string(),
-        // input: image_data.title.input.as_ref().unwrap().to_string(),
+        input: input_name,
         move_img: image_link,
         hitbox_img: hitbox_links,
     }
