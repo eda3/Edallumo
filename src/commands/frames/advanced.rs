@@ -318,7 +318,7 @@ mod tests {
     use tempfile::TempDir;
 
     // テスト環境のセットアップ用ヘルパー関数
-    fn setup_test_environment() -> (TempDir, PathBuf) {
+    fn _setup_test_environment() -> (TempDir, PathBuf) {
         let temp_dir = TempDir::new().expect("一時ディレクトリの作成に失敗");
         let temp_path = temp_dir.path().to_path_buf();
 
