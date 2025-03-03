@@ -48,227 +48,199 @@ const IMAGE_HALF: &str = "https://www.dustloop.com/wiki/images";
 // 画像リンク生成および JSON 変換関数群
 // ======================================================================
 
-/// 与えられた画像関連 JSON 文字列に対して前処理を実施し、
-/// `ImageLinks` 構造体の形式に変換した整形済み JSON を指定ファイルに書き込む非同期関数
-///
-/// # 引数
-/// * `char_images_response_json` - 取得した画像データの JSON 文字列（前処理前）
-/// * `file` - 書き込み対象のファイルハンドル
-/// * `char_count` - CHARS 配列内の対象キャラクターのインデックス
-///
-/// # 動作
-/// 1. 前処理関数 `preprocess_json` により、不要なタグやエンティティを除去する。  
-/// 2. 除去後の JSON を `ImageResponse` 構造体にデシリアライズする。  
-/// 3. 各画像データを処理し、ImageLinks 構造体へ変換する。  
-/// 4. 変換済みのデータを整形済み JSON としてファイルへ書き込む。
-pub async fn images_to_json(
-    mut char_images_response_json: String,
-    mut file: &File,
-    char_count: usize,
-) {
+/// キャラクター画像JSONデータを前処理する関数
+async fn preprocess_images_json(mut json_str: String) -> String {
     // 共通前処理適用
     // JSON 文字列を前処理関数で整形　前処理結果：整形済み JSON 文字列
-    char_images_response_json = preprocess::preprocess_json(char_images_response_json);
+    json_str = preprocess::preprocess_json(json_str);
 
     // アポストロフィのエンティティを置換　置換結果：アポストロフィに変換
-    char_images_response_json = char_images_response_json.replace(r#"&#039;"#, "'");
+    json_str = json_str.replace(r#"&#039;"#, "'");
+
+    json_str
+}
+
+/// 画像データエントリを処理して ImageLinks 構造体に変換する関数
+async fn process_image_data(image_data: &mut ImageData) -> ImageLinks {
+    // ヒットボックスリンク格納用ベクターを初期化　結果：hitbox_links
+    let mut hitbox_links: Vec<String> = Vec::new();
+    // 画像リンク格納用変数の宣言　結果：image_link
+    let image_link;
+
+    // 入力文字列が未定義の場合は空文字に置換　結果：image_data.title.input が定義される
+    if image_data.title.input.is_none() {
+        image_data.title.input = Some(String::new());
+    } else {
+        // 特定の入力（"j.XX during Homing Jump"）の場合はスキップ　動作：continue
+        if *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
+            // この場合は特別な処理が必要なため、空のデータを返す
+            return ImageLinks {
+                input: String::new(),
+                move_img: String::new(),
+                hitbox_img: Vec::new(),
+            };
+        }
+    }
+    // 画像名称が未定義の場合は入力文字列を名称として設定　結果：image_data.title.name に値が入る
+    if image_data.title.name.is_none() {
+        image_data.title.name = image_data.title.input.clone();
+    }
+
+    // 画像ファイル名が未定義の場合は空文字とする　結果：image_link に空文字が設定
+    if image_data.title.images.is_none() {
+        image_link = String::new();
+    } else {
+        // 画像ファイル名が空白のみの場合は空文字に設定　結果：image_link に空文字が設定
+        if image_data.title.images.as_ref().unwrap().trim() == "" {
+            image_link = String::new();
+        } else {
+            // 複数の画像ファイル名が存在する場合の処理
+            if image_data.title.images.as_mut().unwrap().contains(';') {
+                // セミコロンで分割し、先頭要素を使用　結果：split_image[0] に設定
+                let split_image: Vec<&str> = image_data
+                    .title
+                    .images
+                    .as_ref()
+                    .unwrap()
+                    .split(';')
+                    .collect();
+                // 画像リンク生成関数でリンク形式に整形　結果：image_link
+                image_link = make_link(split_image[0].to_string().trim().replace(' ', "_")).await;
+            } else {
+                // 単一の画像ファイル名の場合の処理
+                image_link = make_link(image_data.title.images.as_ref().unwrap().to_string()).await;
+            }
+        }
+    }
+
+    // ヒットボックス情報が未定義の場合は空文字をベクターに追加　結果：hitbox_links に空文字追加
+    if image_data.title.hitboxes.is_none() {
+        hitbox_links.push(String::new());
+    } else {
+        // ヒットボックス情報をセミコロンで分割　結果：hitbox_str に分割された各ヒットボックス名を格納
+        let hitbox_str: Vec<&str> = image_data
+            .title
+            .hitboxes
+            .as_ref()
+            .unwrap()
+            .split(';')
+            .collect();
+
+        // 各ヒットボックス名に対して画像リンク生成関数を呼び出し　結果：hitbox_links に生成されたリンクを追加
+        for hitbox_string in &hitbox_str {
+            hitbox_links
+                .push(make_link((*hitbox_string).to_string().trim().replace(' ', "_")).await);
+        }
+    }
+
+    let input_str = &image_data.title.input.as_deref().unwrap_or("");
+    let mut input_name = String::new();
+    if [
+        "2D",
+        "2HS",
+        "2K",
+        "2P",
+        "2S",
+        "3K",
+        "5D",
+        "5HS",
+        "5K",
+        "5P",
+        "5S",
+        "6K",
+        "6P",
+        "Fスタート",
+        "Jスタート",
+        "JD",
+        "JHS",
+        "JK",
+        "JP",
+        "JS",
+        "Pスタート",
+        "Sスタート",
+        "エアダッシュ",
+        "ガトリング",
+        "クローゼライン",
+        "ジャンプ",
+        "スタンプ",
+        "ダッシュ",
+        "ダブルジャンプ",
+        "バックステップ",
+        "フォルト",
+        "ロマンキャンセル",
+        "入力猶予",
+        "前ジャンプ",
+        "後ジャンプ",
+        "攻撃判定",
+        "特殊技",
+        "置換表",
+        "通常技",
+        "必殺技",
+        "打撃無敵",
+        "投げ",
+        "投げ無敵",
+        "歩き",
+        "殴られ判定",
+        "空中ダッシュ",
+        "空中投げ",
+        "立ち",
+        "起き上がり",
+        "走り",
+        "通常投げ",
+        "ステイン",
+    ]
+    .contains(input_str)
+    {
+        input_name = (*input_str).to_string();
+    } else {
+        let name_str = image_data.title.name.as_deref().unwrap_or("");
+        input_name = format!("{name_str}({input_str})");
+    }
+
+    // ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
+    let processed_imagedata = ImageLinks {
+        input: input_name.to_string(),
+        // input: image_data.title.input.as_ref().unwrap().to_string(),
+        move_img: image_link,
+        hitbox_img: hitbox_links,
+    };
+
+    processed_imagedata
+}
+
+/// メイン処理：キャラクター画像データをJSONファイルに変換する関数
+pub async fn images_to_json(char_images_response_json: String, mut file: &File, char_count: usize) {
+    // JSONデータを前処理
+    let preprocessed_json = preprocess_images_json(char_images_response_json).await;
 
     // JSON 文字列を ImageResponse 構造体にデシリアライズ　結果：image_data_response
-    let mut image_data_response: ImageResponse =
-        serde_json::from_str(&char_images_response_json).unwrap();
+    let mut image_data_response: ImageResponse = serde_json::from_str(&preprocessed_json).unwrap();
+
     // 画像データエントリの可変参照取得　結果：char_image_data
     let char_image_data = &mut image_data_response.cargoquery;
+
     // 変換後の ImageLinks 構造体を格納するベクターを初期化　結果：vec_processed_imagedata
     let mut vec_processed_imagedata = Vec::new();
 
     // 各画像データエントリに対するループ処理
     for image_data in char_image_data {
-        // ヒットボックスリンク格納用ベクターを初期化　結果：hitbox_links
-        let mut hitbox_links: Vec<String> = Vec::new();
-        // 画像リンク格納用変数の宣言　結果：image_link
-        let image_link;
-
-        // 入力文字列が未定義の場合は空文字に置換　結果：image_data.title.input が定義される
-        if image_data.title.input.is_none() {
-            image_data.title.input = Some(String::new());
-        } else {
-            // 特定の入力（"j.XX during Homing Jump"）の場合はスキップ　動作：continue
-            if *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump" {
-                continue;
-            }
-        }
-        // 画像名称が未定義の場合は入力文字列を名称として設定　結果：image_data.title.name に値が入る
-        if image_data.title.name.is_none() {
-            image_data.title.name = Some(image_data.title.input.as_ref().unwrap().to_string());
-        } else {
-            // 特定の画像名称（"Dash Cancel", "Hoverdash", "Finish Blow", "Flight", "Escape"）の場合はスキップ
-            if image_data.title.name.as_ref().unwrap().to_string().trim() == "Dash Cancel"
-                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Hoverdash"
-                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Finish Blow"
-                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Flight"
-                || image_data.title.name.as_ref().unwrap().to_string().trim() == "Escape"
-            {
-                continue;
-            }
-        }
-        // 画像ファイル名が未定義の場合は空文字とする　結果：image_link に空文字が設定
-        if image_data.title.images.is_none() {
-            image_link = String::new();
-        } else {
-            // 画像ファイル名が空白のみの場合は空文字に設定　結果：image_link に空文字が設定
-            if image_data.title.images.as_ref().unwrap().trim() == "" {
-                image_link = String::new();
-            } else {
-                // 複数の画像ファイル名が存在する場合の処理
-                if image_data.title.images.as_mut().unwrap().contains(';') {
-                    // セミコロンで分割し、先頭要素を使用　結果：split_image[0] に設定
-                    let split_image: Vec<&str> = image_data
-                        .title
-                        .images
-                        .as_mut()
-                        .unwrap()
-                        .split(';')
-                        .collect();
-
-                    image_data.title.images = Some(split_image[0].to_string().replace(' ', "_"));
-
-                    // 画像リンク生成関数を呼び出し　結果：image_link に生成されたリンクを設定
-                    image_link =
-                        make_link(image_data.title.images.as_ref().unwrap().to_string()).await;
-                } else {
-                    // 単一の画像ファイル名の場合　結果：画像ファイル名の空白をアンダースコアに置換
-                    image_data.title.images = Some(
-                        image_data
-                            .title
-                            .images
-                            .as_ref()
-                            .unwrap()
-                            .to_string()
-                            .replace(' ', "_"),
-                    );
-                    // 画像リンク生成関数を呼び出し　結果：image_link に生成されたリンクを設定
-                    image_link =
-                        make_link(image_data.title.images.as_ref().unwrap().to_string()).await;
-                }
-            }
-        }
-
-        // ヒットボックス情報が未定義の場合は空文字をベクターに追加　結果：hitbox_links に空文字追加
-        if image_data.title.hitboxes.is_none() {
-            hitbox_links.push(String::new());
-        } else {
-            // ヒットボックス情報をセミコロンで分割　結果：hitbox_str に分割された各ヒットボックス名を格納
-            let hitbox_str: Vec<&str> = image_data
-                .title
-                .hitboxes
-                .as_ref()
-                .unwrap()
-                .split(';')
-                .collect();
-
-            // 各ヒットボックス名に対して画像リンク生成関数を呼び出し　結果：hitbox_links に生成されたリンクを追加
-            for hitbox_string in &hitbox_str {
-                hitbox_links
-                    .push(make_link((*hitbox_string).to_string().trim().replace(' ', "_")).await);
-            }
-        }
-
-        let input_str = &image_data.title.input.as_deref().unwrap_or("");
-        let mut input_name = String::new();
-        if [
-            "2D",
-            "2HS",
-            "2K",
-            "2P",
-            "2S",
-            "3K",
-            "5D",
-            "5HS",
-            "5K",
-            "5P",
-            "5[D]",
-            "6HS",
-            "6K",
-            "6P",
-            "近S",
-            "遠S",
-            "S",
-            "6S",
-            "H",
-            "jD",
-            "jHS",
-            "jK",
-            "jP",
-            "jS",
-            "j2K",
-            "j2H",
-            "JR2HS",
-            "JR2K",
-            "JR2P",
-            "JR2S",
-            "JR5HS",
-            "JR5K",
-            "JR5P",
-            "JR6HS",
-            "JR6P",
-            "JR近S",
-            "JR遠S",
-            "JRjD",
-            "JRjHS",
-            "JRjK",
-            "JRjP",
-            "JRjS",
-            "JR解除",
-            "6HSHS",
-            "6HSHSHS",
-            "銃を構える(HS)",
-            "BR Activation",
-            "BR Deactivation",
-            "214X (Discard)",
-            "214X (Draw)",
-            "Accipiter Metron",
-            "Aquila Metron",
-            "Bit Shift Metron",
-            "Bookmark (Auto Import)",
-            "Bookmark (Full Import)",
-            "Bookmark (Random Import)",
-            "Chaotic Option",
-            "Delayed Howling Metron",
-            "Delayed Tardus Metron",
-            "Go to Marker",
-            "Gravity Rod (Shooting)",
-            "High-Pass Filter Gravity",
-            "Howling Metron",
-            "Howling Metron MS Processing",
-            "Low-Pass Filter Gravity",
-            "Metron Arpeggio",
-            "Metron Screamer 808",
-            "Recover Mana (Continuous)",
-            "Recover Mana (Instant)",
-            "Reduce Mana Cost",
-            "Repulsive Rod (Shooting)",
-            "RMS Boost Metron",
-            "Sampler 404",
-            "Shooting Time Stretch (Accelerate)",
-            "Shooting Time Stretch (Decelerate)",
-            "Terra Metron",
-            "ステイン",
-        ]
-        .contains(input_str)
+        // 特殊なケースをスキップする処理（"j.XX during Homing Jump"）
+        if image_data.title.input.is_some()
+            && *image_data.title.input.as_ref().unwrap() == "j.XX during Homing Jump"
         {
-            input_name = (*input_str).to_string();
-        } else {
-            let name_str = image_data.title.name.as_deref().unwrap_or("");
-            input_name = format!("{name_str}({input_str})");
+            continue;
         }
 
-        // ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
-        let processed_imagedata = ImageLinks {
-            input: input_name.to_string(),
-            // input: image_data.title.input.as_ref().unwrap().to_string(),
-            move_img: image_link,
-            hitbox_img: hitbox_links,
-        };
+        // 各画像データを処理してImageLinks構造体に変換
+        let processed_imagedata = process_image_data(image_data).await;
+
+        // 空のデータ（スキップするべきデータ）を除外
+        if processed_imagedata.input.is_empty()
+            && processed_imagedata.move_img.is_empty()
+            && processed_imagedata.hitbox_img.is_empty()
+        {
+            continue;
+        }
 
         // 処理済み画像データをベクターへ追加
         vec_processed_imagedata.push(processed_imagedata);
