@@ -60,3 +60,62 @@ impl From<Box<dyn std::error::Error>> for AppError {
 
 /// `結果型の別名定義（アプリケーション全体で使用）`
 pub type Result<T> = std::result::Result<T, AppError>;
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::{Error as IoError, ErrorKind};
+
+    #[test]
+    fn test_app_error_io() {
+        let io_error = IoError::new(ErrorKind::NotFound, "テスト用IOエラー");
+        let app_error = AppError::from(io_error);
+
+        if let AppError::Io(e) = app_error {
+            assert_eq!(e.kind(), ErrorKind::NotFound);
+        } else {
+            panic!("変換されたエラーの型が正しくありません");
+        }
+    }
+
+    #[test]
+    fn test_app_error_file_not_found() {
+        let error_message = "test.json";
+        let app_error = AppError::FileNotFound(error_message.to_string());
+
+        let error_string = app_error.to_string();
+        assert!(error_string.contains(error_message));
+    }
+
+    #[test]
+    fn test_app_error_character_not_found() {
+        let character = "存在しない_キャラ";
+        let app_error = AppError::CharacterNotFound(character.to_string());
+
+        let error_string = app_error.to_string();
+        assert!(error_string.contains(character));
+    }
+
+    #[test]
+    fn test_app_error_move_not_found() {
+        let move_name = "存在しない技";
+        let app_error = AppError::MoveNotFound(move_name.to_string());
+
+        let error_string = app_error.to_string();
+        assert!(error_string.contains(move_name));
+    }
+
+    #[test]
+    fn test_app_error_from_box_dyn_error() {
+        let original_error: Box<dyn std::error::Error> =
+            Box::new(IoError::new(ErrorKind::Other, "ボックス化されたエラー"));
+
+        let app_error = AppError::from(original_error);
+
+        if let AppError::Other(message) = app_error {
+            assert!(message.contains("ボックス化されたエラー"));
+        } else {
+            panic!("変換されたエラーの型が正しくありません");
+        }
+    }
+}

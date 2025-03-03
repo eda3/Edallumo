@@ -198,61 +198,102 @@ where
 
 #[cfg(test)]
 mod tests {
-    #[allow(unused_imports)]
-    use crate::error::AppError;
-    #[allow(unused_imports)]
+    use super::*;
     use std::sync::{Arc, Mutex};
+    use tokio::time::sleep;
 
     #[tokio::test]
-    #[ignore] // テストを無視するようマークする
     async fn test_spawn_logged_task() {
-        let counter = Arc::new(Mutex::new(0));
-        let counter_clone = counter.clone();
+        // 成功するタスクのテスト
+        let task_completed = Arc::new(Mutex::new(false));
+        let task_completed_clone = task_completed.clone();
 
-        let handle = super::spawn_logged_task("テストタスク", move || async move {
-            let mut count = counter_clone.lock().unwrap();
-            *count += 1;
+        let handle = spawn_logged_task("test_task", move || async move {
+            // タスクの実行を模擬
+            sleep(Duration::from_millis(10)).await;
+
+            // タスク完了フラグをセット
+            let mut completed = task_completed_clone.lock().unwrap();
+            *completed = true;
+
             Ok(())
         });
 
-        handle.await.unwrap();
+        // タスクの完了を待機
+        handle.await.expect("タスクの実行に失敗しました");
 
-        assert_eq!(*counter.lock().unwrap(), 1);
+        // タスクが正常に完了したことを確認
+        assert!(*task_completed.lock().unwrap());
     }
 
     #[tokio::test]
-    #[ignore] // テストを無視するようマークする
     async fn test_spawn_logged_task_with_error() {
-        let handle = super::spawn_logged_task("エラータスク", || async {
-            Err(AppError::Other("テストエラー".to_string()))
+        // エラーを返すタスクのテスト
+        let error_message = "テスト用エラー";
+        let handle = spawn_logged_task("error_task", move || async move {
+            // エラーを返すタスク
+            Err(crate::error::AppError::Other(error_message.to_string()))
         });
 
-        handle.await.unwrap();
-        // エラーがログに記録されることを確認（ログ出力のテストは難しいため、
-        // ここではタスクが正常に完了することだけを確認）
+        // タスク自体は正常に実行されるが、中でエラーが発生する
+        handle.await.expect("タスクの実行に失敗しました");
     }
 
     #[tokio::test]
-    #[ignore] // テストを無視するようマークする
+    async fn test_spawn_delayed_task() {
+        // 遅延実行タスクのテスト
+        let task_completed = Arc::new(Mutex::new(false));
+        let task_completed_clone = task_completed.clone();
+
+        let now = Instant::now();
+        let delay = Duration::from_millis(50);
+
+        let handle = spawn_delayed_task("delayed_task", delay, move || async move {
+            // タスク完了フラグをセット
+            let mut completed = task_completed_clone.lock().unwrap();
+            *completed = true;
+
+            Ok(())
+        });
+
+        // タスクの完了を待機
+        handle.await.expect("タスクの実行に失敗しました");
+
+        // タスクが遅延後に実行されたことを確認
+        assert!(*task_completed.lock().unwrap());
+        assert!(now.elapsed() >= delay);
+    }
+
+    #[tokio::test]
     async fn test_run_parallel_tasks() {
-        let counter = Arc::new(Mutex::new(0));
+        // 並列タスク実行のテスト
+        let counters = Arc::new(Mutex::new(vec![0, 0, 0]));
+
         let mut tasks = Vec::new();
 
-        for i in 0..5 {
-            let counter_clone = counter.clone();
-            tasks.push((format!("並列タスク{i}"), move || {
-                let counter = counter_clone.clone();
+        for i in 0..3 {
+            let counters_clone = counters.clone();
+            tasks.push((format!("task_{i}"), move || {
+                let counters = counters_clone.clone();
                 async move {
-                    let mut count = counter.lock().unwrap();
-                    *count += 1;
+                    // カウンタをインクリメント
+                    let mut counters_lock = counters.lock().unwrap();
+                    counters_lock[i] += 1;
                     Ok(())
                 }
             }));
         }
 
-        let results = super::run_parallel_tasks(tasks).await.unwrap();
+        // 並列タスク実行
+        let results = run_parallel_tasks(tasks)
+            .await
+            .expect("並列タスクの実行に失敗しました");
 
-        assert_eq!(results.len(), 5);
-        assert_eq!(*counter.lock().unwrap(), 5);
+        // すべてのタスクが実行されたことを確認
+        assert_eq!(results.len(), 3);
+        let counters_lock = counters.lock().unwrap();
+        assert_eq!(counters_lock[0], 1);
+        assert_eq!(counters_lock[1], 1);
+        assert_eq!(counters_lock[2], 1);
     }
 }

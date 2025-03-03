@@ -221,7 +221,7 @@ pub struct MoveAliases {
     pub aliases: Vec<String>,
 }
 
-/// ガード種別を表す列挙型
+/// ガードタイプ（上段/中段/下段など）
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 pub enum GuardType {
     /// 上段
@@ -234,6 +234,21 @@ pub enum GuardType {
     Unblockable,
     /// 投げ
     Throw,
+}
+
+impl std::str::FromStr for GuardType {
+    type Err = String;
+
+    fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
+        match s {
+            "High" => Ok(GuardType::High),
+            "Mid" => Ok(GuardType::Mid),
+            "Low" => Ok(GuardType::Low),
+            "Unblockable" => Ok(GuardType::Unblockable),
+            "Throw" => Ok(GuardType::Throw),
+            _ => Err(format!("不正なガードタイプ: {s}")),
+        }
+    }
 }
 
 /// String から Option<f64> へのデシリアライザ
@@ -282,5 +297,167 @@ where
         "true" | "yes" | "1" => Ok(Some(true)),
         "false" | "no" | "0" => Ok(Some(false)),
         _ => Ok(None),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json;
+    use std::str::FromStr;
+
+    #[test]
+    fn test_char_info_serialization() {
+        // テスト用のCharInfo構造体インスタンス作成
+        let char_info = CharInfo {
+            defense: Some(0.9),
+            guts: Some(2.0),
+            guard_balance: Some(1.5),
+            prejump: Some(4),
+            umo: String::new(),
+            forward_dash: Some(7.5),
+            backdash: Some(6.0),
+            backdash_duration: Some(20),
+            backdash_invincibility: Some(7),
+            backdash_airborne: Some(true),
+            backdash_distance: Some(4.2),
+            jump_duration: Some(45),
+            jump_height: Some(3.5),
+            high_jump_duration: Some(55),
+            high_jump_height: Some(4.7),
+            earliest_iad: String::new(),
+            ad_duration: String::new(),
+            ad_distance: String::new(),
+            abd_duration: String::new(),
+            abd_distance: String::new(),
+            movement_tension: Some(0.1),
+            jump_tension: Some(0.2),
+            airdash_tension: Some(0.15),
+            walk_speed: Some(2.2),
+            back_walk_speed: Some(1.8),
+            dash_initial_speed: Some(5.5),
+            dash_acceleration: Some(0.3),
+            dash_friction: Some(0.05),
+            jump_gravity: Some(0.25),
+            high_jump_gravity: Some(0.2),
+        };
+
+        // JSONとして文字列にシリアライズ
+        let json_str = r#"{"defense":"0.9","guts":"2.0","guard_balance":"1.5","prejump":"4","umo":"","forward_dash":"7.5","backdash":"6.0","backdash_duration":"20","backdash_invincibility":"7","backdash_airborne":"true","backdash_distance":"4.2","jump_duration":"45","jump_height":"3.5","high_jump_duration":"55","high_jump_height":"4.7","earliest_iad":"","ad_duration":"","ad_distance":"","abd_duration":"","abd_distance":"","movement_tension":"0.1","jump_tension":"0.2","airdash_tension":"0.15","walk_speed":"2.2","back_walk_speed":"1.8","dash_initial_speed":"5.5","dash_acceleration":"0.3","dash_friction":"0.05","jump_gravity":"0.25","high_jump_gravity":"0.2"}"#;
+
+        // デシリアライズ
+        let deserialized: CharInfo = serde_json::from_str(json_str).expect("デシリアライズに失敗");
+
+        // 値を検証
+        assert_eq!(deserialized.defense, char_info.defense);
+        assert_eq!(deserialized.guts, char_info.guts);
+        assert_eq!(deserialized.guard_balance, char_info.guard_balance);
+        assert_eq!(deserialized.prejump, char_info.prejump);
+        assert_eq!(deserialized.backdash_airborne, char_info.backdash_airborne);
+        assert_eq!(deserialized.walk_speed, char_info.walk_speed);
+        assert_eq!(deserialized.back_walk_speed, char_info.back_walk_speed);
+    }
+
+    #[test]
+    fn test_move_info_serialization() {
+        // テスト用のMoveInfo構造体インスタンス作成
+        let move_info = MoveInfo {
+            input: "5P".to_string(),
+            name: "Punch".to_string(),
+            damage: Some(26),
+            guard: "Mid".to_string(),
+            startup: Some(4),
+            active: "3".to_string(),
+            recovery: Some(9),
+            on_hit: "+2".to_string(),
+            on_block: "-1".to_string(),
+            level: "0".to_string(),
+            counter: "3".to_string(),
+            move_type: "Normal".to_string(),
+            risc_gain: Some(23.0),
+            risc_loss: Some(18.0),
+            wall_damage: Some(9),
+            input_tension: Some(0.0),
+            chip_ratio: Some(0.0),
+            otg_ratio: Some(0.8),
+            scaling: Some(0.8),
+            invincibility: "None".to_string(),
+            cancel: "Special, Super".to_string(),
+            caption: String::new(),
+            notes: String::new(),
+        };
+
+        // JSONとして文字列にシリアライズ
+        let json_str = r#"{"input":"5P","name":"Punch","damage":"26","guard":"Mid","startup":"4","active":"3","recovery":"9","on_hit":"+2","on_block":"-1","level":"0","counter":"3","move_type":"Normal","risc_gain":"23.0","risc_loss":"18.0","wall_damage":"9","input_tension":"0.0","chip_ratio":"0.0","otg_ratio":"0.8","scaling":"0.8","invincibility":"None","cancel":"Special, Super","caption":"","notes":""}"#;
+
+        // デシリアライズ
+        let deserialized: MoveInfo = serde_json::from_str(json_str).expect("デシリアライズに失敗");
+
+        // 値を検証
+        assert_eq!(deserialized.input, move_info.input);
+        assert_eq!(deserialized.name, move_info.name);
+        assert_eq!(deserialized.damage, move_info.damage);
+        assert_eq!(deserialized.guard, move_info.guard);
+        assert_eq!(deserialized.startup, move_info.startup);
+        assert_eq!(deserialized.recovery, move_info.recovery);
+        assert_eq!(deserialized.move_type, move_info.move_type);
+        assert_eq!(deserialized.wall_damage, move_info.wall_damage);
+    }
+
+    #[test]
+    fn test_move_aliases_serialization() {
+        // テスト用のMoveAliases構造体インスタンス作成
+        let move_aliases = MoveAliases {
+            input: "236K".to_string(),
+            aliases: vec!["Stun Edge".to_string(), "Fireball".to_string()],
+        };
+
+        // シリアライズとデシリアライズ
+        let serialized = serde_json::to_string(&move_aliases).expect("シリアライズに失敗");
+        let deserialized: MoveAliases =
+            serde_json::from_str(&serialized).expect("デシリアライズに失敗");
+
+        // 値を検証
+        assert_eq!(deserialized.input, move_aliases.input);
+        assert_eq!(deserialized.aliases.len(), move_aliases.aliases.len());
+        assert_eq!(deserialized.aliases[0], move_aliases.aliases[0]);
+        assert_eq!(deserialized.aliases[1], move_aliases.aliases[1]);
+    }
+
+    #[test]
+    fn test_guard_type_from_str() {
+        // 文字列からGuardTypeへの変換テスト
+        assert_eq!(GuardType::from_str("High").unwrap(), GuardType::High);
+        assert_eq!(GuardType::from_str("Mid").unwrap(), GuardType::Mid);
+        assert_eq!(GuardType::from_str("Low").unwrap(), GuardType::Low);
+        assert_eq!(
+            GuardType::from_str("Unblockable").unwrap(),
+            GuardType::Unblockable
+        );
+        assert_eq!(GuardType::from_str("Throw").unwrap(), GuardType::Throw);
+
+        // 無効な入力のテスト
+        assert!(GuardType::from_str("Invalid").is_err());
+    }
+
+    #[test]
+    fn test_option_deserializers() {
+        // Option<f64>のデシリアライズテスト
+        let json = r#"{"value": "1.5"}"#;
+        let deserialized: serde_json::Value = serde_json::from_str(json).unwrap();
+        let result = deserialize_option_f64(&deserialized["value"]).unwrap();
+        assert_eq!(result, Some(1.5));
+
+        // Option<i32>のデシリアライズテスト
+        let json = r#"{"value": "42"}"#;
+        let deserialized: serde_json::Value = serde_json::from_str(json).unwrap();
+        let result = deserialize_option_i32(&deserialized["value"]).unwrap();
+        assert_eq!(result, Some(42));
+
+        // Option<bool>のデシリアライズテスト
+        let json = r#"{"value": "true"}"#;
+        let deserialized: serde_json::Value = serde_json::from_str(json).unwrap();
+        let result = deserialize_option_bool(&deserialized["value"]).unwrap();
+        assert_eq!(result, Some(true));
     }
 }

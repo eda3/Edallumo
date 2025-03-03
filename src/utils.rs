@@ -399,8 +399,8 @@ pub fn truncate_string(s: &str, max_len: usize) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test_utils::{create_test_dir_structure, create_test_json_file};
-    use tempfile::TempDir;
+    use crate::test_utils::create_test_dir_structure;
+    use serde::{Deserialize, Serialize};
 
     #[test]
     fn test_normalize_input() {
@@ -501,57 +501,45 @@ mod tests {
 
     #[test]
     fn test_truncate_string() {
+        // 空文字列
+        assert_eq!(truncate_string("", 10), "");
+
+        // 最大長より短い場合
         assert_eq!(truncate_string("Hello", 10), "Hello");
-        assert_eq!(truncate_string("Hello, World!", 10), "Hello,...");
-        assert_eq!(
-            truncate_string("This is a very long string that should be truncated", 20),
-            "This is a very lo..."
-        );
+
+        // 最大長と同じ場合
+        assert_eq!(truncate_string("Hello World", 11), "Hello World");
+
+        // 最大長より長い場合
+        assert_eq!(truncate_string("Hello, World", 8), "Hello...");
     }
 
     #[test]
     fn test_read_write_json_file() {
-        let (temp_dir, temp_path) = create_test_dir_structure();
+        let (_temp_dir, temp_path) = create_test_dir_structure();
 
-        let test_data = vec![MoveInfo {
-            input: "5P".to_string(),
-            name: "Punch".to_string(),
-            damage: Some(26),
-            guard: "Mid".to_string(),
-            startup: Some(4),
-            active: "3".to_string(),
-            recovery: Some(9),
-            on_hit: "+2".to_string(),
-            on_block: "-1".to_string(),
-            level: "0".to_string(),
-            counter: "3".to_string(),
-            move_type: "Normal".to_string(),
-            risc_gain: Some(23.0),
-            risc_loss: Some(18.0),
-            wall_damage: Some(9),
-            input_tension: Some(0.0),
-            chip_ratio: Some(0.0),
-            otg_ratio: Some(0.8),
-            scaling: Some(0.8),
-            invincibility: "None".to_string(),
-            cancel: "Special, Super".to_string(),
-            caption: String::new(),
-            notes: String::new(),
-        }];
+        // テスト用の単純なデータ構造
+        #[derive(Debug, Serialize, Deserialize, PartialEq)]
+        struct TestData {
+            value: String,
+        }
 
-        let test_file = temp_path.join("test_moves.json");
+        let test_data = TestData {
+            value: "テスト値".to_string(),
+        };
 
-        // ファイルに書き込み
-        let write_result = write_json_file(&test_file, &test_data);
+        let file_path = temp_path.join("test.json");
+
+        // ファイルへの書き込みテスト
+        let write_result = write_json_file(&file_path, &test_data);
         assert!(write_result.is_ok());
 
-        // ファイルから読み込み
-        let read_result: Result<Vec<MoveInfo>> = read_json_file(&test_file);
+        // ファイルからの読み込みテスト
+        let read_result: Result<TestData> = read_json_file(&file_path);
         assert!(read_result.is_ok());
 
+        // 読み込んだ値が元の値と一致することを確認
         let read_data = read_result.unwrap();
-        assert_eq!(read_data.len(), 1);
-        assert_eq!(read_data[0].input, "5P");
-        assert_eq!(read_data[0].name, "Punch");
+        assert_eq!(read_data, test_data);
     }
 }

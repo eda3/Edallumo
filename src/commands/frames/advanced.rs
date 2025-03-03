@@ -305,3 +305,116 @@ pub async fn advanced(
     // 正常終了の返却　処理完了
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::models::MoveInfo;
+    use crate::test_utils::{create_test_json_file, create_test_move_info};
+    use crate::ImageLinks;
+    use std::env;
+    use std::fs;
+    use std::path::PathBuf;
+    use tempfile::TempDir;
+
+    // テスト環境のセットアップ用ヘルパー関数
+    fn setup_test_environment() -> (TempDir, PathBuf) {
+        let temp_dir = TempDir::new().expect("一時ディレクトリの作成に失敗");
+        let temp_path = temp_dir.path().to_path_buf();
+
+        // テスト用ディレクトリ構造を作成
+        fs::create_dir_all(temp_path.join("data/Sol_Badguy"))
+            .expect("テスト用ディレクトリの作成に失敗");
+
+        // キャラクターJSONファイルの作成
+        let moves_info = create_test_move_info();
+        let json_content = serde_json::to_string(&moves_info).expect("JSONシリアライズに失敗");
+        create_test_json_file(
+            &temp_path.join("data/Sol_Badguy/Sol_Badguy.json"),
+            &json_content,
+        )
+        .expect("テストJSONファイルの作成に失敗");
+
+        // 画像JSONファイルの作成
+        let image_links = vec![
+            ImageLinks {
+                input: "5P".to_string(),
+                move_img: "http://example.com/5p.png".to_string(),
+                hitbox_img: vec!["http://example.com/5p_hitbox.png".to_string()],
+            },
+            ImageLinks {
+                input: "236K".to_string(),
+                move_img: "http://example.com/236k.png".to_string(),
+                hitbox_img: vec!["http://example.com/236k_hitbox.png".to_string()],
+            },
+        ];
+        let json_content = serde_json::to_string(&image_links).expect("JSONシリアライズに失敗");
+        create_test_json_file(
+            &temp_path.join("data/Sol_Badguy/images.json"),
+            &json_content,
+        )
+        .expect("画像JSONファイルの作成に失敗");
+
+        (temp_dir, temp_path)
+    }
+
+    // 一時的に作業ディレクトリを変更するためのヘルパー構造体
+    struct TempWorkingDir {
+        original_dir: PathBuf,
+    }
+
+    impl TempWorkingDir {
+        fn new(path: &PathBuf) -> Self {
+            let original_dir = env::current_dir().expect("現在のディレクトリの取得に失敗");
+            env::set_current_dir(path).expect("ディレクトリの変更に失敗");
+            Self { original_dir }
+        }
+    }
+
+    impl Drop for TempWorkingDir {
+        fn drop(&mut self) {
+            env::set_current_dir(&self.original_dir).expect("元のディレクトリに戻れませんでした");
+        }
+    }
+
+    #[test]
+    fn test_create_advanced_embeds() {
+        // テスト用のデータを準備
+        let move_info = MoveInfo {
+            input: "5P".to_string(),
+            name: "Punch".to_string(),
+            damage: Some(26),
+            guard: "Mid".to_string(),
+            startup: Some(4),
+            active: "3".to_string(),
+            recovery: Some(9),
+            on_hit: "+2".to_string(),
+            on_block: "-1".to_string(),
+            level: "0".to_string(),
+            counter: "3".to_string(),
+            move_type: "Normal".to_string(),
+            risc_gain: Some(23.0),
+            risc_loss: Some(18.0),
+            wall_damage: Some(9),
+            input_tension: Some(0.0),
+            chip_ratio: Some(0.0),
+            otg_ratio: Some(0.8),
+            scaling: Some(0.8),
+            invincibility: "None".to_string(),
+            cancel: "Special, Super".to_string(),
+            caption: String::new(),
+            notes: String::new(),
+        };
+
+        let embed_image = "http://example.com/image.png";
+        let character_name = "Sol_Badguy";
+
+        // 関数を実行
+        let embeds = create_advanced_embeds(&move_info, embed_image, character_name);
+
+        // 結果の検証
+        assert!(!embeds.is_empty());
+        // 最低限、埋め込みが1つ以上生成されていることを確認
+        assert!(embeds.len() >= 1);
+    }
+}
