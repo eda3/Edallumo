@@ -65,13 +65,7 @@
 <a href="#64" id="64">64</a>
 <a href="#65" id="65">65</a>
 <a href="#66" id="66">66</a>
-<a href="#67" id="67">67</a>
-<a href="#68" id="68">68</a>
-<a href="#69" id="69">69</a>
-<a href="#70" id="70">70</a>
-<a href="#71" id="71">71</a>
-<a href="#72" id="72">72</a>
-<a href="#73" id="73">73</a></pre></div><pre class="rust"><code><span class="doccomment">//! # nicknames.rs
+<a href="#67" id="67">67</a></pre></div><pre class="rust"><code><span class="doccomment">//! # nicknames.rs
 //!
 //! キャラクターのニックネーム一覧表示モジュール  
 //! Discordコマンド /nicknames 実装モジュール  
@@ -87,13 +81,7 @@
     // adaptive_check: ファイルの整合性確認（失敗時は処理を中断）
     </span><span class="kw">if </span>(check::adaptive_check(
         ctx,
-        check::CheckOptions {
-            data_folder: <span class="bool-val">false</span>,
-            nicknames_json: <span class="bool-val">false</span>,
-            character_folders: <span class="bool-val">true</span>,
-            character_jsons: <span class="bool-val">true</span>,
-            character_images: <span class="bool-val">false</span>,
-        },
+        check::CheckOptions::CHARACTER_FOLDERS | check::CheckOptions::CHARACTER_JSONS,
     )
     .<span class="kw">await</span>)
         .is_err()

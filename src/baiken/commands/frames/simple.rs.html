@@ -241,9 +241,7 @@
 <a href="#240" id="240">240</a>
 <a href="#241" id="241">241</a>
 <a href="#242" id="242">242</a>
-<a href="#243" id="243">243</a>
-<a href="#244" id="244">244</a>
-<a href="#245" id="245">245</a></pre></div><pre class="rust"><code><span class="doccomment">//! simple.rs  
+<a href="#243" id="243">243</a></pre></div><pre class="rust"><code><span class="doccomment">//! simple.rs  
 //!
 //! シンプル表示コマンド実装ファイル  
 //! キャラクターの技のフレームデータなどの情報を読み取り、  
@@ -452,13 +450,11 @@
     <span class="comment">// 必要チェック実施　データ整合性確認
     </span><span class="kw">if </span>(check::adaptive_check(
         ctx,
-        check::CheckOptions {
-            data_folder: <span class="bool-val">true</span>,
-            nicknames_json: <span class="bool-val">true</span>,
-            character_folders: <span class="bool-val">true</span>,
-            character_jsons: <span class="bool-val">true</span>,
-            character_images: <span class="bool-val">true</span>,
-        },
+        check::CheckOptions::DATA_FOLDER
+            | check::CheckOptions::NICKNAMES_JSON
+            | check::CheckOptions::CHARACTER_FOLDERS
+            | check::CheckOptions::CHARACTER_JSONS
+            | check::CheckOptions::CHARACTER_IMAGES,
     )
     .<span class="kw">await</span>)
         .is_err()

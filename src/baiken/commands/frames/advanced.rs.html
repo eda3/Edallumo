@@ -305,9 +305,7 @@
 <a href="#304" id="304">304</a>
 <a href="#305" id="305">305</a>
 <a href="#306" id="306">306</a>
-<a href="#307" id="307">307</a>
-<a href="#308" id="308">308</a>
-<a href="#309" id="309">309</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
+<a href="#307" id="307">307</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
 //!
 //! このファイルは、キャラクターの技データの詳細情報をDiscordの埋め込みメッセージで表示するコマンドを実装。
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
@@ -577,13 +575,11 @@
     <span class="comment">// 入力チェックの実施　各種前提条件チェック
     </span><span class="kw">if </span>(check::adaptive_check(
         ctx,
-        check::CheckOptions {
-            data_folder: <span class="bool-val">true</span>,
-            nicknames_json: <span class="bool-val">true</span>,
-            character_folders: <span class="bool-val">true</span>,
-            character_jsons: <span class="bool-val">true</span>,
-            character_images: <span class="bool-val">true</span>,
-        },
+        check::CheckOptions::DATA_FOLDER
+            | check::CheckOptions::NICKNAMES_JSON
+            | check::CheckOptions::CHARACTER_FOLDERS
+            | check::CheckOptions::CHARACTER_JSONS
+            | check::CheckOptions::CHARACTER_IMAGES,
     )
     .<span class="kw">await</span>)
         .is_err()

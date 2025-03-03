@@ -474,7 +474,11 @@
 <a href="#473" id="473">473</a>
 <a href="#474" id="474">474</a>
 <a href="#475" id="475">475</a>
-<a href="#476" id="476">476</a></pre></div><pre class="rust"><code><span class="doccomment">//! # check.rs
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a></pre></div><pre class="rust"><code><span class="doccomment">//! # check.rs
 //!
 //! 各種チェック機能提供モジュールである。  
 //! ディレクトリ、ファイル、JSON の存在および正当性を確認する関数群を含む。
@@ -482,7 +486,8 @@
 </span><span class="kw">use </span><span class="kw">crate</span>::error::{AppError, <span class="prelude-ty">Result</span>};
 <span class="kw">use </span><span class="kw">crate</span>::find::Nicknames;
 <span class="kw">use crate</span>::{Context, CHARS}; <span class="comment">// CHARS 定数：キャラクター名定数（クレートルートに定義されている前提）
-</span><span class="kw">use </span>colored::Colorize; <span class="comment">// ターミナル出力の色付けに利用するクレートである
+</span><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>colored::Colorize; <span class="comment">// ターミナル出力の色付けに利用するクレートである
 </span><span class="kw">use </span>std::{fs, path::Path}; <span class="comment">// ファイル操作およびパス操作用
 
 </span><span class="doccomment">/// データフォルダ "data" 存在チェック関数である。  
@@ -527,21 +532,18 @@
     };
 
     <span class="comment">// JSON デシリアライズ試行
-    </span><span class="kw">match </span>serde_json::from_str::&lt;Vec&lt;Nicknames&gt;&gt;(<span class="kw-2">&amp;</span>data_from_file) {
-        <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
-            <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"Successfully read 'nicknames.json' file."</span>.green());
-            <span class="prelude-val">None
-        </span>}
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; {
-            <span class="comment">// nicknames.json 正当性エラー用メッセージ
-            </span><span class="kw">let </span>error_msg = <span class="string">"Error: Failed to deserialize 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken."</span>.to_string();
+    </span><span class="kw">if </span>serde_json::from_str::&lt;Vec&lt;Nicknames&gt;&gt;(<span class="kw-2">&amp;</span>data_from_file).is_ok() {
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"Successfully read 'nicknames.json' file."</span>.green());
+        <span class="prelude-val">None
+    </span>} <span class="kw">else </span>{
+        <span class="comment">// nicknames.json 正当性エラー用メッセージ
+        </span><span class="kw">let </span>error_msg = <span class="string">"Error: Failed to deserialize 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken."</span>.to_string();
 
-            <span class="kw">if </span>init_check {
-                <span class="macro">println!</span>();
-                <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.red());
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Some</span>(error_msg)
-            }
+        <span class="kw">if </span>init_check {
+            <span class="macro">println!</span>();
+            <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.red());
+        } <span class="kw">else </span>{
+            <span class="prelude-val">Some</span>(error_msg)
         }
     }
 }
@@ -619,21 +621,27 @@
     <span class="prelude-val">None
 </span>}
 
-<span class="doccomment">/// チェックオプション構造体
-///
-/// 各種チェック機能の有効・無効を指定するための構造体
-</span><span class="attr">#[derive(Default)]
-</span><span class="kw">pub struct </span>CheckOptions {
-    <span class="doccomment">/// データフォルダの存在チェック
-    </span><span class="kw">pub </span>data_folder: bool,
-    <span class="doccomment">/// ニックネームJSONの存在チェック
-    </span><span class="kw">pub </span>nicknames_json: bool,
-    <span class="doccomment">/// キャラクターフォルダの存在チェック
-    </span><span class="kw">pub </span>character_folders: bool,
-    <span class="doccomment">/// キャラクターJSONの存在チェック
-    </span><span class="kw">pub </span>character_jsons: bool,
-    <span class="doccomment">/// キャラクター画像の存在チェック
-    </span><span class="kw">pub </span>character_images: bool,
+<span class="macro">bitflags!</span> {
+    <span class="doccomment">/// チェックオプションフラグ
+    ///
+    /// 各種チェック機能の有効・無効を指定するためのビットフラグ
+    </span><span class="attr">#[derive(Default)]
+    </span><span class="kw">pub struct </span>CheckOptions: u8 {
+        <span class="doccomment">/// データフォルダの存在チェック
+        </span><span class="kw">const </span>DATA_FOLDER = <span class="number">0b00001</span>;
+        <span class="doccomment">/// ニックネームJSONの存在チェック
+        </span><span class="kw">const </span>NICKNAMES_JSON = <span class="number">0b00010</span>;
+        <span class="doccomment">/// キャラクターフォルダの存在チェック
+        </span><span class="kw">const </span>CHARACTER_FOLDERS = <span class="number">0b00100</span>;
+        <span class="doccomment">/// キャラクターJSONの存在チェック
+        </span><span class="kw">const </span>CHARACTER_JSONS = <span class="number">0b01000</span>;
+        <span class="doccomment">/// キャラクター画像の存在チェック
+        </span><span class="kw">const </span>CHARACTER_IMAGES = <span class="number">0b10000</span>;
+        <span class="doccomment">/// すべてのチェックを実行
+        </span><span class="kw">const </span>ALL = <span class="self">Self</span>::DATA_FOLDER.bits() | <span class="self">Self</span>::NICKNAMES_JSON.bits() |
+                   <span class="self">Self</span>::CHARACTER_FOLDERS.bits() | <span class="self">Self</span>::CHARACTER_JSONS.bits() |
+                   <span class="self">Self</span>::CHARACTER_IMAGES.bits();
+    }
 }
 
 <span class="doccomment">/// アダプティブチェック関数
@@ -641,12 +649,12 @@
 /// 指定されたオプションに基づいて、必要なチェックのみを実行する
 ///
 /// # 引数
-/// - `ctx` - Discordのコンテキスト
-/// - `options` - 実行するチェックを指定するオプション構造体
+/// * `ctx` - Discordのコンテキスト
+/// * `options` - 実行するチェックを指定するオプションフラグ
 ///
 /// 戻り値：全チェック成功時 Ok(()) / 失敗時 Err("Failed `adaptive_check`")
 </span><span class="kw">pub async fn </span>adaptive_check(ctx: Context&lt;<span class="lifetime">'_</span>&gt;, options: CheckOptions) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-    <span class="kw">if </span>options.data_folder {
+    <span class="kw">if </span>options.contains(CheckOptions::DATA_FOLDER) {
         <span class="comment">// Checking if data folder exists
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = data_folder_exists(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
@@ -656,7 +664,7 @@
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
         }
     }
-    <span class="kw">if </span>options.nicknames_json {
+    <span class="kw">if </span>options.contains(CheckOptions::NICKNAMES_JSON) {
         <span class="comment">// Checking if nicknames.json exists
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = nicknames_json_exists(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
@@ -666,7 +674,7 @@
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
         }
     }
-    <span class="kw">if </span>options.character_folders {
+    <span class="kw">if </span>options.contains(CheckOptions::CHARACTER_FOLDERS) {
         <span class="comment">// Checking if character folders exist
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = character_folders_exist(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
@@ -676,7 +684,7 @@
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
         }
     }
-    <span class="kw">if </span>options.character_jsons {
+    <span class="kw">if </span>options.contains(CheckOptions::CHARACTER_JSONS) {
         <span class="comment">// Checking if character jsons exist
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = character_jsons_exist(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
@@ -686,7 +694,7 @@
             <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.replace(<span class="string">'\n'</span>, <span class="string">" "</span>).red());
         }
     }
-    <span class="kw">if </span>options.character_images {
+    <span class="kw">if </span>options.contains(CheckOptions::CHARACTER_IMAGES) {
         <span class="comment">// Checking if character images exist
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_msg) = character_images_exist(<span class="bool-val">false</span>).<span class="kw">await </span>{
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.say(<span class="kw-2">&amp;</span>error_msg.replace(<span class="string">'\''</span>, <span class="string">"`"</span>)).<span class="kw">await </span>{
