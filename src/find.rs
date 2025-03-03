@@ -159,13 +159,13 @@ pub async fn find_move_index(
         }
     }
 
-    if !move_found {
-        // 技未検出時エラーメッセージ作成　結果：エラー返却
-        let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
-        Err(AppError::MoveNotFound(error_msg))
-    } else {
+    if move_found {
         Err(AppError::Other(
             "Weird logic error in find_move".to_string(),
         ))
+    } else {
+        // 技未検出時エラーメッセージ作成　結果：エラー返却
+        let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
+        Err(AppError::MoveNotFound(error_msg))
     }
 }
