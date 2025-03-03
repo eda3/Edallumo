@@ -1,4 +1,4 @@
-//! framedata_json.rs
+//! `framedata_json.rs`
 //!
 //! Dustloop Wiki から取得したフレームデータ JSON を前処理し、
 //! MoveInfo 構造体として整形するための機能群。

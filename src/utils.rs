@@ -1,4 +1,4 @@
-//! utils.rs
+//! `utils.rs`
 //!
 //! このファイルでは、アプリケーション全体で使用される共通ユーティリティ関数を提供します。
 //! ファイル操作、文字列処理、データ変換などの汎用的な機能を含みます。
@@ -95,9 +95,8 @@ where
         AppError::Io(io::Error::new(
             io::ErrorKind::Other,
             format!(
-                "ファイルの書き込みに失敗しました: {} - {}",
-                path.display(),
-                e
+                "ファイルの書き込みに失敗しました: {path_display} - {e}",
+                path_display = path.display()
             ),
         ))
     })?;
@@ -254,9 +253,7 @@ pub fn normalize_move_name(name: &str) -> String {
     result
 }
 
-/// 技を検索する
-///
-/// 指定されたクエリに一致する技を検索します。
+/// 入力に一致する技を検索する
 ///
 /// # 引数
 /// * `moves` - 検索対象の技情報のベクター

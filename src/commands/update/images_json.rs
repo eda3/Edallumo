@@ -1,4 +1,4 @@
-//! images_json.rs
+//! `images_json.rs`
 //!
 //! このファイルは、Dustloop Wiki から取得した画像関連の JSON データを前処理し、
 //! ImageLinks 構造体の形式に変換するための関数群を定義する。
