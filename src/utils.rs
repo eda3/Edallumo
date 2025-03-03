@@ -77,8 +77,7 @@ where
     let path = path.as_ref();
     let json = serde_json::to_string_pretty(data).map_err(|e| {
         AppError::Json(ser::Error::custom(format!(
-            "JSONへの変換に失敗しました: {}",
-            e
+            "JSONへの変換に失敗しました: {e}"
         )))
     })?;
 
