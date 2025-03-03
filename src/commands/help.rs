@@ -47,7 +47,7 @@ async fn autocomplete_help<'a>(
         futures::future::ready(name.to_lowercase().contains(&partial.to_lowercase()))
     })
     // 各候補を String 型に変換して返す
-    .map(|name| name.to_string())
+    .map(|name| (*name).to_string())
 }
 
 /// ヘルプメッセージを表示するコマンド
