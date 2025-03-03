@@ -517,7 +517,7 @@
                 })
             },
             <span class="comment">// イベントハンドラ
-            </span>event_handler: |ctx, event, _framework, _data| {
+            </span>event_handler: |_ctx, event, _framework, _data| {
                 Box::pin(<span class="kw">async move </span>{
                     <span class="kw">if let </span>serenity::FullEvent::Ready { data_about_bot, .. } = event {
                         <span class="macro">println!</span>(
