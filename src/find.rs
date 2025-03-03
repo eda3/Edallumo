@@ -43,7 +43,7 @@ pub async fn find_character(character: &String) -> Result<String> {
         // 各ニックネーム走査　結果：入力文字列と完全一致すれば正式名称返却
         for y_nicknames in &x_nicknames.nicknames {
             if y_nicknames.to_lowercase() == character.to_lowercase().trim() {
-                return Ok(x_nicknames.character.to_owned());
+                return Ok(x_nicknames.character.clone());
             }
         }
     }
@@ -60,7 +60,7 @@ pub async fn find_character(character: &String) -> Result<String> {
                 .to_lowercase()
                 .contains(&character.to_lowercase())
         {
-            return Ok(x_nicknames.character.to_owned());
+            return Ok(x_nicknames.character.clone());
         }
     }
 
