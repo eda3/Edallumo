@@ -52,7 +52,7 @@ pub async fn nicknames_json_exists(init_check: bool) -> Option<String> {
     };
 
     // JSON デシリアライズ試行
-    if let Ok(_) = serde_json::from_str::<Vec<Nicknames>>(&data_from_file) {
+    if serde_json::from_str::<Vec<Nicknames>>(&data_from_file).is_ok() {
         println!("{}", "Successfully read 'nicknames.json' file.".green());
         None
     } else {
