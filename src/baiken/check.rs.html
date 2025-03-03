@@ -909,8 +909,8 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_validate_data_dir() {
-        <span class="comment">// テスト用のディレクトリ構造を作成
-        </span><span class="kw">let </span>(temp_dir, temp_path) = create_test_dir_structure();
+        <span class="comment">// テストディレクトリの設定
+        </span><span class="kw">let </span>(_temp_dir, temp_path) = create_test_dir_structure();
 
         <span class="comment">// テストデータを設定
         </span>setup_test_data(<span class="kw-2">&amp;</span>temp_path).unwrap();
@@ -939,8 +939,8 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_check_character_folders() {
-        <span class="comment">// テスト用のディレクトリ構造を作成
-        </span><span class="kw">let </span>(temp_dir, temp_path) = create_test_dir_structure();
+        <span class="comment">// テストディレクトリの設定
+        </span><span class="kw">let </span>(_temp_dir, temp_path) = create_test_dir_structure();
 
         <span class="comment">// テストデータを設定
         </span>setup_test_data(<span class="kw-2">&amp;</span>temp_path).unwrap();

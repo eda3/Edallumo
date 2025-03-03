@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["find_character","find_move_index"],"struct":["Nicknames"]};
+window.SIDEBAR_ITEMS = {"fn":["find_character","find_move_by_alias","find_move_index"],"struct":["Nicknames"]};
