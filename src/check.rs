@@ -248,7 +248,7 @@ pub fn validate_data_dir(data_dir: &str) -> Result<()> {
 
     println!(
         "{}",
-        format!("データディレクトリを確認しました: {}", data_dir).green()
+        format!("データディレクトリを確認しました: {data_dir}").green()
     );
 
     // 必要なサブディレクトリの存在確認（例として一部のキャラクター）

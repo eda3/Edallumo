@@ -295,7 +295,8 @@ async fn make_link(image_name: String) -> String {
     hasher.update(image_bytes);
 
     // ハッシュ計算結果を 16 進数文字列に変換　結果：MD5 ハッシュ値（16 進数文字列）
-    let result = format!("{:x}", hasher.finalize());
+    let hash_result = hasher.finalize();
+    let result = format!("{hash_result:x}");
 
     // 16 進数文字列の先頭 1 文字を取得　結果：ハッシュ値の先頭文字
     let char1 = result.chars().next().unwrap();

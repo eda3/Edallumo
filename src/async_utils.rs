@@ -44,7 +44,7 @@ where
             }
             Err(e) => {
                 error!("タスクエラー: {} - {}", task_name, e);
-                eprintln!("{}", format!("タスクエラー: {} - {}", task_name, e).red());
+                eprintln!("{}", format!("タスクエラー: {task_name} - {e}").red());
             }
         }
     })
@@ -89,10 +89,7 @@ where
                 }
                 Err(e) => {
                     error!("定期タスクエラー: {} - {}", task_name, e);
-                    eprintln!(
-                        "{}",
-                        format!("定期タスクエラー: {} - {}", task_name, e).red()
-                    );
+                    eprintln!("{}", format!("定期タスクエラー: {task_name} - {e}").red());
                 }
             }
 
@@ -138,10 +135,7 @@ where
             }
             Err(e) => {
                 error!("遅延タスクエラー: {} - {}", task_name, e);
-                eprintln!(
-                    "{}",
-                    format!("遅延タスクエラー: {} - {}", task_name, e).red()
-                );
+                eprintln!("{}", format!("遅延タスクエラー: {task_name} - {e}").red());
             }
         }
     })
@@ -182,7 +176,7 @@ where
                 }
                 Err(e) => {
                     error!("タスクエラー: {} - {}", task_name, e);
-                    eprintln!("{}", format!("タスクエラー: {} - {}", task_name, e).red());
+                    eprintln!("{}", format!("タスクエラー: {task_name} - {e}").red());
                 }
             }
         }));
@@ -194,7 +188,7 @@ where
             Ok(_) => results.push(()),
             Err(e) => {
                 error!("タスク実行エラー: {}", e);
-                eprintln!("{}", format!("タスク実行エラー: {}", e).red());
+                eprintln!("{}", format!("タスク実行エラー: {e}").red());
             }
         }
     }

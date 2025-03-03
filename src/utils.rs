@@ -85,7 +85,10 @@ where
     let mut file = File::create(path).map_err(|e| {
         AppError::Io(io::Error::new(
             io::ErrorKind::Other,
-            format!("ファイルの作成に失敗しました: {} - {}", path.display(), e),
+            format!(
+                "ファイルの作成に失敗しました: {path_display} - {e}",
+                path_display = path.display()
+            ),
         ))
     })?;
 
@@ -131,7 +134,7 @@ where
         let entry = entry.map_err(|e| {
             AppError::Io(io::Error::new(
                 io::ErrorKind::Other,
-                format!("ディレクトリエントリの読み込みに失敗しました: {}", e),
+                format!("ディレクトリエントリの読み込みに失敗しました: {e}"),
             ))
         })?;
 
@@ -338,7 +341,7 @@ pub fn calculate_file_hash(path: impl AsRef<Path>) -> Result<String> {
     hasher.update(&buffer);
     let result = hasher.finalize();
 
-    Ok(format!("{:x}", result))
+    Ok(format!("{result:x}"))
 }
 
 /// ディレクトリが存在することを確認し、存在しない場合は作成する
@@ -367,7 +370,11 @@ pub fn ensure_directory_exists(dir_path: impl AsRef<Path>) -> Result<()> {
         })?;
         println!(
             "{}",
-            format!("ディレクトリを作成しました: {}", dir_path.display()).green()
+            format!(
+                "ディレクトリを作成しました: {dir_path_display}",
+                dir_path_display = dir_path.display()
+            )
+            .green()
         );
     }
 
