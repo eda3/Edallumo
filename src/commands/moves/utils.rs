@@ -6,7 +6,7 @@
 
 use crate::{MoveAliases, MoveInfo};
 
-/// 与えられた MoveInfo と MoveAliases のデータから、
+/// 与えられた `MoveInfo` と `MoveAliases` のデータから、
 /// 通常技の情報を文字列として整形して返す非同期関数。
 ///
 /// # 引数
@@ -24,18 +24,18 @@ pub async fn get_normal_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlias
         .take_while(|x| x.move_type.to_lowercase() == "normal")
     {
         // 技情報を整形して追加：入力と名称を表示
-        normal_moves = normal_moves.to_owned() + "\n- **" + &moves.input + "**";
+        normal_moves = normal_moves.clone() + "\n- **" + &moves.input + "**";
         // エイリアス情報を確認
-        for moves_aliases in aliases_data.iter() {
+        for moves_aliases in aliases_data {
             // 一致する入力があればエイリアス情報を追加
             if moves.input == moves_aliases.input {
                 normal_moves += "\n\t別名 → `";
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
-                    if a != moves_aliases.aliases.len() - 1 {
-                        normal_moves = normal_moves.to_owned() + &moves_aliases.aliases[a] + "`, `";
+                    if a == moves_aliases.aliases.len() - 1 {
+                        normal_moves = normal_moves.clone() + &moves_aliases.aliases[a];
                     } else {
-                        normal_moves = normal_moves.to_owned() + &moves_aliases.aliases[a];
+                        normal_moves = normal_moves.clone() + &moves_aliases.aliases[a] + "`, `";
                     }
                 }
                 normal_moves += "`\n";
@@ -46,7 +46,7 @@ pub async fn get_normal_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlias
     normal_moves
 }
 
-/// 与えられた MoveInfo と MoveAliases のデータから、
+/// 与えられた `MoveInfo` と `MoveAliases` のデータから、
 /// スペシャル技の情報を文字列として整形して返す非同期関数。
 ///
 /// # 引数
@@ -65,21 +65,20 @@ pub async fn get_special_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlia
             x.move_type.to_lowercase() == "special" || x.move_type.to_lowercase() == "other"
         })
     {
-        special_moves = special_moves.to_owned() + "\n- **" + &moves.input + "**";
-        for moves_aliases in aliases_data.iter() {
+        special_moves = special_moves.clone() + "\n- **" + &moves.input + "**";
+        for moves_aliases in aliases_data {
             // 一致する入力があればエイリアス情報を追加
             if moves.input == moves_aliases.input {
                 special_moves += "\n\t別名 → `";
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
-                    if a != moves_aliases.aliases.len() - 1 {
-                        special_moves =
-                            special_moves.to_owned() + &moves_aliases.aliases[a] + "`, `";
+                    if a == moves_aliases.aliases.len() - 1 {
+                        special_moves = special_moves.clone() + &moves_aliases.aliases[a];
                     } else {
-                        special_moves = special_moves.to_owned() + &moves_aliases.aliases[a];
+                        special_moves = special_moves.clone() + &moves_aliases.aliases[a] + "`, `";
                     }
                 }
-                special_moves = special_moves.to_owned() + "`\n";
+                special_moves = special_moves.clone() + "`\n";
             } else {
                 continue;
             }
@@ -88,7 +87,7 @@ pub async fn get_special_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlia
     special_moves
 }
 
-/// 与えられた MoveInfo と MoveAliases のデータから、
+/// 与えられた `MoveInfo` と `MoveAliases` のデータから、
 /// スーパー技の情報を文字列として整形して返す非同期関数。
 ///
 /// # 引数
@@ -104,20 +103,20 @@ pub async fn get_super_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAliase
         .iter()
         .skip_while(|x| x.move_type.to_lowercase() != "super")
     {
-        super_moves = super_moves.to_owned() + "\n- **" + &moves.input + "**";
-        for moves_aliases in aliases_data.iter() {
+        super_moves = super_moves.clone() + "\n- **" + &moves.input + "**";
+        for moves_aliases in aliases_data {
             // 一致する入力があればエイリアス情報を追加
             if moves.input == moves_aliases.input {
                 super_moves += "\n\t別名 → `";
                 // エイリアス一覧をカンマ区切りで追加
                 for a in 0..moves_aliases.aliases.len() {
-                    if a != moves_aliases.aliases.len() - 1 {
-                        super_moves = super_moves.clone() + &moves_aliases.aliases[a] + "`, `";
-                    } else {
+                    if a == moves_aliases.aliases.len() - 1 {
                         super_moves = super_moves.clone() + &moves_aliases.aliases[a];
+                    } else {
+                        super_moves = super_moves.clone() + &moves_aliases.aliases[a] + "`, `";
                     }
                 }
-                super_moves = super_moves.to_owned() + "`\n";
+                super_moves = super_moves.clone() + "`\n";
             } else {
                 continue;
             }

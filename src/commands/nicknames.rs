@@ -29,26 +29,26 @@ pub async fn nicknames(ctx: Context<'_>) -> Result<(), AppError> {
     // ニックネーム情報を整形し、メッセージ文字列に追加
     for nicknames in vec_nicknames {
         // キャラクター名の追加
-        nicks_as_msg =
-            nicks_as_msg.to_owned() + "\n* Character: " + &nicknames.character.to_string();
+        nicks_as_msg = nicks_as_msg.clone() + "\n* Character: " + &nicknames.character.to_string();
 
         // ニックネームの追加
         nicks_as_msg += "\n+ Nicknames: ";
 
         for x in 0..nicknames.nicknames.len() {
-            if x != nicknames.nicknames.len() - 1 {
-                // 空のニックネームが含まれている場合を考慮し、カンマ区切りで追加
-                if !nicknames.nicknames[x].is_empty() {
-                    nicks_as_msg = nicks_as_msg + &nicknames.nicknames[x] + ", ";
-                } else {
-                    nicks_as_msg = nicks_as_msg + &nicknames.nicknames[x];
-                }
+            if x == nicknames.nicknames.len() - 1 {
+                nicks_as_msg.push_str(&nicknames.nicknames[x]);
             } else {
-                nicks_as_msg = nicks_as_msg + &nicknames.nicknames[x];
+                // 空のニックネームが含まれている場合を考慮し、カンマ区切りで追加
+                if nicknames.nicknames[x].is_empty() {
+                    nicks_as_msg.push_str(&nicknames.nicknames[x]);
+                } else {
+                    nicks_as_msg.push_str(&nicknames.nicknames[x]);
+                    nicks_as_msg.push_str(", ");
+                }
             }
         }
         // 各キャラクターのニックネーム情報の終了マーク
-        nicks_as_msg = nicks_as_msg.to_owned() + ".\n";
+        nicks_as_msg = nicks_as_msg.clone() + ".\n";
     }
 
     // メッセージ終端のマーク
