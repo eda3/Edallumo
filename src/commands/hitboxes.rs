@@ -96,20 +96,20 @@ async fn find_move_and_images(
     let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap();
 
     // 技情報取得
-    let move_info = moves_info[index].clone();
+    let move_data = moves_info[index].clone();
 
     // 技情報読み込み成功ログ出力
     println!(
         "{}",
         ("Successfully read move '".to_owned()
-            + &move_info.input
+            + &move_data.input
             + "' in '"
             + character_arg_altered
             + ".json' file.")
             .green()
     );
 
-    Ok((move_info, image_links))
+    Ok((move_data, image_links))
 }
 
 /// ヒットボックス画像の埋め込みメッセージを作成する関数
@@ -235,14 +235,14 @@ pub async fn hitboxes(
     };
 
     // 技情報と画像データ読み込み
-    let Ok((move_info, image_links)) =
+    let Ok((move_data, image_links)) =
         find_move_and_images(&character_arg_altered, &character_move, &ctx).await
     else {
         return Ok(());
     };
 
     // 埋め込みメッセージ作成
-    let vec_embeds = create_hitbox_embeds(&move_info, &image_links, &character_arg_altered);
+    let vec_embeds = create_hitbox_embeds(&move_data, &image_links, &character_arg_altered);
 
     // 返信作成と送信
     let mut reply = poise::CreateReply::default();

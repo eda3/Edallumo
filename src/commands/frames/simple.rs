@@ -102,13 +102,13 @@ async fn find_move_data(
     // 画像データデシリアライズ　画像リンク配列取得
     let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap();
     // 対象技情報取得
-    let move_info = moves_info[index].clone();
+    let move_data = moves_info[index].clone();
 
     // 技読み込み成功表示
     println!(
         "{}",
         ("Successfully read move '".to_owned()
-            + &move_info.input
+            + &move_data.input
             + "' in '"
             + character_arg_altered
             + ".json' file.")
@@ -121,36 +121,36 @@ async fn find_move_data(
     // 画像リンク検索　画像JSONから対象技のリンク取得
     for img_links in image_links {
         // 画像リンク確認　対象技と一致かつ画像リンク非空
-        if move_info.input == img_links.input && !img_links.move_img.is_empty() {
+        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
             break; // ループ抜け
         }
     }
 
-    Ok((move_info, embed_image))
+    Ok((move_data, embed_image))
 }
 
 /// 技情報の埋め込みメッセージを作成する関数
 ///
 /// # 引数
-/// * `move_info` - 技情報
+/// * `move_data` - 技情報
 /// * `embed_image` - 埋め込む画像のURL
 /// * `character_arg_altered` - 正式なキャラクター名
 ///
 /// # 戻り値
 /// 埋め込みメッセージ
 fn create_move_embed(
-    move_info: &MoveInfo,
+    move_data: &MoveInfo,
     embed_image: &str,
     character_arg_altered: &str,
 ) -> CreateEmbed {
     // 埋め込みタイトル組み立て　キャラクター名と技情報を連結
-    let embed_title = "__**".to_owned() + &move_info.input + "**__";
+    let embed_title = "__**".to_owned() + &move_data.input + "**__";
 
     // 埋め込みURL組み立て　Dustloop Wiki の対象キャラクターページ
     let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview";
     // 埋め込みフッター作成　キャプション利用
-    let embed_footer = CreateEmbedFooter::new(&move_info.caption);
+    let embed_footer = CreateEmbedFooter::new(&move_data.caption);
 
     // 埋め込みメッセージ作成　各種フィールド追加
     CreateEmbed::new()
@@ -161,27 +161,27 @@ fn create_move_embed(
         .fields(vec![
             (
                 "ダメージ",
-                &move_info.damage.map_or("-".to_string(), |v| v.to_string()),
+                &move_data.damage.map_or("-".to_string(), |v| v.to_string()),
                 true,
             ),
-            ("ガード", &move_info.guard, true),
-            ("無敵", &move_info.invincibility, true),
+            ("ガード", &move_data.guard, true),
+            ("無敵", &move_data.invincibility, true),
             (
                 "始動",
-                &move_info.startup.map_or("-".to_string(), |v| v.to_string()),
+                &move_data.startup.map_or("-".to_string(), |v| v.to_string()),
                 true,
             ),
-            ("持続", &move_info.active, true),
+            ("持続", &move_data.active, true),
             (
                 "硬直",
-                &move_info
+                &move_data
                     .recovery
                     .map_or("-".to_string(), |v| v.to_string()),
                 true,
             ),
-            ("ヒット時", &move_info.on_hit, true),
-            ("ガード時", &move_info.on_block, true),
-            ("カウンター", &move_info.counter.to_string(), true),
+            ("ヒット時", &move_data.on_hit, true),
+            ("ガード時", &move_data.on_block, true),
+            ("カウンター", &move_data.counter.to_string(), true),
         ])
         .footer(embed_footer) // フッター設定
 }
@@ -225,14 +225,14 @@ pub async fn simple(
     };
 
     // 技情報と画像データ読み込み
-    let Ok((move_info, embed_image)) =
+    let Ok((move_data, embed_image)) =
         find_move_data(&character_arg_altered, &character_move, &ctx).await
     else {
         return Ok(());
     };
 
     // 埋め込みメッセージ作成
-    let embed = create_move_embed(&move_info, &embed_image, &character_arg_altered);
+    let embed = create_move_embed(&move_data, &embed_image, &character_arg_altered);
 
     // 埋め込みメッセージ送信　Discordへ出力
     ctx.send(poise::CreateReply::default().embed(embed)).await?;

@@ -93,13 +93,13 @@ async fn find_move_and_images(
     };
 
     // 対象技情報の取得　入力に対応する技データの抽出
-    let move_info = moves_info[move_index].clone();
+    let move_data = moves_info[move_index].clone();
 
     // 対象技の読み込み成功の表示　確認メッセージ出力
     println!(
         "{}",
         ("Successfully read move '".to_owned()
-            + &move_info.input
+            + &move_data.input
             + "' in '"
             + character_arg_altered
             + ".json' file.")
@@ -112,13 +112,13 @@ async fn find_move_and_images(
     // 画像リンクの探索　対象技の画像リンクを検索
     for img_links in image_links {
         // 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
-        if move_info.input == img_links.input && !img_links.move_img.is_empty() {
+        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
             break; // 探索終了
         }
     }
 
-    Ok((move_info, embed_image))
+    Ok((move_data, embed_image))
 }
 
 /// 技情報の詳細な埋め込みメッセージを作成する関数
