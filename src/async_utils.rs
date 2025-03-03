@@ -9,6 +9,7 @@ use futures::future::Future;
 use std::time::{Duration, Instant};
 use tokio::{task, time};
 use tracing::{error, info};
+#[cfg(test)]
 
 /// ログ付き非同期タスクを生成する
 ///
@@ -165,7 +166,26 @@ where
     let mut handles = Vec::with_capacity(tasks.len());
 
     for (name, task_fn) in tasks {
-        handles.push(spawn_logged_task(&name, task_fn));
+        let task_name = name.to_string();
+        handles.push(task::spawn(async move {
+            info!("タスク開始: {}", task_name);
+            let start_time = Instant::now();
+
+            match task_fn().await {
+                Ok(_) => {
+                    let elapsed = start_time.elapsed();
+                    info!(
+                        "タスク完了: {} (所要時間: {:.2}秒)",
+                        task_name,
+                        elapsed.as_secs_f64()
+                    );
+                }
+                Err(e) => {
+                    error!("タスクエラー: {} - {}", task_name, e);
+                    eprintln!("{}", format!("タスクエラー: {} - {}", task_name, e).red());
+                }
+            }
+        }));
     }
 
     let mut results = Vec::with_capacity(handles.len());
@@ -182,7 +202,6 @@ where
     Ok(results)
 }
 
-#[cfg(test)]
 mod tests {
     use super::*;
     use crate::error::AppError;
