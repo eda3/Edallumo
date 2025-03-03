@@ -174,7 +174,7 @@ pub async fn images_to_json(
         }
 
         let input_str = &image_data.title.input.as_deref().unwrap_or("");
-        let mut _input_name = String::new();
+        let mut input_name = String::new();
         if [
             "2D",
             "2HS",
@@ -256,15 +256,15 @@ pub async fn images_to_json(
         ]
         .contains(input_str)
         {
-            _input_name = (*input_str).to_string();
+            input_name = (*input_str).to_string();
         } else {
             let name_str = image_data.title.name.as_deref().unwrap_or("");
-            _input_name = format!("{name_str}({input_str})");
+            input_name = format!("{name_str}({input_str})");
         }
 
         // ImageLinks 構造体へ変換　各フィールドは Option::unwrap で取得、未定義の場合は既定値
         let processed_imagedata = ImageLinks {
-            input: _input_name.to_string(),
+            input: input_name.to_string(),
             // input: image_data.title.input.as_ref().unwrap().to_string(),
             move_img: image_link,
             hitbox_img: hitbox_links,
