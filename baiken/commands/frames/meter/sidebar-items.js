@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["BLUE_DIAMOND","GREEN_CIRCLE","IMAGE_DEFAULT","RED_SQUARE"],"fn":["active_frames","meter","recovery_frames","sep_frame_vec","startup_frames"]};
+window.SIDEBAR_ITEMS = {"constant":["BLUE_DIAMOND","GREEN_CIRCLE","IMAGE_DEFAULT","RED_SQUARE"],"fn":["active_frames","create_meter_embeds","find_move_and_images","load_character_data","meter","recovery_frames","sep_frame_vec","startup_frames"]};

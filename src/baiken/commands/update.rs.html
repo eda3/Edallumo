@@ -73,7 +73,31 @@
 <a href="#72" id="72">72</a>
 <a href="#73" id="73">73</a>
 <a href="#74" id="74">74</a>
-<a href="#75" id="75">75</a></pre></div><pre class="rust"><code><span class="doccomment">//! update.rs
+<a href="#75" id="75">75</a>
+<a href="#76" id="76">76</a>
+<a href="#77" id="77">77</a>
+<a href="#78" id="78">78</a>
+<a href="#79" id="79">79</a>
+<a href="#80" id="80">80</a>
+<a href="#81" id="81">81</a>
+<a href="#82" id="82">82</a>
+<a href="#83" id="83">83</a>
+<a href="#84" id="84">84</a>
+<a href="#85" id="85">85</a>
+<a href="#86" id="86">86</a>
+<a href="#87" id="87">87</a>
+<a href="#88" id="88">88</a>
+<a href="#89" id="89">89</a>
+<a href="#90" id="90">90</a>
+<a href="#91" id="91">91</a>
+<a href="#92" id="92">92</a>
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
+<a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a></pre></div><pre class="rust"><code><span class="doccomment">//! update.rs
 //!
 //! このファイルは、Dustloop Wiki のデータ更新機能を提供する。
 //! フレームデータ、画像データの更新処理を実行する関数群を実装する。
@@ -102,10 +126,22 @@
 /// ロール名：BotOwner が必須
 </span><span class="attr">#[poise::command(prefix_command, slash_command, owners_only)]
 </span><span class="kw">pub async fn </span>update(ctx: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-    <span class="comment">// 入力チェック実施　条件確認
-    </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>).<span class="kw">await</span>).is_err() {
-        <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// チェック失敗時終了
-    </span>}
+    <span class="comment">// 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
+    </span><span class="kw">if </span>(check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: <span class="bool-val">true</span>,
+            nicknames_json: <span class="bool-val">true</span>,
+            character_folders: <span class="bool-val">true</span>,
+            character_jsons: <span class="bool-val">true</span>,
+            character_images: <span class="bool-val">false</span>,
+        },
+    )
+    .<span class="kw">await</span>)
+        .is_err()
+    {
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    }
 
     ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
 
@@ -124,10 +160,22 @@
     ctx: Context&lt;<span class="lifetime">'_</span>&gt;,
     <span class="attr">#[description = <span class="string">"対象キャラクター名"</span>] </span>character: String,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-    <span class="comment">// 入力チェック実施　条件確認
-    </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>).<span class="kw">await</span>).is_err() {
-        <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// チェック失敗時終了
-    </span>}
+    <span class="comment">// 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
+    </span><span class="kw">if </span>(check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: <span class="bool-val">true</span>,
+            nicknames_json: <span class="bool-val">true</span>,
+            character_folders: <span class="bool-val">true</span>,
+            character_jsons: <span class="bool-val">true</span>,
+            character_images: <span class="bool-val">false</span>,
+        },
+    )
+    .<span class="kw">await</span>)
+        .is_err()
+    {
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    }
 
     <span class="comment">// キャラクター探索処理　find関数呼出
     </span><span class="kw">let </span>character_arg_altered = <span class="kw">match </span>find::find_character(<span class="kw-2">&amp;</span>character).<span class="kw">await </span>{

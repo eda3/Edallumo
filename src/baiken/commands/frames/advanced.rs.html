@@ -233,7 +233,81 @@
 <a href="#232" id="232">232</a>
 <a href="#233" id="233">233</a>
 <a href="#234" id="234">234</a>
-<a href="#235" id="235">235</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
+<a href="#235" id="235">235</a>
+<a href="#236" id="236">236</a>
+<a href="#237" id="237">237</a>
+<a href="#238" id="238">238</a>
+<a href="#239" id="239">239</a>
+<a href="#240" id="240">240</a>
+<a href="#241" id="241">241</a>
+<a href="#242" id="242">242</a>
+<a href="#243" id="243">243</a>
+<a href="#244" id="244">244</a>
+<a href="#245" id="245">245</a>
+<a href="#246" id="246">246</a>
+<a href="#247" id="247">247</a>
+<a href="#248" id="248">248</a>
+<a href="#249" id="249">249</a>
+<a href="#250" id="250">250</a>
+<a href="#251" id="251">251</a>
+<a href="#252" id="252">252</a>
+<a href="#253" id="253">253</a>
+<a href="#254" id="254">254</a>
+<a href="#255" id="255">255</a>
+<a href="#256" id="256">256</a>
+<a href="#257" id="257">257</a>
+<a href="#258" id="258">258</a>
+<a href="#259" id="259">259</a>
+<a href="#260" id="260">260</a>
+<a href="#261" id="261">261</a>
+<a href="#262" id="262">262</a>
+<a href="#263" id="263">263</a>
+<a href="#264" id="264">264</a>
+<a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
+<a href="#267" id="267">267</a>
+<a href="#268" id="268">268</a>
+<a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
+<a href="#273" id="273">273</a>
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a>
+<a href="#276" id="276">276</a>
+<a href="#277" id="277">277</a>
+<a href="#278" id="278">278</a>
+<a href="#279" id="279">279</a>
+<a href="#280" id="280">280</a>
+<a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a>
+<a href="#294" id="294">294</a>
+<a href="#295" id="295">295</a>
+<a href="#296" id="296">296</a>
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a>
+<a href="#301" id="301">301</a>
+<a href="#302" id="302">302</a>
+<a href="#303" id="303">303</a>
+<a href="#304" id="304">304</a>
+<a href="#305" id="305">305</a>
+<a href="#306" id="306">306</a>
+<a href="#307" id="307">307</a>
+<a href="#308" id="308">308</a>
+<a href="#309" id="309">309</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
 //!
 //! このファイルは、キャラクターの技データの詳細情報をDiscordの埋め込みメッセージで表示するコマンドを実装。
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
@@ -247,71 +321,48 @@
 <span class="doccomment">/// デフォルト画像URL
 </span><span class="kw">const </span>IMAGE_DEFAULT: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png"</span>;
 
-<span class="doccomment">/// 指定されたキャラクターの技データを詳細に表示する非同期コマンド
-///
-/// # 概要
-/// 入力されたキャラクター名（または愛称）と技名（入力またはエイリアス）から、
-/// キャラクター情報ファイルおよび画像リンクファイルを読み込み、  
-/// 対象の技データを抽出し、Discord用の埋め込みメッセージとして表示する。
+<span class="doccomment">/// キャラクターデータを読み込む関数
 ///
 /// # 引数
-/// * `ctx` - コマンド実行コンテキスト（Discordとの通信に利用）
-/// * `character` - キャラクター名または愛称（2文字以上必須）
-/// * `character_move` - 技名、入力、またはエイリアス（2文字以上必須）
+/// * `character` - ユーザーが入力したキャラクター名
+/// * `ctx` - コマンドコンテキスト
 ///
 /// # 戻り値
-/// 正常終了時は `Ok(())` を返し、エラー発生時は `Err(Error)` を返す。
-///
-/// # 例
-/// ```rust,no_run
-/// # async fn example(ctx: Context&lt;'_&gt;) -&gt; Result&lt;(), Error&gt; {
-/// advanced(ctx, "Sol".to_string(), "236H".to_string()).await?;
-/// # Ok(()) }
-/// ```
-///
-/// # 注意
-/// この関数は非同期関数であるため、呼び出し時に `.await` が必要。
-</span><span class="attr">#[poise::command(prefix_command, slash_command)]
-</span><span class="kw">pub async fn </span>advanced(
-    ctx: Context&lt;<span class="lifetime">'_</span>&gt;,
-    <span class="attr">#[min_length = <span class="number">2</span>]
-    #[description = <span class="string">"キャラクター名または愛称"</span>]
-    </span>character: String,
-    <span class="attr">#[min_length = <span class="number">2</span>]
-    #[rename = <span class="string">"move"</span>]
-    #[description = <span class="string">"技名、入力、またはエイリアス"</span>]
-    </span>character_move: String,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
-    <span class="comment">// コマンド引数の表示　引数確認用
-    </span><span class="macro">println!</span>(
-        <span class="string">"{}"</span>,
-        (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">", " </span>+ <span class="kw-2">&amp;</span>character_move + <span class="string">"'"</span>).purple()
-    );
-
-    <span class="comment">// 埋め込み画像用変数の初期化　初期値はデフォルト画像URL
-    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = IMAGE_DEFAULT.to_string();
-
-    <span class="comment">// 入力チェックの実施　各種前提条件チェック
-    </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>).<span class="kw">await</span>).is_err() {
-        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
-    }
-
+/// 成功時は正式なキャラクター名、失敗時はエラー
+</span><span class="kw">async fn </span>load_character_data(character: <span class="kw-2">&amp;</span>str, ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;String, AppError&gt; {
     <span class="comment">// キャラクター名の正規化　入力に基づく正式名称の取得
-    </span><span class="kw">let </span>character_arg_altered = <span class="kw">match </span>find::find_character(<span class="kw-2">&amp;</span>character).<span class="kw">await </span>{
+    </span><span class="kw">let </span>character_arg_altered = <span class="kw">match </span>find::find_character(<span class="kw-2">&amp;</span>character.to_string()).<span class="kw">await </span>{
         <span class="prelude-val">Ok</span>(character_arg_altered) =&gt; character_arg_altered, <span class="comment">// 正式名称取得
         </span><span class="prelude-val">Err</span>(err) =&gt; {
             ctx.say(err.to_string()).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
             </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red());
-            <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// 処理中断
+            <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::CharacterNotFound(err.to_string())); <span class="comment">// 処理中断
         </span>}
     };
 
+    <span class="prelude-val">Ok</span>(character_arg_altered)
+}
+
+<span class="doccomment">/// 技情報と画像データを読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
+</span><span class="kw">async fn </span>find_move_and_images(
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+    character_move: <span class="kw-2">&amp;</span>str,
+    ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, String), AppError&gt; {
     <span class="comment">// JSONファイルパスの組み立て　キャラクター情報ファイルのパス生成
     </span><span class="kw">let </span>char_file_path =
-        <span class="string">"data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"/" </span>+ <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json"</span>;
+        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/" </span>+ character_arg_altered + <span class="string">".json"</span>;
     <span class="comment">// JSONファイルの読み込み　キャラクター情報の取得
     </span><span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path)
-        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json" </span>+ <span class="string">"' file."</span>));
+        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + character_arg_altered + <span class="string">".json" </span>+ <span class="string">"' file."</span>));
 
     <span class="comment">// JSON文字列のデシリアライズ　技情報の構造体へ変換
     </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).unwrap();
@@ -319,33 +370,53 @@
     <span class="comment">// JSON読み込み成功の表示　確認メッセージ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
-        (<span class="string">"Successfully read '"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json' file."</span>).green()
+        (<span class="string">"Successfully read '"</span>.to_owned() + character_arg_altered + <span class="string">".json' file."</span>).green()
     );
 
     <span class="comment">// 画像リンク用JSONファイルのパス組み立て　画像情報ファイルの指定
     </span><span class="kw">let </span>image_links = fs::read_to_string(
-        <span class="string">"data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"/images.json"</span>,
+        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>,
     )
     .expect(
-        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"'/images.json' file."</span>),
+        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + character_arg_altered + <span class="string">"'/images.json' file."</span>),
     );
 
     <span class="comment">// 画像リンクJSONのデシリアライズ　画像リンク情報の構造体へ変換
     </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap();
+
+    <span class="comment">// 技インデックス検索
+    </span><span class="kw">let </span>move_index = <span class="kw">match </span>find::find_move_index(
+        <span class="kw-2">&amp;</span>character_arg_altered.to_string(),
+        character_move.to_string(),
+        <span class="kw-2">&amp;</span>moves_info,
+    )
+    .<span class="kw">await
+    </span>{
+        <span class="prelude-val">Ok</span>(index) =&gt; index,
+        <span class="prelude-val">Err</span>(err) =&gt; {
+            ctx.say(err.to_string() + <span class="string">"\nView the moves of a character by executing `/moves`."</span>)
+                .<span class="kw">await</span><span class="question-mark">?</span>;
+            <span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red());
+            <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::MoveNotFound(err.to_string()));
+        }
+    };
+
     <span class="comment">// 対象技情報の取得　入力に対応する技データの抽出
-    </span><span class="kw">let </span>move_info = <span class="kw-2">&amp;</span>moves_info
-        [find::find_move_index(<span class="kw-2">&amp;</span>character_arg_altered, character_move, <span class="kw-2">&amp;</span>moves_info).<span class="kw">await</span><span class="question-mark">?</span>];
+    </span><span class="kw">let </span>move_info = moves_info[move_index].clone();
 
     <span class="comment">// 対象技の読み込み成功の表示　確認メッセージ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Successfully read move '"</span>.to_owned()
-            + <span class="kw-2">&amp;</span>move_info.input.to_string()
+            + <span class="kw-2">&amp;</span>move_info.input
             + <span class="string">"' in '"
-            </span>+ <span class="kw-2">&amp;</span>character_arg_altered
+            </span>+ character_arg_altered
             + <span class="string">".json' file."</span>)
             .green()
     );
+
+    <span class="comment">// デフォルト画像URL設定
+    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = IMAGE_DEFAULT.to_string();
 
     <span class="comment">// 画像リンクの探索　対象技の画像リンクを検索
     </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
@@ -356,22 +427,38 @@
         </span>}
     }
 
+    <span class="prelude-val">Ok</span>((move_info, embed_image))
+}
+
+<span class="doccomment">/// 技情報の詳細な埋め込みメッセージを作成する関数
+///
+/// # 引数
+/// * `move_info` - 技情報
+/// * `embed_image` - 埋め込む画像のURL
+/// * `character_arg_altered` - 正式なキャラクター名
+///
+/// # 戻り値
+/// 埋め込みメッセージのベクター
+</span><span class="kw">fn </span>create_advanced_embeds(
+    move_info: <span class="kw-2">&amp;</span>MoveInfo,
+    embed_image: <span class="kw-2">&amp;</span>str,
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+) -&gt; Vec&lt;CreateEmbed&gt; {
     <span class="comment">// 埋め込みメッセージ群生成用ベクターの初期化
     </span><span class="kw">let </span><span class="kw-2">mut </span>vec_embeds = Vec::new();
     <span class="comment">// 埋め込みタイトルの作成　キャラクター名と技名を組み合わせたタイトル
     </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>;
     <span class="comment">// 埋め込みURLの作成　Dustloop Wiki のキャラクター概要ページURL生成
-    </span><span class="kw">let </span>embed_url =
-        <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"#Overview"</span>;
+    </span><span class="kw">let </span>embed_url = <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + character_arg_altered + <span class="string">"#Overview"</span>;
     <span class="comment">// 埋め込みフッターの作成　技に関するキャプションを利用
     </span><span class="kw">let </span>embed_footer = CreateEmbedFooter::new(<span class="kw-2">&amp;</span>move_info.caption);
 
     <span class="comment">// 埋め込みメッセージの生成　技データの各パラメータをフィールドとして追加
     </span><span class="kw">let </span>embed = CreateEmbed::new()
         .color(EMBED_COLOR) <span class="comment">// 埋め込みカラー設定
-        </span>.title(<span class="kw-2">&amp;</span>embed_title) <span class="comment">// タイトル設定
-        </span>.url(<span class="kw-2">&amp;</span>embed_url) <span class="comment">// URL設定
-        </span>.image(<span class="kw-2">&amp;</span>embed_image) <span class="comment">// 画像リンク設定
+        </span>.title(embed_title) <span class="comment">// タイトル設定
+        </span>.url(embed_url) <span class="comment">// URL設定
+        </span>.image(embed_image) <span class="comment">// 画像リンク設定
         </span>.fields(<span class="macro">vec!</span>[
             (
                 <span class="string">"ダメージ"</span>,
@@ -457,6 +544,67 @@
             </span>.description(<span class="kw-2">&amp;</span>move_info.notes); <span class="comment">// 備考記述設定
         </span>vec_embeds.push(embed2); <span class="comment">// ベクターに追加
     </span>}
+
+    vec_embeds
+}
+
+<span class="doccomment">/// 技の詳細情報を埋め込みメッセージで表示するコマンド
+///
+/// # 引数
+/// * `ctx` - コマンドコンテキスト
+/// * `character` - キャラクター名または愛称
+/// * `character_move` - 技名、入力、またはエイリアス
+///
+/// # 戻り値
+/// 処理結果 `Result&lt;(), AppError&gt;`
+</span><span class="attr">#[poise::command(prefix_command, slash_command)]
+</span><span class="kw">pub async fn </span>advanced(
+    ctx: Context&lt;<span class="lifetime">'_</span>&gt;,
+    <span class="attr">#[min_length = <span class="number">2</span>]
+    #[description = <span class="string">"キャラクター名または愛称"</span>]
+    </span>character: String,
+    <span class="attr">#[min_length = <span class="number">2</span>]
+    #[rename = <span class="string">"move"</span>]
+    #[description = <span class="string">"技名、入力、またはエイリアス"</span>]
+    </span>character_move: String,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
+    <span class="comment">// コマンド引数の表示　引数確認用
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">", " </span>+ <span class="kw-2">&amp;</span>character_move + <span class="string">"'"</span>).purple()
+    );
+
+    <span class="comment">// 入力チェックの実施　各種前提条件チェック
+    </span><span class="kw">if </span>(check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: <span class="bool-val">true</span>,
+            nicknames_json: <span class="bool-val">true</span>,
+            character_folders: <span class="bool-val">true</span>,
+            character_jsons: <span class="bool-val">true</span>,
+            character_images: <span class="bool-val">true</span>,
+        },
+    )
+    .<span class="kw">await</span>)
+        .is_err()
+    {
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    }
+
+    <span class="comment">// キャラクターデータ読み込み
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>(character_arg_altered) = load_character_data(<span class="kw-2">&amp;</span>character, <span class="kw-2">&amp;</span>ctx).<span class="kw">await else </span>{
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    };
+
+    <span class="comment">// 技情報と画像データ読み込み
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>((move_info, embed_image)) =
+        find_move_and_images(<span class="kw-2">&amp;</span>character_arg_altered, <span class="kw-2">&amp;</span>character_move, <span class="kw-2">&amp;</span>ctx).<span class="kw">await
+    else </span>{
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    };
+
+    <span class="comment">// 埋め込みメッセージ作成
+    </span><span class="kw">let </span>vec_embeds = create_advanced_embeds(<span class="kw-2">&amp;</span>move_info, <span class="kw-2">&amp;</span>embed_image, <span class="kw-2">&amp;</span>character_arg_altered);
 
     <span class="comment">// 返信メッセージ用オブジェクト生成　送信用オブジェクトの初期化
     </span><span class="kw">let </span><span class="kw-2">mut </span>reply = poise::CreateReply::default();

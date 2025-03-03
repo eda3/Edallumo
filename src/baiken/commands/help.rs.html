@@ -370,13 +370,13 @@
 <span class="doccomment">/// ヘルプコマンドの自動補完候補を生成する非同期関数
 ///
 /// # 引数
-/// * `_ctx` - コマンド実行時のコンテキスト（今回は使用していない）
+/// * `_` - コマンド実行時のコンテキスト（今回は使用していない）
 /// * `partial` - ユーザーが入力した部分文字列
 ///
 /// # 戻り値
 /// ユーザーの入力にマッチする候補文字列の非同期ストリームを返す
 </span><span class="kw">async fn </span>autocomplete_help&lt;<span class="lifetime">'a</span>&gt;(
-    _ctx: Context&lt;<span class="lifetime">'_</span>&gt;,
+    <span class="kw">_</span>: Context&lt;<span class="lifetime">'_</span>&gt;,
     partial: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>str,
 ) -&gt; <span class="kw">impl </span>Stream&lt;Item = String&gt; + <span class="lifetime">'a </span>{
     <span class="comment">// ヘルプ候補の一覧を列挙したストリームを作成する
@@ -399,7 +399,7 @@
         </span>futures::future::ready(name.to_lowercase().contains(<span class="kw-2">&amp;</span>partial.to_lowercase()))
     })
     <span class="comment">// 各候補を String 型に変換して返す
-    </span>.map(|name| name.to_string())
+    </span>.map(|name| (<span class="kw-2">*</span>name).to_string())
 }
 
 <span class="doccomment">/// ヘルプメッセージを表示するコマンド

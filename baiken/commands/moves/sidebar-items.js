@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["TypeChoice"],"fn":["moves"],"mod":["utils"]};
+window.SIDEBAR_ITEMS = {"enum":["TypeChoice"],"fn":["create_embeds_for_move_type","load_character_data","moves"],"mod":["utils"]};

@@ -362,7 +362,94 @@
 <a href="#361" id="361">361</a>
 <a href="#362" id="362">362</a>
 <a href="#363" id="363">363</a>
-<a href="#364" id="364">364</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
+<a href="#364" id="364">364</a>
+<a href="#365" id="365">365</a>
+<a href="#366" id="366">366</a>
+<a href="#367" id="367">367</a>
+<a href="#368" id="368">368</a>
+<a href="#369" id="369">369</a>
+<a href="#370" id="370">370</a>
+<a href="#371" id="371">371</a>
+<a href="#372" id="372">372</a>
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
+<a href="#381" id="381">381</a>
+<a href="#382" id="382">382</a>
+<a href="#383" id="383">383</a>
+<a href="#384" id="384">384</a>
+<a href="#385" id="385">385</a>
+<a href="#386" id="386">386</a>
+<a href="#387" id="387">387</a>
+<a href="#388" id="388">388</a>
+<a href="#389" id="389">389</a>
+<a href="#390" id="390">390</a>
+<a href="#391" id="391">391</a>
+<a href="#392" id="392">392</a>
+<a href="#393" id="393">393</a>
+<a href="#394" id="394">394</a>
+<a href="#395" id="395">395</a>
+<a href="#396" id="396">396</a>
+<a href="#397" id="397">397</a>
+<a href="#398" id="398">398</a>
+<a href="#399" id="399">399</a>
+<a href="#400" id="400">400</a>
+<a href="#401" id="401">401</a>
+<a href="#402" id="402">402</a>
+<a href="#403" id="403">403</a>
+<a href="#404" id="404">404</a>
+<a href="#405" id="405">405</a>
+<a href="#406" id="406">406</a>
+<a href="#407" id="407">407</a>
+<a href="#408" id="408">408</a>
+<a href="#409" id="409">409</a>
+<a href="#410" id="410">410</a>
+<a href="#411" id="411">411</a>
+<a href="#412" id="412">412</a>
+<a href="#413" id="413">413</a>
+<a href="#414" id="414">414</a>
+<a href="#415" id="415">415</a>
+<a href="#416" id="416">416</a>
+<a href="#417" id="417">417</a>
+<a href="#418" id="418">418</a>
+<a href="#419" id="419">419</a>
+<a href="#420" id="420">420</a>
+<a href="#421" id="421">421</a>
+<a href="#422" id="422">422</a>
+<a href="#423" id="423">423</a>
+<a href="#424" id="424">424</a>
+<a href="#425" id="425">425</a>
+<a href="#426" id="426">426</a>
+<a href="#427" id="427">427</a>
+<a href="#428" id="428">428</a>
+<a href="#429" id="429">429</a>
+<a href="#430" id="430">430</a>
+<a href="#431" id="431">431</a>
+<a href="#432" id="432">432</a>
+<a href="#433" id="433">433</a>
+<a href="#434" id="434">434</a>
+<a href="#435" id="435">435</a>
+<a href="#436" id="436">436</a>
+<a href="#437" id="437">437</a>
+<a href="#438" id="438">438</a>
+<a href="#439" id="439">439</a>
+<a href="#440" id="440">440</a>
+<a href="#441" id="441">441</a>
+<a href="#442" id="442">442</a>
+<a href="#443" id="443">443</a>
+<a href="#444" id="444">444</a>
+<a href="#445" id="445">445</a>
+<a href="#446" id="446">446</a>
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
 //! ファイル全体説明コメント
 //! フレームメーター表示機能全体
 //! 開始・アクティブ・リカバリーフレーム情報処理
@@ -410,9 +497,7 @@
             </span><span class="kw">if let </span><span class="prelude-val">Ok</span>(num) = startup_vec[x].parse::&lt;u16&gt;() {
                 <span class="comment">// 数値-1回分ループ処理
                 </span><span class="kw">for _ in </span><span class="number">0</span>..num - <span class="number">1 </span>{
-                    <span class="kw">if </span>!startup_bra {
-                        meter_msg += GREEN_CIRCLE; <span class="comment">// 括弧前：緑丸追加
-                    </span>} <span class="kw">else </span>{
+                    <span class="kw">if </span>startup_bra {
                         <span class="comment">// 括弧内：前エントリとの差分回数緑丸追加
                         </span><span class="kw">for _ in </span><span class="number">0</span>..((startup_vec[x].parse::&lt;u16&gt;().unwrap())
                             - (startup_vec[x - <span class="number">2</span>].parse::&lt;u16&gt;()).unwrap())
@@ -420,6 +505,8 @@
                             meter_msg += GREEN_CIRCLE; <span class="comment">// 括弧内緑丸追加
                         </span>}
                         <span class="kw">break</span>; <span class="comment">// ループ中断
+                    </span>} <span class="kw">else </span>{
+                        meter_msg += GREEN_CIRCLE; <span class="comment">// 括弧前：緑丸追加
                     </span>}
                 }
             }
@@ -432,16 +519,17 @@
                         </span><span class="kw">if </span>num == <span class="number">1 </span>{
                             meter_msg += GREEN_CIRCLE; <span class="comment">// 単一数値：緑丸置換
                         </span>} <span class="kw">else </span>{
-                            meter_msg = meter_msg + GREEN_CIRCLE + <span class="kw-2">&amp;</span>startup_vec[x];
+                            meter_msg.push_str(GREEN_CIRCLE);
+                            meter_msg.push_str(<span class="kw-2">&amp;</span>startup_vec[x]);
                             <span class="comment">// 複数数値：緑丸＋"+"追加
                         </span>}
                     } <span class="kw">else </span>{
-                        meter_msg = meter_msg + <span class="kw-2">&amp;</span>startup_vec[x]; <span class="comment">// 数字変換失敗：記号そのまま追加
+                        meter_msg.push_str(<span class="kw-2">&amp;</span>startup_vec[x]); <span class="comment">// 数字変換失敗：記号そのまま追加
                     </span>}
                 }
                 <span class="comment">// その他の記号処理
                 </span><span class="kw">else </span>{
-                    meter_msg = meter_msg + <span class="kw-2">&amp;</span>startup_vec[x]; <span class="comment">// 記号追加
+                    meter_msg.push_str(<span class="kw-2">&amp;</span>startup_vec[x]); <span class="comment">// 記号追加
                 </span>}
 
                 <span class="comment">// 括弧・チルダ判定更新
@@ -478,16 +566,16 @@
             <span class="kw">if let </span><span class="prelude-val">Ok</span>(num) = active_vec_string.parse::&lt;u16&gt;() {
                 <span class="comment">// 数値エントリの場合、数値分ループ
                 </span><span class="kw">for _ in </span><span class="number">0</span>..num {
-                    <span class="kw">if </span>!hit_recovery {
-                        meter_msg += RED_SQUARE; <span class="comment">// 括弧前：赤四角追加
-                    </span>} <span class="kw">else </span>{
+                    <span class="kw">if </span>hit_recovery {
                         meter_msg += BLUE_DIAMOND; <span class="comment">// 括弧内：青菱形追加
+                    </span>} <span class="kw">else </span>{
+                        meter_msg += RED_SQUARE; <span class="comment">// 括弧前：赤四角追加
                     </span>}
                 }
             }
             <span class="comment">// 数値以外のエントリの場合
             </span><span class="kw">else </span>{
-                meter_msg = meter_msg + active_vec_string; <span class="comment">// 記号追加
+                meter_msg.push_str(active_vec_string); <span class="comment">// 記号追加
                 </span><span class="kw">if </span>active_vec_string == <span class="string">"(" </span>{
                     hit_recovery = <span class="bool-val">true</span>; <span class="comment">// 括弧開始
                 </span>} <span class="kw">else if </span>active_vec_string == <span class="string">")" </span>{
@@ -539,8 +627,8 @@
             }
             <span class="comment">// 数値以外のエントリの場合
             </span><span class="kw">else </span>{
-                meter_msg = meter_msg + <span class="kw-2">&amp;</span>recovery_vec[x]; <span class="comment">// 記号追加
-                                                          // チルダ・括弧判定更新
+                meter_msg.push_str(<span class="kw-2">&amp;</span>recovery_vec[x]); <span class="comment">// 記号追加
+                                                      // チルダ・括弧判定更新
                 </span>recovery_tilde = recovery_vec[x] == <span class="string">"~" </span>|| recovery_vec[x] == <span class="string">"("</span>;
             }
         }
@@ -592,6 +680,162 @@
     result <span class="comment">// 分割結果返却
 </span>}
 
+<span class="doccomment">/// キャラクターデータを読み込む関数
+///
+/// # 引数
+/// * `character` - ユーザーが入力したキャラクター名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// 成功時は正式なキャラクター名、失敗時はエラー
+</span><span class="kw">async fn </span>load_character_data(character: <span class="kw-2">&amp;</span>str, ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;String, AppError&gt; {
+    <span class="comment">// キャラクター探索処理（エイリアス対応）
+    </span><span class="kw">let </span>character_arg_altered = <span class="kw">match </span>find::find_character(<span class="kw-2">&amp;</span>character.to_string()).<span class="kw">await </span>{
+        <span class="prelude-val">Ok</span>(character_arg_altered) =&gt; character_arg_altered, <span class="comment">// キャラクター名称確定
+        </span><span class="prelude-val">Err</span>(err) =&gt; {
+            ctx.say(err.to_string()).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
+            </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red()); <span class="comment">// エラー出力
+            </span><span class="kw">return </span><span class="prelude-val">Err</span>(AppError::CharacterNotFound(err.to_string())); <span class="comment">// エラー時早期返却
+        </span>}
+    };
+
+    <span class="prelude-val">Ok</span>(character_arg_altered)
+}
+
+<span class="doccomment">/// 技情報と画像データを読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+/// * `character` - 元のキャラクター名（エラーメッセージ用）
+///
+/// # 戻り値
+/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
+</span><span class="kw">async fn </span>find_move_and_images(
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+    character_move: <span class="kw-2">&amp;</span>str,
+    ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
+    character: <span class="kw-2">&amp;</span>str,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, String), AppError&gt; {
+    <span class="comment">// キャラクターファイルパス生成
+    </span><span class="kw">let </span>char_file_path =
+        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/" </span>+ character_arg_altered + <span class="string">".json"</span>; <span class="comment">// JSONファイルパス生成
+    </span><span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path)
+        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + character + <span class="string">".json" </span>+ <span class="string">"' file."</span>)); <span class="comment">// ファイル読み込み
+
+    // キャラクター情報デシリアライズ
+    </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).unwrap(); <span class="comment">// ムーブ情報抽出
+
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        (<span class="string">"Successfully read '"</span>.to_owned() + character_arg_altered + <span class="string">".json' file."</span>).green()
+    ); <span class="comment">// 成功出力
+
+    // ムーブ探索処理（インデックス取得）
+    </span><span class="kw">let </span>index = <span class="kw">match </span>find::find_move_index(
+        <span class="kw-2">&amp;</span>character_arg_altered.to_string(),
+        character_move.to_string(),
+        <span class="kw-2">&amp;</span>moves_info,
+    )
+    .<span class="kw">await
+    </span>{
+        <span class="prelude-val">Ok</span>(index) =&gt; index, <span class="comment">// ムーブインデックス確定
+        </span><span class="prelude-val">Err</span>(err) =&gt; {
+            ctx.say(err.to_string() + <span class="string">"\nView the moves of a character by executing `/moves`."</span>)
+                .<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
+            </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red()); <span class="comment">// エラー出力
+            </span><span class="kw">return </span><span class="prelude-val">Err</span>(AppError::MoveNotFound(err.to_string())); <span class="comment">// エラー時早期返却
+        </span>}
+    };
+
+    <span class="comment">// 画像情報ファイル読み込み
+    </span><span class="kw">let </span>image_links = fs::read_to_string(
+        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>,
+    )
+    .expect(
+        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + character_arg_altered + <span class="string">"'/images.json' file."</span>),
+    ); <span class="comment">// 画像ファイル読み込み
+
+    // 画像情報デシリアライズ
+    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap(); <span class="comment">// 画像リンク抽出
+    </span><span class="kw">let </span>selected_move_info = moves_info[index].clone(); <span class="comment">// 対象ムーブ情報取得
+    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = String::new(); <span class="comment">// 埋め込み画像初期化
+
+    // ムーブ画像送信処理
+    </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
+        <span class="comment">// 画像リンク走査ループ
+        </span><span class="kw">if </span>selected_move_info.input == img_links.input {
+            <span class="comment">// ヒット判定
+            </span><span class="macro">println!</span>(
+                <span class="string">"{}"</span>,
+                (<span class="string">"Successfully read move '"</span>.to_owned()
+                    + <span class="kw-2">&amp;</span>selected_move_info.input
+                    + <span class="string">"' in '"
+                    </span>+ character_arg_altered
+                    + <span class="string">".json' file."</span>)
+                    .green()
+            ); <span class="comment">// 成功出力
+
+            </span>embed_image = <span class="kw">if </span>img_links.move_img.is_empty() {
+                String::from(IMAGE_DEFAULT) <span class="comment">// デフォルト画像設定
+            </span>} <span class="kw">else </span>{
+                img_links.move_img <span class="comment">// ムーブ画像設定
+            </span>};
+        }
+    }
+
+    <span class="comment">// デフォルト画像がセットされていなかった場合
+    </span><span class="kw">if </span>embed_image.is_empty() {
+        embed_image = String::from(IMAGE_DEFAULT);
+    }
+
+    <span class="prelude-val">Ok</span>((selected_move_info, embed_image))
+}
+
+<span class="doccomment">/// フレームメーター表示用の埋め込みメッセージを作成する関数
+///
+/// # 引数
+/// * `move_info` - 技情報
+/// * `embed_image` - 埋め込む画像のURL
+/// * `character_arg_altered` - 正式なキャラクター名
+///
+/// # 戻り値
+/// 埋め込みメッセージのベクター
+</span><span class="kw">async fn </span>create_meter_embeds(
+    move_info: <span class="kw-2">&amp;</span>MoveInfo,
+    embed_image: <span class="kw-2">&amp;</span>str,
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+) -&gt; Vec&lt;CreateEmbed&gt; {
+    <span class="comment">// フレームメーター文字列生成処理
+    </span><span class="kw">let </span><span class="kw-2">mut </span>meter_msg = String::from(<span class="string">"`"</span>); <span class="comment">// バッククォート開始
+    </span>meter_msg += <span class="kw-2">&amp;</span>startup_frames(move_info).<span class="kw">await</span>; <span class="comment">// 開始フレーム処理
+    </span>meter_msg += <span class="kw-2">&amp;</span>active_frames(move_info).<span class="kw">await</span>; <span class="comment">// アクティブフレーム処理
+    </span>meter_msg += <span class="kw-2">&amp;</span>recovery_frames(move_info).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム処理
+    </span>meter_msg += <span class="string">"`"</span>; <span class="comment">// バッククォート終了
+
+    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>; <span class="comment">// 埋め込みタイトル生成
+
+    </span><span class="kw">let </span>embed_url = <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + character_arg_altered + <span class="string">"#Overview"</span>; <span class="comment">// 埋め込みURL生成
+
+    </span><span class="kw">let </span>embed = CreateEmbed::new()
+        .color(EMBED_COLOR) <span class="comment">// 埋め込み色設定
+        </span>.title(embed_title) <span class="comment">// タイトル設定
+        </span>.url(embed_url) <span class="comment">// URL設定
+        </span>.fields(<span class="macro">vec!</span>[
+            (<span class="string">"Startup"</span>, <span class="kw-2">&amp;</span>startup_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// 開始フレームフィールド
+            </span>(<span class="string">"Active"</span>, <span class="kw-2">&amp;</span>active_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>),   <span class="comment">// アクティブフレームフィールド
+            </span>(<span class="string">"Recovery"</span>, <span class="kw-2">&amp;</span>recovery_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// リカバリーフレームフィールド
+        </span>])
+        .image(embed_image); <span class="comment">// 画像設定
+
+    </span><span class="kw">let </span>embed2 = CreateEmbed::new()
+        .color(EMBED_COLOR) <span class="comment">// 埋め込み色設定
+        </span>.description(<span class="kw-2">&amp;</span>meter_msg); <span class="comment">// 説明文設定
+
+    </span><span class="macro">vec!</span>[embed, embed2] <span class="comment">// 埋め込みベクター作成
+</span>}
+
 <span class="doccomment">/// ムーブのフレームメーターを視覚表示するコマンド処理
 ///
 /// # 引数
@@ -617,113 +861,43 @@
         (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">", " </span>+ <span class="kw-2">&amp;</span>character_move + <span class="string">"'"</span>).purple()
     ); <span class="comment">// コマンド引数出力
 
-    </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>).<span class="kw">await</span>).is_err() {
+    </span><span class="kw">if </span>(check::adaptive_check(
+        ctx,
+        check::CheckOptions {
+            data_folder: <span class="bool-val">true</span>,
+            nicknames_json: <span class="bool-val">true</span>,
+            character_folders: <span class="bool-val">true</span>,
+            character_jsons: <span class="bool-val">true</span>,
+            character_images: <span class="bool-val">true</span>,
+        },
+    )
+    .<span class="kw">await</span>)
+        .is_err()
+    {
         <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// チェック失敗時早期返却
     </span>}
 
-    <span class="comment">// キャラクター探索処理（エイリアス対応）
-    </span><span class="kw">let </span>character_arg_altered = <span class="kw">match </span>find::find_character(<span class="kw-2">&amp;</span>character).<span class="kw">await </span>{
-        <span class="prelude-val">Ok</span>(character_arg_altered) =&gt; character_arg_altered, <span class="comment">// キャラクター名称確定
-        </span><span class="prelude-val">Err</span>(err) =&gt; {
-            ctx.say(err.to_string()).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
-            </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red()); <span class="comment">// エラー出力
-            </span><span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// エラー時早期返却
-        </span>}
+    <span class="comment">// キャラクターデータ読み込み
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>(character_arg_altered) = load_character_data(<span class="kw-2">&amp;</span>character, <span class="kw-2">&amp;</span>ctx).<span class="kw">await else </span>{
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
     };
 
-    <span class="comment">// キャラクターファイルパス生成
-    </span><span class="kw">let </span>char_file_path =
-        <span class="string">"data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"/" </span>+ <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json"</span>; <span class="comment">// JSONファイルパス生成
-    </span><span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path)
-        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">".json" </span>+ <span class="string">"' file."</span>)); <span class="comment">// ファイル読み込み
+    <span class="comment">// 技情報と画像データ読み込み
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>((selected_move_info, embed_image)) =
+        find_move_and_images(<span class="kw-2">&amp;</span>character_arg_altered, <span class="kw-2">&amp;</span>character_move, <span class="kw-2">&amp;</span>ctx, <span class="kw-2">&amp;</span>character).<span class="kw">await
+    else </span>{
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(());
+    };
 
-    // キャラクター情報デシリアライズ
-    </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).unwrap(); <span class="comment">// ムーブ情報抽出
+    <span class="comment">// 埋め込みメッセージ作成
+    </span><span class="kw">let </span>vec_embeds =
+        create_meter_embeds(<span class="kw-2">&amp;</span>selected_move_info, <span class="kw-2">&amp;</span>embed_image, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>;
 
-    </span><span class="macro">println!</span>(
-        <span class="string">"{}"</span>,
-        (<span class="string">"Successfully read '"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">".json' file."</span>).green()
-    ); <span class="comment">// 成功出力
-
-    // ムーブ探索処理（インデックス取得）
-    </span><span class="kw">let </span>index =
-        <span class="kw">match </span>find::find_move_index(<span class="kw-2">&amp;</span>character_arg_altered, character_move, <span class="kw-2">&amp;</span>moves_info).<span class="kw">await </span>{
-            <span class="prelude-val">Ok</span>(index) =&gt; index, <span class="comment">// ムーブインデックス確定
-            </span><span class="prelude-val">Err</span>(err) =&gt; {
-                ctx.say(err.to_string() + <span class="string">"\nView the moves of a character by executing `/moves`."</span>)
-                    .<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
-                </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red()); <span class="comment">// エラー出力
-                </span><span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// エラー時早期返却
-            </span>}
-        };
-
-    <span class="comment">// 画像情報ファイル読み込み
-    </span><span class="kw">let </span>image_links = fs::read_to_string(
-        <span class="string">"data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"/images.json"</span>,
-    )
-    .expect(
-        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"'/images.json' file."</span>),
-    ); <span class="comment">// 画像ファイル読み込み
-
-    // 画像情報デシリアライズ
-    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap(); <span class="comment">// 画像リンク抽出
-    </span><span class="kw">let </span>selected_move_info = <span class="kw-2">&amp;</span>moves_info[index]; <span class="comment">// 対象ムーブ情報取得
-    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = String::new(); <span class="comment">// 埋め込み画像初期化
-
-    // ムーブ画像送信処理
-    </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
-        <span class="comment">// 画像リンク走査ループ
-        </span><span class="kw">if </span>selected_move_info.input == img_links.input {
-            <span class="comment">// ヒット判定
-            </span><span class="macro">println!</span>(
-                <span class="string">"{}"</span>,
-                (<span class="string">"Successfully read move '"</span>.to_owned()
-                    + <span class="kw-2">&amp;</span>selected_move_info.input.to_string()
-                    + <span class="string">"' in '"
-                    </span>+ <span class="kw-2">&amp;</span>character_arg_altered
-                    + <span class="string">".json' file."</span>)
-                    .green()
-            ); <span class="comment">// 成功出力
-
-            </span><span class="kw">if </span>!img_links.move_img.is_empty() {
-                embed_image = img_links.move_img; <span class="comment">// ムーブ画像設定
-            </span>} <span class="kw">else </span>{
-                embed_image = String::from(IMAGE_DEFAULT); <span class="comment">// デフォルト画像設定
-            </span>}
-        }
-    }
-
-    <span class="comment">// フレームメーター文字列生成処理
-    </span><span class="kw">let </span><span class="kw-2">mut </span>meter_msg = String::from(<span class="string">"`"</span>); <span class="comment">// バッククォート開始
-    </span>meter_msg += <span class="kw-2">&amp;</span>startup_frames(selected_move_info).<span class="kw">await</span>; <span class="comment">// 開始フレーム処理
-    </span>meter_msg += <span class="kw-2">&amp;</span>active_frames(selected_move_info).<span class="kw">await</span>; <span class="comment">// アクティブフレーム処理
-    </span>meter_msg += <span class="kw-2">&amp;</span>recovery_frames(selected_move_info).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム処理
-    </span>meter_msg += <span class="string">"`"</span>; <span class="comment">// バッククォート終了
-
-    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>selected_move_info.input + <span class="string">"**__"</span>; <span class="comment">// 埋め込みタイトル生成
-
-    </span><span class="kw">let </span>embed_url =
-        <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + <span class="kw-2">&amp;</span>character_arg_altered + <span class="string">"#Overview"</span>; <span class="comment">// 埋め込みURL生成
-
-    </span><span class="kw">let </span>embed = CreateEmbed::new()
-        .color(EMBED_COLOR) <span class="comment">// 埋め込み色設定
-        </span>.title(embed_title) <span class="comment">// タイトル設定
-        </span>.url(embed_url) <span class="comment">// URL設定
-        </span>.fields(<span class="macro">vec!</span>[
-            (<span class="string">"Startup"</span>, <span class="kw-2">&amp;</span>startup_frames(selected_move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// 開始フレームフィールド
-            </span>(<span class="string">"Active"</span>, <span class="kw-2">&amp;</span>active_frames(selected_move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// アクティブフレームフィールド
-            </span>(<span class="string">"Recovery"</span>, <span class="kw-2">&amp;</span>recovery_frames(selected_move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// リカバリーフレームフィールド
-        </span>])
-        .image(embed_image); <span class="comment">// 画像設定
-
-    </span><span class="kw">let </span>embed2 = CreateEmbed::new()
-        .color(EMBED_COLOR) <span class="comment">// 埋め込み色設定
-        </span>.description(<span class="kw-2">&amp;</span>meter_msg); <span class="comment">// 説明文設定
-
-    </span><span class="kw">let </span>vec_embeds = <span class="macro">vec!</span>[embed, embed2]; <span class="comment">// 埋め込みベクター作成
+    <span class="comment">// 返信作成と送信
     </span><span class="kw">let </span><span class="kw-2">mut </span>reply = poise::CreateReply::default(); <span class="comment">// 返信オブジェクト初期化
     </span>reply.embeds.extend(vec_embeds); <span class="comment">// 埋め込み追加
     </span>ctx.send(reply).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 返信送信
+
     </span><span class="prelude-val">Ok</span>(()) <span class="comment">// 正常終了
 </span>}
 </code></pre></div></section></main></body></html>
