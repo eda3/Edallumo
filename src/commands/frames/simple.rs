@@ -155,8 +155,8 @@ fn create_move_embed(
     // 埋め込みメッセージ作成　各種フィールド追加
     CreateEmbed::new()
         .color(EMBED_COLOR) // 埋め込みカラー設定
-        .title(&embed_title) // タイトル設定
-        .url(&embed_url) // URL設定
+        .title(embed_title) // タイトル設定
+        .url(embed_url) // URL設定
         .image(embed_image) // 画像設定
         .fields(vec![
             (
