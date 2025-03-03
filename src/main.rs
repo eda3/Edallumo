@@ -53,7 +53,7 @@ struct Gids {
 }
 
 /// 埋め込みメッセージのカラーコード
-pub const EMBED_COLOR: u32 = 0xFFFF99;
+pub const EMBED_COLOR: u32 = 0x00FF_FF99;
 
 /// キャラクター名定数配列
 pub const CHARS: [&str; 29] = [
@@ -112,7 +112,7 @@ async fn on_error(error: poise::FrameworkError<'_, Data, AppError>) -> Result<()
                 serenity::CreateEmbed::new()
                     .title("エラーが発生しました")
                     .description(format!("```{error:?}```"))
-                    .color(0xFF0000),
+                    .color(0x00FF_0000),
             );
             if let Err(e) = ctx.send(embed).await {
                 eprintln!("{}", format!("エラーメッセージ送信失敗: {e}").red());
@@ -127,7 +127,7 @@ async fn on_error(error: poise::FrameworkError<'_, Data, AppError>) -> Result<()
                     .description(
                         "開発者に問題が報告されました。ご迷惑をおかけして申し訳ありません。",
                     )
-                    .color(0xFF0000),
+                    .color(0x00FF_0000),
             );
             if let Err(e) = ctx.send(embed).await {
                 eprintln!("{}", format!("エラーメッセージ送信失敗: {e}").red());
@@ -292,6 +292,6 @@ mod tests {
     #[test]
     fn test_embed_color() {
         // カラーコードが正しいことを確認
-        assert_eq!(EMBED_COLOR, 0xFFFF99);
+        assert_eq!(EMBED_COLOR, 0x00FF_FF99);
     }
 }
