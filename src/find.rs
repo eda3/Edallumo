@@ -29,9 +29,6 @@ pub struct Nicknames {
 /// # 戻り値
 /// 正式なキャラクター名を含む `Result<String>` を返す
 pub async fn find_character(character: &String) -> Result<String> {
-    // 出力判定用フラグ（常に false、後の分岐で利用）
-    let character_found = false;
-
     // nicknames.json ファイル読み込み　結果：JSON文字列取得
     let data_from_file = fs::read_to_string("data/nicknames.json").map_err(|e| {
         AppError::FileNotFound(format!("nicknames.jsonの読み込みに失敗しました: {e}"))
@@ -42,48 +39,39 @@ pub async fn find_character(character: &String) -> Result<String> {
         serde_json::from_str::<Vec<Nicknames>>(&data_from_file).map_err(AppError::Json)?;
 
     // 各キャラクターエントリ走査　結果：該当エントリ検出時に正式名称返却
-    if !character_found {
-        for x_nicknames in &vec_nicknames {
-            // 各ニックネーム走査　結果：入力文字列と完全一致すれば正式名称返却
-            for y_nicknames in &x_nicknames.nicknames {
-                if y_nicknames.to_lowercase() == character.to_lowercase().trim() {
-                    return Ok(x_nicknames.character.to_owned());
-                }
-            }
-        }
-    }
-
-    if !character_found {
-        // キャラクター名の部分一致走査　結果：入力文字列が正式名称の一部に含まれていれば返却
-        for x_nicknames in &vec_nicknames {
-            if x_nicknames
-                .character
-                .to_lowercase()
-                .replace('-', "")
-                .contains(&character.to_lowercase())
-                || x_nicknames
-                    .character
-                    .to_lowercase()
-                    .contains(&character.to_lowercase())
-            {
+    for x_nicknames in &vec_nicknames {
+        // 各ニックネーム走査　結果：入力文字列と完全一致すれば正式名称返却
+        for y_nicknames in &x_nicknames.nicknames {
+            if y_nicknames.to_lowercase() == character.to_lowercase().trim() {
                 return Ok(x_nicknames.character.to_owned());
             }
         }
     }
+
+    // キャラクター名の部分一致走査　結果：入力文字列が正式名称の一部に含まれていれば返却
+    for x_nicknames in &vec_nicknames {
+        if x_nicknames
+            .character
+            .to_lowercase()
+            .replace('-', "")
+            .contains(&character.to_lowercase())
+            || x_nicknames
+                .character
+                .to_lowercase()
+                .contains(&character.to_lowercase())
+        {
+            return Ok(x_nicknames.character.to_owned());
+        }
+    }
+
     // "all" の場合の例外処理　結果：空文字列返却
-    if !character_found && character.trim().to_lowercase() == "all".to_lowercase() {
+    if character.trim().to_lowercase() == "all".to_lowercase() {
         return Ok(String::new());
     }
 
-    if !character_found {
-        // キャラクター未検出時エラーメッセージ作成　結果：エラー返却
-        let error_msg = "Character `".to_owned() + character + "` was not found!";
-        Err(AppError::CharacterNotFound(error_msg))
-    } else {
-        Err(AppError::Other(
-            "Weird logic error in find_character".to_string(),
-        ))
-    }
+    // キャラクター未検出時エラーメッセージ作成　結果：エラー返却
+    let error_msg = "Character `".to_owned() + character + "` was not found!";
+    Err(AppError::CharacterNotFound(error_msg))
 }
 
 /// 技のインデックスを検索し、該当する技のインデックスを返却する非同期関数
