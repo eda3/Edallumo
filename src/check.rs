@@ -52,21 +52,18 @@ pub async fn nicknames_json_exists(init_check: bool) -> Option<String> {
     };
 
     // JSON デシリアライズ試行
-    match serde_json::from_str::<Vec<Nicknames>>(&data_from_file) {
-        Ok(_) => {
-            println!("{}", "Successfully read 'nicknames.json' file.".green());
-            None
-        }
-        Err(_) => {
-            // nicknames.json 正当性エラー用メッセージ
-            let error_msg = "Error: Failed to deserialize 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken.".to_string();
+    if let Ok(_) = serde_json::from_str::<Vec<Nicknames>>(&data_from_file) {
+        println!("{}", "Successfully read 'nicknames.json' file.".green());
+        None
+    } else {
+        // nicknames.json 正当性エラー用メッセージ
+        let error_msg = "Error: Failed to deserialize 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken.".to_string();
 
-            if init_check {
-                println!();
-                panic!("{}", error_msg.red());
-            } else {
-                Some(error_msg)
-            }
+        if init_check {
+            println!();
+            panic!("{}", error_msg.red());
+        } else {
+            Some(error_msg)
         }
     }
 }
