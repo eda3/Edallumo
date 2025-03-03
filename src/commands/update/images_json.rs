@@ -256,7 +256,7 @@ pub async fn images_to_json(
         ]
         .contains(input_str)
         {
-            _input_name = input_str.to_string();
+            _input_name = (*input_str).to_string();
         } else {
             let name_str = image_data.title.name.as_deref().unwrap_or("");
             _input_name = format!("{name_str}({input_str})");
