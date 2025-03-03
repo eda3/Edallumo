@@ -114,8 +114,7 @@ pub async fn find_move_index(
         // aliases.json ファイル読み込み　結果：JSON文字列取得
         let aliases_data = fs::read_to_string(&aliases_path).map_err(|e| {
             AppError::FileNotFound(format!(
-                "{}ファイルの読み込みに失敗しました: {}",
-                aliases_path, e
+                "{aliases_path}ファイルの読み込みに失敗しました: {e}"
             ))
         })?;
 
