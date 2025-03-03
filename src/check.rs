@@ -432,8 +432,8 @@ mod tests {
 
     #[test]
     fn test_validate_data_dir() {
-        // テスト用のディレクトリ構造を作成
-        let (temp_dir, temp_path) = create_test_dir_structure();
+        // テストディレクトリの設定
+        let (_temp_dir, temp_path) = create_test_dir_structure();
 
         // テストデータを設定
         setup_test_data(&temp_path).unwrap();
@@ -462,8 +462,8 @@ mod tests {
 
     #[test]
     fn test_check_character_folders() {
-        // テスト用のディレクトリ構造を作成
-        let (temp_dir, temp_path) = create_test_dir_structure();
+        // テストディレクトリの設定
+        let (_temp_dir, temp_path) = create_test_dir_structure();
 
         // テストデータを設定
         setup_test_data(&temp_path).unwrap();

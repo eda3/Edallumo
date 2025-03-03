@@ -197,7 +197,7 @@ mod tests {
     use tempfile::TempDir;
 
     // 一時ディレクトリにnicknames.jsonを作成するヘルパー関数
-    fn setup_nicknames_json(temp_dir: &TempDir) -> std::path::PathBuf {
+    fn _setup_nicknames_json(temp_dir: &TempDir) -> std::path::PathBuf {
         let path = temp_dir.path().join("nicknames.json");
         let content = r#"[
             {
@@ -310,7 +310,7 @@ mod tests {
     #[tokio::test]
     async fn test_find_move_by_alias() {
         // テストデータ準備
-        let moves_info = create_test_move_info();
+        let _moves_info = create_test_move_info();
         let moves_aliases = create_test_move_aliases();
 
         // 正確な入力でのテスト

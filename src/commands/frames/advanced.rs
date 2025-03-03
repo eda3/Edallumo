@@ -364,7 +364,7 @@ mod tests {
     }
 
     impl TempWorkingDir {
-        fn new(path: &PathBuf) -> Self {
+        fn _new(path: &PathBuf) -> Self {
             let original_dir = env::current_dir().expect("現在のディレクトリの取得に失敗");
             env::set_current_dir(path).expect("ディレクトリの変更に失敗");
             Self { original_dir }

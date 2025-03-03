@@ -39,7 +39,7 @@ pub fn create_test_dir_structure() -> (TempDir, PathBuf) {
 /// # 戻り値
 /// `CharInfo` - ダミーキャラクター情報
 #[cfg(test)]
-pub fn create_test_char_info() -> CharInfo {
+pub fn _create_test_char_info() -> CharInfo {
     CharInfo {
         defense: Some(0.9),
         guts: Some(2.0),
@@ -183,13 +183,13 @@ pub fn create_test_json_file<P: AsRef<Path>>(
 /// このモックは実際のコンテキストと同じインターフェースを持ちますが、
 /// 常に成功するレスポンスを返します。
 #[cfg(test)]
-pub struct MockDiscordContext {
+pub struct _MockDiscordContext {
     pub messages: Vec<String>,
     pub embeds: Vec<String>,
 }
 
 #[cfg(test)]
-impl MockDiscordContext {
+impl _MockDiscordContext {
     /// 新しいモックコンテキストを作成する
     ///
     /// # 戻り値
