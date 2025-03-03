@@ -79,8 +79,6 @@ pub async fn get_special_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAlia
                     }
                 }
                 special_moves = special_moves.clone() + "`\n";
-            } else {
-                continue;
             }
         }
     }
@@ -117,9 +115,8 @@ pub async fn get_super_moves(moves_info: &[MoveInfo], aliases_data: &[MoveAliase
                     }
                 }
                 super_moves = super_moves.clone() + "`\n";
-            } else {
-                continue;
             }
+            continue;
         }
     }
     super_moves
