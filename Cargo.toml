@@ -28,6 +28,7 @@ anyhow = "1.0.79"
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 futures = "0.3.30"
+bitflags = "2.4.1"
 
 [dev-dependencies]
 mockall = "0.12.1"

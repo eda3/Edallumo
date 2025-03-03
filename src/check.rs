@@ -6,6 +6,7 @@
 use crate::error::{AppError, Result};
 use crate::find::Nicknames;
 use crate::{Context, CHARS}; // CHARS 定数：キャラクター名定数（クレートルートに定義されている前提）
+use bitflags::bitflags;
 use colored::Colorize; // ターミナル出力の色付けに利用するクレートである
 use std::{fs, path::Path}; // ファイル操作およびパス操作用
 
@@ -143,21 +144,27 @@ pub async fn character_images_exist(init_check: bool) -> Option<String> {
     None
 }
 
-/// チェックオプション構造体
-///
-/// 各種チェック機能の有効・無効を指定するための構造体
-#[derive(Default)]
-pub struct CheckOptions {
-    /// データフォルダの存在チェック
-    pub data_folder: bool,
-    /// ニックネームJSONの存在チェック
-    pub nicknames_json: bool,
-    /// キャラクターフォルダの存在チェック
-    pub character_folders: bool,
-    /// キャラクターJSONの存在チェック
-    pub character_jsons: bool,
-    /// キャラクター画像の存在チェック
-    pub character_images: bool,
+bitflags! {
+    /// チェックオプションフラグ
+    ///
+    /// 各種チェック機能の有効・無効を指定するためのビットフラグ
+    #[derive(Default)]
+    pub struct CheckOptions: u8 {
+        /// データフォルダの存在チェック
+        const DATA_FOLDER = 0b00001;
+        /// ニックネームJSONの存在チェック
+        const NICKNAMES_JSON = 0b00010;
+        /// キャラクターフォルダの存在チェック
+        const CHARACTER_FOLDERS = 0b00100;
+        /// キャラクターJSONの存在チェック
+        const CHARACTER_JSONS = 0b01000;
+        /// キャラクター画像の存在チェック
+        const CHARACTER_IMAGES = 0b10000;
+        /// すべてのチェックを実行
+        const ALL = Self::DATA_FOLDER.bits() | Self::NICKNAMES_JSON.bits() |
+                   Self::CHARACTER_FOLDERS.bits() | Self::CHARACTER_JSONS.bits() |
+                   Self::CHARACTER_IMAGES.bits();
+    }
 }
 
 /// アダプティブチェック関数
@@ -165,12 +172,12 @@ pub struct CheckOptions {
 /// 指定されたオプションに基づいて、必要なチェックのみを実行する
 ///
 /// # 引数
-/// - `ctx` - Discordのコンテキスト
-/// - `options` - 実行するチェックを指定するオプション構造体
+/// * `ctx` - Discordのコンテキスト
+/// * `options` - 実行するチェックを指定するオプションフラグ
 ///
 /// 戻り値：全チェック成功時 Ok(()) / 失敗時 Err("Failed `adaptive_check`")
 pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<()> {
-    if options.data_folder {
+    if options.contains(CheckOptions::DATA_FOLDER) {
         // Checking if data folder exists
         if let Some(error_msg) = data_folder_exists(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -180,7 +187,7 @@ pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if options.nicknames_json {
+    if options.contains(CheckOptions::NICKNAMES_JSON) {
         // Checking if nicknames.json exists
         if let Some(error_msg) = nicknames_json_exists(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -190,7 +197,7 @@ pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if options.character_folders {
+    if options.contains(CheckOptions::CHARACTER_FOLDERS) {
         // Checking if character folders exist
         if let Some(error_msg) = character_folders_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -200,7 +207,7 @@ pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if options.character_jsons {
+    if options.contains(CheckOptions::CHARACTER_JSONS) {
         // Checking if character jsons exist
         if let Some(error_msg) = character_jsons_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {
@@ -210,7 +217,7 @@ pub async fn adaptive_check(ctx: Context<'_>, options: CheckOptions) -> Result<(
             panic!("{}", error_msg.replace('\n', " ").red());
         }
     }
-    if options.character_images {
+    if options.contains(CheckOptions::CHARACTER_IMAGES) {
         // Checking if character images exist
         if let Some(error_msg) = character_images_exist(false).await {
             if let Err(e) = ctx.say(&error_msg.replace('\'', "`")).await {

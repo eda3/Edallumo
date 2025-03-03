@@ -14,13 +14,7 @@ pub async fn nicknames(ctx: Context<'_>) -> Result<(), AppError> {
     // adaptive_check: ファイルの整合性確認（失敗時は処理を中断）
     if (check::adaptive_check(
         ctx,
-        check::CheckOptions {
-            data_folder: false,
-            nicknames_json: false,
-            character_folders: true,
-            character_jsons: true,
-            character_images: false,
-        },
+        check::CheckOptions::CHARACTER_FOLDERS | check::CheckOptions::CHARACTER_JSONS,
     )
     .await)
         .is_err()

@@ -206,13 +206,10 @@ pub async fn moves(
     // 入力チェック実施　条件確認
     if (check::adaptive_check(
         ctx,
-        check::CheckOptions {
-            data_folder: true,
-            nicknames_json: true,
-            character_folders: true,
-            character_jsons: true,
-            character_images: false,
-        },
+        check::CheckOptions::DATA_FOLDER
+            | check::CheckOptions::NICKNAMES_JSON
+            | check::CheckOptions::CHARACTER_FOLDERS
+            | check::CheckOptions::CHARACTER_JSONS,
     )
     .await)
         .is_err()

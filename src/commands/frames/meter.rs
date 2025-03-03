@@ -412,13 +412,11 @@ pub async fn meter(
 
     if (check::adaptive_check(
         ctx,
-        check::CheckOptions {
-            data_folder: true,
-            nicknames_json: true,
-            character_folders: true,
-            character_jsons: true,
-            character_images: true,
-        },
+        check::CheckOptions::DATA_FOLDER
+            | check::CheckOptions::NICKNAMES_JSON
+            | check::CheckOptions::CHARACTER_FOLDERS
+            | check::CheckOptions::CHARACTER_JSONS
+            | check::CheckOptions::CHARACTER_IMAGES,
     )
     .await)
         .is_err()
