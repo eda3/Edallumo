@@ -1,3 +1,5 @@
+#![allow(clippy::needless_raw_string_hashes)]
+
 //! `preprocess.rs`
 //!
 //! JSON置換処理モジュール。  

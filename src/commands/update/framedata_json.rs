@@ -1,3 +1,5 @@
+#![allow(clippy::needless_raw_string_hashes)]
+
 //! `framedata_json.rs`
 //!
 //! Dustloop Wiki から取得したフレームデータ JSON を前処理し、

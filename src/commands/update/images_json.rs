@@ -1,3 +1,5 @@
+#![allow(clippy::needless_raw_string_hashes)]
+
 //! `images_json.rs`
 //!
 //! このファイルは、Dustloop Wiki から取得した画像関連の JSON データを前処理し、
