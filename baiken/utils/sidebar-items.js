@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["calculate_file_hash","ensure_directory_exists","find_move","load_character_info","load_move_aliases","load_move_info","normalize_input","normalize_move_name","read_all_json_files","read_json_file","truncate_string","write_json_file"]};

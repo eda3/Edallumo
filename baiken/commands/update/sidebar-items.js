@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["UpdateChoice"],"fn":["update","update_all_char_data"],"mod":["framedata","framedata_json","images","images_json"]};
+window.SIDEBAR_ITEMS = {"enum":["UpdateChoice"],"fn":["character","update","update_all_char_data"],"mod":["framedata","framedata_json","images","images_json"]};

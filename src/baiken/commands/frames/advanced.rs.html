@@ -181,16 +181,71 @@
 <a href="#180" id="180">180</a>
 <a href="#181" id="181">181</a>
 <a href="#182" id="182">182</a>
-<a href="#183" id="183">183</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
+<a href="#183" id="183">183</a>
+<a href="#184" id="184">184</a>
+<a href="#185" id="185">185</a>
+<a href="#186" id="186">186</a>
+<a href="#187" id="187">187</a>
+<a href="#188" id="188">188</a>
+<a href="#189" id="189">189</a>
+<a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a>
+<a href="#212" id="212">212</a>
+<a href="#213" id="213">213</a>
+<a href="#214" id="214">214</a>
+<a href="#215" id="215">215</a>
+<a href="#216" id="216">216</a>
+<a href="#217" id="217">217</a>
+<a href="#218" id="218">218</a>
+<a href="#219" id="219">219</a>
+<a href="#220" id="220">220</a>
+<a href="#221" id="221">221</a>
+<a href="#222" id="222">222</a>
+<a href="#223" id="223">223</a>
+<a href="#224" id="224">224</a>
+<a href="#225" id="225">225</a>
+<a href="#226" id="226">226</a>
+<a href="#227" id="227">227</a>
+<a href="#228" id="228">228</a>
+<a href="#229" id="229">229</a>
+<a href="#230" id="230">230</a>
+<a href="#231" id="231">231</a>
+<a href="#232" id="232">232</a>
+<a href="#233" id="233">233</a>
+<a href="#234" id="234">234</a>
+<a href="#235" id="235">235</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
 //!
 //! このファイルは、キャラクターの技データの詳細情報をDiscordの埋め込みメッセージで表示するコマンドを実装。
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
 //! JSONファイルから該当データを取得し、画像リンクや各種技パラメータを整形して表示する。
 
-</span><span class="kw">use crate</span>::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, IMAGE_DEFAULT};
+</span><span class="kw">use crate</span>::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR};
 <span class="kw">use </span>colored::Colorize;
 <span class="kw">use </span>poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
 <span class="kw">use </span>std::{fs, string::String};
+
+<span class="doccomment">/// デフォルト画像URL
+</span><span class="kw">const </span>IMAGE_DEFAULT: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png"</span>;
 
 <span class="doccomment">/// 指定されたキャラクターの技データを詳細に表示する非同期コマンド
 ///
@@ -226,7 +281,7 @@
     #[rename = <span class="string">"move"</span>]
     #[description = <span class="string">"技名、入力、またはエイリアス"</span>]
     </span>character_move: String,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="comment">// コマンド引数の表示　引数確認用
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
@@ -318,28 +373,77 @@
         </span>.url(<span class="kw-2">&amp;</span>embed_url) <span class="comment">// URL設定
         </span>.image(<span class="kw-2">&amp;</span>embed_image) <span class="comment">// 画像リンク設定
         </span>.fields(<span class="macro">vec!</span>[
-            (<span class="string">"ダメージ"</span>, <span class="kw-2">&amp;</span>move_info.damage.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"ガード"</span>, <span class="kw-2">&amp;</span>move_info.guard.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"無敵"</span>, <span class="kw-2">&amp;</span>move_info.invincibility.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"始動"</span>, <span class="kw-2">&amp;</span>move_info.startup.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"持続"</span>, <span class="kw-2">&amp;</span>move_info.active.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"硬直"</span>, <span class="kw-2">&amp;</span>move_info.recovery.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"ヒット時"</span>, <span class="kw-2">&amp;</span>move_info.on_hit.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"ガード時"</span>, <span class="kw-2">&amp;</span>move_info.on_block.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"カウンター"</span>, <span class="kw-2">&amp;</span>move_info.counter.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"技レベル"</span>, <span class="kw-2">&amp;</span>move_info.level.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"リスク増加"</span>, <span class="kw-2">&amp;</span>move_info.risc_gain.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"リスク減少"</span>, <span class="kw-2">&amp;</span>move_info.risc_loss.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"ダメージ倍率"</span>, <span class="kw-2">&amp;</span>move_info.scaling.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"壁割ダメージ"</span>, <span class="kw-2">&amp;</span>move_info.wall_damage.to_string(), <span class="bool-val">true</span>),
             (
-                <span class="string">"テンションゲージ"</span>,
-                <span class="kw-2">&amp;</span>move_info.input_tension.to_string(),
+                <span class="string">"ダメージ"</span>,
+                <span class="kw-2">&amp;</span>move_info.damage.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
                 <span class="bool-val">true</span>,
             ),
-            (<span class="string">"削り比率"</span>, <span class="kw-2">&amp;</span>move_info.chip_ratio.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"ダウン追い打ち比率"</span>, <span class="kw-2">&amp;</span>move_info.otg_ratio.to_string(), <span class="bool-val">true</span>),
-            (<span class="string">"キャンセル先"</span>, <span class="kw-2">&amp;</span>move_info.cancel.to_string(), <span class="bool-val">true</span>),
+            (<span class="string">"ガード"</span>, <span class="kw-2">&amp;</span>move_info.guard, <span class="bool-val">true</span>),
+            (<span class="string">"無敵"</span>, <span class="kw-2">&amp;</span>move_info.invincibility, <span class="bool-val">true</span>),
+            (
+                <span class="string">"始動"</span>,
+                <span class="kw-2">&amp;</span>move_info.startup.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (<span class="string">"持続"</span>, <span class="kw-2">&amp;</span>move_info.active, <span class="bool-val">true</span>),
+            (
+                <span class="string">"硬直"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .recovery
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (<span class="string">"ヒット時"</span>, <span class="kw-2">&amp;</span>move_info.on_hit, <span class="bool-val">true</span>),
+            (<span class="string">"ガード時"</span>, <span class="kw-2">&amp;</span>move_info.on_block, <span class="bool-val">true</span>),
+            (<span class="string">"カウンター"</span>, <span class="kw-2">&amp;</span>move_info.counter, <span class="bool-val">true</span>),
+            (<span class="string">"技レベル"</span>, <span class="kw-2">&amp;</span>move_info.level, <span class="bool-val">true</span>),
+            (
+                <span class="string">"リスク増加"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .risc_gain
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (
+                <span class="string">"リスク減少"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .risc_loss
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (
+                <span class="string">"壁ダメージ"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .wall_damage
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (
+                <span class="string">"入力緊張度"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .input_tension
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (
+                <span class="string">"チップ比率"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .chip_ratio
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (
+                <span class="string">"OTG比率"</span>,
+                <span class="kw-2">&amp;</span>move_info
+                    .otg_ratio
+                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
+            (
+                <span class="string">"スケーリング"</span>,
+                <span class="kw-2">&amp;</span>move_info.scaling.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
+                <span class="bool-val">true</span>,
+            ),
         ])
         .footer(embed_footer); <span class="comment">// フッター設定
 

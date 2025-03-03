@@ -147,13 +147,90 @@
 <a href="#146" id="146">146</a>
 <a href="#147" id="147">147</a>
 <a href="#148" id="148">148</a>
-<a href="#149" id="149">149</a></pre></div><pre class="rust"><code><span class="doccomment">//! find.rs
+<a href="#149" id="149">149</a>
+<a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+<a href="#181" id="181">181</a>
+<a href="#182" id="182">182</a>
+<a href="#183" id="183">183</a>
+<a href="#184" id="184">184</a>
+<a href="#185" id="185">185</a>
+<a href="#186" id="186">186</a>
+<a href="#187" id="187">187</a>
+<a href="#188" id="188">188</a>
+<a href="#189" id="189">189</a>
+<a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a>
+<a href="#212" id="212">212</a>
+<a href="#213" id="213">213</a>
+<a href="#214" id="214">214</a>
+<a href="#215" id="215">215</a></pre></div><pre class="rust"><code><span class="doccomment">//! find.rs
 //!
 //! このファイルは、キャラクター名や技名の検索機能を提供する。
 //! nicknames.json 及びキャラクター JSON から、ユーザー入力に対応する正式なキャラクター名や技のインデックスを返却する。
 
-</span><span class="kw">use crate</span>::{Error, MoveAliases, MoveInfo, Nicknames};
+</span><span class="kw">use </span><span class="kw">crate</span>::error::{AppError, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span><span class="kw">crate</span>::models::{MoveAliases, MoveInfo};
+<span class="kw">use </span>serde::{Deserialize, Serialize};
 <span class="kw">use </span>std::{fs, path::Path};
+
+<span class="doccomment">/// ニックネーム情報を保持する構造体
+</span><span class="attr">#[derive(Serialize, Deserialize, Debug, Clone)]
+</span><span class="kw">pub struct </span>Nicknames {
+    <span class="doccomment">/// 正式キャラクター名
+    </span><span class="kw">pub </span>character: String,
+    <span class="doccomment">/// ニックネームリスト
+    </span><span class="kw">pub </span>nicknames: Vec&lt;String&gt;,
+}
 
 <span class="doccomment">/// キャラクター名を検索し、該当する正式なキャラクター名を返却する非同期関数
 ///
@@ -165,17 +242,19 @@
 /// * `character` - ユーザー入力のキャラクター名またはニックネーム
 ///
 /// # 戻り値
-/// 正式なキャラクター名を含む `Result&lt;String, Error&gt;` を返す
-</span><span class="kw">pub async fn </span>find_character(character: <span class="kw-2">&amp;</span>String) -&gt; <span class="prelude-ty">Result</span>&lt;String, Error&gt; {
+/// 正式なキャラクター名を含む `Result&lt;String&gt;` を返す
+</span><span class="kw">pub async fn </span>find_character(character: <span class="kw-2">&amp;</span>String) -&gt; <span class="prelude-ty">Result</span>&lt;String&gt; {
     <span class="comment">// 出力判定用フラグ（常に false、後の分岐で利用）
     </span><span class="kw">let </span>character_found = <span class="bool-val">false</span>;
 
     <span class="comment">// nicknames.json ファイル読み込み　結果：JSON文字列取得
-    </span><span class="kw">let </span>data_from_file =
-        fs::read_to_string(<span class="string">"data/nicknames.json"</span>).expect(<span class="string">"\nFailed to read 'nicknames.json' file."</span>);
+    </span><span class="kw">let </span>data_from_file = fs::read_to_string(<span class="string">"data/nicknames.json"</span>).map_err(|e| {
+        AppError::FileNotFound(<span class="macro">format!</span>(<span class="string">"nicknames.jsonの読み込みに失敗しました: {}"</span>, e))
+    })<span class="question-mark">?</span>;
 
     <span class="comment">// JSON文字列を Nicknames 構造体のベクターへデシリアライズ　結果：vec_nicknames
-    </span><span class="kw">let </span>vec_nicknames = serde_json::from_str::&lt;Vec&lt;Nicknames&gt;&gt;(<span class="kw-2">&amp;</span>data_from_file).unwrap();
+    </span><span class="kw">let </span>vec_nicknames =
+        serde_json::from_str::&lt;Vec&lt;Nicknames&gt;&gt;(<span class="kw-2">&amp;</span>data_from_file).map_err(|e| AppError::Json(e))<span class="question-mark">?</span>;
 
     <span class="comment">// 各キャラクターエントリ走査　結果：該当エントリ検出時に正式名称返却
     </span><span class="kw">if </span>!character_found {
@@ -214,9 +293,11 @@
     <span class="kw">if </span>!character_found {
         <span class="comment">// キャラクター未検出時エラーメッセージ作成　結果：エラー返却
         </span><span class="kw">let </span>error_msg = <span class="string">"Character `"</span>.to_owned() + character + <span class="string">"` was not found!"</span>;
-        <span class="prelude-val">Err</span>(error_msg.into())
+        <span class="prelude-val">Err</span>(AppError::CharacterNotFound(error_msg))
     } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(<span class="string">"Weird logic error in find_character"</span>.into())
+        <span class="prelude-val">Err</span>(AppError::Other(
+            <span class="string">"Weird logic error in find_character"</span>.to_string(),
+        ))
     }
 }
 
@@ -233,12 +314,12 @@
 /// * `moves_info` - キャラクターの技情報のスライス
 ///
 /// # 戻り値
-/// 該当技のインデックスを含む `Result&lt;usize, Error&gt;` を返す
+/// 該当技のインデックスを含む `Result&lt;usize&gt;` を返す
 </span><span class="kw">pub async fn </span>find_move_index(
     character_arg_altered: <span class="kw-2">&amp;</span>String,
     <span class="kw-2">mut </span>character_move: String,
     moves_info: <span class="kw-2">&amp;</span>[MoveInfo],
-) -&gt; <span class="prelude-ty">Result</span>&lt;usize, Error&gt; {
+) -&gt; <span class="prelude-ty">Result</span>&lt;usize&gt; {
     <span class="comment">// 出力判定用フラグ（常に false、後の分岐で利用）
     </span><span class="kw">let </span>move_found = <span class="bool-val">false</span>;
 
@@ -246,11 +327,16 @@
     </span><span class="kw">let </span>aliases_path = <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/aliases.json"</span>;
     <span class="kw">if </span>Path::new(<span class="kw-2">&amp;</span>aliases_path).exists() {
         <span class="comment">// aliases.json ファイル読み込み　結果：JSON文字列取得
-        </span><span class="kw">let </span>aliases_data = fs::read_to_string(<span class="kw-2">&amp;</span>aliases_path)
-            .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + <span class="kw-2">&amp;</span>aliases_path + <span class="string">"' file."</span>));
+        </span><span class="kw">let </span>aliases_data = fs::read_to_string(<span class="kw-2">&amp;</span>aliases_path).map_err(|e| {
+            AppError::FileNotFound(<span class="macro">format!</span>(
+                <span class="string">"{}ファイルの読み込みに失敗しました: {}"</span>,
+                aliases_path, e
+            ))
+        })<span class="question-mark">?</span>;
 
         <span class="comment">// JSON文字列を MoveAliases 構造体のベクターにデシリアライズ　結果：aliases_data
-        </span><span class="kw">let </span>aliases_data = serde_json::from_str::&lt;Vec&lt;MoveAliases&gt;&gt;(<span class="kw-2">&amp;</span>aliases_data).unwrap();
+        </span><span class="kw">let </span>aliases_data = serde_json::from_str::&lt;Vec&lt;MoveAliases&gt;&gt;(<span class="kw-2">&amp;</span>aliases_data)
+            .map_err(|e| AppError::Json(e))<span class="question-mark">?</span>;
 
         <span class="lifetime">'outer</span>: <span class="kw">for </span>alias_data <span class="kw">in </span>aliases_data {
             <span class="comment">// 各エイリアス走査　結果：入力文字列と一致すれば実際の技入力に変換
@@ -291,9 +377,55 @@
     <span class="kw">if </span>!move_found {
         <span class="comment">// 技未検出時エラーメッセージ作成　結果：エラー返却
         </span><span class="kw">let </span>error_msg = <span class="string">"Move `"</span>.to_owned() + <span class="kw-2">&amp;</span>character_move + <span class="string">"` was not found!"</span>;
-        <span class="prelude-val">Err</span>(error_msg.into())
+        <span class="prelude-val">Err</span>(AppError::MoveNotFound(error_msg))
     } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(<span class="string">"Weird logic error in find_move"</span>.into())
+        <span class="prelude-val">Err</span>(AppError::Other(
+            <span class="string">"Weird logic error in find_move"</span>.to_string(),
+        ))
     }
+}
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::test_utils::create_test_json_file;
+    <span class="kw">use </span>std::path::PathBuf;
+    <span class="kw">use </span>tempfile::TempDir;
+
+    <span class="kw">fn </span>setup_test_nicknames() -&gt; (TempDir, PathBuf) {
+        <span class="kw">let </span>temp_dir = TempDir::new().unwrap();
+        <span class="kw">let </span>temp_path = temp_dir.path().to_path_buf();
+
+        <span class="kw">let </span>nicknames_json = <span class="string">r#"[
+            {
+                "character": "sol",
+                "nicknames": ["sol", "sol badguy", "badguy", "frederick", "flamethrower"]
+            },
+            {
+                "character": "ky",
+                "nicknames": ["ky", "ky kiske", "kiske", "lightning", "boy scout"]
+            }
+        ]"#</span>;
+
+        <span class="kw">let </span>data_dir = temp_path.join(<span class="string">"data"</span>);
+        fs::create_dir_all(<span class="kw-2">&amp;</span>data_dir).unwrap();
+        create_test_json_file(data_dir.join(<span class="string">"nicknames.json"</span>), nicknames_json).unwrap();
+
+        (temp_dir, temp_path)
+    }
+
+    <span class="attr">#[tokio::test]
+    </span><span class="kw">async fn </span>test_find_character() {
+        <span class="kw">let </span>(temp_dir, temp_path) = setup_test_nicknames();
+
+        <span class="comment">// TODO: テストコードを実装
+        // 現在のコードだとdata/nicknames.jsonに依存しているため、
+        // テスト用のパスを注入できるように関数を修正する必要がある
+    </span>}
+
+    <span class="attr">#[tokio::test]
+    </span><span class="kw">async fn </span>test_find_move_index() {
+        <span class="comment">// TODO: テストコードを実装
+    </span>}
 }
 </code></pre></div></section></main></body></html>

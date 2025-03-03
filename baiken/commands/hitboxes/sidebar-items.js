@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["hitboxes"]};
+window.SIDEBAR_ITEMS = {"constant":["HITBOX_DEFAULT"],"fn":["hitboxes"]};

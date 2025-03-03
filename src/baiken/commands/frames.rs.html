@@ -48,7 +48,7 @@
 </span><span class="kw">mod </span>simple; <span class="comment">// 簡易フレームデータ表示モジュール
 
 // 必要なインポート
-</span><span class="kw">use crate</span>::{Context, Error}; <span class="comment">// コンテキストとエラー型
+</span><span class="kw">use crate</span>::{error::AppError, Context}; <span class="comment">// コンテキストとエラー型
 </span><span class="kw">use </span>advanced::advanced; <span class="comment">// advanced サブコマンド関数
 </span><span class="kw">use </span>meter::meter; <span class="comment">// meter サブコマンド関数
 </span><span class="kw">use </span>simple::simple; <span class="comment">// simple サブコマンド関数
@@ -64,14 +64,14 @@
 /// - meter: メーター関連のフレームデータを表示
 ///
 /// # 戻り値
-/// 成功時は `Ok(())`, エラー時は `Err(Error)` を返す
+/// 成功時は `Ok(())`, エラー時は `Err(AppError)` を返す
 </span><span class="attr">#[poise::command(
     prefix_command,
     slash_command,
     subcommands(<span class="string">"simple"</span>, <span class="string">"advanced"</span>, <span class="string">"meter"</span>),
     subcommand_required
 )]
-</span><span class="kw">pub async fn </span>frames(<span class="kw">_</span>: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+</span><span class="kw">pub async fn </span>frames(<span class="kw">_</span>: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="prelude-val">Ok</span>(())
 }
 </code></pre></div></section></main></body></html>

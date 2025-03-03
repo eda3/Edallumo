@@ -65,12 +65,12 @@
 //! Discordコマンド /nicknames 実装モジュール  
 //! JSONファイルからキャラクターごとのニックネームを取得し、整形後に送信する処理を提供
 
-</span><span class="kw">use crate</span>::{check, Context, Error, Nicknames};
+</span><span class="kw">use crate</span>::{check, error::AppError, Context, Nicknames};
 <span class="kw">use </span>std::{fs, string::String};
 
 <span class="doccomment">/// キャラクターごとのニックネーム一覧を表示する処理  
 </span><span class="attr">#[poise::command(prefix_command, slash_command, aliases(<span class="string">"n"</span>))]
-</span><span class="kw">pub async fn </span>nicknames(ctx: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+</span><span class="kw">pub async fn </span>nicknames(ctx: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="comment">// 入力検証および必要なファイルの存在確認処理
     // adaptive_check: ファイルの整合性確認（失敗時は処理を中断）
     </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">false</span>, <span class="bool-val">false</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>).<span class="kw">await</span>).is_err() {

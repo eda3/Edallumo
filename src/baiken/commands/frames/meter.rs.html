@@ -353,13 +353,22 @@
 <a href="#352" id="352">352</a>
 <a href="#353" id="353">353</a>
 <a href="#354" id="354">354</a>
-<a href="#355" id="355">355</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
+<a href="#355" id="355">355</a>
+<a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
+<a href="#360" id="360">360</a>
+<a href="#361" id="361">361</a>
+<a href="#362" id="362">362</a>
+<a href="#363" id="363">363</a>
+<a href="#364" id="364">364</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
 //! ファイル全体説明コメント
 //! フレームメーター表示機能全体
 //! 開始・アクティブ・リカバリーフレーム情報処理
 //! コマンド実行機能
 
-</span><span class="kw">use crate</span>::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, IMAGE_DEFAULT}; <span class="comment">// 依存モジュール群
+</span><span class="kw">use crate</span>::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR}; <span class="comment">// 依存モジュール群
 </span><span class="kw">use </span>colored::Colorize; <span class="comment">// 文字色変換ライブラリ
 </span><span class="kw">use </span>poise::serenity_prelude::CreateEmbed; <span class="comment">// 埋め込み作成ライブラリ
 </span><span class="kw">use </span>std::{fs, string::String}; <span class="comment">// ファイル操作・文字列操作
@@ -368,7 +377,10 @@
 </span><span class="kw">const </span>RED_SQUARE: <span class="kw-2">&amp;</span>str = <span class="string">"🟥\u{200b}"</span>; <span class="comment">// 赤四角定数
 </span><span class="kw">const </span>BLUE_DIAMOND: <span class="kw-2">&amp;</span>str = <span class="string">"🔷\u{200b}"</span>; <span class="comment">// 青菱形定数
 
-</span><span class="doccomment">/// 指定ムーブの開始フレーム情報からシンボル文字列生成
+</span><span class="doccomment">/// デフォルト画像URL
+</span><span class="kw">const </span>IMAGE_DEFAULT: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png"</span>;
+
+<span class="doccomment">/// 指定ムーブの開始フレーム情報からシンボル文字列生成
 ///
 /// # 引数
 /// * `move_info` - ムーブ情報構造体参照
@@ -376,7 +388,9 @@
 /// # 戻り値
 /// 開始フレームシンボル文字列
 </span><span class="kw">async fn </span>startup_frames(move_info: <span class="kw-2">&amp;</span>MoveInfo) -&gt; String {
-    <span class="kw">let </span>startup_vec = sep_frame_vec(<span class="kw-2">&amp;</span>move_info.startup).<span class="kw">await</span>; <span class="comment">// 開始フレーム分割結果取得
+    <span class="comment">// Option&lt;i32&gt;の場合は文字列に変換
+    </span><span class="kw">let </span>startup_str = move_info.startup.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string());
+    <span class="kw">let </span>startup_vec = sep_frame_vec(<span class="kw-2">&amp;</span>startup_str).<span class="kw">await</span>; <span class="comment">// 開始フレーム分割結果取得
     </span><span class="kw">let </span><span class="kw-2">mut </span>meter_msg = String::new(); <span class="comment">// メーター文字列初期化
                                        // println!("startup_vec: {:?}", startup_vec); // デバッグ出力用
 
@@ -493,7 +507,11 @@
 /// # 戻り値
 /// リカバリーフレームシンボル文字列
 </span><span class="kw">async fn </span>recovery_frames(move_info: <span class="kw-2">&amp;</span>MoveInfo) -&gt; String {
-    <span class="kw">let </span>recovery_vec = sep_frame_vec(<span class="kw-2">&amp;</span>move_info.recovery).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム分割結果取得
+    <span class="comment">// Option&lt;i32&gt;の場合は文字列に変換
+    </span><span class="kw">let </span>recovery_str = move_info
+        .recovery
+        .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string());
+    <span class="kw">let </span>recovery_vec = sep_frame_vec(<span class="kw-2">&amp;</span>recovery_str).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム分割結果取得
     </span><span class="kw">let </span><span class="kw-2">mut </span>meter_msg = String::new(); <span class="comment">// メーター文字列初期化
 
     </span><span class="kw">if </span>recovery_vec.len() == <span class="number">1 </span>&amp;&amp; recovery_vec[<span class="number">0</span>] == <span class="string">"-" </span>{
@@ -582,7 +600,7 @@
 /// * `character_move` - ムーブ名・入力またはエイリアス
 ///
 /// # 戻り値
-/// 処理結果 `Result&lt;(), Error&gt;`
+/// 処理結果 `Result&lt;(), AppError&gt;`
 </span><span class="attr">#[poise::command(prefix_command, slash_command)]
 </span><span class="kw">pub async fn </span>meter(
     ctx: Context&lt;<span class="lifetime">'_</span>&gt;, <span class="comment">// コマンドコンテキスト
@@ -593,7 +611,7 @@
     #[rename = <span class="string">"move"</span>]
     #[description = <span class="string">"Move name, input or alias."</span>]
     </span>character_move: String, <span class="comment">// ムーブ指定文字列
-</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">", " </span>+ <span class="kw-2">&amp;</span>character_move + <span class="string">"'"</span>).purple()
@@ -692,9 +710,9 @@
         </span>.title(embed_title) <span class="comment">// タイトル設定
         </span>.url(embed_url) <span class="comment">// URL設定
         </span>.fields(<span class="macro">vec!</span>[
-            (<span class="string">"Startup"</span>, <span class="kw-2">&amp;</span>move_info.startup.to_string(), <span class="bool-val">true</span>), <span class="comment">// 開始フレームフィールド
-            </span>(<span class="string">"Active"</span>, <span class="kw-2">&amp;</span>move_info.active.to_string(), <span class="bool-val">true</span>),   <span class="comment">// アクティブフレームフィールド
-            </span>(<span class="string">"Recovery"</span>, <span class="kw-2">&amp;</span>move_info.recovery.to_string(), <span class="bool-val">true</span>), <span class="comment">// リカバリーフレームフィールド
+            (<span class="string">"Startup"</span>, <span class="kw-2">&amp;</span>startup_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// 開始フレームフィールド
+            </span>(<span class="string">"Active"</span>, <span class="kw-2">&amp;</span>active_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>),   <span class="comment">// アクティブフレームフィールド
+            </span>(<span class="string">"Recovery"</span>, <span class="kw-2">&amp;</span>recovery_frames(move_info).<span class="kw">await</span>, <span class="bool-val">true</span>), <span class="comment">// リカバリーフレームフィールド
         </span>])
         .image(embed_image); <span class="comment">// 画像設定
 

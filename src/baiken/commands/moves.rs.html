@@ -189,7 +189,7 @@
 //! キャラクター名および技情報の取得、整形、埋め込みメッセージ生成を行う。
 
 </span><span class="kw">mod </span>utils; <span class="comment">// ユーティリティ関数群
-</span><span class="kw">use crate</span>::{check, find, Context, Error, MoveAliases, MoveInfo, EMBED_COLOR}; <span class="comment">// 必要な型・関数群
+</span><span class="kw">use crate</span>::{check, error::AppError, find, Context, MoveAliases, MoveInfo, EMBED_COLOR}; <span class="comment">// 必要な型・関数群
 </span><span class="kw">use </span>colored::Colorize; <span class="comment">// 文字色変換用
 </span><span class="kw">use </span>poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; <span class="comment">// 埋め込み生成用
 </span><span class="kw">use </span>std::{fs, string::String}; <span class="comment">// ファイル操作・文字列操作用
@@ -229,7 +229,7 @@
     </span><span class="attr">#[rename = <span class="string">"type"</span>]
     #[description = <span class="string">"Move type."</span>] </span><span class="comment">// 技種別指定
     </span>category: TypeChoice, <span class="comment">// 技種別選択値
-</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">"'"</span>).purple() <span class="comment">// 引数出力

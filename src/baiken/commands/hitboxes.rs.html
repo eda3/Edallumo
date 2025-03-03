@@ -175,19 +175,25 @@
 <a href="#174" id="174">174</a>
 <a href="#175" id="175">175</a>
 <a href="#176" id="176">176</a>
-<a href="#177" id="177">177</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
 //!
 //! ヒットボックス画像表示モジュール。
 //! キャラクターの技のヒットボックス画像を表示するためのコマンドを提供する。
 //! 指定されたキャラクターと技に対応するヒットボックス画像をDiscord上に埋め込み表示する。
 
 </span><span class="comment">// 必要なインポート
-</span><span class="kw">use crate</span>::{check, find, Context, Error, ImageLinks, MoveInfo, EMBED_COLOR, HITBOX_DEFAULT}; <span class="comment">// 各種機能とデータ型
+</span><span class="kw">use crate</span>::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR}; <span class="comment">// 各種機能とデータ型
 </span><span class="kw">use </span>colored::Colorize; <span class="comment">// ターミナル出力の色付け
 </span><span class="kw">use </span>poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; <span class="comment">// Discord埋め込み作成
 </span><span class="kw">use </span>std::{fs, string::String}; <span class="comment">// ファイル操作と文字列型
 
-</span><span class="doccomment">/// ヒットボックス画像表示コマンド
+</span><span class="doccomment">/// デフォルトヒットボックス画像URL
+</span><span class="kw">const </span>HITBOX_DEFAULT: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png"</span>;
+
+<span class="doccomment">/// ヒットボックス画像表示コマンド
 ///
 /// # 概要
 /// 指定されたキャラクターの技のヒットボックス画像を表示する。
@@ -211,7 +217,7 @@
     #[rename = <span class="string">"move"</span>]
     #[description = <span class="string">"Move name, input or alias."</span>]
     </span>character_move: String,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="comment">// コマンド引数のログ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,

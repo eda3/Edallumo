@@ -83,36 +83,7 @@
 <a href="#82" id="82">82</a>
 <a href="#83" id="83">83</a>
 <a href="#84" id="84">84</a>
-<a href="#85" id="85">85</a>
-<a href="#86" id="86">86</a>
-<a href="#87" id="87">87</a>
-<a href="#88" id="88">88</a>
-<a href="#89" id="89">89</a>
-<a href="#90" id="90">90</a>
-<a href="#91" id="91">91</a>
-<a href="#92" id="92">92</a>
-<a href="#93" id="93">93</a>
-<a href="#94" id="94">94</a>
-<a href="#95" id="95">95</a>
-<a href="#96" id="96">96</a>
-<a href="#97" id="97">97</a>
-<a href="#98" id="98">98</a>
-<a href="#99" id="99">99</a>
-<a href="#100" id="100">100</a>
-<a href="#101" id="101">101</a>
-<a href="#102" id="102">102</a>
-<a href="#103" id="103">103</a>
-<a href="#104" id="104">104</a>
-<a href="#105" id="105">105</a>
-<a href="#106" id="106">106</a>
-<a href="#107" id="107">107</a>
-<a href="#108" id="108">108</a>
-<a href="#109" id="109">109</a>
-<a href="#110" id="110">110</a>
-<a href="#111" id="111">111</a>
-<a href="#112" id="112">112</a>
-<a href="#113" id="113">113</a>
-<a href="#114" id="114">114</a></pre></div><pre class="rust"><code><span class="doccomment">//! update.rs
+<a href="#85" id="85">85</a></pre></div><pre class="rust"><code><span class="doccomment">//! update.rs
 //!
 //! このファイルは、Dustloop Wiki のデータ更新機能を提供する。
 //! フレームデータ、画像データの更新処理を実行する関数群を実装する。
@@ -123,7 +94,7 @@
 </span><span class="kw">mod </span>images; <span class="comment">// images.rs モジュール　画像データ更新処理群
 </span><span class="kw">mod </span>images_json; <span class="comment">// images_json.rs モジュール　画像データJSON変換処理群
 
-</span><span class="kw">use crate</span>::{check, find, Context, Error, CHARS}; <span class="comment">// 共通チェック関数、検索関数、型定義群
+</span><span class="kw">use crate</span>::{check, error::Result, find, Context, CHARS}; <span class="comment">// 共通チェック関数、検索関数、型定義群
 </span><span class="kw">use </span>colored::Colorize; <span class="comment">// 文字色変換機能
 
 </span><span class="doccomment">/// 更新対象選択列挙体
@@ -137,29 +108,42 @@
     </span>Images, <span class="comment">// 画像更新選択
 </span>}
 
-<span class="doccomment">/// Dustloop のデータ更新コマンド（オーナー専用）
+<span class="doccomment">/// アップデートコマンド本体  
+/// ロール名：BotOwner が必須
+</span><span class="attr">#[poise::command(prefix_command, slash_command, owners_only)]
+</span><span class="kw">pub async fn </span>update(ctx: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+    <span class="comment">// 入力チェック実施　条件確認
+    </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>).<span class="kw">await</span>).is_err() {
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// チェック失敗時終了
+    </span>}
+
+    ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
+
+    // 全キャラクター情報更新
+    </span>framedata::get_char_data(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
+    </span>images::get_char_images(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// 画像データ更新
+
+    </span>ctx.say(<span class="string">"Update succesful!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新完了通知
+
+    </span><span class="prelude-val">Ok</span>(()) <span class="comment">// 正常終了
+</span>}
+
+<span class="doccomment">/// 全キャラクター更新処理　自動更新用関数
 ///
-/// # 概要
-/// 指定キャラクターまたは "all" により、フレームデータおよび画像データの更新処理を実行する。
-/// キャラクター名またはニックネーム、または "all" を指定することで更新対象を決定する。
-///
-/// # 引数
-/// * `ctx` - コマンド実行コンテキスト
-/// * `character` - キャラクター名、ニックネーム、または "all"（2文字以上）
-/// * `option` - 更新対象選択（"frames", "images", "all"）
-///
-/// # 戻り値
-/// `Result&lt;(), Error&gt;` を返す
-</span><span class="attr">#[poise::command(prefix_command, slash_command, owners_only, ephemeral)]
-</span><span class="kw">pub async fn </span>update(
-    ctx: Context&lt;<span class="lifetime">'_</span>&gt;, <span class="comment">// コマンドコンテキスト
-    </span><span class="attr">#[min_length = <span class="number">2</span>]
-    #[description = <span class="string">r#"Character name, nickname or "all"."#</span>]
-    </span><span class="comment">// キャラクター名、ニックネーム、または "all"
-    </span>character: String, <span class="comment">// キャラクター指定文字列
-    </span><span class="attr">#[description = <span class="string">r#"Select "frames", "images" or "all"."#</span>] </span><span class="comment">// 更新対象選択用文字列
-    </span>option: UpdateChoice, <span class="comment">// 更新対象選択値
-</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+/// 24時間ごとに全キャラクターのフレームデータおよび画像データを更新する。
+</span><span class="kw">pub async fn </span>update_all_char_data() {
+    <span class="comment">// 全キャラクターのフレームデータ更新
+    </span>framedata::get_char_data(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>;
+    <span class="comment">// 全キャラクターの画像データ更新
+    </span>images::get_char_images(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>;
+}
+
+<span class="doccomment">/// キャラクター別アップデートサブコマンド  
+</span><span class="attr">#[poise::command(prefix_command, slash_command, owners_only)]
+</span><span class="kw">pub async fn </span>character(
+    ctx: Context&lt;<span class="lifetime">'_</span>&gt;,
+    <span class="attr">#[description = <span class="string">"対象キャラクター名"</span>] </span>character: String,
+) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="comment">// 入力チェック実施　条件確認
     </span><span class="kw">if </span>(check::adaptive_check(ctx, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>).<span class="kw">await</span>).is_err() {
         <span class="kw">return </span><span class="prelude-val">Ok</span>(()); <span class="comment">// チェック失敗時終了
@@ -176,54 +160,12 @@
     };
 
     <span class="comment">// 更新対象分岐処理
-    </span><span class="kw">match </span>option {
-        UpdateChoice::All =&gt; {
-            <span class="comment">// 全更新の場合
-            // "all" が指定された場合：全キャラクター更新
-            </span><span class="kw">if </span>character.trim().to_lowercase() == <span class="string">"all" </span>{
-                ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-                </span>update_all_char_data().<span class="kw">await</span>; <span class="comment">// 全キャラクター更新実行
-            </span>} <span class="kw">else </span>{
-                <span class="comment">// 特定キャラクター更新の場合
-                </span>ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-                </span>framedata::get_char_data(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
-                </span>images::get_char_images(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// 画像データ更新
-            </span>}
-        }
-        UpdateChoice::Frames =&gt; {
-            <span class="comment">// フレーム更新の場合
-            </span><span class="kw">if </span>character.trim().to_lowercase() == <span class="string">"all" </span>{
-                ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-                </span>framedata::get_char_data(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// 全キャラクターのフレームデータ更新
-            </span>} <span class="kw">else </span>{
-                ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-                </span>framedata::get_char_data(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// 特定キャラクターのフレームデータ更新
-            </span>}
-        }
-        UpdateChoice::Images =&gt; {
-            <span class="comment">// 画像更新の場合
-            </span><span class="kw">if </span>character.trim().to_lowercase() == <span class="string">"all" </span>{
-                ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-                </span>images::get_char_images(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>; <span class="comment">// 全キャラクターの画像データ更新
-            </span>} <span class="kw">else </span>{
-                ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
-                </span>images::get_char_images(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// 特定キャラクターの画像データ更新
-            </span>}
-        }
-    }
+    </span>ctx.say(<span class="string">"Update started!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新開始通知
+    </span>framedata::get_char_data(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// フレームデータ更新
+    </span>images::get_char_images(CHARS, <span class="kw-2">&amp;</span>character_arg_altered).<span class="kw">await</span>; <span class="comment">// 画像データ更新
 
-    ctx.say(<span class="string">"Update succesful!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新完了通知
+    </span>ctx.say(<span class="string">"Update succesful!"</span>).<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// 更新完了通知
 
     </span><span class="prelude-val">Ok</span>(()) <span class="comment">// 正常終了
 </span>}
-
-<span class="doccomment">/// 全キャラクター更新処理　自動更新用関数
-///
-/// 24時間ごとに全キャラクターのフレームデータおよび画像データを更新する。
-</span><span class="kw">pub async fn </span>update_all_char_data() {
-    <span class="comment">// 全キャラクターのフレームデータ更新
-    </span>framedata::get_char_data(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>;
-    <span class="comment">// 全キャラクターの画像データ更新
-    </span>images::get_char_images(CHARS, <span class="string">"all"</span>).<span class="kw">await</span>;
-}
 </code></pre></div></section></main></body></html>

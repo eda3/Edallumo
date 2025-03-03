@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["simple"]};
+window.SIDEBAR_ITEMS = {"constant":["IMAGE_DEFAULT"],"fn":["simple"]};

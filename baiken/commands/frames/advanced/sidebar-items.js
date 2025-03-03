@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["advanced"]};
+window.SIDEBAR_ITEMS = {"constant":["IMAGE_DEFAULT"],"fn":["advanced"]};

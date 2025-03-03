@@ -14,22 +14,20 @@
 <a href="#13" id="13">13</a>
 <a href="#14" id="14">14</a>
 <a href="#15" id="15">15</a>
-<a href="#16" id="16">16</a>
-<a href="#17" id="17">17</a></pre></div><pre class="rust"><code><span class="doccomment">//! # register.rs
+<a href="#16" id="16">16</a></pre></div><pre class="rust"><code><span class="doccomment">//! # register.rs
 //!  
 //! アプリケーションコマンド登録・解除モジュール  
 //! Discordコマンド /register 実装モジュール  
 //! ギルドまたはグローバルでアプリケーションコマンドを登録・解除する処理を提供  
 //! このコマンドは、Botの所有者のみ実行可能
 
-</span><span class="kw">use crate</span>::{Context, Error};
+</span><span class="kw">use crate</span>::{error::Result, Context};
 
 <span class="doccomment">/// アプリケーションコマンドの登録・解除処理  
 </span><span class="attr">#[poise::command(prefix_command, slash_command, hide_in_help, owners_only)]
-</span><span class="kw">pub async fn </span>register(ctx: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+</span><span class="kw">pub async fn </span>register(ctx: Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="comment">// アプリケーションコマンドの登録・解除用ボタンを表示する処理
     </span>poise::builtins::register_application_commands_buttons(ctx).<span class="kw">await</span><span class="question-mark">?</span>;
-
     <span class="prelude-val">Ok</span>(())
 }
 </code></pre></div></section></main></body></html>
