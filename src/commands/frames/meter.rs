@@ -229,6 +229,162 @@ async fn sep_frame_vec(text: &str) -> Vec<String> {
     result // 分割結果返却
 }
 
+/// キャラクターデータを読み込む関数
+///
+/// # 引数
+/// * `character` - ユーザーが入力したキャラクター名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// 成功時は正式なキャラクター名、失敗時はエラー
+async fn load_character_data(character: &str, ctx: &Context<'_>) -> Result<String, AppError> {
+    // キャラクター探索処理（エイリアス対応）
+    let character_arg_altered = match find::find_character(&character.to_string()).await {
+        Ok(character_arg_altered) => character_arg_altered, // キャラクター名称確定
+        Err(err) => {
+            ctx.say(err.to_string()).await?; // エラーメッセージ送信
+            println!("{}", ("Error: ".to_owned() + &err.to_string()).red()); // エラー出力
+            return Err(AppError::CharacterNotFound(err.to_string())); // エラー時早期返却
+        }
+    };
+
+    Ok(character_arg_altered)
+}
+
+/// 技情報と画像データを読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+/// * `character` - 元のキャラクター名（エラーメッセージ用）
+///
+/// # 戻り値
+/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
+async fn find_move_and_images(
+    character_arg_altered: &str,
+    character_move: &str,
+    ctx: &Context<'_>,
+    character: &str,
+) -> Result<(MoveInfo, String), AppError> {
+    // キャラクターファイルパス生成
+    let char_file_path =
+        "data/".to_owned() + character_arg_altered + "/" + character_arg_altered + ".json"; // JSONファイルパス生成
+    let char_file_data = fs::read_to_string(char_file_path)
+        .expect(&("\nFailed to read '".to_owned() + character + ".json" + "' file.")); // ファイル読み込み
+
+    // キャラクター情報デシリアライズ
+    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).unwrap(); // ムーブ情報抽出
+
+    println!(
+        "{}",
+        ("Successfully read '".to_owned() + character_arg_altered + ".json' file.").green()
+    ); // 成功出力
+
+    // ムーブ探索処理（インデックス取得）
+    let index = match find::find_move_index(
+        &character_arg_altered.to_string(),
+        character_move.to_string(),
+        &moves_info,
+    )
+    .await
+    {
+        Ok(index) => index, // ムーブインデックス確定
+        Err(err) => {
+            ctx.say(err.to_string() + "\nView the moves of a character by executing `/moves`.")
+                .await?; // エラーメッセージ送信
+            println!("{}", ("Error: ".to_owned() + &err.to_string()).red()); // エラー出力
+            return Err(AppError::MoveNotFound(err.to_string())); // エラー時早期返却
+        }
+    };
+
+    // 画像情報ファイル読み込み
+    let image_links = fs::read_to_string(
+        "data/".to_owned() + character_arg_altered + "/images.json",
+    )
+    .expect(
+        &("\nFailed to read 'data/".to_owned() + character_arg_altered + "'/images.json' file."),
+    ); // 画像ファイル読み込み
+
+    // 画像情報デシリアライズ
+    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap(); // 画像リンク抽出
+    let selected_move_info = moves_info[index].clone(); // 対象ムーブ情報取得
+    let mut embed_image = String::new(); // 埋め込み画像初期化
+
+    // ムーブ画像送信処理
+    for img_links in image_links {
+        // 画像リンク走査ループ
+        if selected_move_info.input == img_links.input {
+            // ヒット判定
+            println!(
+                "{}",
+                ("Successfully read move '".to_owned()
+                    + &selected_move_info.input
+                    + "' in '"
+                    + character_arg_altered
+                    + ".json' file.")
+                    .green()
+            ); // 成功出力
+
+            embed_image = if img_links.move_img.is_empty() {
+                String::from(IMAGE_DEFAULT) // デフォルト画像設定
+            } else {
+                img_links.move_img // ムーブ画像設定
+            };
+        }
+    }
+
+    // デフォルト画像がセットされていなかった場合
+    if embed_image.is_empty() {
+        embed_image = String::from(IMAGE_DEFAULT);
+    }
+
+    Ok((selected_move_info, embed_image))
+}
+
+/// フレームメーター表示用の埋め込みメッセージを作成する関数
+///
+/// # 引数
+/// * `move_info` - 技情報
+/// * `embed_image` - 埋め込む画像のURL
+/// * `character_arg_altered` - 正式なキャラクター名
+///
+/// # 戻り値
+/// 埋め込みメッセージのベクター
+async fn create_meter_embeds(
+    move_info: &MoveInfo,
+    embed_image: &str,
+    character_arg_altered: &str,
+) -> Vec<CreateEmbed> {
+    // フレームメーター文字列生成処理
+    let mut meter_msg = String::from("`"); // バッククォート開始
+    meter_msg += &startup_frames(move_info).await; // 開始フレーム処理
+    meter_msg += &active_frames(move_info).await; // アクティブフレーム処理
+    meter_msg += &recovery_frames(move_info).await; // リカバリーフレーム処理
+    meter_msg += "`"; // バッククォート終了
+
+    let embed_title = "__**".to_owned() + &move_info.input + "**__"; // 埋め込みタイトル生成
+
+    let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview"; // 埋め込みURL生成
+
+    let embed = CreateEmbed::new()
+        .color(EMBED_COLOR) // 埋め込み色設定
+        .title(embed_title) // タイトル設定
+        .url(embed_url) // URL設定
+        .fields(vec![
+            ("Startup", &startup_frames(move_info).await, true), // 開始フレームフィールド
+            ("Active", &active_frames(move_info).await, true),   // アクティブフレームフィールド
+            ("Recovery", &recovery_frames(move_info).await, true), // リカバリーフレームフィールド
+        ])
+        .image(embed_image); // 画像設定
+
+    let embed2 = CreateEmbed::new()
+        .color(EMBED_COLOR) // 埋め込み色設定
+        .description(&meter_msg); // 説明文設定
+
+    vec![embed, embed2] // 埋め込みベクター作成
+}
+
 /// ムーブのフレームメーターを視覚表示するコマンド処理
 ///
 /// # 引数
@@ -270,108 +426,26 @@ pub async fn meter(
         return Ok(()); // チェック失敗時早期返却
     }
 
-    // キャラクター探索処理（エイリアス対応）
-    let character_arg_altered = match find::find_character(&character).await {
-        Ok(character_arg_altered) => character_arg_altered, // キャラクター名称確定
-        Err(err) => {
-            ctx.say(err.to_string()).await?; // エラーメッセージ送信
-            println!("{}", ("Error: ".to_owned() + &err.to_string()).red()); // エラー出力
-            return Ok(()); // エラー時早期返却
-        }
+    // キャラクターデータ読み込み
+    let Ok(character_arg_altered) = load_character_data(&character, &ctx).await else {
+        return Ok(());
     };
 
-    // キャラクターファイルパス生成
-    let char_file_path =
-        "data/".to_owned() + &character_arg_altered + "/" + &character_arg_altered + ".json"; // JSONファイルパス生成
-    let char_file_data = fs::read_to_string(char_file_path)
-        .expect(&("\nFailed to read '".to_owned() + &character + ".json" + "' file.")); // ファイル読み込み
+    // 技情報と画像データ読み込み
+    let Ok((selected_move_info, embed_image)) =
+        find_move_and_images(&character_arg_altered, &character_move, &ctx, &character).await
+    else {
+        return Ok(());
+    };
 
-    // キャラクター情報デシリアライズ
-    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).unwrap(); // ムーブ情報抽出
+    // 埋め込みメッセージ作成
+    let vec_embeds =
+        create_meter_embeds(&selected_move_info, &embed_image, &character_arg_altered).await;
 
-    println!(
-        "{}",
-        ("Successfully read '".to_owned() + &character_arg_altered + ".json' file.").green()
-    ); // 成功出力
-
-    // ムーブ探索処理（インデックス取得）
-    let index =
-        match find::find_move_index(&character_arg_altered, character_move, &moves_info).await {
-            Ok(index) => index, // ムーブインデックス確定
-            Err(err) => {
-                ctx.say(err.to_string() + "\nView the moves of a character by executing `/moves`.")
-                    .await?; // エラーメッセージ送信
-                println!("{}", ("Error: ".to_owned() + &err.to_string()).red()); // エラー出力
-                return Ok(()); // エラー時早期返却
-            }
-        };
-
-    // 画像情報ファイル読み込み
-    let image_links = fs::read_to_string(
-        "data/".to_owned() + &character_arg_altered + "/images.json",
-    )
-    .expect(
-        &("\nFailed to read 'data/".to_owned() + &character_arg_altered + "'/images.json' file."),
-    ); // 画像ファイル読み込み
-
-    // 画像情報デシリアライズ
-    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap(); // 画像リンク抽出
-    let selected_move_info = &moves_info[index]; // 対象ムーブ情報取得
-    let mut embed_image = String::new(); // 埋め込み画像初期化
-
-    // ムーブ画像送信処理
-    for img_links in image_links {
-        // 画像リンク走査ループ
-        if selected_move_info.input == img_links.input {
-            // ヒット判定
-            println!(
-                "{}",
-                ("Successfully read move '".to_owned()
-                    + &selected_move_info.input.to_string()
-                    + "' in '"
-                    + &character_arg_altered
-                    + ".json' file.")
-                    .green()
-            ); // 成功出力
-
-            embed_image = if img_links.move_img.is_empty() {
-                String::from(IMAGE_DEFAULT) // デフォルト画像設定
-            } else {
-                img_links.move_img // ムーブ画像設定
-            };
-        }
-    }
-
-    // フレームメーター文字列生成処理
-    let mut meter_msg = String::from("`"); // バッククォート開始
-    meter_msg += &startup_frames(selected_move_info).await; // 開始フレーム処理
-    meter_msg += &active_frames(selected_move_info).await; // アクティブフレーム処理
-    meter_msg += &recovery_frames(selected_move_info).await; // リカバリーフレーム処理
-    meter_msg += "`"; // バッククォート終了
-
-    let embed_title = "__**".to_owned() + &selected_move_info.input + "**__"; // 埋め込みタイトル生成
-
-    let embed_url =
-        "https://dustloop.com/w/GGST/".to_owned() + &character_arg_altered + "#Overview"; // 埋め込みURL生成
-
-    let embed = CreateEmbed::new()
-        .color(EMBED_COLOR) // 埋め込み色設定
-        .title(embed_title) // タイトル設定
-        .url(embed_url) // URL設定
-        .fields(vec![
-            ("Startup", &startup_frames(selected_move_info).await, true), // 開始フレームフィールド
-            ("Active", &active_frames(selected_move_info).await, true), // アクティブフレームフィールド
-            ("Recovery", &recovery_frames(selected_move_info).await, true), // リカバリーフレームフィールド
-        ])
-        .image(embed_image); // 画像設定
-
-    let embed2 = CreateEmbed::new()
-        .color(EMBED_COLOR) // 埋め込み色設定
-        .description(&meter_msg); // 説明文設定
-
-    let vec_embeds = vec![embed, embed2]; // 埋め込みベクター作成
+    // 返信作成と送信
     let mut reply = poise::CreateReply::default(); // 返信オブジェクト初期化
     reply.embeds.extend(vec_embeds); // 埋め込み追加
     ctx.send(reply).await?; // 返信送信
+
     Ok(()) // 正常終了
 }
