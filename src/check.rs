@@ -313,11 +313,8 @@ pub fn check_character_folders(data_dir: &str) -> Result<()> {
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリへのパス
-///
-/// # 戻り値
-/// `Result<()>` - 成功時は (), 失敗時はエラー
 #[allow(dead_code)]
-pub fn check_data_integrity(data_dir: &str) -> Result<()> {
+pub fn check_data_integrity(data_dir: &str) {
     println!("{}", "データ整合性の検証を開始します...".cyan());
 
     let data_path = Path::new(data_dir);
@@ -389,8 +386,6 @@ pub fn check_data_integrity(data_dir: &str) -> Result<()> {
     }
 
     println!("{}", "データ整合性の検証が完了しました".green());
-
-    Ok(())
 }
 
 #[cfg(test)]
