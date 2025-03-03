@@ -168,8 +168,7 @@ pub fn load_character_info(data_dir: &str, char_name: &str) -> Result<CharInfo> 
 
     if !char_path.exists() {
         return Err(AppError::CharacterNotFound(format!(
-            "キャラクター情報が見つかりません: {}",
-            char_name
+            "キャラクター情報が見つかりません: {char_name}"
         )));
     }
 
