@@ -350,7 +350,7 @@
 </span>}
 
 <span class="doccomment">/// 埋め込みメッセージのカラーコード
-</span><span class="kw">pub const </span>EMBED_COLOR: u32 = <span class="number">0xFFFF99</span>;
+</span><span class="kw">pub const </span>EMBED_COLOR: u32 = <span class="number">0x00FF_FF99</span>;
 
 <span class="doccomment">/// キャラクター名定数配列
 </span><span class="kw">pub const </span>CHARS: [<span class="kw-2">&amp;</span>str; <span class="number">29</span>] = [
@@ -409,7 +409,7 @@
                 serenity::CreateEmbed::new()
                     .title(<span class="string">"エラーが発生しました"</span>)
                     .description(<span class="macro">format!</span>(<span class="string">"```{error:?}```"</span>))
-                    .color(<span class="number">0xFF0000</span>),
+                    .color(<span class="number">0x00FF_0000</span>),
             );
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.send(embed).<span class="kw">await </span>{
                 <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"エラーメッセージ送信失敗: {e}"</span>).red());
@@ -424,7 +424,7 @@
                     .description(
                         <span class="string">"開発者に問題が報告されました。ご迷惑をおかけして申し訳ありません。"</span>,
                     )
-                    .color(<span class="number">0xFF0000</span>),
+                    .color(<span class="number">0x00FF_0000</span>),
             );
             <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ctx.send(embed).<span class="kw">await </span>{
                 <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"エラーメッセージ送信失敗: {e}"</span>).red());
@@ -589,7 +589,7 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_embed_color() {
         <span class="comment">// カラーコードが正しいことを確認
-        </span><span class="macro">assert_eq!</span>(EMBED_COLOR, <span class="number">0xFFFF99</span>);
+        </span><span class="macro">assert_eq!</span>(EMBED_COLOR, <span class="number">0x00FF_FF99</span>);
     }
 }
 </code></pre></div></section></main></body></html>

@@ -475,10 +475,7 @@
 <a href="#474" id="474">474</a>
 <a href="#475" id="475">475</a>
 <a href="#476" id="476">476</a>
-<a href="#477" id="477">477</a>
-<a href="#478" id="478">478</a>
-<a href="#479" id="479">479</a>
-<a href="#480" id="480">480</a></pre></div><pre class="rust"><code><span class="doccomment">//! # check.rs
+<a href="#477" id="477">477</a></pre></div><pre class="rust"><code><span class="doccomment">//! # check.rs
 //!
 //! 各種チェック機能提供モジュールである。  
 //! ディレクトリ、ファイル、JSON の存在および正当性を確認する関数群を含む。
@@ -517,17 +514,14 @@
 /// 戻り値：正常時 None / エラー発生時エラーメッセージ (Some(String)) を返す。
 </span><span class="kw">pub async fn </span>nicknames_json_exists(init_check: bool) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
     <span class="comment">// nicknames.json ファイル読み込み
-    </span><span class="kw">let </span>data_from_file = <span class="kw">match </span>fs::read_to_string(<span class="string">"data/nicknames.json"</span>) {
-        <span class="prelude-val">Ok</span>(data) =&gt; data,
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; {
-            <span class="kw">let </span>error_msg = <span class="string">"Error: Failed to read 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken."</span>.to_string();
+    </span><span class="kw">let </span><span class="prelude-val">Ok</span>(data_from_file) = fs::read_to_string(<span class="string">"data/nicknames.json"</span>) <span class="kw">else </span>{
+        <span class="kw">let </span>error_msg = <span class="string">"Error: Failed to read 'nicknames.json' file.\nDownload and import the `data` folder from:\nhttps://github.com/yakiimoninja/baiken."</span>.to_string();
 
-            <span class="kw">if </span>init_check {
-                <span class="macro">println!</span>();
-                <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.red());
-            } <span class="kw">else </span>{
-                <span class="kw">return </span><span class="prelude-val">Some</span>(error_msg);
-            }
+        <span class="kw">if </span>init_check {
+            <span class="macro">println!</span>();
+            <span class="macro">panic!</span>(<span class="string">"{}"</span>, error_msg.red());
+        } <span class="kw">else </span>{
+            <span class="kw">return </span><span class="prelude-val">Some</span>(error_msg);
         }
     };
 

@@ -445,9 +445,7 @@
 <a href="#444" id="444">444</a>
 <a href="#445" id="445">445</a>
 <a href="#446" id="446">446</a>
-<a href="#447" id="447">447</a>
-<a href="#448" id="448">448</a>
-<a href="#449" id="449">449</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
+<a href="#447" id="447">447</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
 //! ファイル全体説明コメント
 //! フレームメーター表示機能全体
 //! 開始・アクティブ・リカバリーフレーム情報処理
@@ -503,10 +501,9 @@
                             meter_msg += GREEN_CIRCLE; <span class="comment">// 括弧内緑丸追加
                         </span>}
                         <span class="kw">break</span>; <span class="comment">// ループ中断
-                    </span>} <span class="kw">else </span>{
-                        meter_msg += GREEN_CIRCLE; <span class="comment">// 括弧前：緑丸追加
                     </span>}
-                }
+                    meter_msg += GREEN_CIRCLE; <span class="comment">// 括弧前：緑丸追加
+                </span>}
             }
             <span class="comment">// 数字以外のエントリの場合
             </span><span class="kw">else </span>{
@@ -618,10 +615,9 @@
                             meter_msg += BLUE_DIAMOND; <span class="comment">// チルダ内青菱形追加
                         </span>}
                         <span class="kw">break</span>; <span class="comment">// ループ中断
-                    </span>} <span class="kw">else </span>{
-                        meter_msg += BLUE_DIAMOND; <span class="comment">// チルダ前：青菱形追加
                     </span>}
-                }
+                    meter_msg += BLUE_DIAMOND; <span class="comment">// チルダ前：青菱形追加
+                </span>}
             }
             <span class="comment">// 数値以外のエントリの場合
             </span><span class="kw">else </span>{

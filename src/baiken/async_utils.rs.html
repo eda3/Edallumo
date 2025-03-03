@@ -292,7 +292,7 @@
         <span class="kw">let </span>start_time = Instant::now();
 
         <span class="kw">match </span>f().<span class="kw">await </span>{
-            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
+            <span class="prelude-val">Ok</span>(()) =&gt; {
                 <span class="kw">let </span>elapsed = start_time.elapsed();
                 <span class="macro">info!</span>(
                     <span class="string">"タスク完了: {} (所要時間: {:.2}秒)"</span>,
@@ -337,7 +337,7 @@
             <span class="kw">let </span>start_time = Instant::now();
 
             <span class="kw">match </span>f().<span class="kw">await </span>{
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
+                <span class="prelude-val">Ok</span>(()) =&gt; {
                     <span class="kw">let </span>elapsed = start_time.elapsed();
                     <span class="macro">info!</span>(
                         <span class="string">"定期タスク完了: {} (所要時間: {:.2}秒)"</span>,
@@ -383,7 +383,7 @@
         <span class="kw">let </span>start_time = Instant::now();
 
         <span class="kw">match </span>f().<span class="kw">await </span>{
-            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
+            <span class="prelude-val">Ok</span>(()) =&gt; {
                 <span class="kw">let </span>elapsed = start_time.elapsed();
                 <span class="macro">info!</span>(
                     <span class="string">"遅延タスク完了: {} (所要時間: {:.2}秒)"</span>,
@@ -424,7 +424,7 @@
             <span class="kw">let </span>start_time = Instant::now();
 
             <span class="kw">match </span>task_fn().<span class="kw">await </span>{
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; {
+                <span class="prelude-val">Ok</span>(()) =&gt; {
                     <span class="kw">let </span>elapsed = start_time.elapsed();
                     <span class="macro">info!</span>(
                         <span class="string">"タスク完了: {} (所要時間: {:.2}秒)"</span>,
@@ -443,7 +443,7 @@
     <span class="kw">let </span><span class="kw-2">mut </span>results = Vec::with_capacity(handles.len());
     <span class="kw">for </span>handle <span class="kw">in </span>handles {
         <span class="kw">match </span>handle.<span class="kw">await </span>{
-            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; results.push(()),
+            <span class="prelude-val">Ok</span>(()) =&gt; results.push(()),
             <span class="prelude-val">Err</span>(e) =&gt; {
                 <span class="macro">error!</span>(<span class="string">"タスク実行エラー: {}"</span>, e);
                 <span class="macro">eprintln!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"タスク実行エラー: {e}"</span>).red());
