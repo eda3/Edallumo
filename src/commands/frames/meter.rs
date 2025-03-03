@@ -303,18 +303,18 @@ pub async fn meter(
 
     // 画像情報デシリアライズ
     let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap(); // 画像リンク抽出
-    let move_info = &moves_info[index]; // 対象ムーブ情報取得
+    let selected_move_info = &moves_info[index]; // 対象ムーブ情報取得
     let mut embed_image = String::new(); // 埋め込み画像初期化
 
     // ムーブ画像送信処理
     for img_links in image_links {
         // 画像リンク走査ループ
-        if move_info.input == img_links.input {
+        if selected_move_info.input == img_links.input {
             // ヒット判定
             println!(
                 "{}",
                 ("Successfully read move '".to_owned()
-                    + &move_info.input.to_string()
+                    + &selected_move_info.input.to_string()
                     + "' in '"
                     + &character_arg_altered
                     + ".json' file.")
@@ -331,12 +331,12 @@ pub async fn meter(
 
     // フレームメーター文字列生成処理
     let mut meter_msg = String::from("`"); // バッククォート開始
-    meter_msg += &startup_frames(move_info).await; // 開始フレーム処理
-    meter_msg += &active_frames(move_info).await; // アクティブフレーム処理
-    meter_msg += &recovery_frames(move_info).await; // リカバリーフレーム処理
+    meter_msg += &startup_frames(selected_move_info).await; // 開始フレーム処理
+    meter_msg += &active_frames(selected_move_info).await; // アクティブフレーム処理
+    meter_msg += &recovery_frames(selected_move_info).await; // リカバリーフレーム処理
     meter_msg += "`"; // バッククォート終了
 
-    let embed_title = "__**".to_owned() + &move_info.input + "**__"; // 埋め込みタイトル生成
+    let embed_title = "__**".to_owned() + &selected_move_info.input + "**__"; // 埋め込みタイトル生成
 
     let embed_url =
         "https://dustloop.com/w/GGST/".to_owned() + &character_arg_altered + "#Overview"; // 埋め込みURL生成
@@ -346,9 +346,9 @@ pub async fn meter(
         .title(embed_title) // タイトル設定
         .url(embed_url) // URL設定
         .fields(vec![
-            ("Startup", &startup_frames(move_info).await, true), // 開始フレームフィールド
-            ("Active", &active_frames(move_info).await, true),   // アクティブフレームフィールド
-            ("Recovery", &recovery_frames(move_info).await, true), // リカバリーフレームフィールド
+            ("Startup", &startup_frames(selected_move_info).await, true), // 開始フレームフィールド
+            ("Active", &active_frames(selected_move_info).await, true), // アクティブフレームフィールド
+            ("Recovery", &recovery_frames(selected_move_info).await, true), // リカバリーフレームフィールド
         ])
         .image(embed_image); // 画像設定
 
