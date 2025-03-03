@@ -43,16 +43,6 @@ pub async fn update(ctx: Context<'_>) -> Result<()> {
     Ok(()) // 正常終了
 }
 
-/// 全キャラクター更新処理　自動更新用関数
-///
-/// 24時間ごとに全キャラクターのフレームデータおよび画像データを更新する。
-pub async fn update_all_char_data() {
-    // 全キャラクターのフレームデータ更新
-    framedata::get_char_data(CHARS, "all").await;
-    // 全キャラクターの画像データ更新
-    images::get_char_images(CHARS, "all").await;
-}
-
 /// キャラクター別アップデートサブコマンド  
 #[poise::command(prefix_command, slash_command, owners_only)]
 pub async fn character(
