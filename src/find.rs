@@ -72,7 +72,7 @@ pub async fn find_character(character: &String) -> Result<String> {
     }
     // "all" の場合の例外処理　結果：空文字列返却
     if !character_found && character.trim().to_lowercase() == "all".to_lowercase() {
-        return Ok("".into());
+        return Ok(String::new());
     }
 
     if !character_found {
