@@ -3,7 +3,7 @@
 //! `framedata_json.rs`
 //!
 //! Dustloop Wiki から取得したフレームデータ JSON を前処理し、
-//! MoveInfo 構造体として整形するための機能群。
+//! `MoveInfo` 構造体として整形するための機能群。
 //! 不要なタグやエンティティの除去、各フィールドの補完処理を行う。
 
 // 外部クレートおよびモジュールのインポート
@@ -164,7 +164,7 @@ fn format_input_name(input: &str, name: &str) -> String {
     }
 }
 
-/// 文字列型フィールドをMoveInfoに設定する補助関数
+/// `文字列型フィールドをMoveInfoに設定する補助関数`
 fn set_string_fields(
     move_data: &Data,
     empty: &str,
@@ -323,7 +323,7 @@ fn set_float_fields(
     )
 }
 
-/// 移動データからMoveInfo構造体を作成する関数
+/// `移動データからMoveInfo構造体を作成する関数`
 fn create_move_info(move_data: &Data, empty: &str) -> MoveInfo {
     // 入力名の整形
     let input_str = move_data.title.input.as_deref().unwrap_or("");
