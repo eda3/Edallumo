@@ -221,11 +221,11 @@ pub async fn moves(
     }
 
     // キャラクターデータ読み込み
-    let (character_arg_altered, moves_info, aliases_data) =
-        match load_character_data(&character, &ctx).await {
-            Ok(data) => data,
-            Err(_) => return Ok(()),
-        };
+    let Ok((character_arg_altered, moves_info, aliases_data)) =
+        load_character_data(&character, &ctx).await
+    else {
+        return Ok(());
+    };
 
     // 埋め込みメッセージ作成
     let vec_embeds = create_embeds_for_move_type(
