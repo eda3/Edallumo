@@ -269,15 +269,16 @@ pub fn validate_data_dir(data_dir: &str) -> Result<()> {
     Ok(())
 }
 
-/// キャラクターフォルダの存在を確認する
+/// キャラクターフォルダの整合性チェック
 ///
-/// すべてのキャラクターフォルダが存在するかを確認します。
+/// すべてのキャラクター用フォルダが存在するかチェックする
 ///
 /// # 引数
-/// * `data_dir` - データディレクトリのパス
+/// * `data_dir` - データディレクトリへのパス
 ///
 /// # 戻り値
-/// `Result<()>` - 成功時は `Ok(())`, 失敗時はエラー
+/// `Result<()>` - 成功時は (), 失敗時はエラー
+#[allow(dead_code)]
 pub fn check_character_folders(data_dir: &str) -> Result<()> {
     println!("{}", "キャラクターフォルダの検証を開始します...".cyan());
 
@@ -310,15 +311,16 @@ pub fn check_character_folders(data_dir: &str) -> Result<()> {
     Ok(())
 }
 
-/// 不正なファイルデータをチェックする
+/// データ整合性チェック
 ///
-/// JSON ファイルが正しく解析できるかを確認します。
+/// 全キャラクターデータの整合性を検証する
 ///
 /// # 引数
-/// * `data_dir` - データディレクトリのパス
+/// * `data_dir` - データディレクトリへのパス
 ///
 /// # 戻り値
-/// `Result<()>` - 成功時は `Ok(())`, 失敗時はエラー
+/// `Result<()>` - 成功時は (), 失敗時はエラー
+#[allow(dead_code)]
 pub fn check_data_integrity(data_dir: &str) -> Result<()> {
     println!("{}", "データ整合性の検証を開始します...".cyan());
 
@@ -404,7 +406,6 @@ mod tests {
     use super::*; // 親モジュールの全ての要素をインポート
     use crate::test_utils::{create_test_dir_structure, create_test_json_file};
     use std::path::PathBuf;
-    use tempfile::TempDir;
 
     fn setup_test_data(temp_dir: &PathBuf) -> Result<()> {
         // Sol_Badguy のデータを作成

@@ -39,7 +39,7 @@ pub async fn find_character(character: &String) -> Result<String> {
 
     // JSON文字列を Nicknames 構造体のベクターへデシリアライズ　結果：vec_nicknames
     let vec_nicknames =
-        serde_json::from_str::<Vec<Nicknames>>(&data_from_file).map_err(|e| AppError::Json(e))?;
+        serde_json::from_str::<Vec<Nicknames>>(&data_from_file).map_err(AppError::Json)?;
 
     // 各キャラクターエントリ走査　結果：該当エントリ検出時に正式名称返却
     if !character_found {
@@ -121,7 +121,7 @@ pub async fn find_move_index(
 
         // JSON文字列を MoveAliases 構造体のベクターにデシリアライズ　結果：aliases_data
         let aliases_data = serde_json::from_str::<Vec<MoveAliases>>(&aliases_data)
-            .map_err(|e| AppError::Json(e))?;
+            .map_err(AppError::Json)?;
 
         'outer: for alias_data in aliases_data {
             // 各エイリアス走査　結果：入力文字列と一致すれば実際の技入力に変換

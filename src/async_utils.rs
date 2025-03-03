@@ -22,6 +22,7 @@ use tracing::{error, info};
 ///
 /// # 戻り値
 /// `task::JoinHandle<()>` - 生成されたタスクのハンドル
+#[allow(dead_code)]
 pub fn spawn_logged_task<F, Fut>(name: &str, f: F) -> task::JoinHandle<()>
 where
     F: FnOnce() -> Fut + Send + 'static,
@@ -61,11 +62,8 @@ where
 ///
 /// # 戻り値
 /// `task::JoinHandle<()>` - 生成されたタスクのハンドル
-pub fn spawn_periodic_task<F, Fut, FutFn>(
-    name: &str,
-    interval: Duration,
-    f: F,
-) -> task::JoinHandle<()>
+#[allow(dead_code)]
+pub fn spawn_periodic_task<F, Fut>(name: &str, interval: Duration, f: F) -> task::JoinHandle<()>
 where
     F: Fn() -> Fut + Send + Sync + 'static,
     Fut: Future<Output = Result<()>> + Send + 'static,
@@ -114,6 +112,7 @@ where
 ///
 /// # 戻り値
 /// `task::JoinHandle<()>` - 生成されたタスクのハンドル
+#[allow(dead_code)]
 pub fn spawn_delayed_task<F, Fut>(name: &str, delay: Duration, f: F) -> task::JoinHandle<()>
 where
     F: FnOnce() -> Fut + Send + 'static,
@@ -158,6 +157,7 @@ where
 ///
 /// # 戻り値
 /// `Result<Vec<()>>` - 各タスクの実行結果
+#[allow(dead_code)]
 pub async fn run_parallel_tasks<F, Fut>(tasks: Vec<(String, F)>) -> Result<Vec<()>>
 where
     F: FnOnce() -> Fut + Send + 'static,
@@ -204,8 +204,9 @@ where
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    #[allow(unused_imports)]
     use crate::error::AppError;
+    #[allow(unused_imports)]
     use std::sync::{Arc, Mutex};
 
     #[tokio::test]

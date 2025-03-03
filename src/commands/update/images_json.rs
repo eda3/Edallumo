@@ -252,7 +252,7 @@ pub async fn images_to_json(
             "Terra Metron",
             "ステイン",
         ]
-        .contains(&input_str)
+        .contains(input_str)
         {
             _input_name = input_str.to_string();
         } else {

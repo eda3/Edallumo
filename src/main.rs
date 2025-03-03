@@ -22,7 +22,8 @@ pub use models::{CharInfo, GuardType, MoveAliases, MoveInfo};
 // 外部クレート読み込み
 use colored::Colorize; // 文字色変換用
 use commands::{feedback, frames, help, hitboxes, moves, nicknames, register, update};
-use dotenv;
+#[allow(unused_imports)]
+
 use poise::serenity_prelude as serenity; // Serenity 用エイリアス
 
 /// コンテキスト型定義

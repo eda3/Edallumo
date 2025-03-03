@@ -3,29 +3,31 @@
 //! このファイルでは、アプリケーション全体で使用される共通ユーティリティ関数を提供します。
 //! ファイル操作、文字列処理、データ変換などの汎用的な機能を含みます。
 
-use crate::error::{AppError, Result};
-use crate::models::{CharInfo, MoveAliases, MoveInfo};
-use colored::Colorize;
+use md5::{Digest, Md5};
 use serde::{de, ser};
-use serde_json;
 use std::{
     fs::{self, File},
     io::{self, Read, Write},
     path::Path,
 };
 
-/// ファイルからJSONデータを読み込む
+use crate::error::{AppError, Result};
+use crate::models::{CharInfo, MoveAliases, MoveInfo};
+use colored::Colorize;
+
+/// JSONファイルを読み込む
 ///
 /// 指定されたパスのJSONファイルを読み込み、指定された型にデシリアライズします。
 ///
 /// # 引数
-/// * `path` - 読み込むJSONファイルのパス
+/// * `path` - 読み込むファイルのパス
 ///
 /// # 戻り値
 /// `Result<T>` - デシリアライズされたデータ
+#[allow(dead_code)]
 pub fn read_json_file<T>(path: impl AsRef<Path>) -> Result<T>
 where
-    T: serde::de::DeserializeOwned,
+    T: for<'de> serde::Deserialize<'de>,
 {
     let path = path.as_ref();
     let mut file = File::open(path).map_err(|e| {
@@ -67,6 +69,7 @@ where
 ///
 /// # 戻り値
 /// `Result<()>` - 書き込み結果
+#[allow(dead_code)]
 pub fn write_json_file<T>(path: impl AsRef<Path>, data: &T) -> Result<()>
 where
     T: serde::Serialize,
@@ -100,24 +103,23 @@ where
     Ok(())
 }
 
-/// ディレクトリ内のすべてのJSONファイルを読み込む
+/// 複数のJSONファイルを読み込む
 ///
-/// 指定されたディレクトリ内のすべてのJSONファイルを読み込み、
-/// ファイル名とデシリアライズされたデータのマップを返します。
+/// 指定されたディレクトリ内のJSONファイルをすべて読み込み、指定された型にデシリアライズします。
 ///
 /// # 引数
-/// * `dir_path` - 読み込むディレクトリのパス
+/// * `dir` - 読み込むディレクトリのパス
+/// * `extension` - 読み込むファイルの拡張子（デフォルトは "json"）
 ///
 /// # 戻り値
-/// `Result<HashMap<String, T>>` - ファイル名とデータのマップ
-pub fn read_all_json_files<T>(
-    dir_path: impl AsRef<Path>,
-) -> Result<std::collections::HashMap<String, T>>
+/// `Result<Vec<T>>` - デシリアライズされたデータのベクター
+#[allow(dead_code)]
+pub fn read_all_json_files<T>(dir: impl AsRef<Path>, extension: Option<&str>) -> Result<Vec<T>>
 where
-    T: serde::de::DeserializeOwned,
+    T: for<'de> serde::Deserialize<'de>,
 {
-    let dir_path = dir_path.as_ref();
-    let mut result = std::collections::HashMap::new();
+    let dir_path = dir.as_ref();
+    let mut result = Vec::new();
 
     for entry in fs::read_dir(dir_path).map_err(|e| {
         AppError::FileNotFound(format!(
@@ -134,15 +136,13 @@ where
         })?;
 
         let path = entry.path();
-        if path.is_file() && path.extension().map_or(false, |ext| ext == "json") {
-            let file_name = path
-                .file_stem()
-                .and_then(|s| s.to_str())
-                .ok_or_else(|| AppError::Other(format!("無効なファイル名: {}", path.display())))?
-                .to_string();
-
+        if path.is_file()
+            && path
+                .extension()
+                .map_or(false, |ext| ext == extension.unwrap_or("json"))
+        {
             let data = read_json_file(&path)?;
-            result.insert(file_name, data);
+            result.push(data);
         }
     }
 
@@ -151,7 +151,7 @@ where
 
 /// キャラクター情報を読み込む
 ///
-/// 指定されたキャラクター名の情報をデータディレクトリから読み込みます。
+/// 指定されたキャラクターの情報をJSONファイルから読み込みます。
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリのパス
@@ -159,6 +159,7 @@ where
 ///
 /// # 戻り値
 /// `Result<CharInfo>` - キャラクター情報
+#[allow(dead_code)]
 pub fn load_character_info(data_dir: &str, char_name: &str) -> Result<CharInfo> {
     let char_path = Path::new(data_dir).join(char_name).join("character.json");
 
@@ -172,16 +173,17 @@ pub fn load_character_info(data_dir: &str, char_name: &str) -> Result<CharInfo> 
     read_json_file(char_path)
 }
 
-/// キャラクターの技情報を読み込む
+/// 技情報を読み込む
 ///
-/// 指定されたキャラクター名の技情報をデータディレクトリから読み込みます。
+/// 指定されたキャラクターの技情報をJSONファイルから読み込みます。
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリのパス
 /// * `char_name` - キャラクター名
 ///
 /// # 戻り値
-/// `Result<Vec<MoveInfo>>` - 技情報のリスト
+/// `Result<Vec<MoveInfo>>` - 技情報のベクター
+#[allow(dead_code)]
 pub fn load_move_info(data_dir: &str, char_name: &str) -> Result<Vec<MoveInfo>> {
     let moves_path = Path::new(data_dir).join(char_name).join("moves.json");
 
@@ -195,17 +197,17 @@ pub fn load_move_info(data_dir: &str, char_name: &str) -> Result<Vec<MoveInfo>> 
     read_json_file(moves_path)
 }
 
-/// キャラクターの技エイリアス情報を読み込む
+/// 技エイリアス情報を読み込む
 ///
-/// 指定されたキャラクター名の技エイリアス情報をデータディレクトリから読み込みます。
-/// エイリアスファイルが存在しない場合は空のリストを返します。
+/// 指定されたキャラクターの技エイリアス情報をJSONファイルから読み込みます。
 ///
 /// # 引数
 /// * `data_dir` - データディレクトリのパス
 /// * `char_name` - キャラクター名
 ///
 /// # 戻り値
-/// `Result<Vec<MoveAliases>>` - 技エイリアス情報のリスト
+/// `Result<Vec<MoveAliases>>` - 技エイリアス情報のベクター
+#[allow(dead_code)]
 pub fn load_move_aliases(data_dir: &str, char_name: &str) -> Result<Vec<MoveAliases>> {
     let aliases_path = Path::new(data_dir).join(char_name).join("aliases.json");
 
@@ -216,51 +218,54 @@ pub fn load_move_aliases(data_dir: &str, char_name: &str) -> Result<Vec<MoveAlia
     read_json_file(aliases_path)
 }
 
-/// 入力コマンドを正規化する
+/// 入力文字列を正規化する
 ///
-/// 入力コマンドを正規化し、検索しやすい形式に変換します。
+/// 入力文字列から空白や記号を削除し、小文字に変換します。
 ///
 /// # 引数
-/// * `input` - 正規化する入力コマンド
+/// * `input` - 正規化する入力文字列
 ///
 /// # 戻り値
-/// `String` - 正規化された入力コマンド
+/// `String` - 正規化された文字列
+#[allow(dead_code)]
 pub fn normalize_input(input: &str) -> String {
-    input
-        .to_lowercase()
-        .replace(" ", "")
-        .replace("　", "")
-        .replace(".", "")
+    let mut result = input.to_lowercase();
+    for c in [' ', '　', '.'] {
+        result = result.replace(c, "");
+    }
+    result
 }
 
-/// 技名を正規化する
+/// 技名称を正規化する
 ///
-/// 技名を正規化し、検索しやすい形式に変換します。
+/// 技名称から空白や記号を削除し、正規化します。
 ///
 /// # 引数
-/// * `name` - 正規化する技名
+/// * `name` - 正規化する技名称
 ///
 /// # 戻り値
-/// `String` - 正規化された技名
+/// `String` - 正規化された技名称
+#[allow(dead_code)]
 pub fn normalize_move_name(name: &str) -> String {
-    name.to_lowercase()
-        .replace(" ", "")
-        .replace("　", "")
-        .replace("-", "")
-        .replace("_", "")
+    let mut result = name.to_lowercase();
+    for c in [' ', '　', '-', '_'] {
+        result = result.replace(c, "");
+    }
+    result
 }
 
-/// 指定された技を検索する
+/// 技を検索する
 ///
-/// 指定されたキャラクターの技リストから、指定された入力または名前に一致する技を検索します。
+/// 指定されたクエリに一致する技を検索します。
 ///
 /// # 引数
-/// * `moves` - 検索対象の技リスト
-/// * `aliases` - 技のエイリアスリスト
-/// * `query` - 検索クエリ（入力コマンドまたは技名）
+/// * `moves` - 検索対象の技情報のベクター
+/// * `aliases` - 技エイリアス情報のベクター
+/// * `query` - 検索クエリ
 ///
 /// # 戻り値
-/// `Option<MoveInfo>` - 見つかった技情報
+/// `Option<MoveInfo>` - 一致した技情報（見つからなかった場合は None）
+#[allow(dead_code)]
 pub fn find_move(moves: &[MoveInfo], aliases: &[MoveAliases], query: &str) -> Option<MoveInfo> {
     let normalized_query = normalize_input(query);
 
@@ -302,13 +307,12 @@ pub fn find_move(moves: &[MoveInfo], aliases: &[MoveAliases], query: &str) -> Op
 /// 指定されたファイルのMD5ハッシュを計算します。
 ///
 /// # 引数
-/// * `path` - ハッシュを計算するファイルのパス
+/// * `path` - ファイルのパス
 ///
 /// # 戻り値
 /// `Result<String>` - MD5ハッシュ文字列
+#[allow(dead_code)]
 pub fn calculate_file_hash(path: impl AsRef<Path>) -> Result<String> {
-    use md5::{Digest, Md5};
-
     let path = path.as_ref();
     let mut file = File::open(path).map_err(|e| {
         AppError::FileNotFound(format!(
@@ -342,10 +346,11 @@ pub fn calculate_file_hash(path: impl AsRef<Path>) -> Result<String> {
 /// 指定されたディレクトリが存在することを確認し、存在しない場合は作成します。
 ///
 /// # 引数
-/// * `dir_path` - 確認または作成するディレクトリのパス
+/// * `dir_path` - ディレクトリのパス
 ///
 /// # 戻り値
-/// `Result<()>` - 処理結果
+/// `Result<()>` - 結果
+#[allow(dead_code)]
 pub fn ensure_directory_exists(dir_path: impl AsRef<Path>) -> Result<()> {
     let dir_path = dir_path.as_ref();
 
@@ -369,9 +374,9 @@ pub fn ensure_directory_exists(dir_path: impl AsRef<Path>) -> Result<()> {
     Ok(())
 }
 
-/// 文字列を指定された長さで切り詰める
+/// 文字列を指定した長さに切り詰める
 ///
-/// 文字列が指定された長さを超える場合、切り詰めて末尾に「...」を追加します。
+/// 文字列が指定した長さを超える場合、切り詰めて末尾に「...」を追加します。
 ///
 /// # 引数
 /// * `s` - 切り詰める文字列
@@ -379,6 +384,7 @@ pub fn ensure_directory_exists(dir_path: impl AsRef<Path>) -> Result<()> {
 ///
 /// # 戻り値
 /// `String` - 切り詰められた文字列
+#[allow(dead_code)]
 pub fn truncate_string(s: &str, max_len: usize) -> String {
     if s.len() <= max_len {
         s.to_string()

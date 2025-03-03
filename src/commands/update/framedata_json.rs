@@ -95,7 +95,7 @@ async fn remove_tags(mut char_page_response_json: String) -> String {
         .replace(r#"&amp;#32;"#, "")   // 不要文字除去
         .replace(r#"'''"#, "")         // 重複引用符除去
         .replace(r#"; "#, r#"\n"#)      // セミコロン置換
-        .replace(r#";"#, r#"\n"#)       // セミコロン置換
+        .replace(';', r#"\n"#)       // セミコロン置換
         .replace(r#"\\"#, ""); // バックスラッシュ除去
     char_page_response_json // 除去後の文字列返却
 }
@@ -183,87 +183,14 @@ pub async fn frames_to_json(
         // println!("{}", _name_str.unwrap());
 
         if [
-            "2D",
-            "2HS",
-            "2K",
-            "2P",
-            "2S",
-            "3K",
-            "5D",
-            "5HS",
-            "5K",
-            "5P",
-            "5[D]",
-            "6HS",
-            "6K",
-            "6P",
-            "近S",
-            "遠S",
-            "S",
-            "6S",
-            "H",
-            "jD",
-            "jHS",
-            "jK",
-            "jP",
-            "jS",
-            "j2K",
-            "j2H",
-            "JR2HS",
-            "JR2K",
-            "JR2P",
-            "JR2S",
-            "JR5HS",
-            "JR5K",
-            "JR5P",
-            "JR6HS",
-            "JR6P",
-            "JR近S",
-            "JR遠S",
-            "JRjD",
-            "JRjHS",
-            "JRjK",
-            "JRjP",
-            "JRjS",
-            "JR解除",
-            "6HSHS",
-            "6HSHSHS",
-            "銃を構える(HS)",
-            "BR Activation",
-            "BR Deactivation",
-            "214X (Discard)",
-            "214X (Draw)",
-            "Accipiter Metron",
-            "Aquila Metron",
-            "Bit Shift Metron",
-            "Bookmark (Auto Import)",
-            "Bookmark (Full Import)",
-            "Bookmark (Random Import)",
-            "Chaotic Option",
-            "Delayed Howling Metron",
-            "Delayed Tardus Metron",
-            "Go to Marker",
-            "Gravity Rod (Shooting)",
-            "High-Pass Filter Gravity",
-            "Howling Metron",
-            "Howling Metron MS Processing",
-            "Low-Pass Filter Gravity",
-            "Metron Arpeggio",
-            "Metron Screamer 808",
-            "Recover Mana (Continuous)",
-            "Recover Mana (Instant)",
-            "Reduce Mana Cost",
-            "Repulsive Rod (Shooting)",
-            "RMS Boost Metron",
-            "Sampler 404",
             "Shooting Time Stretch (Accelerate)",
             "Shooting Time Stretch (Decelerate)",
             "Terra Metron",
             "ステイン",
         ]
-        .contains(&&input_str)
+        .contains(&input_str)
         {
-            _input_name = (&&input_str).to_string();
+            _input_name = input_str.to_string();
         } else {
             let name_str = move_data.title.name.as_deref().unwrap_or("");
             _input_name = format!("{}({})", name_str, input_str);

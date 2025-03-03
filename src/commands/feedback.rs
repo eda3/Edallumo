@@ -28,7 +28,7 @@ pub async fn feedback(
     // ファイルオープン処理
     // 'request.txt' を新規作成（存在しなければ）し、既存の場合は末尾に追記するモードでオープンする
     let mut file = OpenOptions::new()
-        .write(true)
+        
         .create(true)
         .append(true)
         .open("./request.txt")
