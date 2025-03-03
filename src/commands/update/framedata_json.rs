@@ -164,6 +164,165 @@ fn format_input_name(input: &str, name: &str) -> String {
     }
 }
 
+/// 文字列型フィールドをMoveInfoに設定する補助関数
+fn set_string_fields(
+    move_data: &Data,
+    empty: &str,
+) -> (
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+    String,
+) {
+    (
+        // 名前
+        move_data.title.name.as_deref().unwrap_or(empty).to_string(),
+        // ガード
+        move_data
+            .title
+            .guard
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // アクティブフレーム
+        move_data
+            .title
+            .active
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // ヒット効果
+        move_data
+            .title
+            .on_hit
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // ブロック効果
+        move_data
+            .title
+            .on_block
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // 技レベル
+        move_data
+            .title
+            .level
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // カウンター
+        move_data
+            .title
+            .counter
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // 技種別
+        move_data
+            .title
+            .move_type
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // 無敵フレーム
+        move_data
+            .title
+            .invincibility
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+        // キャンセル情報
+        move_data
+            .title
+            .cancel
+            .as_deref()
+            .unwrap_or(empty)
+            .to_string(),
+    )
+}
+
+/// 数値型フィールドをMoveInfoに設定する補助関数（整数型）
+fn set_integer_fields(move_data: &Data) -> (Option<i32>, Option<i32>, Option<i32>, Option<i32>) {
+    (
+        // ダメージ
+        move_data
+            .title
+            .damage
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()),
+        // 始動フレーム
+        move_data
+            .title
+            .startup
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()),
+        // リカバリーフレーム
+        move_data
+            .title
+            .recovery
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()),
+        // 壁ダメージ
+        move_data
+            .title
+            .wall_damage
+            .as_ref()
+            .and_then(|s| s.parse::<i32>().ok()),
+    )
+}
+
+/// 数値型フィールドをMoveInfoに設定する補助関数（浮動小数点型）
+fn set_float_fields(
+    move_data: &Data,
+) -> (
+    Option<f64>,
+    Option<f64>,
+    Option<f64>,
+    Option<f64>,
+    Option<f64>,
+) {
+    (
+        // リスクゲイン
+        move_data
+            .title
+            .risc_gain
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()),
+        // リスクロス
+        move_data
+            .title
+            .risc_loss
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()),
+        // 入力緊張度
+        move_data
+            .title
+            .input_tension
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()),
+        // チップ比率
+        move_data
+            .title
+            .chip_ratio
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()),
+        // OTG比率
+        move_data
+            .title
+            .otg_ratio
+            .as_ref()
+            .and_then(|s| s.parse::<f64>().ok()),
+    )
+}
+
 /// 移動データからMoveInfo構造体を作成する関数
 fn create_move_info(move_data: &Data, empty: &str) -> MoveInfo {
     // 入力名の整形
@@ -171,116 +330,52 @@ fn create_move_info(move_data: &Data, empty: &str) -> MoveInfo {
     let name_str = move_data.title.name.as_deref().unwrap_or("");
     let input_name = format_input_name(input_str, name_str);
 
-    // MoveInfo 構造体へ変換　各フィールドが未定義の場合、プレースホルダー使用
+    // 文字列フィールドをまとめて取得
+    let (name, guard, active, on_hit, on_block, level, counter, move_type, invincibility, cancel) =
+        set_string_fields(move_data, empty);
+
+    // 整数型フィールドをまとめて取得
+    let (damage, startup, recovery, wall_damage) = set_integer_fields(move_data);
+
+    // 浮動小数点型フィールドをまとめて取得
+    let (risc_gain, risc_loss, input_tension, chip_ratio, otg_ratio) = set_float_fields(move_data);
+
+    // スケーリングはユースケースが単独なので個別に取得
+    let scaling = move_data
+        .title
+        .scaling
+        .as_ref()
+        .and_then(|s| s.parse::<f64>().ok());
+
+    // キャプションと備考は既定値が異なるので個別に取得
+    let caption = move_data.title.caption.as_deref().unwrap_or("").to_string();
+    let notes = move_data.title.notes.as_deref().unwrap_or("").to_string();
+
+    // MoveInfo 構造体へ変換
     MoveInfo {
-        input: input_name,                                                  // 入力情報設定
-        name: move_data.title.name.as_deref().unwrap_or(empty).to_string(), // 技名称設定
-        damage: move_data
-            .title
-            .damage
-            .as_ref()
-            .and_then(|s| s.parse::<i32>().ok()), // ダメージ設定
-        guard: move_data
-            .title
-            .guard
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // ガード設定
-        startup: move_data
-            .title
-            .startup
-            .as_ref()
-            .and_then(|s| s.parse::<i32>().ok()), // 始動フレーム設定
-        active: move_data
-            .title
-            .active
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // アクティブフレーム設定
-        recovery: move_data
-            .title
-            .recovery
-            .as_ref()
-            .and_then(|s| s.parse::<i32>().ok()), // リカバリーフレーム設定
-        on_hit: move_data
-            .title
-            .on_hit
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // ヒット効果設定
-        on_block: move_data
-            .title
-            .on_block
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // ブロック効果設定
-        level: move_data
-            .title
-            .level
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // 技レベル設定
-        counter: move_data
-            .title
-            .counter
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // カウンター設定
-        move_type: move_data
-            .title
-            .move_type
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // 技種別設定
-        risc_gain: move_data
-            .title
-            .risc_gain
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()), // リスクゲイン設定
-        risc_loss: move_data
-            .title
-            .risc_loss
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()), // リスクロス設定
-        wall_damage: move_data
-            .title
-            .wall_damage
-            .as_ref()
-            .and_then(|s| s.parse::<i32>().ok()), // 壁ダメージ設定
-        input_tension: move_data
-            .title
-            .input_tension
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()), // 入力緊張度設定
-        chip_ratio: move_data
-            .title
-            .chip_ratio
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()), // チップ比率設定
-        otg_ratio: move_data
-            .title
-            .otg_ratio
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()), // OTG比率設定
-        scaling: move_data
-            .title
-            .scaling
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()), // ダメージスケーリング設定
-        invincibility: move_data
-            .title
-            .invincibility
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // 無敵フレーム設定
-        cancel: move_data
-            .title
-            .cancel
-            .as_deref()
-            .unwrap_or(empty)
-            .to_string(), // キャンセル情報設定
-        caption: move_data.title.caption.as_deref().unwrap_or("").to_string(), // キャプション設定
-        notes: move_data.title.notes.as_deref().unwrap_or("").to_string(),  // 備考設定
+        input: input_name,
+        name,
+        damage,
+        guard,
+        startup,
+        active,
+        recovery,
+        on_hit,
+        on_block,
+        level,
+        counter,
+        move_type,
+        risc_gain,
+        risc_loss,
+        wall_damage,
+        input_tension,
+        chip_ratio,
+        otg_ratio,
+        scaling,
+        invincibility,
+        cancel,
+        caption,
+        notes,
     }
 }
 
