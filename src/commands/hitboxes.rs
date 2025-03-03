@@ -232,17 +232,16 @@ pub async fn hitboxes(
     }
 
     // キャラクターデータ読み込み
-    let character_arg_altered = match load_character_data(&character, &ctx).await {
-        Ok(name) => name,
-        Err(_) => return Ok(()),
+    let Ok(character_arg_altered) = load_character_data(&character, &ctx).await else {
+        return Ok(());
     };
 
     // 技情報と画像データ読み込み
-    let (move_info, image_links) =
-        match find_move_and_images(&character_arg_altered, &character_move, &ctx).await {
-            Ok(data) => data,
-            Err(_) => return Ok(()),
-        };
+    let Ok((move_info, image_links)) =
+        find_move_and_images(&character_arg_altered, &character_move, &ctx).await
+    else {
+        return Ok(());
+    };
 
     // 埋め込みメッセージ作成
     let vec_embeds = create_hitbox_embeds(&move_info, &image_links, &character_arg_altered);
