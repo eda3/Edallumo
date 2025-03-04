@@ -775,7 +775,7 @@
     "notes": "Guard Crush duration: 32f.\nCancellable into Gazelle Step during 14~16f, requiring and using 1 Stamina bar"
   },
   {
-    "input": "ホークベイカー(6236S)",
+    "input": "ホークベイカー(623S)",
     "name": "ホークベイカー",
     "damage": null,
     "guard": "上段",
@@ -800,7 +800,7 @@
     "notes": "Values in [ ] are for when only the second hit connects.\nFollow-up cancellable during 39~54f. Delayable for a maximum of +15 frames.\n* If only the first hit connects, it is not cancellable until after the last active frame, 42~54f\nIf Hawk Baker hits a non-player entity, it may still perform the Follow-Up, but does not gain access to Roman Cancels.\nForced crouching on the second hit, granting +1 hitstun.\nAirborne 9~37F\nIf the first hit of a combo, applies an additional +20 Combo Decay."
   },
   {
-    "input": "ホークベイカー派生(6236S~S)",
+    "input": "ホークベイカー派生(623SS)",
     "name": "ホークベイカー派生",
     "damage": 50,
     "guard": "上段",

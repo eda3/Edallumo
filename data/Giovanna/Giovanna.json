@@ -750,7 +750,7 @@
     "notes": "Strike Clash Level: 2\nClash Hits: 1\nHorizontal Activation Range: 400\nChave Enhanced version staggers on grounded hit, Listed on-hit value is for gold (fast) recovery.\nTotal stagger duration: 48F (1-40F hitstun, 41-48F can block only)\nHitstun duration is increased by 4F for red (normal) recovery, and 8F for blue (slow) and no recovery. (44F and 48F respectively)\nTotal duration is increased by 5F for red (normal) recovery, and 10F for blue (slow) and no recovery. (53F and 58F respectively)\nOpponents can be thrown while staggered, allowing comboing into throws. During the 'can only block' stage at the end of stagger, the opponent cannot jump to escape throws, meaning there is more time to combo into throws than strikes.\nStagger does not gain 1 addition hitstun on crouching hit, unlike other attacks."
   },
   {
-    "input": "ソウ・ナセンテ(6236S)",
+    "input": "ソウ・ナセンテ(623S)",
     "name": "ソウ・ナセンテ",
     "damage": null,
     "guard": "上段",

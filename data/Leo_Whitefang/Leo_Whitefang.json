@@ -650,8 +650,8 @@
     "notes": ""
   },
   {
-    "input": "ブリュンヒルデの構え44(bt44)",
-    "name": "ブリュンヒルデの構え44",
+    "input": "bt44(bt44)",
+    "name": "bt44",
     "damage": null,
     "guard": "-",
     "startup": null,

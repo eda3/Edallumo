@@ -825,7 +825,7 @@
     "notes": "Opponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15"
   },
   {
-    "input": "ヴォルカニックファイパー(6236S)",
+    "input": "ヴォルカニックファイパー(623S)",
     "name": "ヴォルカニックファイパー",
     "damage": 40,
     "guard": "上段",
