@@ -12,6 +12,7 @@
 //! # 注意
 //! コマンド実行前に必要なデータファイル（dataフォルダ内のJSONファイル）が存在していること。
 
+use crate::utils::remove_redundant_brackets;
 use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR};
 use colored::Colorize;
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
@@ -115,17 +116,84 @@ async fn find_move_data(
             .green()
     );
 
+    // デバッグ：技入力コマンド表示
+    println!("デバッグ - 検索中の技: '{}'", move_data.input);
+
     // デフォルト画像設定
     let mut embed_image = IMAGE_DEFAULT.to_string();
 
+    // 技の入力コマンドから括弧内の値を抽出（例：「足払い(2D)」から「2D」を取得）
+    let input_parts: Vec<&str> = move_data.input.split('(').collect();
+    let bracket_input = if input_parts.len() > 1 {
+        input_parts[1].trim_end_matches(')').trim()
+    } else {
+        ""
+    };
+
+    // デバッグ：括弧内コマンド表示
+    if !bracket_input.is_empty() {
+        println!("デバッグ - 括弧内コマンド: '{}'", bracket_input);
+    } else {
+        println!("デバッグ - 括弧内コマンドなし");
+    }
+
+    // デバッグ：画像リンク総数
+    println!("デバッグ - 画像リンク配列の要素数: {}", image_links.len());
+
     // 画像リンク検索　画像JSONから対象技のリンク取得
-    for img_links in image_links {
-        // 画像リンク確認　対象技と一致かつ画像リンク非空
-        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
+    for (i, img_links) in image_links.iter().enumerate() {
+        println!(
+            "デバッグ - [{i}]: img_links.input='{}', img_links.move_img='{}'",
+            img_links.input, img_links.move_img
+        );
+
+        println!("デバッグ - move_data.input='{}'", move_data.input);
+
+        // 完全一致の場合
+        if move_data.input.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            println!("デバッグ - 完全一致！ 入力: '{}'", move_data.input);
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
             break; // ループ抜け
         }
+        // 括弧内のコマンドで一致する場合
+        else if !bracket_input.is_empty()
+            && bracket_input.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            println!(
+                "デバッグ - 括弧内コマンド一致！ 括弧内: '{}'",
+                bracket_input
+            );
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+            break; // ループ抜け
+        }
+        // 部分一致の場合 - 最初の完全一致が見つからない場合のバックアップ
+        else if img_links
+            .input
+            .to_lowercase()
+            .contains(&move_data.input.to_lowercase())
+            && !img_links.move_img.is_empty()
+        {
+            println!(
+                "デバッグ - 部分一致！ JSON入力: '{}', 技入力: '{}'",
+                img_links.input, move_data.input
+            );
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+        }
     }
+
+    // デバッグ：最終的な画像URL
+    println!("デバッグ - 最終画像URL: '{}'", embed_image);
+    println!(
+        "デバッグ - デフォルト画像と比較: '{}'",
+        IMAGE_DEFAULT.to_string()
+    );
+    println!(
+        "デバッグ - 画像が見つかったか: {}",
+        embed_image != IMAGE_DEFAULT
+    );
 
     Ok((move_data, embed_image))
 }
@@ -144,8 +212,16 @@ fn create_move_embed(
     embed_image: &str,
     character_arg_altered: &str,
 ) -> CreateEmbed {
+    // デバッグ：画像URLの値確認
+    println!("デバッグ - create_move_embed: 画像URL='{}'", embed_image);
+    println!(
+        "デバッグ - create_move_embed: デフォルト画像と比較={}",
+        embed_image == IMAGE_DEFAULT
+    );
+
     // 埋め込みタイトル組み立て　キャラクター名と技情報を連結
-    let embed_title = "__**".to_owned() + &move_data.input + "**__";
+    // 技名から重複括弧を除去（例：2HS(2HS) → 2HS）
+    let cleaned_input = remove_redundant_brackets(&move_data.input);
 
     // 埋め込みURL組み立て　Dustloop Wiki の対象キャラクターページ
     let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview";
@@ -153,37 +229,47 @@ fn create_move_embed(
     let embed_footer = CreateEmbedFooter::new(&move_data.caption);
 
     // 埋め込みメッセージ作成　各種フィールド追加
-    CreateEmbed::new()
+    let embed = CreateEmbed::new()
         .color(EMBED_COLOR) // 埋め込みカラー設定
-        .title(embed_title) // タイトル設定
+        .title(format!("{}：{}", character_arg_altered, cleaned_input)) // タイトル設定
         .url(embed_url) // URL設定
-        .image(embed_image) // 画像設定
-        .fields(vec![
-            (
-                "ダメージ",
-                &move_data.damage.map_or("-".to_string(), |v| v.to_string()),
-                true,
-            ),
-            ("ガード", &move_data.guard, true),
-            ("無敵", &move_data.invincibility, true),
-            (
-                "始動",
-                &move_data.startup.map_or("-".to_string(), |v| v.to_string()),
-                true,
-            ),
-            ("持続", &move_data.active, true),
-            (
-                "硬直",
-                &move_data
-                    .recovery
-                    .map_or("-".to_string(), |v| v.to_string()),
-                true,
-            ),
-            ("ヒット時", &move_data.on_hit, true),
-            ("ガード時", &move_data.on_block, true),
-            ("カウンター", &move_data.counter.to_string(), true),
-        ])
-        .footer(embed_footer) // フッター設定
+        .footer(embed_footer); // フッター設定
+
+    // 画像URLをデフォルト以外のときのみ設定
+    let embed = if embed_image != IMAGE_DEFAULT {
+        println!("デバッグ - 埋め込み画像を設定します: '{}'", embed_image);
+        embed.image(embed_image)
+    } else {
+        println!("デバッグ - 埋め込み画像はデフォルトのため設定しません");
+        embed
+    };
+
+    // フィールド設定（技パラメータ表示）
+    embed.fields(vec![
+        (
+            "ダメージ",
+            &move_data.damage.map_or("-".to_string(), |v| v.to_string()),
+            true,
+        ),
+        ("ガード", &move_data.guard, true),
+        ("無敵", &move_data.invincibility, true),
+        (
+            "始動",
+            &move_data.startup.map_or("-".to_string(), |v| v.to_string()),
+            true,
+        ),
+        ("持続", &move_data.active, true),
+        (
+            "硬直",
+            &move_data
+                .recovery
+                .map_or("-".to_string(), |v| v.to_string()),
+            true,
+        ),
+        ("ヒット時", &move_data.on_hit, true),
+        ("ガード時", &move_data.on_block, true),
+        ("カウンター", &move_data.counter.to_string(), true),
+    ])
 }
 
 /// キャラクターの技情報を埋め込み表示する指定
