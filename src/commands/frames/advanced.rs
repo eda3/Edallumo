@@ -4,7 +4,6 @@
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
 //! JSONファイルから該当データを取得し、画像リンクや各種技パラメータを整形して表示する。
 
-use crate::utils::remove_redundant_brackets;
 use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR};
 use colored::Colorize;
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
