@@ -772,7 +772,7 @@
     "invincibility": "16-73 [20-77] Guardpoint",
     "cancel": "-",
     "caption": "GuardpointAttack",
-    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nHorizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, the 1st attack uses 1100 hp, the 2nd uses 900 hp with the final attack taking the remaining Eddie gauge.\nIf Eddie is already summoned, 236H uses 3 HP of the Eddie gauge each frame the move is active and each hit from the attack portion uses 675HP (2025HP total)."
+    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nHorizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, each attack uses 900 HP of the Eddie gauge.\nIf Eddie is already summoned, 236H uses 3 HP of the Eddie gauge each frame the move is active and each hit from the attack portion uses 675HP (2025HP total)."
   },
   {
     "input": "「多い」(236K)",
@@ -822,7 +822,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nUses 500 HP of the Eddie gauge for each attack (1000 HP total). If Eddie is already summoned this attack uses 325 HP of the Eddie gauge for each attack (650 HP total).\n"
+    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nUses 500 HP of the Eddie gauge for each attack (1000 HP total). If Eddie is already summoned this attack uses 375 HP of the Eddie gauge for each attack (750 HP total).\n"
   },
   {
     "input": "「跳ねる」(236S)",
@@ -922,7 +922,7 @@
     "invincibility": "8-65F Guardpoint",
     "cancel": "-",
     "caption": "GuardpointAttack",
-    "notes": "Horizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, the 1st attack uses 1100 hp, the 2nd uses 900 hp with the final attack taking the remaining Eddie gauge.\nIf Zato is in hitstop, &quot\nOppose&quot\nwill use 0 HP of Eddie gauge each frame.\nUnsummoning during the active or recovery frames of &quot\nOppose&quot\n's attack (frame 66-110) will buffer the unsummon until after the recovery ends.\nAn attacker is able to use their attack's cancel options after hitting &quot\nOppose&quot\n's guardpoint.\nEach of &quot\nOppose&quot\n's attacks have 7f hitstop.\n"
+    "notes": "Horizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, each attack uses 900 HP of the Eddie gauge on frame 74, 77, and 84.\nIf Zato is in hitstop, &quot\nOppose&quot\nwill use 0 HP of Eddie gauge each frame.\nUnsummoning during the active or recovery frames of &quot\nOppose&quot\n's attack (frame 66-110) will buffer the unsummon until after the recovery ends.\nAn attacker is able to use their attack's cancel options after hitting &quot\nOppose&quot\n's guardpoint.\nEach of &quot\nOppose&quot\n's attacks have 7f hitstop.\n"
   },
   {
     "input": "「多い」(]K[)",

@@ -750,8 +750,8 @@
     "notes": "Airborne frames 9~19\nCan be up to +7 on stance cancel if it hits meaty, as Leo cannot cancel until frame 20"
   },
   {
-    "input": "ブリュンヒルデの構えK(btK)",
-    "name": "ブリュンヒルデの構えK",
+    "input": "btK(btK)",
+    "name": "btK",
     "damage": 27,
     "guard": "下段",
     "startup": 5,
@@ -775,8 +775,8 @@
     "notes": "Does ''not'' clash on trade with 5K or 2K attacks.\nCannot be cancelled during recovery frames, like other K  normals."
   },
   {
-    "input": "ブリュンヒルデの構えP(btP)",
-    "name": "ブリュンヒルデの構えP",
+    "input": "btP(btP)",
+    "name": "btP",
     "damage": 33,
     "guard": "上段",
     "startup": 7,
@@ -800,8 +800,8 @@
     "notes": "Hitstop on ground hit: 16F\nFloating crumple on ground hit: Total 28F (airborne hitstun 1-11F, standing hitstun 12-18F, can block 19~28F)\nDoes ''not'' clash on trade with 5P or 2P attacks.\nIf the first hit of a combo, applies an additional +20 Combo Decay."
   },
   {
-    "input": "ブリュンヒルデの構えS(btS)",
-    "name": "ブリュンヒルデの構えS",
+    "input": "btS(btS)",
+    "name": "btS",
     "damage": 30,
     "guard": "上段",
     "startup": 6,
