@@ -41,8 +41,11 @@ pub struct Data {
 /// 画像リンク構造体
 #[derive(serde::Serialize, serde::Deserialize, Debug, Clone)]
 pub struct ImageLinks {
-    pub input: String,           // 入力コマンド
-    pub move_img: String,        // 技画像リンク
+    #[serde(deserialize_with = "crate::models::deserialize_string_or_int")]
+    pub input: String, // 入力コマンド
+    #[serde(deserialize_with = "crate::models::deserialize_string_or_int")]
+    pub move_img: String, // 技画像リンク
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub hitbox_img: Vec<String>, // ヒットボックス画像リンク群
 }
 

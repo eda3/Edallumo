@@ -4,6 +4,7 @@
 //! 従来の全てString型だった構造体からより適切なデータ型へ変換しています。
 
 use serde::{Deserialize, Deserializer, Serialize};
+use serde_json;
 use std::str::FromStr;
 
 /// キャラクター情報構造体
@@ -132,9 +133,11 @@ pub struct CharInfo {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct MoveInfo {
     /// 入力コマンド
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub input: String,
 
     /// 技名称
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub name: String,
 
     /// ダメージ値
@@ -142,6 +145,7 @@ pub struct MoveInfo {
     pub damage: Option<i32>,
 
     /// ガード値
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub guard: String,
 
     /// 始動フレーム
@@ -149,6 +153,7 @@ pub struct MoveInfo {
     pub startup: Option<i32>,
 
     /// アクティブフレーム
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub active: String,
 
     /// リカバリーフレーム
@@ -156,18 +161,23 @@ pub struct MoveInfo {
     pub recovery: Option<i32>,
 
     /// ヒット時効果
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub on_hit: String,
 
     /// ブロック時効果
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub on_block: String,
 
     /// 技レベル
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub level: String,
 
     /// カウンター情報
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub counter: String,
 
     /// 技種別
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub move_type: String,
 
     /// リスクゲイン
@@ -199,15 +209,19 @@ pub struct MoveInfo {
     pub scaling: Option<f64>,
 
     /// 無敵フレーム
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub invincibility: String,
 
     /// キャンセル情報
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub cancel: String,
 
     /// キャプション
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub caption: String,
 
     /// 備考
+    #[serde(deserialize_with = "deserialize_string_or_int")]
     pub notes: String,
 }
 
@@ -256,15 +270,27 @@ fn deserialize_option_f64<'de, D>(deserializer: D) -> std::result::Result<Option
 where
     D: Deserializer<'de>,
 {
-    let s: String = Deserialize::deserialize(deserializer)?;
-    if s.trim().is_empty() {
-        return Ok(None);
+    let value = serde_json::Value::deserialize(deserializer)?;
+
+    // 値が数値の場合
+    if let Some(n) = value.as_f64() {
+        return Ok(Some(n));
     }
 
-    match f64::from_str(&s) {
-        Ok(val) => Ok(Some(val)),
-        Err(_) => Ok(None),
+    // 値が文字列の場合
+    if let Some(s) = value.as_str() {
+        if s.trim().is_empty() {
+            return Ok(None);
+        }
+
+        return match f64::from_str(s) {
+            Ok(val) => Ok(Some(val)),
+            Err(_) => Ok(None),
+        };
     }
+
+    // nullまたは他の型の場合はNoneを返す
+    Ok(None)
 }
 
 /// String から Option<i32> へのデシリアライザ
@@ -272,15 +298,27 @@ fn deserialize_option_i32<'de, D>(deserializer: D) -> std::result::Result<Option
 where
     D: Deserializer<'de>,
 {
-    let s: String = Deserialize::deserialize(deserializer)?;
-    if s.trim().is_empty() {
-        return Ok(None);
+    let value = serde_json::Value::deserialize(deserializer)?;
+
+    // 値が整数の場合
+    if let Some(i) = value.as_i64() {
+        return Ok(Some(i as i32));
     }
 
-    match i32::from_str(&s) {
-        Ok(val) => Ok(Some(val)),
-        Err(_) => Ok(None),
+    // 値が文字列の場合
+    if let Some(s) = value.as_str() {
+        if s.trim().is_empty() {
+            return Ok(None);
+        }
+
+        return match i32::from_str(s) {
+            Ok(val) => Ok(Some(val)),
+            Err(_) => Ok(None),
+        };
     }
+
+    // nullまたは他の型の場合はNoneを返す
+    Ok(None)
 }
 
 /// String から Option<bool> へのデシリアライザ
@@ -297,6 +335,32 @@ where
         "true" | "yes" | "1" => Ok(Some(true)),
         "false" | "no" | "0" => Ok(Some(false)),
         _ => Ok(None),
+    }
+}
+
+/// 文字列型か整数型のどちらでも受け入れ可能なデシリアライズ
+///
+/// 整数値が来た場合は文字列に変換します
+pub fn deserialize_string_or_int<'de, D>(deserializer: D) -> Result<String, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    // Valueとして受け取り、型を判別
+    let value = serde_json::Value::deserialize(deserializer)?;
+
+    // 整数か文字列かで処理を分岐
+    if let Some(s) = value.as_str() {
+        // 文字列ならそのまま返す
+        Ok(s.to_string())
+    } else if let Some(i) = value.as_i64() {
+        // 整数なら文字列に変換
+        Ok(i.to_string())
+    } else {
+        // それ以外は型エラー
+        Err(serde::de::Error::custom(format!(
+            "expected string or int, got: {:?}",
+            value
+        )))
     }
 }
 

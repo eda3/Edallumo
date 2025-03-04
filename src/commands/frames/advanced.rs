@@ -65,15 +65,130 @@ async fn find_move_and_images(
     );
 
     // 画像リンク用JSONファイルのパス組み立て　画像情報ファイルの指定
-    let image_links = fs::read_to_string(
-        "data/".to_owned() + character_arg_altered + "/images.json",
-    )
-    .expect(
-        &("\nFailed to read 'data/".to_owned() + character_arg_altered + "'/images.json' file."),
+    let images_json_path = "data/".to_owned() + character_arg_altered + "/images.json";
+    println!("Loading images JSON from: {}", images_json_path);
+    let image_links = fs::read_to_string(&images_json_path).expect(
+        &("\nFailed to read 'data/".to_owned() + character_arg_altered + "/images.json' file."),
     );
 
-    // 画像リンクJSONのデシリアライズ　画像リンク情報の構造体へ変換
-    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap();
+    // JSONファイルを行単位で分割
+    println!(
+        "Debug: Parsing image_links JSON for {}",
+        character_arg_altered
+    );
+
+    // より詳細なデバッグ: 問題のある行を特定する
+    println!("==================== MANUAL DEBUGGING ====================");
+    // まず、JSON全体を解析できるかチェック
+    let parse_result = serde_json::from_str::<serde_json::Value>(&image_links);
+    match parse_result {
+        Ok(json_value) => {
+            println!("Entire JSON successfully parsed as generic Value");
+
+            // JSONが配列であることを確認
+            if let serde_json::Value::Array(items) = json_value {
+                println!("JSON is an array with {} items", items.len());
+
+                // 各項目を個別にテスト
+                for (i, item) in items.iter().enumerate() {
+                    println!("Testing item #{}", i);
+
+                    // テスト用のJSONオブジェクトを作成
+                    let test_json = serde_json::to_string(item).unwrap();
+
+                    // デシリアライズを試みる
+                    match serde_json::from_str::<ImageLinks>(&test_json) {
+                        Ok(_) => println!("Item #{} deserialized successfully", i),
+                        Err(e) => {
+                            println!("ERROR with item #{}: {}", i, e);
+                            println!("Problem item: {}", test_json);
+
+                            // 問題のあるアイテムの詳細を出力
+                            if let Some(input) = item.get("input") {
+                                println!(
+                                    "input field: {:?} (type: {})",
+                                    input,
+                                    if input.is_string() {
+                                        "string"
+                                    } else if input.is_number() {
+                                        "number"
+                                    } else {
+                                        "other"
+                                    }
+                                );
+                            }
+
+                            if let Some(move_img) = item.get("move_img") {
+                                println!(
+                                    "move_img field: {:?} (type: {})",
+                                    move_img,
+                                    if move_img.is_string() {
+                                        "string"
+                                    } else if move_img.is_number() {
+                                        "number"
+                                    } else {
+                                        "other"
+                                    }
+                                );
+                            }
+
+                            if let Some(hitbox_img) = item.get("hitbox_img") {
+                                println!(
+                                    "hitbox_img field: {:?} (type: {})",
+                                    hitbox_img,
+                                    if hitbox_img.is_array() {
+                                        "array"
+                                    } else if hitbox_img.is_number() {
+                                        "number"
+                                    } else {
+                                        "other"
+                                    }
+                                );
+                            }
+                        }
+                    }
+                }
+            } else {
+                println!("JSON is not an array!");
+            }
+        }
+        Err(e) => {
+            println!("Failed to parse the entire JSON: {}", e);
+        }
+    }
+    println!("================== END MANUAL DEBUGGING ==================");
+
+    // 画像リンクJSONの安全なデシリアライズ
+    println!("Safely deserializing image links...");
+    let mut image_links_vec = Vec::new();
+
+    // JSONが配列であることを確認
+    if let Ok(serde_json::Value::Array(items)) =
+        serde_json::from_str::<serde_json::Value>(&image_links)
+    {
+        // 各要素を個別に処理
+        for item in items {
+            let item_json = serde_json::to_string(&item).unwrap_or_default();
+            match serde_json::from_str::<ImageLinks>(&item_json) {
+                Ok(link) => image_links_vec.push(link),
+                Err(e) => {
+                    // エラーを出力するが、処理は継続
+                    println!("Warning: Failed to deserialize item: {}", e);
+                    println!("Skipping problematic item: {}", item_json);
+                }
+            }
+        }
+    } else {
+        println!("Error: images.json is not a valid JSON array");
+    }
+
+    println!(
+        "Successfully deserialized {} image links",
+        image_links_vec.len()
+    );
+
+    // 画像リンクJSONのデシリアライズ結果を使用
+    let image_links = image_links_vec;
 
     // 技インデックス検索
     let move_index = match find::find_move_index(

@@ -125,10 +125,20 @@ pub async fn find_move_index(
 
     // 正確な技入力一致走査　結果：完全一致すれば該当インデックス返却
     for (x, moves) in moves_info.iter().enumerate() {
+        // 入力が完全一致するか
         if moves.input.to_string().to_lowercase().replace('.', "")
             == character_move.to_string().to_lowercase().replace('.', "")
         {
             return Ok(x);
+        }
+
+        // 括弧内に入力が含まれているか（例：「足払い(2D)」で「2D」を検索）
+        if let Some(bracket_content) = extract_bracket_content(&moves.input) {
+            if bracket_content.to_lowercase().replace('.', "")
+                == character_move.to_string().to_lowercase().replace('.', "")
+            {
+                return Ok(x);
+            }
         }
     }
 
@@ -155,6 +165,24 @@ pub async fn find_move_index(
         let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
         Err(AppError::MoveNotFound(error_msg))
     }
+}
+
+/// 文字列から括弧内のコンテンツを抽出する関数
+///
+/// # 引数
+/// * `input` - 括弧を含む可能性のある文字列
+///
+/// # 戻り値
+/// 括弧内のコンテンツを含むOption<String>、見つからない場合はNone
+fn extract_bracket_content(input: &str) -> Option<String> {
+    if let Some(start) = input.find('(') {
+        if let Some(end) = input.find(')') {
+            if end > start {
+                return Some(input[start + 1..end].to_string());
+            }
+        }
+    }
+    None
 }
 
 /// エイリアスから技の入力を検索する非同期関数
