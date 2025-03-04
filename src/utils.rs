@@ -245,6 +245,7 @@ pub fn normalize_input(input: &str) -> String {
 ///
 /// # 戻り値
 /// `String` - 処理された文字列
+#[allow(dead_code)]
 pub fn remove_redundant_brackets(input: &str) -> String {
     // 括弧内のコンテンツを抽出
     if let Some(start) = input.find('(') {
