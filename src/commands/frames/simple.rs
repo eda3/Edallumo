@@ -43,108 +43,27 @@ async fn load_character_data(character: &str, ctx: &Context<'_>) -> Result<Strin
     Ok(character_arg_altered)
 }
 
-/// 技情報と画像データを読み込む関数
+/// 入力文字列から括弧を除去した技名と括弧内のコンテンツを抽出する
 ///
 /// # 引数
-/// * `character_arg_altered` - 正式なキャラクター名
-/// * `character_move` - ユーザーが入力した技名
-/// * `ctx` - コマンドコンテキスト
+/// * `input` - 入力文字列（例：「2HS(2HS)」）
 ///
 /// # 戻り値
-/// 成功時は (技情報, 画像リンク情報) のタプル、失敗時はエラー
-async fn find_move_data(
-    character_arg_altered: &str,
-    character_move: &str,
-    ctx: &Context<'_>,
-) -> Result<(MoveInfo, String), AppError> {
-    // JSONファイルパス組み立て　対象キャラクターのデータファイル
-    let char_file_path =
-        "data/".to_owned() + character_arg_altered + "/" + character_arg_altered + ".json";
-    // JSONファイル読み込み　ファイル内容取得
-    let char_file_data = fs::read_to_string(char_file_path)
-        .expect(&("\nFailed to read '".to_owned() + character_arg_altered + ".json" + "' file."));
-
-    // JSONデータデシリアライズ　技データ配列取得
-    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).unwrap();
-
-    // 読み込み成功表示
-    println!(
-        "{}",
-        ("Successfully read '".to_owned() + character_arg_altered + ".json' file.").green()
-    );
-
-    // 技インデックス検索　指定技の位置特定
-    let index = match find::find_move_index(
-        &character_arg_altered.to_string(),
-        character_move.to_string(),
-        &moves_info,
-    )
-    .await
-    {
-        Ok(idx) => idx, // 技インデックス取得
-        Err(err) => {
-            // エラー表示　案内メッセージ送信
-            ctx.say(err.to_string() + "\nView the moves of a character by executing `/moves`.")
-                .await?;
-            println!("{}", ("Error: ".to_owned() + &err.to_string()).red());
-            return Err(AppError::MoveNotFound(err.to_string()));
-        }
-    };
-
-    // 画像JSONファイル読み込み　対象キャラクターの画像データ取得
-    let image_links = fs::read_to_string(
-        "data/".to_owned() + character_arg_altered + "/images.json",
-    )
-    .expect(
-        &("\nFailed to read 'data/".to_owned() + character_arg_altered + "'/images.json' file."),
-    );
-
-    // 画像データデシリアライズ　画像リンク配列取得
-    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap();
-    // 対象技情報取得
-    let move_data = moves_info[index].clone();
-
-    // 技読み込み成功表示
-    println!(
-        "{}",
-        ("Successfully read move '".to_owned()
-            + &move_data.input
-            + "' in '"
-            + character_arg_altered
-            + ".json' file.")
-            .green()
-    );
-
-    // デフォルト画像設定
-    let mut embed_image = IMAGE_DEFAULT.to_string();
-
-    // デバッグ情報表示
-    println!(
-        "デバッグ - 検索する技: '{}' (大文字小文字変換: '{}')",
-        move_data.input,
-        move_data.input.to_lowercase()
-    );
-    println!("デバッグ - 画像リンク配列の要素数: {}", image_links.len());
-
+/// (括弧を除去した技名, 括弧内のコンテンツ) のタプル
+fn extract_move_name_parts(input: &str) -> (String, String) {
     // 括弧を除去した技名を作成（例：「2HS(2HS)」→「2HS」）
-    let cleaned_input = if move_data.input.contains('(') {
-        move_data
-            .input
-            .split('(')
-            .next()
-            .unwrap_or("")
-            .trim()
-            .to_string()
+    let cleaned_input = if input.contains('(') {
+        input.split('(').next().unwrap_or("").trim().to_string()
     } else {
-        move_data.input.clone()
+        input.to_string()
     };
 
     // 括弧内のコマンドを取得（例：「2HS(2HS)」→「2HS」）
-    let bracket_content = if move_data.input.contains('(') && move_data.input.contains(')') {
-        let start = move_data.input.find('(').unwrap_or(0) + 1;
-        let end = move_data.input.find(')').unwrap_or(move_data.input.len());
+    let bracket_content = if input.contains('(') && input.contains(')') {
+        let start = input.find('(').unwrap_or(0) + 1;
+        let end = input.find(')').unwrap_or(input.len());
         if start < end {
-            move_data.input[start..end].to_string()
+            input[start..end].to_string()
         } else {
             String::new()
         }
@@ -152,7 +71,35 @@ async fn find_move_data(
         String::new()
     };
 
+    (cleaned_input, bracket_content)
+}
+
+/// 技情報と画像リンクを照合して適切な画像URLを見つける
+///
+/// # 引数
+/// * `move_data` - 技情報
+/// * `image_links` - 画像リンク情報の配列
+/// * `default_image` - デフォルト画像URL
+///
+/// # 戻り値
+/// 画像のURL（見つからない場合はデフォルト画像）
+fn find_matching_image(
+    move_data: &MoveInfo,
+    image_links: &[ImageLinks],
+    default_image: &str,
+) -> String {
+    let mut embed_image = default_image.to_string();
+
+    // 括弧除去と括弧内コンテンツの抽出
+    let (cleaned_input, bracket_content) = extract_move_name_parts(&move_data.input);
+
+    println!(
+        "デバッグ - 検索する技: '{}'（大文字小文字変換: '{}'）",
+        move_data.input,
+        move_data.input.to_lowercase()
+    );
     println!("デバッグ - 括弧除去後の技名: '{cleaned_input}', 括弧内容: '{bracket_content}'");
+    println!("デバッグ - 画像リンク配列の要素数: {}", image_links.len());
 
     for (i, img_links) in image_links.iter().enumerate() {
         println!(
@@ -215,6 +162,84 @@ async fn find_move_data(
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
         }
     }
+
+    embed_image
+}
+
+/// 技情報と画像データを読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// 成功時は (技情報, 画像リンク情報) のタプル、失敗時はエラー
+async fn find_move_data(
+    character_arg_altered: &str,
+    character_move: &str,
+    ctx: &Context<'_>,
+) -> Result<(MoveInfo, String), AppError> {
+    // JSONファイルパス組み立て　対象キャラクターのデータファイル
+    let char_file_path =
+        "data/".to_owned() + character_arg_altered + "/" + character_arg_altered + ".json";
+    // JSONファイル読み込み　ファイル内容取得
+    let char_file_data = fs::read_to_string(&char_file_path)
+        .expect(&("\nFailed to read '".to_owned() + character_arg_altered + ".json" + "' file."));
+
+    // JSONデータデシリアライズ　技データ配列取得
+    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).unwrap();
+
+    // 読み込み成功表示
+    println!(
+        "{}",
+        ("Successfully read '".to_owned() + character_arg_altered + ".json' file.").green()
+    );
+
+    // 技インデックス検索　指定技の位置特定
+    let index = match find::find_move_index(
+        &character_arg_altered.to_string(),
+        character_move.to_string(),
+        &moves_info,
+    )
+    .await
+    {
+        Ok(idx) => idx, // 技インデックス取得
+        Err(err) => {
+            // エラー表示　案内メッセージ送信
+            ctx.say(err.to_string() + "\nView the moves of a character by executing `/moves`.")
+                .await?;
+            println!("{}", ("Error: ".to_owned() + &err.to_string()).red());
+            return Err(AppError::MoveNotFound(err.to_string()));
+        }
+    };
+
+    // 画像JSONファイル読み込み　対象キャラクターの画像データ取得
+    let image_links = fs::read_to_string(
+        "data/".to_owned() + character_arg_altered + "/images.json",
+    )
+    .expect(
+        &("\nFailed to read 'data/".to_owned() + character_arg_altered + "'/images.json' file."),
+    );
+
+    // 画像データデシリアライズ　画像リンク配列取得
+    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap();
+    // 対象技情報取得
+    let move_data = moves_info[index].clone();
+
+    // 技読み込み成功表示
+    println!(
+        "{}",
+        ("Successfully read move '".to_owned()
+            + &move_data.input
+            + "' in '"
+            + character_arg_altered
+            + ".json' file.")
+            .green()
+    );
+
+    // 画像マッチング処理
+    let embed_image = find_matching_image(&move_data, &image_links, IMAGE_DEFAULT);
 
     Ok((move_data, embed_image))
 }
