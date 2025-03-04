@@ -117,7 +117,7 @@ async fn make_link(image_name: String) -> String {
 
     // ログ出力（デバッグ用）
     if image_name != normalized_image_name {
-        println!("URL正規化: {} → {}", image_name, normalized_image_name);
+        println!("URL正規化: {image_name} → {normalized_image_name}");
     }
 
     // 生成された画像リンクを返却　返却結果：最終画像リンク

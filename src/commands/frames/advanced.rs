@@ -67,16 +67,13 @@ async fn find_move_and_images(
 
     // 画像リンク用JSONファイルのパス組み立て　画像情報ファイルの指定
     let images_json_path = "data/".to_owned() + character_arg_altered + "/images.json";
-    println!("Loading images JSON from: {}", images_json_path);
+    println!("Loading images JSON from: {images_json_path}");
     let image_links = fs::read_to_string(&images_json_path).expect(
         &("\nFailed to read 'data/".to_owned() + character_arg_altered + "/images.json' file."),
     );
 
     // JSONファイルを行単位で分割
-    println!(
-        "Debug: Parsing image_links JSON for {}",
-        character_arg_altered
-    );
+    println!("Debug: Parsing image_links JSON for {character_arg_altered}");
 
     // より詳細なデバッグ: 問題のある行を特定する
     println!("==================== MANUAL DEBUGGING ====================");
@@ -92,23 +89,22 @@ async fn find_move_and_images(
 
                 // 各項目を個別にテスト
                 for (i, item) in items.iter().enumerate() {
-                    println!("Testing item #{}", i);
+                    println!("Testing item #{i}");
 
                     // テスト用のJSONオブジェクトを作成
                     let test_json = serde_json::to_string(item).unwrap();
 
                     // デシリアライズを試みる
                     match serde_json::from_str::<ImageLinks>(&test_json) {
-                        Ok(_) => println!("Item #{} deserialized successfully", i),
+                        Ok(_) => println!("Item #{i} deserialized successfully"),
                         Err(e) => {
-                            println!("ERROR with item #{}: {}", i, e);
-                            println!("Problem item: {}", test_json);
+                            println!("ERROR with item #{i}: {e}");
+                            println!("Problem item: {test_json}");
 
                             // 問題のあるアイテムの詳細を出力
                             if let Some(input) = item.get("input") {
                                 println!(
-                                    "input field: {:?} (type: {})",
-                                    input,
+                                    "input field: {input:?} (type: {})",
                                     if input.is_string() {
                                         "string"
                                     } else if input.is_number() {
@@ -121,8 +117,7 @@ async fn find_move_and_images(
 
                             if let Some(move_img) = item.get("move_img") {
                                 println!(
-                                    "move_img field: {:?} (type: {})",
-                                    move_img,
+                                    "move_img field: {move_img:?} (type: {})",
                                     if move_img.is_string() {
                                         "string"
                                     } else if move_img.is_number() {
@@ -135,8 +130,7 @@ async fn find_move_and_images(
 
                             if let Some(hitbox_img) = item.get("hitbox_img") {
                                 println!(
-                                    "hitbox_img field: {:?} (type: {})",
-                                    hitbox_img,
+                                    "hitbox_img field: {hitbox_img:?} (type: {})",
                                     if hitbox_img.is_array() {
                                         "array"
                                     } else if hitbox_img.is_number() {
@@ -154,7 +148,7 @@ async fn find_move_and_images(
             }
         }
         Err(e) => {
-            println!("Failed to parse the entire JSON: {}", e);
+            println!("Failed to parse the entire JSON: {e}");
         }
     }
     println!("================== END MANUAL DEBUGGING ==================");
@@ -174,8 +168,8 @@ async fn find_move_and_images(
                 Ok(link) => image_links_vec.push(link),
                 Err(e) => {
                     // エラーを出力するが、処理は継続
-                    println!("Warning: Failed to deserialize item: {}", e);
-                    println!("Skipping problematic item: {}", item_json);
+                    println!("Warning: Failed to deserialize item: {e}");
+                    println!("Skipping problematic item: {item_json}");
                 }
             }
         }
@@ -184,8 +178,8 @@ async fn find_move_and_images(
     }
 
     println!(
-        "Successfully deserialized {} image links",
-        image_links_vec.len()
+        "Successfully deserialized {count} image links",
+        count = image_links_vec.len()
     );
 
     // 画像リンクJSONのデシリアライズ結果を使用
@@ -253,9 +247,6 @@ fn create_advanced_embeds(
 ) -> Vec<CreateEmbed> {
     // 埋め込みメッセージ群生成用ベクターの初期化
     let mut vec_embeds = Vec::new();
-    // 埋め込みタイトルの作成　キャラクター名と技名を組み合わせたタイトル
-    let cleaned_input = remove_redundant_brackets(&move_info.input);
-    let embed_title = "__**".to_owned() + &cleaned_input + "**__";
     // 埋め込みURLの作成　Dustloop Wiki のキャラクター概要ページURL生成
     let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview";
     // 埋め込みフッターの作成　技に関するキャプションを利用
@@ -264,7 +255,11 @@ fn create_advanced_embeds(
     // 埋め込みメッセージの生成　技データの各パラメータをフィールドとして追加
     let embed = CreateEmbed::new()
         .color(EMBED_COLOR) // 埋め込みカラー設定
-        .title(embed_title) // タイトル設定
+        .title(format!(
+            "{}の{input}",
+            character_arg_altered,
+            input = move_info.input
+        ))
         .url(embed_url) // URL設定
         .image(embed_image) // 画像リンク設定
         .fields(vec![

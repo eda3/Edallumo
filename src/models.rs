@@ -4,7 +4,6 @@
 //! 従来の全てString型だった構造体からより適切なデータ型へ変換しています。
 
 use serde::{Deserialize, Deserializer, Serialize};
-use serde_json;
 use std::str::FromStr;
 
 /// キャラクター情報構造体
@@ -361,8 +360,7 @@ where
     } else {
         // それ以外は型エラー
         Err(serde::de::Error::custom(format!(
-            "expected string or int, got: {:?}",
-            value
+            "expected string or int, got: {value:?}"
         )))
     }
 }
