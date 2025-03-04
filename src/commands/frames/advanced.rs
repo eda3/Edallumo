@@ -34,20 +34,14 @@ async fn load_character_data(character: &str, ctx: &Context<'_>) -> Result<Strin
     Ok(character_arg_altered)
 }
 
-/// 技情報と画像データを読み込む関数
+/// キャラクターの技情報を読み込む関数
 ///
 /// # 引数
 /// * `character_arg_altered` - 正式なキャラクター名
-/// * `character_move` - ユーザーが入力した技名
-/// * `ctx` - コマンドコンテキスト
 ///
 /// # 戻り値
-/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
-async fn find_move_and_images(
-    character_arg_altered: &str,
-    character_move: &str,
-    ctx: &Context<'_>,
-) -> Result<(MoveInfo, String), AppError> {
+/// 成功時は技情報のベクター
+fn load_moves_info(character_arg_altered: &str) -> Vec<MoveInfo> {
     // JSONファイルパスの組み立て　キャラクター情報ファイルのパス生成
     let char_file_path =
         "data/".to_owned() + character_arg_altered + "/" + character_arg_altered + ".json";
@@ -64,6 +58,17 @@ async fn find_move_and_images(
         ("Successfully read '".to_owned() + character_arg_altered + ".json' file.").green()
     );
 
+    moves_info
+}
+
+/// 画像リンク情報を読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+///
+/// # 戻り値
+/// 画像リンク情報のベクター
+fn load_image_links(character_arg_altered: &str) -> Vec<ImageLinks> {
     // 画像リンク用JSONファイルのパス組み立て　画像情報ファイルの指定
     let images_json_path = "data/".to_owned() + character_arg_altered + "/images.json";
     println!("Loading images JSON from: {images_json_path}");
@@ -74,10 +79,21 @@ async fn find_move_and_images(
     // JSONファイルを行単位で分割
     println!("Debug: Parsing image_links JSON for {character_arg_altered}");
 
-    // より詳細なデバッグ: 問題のある行を特定する
+    // デバッグログ処理（本番では省略可能）
+    debug_image_links_json(&image_links);
+
+    // 画像リンクJSONの安全なデシリアライズ
+    parse_image_links(&image_links)
+}
+
+/// 画像リンクJSONのデバッグ情報を出力する関数
+///
+/// # 引数
+/// * `image_links` - 画像リンクJSONの文字列
+fn debug_image_links_json(image_links: &str) {
     println!("==================== MANUAL DEBUGGING ====================");
     // まず、JSON全体を解析できるかチェック
-    let parse_result = serde_json::from_str::<serde_json::Value>(&image_links);
+    let parse_result = serde_json::from_str::<serde_json::Value>(image_links);
     match parse_result {
         Ok(json_value) => {
             println!("Entire JSON successfully parsed as generic Value");
@@ -151,14 +167,22 @@ async fn find_move_and_images(
         }
     }
     println!("================== END MANUAL DEBUGGING ==================");
+}
 
-    // 画像リンクJSONの安全なデシリアライズ
+/// 画像リンクJSONをパースする関数
+///
+/// # 引数
+/// * `image_links` - 画像リンクJSONの文字列
+///
+/// # 戻り値
+/// 画像リンク情報のベクター
+fn parse_image_links(image_links: &str) -> Vec<ImageLinks> {
     println!("Safely deserializing image links...");
     let mut image_links_vec = Vec::new();
 
     // JSONが配列であることを確認
     if let Ok(serde_json::Value::Array(items)) =
-        serde_json::from_str::<serde_json::Value>(&image_links)
+        serde_json::from_str::<serde_json::Value>(image_links)
     {
         // 各要素を個別に処理
         for item in items {
@@ -181,8 +205,52 @@ async fn find_move_and_images(
         count = image_links_vec.len()
     );
 
-    // 画像リンクJSONのデシリアライズ結果を使用
-    let image_links = image_links_vec;
+    image_links_vec
+}
+
+/// 技画像URLを取得する関数
+///
+/// # 引数
+/// * `move_data` - 技情報
+/// * `image_links` - 画像リンク情報のベクター
+///
+/// # 戻り値
+/// 技画像のURL
+fn get_move_image_url(move_data: &MoveInfo, image_links: &[ImageLinks]) -> String {
+    // デフォルト画像URL設定
+    let mut embed_image = IMAGE_DEFAULT.to_string();
+
+    // 画像リンクの探索　対象技の画像リンクを検索
+    for img_links in image_links {
+        // 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
+        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+            break; // 探索終了
+        }
+    }
+
+    embed_image
+}
+
+/// 技情報と画像データを読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
+async fn find_move_and_images(
+    character_arg_altered: &str,
+    character_move: &str,
+    ctx: &Context<'_>,
+) -> Result<(MoveInfo, String), AppError> {
+    // 技情報の読み込み
+    let moves_info = load_moves_info(character_arg_altered);
+
+    // 画像リンク情報の読み込み
+    let image_links = load_image_links(character_arg_altered);
 
     // 技インデックス検索
     let move_index = match find::find_move_index(
@@ -215,17 +283,8 @@ async fn find_move_and_images(
             .green()
     );
 
-    // デフォルト画像URL設定
-    let mut embed_image = IMAGE_DEFAULT.to_string();
-
-    // 画像リンクの探索　対象技の画像リンクを検索
-    for img_links in image_links {
-        // 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
-        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
-            embed_image = img_links.move_img.to_string(); // 画像リンク更新
-            break; // 探索終了
-        }
-    }
+    // 技画像URLの取得
+    let embed_image = get_move_image_url(&move_data, &image_links);
 
     Ok((move_data, embed_image))
 }
