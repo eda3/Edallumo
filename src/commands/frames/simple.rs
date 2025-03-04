@@ -126,6 +126,34 @@ async fn find_move_data(
     );
     println!("デバッグ - 画像リンク配列の要素数: {}", image_links.len());
 
+    // 括弧を除去した技名を作成（例：「2HS(2HS)」→「2HS」）
+    let cleaned_input = if move_data.input.contains('(') {
+        move_data
+            .input
+            .split('(')
+            .next()
+            .unwrap_or("")
+            .trim()
+            .to_string()
+    } else {
+        move_data.input.clone()
+    };
+
+    // 括弧内のコマンドを取得（例：「2HS(2HS)」→「2HS」）
+    let bracket_content = if move_data.input.contains('(') && move_data.input.contains(')') {
+        let start = move_data.input.find('(').unwrap_or(0) + 1;
+        let end = move_data.input.find(')').unwrap_or(move_data.input.len());
+        if start < end {
+            move_data.input[start..end].to_string()
+        } else {
+            String::new()
+        }
+    } else {
+        String::new()
+    };
+
+    println!("デバッグ - 括弧除去後の技名: '{cleaned_input}', 括弧内容: '{bracket_content}'");
+
     for (i, img_links) in image_links.iter().enumerate() {
         println!(
             "デバッグ - [{}]: img_links.input='{}' (小文字: '{}'), img_links.move_img='{}'",
@@ -135,7 +163,7 @@ async fn find_move_data(
             img_links.move_img
         );
 
-        // 完全一致の場合
+        // 元の入力との完全一致
         if move_data.input.to_lowercase() == img_links.input.to_lowercase()
             && !img_links.move_img.is_empty()
         {
@@ -147,9 +175,34 @@ async fn find_move_data(
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
             break; // ループ抜け
         }
-
-        // 部分一致の場合 - 最初の完全一致が見つからない場合のバックアップ
-        if img_links
+        // 括弧を除去した技名との一致
+        else if !cleaned_input.is_empty()
+            && cleaned_input.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            println!(
+                "デバッグ - 括弧除去後の一致！ 除去後: '{}' == '{}'",
+                cleaned_input.to_lowercase(),
+                img_links.input.to_lowercase()
+            );
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+            break; // ループ抜け
+        }
+        // 括弧内のコマンドとの一致
+        else if !bracket_content.is_empty()
+            && bracket_content.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            println!(
+                "デバッグ - 括弧内コマンド一致！ 括弧内: '{}' == '{}'",
+                bracket_content.to_lowercase(),
+                img_links.input.to_lowercase()
+            );
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+            break; // ループ抜け
+        }
+        // 部分一致の場合 - 上記のいずれにも該当しない場合のバックアップ
+        else if img_links
             .input
             .to_lowercase()
             .contains(&move_data.input.to_lowercase())
