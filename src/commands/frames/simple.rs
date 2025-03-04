@@ -118,12 +118,48 @@ async fn find_move_data(
     // デフォルト画像設定
     let mut embed_image = IMAGE_DEFAULT.to_string();
 
-    // 画像リンク検索　画像JSONから対象技のリンク取得
-    for img_links in image_links {
-        // 画像リンク確認　対象技と一致かつ画像リンク非空
-        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
+    // デバッグ情報表示
+    println!(
+        "デバッグ - 検索する技: '{}' (大文字小文字変換: '{}')",
+        move_data.input,
+        move_data.input.to_lowercase()
+    );
+    println!("デバッグ - 画像リンク配列の要素数: {}", image_links.len());
+
+    for (i, img_links) in image_links.iter().enumerate() {
+        println!(
+            "デバッグ - [{}]: img_links.input='{}' (小文字: '{}'), img_links.move_img='{}'",
+            i,
+            img_links.input,
+            img_links.input.to_lowercase(),
+            img_links.move_img
+        );
+
+        // 完全一致の場合
+        if move_data.input.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            println!(
+                "デバッグ - 完全一致！ 入力: '{}' == '{}'",
+                move_data.input.to_lowercase(),
+                img_links.input.to_lowercase()
+            );
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
             break; // ループ抜け
+        }
+
+        // 部分一致の場合 - 最初の完全一致が見つからない場合のバックアップ
+        if img_links
+            .input
+            .to_lowercase()
+            .contains(&move_data.input.to_lowercase())
+            && !img_links.move_img.is_empty()
+        {
+            println!(
+                "デバッグ - 部分一致！ JSON入力: '{}', 技入力: '{}'",
+                img_links.input, move_data.input
+            );
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
         }
     }
 
