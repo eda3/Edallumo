@@ -4,6 +4,7 @@
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
 //! JSONファイルから該当データを取得し、画像リンクや各種技パラメータを整形して表示する。
 
+use crate::utils::remove_redundant_brackets;
 use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR};
 use colored::Colorize;
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter};
@@ -253,7 +254,8 @@ fn create_advanced_embeds(
     // 埋め込みメッセージ群生成用ベクターの初期化
     let mut vec_embeds = Vec::new();
     // 埋め込みタイトルの作成　キャラクター名と技名を組み合わせたタイトル
-    let embed_title = "__**".to_owned() + &move_info.input + "**__";
+    let cleaned_input = remove_redundant_brackets(&move_info.input);
+    let embed_title = "__**".to_owned() + &cleaned_input + "**__";
     // 埋め込みURLの作成　Dustloop Wiki のキャラクター概要ページURL生成
     let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview";
     // 埋め込みフッターの作成　技に関するキャプションを利用

@@ -235,6 +235,38 @@ pub fn normalize_input(input: &str) -> String {
     result
 }
 
+/// 括弧内が外と同じ場合、括弧を除去する
+///
+/// 「2HS(2HS)」のように括弧内と外が同じ文言の場合、括弧を含む部分を削除します。
+/// 例: 「2HS(2HS)」→「2HS」、「足払い(2D)」→「足払い(2D)」（変更なし）
+///
+/// # 引数
+/// * `input` - 処理する入力文字列
+///
+/// # 戻り値
+/// `String` - 処理された文字列
+pub fn remove_redundant_brackets(input: &str) -> String {
+    // 括弧内のコンテンツを抽出
+    if let Some(start) = input.find('(') {
+        if let Some(end) = input.find(')') {
+            if end > start {
+                // 括弧外の内容
+                let outside = &input[0..start].trim();
+                // 括弧内の内容
+                let inside = &input[start + 1..end].trim();
+
+                // 括弧内と外が同じ場合は括弧部分を除去
+                if outside == inside {
+                    return (*outside).to_string();
+                }
+            }
+        }
+    }
+
+    // 条件に合わない場合は元の文字列を返す
+    input.to_string()
+}
+
 /// 技名称を正規化する
 ///
 /// 技名称から空白や記号を削除し、正規化します。

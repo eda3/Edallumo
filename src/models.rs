@@ -302,7 +302,10 @@ where
 
     // 値が整数の場合
     if let Some(i) = value.as_i64() {
-        return Ok(Some(i as i32));
+        return match i32::try_from(i) {
+            Ok(value) => Ok(Some(value)),
+            Err(_) => Ok(None), // 変換できない場合は None を返す
+        };
     }
 
     // 値が文字列の場合
