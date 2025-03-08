@@ -208,24 +208,76 @@ fn parse_image_links(image_links: &str) -> Vec<ImageLinks> {
     image_links_vec
 }
 
-/// 技画像URLを取得する関数
+/// 技に対応する画像URLを取得する
 ///
 /// # 引数
 /// * `move_data` - 技情報
-/// * `image_links` - 画像リンク情報のベクター
+/// * `image_links` - 画像リンク情報の配列
 ///
 /// # 戻り値
-/// 技画像のURL
+/// 画像のURL（見つからない場合はデフォルト画像）
 fn get_move_image_url(move_data: &MoveInfo, image_links: &[ImageLinks]) -> String {
-    // デフォルト画像URL設定
     let mut embed_image = IMAGE_DEFAULT.to_string();
+
+    // 括弧を除去した技名を作成（例：「2d(2d)」→「2d」）
+    let cleaned_input = if move_data.input.contains('(') {
+        move_data
+            .input
+            .split('(')
+            .next()
+            .unwrap_or("")
+            .trim()
+            .to_string()
+    } else {
+        move_data.input.to_string()
+    };
+
+    // 括弧内のコマンドを取得（例：「2d(2d)」→「2d」）
+    let bracket_content = if move_data.input.contains('(') && move_data.input.contains(')') {
+        let start = move_data.input.find('(').unwrap_or(0) + 1;
+        let end = move_data.input.find(')').unwrap_or(move_data.input.len());
+        if start < end {
+            move_data.input[start..end].to_string()
+        } else {
+            String::new()
+        }
+    } else {
+        String::new()
+    };
 
     // 画像リンクの探索　対象技の画像リンクを検索
     for img_links in image_links {
-        // 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
-        if move_data.input == img_links.input && !img_links.move_img.is_empty() {
+        // 完全一致
+        if move_data.input.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
             break; // 探索終了
+        }
+        // 括弧を除去した技名との一致
+        else if !cleaned_input.is_empty()
+            && cleaned_input.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+            break; // 探索終了
+        }
+        // 括弧内のコマンドとの一致
+        else if !bracket_content.is_empty()
+            && bracket_content.to_lowercase() == img_links.input.to_lowercase()
+            && !img_links.move_img.is_empty()
+        {
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
+            break; // 探索終了
+        }
+        // 部分一致（バックアップ）
+        else if img_links
+            .input
+            .to_lowercase()
+            .contains(&move_data.input.to_lowercase())
+            && !img_links.move_img.is_empty()
+        {
+            embed_image = img_links.move_img.to_string(); // 画像リンク更新
         }
     }
 
