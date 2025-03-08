@@ -247,24 +247,12 @@ fn get_move_image_url(move_data: &MoveInfo, image_links: &[ImageLinks]) -> Strin
 
     // 画像リンクの探索　対象技の画像リンクを検索
     for img_links in image_links {
-        // 完全一致
-        if move_data.input.to_lowercase() == img_links.input.to_lowercase()
-            && !img_links.move_img.is_empty()
-        {
-            embed_image = img_links.move_img.to_string(); // 画像リンク更新
-            break; // 探索終了
-        }
-        // 括弧を除去した技名との一致
-        else if !cleaned_input.is_empty()
-            && cleaned_input.to_lowercase() == img_links.input.to_lowercase()
-            && !img_links.move_img.is_empty()
-        {
-            embed_image = img_links.move_img.to_string(); // 画像リンク更新
-            break; // 探索終了
-        }
-        // 括弧内のコマンドとの一致
-        else if !bracket_content.is_empty()
-            && bracket_content.to_lowercase() == img_links.input.to_lowercase()
+        // 完全一致、括弧を除去した技名との一致、または括弧内のコマンドとの一致
+        if (move_data.input.to_lowercase() == img_links.input.to_lowercase()
+            || (!cleaned_input.is_empty()
+                && cleaned_input.to_lowercase() == img_links.input.to_lowercase())
+            || (!bracket_content.is_empty()
+                && bracket_content.to_lowercase() == img_links.input.to_lowercase()))
             && !img_links.move_img.is_empty()
         {
             embed_image = img_links.move_img.to_string(); // 画像リンク更新
