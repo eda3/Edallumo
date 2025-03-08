@@ -309,10 +309,45 @@ async fn find_move_and_images(
     let selected_move_info = moves_info[index].clone(); // 対象ムーブ情報取得
     let mut embed_image = String::new(); // 埋め込み画像初期化
 
+    // 括弧を除去した技名を作成（例：「2d(2d)」→「2d」）
+    let cleaned_input = if selected_move_info.input.contains('(') {
+        selected_move_info
+            .input
+            .split('(')
+            .next()
+            .unwrap_or("")
+            .trim()
+            .to_string()
+    } else {
+        selected_move_info.input.to_string()
+    };
+
+    // 括弧内のコマンドを取得（例：「2d(2d)」→「2d」）
+    let bracket_content =
+        if selected_move_info.input.contains('(') && selected_move_info.input.contains(')') {
+            let start = selected_move_info.input.find('(').unwrap_or(0) + 1;
+            let end = selected_move_info
+                .input
+                .find(')')
+                .unwrap_or(selected_move_info.input.len());
+            if start < end {
+                selected_move_info.input[start..end].to_string()
+            } else {
+                String::new()
+            }
+        } else {
+            String::new()
+        };
+
     // ムーブ画像送信処理
-    for img_links in image_links {
-        // 画像リンク走査ループ
-        if selected_move_info.input == img_links.input {
+    for img_links in &image_links {
+        // 完全一致、括弧を除去した技名との一致、または括弧内のコマンドとの一致
+        if selected_move_info.input.to_lowercase() == img_links.input.to_lowercase()
+            || (!cleaned_input.is_empty()
+                && cleaned_input.to_lowercase() == img_links.input.to_lowercase())
+            || (!bracket_content.is_empty()
+                && bracket_content.to_lowercase() == img_links.input.to_lowercase())
+        {
             // ヒット判定
             println!(
                 "{}",
@@ -327,8 +362,24 @@ async fn find_move_and_images(
             embed_image = if img_links.move_img.is_empty() {
                 String::from(IMAGE_DEFAULT) // デフォルト画像設定
             } else {
-                img_links.move_img // ムーブ画像設定
+                img_links.move_img.clone() // ムーブ画像設定
             };
+            break; // 検索終了
+        }
+    }
+
+    // 画像が見つからなかった場合、部分一致で再検索
+    if embed_image.is_empty() {
+        for img_links in &image_links {
+            if img_links
+                .input
+                .to_lowercase()
+                .contains(&selected_move_info.input.to_lowercase())
+                && !img_links.move_img.is_empty()
+            {
+                embed_image = img_links.move_img.clone();
+                break;
+            }
         }
     }
 
