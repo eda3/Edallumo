@@ -11,7 +11,8 @@ use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; // Discord埋め�
 use std::{fs, string::String}; // ファイル操作と文字列型
 
 /// デフォルトヒットボックス画像URL
-const HITBOX_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
+const HITBOX_DEFAULT: &str =
+    "https://raw.githubusercontent.com/eda3/Edallumo/main/data/images/no_hitbox.png";
 
 /// キャラクターデータを読み込む関数
 ///
@@ -158,7 +159,29 @@ fn create_hitbox_embeds(
                     .url(&embed_url)
             };
 
-            match img_links.hitbox_img.len() {
+            println!(
+                "{}",
+                format!(
+                    "hitbox_img: {} (raw), {} (valid)",
+                    img_links.hitbox_img.len(),
+                    img_links
+                        .hitbox_img
+                        .iter()
+                        .filter(|url| !url.is_empty())
+                        .count()
+                )
+                .blue()
+            );
+
+            // 空文字列を除外した有効なヒットボックス画像URLを収集
+            let valid_hitbox_images: Vec<String> = img_links
+                .hitbox_img
+                .iter()
+                .filter(|url| !url.is_empty())
+                .cloned()
+                .collect();
+
+            match valid_hitbox_images.len() {
                 // ヒットボックス画像なしの場合
                 0 => {
                     // デフォルト画像で埋め込み作成
@@ -168,7 +191,7 @@ fn create_hitbox_embeds(
                 // ヒットボックス画像が1枚の場合
                 1 => {
                     // 単一画像で埋め込み作成
-                    let embed = create_base_embed().image(&img_links.hitbox_img[0]);
+                    let embed = create_base_embed().image(&valid_hitbox_images[0]);
                     vec_embeds.push(embed);
                 }
                 // ヒットボックス画像が複数の場合
@@ -178,7 +201,7 @@ fn create_hitbox_embeds(
                         CreateEmbedFooter::new(format!("Move has {n} hitbox images."));
 
                     // 各画像ごとに埋め込み作成
-                    for htbx_img in &img_links.hitbox_img {
+                    for htbx_img in &valid_hitbox_images {
                         let embed = create_base_embed()
                             .image(htbx_img)
                             .footer(embed_footer.clone());
