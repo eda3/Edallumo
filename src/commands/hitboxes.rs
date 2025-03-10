@@ -8,7 +8,7 @@
 use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR}; // 各種機能とデータ型
 use colored::Colorize; // ターミナル出力の色付け
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; // Discord埋め込み作成
-use std::{fs, string::String}; // ファイル操作と文字列型
+use std::{fs, path::Path, string::String}; // ファイル操作と文字列型
 
 /// デフォルトヒットボックス画像URL
 const HITBOX_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
@@ -29,7 +29,7 @@ async fn load_character_data(character: &str, ctx: &Context<'_>) -> Result<Strin
         Err(err) => {
             // キャラクター未検出時のエラーメッセージ送信
             ctx.say(err.to_string()).await?;
-            println!("{}", ("Error: ".to_owned() + &err.to_string()).red());
+            println!("{}", format!("Error: {}", err).red());
             return Err(AppError::CharacterNotFound(err.to_string()));
         }
     };
@@ -51,19 +51,33 @@ async fn find_move_and_images(
     character_move: &str,
     ctx: &Context<'_>,
 ) -> Result<(MoveInfo, Vec<ImageLinks>), AppError> {
+    // キャラクターJSONファイルパス構築
+    let char_file_path = format!(
+        "data/{}/{}.json",
+        character_arg_altered, character_arg_altered
+    );
+
     // キャラクターJSONファイル読み込み
-    let char_file_path =
-        "data/".to_owned() + character_arg_altered + "/" + character_arg_altered + ".json";
-    let char_file_data = fs::read_to_string(char_file_path)
-        .expect(&("\nFailed to read '".to_owned() + character_arg_altered + ".json" + "' file."));
+    let char_file_data = fs::read_to_string(&char_file_path).map_err(|e| {
+        let error_msg = format!(
+            "キャラクターファイル '{}' の読み込みに失敗しました: {}",
+            char_file_path, e
+        );
+        println!("{}", error_msg.red());
+        AppError::FileNotFound(error_msg)
+    })?;
 
     // キャラクターJSONデシリアライズ
-    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).unwrap();
+    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).map_err(|e| {
+        let error_msg = format!("キャラクターJSONの解析に失敗しました: {}", e);
+        println!("{}", error_msg.red());
+        AppError::Json(e)
+    })?;
 
     // 読み込み成功ログ出力
     println!(
         "{}",
-        ("Successfully read '".to_owned() + character_arg_altered + ".json' file.").green()
+        format!("Successfully read '{}' file.", char_file_path).green()
     );
 
     // 技インデックス検索
@@ -77,23 +91,35 @@ async fn find_move_and_images(
         Ok(index) => index,
         Err(err) => {
             // 技未検出時のエラーメッセージ送信
-            ctx.say(err.to_string() + "\nView the moves of a character by executing `/moves`.")
-                .await?;
-            println!("{}", ("Error: ".to_owned() + &err.to_string()).red());
+            let error_msg = format!(
+                "{}\nView the moves of a character by executing `/moves`.",
+                err
+            );
+            ctx.say(&error_msg).await?;
+            println!("{}", format!("Error: {}", err).red());
             return Err(AppError::MoveNotFound(err.to_string()));
         }
     };
 
+    // 画像JSONファイルパス構築
+    let images_file_path = format!("data/{}/images.json", character_arg_altered);
+
     // 画像JSONファイル読み込み
-    let image_links = fs::read_to_string(
-        "data/".to_owned() + character_arg_altered + "/images.json",
-    )
-    .expect(
-        &("\nFailed to read 'data/".to_owned() + character_arg_altered + "'/images.json' file."),
-    );
+    let image_data = fs::read_to_string(&images_file_path).map_err(|e| {
+        let error_msg = format!(
+            "画像ファイル '{}' の読み込みに失敗しました: {}",
+            images_file_path, e
+        );
+        println!("{}", error_msg.red());
+        AppError::FileNotFound(error_msg)
+    })?;
 
     // 画像JSONデシリアライズ
-    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_links).unwrap();
+    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_data).map_err(|e| {
+        let error_msg = format!("画像JSONの解析に失敗しました: {}", e);
+        println!("{}", error_msg.red());
+        AppError::Json(e)
+    })?;
 
     // 技情報取得
     let move_data = moves_info[index].clone();
@@ -101,12 +127,11 @@ async fn find_move_and_images(
     // 技情報読み込み成功ログ出力
     println!(
         "{}",
-        ("Successfully read move '".to_owned()
-            + &move_data.input
-            + "' in '"
-            + character_arg_altered
-            + ".json' file.")
-            .green()
+        format!(
+            "Successfully read move '{}' in '{}' file.",
+            move_data.input, char_file_path
+        )
+        .green()
     );
 
     Ok((move_data, image_links))
@@ -129,58 +154,67 @@ fn create_hitbox_embeds(
     let mut vec_embeds = Vec::new();
 
     // 埋め込みタイトルとURL設定
-    let embed_title = "__**".to_owned() + &move_info.input + "**__";
-    let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview";
+    let embed_title = format!("__**{}**__", move_info.input);
+    let embed_url = format!(
+        "https://dustloop.com/w/GGST/{}#Overview",
+        character_arg_altered
+    );
 
     // 画像リンク走査
     for img_links in image_links {
         // 対象技の画像リンク検索
         if move_info.input == img_links.input {
-            // ヒットボックス画像なしの場合
-            if img_links.hitbox_img.is_empty() {
-                // デフォルト画像で埋め込み作成
-                let empty_embed = CreateEmbed::new()
+            // 埋め込みの基本設定を作成する関数
+            let create_base_embed = || {
+                CreateEmbed::new()
                     .color(EMBED_COLOR)
                     .title(&embed_title)
                     .url(&embed_url)
-                    .image(HITBOX_DEFAULT);
+            };
 
-                vec_embeds.push(empty_embed);
-            }
-            // ヒットボックス画像が1枚の場合
-            else if img_links.hitbox_img.len() == 1 {
-                // 単一画像で埋め込み作成
-                let embed = CreateEmbed::new()
-                    .color(EMBED_COLOR)
-                    .title(&embed_title)
-                    .url(&embed_url)
-                    .image(&img_links.hitbox_img[0]);
-
-                vec_embeds.push(embed);
-            }
-            // ヒットボックス画像が複数の場合
-            else {
-                // 各画像ごとに埋め込み作成
-                for htbx_img in &img_links.hitbox_img {
-                    // フッター情報（画像枚数）設定
-                    let embed_footer = CreateEmbedFooter::new(
-                        "Move has ".to_owned()
-                            + &img_links.hitbox_img.len().to_string()
-                            + " hitbox images.",
-                    );
-
-                    // 埋め込み作成
-                    let embed = CreateEmbed::new()
-                        .color(EMBED_COLOR)
-                        .title(&embed_title)
-                        .url(&embed_url)
-                        .image(htbx_img)
-                        .footer(embed_footer);
-
+            match img_links.hitbox_img.len() {
+                // ヒットボックス画像なしの場合
+                0 => {
+                    // デフォルト画像で埋め込み作成
+                    let empty_embed = create_base_embed().image(HITBOX_DEFAULT);
+                    vec_embeds.push(empty_embed);
+                }
+                // ヒットボックス画像が1枚の場合
+                1 => {
+                    // 単一画像で埋め込み作成
+                    let embed = create_base_embed().image(&img_links.hitbox_img[0]);
                     vec_embeds.push(embed);
                 }
+                // ヒットボックス画像が複数の場合
+                n => {
+                    // フッター情報（画像枚数）設定
+                    let embed_footer =
+                        CreateEmbedFooter::new(format!("Move has {} hitbox images.", n));
+
+                    // 各画像ごとに埋め込み作成
+                    for htbx_img in &img_links.hitbox_img {
+                        let embed = create_base_embed()
+                            .image(htbx_img)
+                            .footer(embed_footer.clone());
+                        vec_embeds.push(embed);
+                    }
+                }
             }
+
+            // 対象の技を見つけたらループを終了（重複防止）
+            break;
         }
+    }
+
+    // 画像が見つからなかった場合、デフォルト埋め込みを追加
+    if vec_embeds.is_empty() {
+        let default_embed = CreateEmbed::new()
+            .color(EMBED_COLOR)
+            .title(&embed_title)
+            .url(&embed_url)
+            .image(HITBOX_DEFAULT)
+            .description("No hitbox images found for this move.");
+        vec_embeds.push(default_embed);
     }
 
     vec_embeds
@@ -211,21 +245,17 @@ pub async fn hitboxes(
     // コマンド引数のログ出力
     println!(
         "{}",
-        ("Command Args: '".to_owned() + &character + ", " + &character_move + "'").purple()
+        format!("Command Args: '{}', '{}'", character, character_move).purple()
     );
 
     // 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
-    if (check::adaptive_check(
-        ctx,
-        check::CheckOptions::DATA_FOLDER
-            | check::CheckOptions::NICKNAMES_JSON
-            | check::CheckOptions::CHARACTER_FOLDERS
-            | check::CheckOptions::CHARACTER_JSONS
-            | check::CheckOptions::CHARACTER_IMAGES,
-    )
-    .await)
-        .is_err()
-    {
+    let check_options = check::CheckOptions::DATA_FOLDER
+        | check::CheckOptions::NICKNAMES_JSON
+        | check::CheckOptions::CHARACTER_FOLDERS
+        | check::CheckOptions::CHARACTER_JSONS
+        | check::CheckOptions::CHARACTER_IMAGES;
+
+    if check::adaptive_check(ctx, check_options).await.is_err() {
         return Ok(());
     }
 
