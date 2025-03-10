@@ -199,10 +199,6 @@ pub struct MoveInfo {
     #[serde(deserialize_with = "deserialize_option_f64")]
     pub chip_ratio: Option<f64>,
 
-    /// OTG比率
-    #[serde(deserialize_with = "deserialize_option_f64")]
-    pub otg_ratio: Option<f64>,
-
     /// ダメージスケーリング
     #[serde(deserialize_with = "deserialize_option_f64")]
     pub scaling: Option<f64>,
@@ -444,7 +440,6 @@ mod tests {
             wall_damage: Some(9),
             input_tension: Some(0.0),
             chip_ratio: Some(0.0),
-            otg_ratio: Some(0.8),
             scaling: Some(0.8),
             invincibility: "None".to_string(),
             cancel: "Special, Super".to_string(),

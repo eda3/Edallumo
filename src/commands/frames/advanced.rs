@@ -421,13 +421,6 @@ fn create_advanced_embeds(
                 true,
             ),
             (
-                "OTG比率",
-                &move_info
-                    .otg_ratio
-                    .map_or("-".to_string(), |v| v.to_string()),
-                true,
-            ),
-            (
                 "スケーリング",
                 &move_info.scaling.map_or("-".to_string(), |v| v.to_string()),
                 true,

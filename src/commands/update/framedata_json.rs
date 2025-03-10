@@ -54,8 +54,6 @@ struct Title {
     wall_damage: Option<String>, // 壁ダメージ　未定義時は None
     input_tension: Option<String>, // 入力緊張度　未定義時は None
     chip_ratio: Option<String>, // チップダメージ比率　未定義時は None
-    #[serde(rename = "OTGRatio")]
-    otg_ratio: Option<String>, // OTG比率　未定義時は None
     #[serde(rename = "prorate")]
     scaling: Option<String>, // ダメージスケーリング　未定義時は None
     #[serde(rename = "invuln")]
@@ -181,13 +179,7 @@ type StringFields = (
 /// 整数フィールドのタプル型
 type IntegerFields = (Option<i32>, Option<i32>, Option<i32>, Option<i32>);
 /// 浮動小数点フィールドのタプル型
-type FloatFields = (
-    Option<f64>,
-    Option<f64>,
-    Option<f64>,
-    Option<f64>,
-    Option<f64>,
-);
+type FloatFields = (Option<f64>, Option<f64>, Option<f64>, Option<f64>);
 
 /// `文字列型フィールドをMoveInfoに設定する補助関数`
 fn set_string_fields(move_data: &Data, empty: &str) -> StringFields {
@@ -317,12 +309,6 @@ fn set_float_fields(move_data: &Data) -> FloatFields {
             .chip_ratio
             .as_ref()
             .and_then(|s| s.parse::<f64>().ok()),
-        // OTG比率
-        move_data
-            .title
-            .otg_ratio
-            .as_ref()
-            .and_then(|s| s.parse::<f64>().ok()),
     )
 }
 
@@ -341,7 +327,7 @@ fn create_move_info(move_data: &Data, empty: &str) -> MoveInfo {
     let (damage, startup, recovery, wall_damage) = set_integer_fields(move_data);
 
     // 浮動小数点型フィールドをまとめて取得
-    let (risc_gain, risc_loss, input_tension, chip_ratio, otg_ratio) = set_float_fields(move_data);
+    let (risc_gain, risc_loss, input_tension, chip_ratio) = set_float_fields(move_data);
 
     // スケーリングはユースケースが単独なので個別に取得
     let scaling = move_data
@@ -373,7 +359,6 @@ fn create_move_info(move_data: &Data, empty: &str) -> MoveInfo {
         wall_damage,
         input_tension,
         chip_ratio,
-        otg_ratio,
         scaling,
         invincibility,
         cancel,
