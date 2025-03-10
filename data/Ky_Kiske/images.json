@@ -230,7 +230,7 @@
     ]
   },
   {
-    "input": "ヴェイパースラスト(623S)",
+    "input": "ヴェイパースラスト(6236S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"
@@ -338,7 +338,7 @@
     ]
   },
   {
-    "input": "空中ヴェイパースラスト(j623S)",
+    "input": "空中ヴェイパースラスト(j6236S)",
     "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"
