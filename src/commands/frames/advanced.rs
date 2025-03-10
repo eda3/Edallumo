@@ -601,7 +601,6 @@ mod tests {
             wall_damage: Some(9),
             input_tension: Some(0.0),
             chip_ratio: Some(0.0),
-            otg_ratio: Some(0.8),
             scaling: Some(0.8),
             invincibility: "None".to_string(),
             cancel: "Special, Super".to_string(),
