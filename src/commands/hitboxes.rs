@@ -8,7 +8,7 @@
 use crate::{check, error::AppError, find, Context, ImageLinks, MoveInfo, EMBED_COLOR}; // 各種機能とデータ型
 use colored::Colorize; // ターミナル出力の色付け
 use poise::serenity_prelude::{CreateEmbed, CreateEmbedFooter}; // Discord埋め込み作成
-use std::{fs, path::Path, string::String}; // ファイル操作と文字列型
+use std::{fs, string::String}; // ファイル操作と文字列型
 
 /// デフォルトヒットボックス画像URL
 const HITBOX_DEFAULT: &str = "https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png";
@@ -29,7 +29,7 @@ async fn load_character_data(character: &str, ctx: &Context<'_>) -> Result<Strin
         Err(err) => {
             // キャラクター未検出時のエラーメッセージ送信
             ctx.say(err.to_string()).await?;
-            println!("{}", format!("Error: {}", err).red());
+            println!("{}", format!("Error: {err}").red());
             return Err(AppError::CharacterNotFound(err.to_string()));
         }
     };
@@ -52,24 +52,19 @@ async fn find_move_and_images(
     ctx: &Context<'_>,
 ) -> Result<(MoveInfo, Vec<ImageLinks>), AppError> {
     // キャラクターJSONファイルパス構築
-    let char_file_path = format!(
-        "data/{}/{}.json",
-        character_arg_altered, character_arg_altered
-    );
+    let char_file_path = format!("data/{character_arg_altered}/{character_arg_altered}.json");
 
     // キャラクターJSONファイル読み込み
     let char_file_data = fs::read_to_string(&char_file_path).map_err(|e| {
-        let error_msg = format!(
-            "キャラクターファイル '{}' の読み込みに失敗しました: {}",
-            char_file_path, e
-        );
+        let error_msg =
+            format!("キャラクターファイル '{char_file_path}' の読み込みに失敗しました: {e}");
         println!("{}", error_msg.red());
         AppError::FileNotFound(error_msg)
     })?;
 
     // キャラクターJSONデシリアライズ
     let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).map_err(|e| {
-        let error_msg = format!("キャラクターJSONの解析に失敗しました: {}", e);
+        let error_msg = format!("キャラクターJSONの解析に失敗しました: {e}");
         println!("{}", error_msg.red());
         AppError::Json(e)
     })?;
@@ -77,7 +72,7 @@ async fn find_move_and_images(
     // 読み込み成功ログ出力
     println!(
         "{}",
-        format!("Successfully read '{}' file.", char_file_path).green()
+        format!("Successfully read '{char_file_path}' file.").green()
     );
 
     // 技インデックス検索
@@ -91,32 +86,26 @@ async fn find_move_and_images(
         Ok(index) => index,
         Err(err) => {
             // 技未検出時のエラーメッセージ送信
-            let error_msg = format!(
-                "{}\nView the moves of a character by executing `/moves`.",
-                err
-            );
+            let error_msg = format!("{err}\nView the moves of a character by executing `/moves`.");
             ctx.say(&error_msg).await?;
-            println!("{}", format!("Error: {}", err).red());
+            println!("{}", format!("Error: {err}").red());
             return Err(AppError::MoveNotFound(err.to_string()));
         }
     };
 
     // 画像JSONファイルパス構築
-    let images_file_path = format!("data/{}/images.json", character_arg_altered);
+    let images_file_path = format!("data/{character_arg_altered}/images.json");
 
     // 画像JSONファイル読み込み
     let image_data = fs::read_to_string(&images_file_path).map_err(|e| {
-        let error_msg = format!(
-            "画像ファイル '{}' の読み込みに失敗しました: {}",
-            images_file_path, e
-        );
+        let error_msg = format!("画像ファイル '{images_file_path}' の読み込みに失敗しました: {e}");
         println!("{}", error_msg.red());
         AppError::FileNotFound(error_msg)
     })?;
 
     // 画像JSONデシリアライズ
     let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_data).map_err(|e| {
-        let error_msg = format!("画像JSONの解析に失敗しました: {}", e);
+        let error_msg = format!("画像JSONの解析に失敗しました: {e}");
         println!("{}", error_msg.red());
         AppError::Json(e)
     })?;
@@ -128,8 +117,8 @@ async fn find_move_and_images(
     println!(
         "{}",
         format!(
-            "Successfully read move '{}' in '{}' file.",
-            move_data.input, char_file_path
+            "Successfully read move '{}' in '{char_file_path}' file.",
+            move_data.input
         )
         .green()
     );
@@ -155,10 +144,7 @@ fn create_hitbox_embeds(
 
     // 埋め込みタイトルとURL設定
     let embed_title = format!("__**{}**__", move_info.input);
-    let embed_url = format!(
-        "https://dustloop.com/w/GGST/{}#Overview",
-        character_arg_altered
-    );
+    let embed_url = format!("https://dustloop.com/w/GGST/{character_arg_altered}#Overview");
 
     // 画像リンク走査
     for img_links in image_links {
@@ -189,7 +175,7 @@ fn create_hitbox_embeds(
                 n => {
                     // フッター情報（画像枚数）設定
                     let embed_footer =
-                        CreateEmbedFooter::new(format!("Move has {} hitbox images.", n));
+                        CreateEmbedFooter::new(format!("Move has {n} hitbox images."));
 
                     // 各画像ごとに埋め込み作成
                     for htbx_img in &img_links.hitbox_img {
@@ -245,7 +231,7 @@ pub async fn hitboxes(
     // コマンド引数のログ出力
     println!(
         "{}",
-        format!("Command Args: '{}', '{}'", character, character_move).purple()
+        format!("Command Args: '{character}', '{character_move}'").purple()
     );
 
     // 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
