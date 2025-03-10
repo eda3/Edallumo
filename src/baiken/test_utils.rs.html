@@ -421,7 +421,7 @@
     ///
     /// # 戻り値
     /// `MockDiscordContext` - 新しいモックコンテキスト
-    </span><span class="kw">pub fn </span>_new() -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             messages: Vec::new(),
             embeds: Vec::new(),
@@ -435,7 +435,7 @@
     ///
     /// # 戻り値
     /// `Result&lt;(), ()&gt;` - 常に `Ok(())`
-    </span><span class="kw">pub fn </span>_send_message(<span class="kw-2">&amp;mut </span><span class="self">self</span>, content: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), ()&gt; {
+    </span><span class="kw">pub fn </span>send_message(<span class="kw-2">&amp;mut </span><span class="self">self</span>, content: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), ()&gt; {
         <span class="self">self</span>.messages.push(content.to_string());
         <span class="prelude-val">Ok</span>(())
     }
@@ -447,7 +447,7 @@
     ///
     /// # 戻り値
     /// `Result&lt;(), ()&gt;` - 常に `Ok(())`
-    </span><span class="kw">pub fn </span>_send_embed(<span class="kw-2">&amp;mut </span><span class="self">self</span>, content: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), ()&gt; {
+    </span><span class="kw">pub fn </span>send_embed(<span class="kw-2">&amp;mut </span><span class="self">self</span>, content: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), ()&gt; {
         <span class="self">self</span>.embeds.push(content.to_string());
         <span class="prelude-val">Ok</span>(())
     }

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["IMAGE_DEFAULT"],"fn":["advanced","create_advanced_embeds","find_move_and_images","load_character_data"]};
+window.SIDEBAR_ITEMS = {"constant":["IMAGE_DEFAULT"],"fn":["advanced","create_advanced_embeds","debug_image_links_json","find_move_and_images","get_move_image_url","load_character_data","load_image_links","load_moves_info","parse_image_links"]};

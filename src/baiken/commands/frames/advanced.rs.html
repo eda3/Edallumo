@@ -418,7 +418,217 @@
 <a href="#417" id="417">417</a>
 <a href="#418" id="418">418</a>
 <a href="#419" id="419">419</a>
-<a href="#420" id="420">420</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
+<a href="#420" id="420">420</a>
+<a href="#421" id="421">421</a>
+<a href="#422" id="422">422</a>
+<a href="#423" id="423">423</a>
+<a href="#424" id="424">424</a>
+<a href="#425" id="425">425</a>
+<a href="#426" id="426">426</a>
+<a href="#427" id="427">427</a>
+<a href="#428" id="428">428</a>
+<a href="#429" id="429">429</a>
+<a href="#430" id="430">430</a>
+<a href="#431" id="431">431</a>
+<a href="#432" id="432">432</a>
+<a href="#433" id="433">433</a>
+<a href="#434" id="434">434</a>
+<a href="#435" id="435">435</a>
+<a href="#436" id="436">436</a>
+<a href="#437" id="437">437</a>
+<a href="#438" id="438">438</a>
+<a href="#439" id="439">439</a>
+<a href="#440" id="440">440</a>
+<a href="#441" id="441">441</a>
+<a href="#442" id="442">442</a>
+<a href="#443" id="443">443</a>
+<a href="#444" id="444">444</a>
+<a href="#445" id="445">445</a>
+<a href="#446" id="446">446</a>
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
+<a href="#469" id="469">469</a>
+<a href="#470" id="470">470</a>
+<a href="#471" id="471">471</a>
+<a href="#472" id="472">472</a>
+<a href="#473" id="473">473</a>
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
+<a href="#510" id="510">510</a>
+<a href="#511" id="511">511</a>
+<a href="#512" id="512">512</a>
+<a href="#513" id="513">513</a>
+<a href="#514" id="514">514</a>
+<a href="#515" id="515">515</a>
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a>
+<a href="#519" id="519">519</a>
+<a href="#520" id="520">520</a>
+<a href="#521" id="521">521</a>
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a>
+<a href="#536" id="536">536</a>
+<a href="#537" id="537">537</a>
+<a href="#538" id="538">538</a>
+<a href="#539" id="539">539</a>
+<a href="#540" id="540">540</a>
+<a href="#541" id="541">541</a>
+<a href="#542" id="542">542</a>
+<a href="#543" id="543">543</a>
+<a href="#544" id="544">544</a>
+<a href="#545" id="545">545</a>
+<a href="#546" id="546">546</a>
+<a href="#547" id="547">547</a>
+<a href="#548" id="548">548</a>
+<a href="#549" id="549">549</a>
+<a href="#550" id="550">550</a>
+<a href="#551" id="551">551</a>
+<a href="#552" id="552">552</a>
+<a href="#553" id="553">553</a>
+<a href="#554" id="554">554</a>
+<a href="#555" id="555">555</a>
+<a href="#556" id="556">556</a>
+<a href="#557" id="557">557</a>
+<a href="#558" id="558">558</a>
+<a href="#559" id="559">559</a>
+<a href="#560" id="560">560</a>
+<a href="#561" id="561">561</a>
+<a href="#562" id="562">562</a>
+<a href="#563" id="563">563</a>
+<a href="#564" id="564">564</a>
+<a href="#565" id="565">565</a>
+<a href="#566" id="566">566</a>
+<a href="#567" id="567">567</a>
+<a href="#568" id="568">568</a>
+<a href="#569" id="569">569</a>
+<a href="#570" id="570">570</a>
+<a href="#571" id="571">571</a>
+<a href="#572" id="572">572</a>
+<a href="#573" id="573">573</a>
+<a href="#574" id="574">574</a>
+<a href="#575" id="575">575</a>
+<a href="#576" id="576">576</a>
+<a href="#577" id="577">577</a>
+<a href="#578" id="578">578</a>
+<a href="#579" id="579">579</a>
+<a href="#580" id="580">580</a>
+<a href="#581" id="581">581</a>
+<a href="#582" id="582">582</a>
+<a href="#583" id="583">583</a>
+<a href="#584" id="584">584</a>
+<a href="#585" id="585">585</a>
+<a href="#586" id="586">586</a>
+<a href="#587" id="587">587</a>
+<a href="#588" id="588">588</a>
+<a href="#589" id="589">589</a>
+<a href="#590" id="590">590</a>
+<a href="#591" id="591">591</a>
+<a href="#592" id="592">592</a>
+<a href="#593" id="593">593</a>
+<a href="#594" id="594">594</a>
+<a href="#595" id="595">595</a>
+<a href="#596" id="596">596</a>
+<a href="#597" id="597">597</a>
+<a href="#598" id="598">598</a>
+<a href="#599" id="599">599</a>
+<a href="#600" id="600">600</a>
+<a href="#601" id="601">601</a>
+<a href="#602" id="602">602</a>
+<a href="#603" id="603">603</a>
+<a href="#604" id="604">604</a>
+<a href="#605" id="605">605</a>
+<a href="#606" id="606">606</a>
+<a href="#607" id="607">607</a>
+<a href="#608" id="608">608</a>
+<a href="#609" id="609">609</a>
+<a href="#610" id="610">610</a>
+<a href="#611" id="611">611</a>
+<a href="#612" id="612">612</a>
+<a href="#613" id="613">613</a>
+<a href="#614" id="614">614</a>
+<a href="#615" id="615">615</a>
+<a href="#616" id="616">616</a>
+<a href="#617" id="617">617</a>
+<a href="#618" id="618">618</a>
+<a href="#619" id="619">619</a>
+<a href="#620" id="620">620</a>
+<a href="#621" id="621">621</a>
+<a href="#622" id="622">622</a>
+<a href="#623" id="623">623</a>
+<a href="#624" id="624">624</a>
+<a href="#625" id="625">625</a>
+<a href="#626" id="626">626</a>
+<a href="#627" id="627">627</a>
+<a href="#628" id="628">628</a>
+<a href="#629" id="629">629</a>
+<a href="#630" id="630">630</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
 //!
 //! このファイルは、キャラクターの技データの詳細情報をDiscordの埋め込みメッセージで表示するコマンドを実装。
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
@@ -454,20 +664,14 @@
     <span class="prelude-val">Ok</span>(character_arg_altered)
 }
 
-<span class="doccomment">/// 技情報と画像データを読み込む関数
+<span class="doccomment">/// キャラクターの技情報を読み込む関数
 ///
 /// # 引数
 /// * `character_arg_altered` - 正式なキャラクター名
-/// * `character_move` - ユーザーが入力した技名
-/// * `ctx` - コマンドコンテキスト
 ///
 /// # 戻り値
-/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
-</span><span class="kw">async fn </span>find_move_and_images(
-    character_arg_altered: <span class="kw-2">&amp;</span>str,
-    character_move: <span class="kw-2">&amp;</span>str,
-    ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, String), AppError&gt; {
+/// 成功時は技情報のベクター
+</span><span class="kw">fn </span>load_moves_info(character_arg_altered: <span class="kw-2">&amp;</span>str) -&gt; Vec&lt;MoveInfo&gt; {
     <span class="comment">// JSONファイルパスの組み立て　キャラクター情報ファイルのパス生成
     </span><span class="kw">let </span>char_file_path =
         <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/" </span>+ character_arg_altered + <span class="string">".json"</span>;
@@ -484,16 +688,239 @@
         (<span class="string">"Successfully read '"</span>.to_owned() + character_arg_altered + <span class="string">".json' file."</span>).green()
     );
 
+    moves_info
+}
+
+<span class="doccomment">/// 画像リンク情報を読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+///
+/// # 戻り値
+/// 画像リンク情報のベクター
+</span><span class="kw">fn </span>load_image_links(character_arg_altered: <span class="kw-2">&amp;</span>str) -&gt; Vec&lt;ImageLinks&gt; {
     <span class="comment">// 画像リンク用JSONファイルのパス組み立て　画像情報ファイルの指定
-    </span><span class="kw">let </span>image_links = fs::read_to_string(
-        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>,
-    )
-    .expect(
-        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + character_arg_altered + <span class="string">"'/images.json' file."</span>),
+    </span><span class="kw">let </span>images_json_path = <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>;
+    <span class="macro">println!</span>(<span class="string">"Loading images JSON from: {images_json_path}"</span>);
+    <span class="kw">let </span>image_links = fs::read_to_string(<span class="kw-2">&amp;</span>images_json_path).expect(
+        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json' file."</span>),
     );
 
-    <span class="comment">// 画像リンクJSONのデシリアライズ　画像リンク情報の構造体へ変換
-    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap();
+    <span class="comment">// JSONファイルを行単位で分割
+    </span><span class="macro">println!</span>(<span class="string">"Debug: Parsing image_links JSON for {character_arg_altered}"</span>);
+
+    <span class="comment">// デバッグログ処理（本番では省略可能）
+    </span>debug_image_links_json(<span class="kw-2">&amp;</span>image_links);
+
+    <span class="comment">// 画像リンクJSONの安全なデシリアライズ
+    </span>parse_image_links(<span class="kw-2">&amp;</span>image_links)
+}
+
+<span class="doccomment">/// 画像リンクJSONのデバッグ情報を出力する関数
+///
+/// # 引数
+/// * `image_links` - 画像リンクJSONの文字列
+</span><span class="kw">fn </span>debug_image_links_json(image_links: <span class="kw-2">&amp;</span>str) {
+    <span class="macro">println!</span>(<span class="string">"==================== MANUAL DEBUGGING ===================="</span>);
+    <span class="comment">// まず、JSON全体を解析できるかチェック
+    </span><span class="kw">let </span>parse_result = serde_json::from_str::&lt;serde_json::Value&gt;(image_links);
+    <span class="kw">match </span>parse_result {
+        <span class="prelude-val">Ok</span>(json_value) =&gt; {
+            <span class="macro">println!</span>(<span class="string">"Entire JSON successfully parsed as generic Value"</span>);
+
+            <span class="comment">// JSONが配列であることを確認
+            </span><span class="kw">if let </span>serde_json::Value::Array(items) = json_value {
+                <span class="macro">println!</span>(<span class="string">"JSON is an array with {} items"</span>, items.len());
+
+                <span class="comment">// 各項目を個別にテスト
+                </span><span class="kw">for </span>(i, item) <span class="kw">in </span>items.iter().enumerate() {
+                    <span class="macro">println!</span>(<span class="string">"Testing item #{i}"</span>);
+
+                    <span class="comment">// テスト用のJSONオブジェクトを作成
+                    </span><span class="kw">let </span>test_json = serde_json::to_string(item).unwrap();
+
+                    <span class="comment">// デシリアライズを試みる
+                    </span><span class="kw">match </span>serde_json::from_str::&lt;ImageLinks&gt;(<span class="kw-2">&amp;</span>test_json) {
+                        <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">println!</span>(<span class="string">"Item #{i} deserialized successfully"</span>),
+                        <span class="prelude-val">Err</span>(e) =&gt; {
+                            <span class="macro">println!</span>(<span class="string">"ERROR with item #{i}: {e}"</span>);
+                            <span class="macro">println!</span>(<span class="string">"Problem item: {test_json}"</span>);
+
+                            <span class="comment">// 問題のあるアイテムの詳細を出力
+                            </span><span class="kw">if let </span><span class="prelude-val">Some</span>(input) = item.get(<span class="string">"input"</span>) {
+                                <span class="macro">println!</span>(
+                                    <span class="string">"input field: {input:?} (type: {})"</span>,
+                                    <span class="kw">if </span>input.is_string() {
+                                        <span class="string">"string"
+                                    </span>} <span class="kw">else if </span>input.is_number() {
+                                        <span class="string">"number"
+                                    </span>} <span class="kw">else </span>{
+                                        <span class="string">"other"
+                                    </span>}
+                                );
+                            }
+
+                            <span class="kw">if let </span><span class="prelude-val">Some</span>(move_img) = item.get(<span class="string">"move_img"</span>) {
+                                <span class="macro">println!</span>(
+                                    <span class="string">"move_img field: {move_img:?} (type: {})"</span>,
+                                    <span class="kw">if </span>move_img.is_string() {
+                                        <span class="string">"string"
+                                    </span>} <span class="kw">else if </span>move_img.is_number() {
+                                        <span class="string">"number"
+                                    </span>} <span class="kw">else </span>{
+                                        <span class="string">"other"
+                                    </span>}
+                                );
+                            }
+
+                            <span class="kw">if let </span><span class="prelude-val">Some</span>(hitbox_img) = item.get(<span class="string">"hitbox_img"</span>) {
+                                <span class="macro">println!</span>(
+                                    <span class="string">"hitbox_img field: {hitbox_img:?} (type: {})"</span>,
+                                    <span class="kw">if </span>hitbox_img.is_array() {
+                                        <span class="string">"array"
+                                    </span>} <span class="kw">else if </span>hitbox_img.is_number() {
+                                        <span class="string">"number"
+                                    </span>} <span class="kw">else </span>{
+                                        <span class="string">"other"
+                                    </span>}
+                                );
+                            }
+                        }
+                    }
+                }
+            } <span class="kw">else </span>{
+                <span class="macro">println!</span>(<span class="string">"JSON is not an array!"</span>);
+            }
+        }
+        <span class="prelude-val">Err</span>(e) =&gt; {
+            <span class="macro">println!</span>(<span class="string">"Failed to parse the entire JSON: {e}"</span>);
+        }
+    }
+    <span class="macro">println!</span>(<span class="string">"================== END MANUAL DEBUGGING =================="</span>);
+}
+
+<span class="doccomment">/// 画像リンクJSONをパースする関数
+///
+/// # 引数
+/// * `image_links` - 画像リンクJSONの文字列
+///
+/// # 戻り値
+/// 画像リンク情報のベクター
+</span><span class="kw">fn </span>parse_image_links(image_links: <span class="kw-2">&amp;</span>str) -&gt; Vec&lt;ImageLinks&gt; {
+    <span class="macro">println!</span>(<span class="string">"Safely deserializing image links..."</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>image_links_vec = Vec::new();
+
+    <span class="comment">// JSONが配列であることを確認
+    </span><span class="kw">if let </span><span class="prelude-val">Ok</span>(serde_json::Value::Array(items)) =
+        serde_json::from_str::&lt;serde_json::Value&gt;(image_links)
+    {
+        <span class="comment">// 各要素を個別に処理
+        </span><span class="kw">for </span>item <span class="kw">in </span>items {
+            <span class="kw">let </span>item_json = serde_json::to_string(<span class="kw-2">&amp;</span>item).unwrap_or_default();
+            <span class="kw">match </span>serde_json::from_str::&lt;ImageLinks&gt;(<span class="kw-2">&amp;</span>item_json) {
+                <span class="prelude-val">Ok</span>(link) =&gt; image_links_vec.push(link),
+                <span class="prelude-val">Err</span>(e) =&gt; {
+                    <span class="comment">// エラーを出力するが、処理は継続
+                    </span><span class="macro">println!</span>(<span class="string">"Warning: Failed to deserialize item: {e}"</span>);
+                    <span class="macro">println!</span>(<span class="string">"Skipping problematic item: {item_json}"</span>);
+                }
+            }
+        }
+    } <span class="kw">else </span>{
+        <span class="macro">println!</span>(<span class="string">"Error: images.json is not a valid JSON array"</span>);
+    }
+
+    <span class="macro">println!</span>(
+        <span class="string">"Successfully deserialized {count} image links"</span>,
+        count = image_links_vec.len()
+    );
+
+    image_links_vec
+}
+
+<span class="doccomment">/// 技に対応する画像URLを取得する
+///
+/// # 引数
+/// * `move_data` - 技情報
+/// * `image_links` - 画像リンク情報の配列
+///
+/// # 戻り値
+/// 画像のURL（見つからない場合はデフォルト画像）
+</span><span class="kw">fn </span>get_move_image_url(move_data: <span class="kw-2">&amp;</span>MoveInfo, image_links: <span class="kw-2">&amp;</span>[ImageLinks]) -&gt; String {
+    <span class="kw">let </span><span class="kw-2">mut </span>embed_image = IMAGE_DEFAULT.to_string();
+
+    <span class="comment">// 括弧を除去した技名を作成（例：「2d(2d)」→「2d」）
+    </span><span class="kw">let </span>cleaned_input = <span class="kw">if </span>move_data.input.contains(<span class="string">'('</span>) {
+        move_data
+            .input
+            .split(<span class="string">'('</span>)
+            .next()
+            .unwrap_or(<span class="string">""</span>)
+            .trim()
+            .to_string()
+    } <span class="kw">else </span>{
+        move_data.input.to_string()
+    };
+
+    <span class="comment">// 括弧内のコマンドを取得（例：「2d(2d)」→「2d」）
+    </span><span class="kw">let </span>bracket_content = <span class="kw">if </span>move_data.input.contains(<span class="string">'('</span>) &amp;&amp; move_data.input.contains(<span class="string">')'</span>) {
+        <span class="kw">let </span>start = move_data.input.find(<span class="string">'('</span>).unwrap_or(<span class="number">0</span>) + <span class="number">1</span>;
+        <span class="kw">let </span>end = move_data.input.find(<span class="string">')'</span>).unwrap_or(move_data.input.len());
+        <span class="kw">if </span>start &lt; end {
+            move_data.input[start..end].to_string()
+        } <span class="kw">else </span>{
+            String::new()
+        }
+    } <span class="kw">else </span>{
+        String::new()
+    };
+
+    <span class="comment">// 画像リンクの探索　対象技の画像リンクを検索
+    </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
+        <span class="comment">// 完全一致、括弧を除去した技名との一致、または括弧内のコマンドとの一致
+        </span><span class="kw">if </span>(move_data.input.to_lowercase() == img_links.input.to_lowercase()
+            || (!cleaned_input.is_empty()
+                &amp;&amp; cleaned_input.to_lowercase() == img_links.input.to_lowercase())
+            || (!bracket_content.is_empty()
+                &amp;&amp; bracket_content.to_lowercase() == img_links.input.to_lowercase()))
+            &amp;&amp; !img_links.move_img.is_empty()
+        {
+            embed_image = img_links.move_img.to_string(); <span class="comment">// 画像リンク更新
+            </span><span class="kw">break</span>; <span class="comment">// 探索終了
+        </span>}
+        <span class="comment">// 部分一致（バックアップ）
+        </span><span class="kw">else if </span>img_links
+            .input
+            .to_lowercase()
+            .contains(<span class="kw-2">&amp;</span>move_data.input.to_lowercase())
+            &amp;&amp; !img_links.move_img.is_empty()
+        {
+            embed_image = img_links.move_img.to_string(); <span class="comment">// 画像リンク更新
+        </span>}
+    }
+
+    embed_image
+}
+
+<span class="doccomment">/// 技情報と画像データを読み込む関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
+</span><span class="kw">async fn </span>find_move_and_images(
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+    character_move: <span class="kw-2">&amp;</span>str,
+    ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, String), AppError&gt; {
+    <span class="comment">// 技情報の読み込み
+    </span><span class="kw">let </span>moves_info = load_moves_info(character_arg_altered);
+
+    <span class="comment">// 画像リンク情報の読み込み
+    </span><span class="kw">let </span>image_links = load_image_links(character_arg_altered);
 
     <span class="comment">// 技インデックス検索
     </span><span class="kw">let </span>move_index = <span class="kw">match </span>find::find_move_index(
@@ -526,17 +953,8 @@
             .green()
     );
 
-    <span class="comment">// デフォルト画像URL設定
-    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = IMAGE_DEFAULT.to_string();
-
-    <span class="comment">// 画像リンクの探索　対象技の画像リンクを検索
-    </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
-        <span class="comment">// 対象技の入力と画像情報の入力が一致し、画像リンクが存在する場合
-        </span><span class="kw">if </span>move_data.input == img_links.input &amp;&amp; !img_links.move_img.is_empty() {
-            embed_image = img_links.move_img.to_string(); <span class="comment">// 画像リンク更新
-            </span><span class="kw">break</span>; <span class="comment">// 探索終了
-        </span>}
-    }
+    <span class="comment">// 技画像URLの取得
+    </span><span class="kw">let </span>embed_image = get_move_image_url(<span class="kw-2">&amp;</span>move_data, <span class="kw-2">&amp;</span>image_links);
 
     <span class="prelude-val">Ok</span>((move_data, embed_image))
 }
@@ -557,8 +975,6 @@
 ) -&gt; Vec&lt;CreateEmbed&gt; {
     <span class="comment">// 埋め込みメッセージ群生成用ベクターの初期化
     </span><span class="kw">let </span><span class="kw-2">mut </span>vec_embeds = Vec::new();
-    <span class="comment">// 埋め込みタイトルの作成　キャラクター名と技名を組み合わせたタイトル
-    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>;
     <span class="comment">// 埋め込みURLの作成　Dustloop Wiki のキャラクター概要ページURL生成
     </span><span class="kw">let </span>embed_url = <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + character_arg_altered + <span class="string">"#Overview"</span>;
     <span class="comment">// 埋め込みフッターの作成　技に関するキャプションを利用
@@ -567,8 +983,12 @@
     <span class="comment">// 埋め込みメッセージの生成　技データの各パラメータをフィールドとして追加
     </span><span class="kw">let </span>embed = CreateEmbed::new()
         .color(EMBED_COLOR) <span class="comment">// 埋め込みカラー設定
-        </span>.title(embed_title) <span class="comment">// タイトル設定
-        </span>.url(embed_url) <span class="comment">// URL設定
+        </span>.title(<span class="macro">format!</span>(
+            <span class="string">"{}の{input}"</span>,
+            character_arg_altered,
+            input = move_info.input
+        ))
+        .url(embed_url) <span class="comment">// URL設定
         </span>.image(embed_image) <span class="comment">// 画像リンク設定
         </span>.fields(<span class="macro">vec!</span>[
             (
@@ -738,7 +1158,7 @@
     <span class="kw">use </span>tempfile::TempDir;
 
     <span class="comment">// テスト環境のセットアップ用ヘルパー関数
-    </span><span class="kw">fn </span>_setup_test_environment() -&gt; (TempDir, PathBuf) {
+    </span><span class="kw">fn </span>setup_test_environment() -&gt; (TempDir, PathBuf) {
         <span class="kw">let </span>temp_dir = TempDir::new().expect(<span class="string">"一時ディレクトリの作成に失敗"</span>);
         <span class="kw">let </span>temp_path = temp_dir.path().to_path_buf();
 

@@ -286,7 +286,25 @@
 <a href="#285" id="285">285</a>
 <a href="#286" id="286">286</a>
 <a href="#287" id="287">287</a>
-<a href="#288" id="288">288</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a>
+<a href="#294" id="294">294</a>
+<a href="#295" id="295">295</a>
+<a href="#296" id="296">296</a>
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a>
+<a href="#301" id="301">301</a>
+<a href="#302" id="302">302</a>
+<a href="#303" id="303">303</a>
+<a href="#304" id="304">304</a>
+<a href="#305" id="305">305</a>
+<a href="#306" id="306">306</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
 
 </span><span class="doccomment">//! `images_json.rs`
 //!
@@ -328,8 +346,7 @@
 // 定数定義
 // ======================================================================
 
-</span><span class="doccomment">/// 画像の基本URL  
-/// Dustloop Wiki の画像が配置されている基本パス
+</span><span class="doccomment">/// Dustloopの画像用半URL（ハッシュ文字列と画像名を追加する必要がある）
 </span><span class="kw">const </span>IMAGE_HALF: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/images"</span>;
 
 <span class="comment">// ======================================================================
@@ -361,7 +378,8 @@
 
         <span class="comment">// 各ヒットボックス名に対して画像リンク生成関数を呼び出し
         </span><span class="kw">for </span>hitbox_string <span class="kw">in </span><span class="kw-2">&amp;</span>hitbox_str {
-            hitbox_links
+            <span class="comment">// スペースをアンダースコアに置換し、URLとして正規化
+            </span>hitbox_links
                 .push(make_link((<span class="kw-2">*</span>hitbox_string).to_string().trim().replace(<span class="string">' '</span>, <span class="string">"_"</span>)).<span class="kw">await</span>);
         }
     }
@@ -370,95 +388,46 @@
 }
 
 <span class="doccomment">/// 画像リンクを生成する関数
-</span><span class="kw">async fn </span>generate_image_link(images: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; String {
-    <span class="comment">// 画像ファイル名が未定義の場合は空文字とする
-    </span><span class="kw">if </span>images.is_none() {
-        <span class="kw">return </span>String::new();
+///
+/// # 引数
+/// * `image_name` - 画像ファイル名
+///
+/// # 戻り値
+/// 生成された画像リンク（例："https://www.dustloop.com/wiki/images/e/e1/example.png"）
+</span><span class="kw">async fn </span>make_link(image_name: String) -&gt; String {
+    <span class="comment">// スペースをアンダースコアに置換して、URL形式として有効にする
+    </span><span class="kw">let </span>normalized_image_name = image_name.replace(<span class="string">' '</span>, <span class="string">"_"</span>);
+
+    <span class="comment">// 画像名をバイト列に変換　結果：画像名のバイト列
+    </span><span class="kw">let </span>image_bytes = normalized_image_name.as_bytes();
+
+    <span class="comment">// MD5 ハッシュ計算器を生成　結果：MD5 ハッシュ計算器
+    </span><span class="kw">let </span><span class="kw-2">mut </span>hasher = Md5::new();
+
+    <span class="comment">// 画像のバイト列をハッシュ計算器に投入　結果：ハッシュ計算器に画像情報を反映
+    </span>hasher.update(image_bytes);
+
+    <span class="comment">// ハッシュ計算結果を 16 進数文字列に変換　結果：MD5 ハッシュ値（16 進数文字列）
+    </span><span class="kw">let </span>hash_result = hasher.finalize();
+    <span class="kw">let </span>result = <span class="macro">format!</span>(<span class="string">"{hash_result:x}"</span>);
+
+    <span class="comment">// 16 進数文字列の先頭 1 文字を取得　結果：ハッシュ値の先頭文字
+    </span><span class="kw">let </span>char1 = result.chars().next().unwrap();
+
+    <span class="comment">// 16 進数文字列の 2 文字目を取得　結果：ハッシュ値の 2 文字目
+    </span><span class="kw">let </span>char2 = result.chars().nth(<span class="number">1</span>).unwrap();
+
+    <span class="comment">// 画像リンクを組み立て　組み立て方法：基本 URL / 先頭文字 + 先頭文字 + 2文字目 / 画像名
+    // 組み立て結果：生成された画像リンク
+    </span><span class="kw">let </span>image_link = <span class="macro">format!</span>(<span class="string">"{IMAGE_HALF}/{char1}/{char1}{char2}/{normalized_image_name}"</span>);
+
+    <span class="comment">// ログ出力（デバッグ用）
+    </span><span class="kw">if </span>image_name != normalized_image_name {
+        <span class="macro">println!</span>(<span class="string">"URL正規化: {image_name} → {normalized_image_name}"</span>);
     }
 
-    <span class="comment">// 画像ファイル名が空白のみの場合は空文字に設定
-    </span><span class="kw">if </span>images.as_ref().unwrap().trim() == <span class="string">"" </span>{
-        <span class="kw">return </span>String::new();
-    }
-
-    <span class="comment">// 複数の画像ファイル名が存在する場合の処理
-    </span><span class="kw">if </span>images.as_ref().unwrap().contains(<span class="string">';'</span>) {
-        <span class="comment">// セミコロンで分割し、先頭要素を使用
-        </span><span class="kw">let </span>split_image: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = images.as_ref().unwrap().split(<span class="string">';'</span>).collect();
-        <span class="comment">// 画像リンク生成関数でリンク形式に整形
-        </span>make_link(split_image[<span class="number">0</span>].to_string().trim().replace(<span class="string">' '</span>, <span class="string">"_"</span>)).<span class="kw">await
-    </span>} <span class="kw">else </span>{
-        <span class="comment">// 単一の画像ファイル名の場合の処理
-        </span>make_link(images.as_ref().unwrap().to_string()).<span class="kw">await
-    </span>}
-}
-
-<span class="doccomment">/// 入力名を整形する関数
-</span><span class="kw">fn </span>format_input_name(input: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;, name: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; String {
-    <span class="kw">let </span>input_str = input.as_deref().unwrap_or(<span class="string">""</span>);
-
-    <span class="comment">// 特定の入力文字列の場合はそのまま使用
-    </span><span class="kw">if </span>[
-        <span class="string">"2D"</span>,
-        <span class="string">"2HS"</span>,
-        <span class="string">"2K"</span>,
-        <span class="string">"2P"</span>,
-        <span class="string">"2S"</span>,
-        <span class="string">"3K"</span>,
-        <span class="string">"5D"</span>,
-        <span class="string">"5HS"</span>,
-        <span class="string">"5K"</span>,
-        <span class="string">"5P"</span>,
-        <span class="string">"5S"</span>,
-        <span class="string">"6K"</span>,
-        <span class="string">"6P"</span>,
-        <span class="string">"Fスタート"</span>,
-        <span class="string">"Jスタート"</span>,
-        <span class="string">"JD"</span>,
-        <span class="string">"JHS"</span>,
-        <span class="string">"JK"</span>,
-        <span class="string">"JP"</span>,
-        <span class="string">"JS"</span>,
-        <span class="string">"Pスタート"</span>,
-        <span class="string">"Sスタート"</span>,
-        <span class="string">"エアダッシュ"</span>,
-        <span class="string">"ガトリング"</span>,
-        <span class="string">"クローゼライン"</span>,
-        <span class="string">"ジャンプ"</span>,
-        <span class="string">"スタンプ"</span>,
-        <span class="string">"ダッシュ"</span>,
-        <span class="string">"ダブルジャンプ"</span>,
-        <span class="string">"バックステップ"</span>,
-        <span class="string">"フォルト"</span>,
-        <span class="string">"ロマンキャンセル"</span>,
-        <span class="string">"入力猶予"</span>,
-        <span class="string">"前ジャンプ"</span>,
-        <span class="string">"後ジャンプ"</span>,
-        <span class="string">"攻撃判定"</span>,
-        <span class="string">"特殊技"</span>,
-        <span class="string">"置換表"</span>,
-        <span class="string">"通常技"</span>,
-        <span class="string">"必殺技"</span>,
-        <span class="string">"打撃無敵"</span>,
-        <span class="string">"投げ"</span>,
-        <span class="string">"投げ無敵"</span>,
-        <span class="string">"歩き"</span>,
-        <span class="string">"殴られ判定"</span>,
-        <span class="string">"空中ダッシュ"</span>,
-        <span class="string">"空中投げ"</span>,
-        <span class="string">"立ち"</span>,
-        <span class="string">"起き上がり"</span>,
-        <span class="string">"走り"</span>,
-        <span class="string">"通常投げ"</span>,
-        <span class="string">"ステイン"</span>,
-    ]
-    .contains(<span class="kw-2">&amp;</span>input_str)
-    {
-        input_str.to_string()
-    } <span class="kw">else </span>{
-        <span class="kw">let </span>name_str = name.as_deref().unwrap_or(<span class="string">""</span>);
-        <span class="macro">format!</span>(<span class="string">"{name_str}({input_str})"</span>)
-    }
+    <span class="comment">// 生成された画像リンクを返却　返却結果：最終画像リンク
+    </span>image_link
 }
 
 <span class="doccomment">/// 画像データを処理する関数
@@ -540,38 +509,105 @@
         .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to serialize '"</span>.to_owned() + CHARS[char_count] + <span class="string">".json'."</span>));
 }
 
-<span class="doccomment">/// 画像ファイル名から MD5 ハッシュを利用して画像リンクを生成する非同期関数
-///
-/// # 引数
-/// * `image_name` - 画像ファイル名（例："example.png"）
-///
-/// # 戻り値
-/// 生成された画像リンク（例："https://www.dustloop.com/wiki/images/e/e1/example.png"）
-</span><span class="kw">async fn </span>make_link(image_name: String) -&gt; String {
-    <span class="comment">// 画像名をバイト列に変換　結果：画像名のバイト列
-    </span><span class="kw">let </span>image_bytes = image_name.as_bytes();
+<span class="doccomment">/// 画像リンクを生成する関数
+</span><span class="kw">async fn </span>generate_image_link(images: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; String {
+    <span class="comment">// 画像ファイル名が未定義の場合は空文字とする
+    </span><span class="kw">if </span>images.is_none() {
+        <span class="kw">return </span>String::new();
+    }
 
-    <span class="comment">// MD5 ハッシュ計算器を生成　結果：MD5 ハッシュ計算器
-    </span><span class="kw">let </span><span class="kw-2">mut </span>hasher = Md5::new();
+    <span class="comment">// 画像ファイル名が空白のみの場合は空文字に設定
+    </span><span class="kw">if </span>images.as_ref().unwrap().trim() == <span class="string">"" </span>{
+        <span class="kw">return </span>String::new();
+    }
 
-    <span class="comment">// 画像のバイト列をハッシュ計算器に投入　結果：ハッシュ計算器に画像情報を反映
-    </span>hasher.update(image_bytes);
+    <span class="comment">// 複数の画像ファイル名が存在する場合の処理
+    </span><span class="kw">if </span>images.as_ref().unwrap().contains(<span class="string">';'</span>) {
+        <span class="comment">// セミコロンで分割し、先頭要素を使用
+        </span><span class="kw">let </span>split_image: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = images.as_ref().unwrap().split(<span class="string">';'</span>).collect();
+        <span class="comment">// 画像リンク生成関数でリンク形式に整形
+        // 先頭にあるスペースを削除し、残るスペースはアンダースコアに置換
+        </span>make_link(split_image[<span class="number">0</span>].to_string().trim().replace(<span class="string">' '</span>, <span class="string">"_"</span>)).<span class="kw">await
+    </span>} <span class="kw">else </span>{
+        <span class="comment">// 単一の画像ファイル名の場合の処理
+        // スペースをアンダースコアに置換
+        </span>make_link(
+            images
+                .as_ref()
+                .unwrap()
+                .to_string()
+                .trim()
+                .replace(<span class="string">' '</span>, <span class="string">"_"</span>),
+        )
+        .<span class="kw">await
+    </span>}
+}
 
-    <span class="comment">// ハッシュ計算結果を 16 進数文字列に変換　結果：MD5 ハッシュ値（16 進数文字列）
-    </span><span class="kw">let </span>hash_result = hasher.finalize();
-    <span class="kw">let </span>result = <span class="macro">format!</span>(<span class="string">"{hash_result:x}"</span>);
+<span class="doccomment">/// 入力名を整形する関数
+</span><span class="kw">fn </span>format_input_name(input: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;, name: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; String {
+    <span class="kw">let </span>input_str = input.as_deref().unwrap_or(<span class="string">""</span>);
 
-    <span class="comment">// 16 進数文字列の先頭 1 文字を取得　結果：ハッシュ値の先頭文字
-    </span><span class="kw">let </span>char1 = result.chars().next().unwrap();
-
-    <span class="comment">// 16 進数文字列の 2 文字目を取得　結果：ハッシュ値の 2 文字目
-    </span><span class="kw">let </span>char2 = result.chars().nth(<span class="number">1</span>).unwrap();
-
-    <span class="comment">// 画像リンクを組み立て　組み立て方法：基本 URL / 先頭文字 + 先頭文字 + 2文字目 / 画像名
-    // 組み立て結果：生成された画像リンク
-    </span><span class="kw">let </span>image_link = <span class="macro">format!</span>(<span class="string">"{IMAGE_HALF}/{char1}/{char1}{char2}/{image_name}"</span>);
-
-    <span class="comment">// 生成された画像リンクを返却　返却結果：最終画像リンク
-    </span>image_link
+    <span class="comment">// 特定の入力文字列の場合はそのまま使用
+    </span><span class="kw">if </span>[
+        <span class="string">"2D"</span>,
+        <span class="string">"2HS"</span>,
+        <span class="string">"2K"</span>,
+        <span class="string">"2P"</span>,
+        <span class="string">"2S"</span>,
+        <span class="string">"3K"</span>,
+        <span class="string">"5D"</span>,
+        <span class="string">"5HS"</span>,
+        <span class="string">"5K"</span>,
+        <span class="string">"5P"</span>,
+        <span class="string">"5S"</span>,
+        <span class="string">"6K"</span>,
+        <span class="string">"6P"</span>,
+        <span class="string">"Fスタート"</span>,
+        <span class="string">"Jスタート"</span>,
+        <span class="string">"JD"</span>,
+        <span class="string">"JHS"</span>,
+        <span class="string">"JK"</span>,
+        <span class="string">"JP"</span>,
+        <span class="string">"JS"</span>,
+        <span class="string">"Pスタート"</span>,
+        <span class="string">"Sスタート"</span>,
+        <span class="string">"エアダッシュ"</span>,
+        <span class="string">"ガトリング"</span>,
+        <span class="string">"クローゼライン"</span>,
+        <span class="string">"ジャンプ"</span>,
+        <span class="string">"スタンプ"</span>,
+        <span class="string">"ダッシュ"</span>,
+        <span class="string">"ダブルジャンプ"</span>,
+        <span class="string">"バックステップ"</span>,
+        <span class="string">"フォルト"</span>,
+        <span class="string">"ロマンキャンセル"</span>,
+        <span class="string">"入力猶予"</span>,
+        <span class="string">"前ジャンプ"</span>,
+        <span class="string">"後ジャンプ"</span>,
+        <span class="string">"攻撃判定"</span>,
+        <span class="string">"特殊技"</span>,
+        <span class="string">"置換表"</span>,
+        <span class="string">"通常技"</span>,
+        <span class="string">"必殺技"</span>,
+        <span class="string">"打撃無敵"</span>,
+        <span class="string">"投げ"</span>,
+        <span class="string">"投げ無敵"</span>,
+        <span class="string">"歩き"</span>,
+        <span class="string">"殴られ判定"</span>,
+        <span class="string">"空中ダッシュ"</span>,
+        <span class="string">"空中投げ"</span>,
+        <span class="string">"立ち"</span>,
+        <span class="string">"起き上がり"</span>,
+        <span class="string">"走り"</span>,
+        <span class="string">"通常投げ"</span>,
+        <span class="string">"ステイン"</span>,
+    ]
+    .contains(<span class="kw-2">&amp;</span>input_str)
+    {
+        input_str.to_string()
+    } <span class="kw">else </span>{
+        <span class="kw">let </span>name_str = name.as_deref().unwrap_or(<span class="string">""</span>);
+        <span class="macro">format!</span>(<span class="string">"{name_str}({input_str})"</span>)
+    }
 }
 </code></pre></div></section></main></body></html>

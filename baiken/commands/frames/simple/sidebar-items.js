@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["IMAGE_DEFAULT"],"fn":["create_move_embed","find_move_data","load_character_data","simple"]};
+window.SIDEBAR_ITEMS = {"constant":["IMAGE_DEFAULT"],"fn":["create_move_embed","extract_move_name_parts","find_matching_image","find_move_data","load_character_data","simple"]};

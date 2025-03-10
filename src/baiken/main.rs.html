@@ -295,7 +295,10 @@
 <a href="#294" id="294">294</a>
 <a href="#295" id="295">295</a>
 <a href="#296" id="296">296</a>
-<a href="#297" id="297">297</a></pre></div><pre class="rust"><code><span class="doccomment">//! `main.rs`
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a></pre></div><pre class="rust"><code><span class="doccomment">//! `main.rs`
 //!
 //! このファイルは、Discord Bot の起動基盤および各種機能モジュールの読み込み・初期設定を行う。
 //! poise フレームワークを利用し、コマンドの登録、エラーハンドリング、定期更新タスクなどを構成する。
@@ -338,8 +341,11 @@
 <span class="doccomment">/// 画像リンク構造体
 </span><span class="attr">#[derive(serde::Serialize, serde::Deserialize, Debug, Clone)]
 </span><span class="kw">pub struct </span>ImageLinks {
-    <span class="kw">pub </span>input: String,           <span class="comment">// 入力コマンド
-    </span><span class="kw">pub </span>move_img: String,        <span class="comment">// 技画像リンク
+    <span class="attr">#[serde(deserialize_with = <span class="string">"crate::models::deserialize_string_or_int"</span>)]
+    </span><span class="kw">pub </span>input: String, <span class="comment">// 入力コマンド
+    </span><span class="attr">#[serde(deserialize_with = <span class="string">"crate::models::deserialize_string_or_int"</span>)]
+    </span><span class="kw">pub </span>move_img: String, <span class="comment">// 技画像リンク
+    </span><span class="attr">#[serde(default, skip_serializing_if = <span class="string">"Vec::is_empty"</span>)]
     </span><span class="kw">pub </span>hitbox_img: Vec&lt;String&gt;, <span class="comment">// ヒットボックス画像リンク群
 </span>}
 

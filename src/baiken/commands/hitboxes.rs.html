@@ -251,7 +251,23 @@
 <a href="#250" id="250">250</a>
 <a href="#251" id="251">251</a>
 <a href="#252" id="252">252</a>
-<a href="#253" id="253">253</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
+<a href="#253" id="253">253</a>
+<a href="#254" id="254">254</a>
+<a href="#255" id="255">255</a>
+<a href="#256" id="256">256</a>
+<a href="#257" id="257">257</a>
+<a href="#258" id="258">258</a>
+<a href="#259" id="259">259</a>
+<a href="#260" id="260">260</a>
+<a href="#261" id="261">261</a>
+<a href="#262" id="262">262</a>
+<a href="#263" id="263">263</a>
+<a href="#264" id="264">264</a>
+<a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
+<a href="#267" id="267">267</a>
+<a href="#268" id="268">268</a>
+<a href="#269" id="269">269</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
 //!
 //! ヒットボックス画像表示モジュール。
 //! キャラクターの技のヒットボックス画像を表示するためのコマンドを提供する。
@@ -282,7 +298,7 @@
         <span class="prelude-val">Err</span>(err) =&gt; {
             <span class="comment">// キャラクター未検出時のエラーメッセージ送信
             </span>ctx.say(err.to_string()).<span class="kw">await</span><span class="question-mark">?</span>;
-            <span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red());
+            <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"Error: {err}"</span>).red());
             <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::CharacterNotFound(err.to_string()));
         }
     };
@@ -304,19 +320,28 @@
     character_move: <span class="kw-2">&amp;</span>str,
     ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, Vec&lt;ImageLinks&gt;), AppError&gt; {
+    <span class="comment">// キャラクターJSONファイルパス構築
+    </span><span class="kw">let </span>char_file_path = <span class="macro">format!</span>(<span class="string">"data/{character_arg_altered}/{character_arg_altered}.json"</span>);
+
     <span class="comment">// キャラクターJSONファイル読み込み
-    </span><span class="kw">let </span>char_file_path =
-        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/" </span>+ character_arg_altered + <span class="string">".json"</span>;
-    <span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path)
-        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + character_arg_altered + <span class="string">".json" </span>+ <span class="string">"' file."</span>));
+    </span><span class="kw">let </span>char_file_data = fs::read_to_string(<span class="kw-2">&amp;</span>char_file_path).map_err(|e| {
+        <span class="kw">let </span>error_msg =
+            <span class="macro">format!</span>(<span class="string">"キャラクターファイル '{char_file_path}' の読み込みに失敗しました: {e}"</span>);
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
+        AppError::FileNotFound(error_msg)
+    })<span class="question-mark">?</span>;
 
     <span class="comment">// キャラクターJSONデシリアライズ
-    </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).unwrap();
+    </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).map_err(|e| {
+        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"キャラクターJSONの解析に失敗しました: {e}"</span>);
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
+        AppError::Json(e)
+    })<span class="question-mark">?</span>;
 
     <span class="comment">// 読み込み成功ログ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
-        (<span class="string">"Successfully read '"</span>.to_owned() + character_arg_altered + <span class="string">".json' file."</span>).green()
+        <span class="macro">format!</span>(<span class="string">"Successfully read '{char_file_path}' file."</span>).green()
     );
 
     <span class="comment">// 技インデックス検索
@@ -330,23 +355,29 @@
         <span class="prelude-val">Ok</span>(index) =&gt; index,
         <span class="prelude-val">Err</span>(err) =&gt; {
             <span class="comment">// 技未検出時のエラーメッセージ送信
-            </span>ctx.say(err.to_string() + <span class="string">"\nView the moves of a character by executing `/moves`."</span>)
-                .<span class="kw">await</span><span class="question-mark">?</span>;
-            <span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red());
+            </span><span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"{err}\nView the moves of a character by executing `/moves`."</span>);
+            ctx.say(<span class="kw-2">&amp;</span>error_msg).<span class="kw">await</span><span class="question-mark">?</span>;
+            <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="macro">format!</span>(<span class="string">"Error: {err}"</span>).red());
             <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::MoveNotFound(err.to_string()));
         }
     };
 
+    <span class="comment">// 画像JSONファイルパス構築
+    </span><span class="kw">let </span>images_file_path = <span class="macro">format!</span>(<span class="string">"data/{character_arg_altered}/images.json"</span>);
+
     <span class="comment">// 画像JSONファイル読み込み
-    </span><span class="kw">let </span>image_links = fs::read_to_string(
-        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>,
-    )
-    .expect(
-        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + character_arg_altered + <span class="string">"'/images.json' file."</span>),
-    );
+    </span><span class="kw">let </span>image_data = fs::read_to_string(<span class="kw-2">&amp;</span>images_file_path).map_err(|e| {
+        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"画像ファイル '{images_file_path}' の読み込みに失敗しました: {e}"</span>);
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
+        AppError::FileNotFound(error_msg)
+    })<span class="question-mark">?</span>;
 
     <span class="comment">// 画像JSONデシリアライズ
-    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap();
+    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_data).map_err(|e| {
+        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"画像JSONの解析に失敗しました: {e}"</span>);
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
+        AppError::Json(e)
+    })<span class="question-mark">?</span>;
 
     <span class="comment">// 技情報取得
     </span><span class="kw">let </span>move_data = moves_info[index].clone();
@@ -354,12 +385,11 @@
     <span class="comment">// 技情報読み込み成功ログ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
-        (<span class="string">"Successfully read move '"</span>.to_owned()
-            + <span class="kw-2">&amp;</span>move_data.input
-            + <span class="string">"' in '"
-            </span>+ character_arg_altered
-            + <span class="string">".json' file."</span>)
-            .green()
+        <span class="macro">format!</span>(
+            <span class="string">"Successfully read move '{}' in '{char_file_path}' file."</span>,
+            move_data.input
+        )
+        .green()
     );
 
     <span class="prelude-val">Ok</span>((move_data, image_links))
@@ -382,58 +412,64 @@
     <span class="kw">let </span><span class="kw-2">mut </span>vec_embeds = Vec::new();
 
     <span class="comment">// 埋め込みタイトルとURL設定
-    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>;
-    <span class="kw">let </span>embed_url = <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + character_arg_altered + <span class="string">"#Overview"</span>;
+    </span><span class="kw">let </span>embed_title = <span class="macro">format!</span>(<span class="string">"__**{}**__"</span>, move_info.input);
+    <span class="kw">let </span>embed_url = <span class="macro">format!</span>(<span class="string">"https://dustloop.com/w/GGST/{character_arg_altered}#Overview"</span>);
 
     <span class="comment">// 画像リンク走査
     </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
         <span class="comment">// 対象技の画像リンク検索
         </span><span class="kw">if </span>move_info.input == img_links.input {
-            <span class="comment">// ヒットボックス画像なしの場合
-            </span><span class="kw">if </span>img_links.hitbox_img.is_empty() {
-                <span class="comment">// デフォルト画像で埋め込み作成
-                </span><span class="kw">let </span>empty_embed = CreateEmbed::new()
+            <span class="comment">// 埋め込みの基本設定を作成する関数
+            </span><span class="kw">let </span>create_base_embed = || {
+                CreateEmbed::new()
                     .color(EMBED_COLOR)
                     .title(<span class="kw-2">&amp;</span>embed_title)
                     .url(<span class="kw-2">&amp;</span>embed_url)
-                    .image(HITBOX_DEFAULT);
+            };
 
-                vec_embeds.push(empty_embed);
-            }
-            <span class="comment">// ヒットボックス画像が1枚の場合
-            </span><span class="kw">else if </span>img_links.hitbox_img.len() == <span class="number">1 </span>{
-                <span class="comment">// 単一画像で埋め込み作成
-                </span><span class="kw">let </span>embed = CreateEmbed::new()
-                    .color(EMBED_COLOR)
-                    .title(<span class="kw-2">&amp;</span>embed_title)
-                    .url(<span class="kw-2">&amp;</span>embed_url)
-                    .image(<span class="kw-2">&amp;</span>img_links.hitbox_img[<span class="number">0</span>]);
-
-                vec_embeds.push(embed);
-            }
-            <span class="comment">// ヒットボックス画像が複数の場合
-            </span><span class="kw">else </span>{
-                <span class="comment">// 各画像ごとに埋め込み作成
-                </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>img_links.hitbox_img {
-                    <span class="comment">// フッター情報（画像枚数）設定
-                    </span><span class="kw">let </span>embed_footer = CreateEmbedFooter::new(
-                        <span class="string">"Move has "</span>.to_owned()
-                            + <span class="kw-2">&amp;</span>img_links.hitbox_img.len().to_string()
-                            + <span class="string">" hitbox images."</span>,
-                    );
-
-                    <span class="comment">// 埋め込み作成
-                    </span><span class="kw">let </span>embed = CreateEmbed::new()
-                        .color(EMBED_COLOR)
-                        .title(<span class="kw-2">&amp;</span>embed_title)
-                        .url(<span class="kw-2">&amp;</span>embed_url)
-                        .image(htbx_img)
-                        .footer(embed_footer);
-
+            <span class="kw">match </span>img_links.hitbox_img.len() {
+                <span class="comment">// ヒットボックス画像なしの場合
+                </span><span class="number">0 </span>=&gt; {
+                    <span class="comment">// デフォルト画像で埋め込み作成
+                    </span><span class="kw">let </span>empty_embed = create_base_embed().image(HITBOX_DEFAULT);
+                    vec_embeds.push(empty_embed);
+                }
+                <span class="comment">// ヒットボックス画像が1枚の場合
+                </span><span class="number">1 </span>=&gt; {
+                    <span class="comment">// 単一画像で埋め込み作成
+                    </span><span class="kw">let </span>embed = create_base_embed().image(<span class="kw-2">&amp;</span>img_links.hitbox_img[<span class="number">0</span>]);
                     vec_embeds.push(embed);
                 }
+                <span class="comment">// ヒットボックス画像が複数の場合
+                </span>n =&gt; {
+                    <span class="comment">// フッター情報（画像枚数）設定
+                    </span><span class="kw">let </span>embed_footer =
+                        CreateEmbedFooter::new(<span class="macro">format!</span>(<span class="string">"Move has {n} hitbox images."</span>));
+
+                    <span class="comment">// 各画像ごとに埋め込み作成
+                    </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>img_links.hitbox_img {
+                        <span class="kw">let </span>embed = create_base_embed()
+                            .image(htbx_img)
+                            .footer(embed_footer.clone());
+                        vec_embeds.push(embed);
+                    }
+                }
             }
+
+            <span class="comment">// 対象の技を見つけたらループを終了（重複防止）
+            </span><span class="kw">break</span>;
         }
+    }
+
+    <span class="comment">// 画像が見つからなかった場合、デフォルト埋め込みを追加
+    </span><span class="kw">if </span>vec_embeds.is_empty() {
+        <span class="kw">let </span>default_embed = CreateEmbed::new()
+            .color(EMBED_COLOR)
+            .title(<span class="kw-2">&amp;</span>embed_title)
+            .url(<span class="kw-2">&amp;</span>embed_url)
+            .image(HITBOX_DEFAULT)
+            .description(<span class="string">"No hitbox images found for this move."</span>);
+        vec_embeds.push(default_embed);
     }
 
     vec_embeds
@@ -464,21 +500,17 @@
     <span class="comment">// コマンド引数のログ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
-        (<span class="string">"Command Args: '"</span>.to_owned() + <span class="kw-2">&amp;</span>character + <span class="string">", " </span>+ <span class="kw-2">&amp;</span>character_move + <span class="string">"'"</span>).purple()
+        <span class="macro">format!</span>(<span class="string">"Command Args: '{character}', '{character_move}'"</span>).purple()
     );
 
     <span class="comment">// 各種チェック実行（データフォルダ、JSONファイル等の存在確認）
-    </span><span class="kw">if </span>(check::adaptive_check(
-        ctx,
-        check::CheckOptions::DATA_FOLDER
-            | check::CheckOptions::NICKNAMES_JSON
-            | check::CheckOptions::CHARACTER_FOLDERS
-            | check::CheckOptions::CHARACTER_JSONS
-            | check::CheckOptions::CHARACTER_IMAGES,
-    )
-    .<span class="kw">await</span>)
-        .is_err()
-    {
+    </span><span class="kw">let </span>check_options = check::CheckOptions::DATA_FOLDER
+        | check::CheckOptions::NICKNAMES_JSON
+        | check::CheckOptions::CHARACTER_FOLDERS
+        | check::CheckOptions::CHARACTER_JSONS
+        | check::CheckOptions::CHARACTER_IMAGES;
+
+    <span class="kw">if </span>check::adaptive_check(ctx, check_options).<span class="kw">await</span>.is_err() {
         <span class="kw">return </span><span class="prelude-val">Ok</span>(());
     }
 

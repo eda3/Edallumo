@@ -445,7 +445,108 @@
 <a href="#444" id="444">444</a>
 <a href="#445" id="445">445</a>
 <a href="#446" id="446">446</a>
-<a href="#447" id="447">447</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
+<a href="#469" id="469">469</a>
+<a href="#470" id="470">470</a>
+<a href="#471" id="471">471</a>
+<a href="#472" id="472">472</a>
+<a href="#473" id="473">473</a>
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
+<a href="#510" id="510">510</a>
+<a href="#511" id="511">511</a>
+<a href="#512" id="512">512</a>
+<a href="#513" id="513">513</a>
+<a href="#514" id="514">514</a>
+<a href="#515" id="515">515</a>
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a>
+<a href="#519" id="519">519</a>
+<a href="#520" id="520">520</a>
+<a href="#521" id="521">521</a>
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a>
+<a href="#536" id="536">536</a>
+<a href="#537" id="537">537</a>
+<a href="#538" id="538">538</a>
+<a href="#539" id="539">539</a>
+<a href="#540" id="540">540</a>
+<a href="#541" id="541">541</a>
+<a href="#542" id="542">542</a>
+<a href="#543" id="543">543</a>
+<a href="#544" id="544">544</a>
+<a href="#545" id="545">545</a>
+<a href="#546" id="546">546</a>
+<a href="#547" id="547">547</a>
+<a href="#548" id="548">548</a></pre></div><pre class="rust"><code><span class="doccomment">//! meter.rs
 //! ファイル全体説明コメント
 //! フレームメーター表示機能全体
 //! 開始・アクティブ・リカバリーフレーム情報処理
@@ -696,37 +797,42 @@
     <span class="prelude-val">Ok</span>(character_arg_altered)
 }
 
-<span class="doccomment">/// 技情報と画像データを読み込む関数
+<span class="doccomment">/// 技データのJSONファイルを読み込み、技情報を取得する
 ///
 /// # 引数
 /// * `character_arg_altered` - 正式なキャラクター名
 /// * `character_move` - ユーザーが入力した技名
 /// * `ctx` - コマンドコンテキスト
-/// * `character` - 元のキャラクター名（エラーメッセージ用）
 ///
 /// # 戻り値
-/// 成功時は (技情報, 画像URL) のタプル、失敗時はエラー
-</span><span class="kw">async fn </span>find_move_and_images(
+/// (技情報配列, 技のインデックス)
+</span><span class="kw">async fn </span>load_move_data(
     character_arg_altered: <span class="kw-2">&amp;</span>str,
     character_move: <span class="kw-2">&amp;</span>str,
     ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
-    character: <span class="kw-2">&amp;</span>str,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, String), AppError&gt; {
-    <span class="comment">// キャラクターファイルパス生成
+) -&gt; <span class="prelude-ty">Result</span>&lt;(Vec&lt;MoveInfo&gt;, usize), AppError&gt; {
+    <span class="comment">// キャラクターJSONパス取得
     </span><span class="kw">let </span>char_file_path =
-        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/" </span>+ character_arg_altered + <span class="string">".json"</span>; <span class="comment">// JSONファイルパス生成
-    </span><span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path)
-        .expect(<span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read '"</span>.to_owned() + character + <span class="string">".json" </span>+ <span class="string">"' file."</span>)); <span class="comment">// ファイル読み込み
+        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/" </span>+ character_arg_altered + <span class="string">".json"</span>;
 
-    // キャラクター情報デシリアライズ
-    </span><span class="kw">let </span>moves_info = serde_json::from_str::&lt;Vec&lt;MoveInfo&gt;&gt;(<span class="kw-2">&amp;</span>char_file_data).unwrap(); <span class="comment">// ムーブ情報抽出
+    <span class="comment">// ファイル読み込み
+    </span><span class="kw">let </span>char_file_data = fs::read_to_string(char_file_path.clone()).map_err(|<span class="kw">_</span>| {
+        AppError::FileNotFound(<span class="macro">format!</span>(
+            <span class="string">"Failed to read '{character_arg_altered}.json' file."
+        </span>))
+    })<span class="question-mark">?</span>;
 
+    <span class="comment">// JSONデシリアライズ　技データ抽出
+    </span><span class="kw">let </span>moves_info: Vec&lt;MoveInfo&gt; =
+        serde_json::from_str(<span class="kw-2">&amp;</span>char_file_data).map_err(AppError::Json)<span class="question-mark">?</span>;
+
+    <span class="comment">// 読み込み成功表示
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         (<span class="string">"Successfully read '"</span>.to_owned() + character_arg_altered + <span class="string">".json' file."</span>).green()
-    ); <span class="comment">// 成功出力
+    );
 
-    // ムーブ探索処理（インデックス取得）
+    <span class="comment">// 技インデックス検索
     </span><span class="kw">let </span>index = <span class="kw">match </span>find::find_move_index(
         <span class="kw-2">&amp;</span>character_arg_altered.to_string(),
         character_move.to_string(),
@@ -734,32 +840,85 @@
     )
     .<span class="kw">await
     </span>{
-        <span class="prelude-val">Ok</span>(index) =&gt; index, <span class="comment">// ムーブインデックス確定
+        <span class="prelude-val">Ok</span>(idx) =&gt; idx, <span class="comment">// 技インデックス取得
         </span><span class="prelude-val">Err</span>(err) =&gt; {
-            ctx.say(err.to_string() + <span class="string">"\nView the moves of a character by executing `/moves`."</span>)
-                .<span class="kw">await</span><span class="question-mark">?</span>; <span class="comment">// エラーメッセージ送信
-            </span><span class="macro">println!</span>(<span class="string">"{}"</span>, (<span class="string">"Error: "</span>.to_owned() + <span class="kw-2">&amp;</span>err.to_string()).red()); <span class="comment">// エラー出力
-            </span><span class="kw">return </span><span class="prelude-val">Err</span>(AppError::MoveNotFound(err.to_string())); <span class="comment">// エラー時早期返却
-        </span>}
+            <span class="comment">// エラー表示
+            </span>ctx.say(err.to_string() + <span class="string">"\nView the moves of a character by executing `/moves`."</span>)
+                .<span class="kw">await</span><span class="question-mark">?</span>;
+            <span class="kw">return </span><span class="prelude-val">Err</span>(AppError::MoveNotFound(err.to_string()));
+        }
     };
 
-    <span class="comment">// 画像情報ファイル読み込み
-    </span><span class="kw">let </span>image_links = fs::read_to_string(
-        <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>,
-    )
-    .expect(
-        <span class="kw-2">&amp;</span>(<span class="string">"\nFailed to read 'data/"</span>.to_owned() + character_arg_altered + <span class="string">"'/images.json' file."</span>),
-    ); <span class="comment">// 画像ファイル読み込み
+    <span class="prelude-val">Ok</span>((moves_info, index))
+}
 
-    // 画像情報デシリアライズ
-    </span><span class="kw">let </span>image_links = serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).unwrap(); <span class="comment">// 画像リンク抽出
-    </span><span class="kw">let </span>selected_move_info = moves_info[index].clone(); <span class="comment">// 対象ムーブ情報取得
-    </span><span class="kw">let </span><span class="kw-2">mut </span>embed_image = String::new(); <span class="comment">// 埋め込み画像初期化
+<span class="doccomment">/// 技情報から適切な画像URLを検索する
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `selected_move_info` - 選択された技情報
+///
+/// # 戻り値
+/// 画像のURL
+</span><span class="kw">async fn </span>find_move_image(
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+    selected_move_info: <span class="kw-2">&amp;</span>MoveInfo,
+) -&gt; <span class="prelude-ty">Result</span>&lt;String, AppError&gt; {
+    <span class="comment">// 画像JSONパス
+    </span><span class="kw">let </span>image_json_path = <span class="string">"data/"</span>.to_owned() + character_arg_altered + <span class="string">"/images.json"</span>;
 
-    // ムーブ画像送信処理
-    </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
-        <span class="comment">// 画像リンク走査ループ
-        </span><span class="kw">if </span>selected_move_info.input == img_links.input {
+    <span class="comment">// 画像JSONファイル読み込み
+    </span><span class="kw">let </span>image_links = fs::read_to_string(image_json_path).map_err(|<span class="kw">_</span>| {
+        AppError::FileNotFound(<span class="macro">format!</span>(
+            <span class="string">"Failed to read '{character_arg_altered}' images.json file."
+        </span>))
+    })<span class="question-mark">?</span>;
+
+    <span class="comment">// 画像情報デシリアライズ
+    </span><span class="kw">let </span>image_links =
+        serde_json::from_str::&lt;Vec&lt;ImageLinks&gt;&gt;(<span class="kw-2">&amp;</span>image_links).map_err(AppError::Json)<span class="question-mark">?</span>;
+
+    <span class="kw">let </span><span class="kw-2">mut </span>embed_image = String::new(); <span class="comment">// 埋め込み画像初期化
+
+    // 括弧を除去した技名を作成（例：「2d(2d)」→「2d」）
+    </span><span class="kw">let </span>cleaned_input = <span class="kw">if </span>selected_move_info.input.contains(<span class="string">'('</span>) {
+        selected_move_info
+            .input
+            .split(<span class="string">'('</span>)
+            .next()
+            .unwrap_or(<span class="string">""</span>)
+            .trim()
+            .to_string()
+    } <span class="kw">else </span>{
+        selected_move_info.input.to_string()
+    };
+
+    <span class="comment">// 括弧内のコマンドを取得（例：「2d(2d)」→「2d」）
+    </span><span class="kw">let </span>bracket_content =
+        <span class="kw">if </span>selected_move_info.input.contains(<span class="string">'('</span>) &amp;&amp; selected_move_info.input.contains(<span class="string">')'</span>) {
+            <span class="kw">let </span>start = selected_move_info.input.find(<span class="string">'('</span>).unwrap_or(<span class="number">0</span>) + <span class="number">1</span>;
+            <span class="kw">let </span>end = selected_move_info
+                .input
+                .find(<span class="string">')'</span>)
+                .unwrap_or(selected_move_info.input.len());
+            <span class="kw">if </span>start &lt; end {
+                selected_move_info.input[start..end].to_string()
+            } <span class="kw">else </span>{
+                String::new()
+            }
+        } <span class="kw">else </span>{
+            String::new()
+        };
+
+    <span class="comment">// ムーブ画像送信処理
+    </span><span class="kw">for </span>img_links <span class="kw">in </span><span class="kw-2">&amp;</span>image_links {
+        <span class="comment">// 完全一致、括弧を除去した技名との一致、または括弧内のコマンドとの一致
+        </span><span class="kw">if </span>selected_move_info.input.to_lowercase() == img_links.input.to_lowercase()
+            || (!cleaned_input.is_empty()
+                &amp;&amp; cleaned_input.to_lowercase() == img_links.input.to_lowercase())
+            || (!bracket_content.is_empty()
+                &amp;&amp; bracket_content.to_lowercase() == img_links.input.to_lowercase())
+        {
             <span class="comment">// ヒット判定
             </span><span class="macro">println!</span>(
                 <span class="string">"{}"</span>,
@@ -774,8 +933,24 @@
             </span>embed_image = <span class="kw">if </span>img_links.move_img.is_empty() {
                 String::from(IMAGE_DEFAULT) <span class="comment">// デフォルト画像設定
             </span>} <span class="kw">else </span>{
-                img_links.move_img <span class="comment">// ムーブ画像設定
+                img_links.move_img.clone() <span class="comment">// ムーブ画像設定
             </span>};
+            <span class="kw">break</span>; <span class="comment">// 検索終了
+        </span>}
+    }
+
+    <span class="comment">// 画像が見つからなかった場合、部分一致で再検索
+    </span><span class="kw">if </span>embed_image.is_empty() {
+        <span class="kw">for </span>img_links <span class="kw">in </span><span class="kw-2">&amp;</span>image_links {
+            <span class="kw">if </span>img_links
+                .input
+                .to_lowercase()
+                .contains(<span class="kw-2">&amp;</span>selected_move_info.input.to_lowercase())
+                &amp;&amp; !img_links.move_img.is_empty()
+            {
+                embed_image = img_links.move_img.clone();
+                <span class="kw">break</span>;
+            }
         }
     }
 
@@ -783,6 +958,33 @@
     </span><span class="kw">if </span>embed_image.is_empty() {
         embed_image = String::from(IMAGE_DEFAULT);
     }
+
+    <span class="prelude-val">Ok</span>(embed_image)
+}
+
+<span class="doccomment">/// 技情報と画像を検索する関数
+///
+/// # 引数
+/// * `character_arg_altered` - 正式なキャラクター名
+/// * `character_move` - ユーザーが入力した技名
+/// * `ctx` - コマンドコンテキスト
+///
+/// # 戻り値
+/// (技情報, 画像URL)のタプル
+</span><span class="kw">async fn </span>find_move_and_images(
+    character_arg_altered: <span class="kw-2">&amp;</span>str,
+    character_move: <span class="kw-2">&amp;</span>str,
+    ctx: <span class="kw-2">&amp;</span>Context&lt;<span class="lifetime">'_</span>&gt;,
+    <span class="kw">_</span>: <span class="kw-2">&amp;</span>str, <span class="comment">// character引数は使用しないため無名化
+</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(MoveInfo, String), AppError&gt; {
+    <span class="comment">// 技データの読み込みと検索
+    </span><span class="kw">let </span>(moves_info, index) = load_move_data(character_arg_altered, character_move, ctx).<span class="kw">await</span><span class="question-mark">?</span>;
+
+    <span class="comment">// 選択された技情報の取得
+    </span><span class="kw">let </span>selected_move_info = moves_info[index].clone();
+
+    <span class="comment">// 画像の検索
+    </span><span class="kw">let </span>embed_image = find_move_image(character_arg_altered, <span class="kw-2">&amp;</span>selected_move_info).<span class="kw">await</span><span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>((selected_move_info, embed_image))
 }
