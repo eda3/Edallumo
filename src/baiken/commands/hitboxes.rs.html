@@ -267,7 +267,30 @@
 <a href="#266" id="266">266</a>
 <a href="#267" id="267">267</a>
 <a href="#268" id="268">268</a>
-<a href="#269" id="269">269</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
+<a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
+<a href="#273" id="273">273</a>
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a>
+<a href="#276" id="276">276</a>
+<a href="#277" id="277">277</a>
+<a href="#278" id="278">278</a>
+<a href="#279" id="279">279</a>
+<a href="#280" id="280">280</a>
+<a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
 //!
 //! ヒットボックス画像表示モジュール。
 //! キャラクターの技のヒットボックス画像を表示するためのコマンドを提供する。
@@ -280,7 +303,8 @@
 </span><span class="kw">use </span>std::{fs, string::String}; <span class="comment">// ファイル操作と文字列型
 
 </span><span class="doccomment">/// デフォルトヒットボックス画像URL
-</span><span class="kw">const </span>HITBOX_DEFAULT: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/images/5/54/GGST_Logo_Sparkly.png"</span>;
+</span><span class="kw">const </span>HITBOX_DEFAULT: <span class="kw-2">&amp;</span>str =
+    <span class="string">"https://raw.githubusercontent.com/eda3/Edallumo/main/data/images/no_hitbox.png"</span>;
 
 <span class="doccomment">/// キャラクターデータを読み込む関数
 ///
@@ -427,7 +451,29 @@
                     .url(<span class="kw-2">&amp;</span>embed_url)
             };
 
-            <span class="kw">match </span>img_links.hitbox_img.len() {
+            <span class="macro">println!</span>(
+                <span class="string">"{}"</span>,
+                <span class="macro">format!</span>(
+                    <span class="string">"hitbox_img: {} (raw), {} (valid)"</span>,
+                    img_links.hitbox_img.len(),
+                    img_links
+                        .hitbox_img
+                        .iter()
+                        .filter(|url| !url.is_empty())
+                        .count()
+                )
+                .blue()
+            );
+
+            <span class="comment">// 空文字列を除外した有効なヒットボックス画像URLを収集
+            </span><span class="kw">let </span>valid_hitbox_images: Vec&lt;String&gt; = img_links
+                .hitbox_img
+                .iter()
+                .filter(|url| !url.is_empty())
+                .cloned()
+                .collect();
+
+            <span class="kw">match </span>valid_hitbox_images.len() {
                 <span class="comment">// ヒットボックス画像なしの場合
                 </span><span class="number">0 </span>=&gt; {
                     <span class="comment">// デフォルト画像で埋め込み作成
@@ -437,7 +483,7 @@
                 <span class="comment">// ヒットボックス画像が1枚の場合
                 </span><span class="number">1 </span>=&gt; {
                     <span class="comment">// 単一画像で埋め込み作成
-                    </span><span class="kw">let </span>embed = create_base_embed().image(<span class="kw-2">&amp;</span>img_links.hitbox_img[<span class="number">0</span>]);
+                    </span><span class="kw">let </span>embed = create_base_embed().image(<span class="kw-2">&amp;</span>valid_hitbox_images[<span class="number">0</span>]);
                     vec_embeds.push(embed);
                 }
                 <span class="comment">// ヒットボックス画像が複数の場合
@@ -447,7 +493,7 @@
                         CreateEmbedFooter::new(<span class="macro">format!</span>(<span class="string">"Move has {n} hitbox images."</span>));
 
                     <span class="comment">// 各画像ごとに埋め込み作成
-                    </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>img_links.hitbox_img {
+                    </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>valid_hitbox_images {
                         <span class="kw">let </span>embed = create_base_embed()
                             .image(htbx_img)
                             .footer(embed_footer.clone());
