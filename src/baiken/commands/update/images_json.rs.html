@@ -304,7 +304,9 @@
 <a href="#303" id="303">303</a>
 <a href="#304" id="304">304</a>
 <a href="#305" id="305">305</a>
-<a href="#306" id="306">306</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
+<a href="#306" id="306">306</a>
+<a href="#307" id="307">307</a>
+<a href="#308" id="308">308</a></pre></div><pre class="rust"><code><span class="attr">#![allow(clippy::needless_raw_string_hashes)]
 
 </span><span class="doccomment">//! `images_json.rs`
 //!
@@ -362,6 +364,8 @@
     <span class="comment">// アポストロフィのエンティティを置換　置換結果：アポストロフィに変換
     </span>json_str = json_str.replace(<span class="string">r#"&amp;#039;"#</span>, <span class="string">"'"</span>);
 
+    <span class="comment">// アポストロフィのエンティティを置換　置換結果：アポストロフィに変換
+    </span>json_str = json_str.replace(<span class="string">r#"_6236S"#</span>, <span class="string">"_623S"</span>);
     json_str
 }
 

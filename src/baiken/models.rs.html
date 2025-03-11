@@ -521,12 +521,7 @@
 <a href="#520" id="520">520</a>
 <a href="#521" id="521">521</a>
 <a href="#522" id="522">522</a>
-<a href="#523" id="523">523</a>
-<a href="#524" id="524">524</a>
-<a href="#525" id="525">525</a>
-<a href="#526" id="526">526</a>
-<a href="#527" id="527">527</a>
-<a href="#528" id="528">528</a></pre></div><pre class="rust"><code><span class="doccomment">//! models.rs
+<a href="#523" id="523">523</a></pre></div><pre class="rust"><code><span class="doccomment">//! models.rs
 //!
 //! このファイルでは、アプリケーションの主要なデータモデルを定義します。
 //! 従来の全てString型だった構造体からより適切なデータ型へ変換しています。
@@ -726,10 +721,6 @@
     <span class="doccomment">/// チップダメージ比率
     </span><span class="attr">#[serde(deserialize_with = <span class="string">"deserialize_option_f64"</span>)]
     </span><span class="kw">pub </span>chip_ratio: <span class="prelude-ty">Option</span>&lt;f64&gt;,
-
-    <span class="doccomment">/// OTG比率
-    </span><span class="attr">#[serde(deserialize_with = <span class="string">"deserialize_option_f64"</span>)]
-    </span><span class="kw">pub </span>otg_ratio: <span class="prelude-ty">Option</span>&lt;f64&gt;,
 
     <span class="doccomment">/// ダメージスケーリング
     </span><span class="attr">#[serde(deserialize_with = <span class="string">"deserialize_option_f64"</span>)]
@@ -972,7 +963,6 @@
             wall_damage: <span class="prelude-val">Some</span>(<span class="number">9</span>),
             input_tension: <span class="prelude-val">Some</span>(<span class="number">0.0</span>),
             chip_ratio: <span class="prelude-val">Some</span>(<span class="number">0.0</span>),
-            otg_ratio: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
             scaling: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
             invincibility: <span class="string">"None"</span>.to_string(),
             cancel: <span class="string">"Special, Super"</span>.to_string(),

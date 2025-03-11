@@ -620,15 +620,7 @@
 <a href="#619" id="619">619</a>
 <a href="#620" id="620">620</a>
 <a href="#621" id="621">621</a>
-<a href="#622" id="622">622</a>
-<a href="#623" id="623">623</a>
-<a href="#624" id="624">624</a>
-<a href="#625" id="625">625</a>
-<a href="#626" id="626">626</a>
-<a href="#627" id="627">627</a>
-<a href="#628" id="628">628</a>
-<a href="#629" id="629">629</a>
-<a href="#630" id="630">630</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
+<a href="#622" id="622">622</a></pre></div><pre class="rust"><code><span class="doccomment">//! advanced.rs
 //!
 //! このファイルは、キャラクターの技データの詳細情報をDiscordの埋め込みメッセージで表示するコマンドを実装。
 //! 指定されたキャラクター名（または愛称）と技名（入力またはエイリアス）をもとに、
@@ -1051,13 +1043,6 @@
                 <span class="bool-val">true</span>,
             ),
             (
-                <span class="string">"OTG比率"</span>,
-                <span class="kw-2">&amp;</span>move_info
-                    .otg_ratio
-                    .map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
-                <span class="bool-val">true</span>,
-            ),
-            (
                 <span class="string">"スケーリング"</span>,
                 <span class="kw-2">&amp;</span>move_info.scaling.map_or(<span class="string">"-"</span>.to_string(), |v| v.to_string()),
                 <span class="bool-val">true</span>,
@@ -1238,7 +1223,6 @@
             wall_damage: <span class="prelude-val">Some</span>(<span class="number">9</span>),
             input_tension: <span class="prelude-val">Some</span>(<span class="number">0.0</span>),
             chip_ratio: <span class="prelude-val">Some</span>(<span class="number">0.0</span>),
-            otg_ratio: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
             scaling: <span class="prelude-val">Some</span>(<span class="number">0.8</span>),
             invincibility: <span class="string">"None"</span>.to_string(),
             cancel: <span class="string">"Special, Super"</span>.to_string(),

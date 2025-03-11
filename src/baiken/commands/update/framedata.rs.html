@@ -118,7 +118,8 @@
 <a href="#117" id="117">117</a>
 <a href="#118" id="118">118</a>
 <a href="#119" id="119">119</a>
-<a href="#120" id="120">120</a></pre></div><pre class="rust"><code><span class="doccomment">//! # framedata.rs
+<a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a></pre></div><pre class="rust"><code><span class="doccomment">//! # framedata.rs
 //!
 //! フレームデータ更新モジュール。
 //! Dustloopウェブサイトからキャラクターの技フレームデータを取得し、
@@ -133,8 +134,9 @@
 </span><span class="kw">use </span>std::{fs::OpenOptions, time::Instant}; <span class="comment">// ファイル操作と時間計測
 
 // 定数定義
-</span><span class="kw">const </span>SITE_LINK: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/api.php?action=cargoquery&amp;format=json&amp;limit=100&amp;tables=MoveData_GGST&amp;fields=MoveData_GGST.input%2C%20MoveData_GGST.name%2C%20MoveData_GGST.damage%2C%20MoveData_GGST.guard%2C%20MoveData_GGST.startup%2C%20MoveData_GGST.active%2C%20MoveData_GGST.recovery%2C%20MoveData_GGST.onHit%2C%20MoveData_GGST.onBlock%2C%20MoveData_GGST.level%2C%20MoveData_GGST.counter%2C%20MoveData_GGST.type%2C%20MoveData_GGST.riscGain%2C%20MoveData_GGST.riscLoss%2C%20MoveData_GGST.wallDamage%2C%20MoveData_GGST.inputTension%2C%20MoveData_GGST.chipRatio%2C%20MoveData_GGST.OTGRatio%2C%20MoveData_GGST.prorate%2C%20MoveData_GGST.invuln%2C%20MoveData_GGST.cancel%2C%20MoveData_GGST.caption%2C%20MoveData_GGST.notes%2C%20MoveData_GGST.hitboxCaption%2C%20MoveData_GGST.images%2C%20MoveData_GGST.hitboxes%2C&amp;where=chara%3D%22"</span>; <span class="comment">// Dustloop API リクエスト前半部（フレームデータ用）
-</span><span class="kw">const </span>SITE_HALF: <span class="kw-2">&amp;</span>str =
+// const SITE_LINK: &amp;str = "https://www.dustloop.com/wiki/api.php?action=cargoquery&amp;format=json&amp;limit=100&amp;tables=MoveData_GGST&amp;fields=MoveData_GGST.input%2C%20MoveData_GGST.name%2C%20MoveData_GGST.damage%2C%20MoveData_GGST.guard%2C%20MoveData_GGST.startup%2C%20MoveData_GGST.active%2C%20MoveData_GGST.recovery%2C%20MoveData_GGST.onHit%2C%20MoveData_GGST.onBlock%2C%20MoveData_GGST.level%2C%20MoveData_GGST.counter%2C%20MoveData_GGST.type%2C%20MoveData_GGST.riscGain%2C%20MoveData_GGST.riscLoss%2C%20MoveData_GGST.wallDamage%2C%20MoveData_GGST.inputTension%2C%20MoveData_GGST.chipRatio%2C%20MoveData_GGST.OTGRatio%2C%20MoveData_GGST.prorate%2C%20MoveData_GGST.invuln%2C%20MoveData_GGST.cancel%2C%20MoveData_GGST.caption%2C%20MoveData_GGST.notes%2C%20MoveData_GGST.hitboxCaption%2C%20MoveData_GGST.images%2C%20MoveData_GGST.hitboxes%2C&amp;where=chara%3D%22";
+</span><span class="kw">const </span>SITE_LINK: <span class="kw-2">&amp;</span>str = <span class="string">"https://www.dustloop.com/wiki/api.php?action=cargoquery&amp;format=json&amp;limit=100&amp;tables=MoveData_GGST&amp;fields=MoveData_GGST.input%2C%20MoveData_GGST.name%2C%20MoveData_GGST.damage%2C%20MoveData_GGST.guard%2C%20MoveData_GGST.startup%2C%20MoveData_GGST.active%2C%20MoveData_GGST.recovery%2C%20MoveData_GGST.onHit%2C%20MoveData_GGST.onBlock%2C%20MoveData_GGST.level%2C%20MoveData_GGST.counter%2C%20MoveData_GGST.type%2C%20MoveData_GGST.riscGain%2C%20MoveData_GGST.riscLoss%2C%20MoveData_GGST.wallDamage%2C%20MoveData_GGST.inputTension%2C%20MoveData_GGST.chipRatio%2C%20MoveData_GGST.prorate%2C%20MoveData_GGST.invuln%2C%20MoveData_GGST.cancel%2C%20MoveData_GGST.caption%2C%20MoveData_GGST.notes%2C%20MoveData_GGST.hitboxCaption%2C%20MoveData_GGST.images%2C%20MoveData_GGST.hitboxes%2C&amp;where=chara%3D%22"</span>;
+<span class="kw">const </span>SITE_HALF: <span class="kw-2">&amp;</span>str =
     <span class="string">"%22&amp;order_by=MoveData_GGST.type%20ASC%2C%20MoveData_GGST.input%20ASC&amp;utf8=1"</span>; <span class="comment">// Dustloop API リクエスト後半部
 
 </span><span class="doccomment">/// キャラクターフレームデータ取得関数
