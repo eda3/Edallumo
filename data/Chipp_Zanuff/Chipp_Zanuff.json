@@ -1200,7 +1200,7 @@
     "notes": "Can cancel into Senshuu f10~30"
   },
   {
-    "input": "βブレード(6236S)",
+    "input": "βブレード(623S)",
     "name": "βブレード",
     "damage": null,
     "guard": "上段",
@@ -1320,7 +1320,7 @@
     "notes": "Horizontal Activation Range: 800 (Distance from original input position)\n"
   },
   {
-    "input": "空中βブレード(j6236S)",
+    "input": "空中βブレード(j623S)",
     "name": "空中βブレード",
     "damage": null,
     "guard": "上段",

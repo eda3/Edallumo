@@ -236,18 +236,18 @@
     ]
   },
   {
-    "input": "ホークベイカー(6236S)",
-    "move_img": "https://www.dustloop.com/wiki/images/f/f5/GGST_Sin_Kiske_6236S.png",
+    "input": "ホークベイカー(623S)",
+    "move_img": "https://www.dustloop.com/wiki/images/e/e8/GGST_Sin_Kiske_623S.png",
     "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/f/f9/GGST_Sin_Kiske_6236S_1_Hitbox.png",
-      "https://www.dustloop.com/wiki/images/1/1a/GGST_Sin_Kiske_6236S_2_Hitbox.png"
+      "https://www.dustloop.com/wiki/images/9/99/GGST_Sin_Kiske_623S_1_Hitbox.png",
+      "https://www.dustloop.com/wiki/images/3/35/GGST_Sin_Kiske_623S_2_Hitbox.png"
     ]
   },
   {
-    "input": "ホークベイカー派生(623SS)",
-    "move_img": "https://www.dustloop.com/wiki/images/4/41/GGST_Sin_Kiske_6236SS.png",
+    "input": "ホークベイカー派生(623S~S)",
+    "move_img": "https://www.dustloop.com/wiki/images/5/5c/GGST_Sin_Kiske_623SS.png",
     "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/5/5b/GGST_Sin_Kiske_6236SS_Hitbox.png"
+      "https://www.dustloop.com/wiki/images/6/67/GGST_Sin_Kiske_623SS_Hitbox.png"
     ]
   },
   {

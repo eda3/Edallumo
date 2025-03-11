@@ -816,7 +816,7 @@
     "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nUses 1500 HP of the Eddie gauge. If Eddie is already summoned 236S uses 1125 HP of the Eddie Gauge."
   },
   {
-    "input": "ダムドファング(6236S)",
+    "input": "ダムドファング(623S)",
     "name": "ダムドファング",
     "damage": null,
     "guard": "投げ",

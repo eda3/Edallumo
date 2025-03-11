@@ -230,10 +230,10 @@
     ]
   },
   {
-    "input": "ヴェイパースラスト(6236S)",
-    "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
+    "input": "ヴェイパースラスト(623S)",
+    "move_img": "https://www.dustloop.com/wiki/images/0/0e/GGST_Ky_Kiske_623S.png",
     "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"
+      "https://www.dustloop.com/wiki/images/9/9e/GGST_Ky_623S_hitbox.png"
     ]
   },
   {
@@ -282,10 +282,10 @@
     ]
   },
   {
-    "input": "ドラゴンインストールヴェイパースラスト(DI 6236S)",
-    "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
+    "input": "ドラゴンインストールヴェイパースラスト(DI 623S)",
+    "move_img": "https://www.dustloop.com/wiki/images/0/0e/GGST_Ky_Kiske_623S.png",
     "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"
+      "https://www.dustloop.com/wiki/images/9/9e/GGST_Ky_623S_hitbox.png"
     ]
   },
   {
@@ -310,10 +310,10 @@
     ]
   },
   {
-    "input": "ドラゴンインストール空中ヴェイパースラスト(DI j.6236S)",
-    "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
+    "input": "ドラゴンインストール空中ヴェイパースラスト(DI j.623S)",
+    "move_img": "https://www.dustloop.com/wiki/images/0/0e/GGST_Ky_Kiske_623S.png",
     "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"
+      "https://www.dustloop.com/wiki/images/9/9e/GGST_Ky_623S_hitbox.png"
     ]
   },
   {
@@ -338,10 +338,10 @@
     ]
   },
   {
-    "input": "空中ヴェイパースラスト(j6236S)",
-    "move_img": "https://www.dustloop.com/wiki/images/b/ba/GGST_Ky_Kiske_6236S.png",
+    "input": "空中ヴェイパースラスト(j623S)",
+    "move_img": "https://www.dustloop.com/wiki/images/0/0e/GGST_Ky_Kiske_623S.png",
     "hitbox_img": [
-      "https://www.dustloop.com/wiki/images/c/c0/GGST_Ky_6236S_hitbox.png"
+      "https://www.dustloop.com/wiki/images/9/9e/GGST_Ky_623S_hitbox.png"
     ]
   },
   {

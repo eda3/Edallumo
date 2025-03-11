@@ -624,8 +624,8 @@
     "notes": ""
   },
   {
-    "input": "bt44(bt44)",
-    "name": "bt44",
+    "input": "ブリュンヒルデの構え44(bt44)",
+    "name": "ブリュンヒルデの構え44",
     "damage": null,
     "guard": "-",
     "startup": null,
@@ -768,8 +768,8 @@
     "notes": "Hitstop on ground hit: 16F\nFloating crumple on ground hit: Total 28F (airborne hitstun 1-11F, standing hitstun 12-18F, can block 19~28F)\nDoes ''not'' clash on trade with 5P or 2P attacks.\nIf the first hit of a combo, applies an additional +20 Combo Decay."
   },
   {
-    "input": "btS(btS)",
-    "name": "btS",
+    "input": "ブリュンヒルデの構えS(btS)",
+    "name": "ブリュンヒルデの構えS",
     "damage": 30,
     "guard": "上段",
     "startup": 6,
