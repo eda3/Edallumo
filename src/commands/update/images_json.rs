@@ -56,6 +56,8 @@ async fn preprocess_images_json(mut json_str: String) -> String {
     // アポストロフィのエンティティを置換　置換結果：アポストロフィに変換
     json_str = json_str.replace(r#"&#039;"#, "'");
 
+    // アポストロフィのエンティティを置換　置換結果：アポストロフィに変換
+    json_str = json_str.replace(r#"_6236S"#, "_623S");
     json_str
 }
 

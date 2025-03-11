@@ -59,7 +59,6 @@ lazy_static! {
         map.insert(r#""Wild Assault (Hold)""#, r#""溜めワイルドアサルト""#);
         map.insert(r#""Ground Throw""#, r#""投げ""#);
         map.insert(r#""Air Throw""#, r#""空投げ""#);
-
         // A.B.A部分の共通置換
         map.insert(r#""JR 2H""#, r#""JR2HS""#);
         map.insert(r#""JR 2K""#, r#""JR2K""#);
@@ -140,7 +139,7 @@ lazy_static! {
         map.insert(r#""One Vision""#, r#""ワンヴィジョン""#);
 
         // 梅喧
-        map.insert(r#"23S"#, r#"236S"#);
+        // map.insert(r#"23S"#, r#"236S"#);
         map.insert(r#""Ground Throw (Tether)""#, r#""投げ""#);
         map.insert(r#""Ground Throw (Knockback)""#, r#""溜め投げ""#);
         map.insert(r#""41236HS~HS""#, r#""41236HSHS""#);
@@ -680,6 +679,9 @@ lazy_static! {
         map.insert(r#""Amorphous""#, r#""アモルファス""#);
         map.insert(r#""That&#039;s a lot""#, r#""「多い」""#);
         map.insert(r#""Sun Void""#, r#""サンヴォイド""#);
+
+        map.insert(r#""6236S""#, r#""623S""#);
+        map.insert(r#""j6236S""#, r#""j623S""#);
 
         map
     };
