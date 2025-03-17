@@ -445,7 +445,231 @@
 <a href="#444" id="444">444</a>
 <a href="#445" id="445">445</a>
 <a href="#446" id="446">446</a>
-<a href="#447" id="447">447</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
+<a href="#469" id="469">469</a>
+<a href="#470" id="470">470</a>
+<a href="#471" id="471">471</a>
+<a href="#472" id="472">472</a>
+<a href="#473" id="473">473</a>
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
+<a href="#510" id="510">510</a>
+<a href="#511" id="511">511</a>
+<a href="#512" id="512">512</a>
+<a href="#513" id="513">513</a>
+<a href="#514" id="514">514</a>
+<a href="#515" id="515">515</a>
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a>
+<a href="#519" id="519">519</a>
+<a href="#520" id="520">520</a>
+<a href="#521" id="521">521</a>
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a>
+<a href="#536" id="536">536</a>
+<a href="#537" id="537">537</a>
+<a href="#538" id="538">538</a>
+<a href="#539" id="539">539</a>
+<a href="#540" id="540">540</a>
+<a href="#541" id="541">541</a>
+<a href="#542" id="542">542</a>
+<a href="#543" id="543">543</a>
+<a href="#544" id="544">544</a>
+<a href="#545" id="545">545</a>
+<a href="#546" id="546">546</a>
+<a href="#547" id="547">547</a>
+<a href="#548" id="548">548</a>
+<a href="#549" id="549">549</a>
+<a href="#550" id="550">550</a>
+<a href="#551" id="551">551</a>
+<a href="#552" id="552">552</a>
+<a href="#553" id="553">553</a>
+<a href="#554" id="554">554</a>
+<a href="#555" id="555">555</a>
+<a href="#556" id="556">556</a>
+<a href="#557" id="557">557</a>
+<a href="#558" id="558">558</a>
+<a href="#559" id="559">559</a>
+<a href="#560" id="560">560</a>
+<a href="#561" id="561">561</a>
+<a href="#562" id="562">562</a>
+<a href="#563" id="563">563</a>
+<a href="#564" id="564">564</a>
+<a href="#565" id="565">565</a>
+<a href="#566" id="566">566</a>
+<a href="#567" id="567">567</a>
+<a href="#568" id="568">568</a>
+<a href="#569" id="569">569</a>
+<a href="#570" id="570">570</a>
+<a href="#571" id="571">571</a>
+<a href="#572" id="572">572</a>
+<a href="#573" id="573">573</a>
+<a href="#574" id="574">574</a>
+<a href="#575" id="575">575</a>
+<a href="#576" id="576">576</a>
+<a href="#577" id="577">577</a>
+<a href="#578" id="578">578</a>
+<a href="#579" id="579">579</a>
+<a href="#580" id="580">580</a>
+<a href="#581" id="581">581</a>
+<a href="#582" id="582">582</a>
+<a href="#583" id="583">583</a>
+<a href="#584" id="584">584</a>
+<a href="#585" id="585">585</a>
+<a href="#586" id="586">586</a>
+<a href="#587" id="587">587</a>
+<a href="#588" id="588">588</a>
+<a href="#589" id="589">589</a>
+<a href="#590" id="590">590</a>
+<a href="#591" id="591">591</a>
+<a href="#592" id="592">592</a>
+<a href="#593" id="593">593</a>
+<a href="#594" id="594">594</a>
+<a href="#595" id="595">595</a>
+<a href="#596" id="596">596</a>
+<a href="#597" id="597">597</a>
+<a href="#598" id="598">598</a>
+<a href="#599" id="599">599</a>
+<a href="#600" id="600">600</a>
+<a href="#601" id="601">601</a>
+<a href="#602" id="602">602</a>
+<a href="#603" id="603">603</a>
+<a href="#604" id="604">604</a>
+<a href="#605" id="605">605</a>
+<a href="#606" id="606">606</a>
+<a href="#607" id="607">607</a>
+<a href="#608" id="608">608</a>
+<a href="#609" id="609">609</a>
+<a href="#610" id="610">610</a>
+<a href="#611" id="611">611</a>
+<a href="#612" id="612">612</a>
+<a href="#613" id="613">613</a>
+<a href="#614" id="614">614</a>
+<a href="#615" id="615">615</a>
+<a href="#616" id="616">616</a>
+<a href="#617" id="617">617</a>
+<a href="#618" id="618">618</a>
+<a href="#619" id="619">619</a>
+<a href="#620" id="620">620</a>
+<a href="#621" id="621">621</a>
+<a href="#622" id="622">622</a>
+<a href="#623" id="623">623</a>
+<a href="#624" id="624">624</a>
+<a href="#625" id="625">625</a>
+<a href="#626" id="626">626</a>
+<a href="#627" id="627">627</a>
+<a href="#628" id="628">628</a>
+<a href="#629" id="629">629</a>
+<a href="#630" id="630">630</a>
+<a href="#631" id="631">631</a>
+<a href="#632" id="632">632</a>
+<a href="#633" id="633">633</a>
+<a href="#634" id="634">634</a>
+<a href="#635" id="635">635</a>
+<a href="#636" id="636">636</a>
+<a href="#637" id="637">637</a>
+<a href="#638" id="638">638</a>
+<a href="#639" id="639">639</a>
+<a href="#640" id="640">640</a>
+<a href="#641" id="641">641</a>
+<a href="#642" id="642">642</a>
+<a href="#643" id="643">643</a>
+<a href="#644" id="644">644</a>
+<a href="#645" id="645">645</a>
+<a href="#646" id="646">646</a>
+<a href="#647" id="647">647</a>
+<a href="#648" id="648">648</a>
+<a href="#649" id="649">649</a>
+<a href="#650" id="650">650</a>
+<a href="#651" id="651">651</a>
+<a href="#652" id="652">652</a>
+<a href="#653" id="653">653</a>
+<a href="#654" id="654">654</a>
+<a href="#655" id="655">655</a>
+<a href="#656" id="656">656</a>
+<a href="#657" id="657">657</a>
+<a href="#658" id="658">658</a>
+<a href="#659" id="659">659</a>
+<a href="#660" id="660">660</a>
+<a href="#661" id="661">661</a>
+<a href="#662" id="662">662</a>
+<a href="#663" id="663">663</a>
+<a href="#664" id="664">664</a>
+<a href="#665" id="665">665</a>
+<a href="#666" id="666">666</a>
+<a href="#667" id="667">667</a>
+<a href="#668" id="668">668</a>
+<a href="#669" id="669">669</a>
+<a href="#670" id="670">670</a>
+<a href="#671" id="671">671</a></pre></div><pre class="rust"><code><span class="doccomment">//! # hitboxes.rs
 //!
 //! ヒットボックス画像表示モジュール。
 //! キャラクターの技のヒットボックス画像を表示するためのコマンドを提供する。
@@ -503,6 +727,15 @@
     </span><span class="kw">let </span>file_path = <span class="macro">format!</span>(<span class="string">"data/{character_arg_altered}/{character_arg_altered}.json"</span>);
     <span class="kw">let </span>images_path = <span class="macro">format!</span>(<span class="string">"data/{character_arg_altered}/images.json"</span>);
 
+    <span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="macro">format!</span>(
+            <span class="string">"Looking for move '{}' for character '{}'"</span>,
+            character_move, character_arg_altered
+        )
+        .blue()
+    );
+
     <span class="comment">// キャラクターJSONファイル読み込み
     </span><span class="kw">let </span>data = fs::read_to_string(<span class="kw-2">&amp;</span>file_path).map_err(|<span class="kw">_</span>| {
         <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"Failed to load character data from {file_path}"</span>);
@@ -527,10 +760,126 @@
         .blue()
     );
 
+    <span class="comment">// 画像JSONファイル読み込み
+    </span><span class="kw">let </span>image_data = fs::read_to_string(<span class="kw-2">&amp;</span>images_path).map_err(|<span class="kw">_</span>| {
+        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"Failed to load image data from {images_path}"</span>);
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
+        AppError::FileNotFound(error_msg)
+    })<span class="question-mark">?</span>;
+
+    <span class="comment">// 画像JSONデシリアライズ
+    </span><span class="kw">let </span>image_links: Vec&lt;ImageLinks&gt; = serde_json::from_str(<span class="kw-2">&amp;</span>image_data).map_err(|e| {
+        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"Failed to parse image data: {e}"</span>);
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
+        AppError::Json(e)
+    })<span class="question-mark">?</span>;
+
+    <span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="macro">format!</span>(<span class="string">"Loaded {} image entries"</span>, image_links.len()).blue()
+    );
+
+    <span class="comment">// 6kや5hsなどの技入力で直接検索（大文字小文字区別なし）
+    </span><span class="kw">let </span>normalized_input = character_move.to_lowercase().replace(<span class="string">' '</span>, <span class="string">""</span>);
+    <span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="macro">format!</span>(<span class="string">"Normalized input for direct search: '{}'"</span>, normalized_input).blue()
+    );
+
+    <span class="comment">// image_links内から直接一致するものを探す
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="string">"Searching for direct match in image entries..."</span>.blue()
+    );
+    <span class="kw">let </span><span class="kw-2">mut </span>direct_match_index = <span class="prelude-val">None</span>;
+    <span class="kw">for </span>(i, img) <span class="kw">in </span>image_links.iter().enumerate() {
+        <span class="kw">let </span>normalized_img_input = img.input.to_lowercase().replace(<span class="string">' '</span>, <span class="string">""</span>);
+        <span class="kw">if </span>normalized_img_input == normalized_input
+            || img.input.eq_ignore_ascii_case(<span class="kw-2">&amp;</span>character_move)
+        {
+            <span class="macro">println!</span>(
+                <span class="string">"{}"</span>,
+                <span class="macro">format!</span>(<span class="string">"Found direct match at index {}: '{}'"</span>, i, img.input).green()
+            );
+            direct_match_index = <span class="prelude-val">Some</span>(i);
+            <span class="kw">break</span>;
+        }
+    }
+
+    <span class="comment">// 直接一致する技が見つかった場合
+    </span><span class="kw">if let </span><span class="prelude-val">Some</span>(idx) = direct_match_index {
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"Using direct match for hitbox images"</span>.green());
+        <span class="comment">// 対応するmove_infoを探す
+        </span><span class="kw">let </span>img_link = <span class="kw-2">&amp;</span>image_links[idx];
+        <span class="kw">let </span>img_input = <span class="kw-2">&amp;</span>img_link.input;
+
+        <span class="comment">// 技情報からこの技入力に一致するものを探す
+        </span><span class="kw">let </span><span class="kw-2">mut </span>matched_move = <span class="prelude-val">None</span>;
+        <span class="kw">for </span>m <span class="kw">in </span><span class="kw-2">&amp;</span>moves_info {
+            <span class="kw">if </span>m.input.eq_ignore_ascii_case(img_input)
+                || normalized_input == m.input.to_lowercase().replace(<span class="string">' '</span>, <span class="string">""</span>)
+            {
+                matched_move = <span class="prelude-val">Some</span>(m.clone());
+                <span class="macro">println!</span>(
+                    <span class="string">"{}"</span>,
+                    <span class="macro">format!</span>(<span class="string">"Found matching move info: {}"</span>, m.name).green()
+                );
+                <span class="kw">break</span>;
+            }
+        }
+
+        <span class="comment">// 対応する技情報が見つからない場合は、最初のmove_infoを使用して応急処置
+        </span><span class="kw">let </span>move_data = matched_move.unwrap_or_else(|| {
+            <span class="macro">println!</span>(
+                <span class="string">"{}"</span>,
+                <span class="string">"No exact move info match found, generating placeholder"</span>.yellow()
+            );
+            MoveInfo {
+                name: img_input.clone(),
+                input: img_input.clone(),
+                damage: <span class="prelude-val">None</span>,
+                guard: <span class="string">""</span>.to_string(),
+                startup: <span class="prelude-val">None</span>,
+                active: <span class="string">""</span>.to_string(),
+                recovery: <span class="prelude-val">None</span>,
+                on_hit: <span class="string">""</span>.to_string(),
+                on_block: <span class="string">""</span>.to_string(),
+                level: <span class="string">""</span>.to_string(),
+                counter: <span class="string">""</span>.to_string(),
+                move_type: <span class="string">""</span>.to_string(),
+                risc_gain: <span class="prelude-val">None</span>,
+                risc_loss: <span class="prelude-val">None</span>,
+                wall_damage: <span class="prelude-val">None</span>,
+                input_tension: <span class="prelude-val">None</span>,
+                chip_ratio: <span class="prelude-val">None</span>,
+                scaling: <span class="prelude-val">None</span>,
+                invincibility: <span class="string">""</span>.to_string(),
+                cancel: <span class="string">""</span>.to_string(),
+                caption: <span class="string">""</span>.to_string(),
+                notes: <span class="string">""</span>.to_string(),
+            }
+        });
+
+        <span class="kw">return </span><span class="prelude-val">Ok</span>((move_data, image_links.to_vec()));
+    }
+
+    <span class="comment">// 直接一致が見つからない場合は通常の検索フローを使用
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="string">"No direct match found, using normal search flow"</span>.yellow()
+    );
+
+    <span class="comment">// character_moveを小文字に変換して処理
+    </span><span class="kw">let </span>character_move_lower = character_move.to_lowercase();
+    <span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="macro">format!</span>(<span class="string">"Using normalized move name: '{}'"</span>, character_move_lower).blue()
+    );
+
     <span class="comment">// 技名インデックス検索
     </span><span class="kw">let </span>move_index = <span class="kw">match </span>find::find_move_index(
         <span class="kw-2">&amp;</span>character_arg_altered.to_string(),
-        character_move.to_string(),
+        character_move_lower,
         <span class="kw-2">&amp;</span>moves_info,
     )
     .<span class="kw">await
@@ -556,25 +905,6 @@
         .blue()
     );
 
-    <span class="comment">// 画像JSONファイル読み込み
-    </span><span class="kw">let </span>image_data = fs::read_to_string(<span class="kw-2">&amp;</span>images_path).map_err(|<span class="kw">_</span>| {
-        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"Failed to load image data from {images_path}"</span>);
-        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
-        AppError::FileNotFound(error_msg)
-    })<span class="question-mark">?</span>;
-
-    <span class="comment">// 画像JSONデシリアライズ
-    </span><span class="kw">let </span>image_links: Vec&lt;ImageLinks&gt; = serde_json::from_str(<span class="kw-2">&amp;</span>image_data).map_err(|e| {
-        <span class="kw">let </span>error_msg = <span class="macro">format!</span>(<span class="string">"Failed to parse image data: {e}"</span>);
-        <span class="macro">println!</span>(<span class="string">"{}"</span>, error_msg.red());
-        AppError::Json(e)
-    })<span class="question-mark">?</span>;
-
-    <span class="macro">println!</span>(
-        <span class="string">"{}"</span>,
-        <span class="macro">format!</span>(<span class="string">"Loaded {} image entries"</span>, image_links.len()).blue()
-    );
-
     <span class="comment">// 技の入力コマンドをログ出力
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
@@ -584,7 +914,23 @@
     <span class="comment">// image_links内の各要素のinput値をログに出力
     </span><span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"Available image inputs:"</span>.blue());
     <span class="kw">for </span>(i, img) <span class="kw">in </span>image_links.iter().enumerate() {
-        <span class="macro">println!</span>(<span class="string">"  {}: '{}'"</span>, i, img.input);
+        <span class="kw">if </span>i &lt; <span class="number">20 </span>{
+            <span class="comment">// 最初の20個だけ表示（多すぎるとログが見にくくなるため）
+            </span><span class="macro">println!</span>(<span class="string">"  {}: '{}'"</span>, i, img.input);
+        }
+    }
+
+    <span class="comment">// 6Kに直接一致するエントリがあるかのチェック
+    </span><span class="kw">if </span>character_move.eq_ignore_ascii_case(<span class="string">"6k"</span>) {
+        <span class="macro">println!</span>(<span class="string">"{}"</span>, <span class="string">"Specifically checking for 6K entries..."</span>.blue());
+        <span class="kw">for </span>(i, img) <span class="kw">in </span>image_links.iter().enumerate() {
+            <span class="kw">if </span>img.input.eq_ignore_ascii_case(<span class="string">"6k"</span>) {
+                <span class="macro">println!</span>(
+                    <span class="string">"{}"</span>,
+                    <span class="macro">format!</span>(<span class="string">"Found direct 6K match at index {}"</span>, i).green()
+                );
+            }
+        }
     }
 
     <span class="prelude-val">Ok</span>((move_data.clone(), image_links))
@@ -622,84 +968,167 @@
         .cyan()
     );
 
+    <span class="comment">// 直接マッチングを試みる（大文字小文字を区別せず）
+    </span><span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="string">"Trying direct case-insensitive matching first..."</span>.cyan()
+    );
+    <span class="kw">let </span><span class="kw-2">mut </span>target_move_index = <span class="prelude-val">None</span>;
+    <span class="kw">for </span>(i, img) <span class="kw">in </span>image_links.iter().enumerate() {
+        <span class="kw">if </span>img.input.eq_ignore_ascii_case(<span class="kw-2">&amp;</span>move_info.input) {
+            <span class="macro">println!</span>(
+                <span class="string">"{}"</span>,
+                <span class="macro">format!</span>(<span class="string">"Found direct case-insensitive match at index {}!"</span>, i).green()
+            );
+            target_move_index = <span class="prelude-val">Some</span>(i);
+            <span class="kw">break</span>;
+        }
+    }
+
     <span class="comment">// 画像リンク走査
     </span><span class="kw">let </span><span class="kw-2">mut </span>found_matching_move = <span class="bool-val">false</span>;
-    <span class="kw">for </span>img_links <span class="kw">in </span>image_links {
-        <span class="comment">// 対象技の画像リンク検索（正規化して比較）
-        </span><span class="kw">let </span>normalized_img_input = img_links.input.to_lowercase().replace(<span class="string">' '</span>, <span class="string">""</span>);
+
+    <span class="comment">// 直接一致を見つけた場合はそれを使用
+    </span><span class="kw">if let </span><span class="prelude-val">Some</span>(idx) = target_move_index {
+        found_matching_move = <span class="bool-val">true</span>;
+        <span class="kw">let </span>img_links = <span class="kw-2">&amp;</span>image_links[idx];
+
+        <span class="comment">// 埋め込みの基本設定を作成する関数
+        </span><span class="kw">let </span>create_base_embed = || {
+            CreateEmbed::new()
+                .color(EMBED_COLOR)
+                .title(<span class="kw-2">&amp;</span>embed_title)
+                .url(<span class="kw-2">&amp;</span>embed_url)
+        };
+
         <span class="macro">println!</span>(
             <span class="string">"{}"</span>,
             <span class="macro">format!</span>(
-                <span class="string">"Comparing with: '{}' (normalized: '{}')"</span>,
-                img_links.input, normalized_img_input
+                <span class="string">"Using direct match! hitbox_img: {} (raw), {} (valid)"</span>,
+                img_links.hitbox_img.len(),
+                img_links
+                    .hitbox_img
+                    .iter()
+                    .filter(|url| !url.is_empty())
+                    .count()
             )
-            .cyan()
+            .blue()
         );
 
-        <span class="comment">// 入力が一致するか確認
-        </span><span class="kw">if </span>normalized_move_input == normalized_img_input {
-            found_matching_move = <span class="bool-val">true</span>;
-            <span class="comment">// 埋め込みの基本設定を作成する関数
-            </span><span class="kw">let </span>create_base_embed = || {
-                CreateEmbed::new()
-                    .color(EMBED_COLOR)
-                    .title(<span class="kw-2">&amp;</span>embed_title)
-                    .url(<span class="kw-2">&amp;</span>embed_url)
-            };
+        <span class="comment">// 空文字列を除外した有効なヒットボックス画像URLを収集
+        </span><span class="kw">let </span>valid_hitbox_images: Vec&lt;String&gt; = img_links
+            .hitbox_img
+            .iter()
+            .filter(|url| !url.is_empty())
+            .cloned()
+            .collect();
 
+        <span class="kw">match </span>valid_hitbox_images.len() {
+            <span class="comment">// ヒットボックス画像なしの場合
+            </span><span class="number">0 </span>=&gt; {
+                <span class="comment">// デフォルト画像で埋め込み作成
+                </span><span class="kw">let </span>empty_embed = create_base_embed().image(HITBOX_DEFAULT);
+                vec_embeds.push(empty_embed);
+            }
+            <span class="comment">// ヒットボックス画像が1枚の場合
+            </span><span class="number">1 </span>=&gt; {
+                <span class="comment">// 単一画像で埋め込み作成
+                </span><span class="kw">let </span>embed = create_base_embed().image(<span class="kw-2">&amp;</span>valid_hitbox_images[<span class="number">0</span>]);
+                vec_embeds.push(embed);
+            }
+            <span class="comment">// ヒットボックス画像が複数の場合
+            </span>n =&gt; {
+                <span class="comment">// フッター情報（画像枚数）設定
+                </span><span class="kw">let </span>embed_footer = CreateEmbedFooter::new(<span class="macro">format!</span>(<span class="string">"Move has {n} hitbox images."</span>));
+
+                <span class="comment">// 各画像ごとに埋め込み作成
+                </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>valid_hitbox_images {
+                    <span class="kw">let </span>embed = create_base_embed()
+                        .image(htbx_img)
+                        .footer(embed_footer.clone());
+                    vec_embeds.push(embed);
+                }
+            }
+        }
+    } <span class="kw">else </span>{
+        <span class="comment">// 従来の正規化マッチング
+        </span><span class="kw">for </span>img_links <span class="kw">in </span>image_links {
+            <span class="comment">// 対象技の画像リンク検索（正規化して比較）
+            </span><span class="kw">let </span>normalized_img_input = img_links.input.to_lowercase().replace(<span class="string">' '</span>, <span class="string">""</span>);
             <span class="macro">println!</span>(
                 <span class="string">"{}"</span>,
                 <span class="macro">format!</span>(
-                    <span class="string">"Found matching move! hitbox_img: {} (raw), {} (valid)"</span>,
-                    img_links.hitbox_img.len(),
-                    img_links
-                        .hitbox_img
-                        .iter()
-                        .filter(|url| !url.is_empty())
-                        .count()
+                    <span class="string">"Comparing with: '{}' (normalized: '{}')"</span>,
+                    img_links.input, normalized_img_input
                 )
-                .blue()
+                .cyan()
             );
 
-            <span class="comment">// 空文字列を除外した有効なヒットボックス画像URLを収集
-            </span><span class="kw">let </span>valid_hitbox_images: Vec&lt;String&gt; = img_links
-                .hitbox_img
-                .iter()
-                .filter(|url| !url.is_empty())
-                .cloned()
-                .collect();
+            <span class="comment">// 入力が一致するか確認
+            </span><span class="kw">if </span>normalized_move_input == normalized_img_input {
+                found_matching_move = <span class="bool-val">true</span>;
+                <span class="comment">// 埋め込みの基本設定を作成する関数
+                </span><span class="kw">let </span>create_base_embed = || {
+                    CreateEmbed::new()
+                        .color(EMBED_COLOR)
+                        .title(<span class="kw-2">&amp;</span>embed_title)
+                        .url(<span class="kw-2">&amp;</span>embed_url)
+                };
 
-            <span class="kw">match </span>valid_hitbox_images.len() {
-                <span class="comment">// ヒットボックス画像なしの場合
-                </span><span class="number">0 </span>=&gt; {
-                    <span class="comment">// デフォルト画像で埋め込み作成
-                    </span><span class="kw">let </span>empty_embed = create_base_embed().image(HITBOX_DEFAULT);
-                    vec_embeds.push(empty_embed);
-                }
-                <span class="comment">// ヒットボックス画像が1枚の場合
-                </span><span class="number">1 </span>=&gt; {
-                    <span class="comment">// 単一画像で埋め込み作成
-                    </span><span class="kw">let </span>embed = create_base_embed().image(<span class="kw-2">&amp;</span>valid_hitbox_images[<span class="number">0</span>]);
-                    vec_embeds.push(embed);
-                }
-                <span class="comment">// ヒットボックス画像が複数の場合
-                </span>n =&gt; {
-                    <span class="comment">// フッター情報（画像枚数）設定
-                    </span><span class="kw">let </span>embed_footer =
-                        CreateEmbedFooter::new(<span class="macro">format!</span>(<span class="string">"Move has {n} hitbox images."</span>));
+                <span class="macro">println!</span>(
+                    <span class="string">"{}"</span>,
+                    <span class="macro">format!</span>(
+                        <span class="string">"Found matching move! hitbox_img: {} (raw), {} (valid)"</span>,
+                        img_links.hitbox_img.len(),
+                        img_links
+                            .hitbox_img
+                            .iter()
+                            .filter(|url| !url.is_empty())
+                            .count()
+                    )
+                    .blue()
+                );
 
-                    <span class="comment">// 各画像ごとに埋め込み作成
-                    </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>valid_hitbox_images {
-                        <span class="kw">let </span>embed = create_base_embed()
-                            .image(htbx_img)
-                            .footer(embed_footer.clone());
+                <span class="comment">// 空文字列を除外した有効なヒットボックス画像URLを収集
+                </span><span class="kw">let </span>valid_hitbox_images: Vec&lt;String&gt; = img_links
+                    .hitbox_img
+                    .iter()
+                    .filter(|url| !url.is_empty())
+                    .cloned()
+                    .collect();
+
+                <span class="kw">match </span>valid_hitbox_images.len() {
+                    <span class="comment">// ヒットボックス画像なしの場合
+                    </span><span class="number">0 </span>=&gt; {
+                        <span class="comment">// デフォルト画像で埋め込み作成
+                        </span><span class="kw">let </span>empty_embed = create_base_embed().image(HITBOX_DEFAULT);
+                        vec_embeds.push(empty_embed);
+                    }
+                    <span class="comment">// ヒットボックス画像が1枚の場合
+                    </span><span class="number">1 </span>=&gt; {
+                        <span class="comment">// 単一画像で埋め込み作成
+                        </span><span class="kw">let </span>embed = create_base_embed().image(<span class="kw-2">&amp;</span>valid_hitbox_images[<span class="number">0</span>]);
                         vec_embeds.push(embed);
                     }
-                }
-            }
+                    <span class="comment">// ヒットボックス画像が複数の場合
+                    </span>n =&gt; {
+                        <span class="comment">// フッター情報（画像枚数）設定
+                        </span><span class="kw">let </span>embed_footer =
+                            CreateEmbedFooter::new(<span class="macro">format!</span>(<span class="string">"Move has {n} hitbox images."</span>));
 
-            <span class="comment">// 対象の技を見つけたらループを終了（重複防止）
-            </span><span class="kw">break</span>;
+                        <span class="comment">// 各画像ごとに埋め込み作成
+                        </span><span class="kw">for </span>htbx_img <span class="kw">in </span><span class="kw-2">&amp;</span>valid_hitbox_images {
+                            <span class="kw">let </span>embed = create_base_embed()
+                                .image(htbx_img)
+                                .footer(embed_footer.clone());
+                            vec_embeds.push(embed);
+                        }
+                    }
+                }
+
+                <span class="comment">// 対象の技を見つけたらループを終了（重複防止）
+                </span><span class="kw">break</span>;
+            }
         }
     }
 
@@ -724,8 +1153,8 @@
             </span><span class="kw">if </span>normalized_img_input.contains(<span class="kw-2">&amp;</span>normalized_move_input)
                 || normalized_img_input.contains(<span class="kw-2">&amp;</span>simplified_input)
             {
-                found_matching_move = <span class="bool-val">true</span>;
-                <span class="macro">println!</span>(
+                <span class="comment">// 部分一致を見つけたことをログに出力
+                </span><span class="macro">println!</span>(
                     <span class="string">"{}"</span>,
                     <span class="macro">format!</span>(<span class="string">"Found partial match: '{}'"</span>, img_links.input).green()
                 );
@@ -793,6 +1222,18 @@
         <span class="kw">return </span><span class="string">"6h"</span>.to_string();
     } <span class="kw">else if </span>input.starts_with(<span class="string">'j'</span>) &amp;&amp; input.contains(<span class="string">"hs"</span>) {
         <span class="kw">return </span><span class="string">"jh"</span>.to_string();
+    } <span class="kw">else if </span>input.ends_with(<span class="string">'k'</span>) {
+        <span class="comment">// kで終わる入力をそのまま返す
+        </span><span class="kw">return </span>input;
+    } <span class="kw">else if </span>input.ends_with(<span class="string">'p'</span>) {
+        <span class="comment">// pで終わる入力をそのまま返す
+        </span><span class="kw">return </span>input;
+    } <span class="kw">else if </span>input.ends_with(<span class="string">'s'</span>) {
+        <span class="comment">// sで終わる入力をそのまま返す
+        </span><span class="kw">return </span>input;
+    } <span class="kw">else if </span>input.ends_with(<span class="string">'d'</span>) {
+        <span class="comment">// dで終わる入力をそのまま返す
+        </span><span class="kw">return </span>input;
     }
 
     <span class="comment">// その他のケースはそのまま
@@ -819,7 +1260,7 @@
     <span class="attr">#[min_length = <span class="number">2</span>]
     #[rename = <span class="string">"move"</span>]
     #[description = <span class="string">"Move name, input or alias."</span>]
-    </span>character_move: String,
+    </span><span class="kw-2">mut </span>character_move: String,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(), AppError&gt; {
     <span class="comment">// コマンド引数のログ出力
     </span><span class="macro">println!</span>(
@@ -847,6 +1288,13 @@
     </span><span class="macro">println!</span>(
         <span class="string">"{}"</span>,
         <span class="macro">format!</span>(<span class="string">"Normalized character name: '{character_arg_altered}'"</span>).yellow()
+    );
+
+    <span class="comment">// 技名の前処理（両端の空白を削除、大文字小文字の正規化）
+    </span>character_move = character_move.trim().to_lowercase();
+    <span class="macro">println!</span>(
+        <span class="string">"{}"</span>,
+        <span class="macro">format!</span>(<span class="string">"Normalized move input: '{character_move}'"</span>).yellow()
     );
 
     <span class="comment">// 技情報と画像データ読み込み
