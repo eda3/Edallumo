@@ -56,6 +56,15 @@ async fn find_move_and_images(
     let file_path = format!("data/{character_arg_altered}/{character_arg_altered}.json");
     let images_path = format!("data/{character_arg_altered}/images.json");
 
+    println!(
+        "{}",
+        format!(
+            "Looking for move '{}' for character '{}'",
+            character_move, character_arg_altered
+        )
+        .blue()
+    );
+
     // キャラクターJSONファイル読み込み
     let data = fs::read_to_string(&file_path).map_err(|_| {
         let error_msg = format!("Failed to load character data from {file_path}");
@@ -80,10 +89,126 @@ async fn find_move_and_images(
         .blue()
     );
 
+    // 画像JSONファイル読み込み
+    let image_data = fs::read_to_string(&images_path).map_err(|_| {
+        let error_msg = format!("Failed to load image data from {images_path}");
+        println!("{}", error_msg.red());
+        AppError::FileNotFound(error_msg)
+    })?;
+
+    // 画像JSONデシリアライズ
+    let image_links: Vec<ImageLinks> = serde_json::from_str(&image_data).map_err(|e| {
+        let error_msg = format!("Failed to parse image data: {e}");
+        println!("{}", error_msg.red());
+        AppError::Json(e)
+    })?;
+
+    println!(
+        "{}",
+        format!("Loaded {} image entries", image_links.len()).blue()
+    );
+
+    // 6kや5hsなどの技入力で直接検索（大文字小文字区別なし）
+    let normalized_input = character_move.to_lowercase().replace(' ', "");
+    println!(
+        "{}",
+        format!("Normalized input for direct search: '{}'", normalized_input).blue()
+    );
+
+    // image_links内から直接一致するものを探す
+    println!(
+        "{}",
+        "Searching for direct match in image entries...".blue()
+    );
+    let mut direct_match_index = None;
+    for (i, img) in image_links.iter().enumerate() {
+        let normalized_img_input = img.input.to_lowercase().replace(' ', "");
+        if normalized_img_input == normalized_input
+            || img.input.eq_ignore_ascii_case(&character_move)
+        {
+            println!(
+                "{}",
+                format!("Found direct match at index {}: '{}'", i, img.input).green()
+            );
+            direct_match_index = Some(i);
+            break;
+        }
+    }
+
+    // 直接一致する技が見つかった場合
+    if let Some(idx) = direct_match_index {
+        println!("{}", "Using direct match for hitbox images".green());
+        // 対応するmove_infoを探す
+        let img_link = &image_links[idx];
+        let img_input = &img_link.input;
+
+        // 技情報からこの技入力に一致するものを探す
+        let mut matched_move = None;
+        for m in &moves_info {
+            if m.input.eq_ignore_ascii_case(img_input)
+                || normalized_input == m.input.to_lowercase().replace(' ', "")
+            {
+                matched_move = Some(m.clone());
+                println!(
+                    "{}",
+                    format!("Found matching move info: {}", m.name).green()
+                );
+                break;
+            }
+        }
+
+        // 対応する技情報が見つからない場合は、最初のmove_infoを使用して応急処置
+        let move_data = matched_move.unwrap_or_else(|| {
+            println!(
+                "{}",
+                "No exact move info match found, generating placeholder".yellow()
+            );
+            MoveInfo {
+                name: img_input.clone(),
+                input: img_input.clone(),
+                damage: None,
+                guard: "".to_string(),
+                startup: None,
+                active: "".to_string(),
+                recovery: None,
+                on_hit: "".to_string(),
+                on_block: "".to_string(),
+                level: "".to_string(),
+                counter: "".to_string(),
+                move_type: "".to_string(),
+                risc_gain: None,
+                risc_loss: None,
+                wall_damage: None,
+                input_tension: None,
+                chip_ratio: None,
+                scaling: None,
+                invincibility: "".to_string(),
+                cancel: "".to_string(),
+                caption: "".to_string(),
+                notes: "".to_string(),
+            }
+        });
+
+        return Ok((move_data, image_links.to_vec()));
+    }
+
+    // 直接一致が見つからない場合は通常の検索フローを使用
+    println!(
+        "{}",
+        "No direct match found, using normal search flow".yellow()
+    );
+
+    // character_moveを小文字に変換して処理
+    let character_move_lower = character_move.to_lowercase();
+    println!(
+        "{}",
+        format!("Using normalized move name: '{}'", character_move_lower).blue()
+    );
+
     // 技名インデックス検索
     let move_index = match find::find_move_index(
         &character_arg_altered.to_string(),
-        character_move.to_string(),
+        character_move_lower,
         &moves_info,
     )
     .await
@@ -109,25 +234,6 @@ async fn find_move_and_images(
         .blue()
     );
 
-    // 画像JSONファイル読み込み
-    let image_data = fs::read_to_string(&images_path).map_err(|_| {
-        let error_msg = format!("Failed to load image data from {images_path}");
-        println!("{}", error_msg.red());
-        AppError::FileNotFound(error_msg)
-    })?;
-
-    // 画像JSONデシリアライズ
-    let image_links: Vec<ImageLinks> = serde_json::from_str(&image_data).map_err(|e| {
-        let error_msg = format!("Failed to parse image data: {e}");
-        println!("{}", error_msg.red());
-        AppError::Json(e)
-    })?;
-
-    println!(
-        "{}",
-        format!("Loaded {} image entries", image_links.len()).blue()
-    );
-
     // 技の入力コマンドをログ出力
     println!(
         "{}",
@@ -137,7 +243,23 @@ async fn find_move_and_images(
     // image_links内の各要素のinput値をログに出力
     println!("{}", "Available image inputs:".blue());
     for (i, img) in image_links.iter().enumerate() {
-        println!("  {}: '{}'", i, img.input);
+        if i < 20 {
+            // 最初の20個だけ表示（多すぎるとログが見にくくなるため）
+            println!("  {}: '{}'", i, img.input);
+        }
+    }
+
+    // 6Kに直接一致するエントリがあるかのチェック
+    if character_move.eq_ignore_ascii_case("6k") {
+        println!("{}", "Specifically checking for 6K entries...".blue());
+        for (i, img) in image_links.iter().enumerate() {
+            if img.input.eq_ignore_ascii_case("6k") {
+                println!(
+                    "{}",
+                    format!("Found direct 6K match at index {}", i).green()
+                );
+            }
+        }
     }
 
     Ok((move_data.clone(), image_links))
@@ -175,84 +297,167 @@ fn create_hitbox_embeds(
         .cyan()
     );
 
+    // 直接マッチングを試みる（大文字小文字を区別せず）
+    println!(
+        "{}",
+        "Trying direct case-insensitive matching first...".cyan()
+    );
+    let mut target_move_index = None;
+    for (i, img) in image_links.iter().enumerate() {
+        if img.input.eq_ignore_ascii_case(&move_info.input) {
+            println!(
+                "{}",
+                format!("Found direct case-insensitive match at index {}!", i).green()
+            );
+            target_move_index = Some(i);
+            break;
+        }
+    }
+
     // 画像リンク走査
     let mut found_matching_move = false;
-    for img_links in image_links {
-        // 対象技の画像リンク検索（正規化して比較）
-        let normalized_img_input = img_links.input.to_lowercase().replace(' ', "");
+
+    // 直接一致を見つけた場合はそれを使用
+    if let Some(idx) = target_move_index {
+        found_matching_move = true;
+        let img_links = &image_links[idx];
+
+        // 埋め込みの基本設定を作成する関数
+        let create_base_embed = || {
+            CreateEmbed::new()
+                .color(EMBED_COLOR)
+                .title(&embed_title)
+                .url(&embed_url)
+        };
+
         println!(
             "{}",
             format!(
-                "Comparing with: '{}' (normalized: '{}')",
-                img_links.input, normalized_img_input
+                "Using direct match! hitbox_img: {} (raw), {} (valid)",
+                img_links.hitbox_img.len(),
+                img_links
+                    .hitbox_img
+                    .iter()
+                    .filter(|url| !url.is_empty())
+                    .count()
             )
-            .cyan()
+            .blue()
         );
 
-        // 入力が一致するか確認
-        if normalized_move_input == normalized_img_input {
-            found_matching_move = true;
-            // 埋め込みの基本設定を作成する関数
-            let create_base_embed = || {
-                CreateEmbed::new()
-                    .color(EMBED_COLOR)
-                    .title(&embed_title)
-                    .url(&embed_url)
-            };
+        // 空文字列を除外した有効なヒットボックス画像URLを収集
+        let valid_hitbox_images: Vec<String> = img_links
+            .hitbox_img
+            .iter()
+            .filter(|url| !url.is_empty())
+            .cloned()
+            .collect();
 
+        match valid_hitbox_images.len() {
+            // ヒットボックス画像なしの場合
+            0 => {
+                // デフォルト画像で埋め込み作成
+                let empty_embed = create_base_embed().image(HITBOX_DEFAULT);
+                vec_embeds.push(empty_embed);
+            }
+            // ヒットボックス画像が1枚の場合
+            1 => {
+                // 単一画像で埋め込み作成
+                let embed = create_base_embed().image(&valid_hitbox_images[0]);
+                vec_embeds.push(embed);
+            }
+            // ヒットボックス画像が複数の場合
+            n => {
+                // フッター情報（画像枚数）設定
+                let embed_footer = CreateEmbedFooter::new(format!("Move has {n} hitbox images."));
+
+                // 各画像ごとに埋め込み作成
+                for htbx_img in &valid_hitbox_images {
+                    let embed = create_base_embed()
+                        .image(htbx_img)
+                        .footer(embed_footer.clone());
+                    vec_embeds.push(embed);
+                }
+            }
+        }
+    } else {
+        // 従来の正規化マッチング
+        for img_links in image_links {
+            // 対象技の画像リンク検索（正規化して比較）
+            let normalized_img_input = img_links.input.to_lowercase().replace(' ', "");
             println!(
                 "{}",
                 format!(
-                    "Found matching move! hitbox_img: {} (raw), {} (valid)",
-                    img_links.hitbox_img.len(),
-                    img_links
-                        .hitbox_img
-                        .iter()
-                        .filter(|url| !url.is_empty())
-                        .count()
+                    "Comparing with: '{}' (normalized: '{}')",
+                    img_links.input, normalized_img_input
                 )
-                .blue()
+                .cyan()
             );
 
-            // 空文字列を除外した有効なヒットボックス画像URLを収集
-            let valid_hitbox_images: Vec<String> = img_links
-                .hitbox_img
-                .iter()
-                .filter(|url| !url.is_empty())
-                .cloned()
-                .collect();
+            // 入力が一致するか確認
+            if normalized_move_input == normalized_img_input {
+                found_matching_move = true;
+                // 埋め込みの基本設定を作成する関数
+                let create_base_embed = || {
+                    CreateEmbed::new()
+                        .color(EMBED_COLOR)
+                        .title(&embed_title)
+                        .url(&embed_url)
+                };
 
-            match valid_hitbox_images.len() {
-                // ヒットボックス画像なしの場合
-                0 => {
-                    // デフォルト画像で埋め込み作成
-                    let empty_embed = create_base_embed().image(HITBOX_DEFAULT);
-                    vec_embeds.push(empty_embed);
-                }
-                // ヒットボックス画像が1枚の場合
-                1 => {
-                    // 単一画像で埋め込み作成
-                    let embed = create_base_embed().image(&valid_hitbox_images[0]);
-                    vec_embeds.push(embed);
-                }
-                // ヒットボックス画像が複数の場合
-                n => {
-                    // フッター情報（画像枚数）設定
-                    let embed_footer =
-                        CreateEmbedFooter::new(format!("Move has {n} hitbox images."));
+                println!(
+                    "{}",
+                    format!(
+                        "Found matching move! hitbox_img: {} (raw), {} (valid)",
+                        img_links.hitbox_img.len(),
+                        img_links
+                            .hitbox_img
+                            .iter()
+                            .filter(|url| !url.is_empty())
+                            .count()
+                    )
+                    .blue()
+                );
 
-                    // 各画像ごとに埋め込み作成
-                    for htbx_img in &valid_hitbox_images {
-                        let embed = create_base_embed()
-                            .image(htbx_img)
-                            .footer(embed_footer.clone());
+                // 空文字列を除外した有効なヒットボックス画像URLを収集
+                let valid_hitbox_images: Vec<String> = img_links
+                    .hitbox_img
+                    .iter()
+                    .filter(|url| !url.is_empty())
+                    .cloned()
+                    .collect();
+
+                match valid_hitbox_images.len() {
+                    // ヒットボックス画像なしの場合
+                    0 => {
+                        // デフォルト画像で埋め込み作成
+                        let empty_embed = create_base_embed().image(HITBOX_DEFAULT);
+                        vec_embeds.push(empty_embed);
+                    }
+                    // ヒットボックス画像が1枚の場合
+                    1 => {
+                        // 単一画像で埋め込み作成
+                        let embed = create_base_embed().image(&valid_hitbox_images[0]);
                         vec_embeds.push(embed);
                     }
-                }
-            }
+                    // ヒットボックス画像が複数の場合
+                    n => {
+                        // フッター情報（画像枚数）設定
+                        let embed_footer =
+                            CreateEmbedFooter::new(format!("Move has {n} hitbox images."));
 
-            // 対象の技を見つけたらループを終了（重複防止）
-            break;
+                        // 各画像ごとに埋め込み作成
+                        for htbx_img in &valid_hitbox_images {
+                            let embed = create_base_embed()
+                                .image(htbx_img)
+                                .footer(embed_footer.clone());
+                            vec_embeds.push(embed);
+                        }
+                    }
+                }
+
+                // 対象の技を見つけたらループを終了（重複防止）
+                break;
+            }
         }
     }
 
@@ -277,7 +482,7 @@ fn create_hitbox_embeds(
             if normalized_img_input.contains(&normalized_move_input)
                 || normalized_img_input.contains(&simplified_input)
             {
-                found_matching_move = true;
+                // 部分一致を見つけたことをログに出力
                 println!(
                     "{}",
                     format!("Found partial match: '{}'", img_links.input).green()
@@ -346,6 +551,18 @@ fn simplified_move_input(input: &str) -> String {
         return "6h".to_string();
     } else if input.starts_with('j') && input.contains("hs") {
         return "jh".to_string();
+    } else if input.ends_with('k') {
+        // kで終わる入力をそのまま返す
+        return input;
+    } else if input.ends_with('p') {
+        // pで終わる入力をそのまま返す
+        return input;
+    } else if input.ends_with('s') {
+        // sで終わる入力をそのまま返す
+        return input;
+    } else if input.ends_with('d') {
+        // dで終わる入力をそのまま返す
+        return input;
     }
 
     // その他のケースはそのまま
@@ -372,7 +589,7 @@ pub async fn hitboxes(
     #[min_length = 2]
     #[rename = "move"]
     #[description = "Move name, input or alias."]
-    character_move: String,
+    mut character_move: String,
 ) -> Result<(), AppError> {
     // コマンド引数のログ出力
     println!(
@@ -400,6 +617,13 @@ pub async fn hitboxes(
     println!(
         "{}",
         format!("Normalized character name: '{character_arg_altered}'").yellow()
+    );
+
+    // 技名の前処理（両端の空白を削除、大文字小文字の正規化）
+    character_move = character_move.trim().to_lowercase();
+    println!(
+        "{}",
+        format!("Normalized move input: '{character_move}'").yellow()
     );
 
     // 技情報と画像データ読み込み

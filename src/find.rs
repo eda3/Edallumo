@@ -93,78 +93,104 @@ pub async fn find_move_index(
     mut character_move: String,
     moves_info: &[MoveInfo],
 ) -> Result<usize> {
-    // 出力判定用フラグ（常に false、後の分岐で利用）
-    let move_found = false;
-
     // 対象キャラクターの aliases.json のパス生成　結果：aliases_path
     let aliases_path = "data/".to_owned() + character_arg_altered + "/aliases.json";
+
+    // デバッグ出力: 検索対象の技名
+    println!(
+        "Finding move: '{}' for character '{}'",
+        character_move, character_arg_altered
+    );
+
+    // aliases.json が存在する場合エイリアス変換処理　結果：エイリアスに対応する実際の技入力を取得
     if Path::new(&aliases_path).exists() {
-        // aliases.json ファイル読み込み　結果：JSON文字列取得
-        let aliases_data = fs::read_to_string(&aliases_path).map_err(|e| {
+        // ファイル読み込み&デシリアライズ　結果：move_aliases
+        let data_from_file = fs::read_to_string(&aliases_path).map_err(|e| {
             AppError::FileNotFound(format!(
-                "{aliases_path}ファイルの読み込みに失敗しました: {e}"
+                "{}のエイリアスファイル読み込みに失敗しました: {e}",
+                character_arg_altered
             ))
         })?;
 
-        // JSON文字列を MoveAliases 構造体のベクターにデシリアライズ　結果：aliases_data
-        let aliases_data =
-            serde_json::from_str::<Vec<MoveAliases>>(&aliases_data).map_err(AppError::Json)?;
+        let move_aliases =
+            serde_json::from_str::<Vec<MoveAliases>>(&data_from_file).map_err(AppError::Json)?;
 
-        'outer: for alias_data in aliases_data {
-            // 各エイリアス走査　結果：入力文字列と一致すれば実際の技入力に変換
-            for x_aliases in alias_data.aliases {
-                if x_aliases.to_lowercase().trim().replace(['.', ' '], "")
-                    == character_move.to_lowercase().trim().replace(['.', ' '], "")
-                {
-                    character_move = alias_data.input.to_string();
-                    break 'outer;
+        // 各エイリアスと入力を比較　結果：一致した場合は実際の技入力に変換
+        for x_aliases in &move_aliases {
+            for y_aliases in &x_aliases.aliases {
+                if y_aliases.to_lowercase() == character_move.to_lowercase() {
+                    // エイリアスが見つかった場合、対応する技入力に変換
+                    character_move = x_aliases.input.clone();
+                    println!("Alias found: '{}' → '{}'", y_aliases, character_move);
+                    break;
                 }
             }
         }
     }
 
-    // 正確な技入力一致走査　結果：完全一致すれば該当インデックス返却
-    for (x, moves) in moves_info.iter().enumerate() {
-        // 入力が完全一致するか
-        if moves.input.to_string().to_lowercase().replace('.', "")
-            == character_move.to_string().to_lowercase().replace('.', "")
+    // 大文字小文字と空白を区別しない比較のための正規化
+    let normalized_character_move = character_move.to_lowercase().replace(' ', "");
+    println!(
+        "Normalized move input for search: '{}'",
+        normalized_character_move
+    );
+
+    // 技リスト内で検索　結果：該当する技のインデックスを取得
+    for (i, x_move) in moves_info.iter().enumerate() {
+        // 技名が一致した場合インデックス返却
+        if x_move.name.to_lowercase() == character_move.to_lowercase() {
+            println!("Found move by name at index {}: '{}'", i, x_move.name);
+            return Ok(i);
+        }
+    }
+
+    for (i, x_move) in moves_info.iter().enumerate() {
+        // 技入力が一致した場合インデックス返却（正規化して比較）
+        let normalized_move_input = x_move.input.to_lowercase().replace(' ', "");
+        if normalized_move_input == normalized_character_move {
+            println!("Found move by input at index {}: '{}'", i, x_move.input);
+            return Ok(i);
+        }
+    }
+
+    // 技入力の一部一致で検索　結果：部分一致した技のインデックスを取得
+    for (i, x_move) in moves_info.iter().enumerate() {
+        // 技名に入力文字列が含まれる場合インデックス返却
+        if x_move
+            .name
+            .to_lowercase()
+            .contains(&character_move.to_lowercase())
         {
-            return Ok(x);
-        }
-
-        // 括弧内に入力が含まれているか（例：「足払い(2D)」で「2D」を検索）
-        if let Some(bracket_content) = extract_bracket_content(&moves.input) {
-            if bracket_content.to_lowercase().replace('.', "")
-                == character_move.to_string().to_lowercase().replace('.', "")
-            {
-                return Ok(x);
-            }
+            println!(
+                "Found move by partial name match at index {}: '{}'",
+                i, x_move.name
+            );
+            return Ok(i);
         }
     }
 
-    if !move_found {
-        // 技名称部分一致走査　結果：入力が技名称に含まれていれば該当インデックス返却
-        for (x, moves) in moves_info.iter().enumerate() {
-            if moves
-                .name
-                .to_string()
-                .to_lowercase()
-                .contains(&character_move.to_string().to_lowercase())
-            {
-                return Ok(x);
-            }
+    for (i, x_move) in moves_info.iter().enumerate() {
+        // 技入力に入力文字列が含まれる場合インデックス返却
+        if x_move
+            .input
+            .to_lowercase()
+            .contains(&character_move.to_lowercase())
+        {
+            println!(
+                "Found move by partial input match at index {}: '{}'",
+                i, x_move.input
+            );
+            return Ok(i);
         }
     }
 
-    if move_found {
-        Err(AppError::Other(
-            "Weird logic error in find_move".to_string(),
-        ))
-    } else {
-        // 技未検出時エラーメッセージ作成　結果：エラー返却
-        let error_msg = "Move `".to_owned() + &character_move + "` was not found!";
-        Err(AppError::MoveNotFound(error_msg))
-    }
+    // エラーメッセージ生成と返却　結果：技が見つからなかった場合エラー返却
+    let error_msg = format!(
+        "Move `{}` was not found for character `{}`!",
+        character_move, character_arg_altered
+    );
+    println!("Error: {}", error_msg);
+    Err(AppError::MoveNotFound(error_msg))
 }
 
 /// 文字列から括弧内のコンテンツを抽出する関数
