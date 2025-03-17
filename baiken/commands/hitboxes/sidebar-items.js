@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["HITBOX_DEFAULT"],"fn":["create_hitbox_embeds","find_move_and_images","hitboxes","load_character_data"]};
+window.SIDEBAR_ITEMS = {"constant":["HITBOX_DEFAULT"],"fn":["create_hitbox_embeds","find_move_and_images","hitboxes","load_character_data","simplified_move_input"]};
