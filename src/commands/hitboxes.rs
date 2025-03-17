@@ -42,89 +42,105 @@ async fn load_character_data(character: &str, ctx: &Context<'_>) -> Result<Strin
 ///
 /// # 引数
 /// * `character_arg_altered` - 正式なキャラクター名
-/// * `character_move` - ユーザーが入力した技名
+/// * `character_move` - ユーザー入力の技名または技入力
 /// * `ctx` - コマンドコンテキスト
 ///
 /// # 戻り値
-/// 成功時は (技情報, 画像リンク情報) のタプル、失敗時はエラー
+/// 成功時は (MoveInfo, Vec<ImageLinks>) のタプル、失敗時はエラー
 async fn find_move_and_images(
     character_arg_altered: &str,
     character_move: &str,
     ctx: &Context<'_>,
 ) -> Result<(MoveInfo, Vec<ImageLinks>), AppError> {
-    // キャラクターJSONファイルパス構築
-    let char_file_path = format!("data/{character_arg_altered}/{character_arg_altered}.json");
+    // キャラクターデータファイルのパス設定
+    let file_path = format!("data/{character_arg_altered}/{character_arg_altered}.json");
+    let images_path = format!("data/{character_arg_altered}/images.json");
 
     // キャラクターJSONファイル読み込み
-    let char_file_data = fs::read_to_string(&char_file_path).map_err(|e| {
-        let error_msg =
-            format!("キャラクターファイル '{char_file_path}' の読み込みに失敗しました: {e}");
+    let data = fs::read_to_string(&file_path).map_err(|_| {
+        let error_msg = format!("Failed to load character data from {file_path}");
         println!("{}", error_msg.red());
         AppError::FileNotFound(error_msg)
     })?;
 
-    // キャラクターJSONデシリアライズ
-    let moves_info = serde_json::from_str::<Vec<MoveInfo>>(&char_file_data).map_err(|e| {
-        let error_msg = format!("キャラクターJSONの解析に失敗しました: {e}");
+    // JSONデシリアライズ
+    let moves_info: Vec<MoveInfo> = serde_json::from_str(&data).map_err(|e| {
+        let error_msg = format!("Failed to parse character data: {e}");
         println!("{}", error_msg.red());
         AppError::Json(e)
     })?;
 
-    // 読み込み成功ログ出力
     println!(
         "{}",
-        format!("Successfully read '{char_file_path}' file.").green()
+        format!(
+            "Loaded {} moves for character '{}'",
+            moves_info.len(),
+            character_arg_altered
+        )
+        .blue()
     );
 
-    // 技インデックス検索
-    let index = match find::find_move_index(
+    // 技名インデックス検索
+    let move_index = match find::find_move_index(
         &character_arg_altered.to_string(),
         character_move.to_string(),
         &moves_info,
     )
     .await
     {
-        Ok(index) => index,
+        Ok(move_index) => move_index,
         Err(err) => {
-            // 技未検出時のエラーメッセージ送信
-            let error_msg = format!("{err}\nView the moves of a character by executing `/moves`.");
-            ctx.say(&error_msg).await?;
+            // 技未発見時のエラーメッセージ送信
+            ctx.say(err.to_string()).await?;
             println!("{}", format!("Error: {err}").red());
             return Err(AppError::MoveNotFound(err.to_string()));
         }
     };
 
-    // 画像JSONファイルパス構築
-    let images_file_path = format!("data/{character_arg_altered}/images.json");
+    // 見つかった技情報の取得
+    let move_data = &moves_info[move_index];
+
+    println!(
+        "{}",
+        format!(
+            "Found move at index {}: {} (input: {})",
+            move_index, move_data.name, move_data.input
+        )
+        .blue()
+    );
 
     // 画像JSONファイル読み込み
-    let image_data = fs::read_to_string(&images_file_path).map_err(|e| {
-        let error_msg = format!("画像ファイル '{images_file_path}' の読み込みに失敗しました: {e}");
+    let image_data = fs::read_to_string(&images_path).map_err(|_| {
+        let error_msg = format!("Failed to load image data from {images_path}");
         println!("{}", error_msg.red());
         AppError::FileNotFound(error_msg)
     })?;
 
     // 画像JSONデシリアライズ
-    let image_links = serde_json::from_str::<Vec<ImageLinks>>(&image_data).map_err(|e| {
-        let error_msg = format!("画像JSONの解析に失敗しました: {e}");
+    let image_links: Vec<ImageLinks> = serde_json::from_str(&image_data).map_err(|e| {
+        let error_msg = format!("Failed to parse image data: {e}");
         println!("{}", error_msg.red());
         AppError::Json(e)
     })?;
 
-    // 技情報取得
-    let move_data = moves_info[index].clone();
-
-    // 技情報読み込み成功ログ出力
     println!(
         "{}",
-        format!(
-            "Successfully read move '{}' in '{char_file_path}' file.",
-            move_data.input
-        )
-        .green()
+        format!("Loaded {} image entries", image_links.len()).blue()
     );
 
-    Ok((move_data, image_links))
+    // 技の入力コマンドをログ出力
+    println!(
+        "{}",
+        format!("Looking for move with input: '{}'", move_data.input).blue()
+    );
+
+    // image_links内の各要素のinput値をログに出力
+    println!("{}", "Available image inputs:".blue());
+    for (i, img) in image_links.iter().enumerate() {
+        println!("  {}: '{}'", i, img.input);
+    }
+
+    Ok((move_data.clone(), image_links))
 }
 
 /// ヒットボックス画像の埋め込みメッセージを作成する関数
@@ -147,10 +163,35 @@ fn create_hitbox_embeds(
     let embed_title = format!("__**{}**__", move_info.input);
     let embed_url = format!("https://dustloop.com/w/GGST/{character_arg_altered}#Overview");
 
+    // 技入力の正規化（検索用）
+    // 大文字小文字を区別せず、スペースを削除
+    let normalized_move_input = move_info.input.to_lowercase().replace(' ', "");
+    println!(
+        "{}",
+        format!(
+            "Normalized move input for search: '{}'",
+            normalized_move_input
+        )
+        .cyan()
+    );
+
     // 画像リンク走査
+    let mut found_matching_move = false;
     for img_links in image_links {
-        // 対象技の画像リンク検索
-        if move_info.input == img_links.input {
+        // 対象技の画像リンク検索（正規化して比較）
+        let normalized_img_input = img_links.input.to_lowercase().replace(' ', "");
+        println!(
+            "{}",
+            format!(
+                "Comparing with: '{}' (normalized: '{}')",
+                img_links.input, normalized_img_input
+            )
+            .cyan()
+        );
+
+        // 入力が一致するか確認
+        if normalized_move_input == normalized_img_input {
+            found_matching_move = true;
             // 埋め込みの基本設定を作成する関数
             let create_base_embed = || {
                 CreateEmbed::new()
@@ -162,7 +203,7 @@ fn create_hitbox_embeds(
             println!(
                 "{}",
                 format!(
-                    "hitbox_img: {} (raw), {} (valid)",
+                    "Found matching move! hitbox_img: {} (raw), {} (valid)",
                     img_links.hitbox_img.len(),
                     img_links
                         .hitbox_img
@@ -215,6 +256,68 @@ fn create_hitbox_embeds(
         }
     }
 
+    // 技名の一部が含まれている場合の処理（完全一致しない場合のフォールバック）
+    if !found_matching_move {
+        println!(
+            "{}",
+            format!("No exact match found. Trying partial matching...").yellow()
+        );
+
+        // 技入力を5HやjKなど基本形に変換して再検索
+        let simplified_input = simplified_move_input(&normalized_move_input);
+        println!(
+            "{}",
+            format!("Simplified input: '{}'", simplified_input).yellow()
+        );
+
+        for img_links in image_links {
+            let normalized_img_input = img_links.input.to_lowercase().replace(' ', "");
+
+            // 部分一致または単純化した入力で一致するか確認
+            if normalized_img_input.contains(&normalized_move_input)
+                || normalized_img_input.contains(&simplified_input)
+            {
+                found_matching_move = true;
+                println!(
+                    "{}",
+                    format!("Found partial match: '{}'", img_links.input).green()
+                );
+
+                // 埋め込みの基本設定を作成
+                let base_embed = CreateEmbed::new()
+                    .color(EMBED_COLOR)
+                    .title(&embed_title)
+                    .url(&embed_url);
+
+                // 有効なヒットボックス画像URLを収集
+                let valid_hitbox_images: Vec<String> = img_links
+                    .hitbox_img
+                    .iter()
+                    .filter(|url| !url.is_empty())
+                    .cloned()
+                    .collect();
+
+                // 画像がある場合は表示
+                if !valid_hitbox_images.is_empty() {
+                    let embed_footer = CreateEmbedFooter::new(format!(
+                        "Partial match: '{}' - {} images",
+                        img_links.input,
+                        valid_hitbox_images.len()
+                    ));
+
+                    for htbx_img in &valid_hitbox_images {
+                        let embed = base_embed
+                            .clone()
+                            .image(htbx_img)
+                            .footer(embed_footer.clone());
+                        vec_embeds.push(embed);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
     // 画像が見つからなかった場合、デフォルト埋め込みを追加
     if vec_embeds.is_empty() {
         let default_embed = CreateEmbed::new()
@@ -227,6 +330,26 @@ fn create_hitbox_embeds(
     }
 
     vec_embeds
+}
+
+/// 技入力を単純化する関数
+/// 例: "5hs" -> "5h", "236k" -> "236k"
+fn simplified_move_input(input: &str) -> String {
+    let input = input.to_lowercase();
+
+    // 基本的な技入力パターンを処理
+    if input.starts_with('5') && input.contains("hs") {
+        return "5h".to_string();
+    } else if input.starts_with('2') && input.contains("hs") {
+        return "2h".to_string();
+    } else if input.starts_with('6') && input.contains("hs") {
+        return "6h".to_string();
+    } else if input.starts_with('j') && input.contains("hs") {
+        return "jh".to_string();
+    }
+
+    // その他のケースはそのまま
+    input
 }
 
 /// ヒットボックス表示コマンド
@@ -273,15 +396,47 @@ pub async fn hitboxes(
         return Ok(());
     };
 
+    // デバッグ出力: 正規化されたキャラクター名を表示
+    println!(
+        "{}",
+        format!("Normalized character name: '{character_arg_altered}'").yellow()
+    );
+
     // 技情報と画像データ読み込み
-    let Ok((move_data, image_links)) =
-        find_move_and_images(&character_arg_altered, &character_move, &ctx).await
-    else {
+    let result = find_move_and_images(&character_arg_altered, &character_move, &ctx).await;
+
+    if let Err(err) = &result {
+        println!("{}", format!("Error finding move: {err}").red());
+    }
+
+    let Ok((move_data, image_links)) = result else {
         return Ok(());
     };
 
+    // デバッグ出力: 見つかった技情報を表示
+    println!(
+        "{}",
+        format!(
+            "Found move: '{}' (input: '{}')",
+            move_data.name, move_data.input
+        )
+        .yellow()
+    );
+
+    // デバッグ出力: 見つかった画像リンクの数
+    println!(
+        "{}",
+        format!("Found {} image links", image_links.len()).yellow()
+    );
+
     // 埋め込みメッセージ作成
     let vec_embeds = create_hitbox_embeds(&move_data, &image_links, &character_arg_altered);
+
+    // デバッグ出力: 作成された埋め込みの数
+    println!(
+        "{}",
+        format!("Created {} embeds", vec_embeds.len()).yellow()
+    );
 
     // 返信作成と送信
     let mut reply = poise::CreateReply::default();
