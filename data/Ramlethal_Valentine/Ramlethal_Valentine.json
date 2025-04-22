@@ -237,7 +237,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Hitstop on block: 20F\nHitstop on raw hit: 45F\nProperties for opponent on block follow Level 4 rules.\nR.I.S.C. Loss in [ ] refers to when 5[D] is not the initial hit of a combo.\nWall Damage in ( ) refers to if opponent is touching the wall.\nWall Damage when hit raw is increased to 700 (900).\nApplies 5 less Combo Decay on initial hit, for 0 Combo Decay if the first hit of a combo.\nTelegraphing orange glow appears on frame 4, and reaches full brightness on frame 5."
+    "notes": "Hitstop on block: 20F\nHitstop on raw hit: 45F\nOn Hit/Block gains Tension equivalent to Level 2 despite other Level 4 properties.\nR.I.S.C. Loss in [ ] refers to when 5[D] is not the initial hit of a combo.\nWall Damage in ( ) refers to if opponent is touching the wall.\nWall Damage when hit raw is increased to 700 (900).\nApplies 5 less Combo Decay on initial hit, for 0 Combo Decay if the first hit of a combo.\nTelegraphing orange glow appears on frame 4, and reaches full brightness on frame 5."
   },
   {
     "input": "6HS(6HS)",
@@ -728,7 +728,7 @@
     "active": "10, 15",
     "recovery": null,
     "on_hit": "Sダウン+59",
-    "on_block": "+30",
+    "on_block": "+27 [+30]",
     "level": "4, 3",
     "counter": "Very Small",
     "move_type": "special",
@@ -741,7 +741,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "S",
-    "notes": "Hitstop: 7F, 7F\nProjectile appears on frame 20, but will not hit grounded opponents until frame 23 due to a Y proximity check.\nThe Sword and the Explosion are a single multihit, and so will only cause risc loss once during a combo.\nLOTS OF MISSING INFO HERE"
+    "notes": "Bajoneto S has different on block data when blocked by  different grounded characters at point blank range. Ram can be anywhere between +30 to +34 at this range.\nHitstop: 7F, 7F\nProjectile appears on frame 20, but will not hit grounded opponents until frame 23 due to a Y proximity check.\nThe Sword and the Explosion are a single multihit, and so will only cause risc loss once during a combo.\nLOTS OF MISSING INFO HERE"
   },
   {
     "input": "ダウロ(623P)",
@@ -765,7 +765,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "Combo starter, juggle extender\n, &lt\nsmall&gt\n&quot\nDuration&quot\n&lt\n/small&gt\n",
-    "notes": "Hitstop on ground hit: 16F\nFloating crumple on ground hit: Total 33F (airborne hitstun 1-19F, standing hitstun 20-27F, can block 28-33F)"
+    "notes": ""
   },
   {
     "input": "空中シルド(j214K)",

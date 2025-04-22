@@ -261,7 +261,7 @@
     "invincibility": "Projectile Reflect 28-30F",
     "cancel": "-",
     "caption": "",
-    "notes": "Hitstop on block: 20F\nHitstop on raw hit: 45F\nProperties for opponent on block follow Level 4 rules.\nR.I.S.C. Loss in [ ] refers to when 5[D] is not the initial hit of a combo.\nWall Damage in ( ) refers to if opponent is touching the wall.\nWall Damage when hit raw is increased to 700 (900).\nApplies 5 less Combo Decay on initial hit, for 0 Combo Decay if the first hit of a combo.\nTelegraphing orange glow appears on frame 4, and reaches full brightness on frame 5."
+    "notes": "Hitstop on block: 20F\nHitstop on raw hit: 45F\nOn Hit/Block gains Tension equivalent to Level 2 despite other Level 4 properties.\nR.I.S.C. Loss in [ ] refers to when 5[D] is not the initial hit of a combo.\nWall Damage in ( ) refers to if opponent is touching the wall.\nWall Damage when hit raw is increased to 700 (900).\nApplies 5 less Combo Decay on initial hit, for 0 Combo Decay if the first hit of a combo.\nTelegraphing orange glow appears on frame 4, and reaches full brightness on frame 5."
   },
   {
     "input": "6HS(6HS)",
@@ -897,13 +897,13 @@
     "recovery": 28,
     "on_hit": "+29 [+23]",
     "on_block": "-19",
-    "level": "-",
-    "counter": "-",
+    "level": "3",
+    "counter": "Mid",
     "move_type": "special",
-    "risc_gain": null,
-    "risc_loss": null,
-    "wall_damage": null,
-    "input_tension": null,
+    "risc_gain": 2000.0,
+    "risc_loss": 1000.0,
+    "wall_damage": 300,
+    "input_tension": 150.0,
     "chip_ratio": null,
     "scaling": null,
     "invincibility": "-",

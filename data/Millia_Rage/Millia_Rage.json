@@ -362,7 +362,7 @@
   {
     "input": "jD(jD)",
     "name": "jD",
-    "damage": 55,
+    "damage": 48,
     "guard": "中段",
     "startup": 9,
     "active": "7",
@@ -578,7 +578,7 @@
   {
     "input": "アルテミス(214HS)",
     "name": "アルテミス",
-    "damage": 60,
+    "damage": 52,
     "guard": "上段",
     "startup": 24,
     "active": "4",
@@ -626,7 +626,7 @@
   {
     "input": "アイアンセイバー(214P)",
     "name": "アイアンセイバー",
-    "damage": 55,
+    "damage": 48,
     "guard": "下段",
     "startup": 20,
     "active": "Until hit or corner+1",

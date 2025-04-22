@@ -596,7 +596,7 @@
     "scaling": null,
     "invincibility": "-",
     "cancel": "RP",
-    "caption": "",
+    "caption": "Don't Stop Me Now",
     "notes": "Airborne from 9~36F."
   },
   {
@@ -716,7 +716,7 @@
     "scaling": null,
     "invincibility": "-",
     "cancel": "P",
-    "caption": "",
+    "caption": "You're My Best Friend",
     "notes": "Projectile will continue if Purple Roman Canceled on frame 9 at the earliest.\nClash Level: 1\nClash Hits: 1\nDamage changes with each set of 8 active frames.\n[[GGST/Sol Badguy/Frame Data#Gun Flame|Link to Gun Flame Frame Advantage Table]]"
   },
   {
@@ -836,7 +836,7 @@
     "scaling": null,
     "invincibility": "-",
     "cancel": "RP",
-    "caption": "",
+    "caption": "Don't Stop Me Now",
     "notes": ""
   },
   {
@@ -956,7 +956,7 @@
     "scaling": null,
     "invincibility": "14-35F Throw, Guardpoint",
     "cancel": "RP",
-    "caption": "",
+    "caption": "I Want It All",
     "notes": "Minimum Damage Scaling - 36% (Final hit only)"
   },
   {

@@ -222,7 +222,7 @@
     ]
   },
   {
-    "input": "ブリュンヒルデの構えK(btK)",
+    "input": "btK(btK)",
     "move_img": "https://www.dustloop.com/wiki/images/c/cc/GGST_Leo_Whitefang_bt_K.png",
     "hitbox_img": [
       "https://www.dustloop.com/wiki/images/b/b9/GGST_Leo_btK_Hitbox.png"

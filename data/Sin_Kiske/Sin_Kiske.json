@@ -885,7 +885,7 @@
     "invincibility": "1-18F Full",
     "cancel": "-",
     "caption": "Can go in any direction after the first and second hit!",
-    "notes": "Air version recovery is Until Landing+32 After Landing\nCancellable into follow-ups from ??~??f\nReversal"
+    "notes": "Air version recovery is Until Landing+32 After Landing\nCancellable into follow-ups from ??~??f\nReversal\nMinimum Damage Percent - 40%\nOTG type depends on direction travelled\n* 7, 8, and 9 have Up type\n*4 and 6 have Mid type\n*1, 2, and 3 have Down type."
   },
   {
     "input": "R.T.L.派生(632146HSHS)",
@@ -909,6 +909,6 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "The more Tension you put in, the more damage you get and the bigger the explosion!",
-    "notes": "Air version recovery is Until Landing+15.\nConsumes all remaining Tension on use. Damage dealt is 10+1 per 1% consumed Tension (rounded down) up to 59 total damage at 49% Tension. At 50% consumed Tension, damage dealt is 100.\nHitbox size changes when used at &lt\n25%, 25-49%, and 50% consumed Tension.\nMinimum Damage Percent - 40%"
+    "notes": "Air version recovery is Until Landing+15.\nConsumes all remaining Tension on use. Damage dealt is 10+1 per 1% consumed Tension (rounded down) up to 59 total damage at 49% Tension. At 50% consumed Tension, damage dealt is 100.\nHitbox size changes when used at &lt\n25%, 25-49%, and 50% consumed Tension."
   }
 ]

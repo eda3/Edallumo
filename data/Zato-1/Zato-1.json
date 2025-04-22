@@ -141,7 +141,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": ""
+    "notes": "Hitstop on block: 20F\nHitstop on ground hit: 16F\nFloating crumple on ground hit: Total 28F (airborne hitstun 1-11F, standing hitstun 12-18F, can block 19-28F)\nR.I.S.C. Loss in [ ] refers to when 5D is not the initial hit of a combo.\nWall Damage in ( ) refers to if opponent is touching the wall.\nHas no additional Combo Decay on initial hit, unlike other overheads (usually adding +5 on initial hit for 10 total).\nTelegraphing orange glow appears on frame 4, and reaches full brightness on frame 5."
   },
   {
     "input": "5HS(5HS)",
@@ -237,7 +237,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": ""
+    "notes": "Hitstop on block: 20F\nHitstop on raw hit: 45F\nOn Hit/Block gains Tension equivalent to Level 2 despite other Level 4 properties.\nR.I.S.C. Loss in [ ] refers to when 5[D] is not the initial hit of a combo.\nWall Damage in ( ) refers to if opponent is touching the wall.\nWall Damage when hit raw is increased to 700 (900).\nApplies 5 less Combo Decay on initial hit, for 0 Combo Decay if the first hit of a combo.\nTelegraphing orange glow appears on frame 4, and reaches full brightness on frame 5."
   },
   {
     "input": "6HS(6HS)",
@@ -549,7 +549,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Opponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15\nRange of 90000"
+    "notes": "Opponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15\nRange of 90000\nZato's on-hit animation is 74 frames long. Eddie can combo the opponent starting frame 32.\n0f hitstop."
   },
   {
     "input": "空投げ(j6D or j.4D)",
@@ -573,7 +573,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Air Throws have both normal recovery (which recovers CH) and special recovery frames upon landing (not CH). It is technically possible to recover mid-air from a whiffed Air Throw, but it usually doesn't happen unless done from very high in the air.\nOpponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nOn-Hit value is for attacker's IAD height, except for Potemkin and Nagoriyuki, who have their instant Air Throw height instead.\nFrame advantage is highest at normal jump height and lowest at IAD height (+45 to +48).\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15"
+    "notes": "Air Throws have both normal recovery (which recovers CH) and special recovery frames upon landing (not CH). It is technically possible to recover mid-air from a whiffed Air Throw, but it usually doesn't happen unless done from very high in the air.\nOpponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nOn-Hit value is for attacker's IAD height, except for Potemkin and Nagoriyuki, who have their instant Air Throw height instead.\nFrame advantage is highest at normal jump height and lowest at IAD height (+45 to +48).\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15\nEddie can combo the opponent starting frame 49 of the on-hit animation.\nBoth hits have 0f hitstop."
   },
   {
     "input": "エディ召喚(214HS)",
@@ -597,7 +597,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Eddie disappears on frame 1, or is buffered until the frame he exits hitstop.\nUnsummon can only be done if the Eddie gauge is not empty."
+    "notes": "Unsummon can only be done if the Eddie gauge is not empty.\nEddie starts regenerating gauge the frame after being unsummoned. Eddie does not lose or gain gauge HP during his first frame unsummoned, but unsummoning the same frame Eddie's attacks use gauge still spends gauge."
   },
   {
     "input": "ブレイク・ザ・ロウ(214K)",
@@ -618,7 +618,7 @@
     "input_tension": 50.0,
     "chip_ratio": null,
     "scaling": null,
-    "invincibility": "Below Crouch 11-12, Full 13-[20~77]",
+    "invincibility": "11-12 Below Crouch , 13-[20~77] Full",
     "cancel": "-",
     "caption": "VANISH INTO DARK",
     "notes": "Moves backwards during initial movement on frames 1 up to 95 (on a full hold backwards)\nDecreases Tension Balance during the initial movement, for a total of -295 (maximum distance) Tension Balance.\nIncreases Negative value during the initial movement, for a total  590~1180 Negative value (amount varies and increases with distance to the opponent)."
@@ -669,7 +669,7 @@
     "invincibility": "1-15 Full",
     "cancel": "-",
     "caption": "Eddie dash",
-    "notes": "The area where Eddie must be in to start a dash is slightly behind Zato, up to about the range of Zato's 2S.\nEddie has invulnerability on frames 1-15 after he is launched by 214S.\nThe recovery of Eddie's dash (frames 19-30) can be cancelled into any negative edge input.\nIf 214S is done during Eddie's hitstop, Eddie's dash will be buffered until after hitstop ends.\nEddie can still dash if the Eddie gauge is empty."
+    "notes": "The area where Eddie must be in to start a dash is slightly behind Zato, up to about the range of Zato's 2S.\nIf 214S is done during Eddie's hitstop, Eddie's dash will be buffered until after hitstop ends. See the [[GGST/Zato-1/Frame_Data#Buffering_Eddie_Cancels|Frame Data]] section for more info.\nEddie's dash invuln also protects against Blue and Gold Burst.\nEddie can still dash if the Eddie gauge is empty."
   },
   {
     "input": "エディスワップ(22 During 214K(HOLD))",
@@ -741,7 +741,7 @@
     "invincibility": "16-73 [20-77] Guardpoint",
     "cancel": "-",
     "caption": "GuardpointAttack",
-    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nHorizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, each attack uses 900 HP of the Eddie gauge.\nIf Eddie is already summoned, 236H uses 3 HP of the Eddie gauge each frame the move is active and each hit from the attack portion uses 675HP (2025HP total)."
+    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nUses 5 HP of Eddie gauge each frame the move is active, each attack uses 900 HP of the Eddie gauge.\nIf Eddie is already summoned, 236H uses 3 HP of the Eddie gauge each frame the move is active and each hit from the attack portion uses 675HP (2025HP total)."
   },
   {
     "input": "「多い」(236K)",
@@ -810,7 +810,7 @@
     "input_tension": 150.0,
     "chip_ratio": null,
     "scaling": null,
-    "invincibility": "-",
+    "invincibility": "19-44 [23-48] Airborne",
     "cancel": "-",
     "caption": "",
     "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nUses 1500 HP of the Eddie gauge. If Eddie is already summoned 236S uses 1125 HP of the Eddie Gauge."
@@ -837,7 +837,7 @@
     "invincibility": "1-7F Throw",
     "cancel": "-",
     "caption": "&quot\nI love shark week&quot\n- Eddie",
-    "notes": "Opponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15\nFirst does 13 hits of 1 damage (unaffected by defense mod, risc scaling, or guts), then does one final hit for 69 damage"
+    "notes": "Opponent cannot use Blue Psych Burst on hit or the resulting knockdown.\nBuilds 1000 Tension once all damage is dealt.\nOn hit, applies an increased 25 Combo Decay.\nProperties change if Roman Canceled before all damage is dealt:\n* Reduces positive R.I.S.C. by 25% before applying R.I.S.C. Loss, similar to regular strikes.\n* R.I.S.C. Loss: 1000\n* Proration: Forced 75%\n* Combo Decay on hit: 15\nFirst does 13 hits of 1 damage (unaffected by defense mod, risc scaling, or guts), then does one final hit for 69 damage\nZato's on-hit animation is 242 frames long. Deals the final hit and refills the Eddie Gauge on frame 181.\nUnsummons Eddie on hit, entering white regeneration. The unsummon is buffered if during &quot\nLeap&quot\nor &quot\nOppose&quot\n."
   },
   {
     "input": "エディ収納(Summon 214H)",
@@ -861,7 +861,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nConsumes 3 HP (of 3000 total) of the Eddie gauge per frame Eddie is idling. Uses 0 HP of the Eddie gauge per frame during frames 9-20.\nIf Zato is in hitstop, Eddie idling will use 0 HP of Eddie gauge each frame.\nThe Eddie gauge UI covers up 69 Eddie HP on the left side of the gauge.\nEddie becomes actionable on frame 21."
+    "notes": "Eddie spawns on frame 9 and will continue even if Purple Roman Cancelled a frame after spawn.\nConsumes 3 HP (of 3000 total) of the Eddie gauge per frame Eddie is idling.\nEddie uses 0 HP of the Eddie gauge per frame during frames 9-20. The Eddie gauge also does not regenerate in this time.\nIf Zato is in hitstop, Eddie idling will use 0 HP of Eddie gauge each frame.\nEddie becomes actionable on frame 21."
   },
   {
     "input": "「張り合う」(]HS[)",
@@ -885,7 +885,7 @@
     "invincibility": "8-65F Guardpoint",
     "cancel": "-",
     "caption": "GuardpointAttack",
-    "notes": "Horizontal Activation Range: 500\nUses 5 HP of Eddie gauge each frame the move is active, each attack uses 900 HP of the Eddie gauge on frame 74, 77, and 84.\nIf Zato is in hitstop, &quot\nOppose&quot\nwill use 0 HP of Eddie gauge each frame.\nUnsummoning during the active or recovery frames of &quot\nOppose&quot\n's attack (frame 66-110) will buffer the unsummon until after the recovery ends.\nAn attacker is able to use their attack's cancel options after hitting &quot\nOppose&quot\n's guardpoint.\nEach of &quot\nOppose&quot\n's attacks have 7f hitstop.\n"
+    "notes": "Uses 5 HP of Eddie gauge each frame the move is active, each attack uses 900 HP of the Eddie gauge on frame 74, 77, and 84. There is an extra frame of gauge usage during the active frames.\n\nIf Zato is in hitstop or if Eddie is in &quot\nOppose&quot\n's attack or guardpoint hitstop, &quot\nOppose&quot\nwill use 0 HP of Eddie gauge each frame.\n\nHorizontal Activation Range: 0-500 - ''&quot\nOppose&quot\n's attack cannot hit behind Eddie.''\n\nEach of &quot\nOppose&quot\n's attacks have 7f hitstop.\n\nEddie will buffer an unsummon during the active and recovery frames. See the [[GGST/Zato-1/Frame_Data#Buffering_Eddie_Cancels|Frame Data]] section for more info.\n\nIf Eddie is hit through the guardpoint, he will be hit and unsummoned the same frame he overlaps a hitbox. When guardpointing, Eddie is put in guardpoint hitstop the frame after overlapping a hitbox. Eddie acts out of guardpoint hitstop a frame before the guardpointed attack does.\n\nAttacks lose their hitbox after touching the guardpoint, even if the Guard Point is deactivated and/or the hitbox changes. Multi-Hit attacks will reactivate their hitbox when the second hit starts.\n\nAn attacker is able to use their attack's cancel options after hitting &quot\nOppose&quot\n's guardpoint, which includes on-block cancels such as RRC.\n\nDoes not pass-through frames 59-83. The collision box stops the opponent at Eddie's midpoint.\n"
   },
   {
     "input": "「多い」(]K[)",
@@ -909,7 +909,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "Tendies!",
-    "notes": "Clash Level: 1\nClash Hits: 1×4\nHitstop: 0 for Eddie, 6 for the opponent.\nThe attack is made up of multiple seperate hits and does not behave as a single multi-hit attack:\n* The total R.I.S.C. Loss is unaffected, however positive R.I.S.C. is reduced by 25% 2 times in total.\n* All hits made by sources other than the first one to connect will be scaled by the added R.I.S.C.\n* Attack only deals the maximum damage from at least 1068 R.I.S.C. (approx. 8.3% gauge) as a result.\nAn individual drill will still continue if Eddie is hit during it's active frames or 6 frames before it becomes active (5 frames before if Eddie is cancelled into another action).\nUses 375 HP of Eddie gauge for each attack (1500 HP total) on frames 10, 28, 43, and 58."
+    "notes": "Uses 375 HP of Eddie gauge for each attack (1500 HP total) on frames 10, 28, 43, and 58.\nClash Level: 1\nClash Hits: 1×4\nThe attack is made up of multiple seperate hits and does not behave as a single multi-hit attack:\n* The total R.I.S.C. Loss is unaffected, however positive R.I.S.C. is reduced by 25% 2 times in total.\n* All hits made by sources other than the first one to connect will be scaled by the added R.I.S.C.\n* Attack only deals the maximum damage from at least 1068 R.I.S.C. (approx. 8.3% gauge) as a result.\nAn individual drill will still continue if Eddie is hit, Unsummoned, or turns into Sun Void during it's active frames or 6 frames before it becomes active (5 frames before if Eddie is Clap Cancelled or Dash Cancelled).\nHitstop: 0 for Eddie, 6 for a Drill projectile.\n"
   },
   {
     "input": "「突く」(]P[)",
@@ -933,7 +933,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Uses 500 HP of the Eddie Gauge for each attack (1000 HP total) on frames 9 and 31.\n6f hitstop."
+    "notes": "Uses 500 HP of the Eddie Gauge for each attack (1000 HP total) on frames 9 and 31.\nDoes not pass-through frames 9-32. The collision box stops the opponent at Eddie's midpoint.\n6f hitstop."
   },
   {
     "input": "「跳ねる」(]S[)",
@@ -954,10 +954,10 @@
     "input_tension": 0.0,
     "chip_ratio": null,
     "scaling": null,
-    "invincibility": "-",
+    "invincibility": "11-36 Airborne",
     "cancel": "-",
     "caption": "",
-    "notes": "Uses 1500 HP of the Eddie gauge on frame 4.\nUsing 214H during frames 11-36 of &quot\nLeap&quot\nwill buffer the unsummon until frame 37.\nEddie being Clap Cancelled on frames 2-36 of &quot\nLeap&quot\nwill buffer the Clap Cancel until frame 37.\nEddie cannot dash using 214S during frames 12-38 of &quot\nLeap&quot\n, and Eddie's dash will not be buffered if 214S starts during those frames.\nEddie has his hurtbox raised off the ground on frame 11."
+    "notes": "Uses 1500 HP of the Eddie gauge on frame 4.\n"
   },
   {
     "input": "アモルファス(632146HS)",
@@ -970,7 +970,7 @@
     "on_hit": "強制ダウン+82",
     "on_block": "+12",
     "level": "4",
-    "counter": "-",
+    "counter": "Very Small",
     "move_type": "super",
     "risc_gain": 500.0,
     "risc_loss": 1000.0,
@@ -981,7 +981,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Projectile spawns during super freeze on frame 9 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: -\nClash Hits: -\nWhen Zato is in Amorphous' animation or cinematic recovery (Frames 1-67), the Eddie gauge will not regenerate, and will not be used by Eddie idling.\n0f hitstop."
+    "notes": "Projectile spawns during super freeze on frame 9 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: -\nClash Hits: -\nWhen Zato is in Amorphous' animation or cinematic recovery (Frames 1-67), the Eddie gauge will not regenerate, and will not be used by Eddie idling.\n0f hitstop.\nZato cannot be Counter Hit during startup (Can be R.I.S.C counterhit)."
   },
   {
     "input": "サンヴォイド(632146S)",
@@ -994,7 +994,7 @@
     "on_hit": "ダウン+61",
     "on_block": "+2",
     "level": "4",
-    "counter": "-",
+    "counter": "Very Small",
     "move_type": "super",
     "risc_gain": null,
     "risc_loss": 1000.0,
@@ -1005,7 +1005,7 @@
     "invincibility": "-",
     "cancel": "-",
     "caption": "",
-    "notes": "Projectile spawns during super freeze on frame 11 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: 4\nClash Hits: 3\nFrom frames 1-11, Eddie cannot receive new actions such as movement or negative edge, and will continue his movement from the frame before.\nWhen Zato is in Sunvoid's animation or cinematic recovery (Frames 1-73), the Eddie gauge will not regenerate, and will not be used by Eddie idling.\nThe Eddie gauge will be refilled during the super freeze.\nUnsummoning while Eddie is falling will buffer the unsummon until the frame Eddie would spawn.\nThe projectile has asymmetrical hitstop: The projectile inflicts 8f of hitstop, and takes 3f of hitstop on each hit.\nAfter leaving hitstop, the projectile will have 2 frames before the next multihit becomes active."
+    "notes": "Projectile spawns during super freeze on frame 11 and can be Purple Roman Canceled immediately after end of super freeze.\nClash Level: 4\nClash Hits: 3\n\nFrom frames 1-11, Eddie cannot receive new actions such as movement or negative edge, and will continue his movement from the frame before.\nWhen Zato is in Sunvoid's animation or cinematic recovery (Frames 1-73), the Eddie gauge will not regenerate, and will not be used by Eddie idling.\n\nThe Eddie gauge will be refilled and a summoned Eddie will transform into Sun Void during the super freeze on frame 11, cancelling Eddie's hitstop. See the [[GGST/Zato-1/Frame_Data#Buffering_Eddie_Cancels|Frame Data]] section for more info.\n\nThe projectile is removed if Zato is hit or blocks a hit, and the Eddie gauge will be depleted using the same rules as if Eddie was summoned.\n\nThe projectile inflicts 8f of hitstop, and takes 3f of hitstop on each hit.\n\nAfter leaving hitstop, the projectile will have 2 frames before the next multihit becomes active.\n\nZato cannot be Counter Hit during the startup of Sun Void (Can be R.I.S.C counterhit).\n\nSun Void has an extended [[GGST/Mechanics#Tension_Penalty|Tension Penalty]] of 460 frames when used."
   },
   {
     "input": "サンヴォイド(j632146S)",
