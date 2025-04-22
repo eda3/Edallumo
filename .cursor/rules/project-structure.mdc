@@ -1,0 +1,34 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# プロジェクト構造
+
+このプロジェクトは格闘ゲーム「Guilty Gear Strive」のフレームデータを提供するDiscord Botです。
+
+## 主要ファイル構成
+
+- [src/main.rs](mdc:src/main.rs) - メインエントリポイント、Botの初期化と設定
+- [src/models.rs](mdc:src/models.rs) - データモデル定義（キャラクター情報、技情報など）
+- [src/commands/mod.rs](mdc:src/commands/mod.rs) - コマンドモジュールの集約
+- [src/commands/frames.rs](mdc:src/commands/frames.rs) - 技のフレームデータ表示コマンド
+- [src/commands/moves.rs](mdc:src/commands/moves.rs) - キャラクターの技一覧表示コマンド
+- [src/commands/hitboxes.rs](mdc:src/commands/hitboxes.rs) - 技のヒットボックス表示コマンド
+- [src/check.rs](mdc:src/check.rs) - 入力チェック関連機能
+- [src/find.rs](mdc:src/find.rs) - キャラクターや技の検索機能
+
+## データ構造
+
+- `data/` - キャラクター情報などのデータを格納
+  - 各キャラクターのディレクトリ（例：`Sol_Badguy/`）
+    - `<キャラクター名>.json` - 技データ
+    - `images.json` - 技の画像リンク
+  - `nicknames.json` - キャラクターのニックネーム定義
+
+## 主要コマンド
+
+- `/frames <キャラクター> <技名>` - 指定した技のフレームデータを表示
+- `/moves <キャラクター>` - 指定したキャラクターの技一覧を表示
+- `/hitboxes <キャラクター> <技名>` - 指定した技のヒットボックス画像を表示
+- `/nicknames` - キャラクターのニックネーム一覧を表示

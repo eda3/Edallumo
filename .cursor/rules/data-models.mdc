@@ -1,0 +1,120 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# データモデル
+
+プロジェクトで使用するデータモデルの仕様です。
+
+## 主要なデータ構造
+
+### MoveInfo (技情報)
+
+[src/models.rs](mdc:src/models.rs)で定義されている`MoveInfo`構造体は、技の基本情報を保持します。
+
+```rust
+pub struct MoveInfo {
+    pub input: String,         // 入力コマンド
+    pub name: String,          // 技名称
+    pub damage: Option<i32>,   // ダメージ値
+    pub guard: String,         // ガード値
+    pub startup: Option<i32>,  // 始動フレーム
+    pub active: String,        // アクティブフレーム
+    pub recovery: Option<i32>, // リカバリーフレーム
+    pub on_hit: String,        // ヒット時効果
+    pub on_block: String,      // ブロック時効果
+    pub level: String,         // 技レベル
+    pub counter: String,       // カウンター情報
+    pub move_type: String,     // 技種別
+    // その他のプロパティ...
+}
+```
+
+### ImageLinks (画像リンク)
+
+各技の画像リンクを保持する構造体です。
+
+```rust
+pub struct ImageLinks {
+    pub input: String,           // 入力コマンド（技の識別子）
+    pub move_img: String,        // 技画像リンク
+    pub hitbox_img: Vec<String>, // ヒットボックス画像リンク群
+}
+```
+
+### CharInfo (キャラクター情報)
+
+キャラクターの基本ステータス情報を保持する構造体です。
+
+```rust
+pub struct CharInfo {
+    pub defense: Option<f64>,         // 防御値
+    pub guts: Option<f64>,            // ガッツ
+    pub guard_balance: Option<f64>,   // ガードバランス
+    pub prejump: Option<i32>,         // ジャンプ前の状態フレーム数
+    // その他のプロパティ...
+}
+```
+
+## JSONファイル構造
+
+### キャラクターデータ (`<character>.json`)
+
+各キャラクターの技データをJSON形式で格納しています。
+
+```json
+[
+  {
+    "input": "5P",
+    "name": "スタンダードP",
+    "damage": 28,
+    "guard": "High",
+    "startup": 5,
+    "active": "2",
+    "recovery": 9,
+    // その他のプロパティ...
+  },
+  // 他の技...
+]
+```
+
+### 画像データ (`images.json`)
+
+技の画像リンクをJSON形式で格納しています。
+
+```json
+[
+  {
+    "input": "5P",
+    "move_img": "https://example.com/images/5P.png",
+    "hitbox_img": [
+      "https://example.com/images/5P_1.png",
+      "https://example.com/images/5P_2.png"
+    ]
+  },
+  // 他の技...
+]
+```
+
+## デシリアライズ
+
+各種文字列やnull値の変換には特殊なデシリアライザを使用しています：
+
+```rust
+// 文字列または整数を文字列としてデシリアライズ
+pub fn deserialize_string_or_int<'de, D>(deserializer: D) -> Result<String, D::Error>
+where
+    D: serde::Deserializer<'de>
+{
+    // 実装...
+}
+
+// nullまたは数値をOptionとしてデシリアライズ
+fn deserialize_option_i32<'de, D>(deserializer: D) -> std::result::Result<Option<i32>, D::Error>
+where
+    D: Deserializer<'de>
+{
+    // 実装...
+}
+```

@@ -1,0 +1,57 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# コマンド実装ルール
+
+Discordコマンドの実装に関するルールです。
+
+## コマンド構造
+
+すべてのコマンドは以下の構造に従って実装されます：
+
+```rust
+#[poise::command(prefix_command, slash_command, aliases("エイリアス"))]
+pub async fn command_name(
+    ctx: Context<'_>,
+    #[description = "引数の説明"] argument1: Type,
+    #[description = "引数の説明"] argument2: Type,
+) -> Result<(), Error> {
+    // コマンド実装
+    Ok(())
+}
+```
+
+## コマンド処理フロー
+
+1. 入力パラメータの検証 (`check::adaptive_check`)
+2. キャラクター名の解決 (`find::find_character`)
+3. キャラクターデータの読み込み
+4. 対象技の検索 (`find::find_move_index` など)
+5. 画像データの読み込み
+6. 結果の整形と送信
+
+## 主要ファイル
+
+- [src/commands/frames.rs](mdc:src/commands/frames.rs) - フレームデータ表示コマンド
+- [src/commands/moves.rs](mdc:src/commands/moves.rs) - 技一覧表示コマンド
+- [src/commands/hitboxes.rs](mdc:src/commands/hitboxes.rs) - ヒットボックス表示コマンド
+- [src/commands/nicknames.rs](mdc:src/commands/nicknames.rs) - ニックネーム表示コマンド
+- [src/commands/feedback.rs](mdc:src/commands/feedback.rs) - フィードバック送信コマンド
+
+## エラーハンドリング
+
+コマンド実行中のエラーは適切にハンドリングし、ユーザーにわかりやすいメッセージを返す必要があります。
+
+```rust
+// 例：キャラクター検索のエラーハンドリング
+character_arg_altered = match find::find_character(&character).await {
+    Ok(character_arg_altered) => character_arg_altered,
+    Err(err) => {
+        ctx.say(err.to_string()).await?;
+        println!("{}", ("Error: ".to_owned() + &err.to_string()).red());
+        return Ok(());
+    }
+};
+```
