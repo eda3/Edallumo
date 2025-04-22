@@ -354,7 +354,7 @@ fn create_advanced_embeds(
     let embed = CreateEmbed::new()
         .color(EMBED_COLOR) // 埋め込みカラー設定
         .title(format!(
-            "{}の{input}",
+            "{}：{input}",
             character_arg_altered,
             input = move_info.input
         ))

@@ -259,7 +259,7 @@ fn create_move_embed(
     character_arg_altered: &str,
 ) -> CreateEmbed {
     // 埋め込みタイトル組み立て　キャラクター名と技情報を連結
-    let embed_title = "__**".to_owned() + &move_data.input + "**__";
+    let embed_title = format!("__**{}：{}**__", character_arg_altered, move_data.input);
 
     // 埋め込みURL組み立て　Dustloop Wiki の対象キャラクターページ
     let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview";

@@ -462,7 +462,7 @@ async fn create_meter_embeds(
     meter_msg += &recovery_frames(move_info).await; // リカバリーフレーム処理
     meter_msg += "`"; // バッククォート終了
 
-    let embed_title = "__**".to_owned() + &move_info.input + "**__"; // 埋め込みタイトル生成
+    let embed_title = format!("__**{}：{}**__", character_arg_altered, move_info.input); // 埋め込みタイトル生成
 
     let embed_url = "https://dustloop.com/w/GGST/".to_owned() + character_arg_altered + "#Overview"; // 埋め込みURL生成
 
