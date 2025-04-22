@@ -462,7 +462,7 @@
 <a href=#462 id=462 data-nosnippet>462</a>    </span>meter_msg += <span class="kw-2">&amp;</span>recovery_frames(move_info).<span class="kw">await</span>; <span class="comment">// リカバリーフレーム処理
 <a href=#463 id=463 data-nosnippet>463</a>    </span>meter_msg += <span class="string">"`"</span>; <span class="comment">// バッククォート終了
 <a href=#464 id=464 data-nosnippet>464</a>
-<a href=#465 id=465 data-nosnippet>465</a>    </span><span class="kw">let </span>embed_title = <span class="string">"__**"</span>.to_owned() + <span class="kw-2">&amp;</span>move_info.input + <span class="string">"**__"</span>; <span class="comment">// 埋め込みタイトル生成
+<a href=#465 id=465 data-nosnippet>465</a>    </span><span class="kw">let </span>embed_title = <span class="macro">format!</span>(<span class="string">"__**{}：{}**__"</span>, character_arg_altered, move_info.input); <span class="comment">// 埋め込みタイトル生成
 <a href=#466 id=466 data-nosnippet>466</a>
 <a href=#467 id=467 data-nosnippet>467</a>    </span><span class="kw">let </span>embed_url = <span class="string">"https://dustloop.com/w/GGST/"</span>.to_owned() + character_arg_altered + <span class="string">"#Overview"</span>; <span class="comment">// 埋め込みURL生成
 <a href=#468 id=468 data-nosnippet>468</a>
