@@ -59,7 +59,7 @@ struct Gids {
 pub const EMBED_COLOR: u32 = 0x00FF_FF99;
 
 /// キャラクター名定数配列
-pub const CHARS: [&str; 29] = [
+pub const CHARS: [&str; 30] = [
     "A.B.A",
     "Anji_Mito",
     "Asuka_R",
@@ -88,6 +88,7 @@ pub const CHARS: [&str; 29] = [
     "Slayer",
     "Sol_Badguy",
     "Testament",
+    "Venom",
     "Zato-1",
 ];
 

@@ -660,6 +660,22 @@ lazy_static! {
         map.insert(r#""236[H]""#, r#""236[HS]""#);
         map.insert(r#""236{H}""#, r#""236{HS}""#);
 
+        map.insert(r#""Ball Set""#, r#""ボール生成""#);
+        map.insert(r#""Ball Set (Multiple)""#, r#""ボール生成（複数）""#);
+        map.insert(r#""Uncharged QV""#, r#""ＱＶ""#);
+        map.insert(r#""Charged QV""#, r#""微タメQV""#);
+        map.insert(r#""Partial Charged QV""#, r#""最大タメQV""#);
+        map.insert(r#""Tryambaka""#, r#""トリアンバカ""#);
+        map.insert(r#""Ball Hit""#, r#""ボールヒット""#);
+        map.insert(r#""Carcass Raid (mid-air) H""#, r#""空中カーカスライド（HS版）""#);
+        map.insert(r#""Carcass Raid (mid-air) S""#, r#""空中カーカスライド（S版）""#);
+        map.insert(r#""Carcass Raid H""#, r#""カーカスライド（HS版）""#);
+        map.insert(r#""Carcass Raid S""#, r#""カーカスライド（S版）""#);
+        map.insert(r#""Stinger Aim H""#, r#""スティンガーエイム（HS版）""#);
+        map.insert(r#""Stinger Aim S""#, r#""スティンガーエイム（S版）""#);
+        map.insert(r#""Navaratna Runout""#, r#""ナヴァラートナランアウト""#);
+        map.insert(r#""Dark Angel""#, r#""ダークエンジェル""#);
+
         // ザトー
         map.insert(r#""22H""#, r#""22HS""#);
         map.insert(r#""]H[""#, r#""]HS[""#);
