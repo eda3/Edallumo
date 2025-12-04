@@ -1,5 +1,5 @@
 (function() {
-    var implementors = Object.fromEntries([["baiken",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"baiken/check/struct.CheckOptions.html\" title=\"struct baiken::check::CheckOptions\">CheckOptions</a>"]]]]);
+    var implementors = Object.fromEntries([["baiken",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"baiken/check/struct.CheckOptions.html\" title=\"struct baiken::check::CheckOptions\">CheckOptions</a>"]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
