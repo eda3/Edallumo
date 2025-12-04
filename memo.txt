@@ -1,1 +1,2 @@
 nohup cargo run &
+nohup ./target/debug/baiken &

@@ -5,3 +5,4 @@ workspace.code-workspace
 data/*_old
 .memo
 nohup.out
+_nohup.out
